@@ -10,8 +10,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AppleseedWebApplication</RootNamespace>
-    <AssemblyName>AppleseedWebApplication</AssemblyName>
+    <RootNamespace>Appleseed</RootNamespace>
+    <AssemblyName>Appleseed</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup>
@@ -24,8 +24,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AppleseedWebApplication</RootNamespace>
-    <AssemblyName>AppleseedWebApplication</AssemblyName>
+    <RootNamespace>Appleseed</RootNamespace>
+    <AssemblyName>Appleseed</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -38,8 +38,8 @@
     <WarningLevel>4</WarningLevel>
     <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
     <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
-    <DesktopBuildPackageLocation>..\..\Deployment\AppleseedWebApplication.zip</DesktopBuildPackageLocation>
-    <DeployIisAppPath>AppleseedWebApplication</DeployIisAppPath>
+    <DesktopBuildPackageLocation>..\..\Deployment\Appleseed.zip</DesktopBuildPackageLocation>
+    <DeployIisAppPath>Appleseed</DeployIisAppPath>
     <ExcludeApp_Data>true</ExcludeApp_Data>
     <PublishDatabases>false</PublishDatabases>
     <!--<ExcludeFoldersFromDeployment>Portals</ExcludeFoldersFromDeployment>-->
@@ -52,8 +52,8 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DesktopBuildPackageLocation>..\..\Deployment\AppleseedWebApplication.zip</DesktopBuildPackageLocation>
-    <DeployIisAppPath>Default Web Site/AppleseedWebApplication</DeployIisAppPath>
+    <DesktopBuildPackageLocation>..\..\Deployment\Appleseed.zip</DesktopBuildPackageLocation>
+    <DeployIisAppPath>Default Web Site/Appleseed</DeployIisAppPath>
     <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
     <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
     <ExcludeApp_Data>true</ExcludeApp_Data>
@@ -903,6 +903,13 @@
     </Compile>
     <Compile Include="DesktopModules\CoreModules\Admin\AddEditPage.aspx.designer.cs">
       <DependentUpon>AddEditPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CoreModules\Admin\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CoreModules\Admin\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="DesktopModules\CoreModules\Admin\CustomPropertyPage.aspx.cs">
       <DependentUpon>CustomPropertyPage.aspx</DependentUpon>
@@ -5782,6 +5789,7 @@
     <Content Include="DesktopModules\CoreModules\AddTab\install.xml" />
     <Content Include="DesktopModules\CoreModules\AddTab\readme.txt" />
     <Content Include="DesktopModules\CoreModules\Admin\AddEditPage.aspx" />
+    <Content Include="DesktopModules\CoreModules\Admin\ChangePassword.aspx" />
     <Content Include="DesktopModules\CoreModules\Admin\CustomPropertyPage.aspx" />
     <Content Include="DesktopModules\CoreModules\Admin\Logoff.aspx" />
     <Content Include="DesktopModules\CoreModules\Admin\Logon.aspx" />
@@ -6127,7 +6135,10 @@
     <Content Include="Setup\Scripts\2.0.0.1888.sql" />
     <Content Include="Setup\Scripts\2.0.0.1889.sql" />
     <Content Include="Setup\Scripts\2.0.0.1890.sql" />
-    <Content Include="Setup\Scripts\History.xml" />
+    <Content Include="Setup\Scripts\2.0.0.1891.sql" />
+    <Content Include="Setup\Scripts\History.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Shared\PanesMasterDefault.master" />
     <Content Include="Shared\SiteMasterDefault.master" />
     <Content Include="Web.config">
