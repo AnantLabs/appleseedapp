@@ -4437,6 +4437,7 @@
     <Content Include="Design\DesktopLayouts\Appleseed.One.Front\PanesMaster.master" />
     <Content Include="Design\DesktopLayouts\Appleseed.One.Layout\PanesMaster.master" />
     <Content Include="Design\DesktopLayouts\Appleseed.One.Layout\SiteMaster.master" />
+    <None Include="Appleseed.nuspec" />
     <None Include="aspnet_client\ckeditor\ckeditor.pack" />
     <None Include="aspnet_client\CodeMirror\css\baboon_vector.ai" />
     <None Include="aspnet_client\FCKeditorV2.6.6\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.cfm" />
@@ -5936,9 +5937,11 @@
     <Content Include="DesktopModules\CoreModules\Users\install.xml" />
     <Content Include="DesktopModules\CoreModules\Users\Users.ascx" />
     <Content Include="DesktopModules\CoreModules\Users\UsersManage.aspx" />
+    <Content Include="developer.readme.txt" />
     <Content Include="favicon.ico" />
     <Content Include="get_aspx_ver.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="httpCompression.txt" />
     <Content Include="Installer\default.aspx" />
     <Content Include="Installer\images\installer_top_bg.png" />
     <Content Include="Installer\LICENSE-2.0.html" />
@@ -6147,6 +6150,7 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <None Include="Web.config.standard" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\Appleseed.vi.resx">

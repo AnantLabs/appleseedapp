@@ -1059,7 +1059,7 @@ namespace Appleseed.Framework.Web.UI
 
             var mdb = new ModulesDB();
 
-            if (this.portalSettings.ActivePage.Modules.Count > 0)
+            if (this.portalSettings != null && this.portalSettings.ActivePage.Modules.Count > 0)
             {
                 foreach (ModuleSettings ms in this.portalSettings.ActivePage.Modules)
                 {
@@ -1322,7 +1322,7 @@ namespace Appleseed.Framework.Web.UI
             }
 
             // AddThis
-            if (!this.Page.ClientScript.IsStartupScriptRegistered("ADD_THIS"))
+            if (!this.Page.ClientScript.IsStartupScriptRegistered("ADD_THIS") && this.portalSettings != null)
             {
                 var addThisUsernameSetting = this.portalSettings.CustomSettings["SITESETTINGS_ADDTHIS_USERNAME"];
                 if (addThisUsernameSetting != null)
