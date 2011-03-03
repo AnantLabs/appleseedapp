@@ -38,6 +38,7 @@ namespace Appleseed.Framework.Site.Configuration
     using Appleseed.Framework.Web.UI.WebControls;
 
     using Path = Appleseed.Framework.Settings.Path;
+    using System.Web.Security;
 
     /// <summary>
     /// PortalSettings Class encapsulates all of the settings 
@@ -661,7 +662,8 @@ namespace Appleseed.Framework.Site.Configuration
                 }
                 else
                 {
-                    r = new AppleseedPrincipal(HttpContext.Current.User.Identity, null);
+                    r = new AppleseedPrincipal(HttpContext.Current.User.Identity, Roles.GetRolesForUser());
+                    HttpContext.Current.User = r;
                 }
 
                 return r;
@@ -1580,6 +1582,14 @@ namespace Appleseed.Framework.Site.Configuration
                 glAnalytics.Description = "Allows you get the tracker, with this can view the statistics of your site.";
                 glAnalytics.Value = string.Empty;
                 baseSettings.Add("SITESETTINGS_GOOGLEANALYTICS", glAnalytics);
+
+                var glAnalyticsCustomVars = new SettingItem(new BooleanDataType());
+                glAnalyticsCustomVars.Order = groupOrderBase + 52;
+                glAnalyticsCustomVars.Group = group;
+                glAnalyticsCustomVars.EnglishName = "Use Google-Analytics Custom Vars?";
+                glAnalyticsCustomVars.Description = "Allows you to use custom vars to track members, authenticated users and ther domain names.";
+                glAnalyticsCustomVars.Value = "False";
+                baseSettings.Add("SITESETTINGS_GOOGLEANALYTICS_CUSTOMVARS", glAnalytics);
 
                 var alternativeUrl = new SettingItem(new StringDataType());
                 alternativeUrl.Order = groupOrderBase + 55;
