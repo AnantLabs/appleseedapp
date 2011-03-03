@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFileBaseClass="AppleseedMaster" %>
 <%@ Register TagPrefix="head" TagName="Banner" Src="DesktopPortalBanner.ascx" %>
 <%@ Register TagPrefix="foot" TagName="Footer" Src="DesktopFooter.ascx" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">

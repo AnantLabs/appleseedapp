@@ -62,6 +62,34 @@
     <!--<ExcludeFilesFromDeployment>Web.config</ExcludeFilesFromDeployment>-->
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AgileTravel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libs\AgileTravel\AgileTravel.dll</HintPath>
+    </Reference>
+    <Reference Include="AgileWorks.BulkMail, Version=1.0.4063.30200, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libs\BulkMail\AgileWorks.BulkMail.dll</HintPath>
+    </Reference>
+    <Reference Include="AgileWorks.BulkMail.Dtos, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libs\BulkMail\AgileWorks.BulkMail.Dtos.dll</HintPath>
+    </Reference>
+    <Reference Include="AgileWorks.BulkMail.Managers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libs\BulkMail\AgileWorks.BulkMail.Managers.dll</HintPath>
+    </Reference>
+    <Reference Include="AgileWorks.BulkMail.Providers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libs\BulkMail\AgileWorks.BulkMail.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="AgileWorks.BulkMail.Services, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libs\BulkMail\AgileWorks.BulkMail.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="AgileWorks.BulkMailDBSpecific, Version=1.0.4063.30200, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libs\BulkMail\AgileWorks.BulkMailDBSpecific.dll</HintPath>
+    </Reference>
     <Reference Include="Ajax">
       <HintPath>..\..\Libs\Ajax.dll</HintPath>
     </Reference>
@@ -71,6 +99,22 @@
     </Reference>
     <Reference Include="blowery.Web.HttpCompress">
       <HintPath>..\..\Libs\blowery.Web.HttpCompress.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging, Version=1.2.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libs\AgileTravel\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Log4Net, Version=1.2.0.1, Culture=neutral, PublicKeyToken=af08829b84f0328e">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libs\AgileTravel\Common.Logging.Log4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Log4Net129, Version=1.2.0.1, Culture=neutral, PublicKeyToken=af08829b84f0328e">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libs\AgileTravel\Common.Logging.Log4Net129.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.NLog, Version=1.2.0.1, Culture=neutral, PublicKeyToken=af08829b84f0328e">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libs\AgileTravel\Common.Logging.NLog.dll</HintPath>
     </Reference>
     <Reference Include="DateTextBoxControls, Version=1.0.8.42693, Culture=neutral, PublicKeyToken=e747becda5e0f01b">
       <SpecificVersion>False</SpecificVersion>
@@ -177,8 +221,16 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libs\Novell.Directory.Ldap.dll</HintPath>
     </Reference>
+    <Reference Include="Nullables, Version=1.0.2.0, Culture=neutral, PublicKeyToken=154fdcb44c4484fc">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libs\AgileTravel\Nullables.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\..\Libs\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Quartz, Version=1.0.2.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libs\AgileTravel\Quartz.dll</HintPath>
     </Reference>
     <Reference Include="Recaptcha">
       <HintPath>..\..\Libs\Recaptcha.dll</HintPath>
@@ -194,9 +246,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libs\StaticDust.Web.UI.Controls.UploadDialog.dll</HintPath>
     </Reference>
-    <Reference Include="StructureMap, Version=2.5.3.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+    <Reference Include="StructureMap, Version=2.6.1.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Libs\StructureMap.dll</HintPath>
+      <HintPath>..\..\..\Libs\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="SyrinxCkEditor, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -216,6 +268,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Routing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages.Administration, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -1355,6 +1409,7 @@
     <Folder Include="Old_App_Code\Appleseed\" />
     <Folder Include="Portals\_Appleseed\Album\" />
     <Folder Include="Portals\_Appleseed\SecureDocuments\" />
+    <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Projects\Appleseed.Framework.Core\Appleseed.Framework.Core.csproj">
@@ -3794,6 +3849,10 @@
     <Content Include="aspnet_client\ie7\0_9\README.txt" />
     <Content Include="aspnet_client\ie7\0_9\test-trans.png" />
     <Content Include="aspnet_client\ie7\0_9\test.html" />
+    <Content Include="aspnet_client\jQuery\jquery-1.4.4.min.js" />
+    <Content Include="aspnet_client\jQuery\jquery-ui-i18n.min.js" />
+    <Content Include="aspnet_client\jQuery\jquery-ui.min.js" />
+    <Content Include="aspnet_client\jQuery\jquery.validate.min.js" />
     <Content Include="aspnet_client\js\browser_upgrade_notification.js" />
     <Content Include="aspnet_client\js\ControlPanelMenu.js" />
     <Content Include="aspnet_client\js\DragNDrop.js" />
@@ -6005,9 +6064,6 @@
     <Content Include="Portals\_Appleseed\xml\sales2.xsl" />
     <Content Include="rb_logs\rb_logs.txt" />
     <Content Include="robots.txt" />
-    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.4.1.js" />
-    <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Setup\Scripts\1.1.7.1111.sql" />
     <Content Include="Setup\Scripts\1.1.7.1111Z.sql" />
     <Content Include="Setup\Scripts\1.1.7.1111_Localization.sql" />
