@@ -48,7 +48,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\builds\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -226,6 +226,9 @@
     <Compile Include="Settings\Portal.cs" />
     <Compile Include="Provider\UrlBuilderProvider.cs" />
     <Compile Include="Setup\IInstaller.cs" />
+    <Compile Include="UI\AppleseedMaster.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="UI\DataTypes\ApplicationUrlDataType.cs" />
     <Compile Include="UI\DataTypes\BaseDataType.cs" />
     <Compile Include="UI\DataTypes\BooleanDataType.cs" />
