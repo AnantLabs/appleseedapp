@@ -1,4 +1,4 @@
-﻿<%@ master language="C#" autoeventwireup="true" Inherits="Appleseed.AppleseedMaster" %>
+﻿<%@ master language="C#" autoeventwireup="true" %>
 <%@ Register TagPrefix="head" TagName="Banner" Src="DesktopPortalBanner.ascx" %>
 <%@ Register TagPrefix="foot" TagName="Footer" Src="DesktopFooter.ascx" %>
 <% this.Page.ClientScript.RegisterClientScriptInclude(this.Page.GetType(), "ControlPanelMenu", Appleseed.Framework.Settings.Path.ApplicationFullPath + "/aspnet_client/js/ControlPanelMenu.js"); %>

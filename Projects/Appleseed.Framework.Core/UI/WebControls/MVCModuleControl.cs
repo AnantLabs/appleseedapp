@@ -79,7 +79,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                 }
                 catch (Exception exc)
                 {
-                    //ErrorHandler.Publish(LogLevel.Debug, String.Format("Error al obtener los settings para {0}/{1}/{2} con namespace: {3}", areaName, controllerName, actionName, controllerNamespace), exc);
+                    ErrorHandler.Publish(LogLevel.Debug, String.Format("Error al obtener los settings para {0}/{1}/{2} con namespace: {3}", areaName, controllerName, actionName, controllerNamespace), exc);
                 }
             }
             

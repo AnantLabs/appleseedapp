@@ -39,16 +39,16 @@ namespace CSSFriendly
         private void RegisterScripts()
         {
             Extender.RegisterScripts();
-            //if (!Page.ClientScript.IsClientScriptBlockRegistered(GetType().ToString()))
-            //{
-            //    string folderPath = WebConfigurationManager.AppSettings.Get("CSSFriendly-JavaScript-Path");
-            //    if (String.IsNullOrEmpty(folderPath))
-            //    {
-            //        folderPath = "~/JavaScript";
-            //    }
-            //    string filePath = folderPath.EndsWith("/") ? folderPath + "MenuAdapter.js" : folderPath + "/MenuAdapter.js";
-            //    Page.ClientScript.RegisterClientScriptInclude(GetType(), GetType().ToString(), Page.ResolveUrl(filePath));
-            //}
+            if (!Page.ClientScript.IsClientScriptBlockRegistered(GetType().ToString()))
+            {
+                string folderPath = WebConfigurationManager.AppSettings.Get("CSSFriendly-JavaScript-Path");
+                if (String.IsNullOrEmpty(folderPath))
+                {
+                    folderPath = "~/JavaScript";
+                }
+                string filePath = folderPath.EndsWith("/") ? folderPath + "MenuAdapter.js" : folderPath + "/MenuAdapter.js";
+                Page.ClientScript.RegisterClientScriptInclude(GetType(), GetType().ToString(), Page.ResolveUrl(filePath));
+            }
         }
 
         protected override void RenderBeginTag(HtmlTextWriter writer)
