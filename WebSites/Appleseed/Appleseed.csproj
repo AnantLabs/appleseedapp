@@ -4496,7 +4496,9 @@
     <Content Include="Design\DesktopLayouts\Appleseed.One.Front\PanesMaster.master" />
     <Content Include="Design\DesktopLayouts\Appleseed.One.Layout\PanesMaster.master" />
     <Content Include="Design\DesktopLayouts\Appleseed.One.Layout\SiteMaster.master" />
-    <None Include="Appleseed.nuspec" />
+    <None Include="Appleseed.nuspec">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="aspnet_client\ckeditor\ckeditor.pack" />
     <None Include="aspnet_client\CodeMirror\css\baboon_vector.ai" />
     <None Include="aspnet_client\FCKeditorV2.6.6\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.cfm" />
