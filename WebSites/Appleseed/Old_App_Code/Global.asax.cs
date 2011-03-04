@@ -28,7 +28,6 @@ using System.Web.Routing;
 using System.Configuration;
 using MvcContrib.Routing;
 using MvcContrib.UI.InputBuilder;
-using AgileTravel.Code;
 
 namespace Appleseed
 {
@@ -40,19 +39,7 @@ namespace Appleseed
 
         protected void Application_BeginRequest(Object sender, EventArgs e)
         {
-            if (!Request.Url.AbsoluteUri.ToLower().Contains("www"))
-            {
-                var newUrl = Request.Url.AbsoluteUri.Replace("http://", "http://www.");
-                Response.Redirect(newUrl, true);
-            }
-
-            if (!Request.Path.ToLower().Contains("images.ashx") 
-                && !Request.Path.ToLower().Contains("/i/")
-                && !Request.Path.ToLower().Contains("/images/")
-                && !Request.Path.ToLower().Contains(".jpg")
-                && !Request.Path.ToLower().Contains(".png")
-                && !Request.Path.ToLower().Contains(".gif")
-                )
+            if (!Request.Path.ToLower().Contains("images.ashx"))
             {
                 AppleseedApplication_BeginRequest(sender, e);
             }
@@ -413,22 +400,6 @@ namespace Appleseed
 
             InputBuilder.BootStrap();
 
-            ViewEngines.Engines.Clear();
-            ViewEngines.Engines.Add(new AgileTravel.AreaLib.AreaViewEngine());
-
-            if (ConfigurationManager.AppSettings["RouteTesting"] != null)
-            {
-                if (bool.Parse(ConfigurationManager.AppSettings["RouteTesting"]))
-                {
-                    RouteDebugger.RewriteRoutesForTesting(RouteTable.Routes);
-                }
-            }
-
-            Bootstrapper.ConfigureStructureMap();
-
-            ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());
-            ValueProviderFactories.Factories.Add(new Microsoft.Web.Mvc.JsonValueProviderFactory());
-
             #endregion
         }
 
@@ -441,18 +412,18 @@ namespace Appleseed
         {
             routes.IgnoreRoute("{*allaspx}", new { allaspx = @".*\.aspx(/.*)?" });
             routes.IgnoreRoute("{*allashx}", new { allashx = @".*\.ashx(/.*)?" });
-            routes.IgnoreRoute("*.html|js|css|gif|jpg|jpeg|png|swf");
+
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.IgnoreRoute("");
 
-            routes.MapRoute(
-                "Default",                                              // Route name
-                "{controller}/{action}/{id}",                           // URL with parameters
-                new { controller = "Home", action = "Index", id = "" } // Parameter defaults
+            //routes.MapRoute(
+            //    "Default",                                              // Route name
+            //    "{controller}/{action}/{id}",                           // URL with parameters
+            //    new { controller = "Home", action = "Index", id = "" } // Parameter defaults
 
 
 
-            );
+            //);
         }
     }
 }

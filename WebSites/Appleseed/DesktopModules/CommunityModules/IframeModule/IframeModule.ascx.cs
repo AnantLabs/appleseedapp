@@ -5,8 +5,6 @@ using Appleseed.Framework.DataTypes;
 using Appleseed.Framework.Web.UI.WebControls;
 using System.Web.Security;
 using System.Collections.Generic;
-using AgileWorks.BulkMail.Dtos;
-using AgileWorks.BulkMail.Managers;
 
 namespace Appleseed.Content.Web.Modules
 {
@@ -54,30 +52,27 @@ namespace Appleseed.Content.Web.Modules
         {
             string url = Settings["URL"].ToString();
 
-            Dictionary<string, string> parameters = new Dictionary<string, string>();
-            List<MailParametersDTO> customParameters = new List<MailParametersDTO>();
+            //Dictionary<string, string> parameters = new Dictionary<string, string>();
+            //List<MailParametersDTO> customParameters = new List<MailParametersDTO>();
 
-            MembershipUser user = Membership.GetUser();
-            if (user != null)
-            {
-                MailParametersDTO userParameter = new MailParametersDTO();
-                userParameter.Key = "User";
-                userParameter.Value = (object)user;
-                userParameter.AssemblyName = user.GetType().Assembly.GetName().ToString();
-                customParameters.Add(userParameter);
+            //MembershipUser user = Membership.GetUser();
+            //if (user != null) {
+            //    MailParametersDTO userParameter = new MailParametersDTO();
+            //    userParameter.Key = "User";
+            //    userParameter.Value = (object)user;
+            //    userParameter.AssemblyName = user.GetType().Assembly.GetName().ToString();
+            //    customParameters.Add(userParameter);
 
-                BulkMailManager mgr = new BulkMailManager();
-                Dictionary<string, string> tempParameters = mgr.BuildParameters(url, customParameters);
-                foreach (KeyValuePair<string, string> tempParam in tempParameters)
-                {
-                    parameters.Add(tempParam.Key, tempParam.Value);
-                }
+            //    BulkMailManager mgr = new BulkMailManager();
+            //    Dictionary<string, string> tempParameters = mgr.BuildParameters(url, customParameters);
+            //    foreach (KeyValuePair<string, string> tempParam in tempParameters) {
+            //        parameters.Add(tempParam.Key, tempParam.Value);
+            //    }
 
-                foreach (KeyValuePair<string, string> kvp in parameters)
-                {
-                    url = url.Replace("[[" + kvp.Key + "]]", kvp.Value);
-                }
-            }
+            //    foreach (KeyValuePair<string, string> kvp in parameters) {
+            //        url = url.Replace("[[" + kvp.Key + "]]", kvp.Value);
+            //    }
+            //}
             return url;
         }
 
