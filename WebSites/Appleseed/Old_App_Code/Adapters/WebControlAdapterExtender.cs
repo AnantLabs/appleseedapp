@@ -83,16 +83,16 @@ namespace CSSFriendly
         public void RegisterScripts()
         {
             //Uso el registro de adapter para asegurarme que no se registren 2 veces los scripts extra
-            if (!AdaptedControl.Page.ClientScript.IsClientScriptIncludeRegistered(GetType(), GetType().ToString()))
-            {
-                string folderPath = WebConfigurationManager.AppSettings.Get("CSSFriendly-JavaScript-Path");
-                if (String.IsNullOrEmpty(folderPath))
-                {
-                    folderPath = "~/JavaScript";
-                }
-                string filePath = folderPath.EndsWith("/") ? folderPath + "AdapterUtils.js" : folderPath + "/AdapterUtils.js";
-                AdaptedControl.Page.ClientScript.RegisterClientScriptInclude(GetType(), GetType().ToString(), AdaptedControl.Page.ResolveUrl(filePath));
-            }
+            //if (!AdaptedControl.Page.ClientScript.IsClientScriptIncludeRegistered(GetType(), GetType().ToString()))
+            //{
+            //    string folderPath = WebConfigurationManager.AppSettings.Get("CSSFriendly-JavaScript-Path");
+            //    if (String.IsNullOrEmpty(folderPath))
+            //    {
+            //        folderPath = "~/JavaScript";
+            //    }
+            //    string filePath = folderPath.EndsWith("/") ? folderPath + "AdapterUtils.js" : folderPath + "/AdapterUtils.js";
+            //    AdaptedControl.Page.ClientScript.RegisterClientScriptInclude(GetType(), GetType().ToString(), AdaptedControl.Page.ResolveUrl(filePath));
+            //}
         }
 
         public string ResolveUrl(string url)
