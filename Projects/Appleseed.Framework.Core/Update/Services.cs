@@ -13,7 +13,7 @@ namespace Appleseed.Framework.Update
     using System.Collections.Generic;
     using System.Linq;
     using System.Web;
-    using System.Xml.Linq;
+    using System.Xml;
 
     using Appleseed.Framework.Data;
     using Appleseed.Framework.Helpers;
@@ -78,6 +78,7 @@ namespace Appleseed.Framework.Update
 
             var databaseVersion = DatabaseVersion;
 
+            var xmlDocument = new XmlDocument();
             var tempScriptsList = new List<UpdateEntry>();
 
             try
@@ -91,75 +92,78 @@ namespace Appleseed.Framework.Update
                     var docPath =
                         HttpContext.Current.Server.MapPath(
                             string.Format("{0}/Setup/Scripts/History.xml", Path.ApplicationRoot));
-
-                    var xmlDocument = XDocument.Load(docPath);
+                    
+                    xmlDocument.Load(docPath);
 
                     // get a list of <Release> nodes
-                    if (xmlDocument.Document != null)
+                    if (xmlDocument.DocumentElement != null)
                     {
-                        var releases = xmlDocument.Elements("Release");
-
-                        // iterate over the <Release> nodes
-                        // (we can do this because XmlNodeList implements IEnumerable)
-                        foreach (var release in releases)
+                        var releases = xmlDocument.DocumentElement.SelectNodes("Release");
+                        if (releases != null)
                         {
-                            var updateEntry = new UpdateEntry();
 
-                            // get the header information
-                            // we check for null to avoid exception if any of these nodes are not present
-                            if (release.Element("ID") != null)
+                            // iterate over the <Release> nodes
+                            // (we can do this because XmlNodeList implements IEnumerable)
+                            foreach (XmlNode release in releases)
                             {
-                                updateEntry.VersionNumber = Int32.Parse(release.Element("ID/text()").Value);
-                            }
+                                var updateEntry = new UpdateEntry();
 
-                            if (release.Element("Version") != null)
-                            {
-                                updateEntry.Version = release.Element("Version/text()").Value;
-                            }
-
-                            if (release.Element("Script") != null)
-                            {
-                                updateEntry.ScriptNames.Add(release.Element("Script/text()").Value);
-                            }
-
-                            if (release.Element("Date") != null)
-                            {
-                                updateEntry.Date = DateTime.Parse(release.Element("Date/text()").Value);
-                            }
-
-                            // We should apply this patch
-                            if (databaseVersion < updateEntry.VersionNumber)
-                            {
-                                // Appleseed.Framework.Helpers.LogHelper.Logger.Log(Appleseed.Framework.Site.Configuration.LogLevel.Debug, "Detected version to apply: " + myUpdate.Version);
-                                updateEntry.Apply = true;
-
-                                // get a list of <Installer> nodes
-                                var installers = release.Elements("Modules/Installer/text()");
-
-                                // iterate over the <Installer> Nodes (in original document order)
-                                // (we can do this because XmlNodeList implements IEnumerable)
-                                foreach (var installer in installers)
+                                // get the header information
+                                // we check for null to avoid exception if any of these nodes are not present
+                                if (release.SelectSingleNode("ID") != null)
                                 {
-                                    // and build an ArrayList of the scripts... 
-                                    updateEntry.Modules.Add(installer.Value);
-
-                                    // Appleseed.Framework.Helpers.LogHelper.Logger.Log(Appleseed.Framework.Site.Configuration.LogLevel.Debug, "Detected module to install: " + installer.Value);
+                                    updateEntry.VersionNumber = Int32.Parse(release.SelectSingleNode("ID/text()").Value);
                                 }
 
-                                // get a <Script> node, if any
-                                var sqlScripts = release.Elements("Scripts/Script/text()");
-
-                                // iterate over the <Installer> Nodes (in original document order)
-                                // (we can do this because XmlNodeList implements IEnumerable)
-                                foreach (var sqlScript in sqlScripts)
+                                if (release.SelectSingleNode("Version") != null)
                                 {
-                                    // and build an ArrayList of the scripts... 
-                                    updateEntry.ScriptNames.Add(sqlScript.Value);
-
-                                    // Appleseed.Framework.Helpers.LogHelper.Logger.Log(Appleseed.Framework.Site.Configuration.LogLevel.Debug, "Detected script to run: " + sqlScript.Value);
+                                    updateEntry.Version = release.SelectSingleNode("Version/text()").Value;
                                 }
 
-                                tempScriptsList.Add(updateEntry);
+                                if (release.SelectSingleNode("Script") != null)
+                                {
+                                    updateEntry.ScriptNames.Add(release.SelectSingleNode("Script/text()").Value);
+                                }
+
+                                if (release.SelectSingleNode("Date") != null)
+                                {
+                                    updateEntry.Date = DateTime.Parse(release.SelectSingleNode("Date/text()").Value);
+                                }
+
+                                // We should apply this patch
+                                if (databaseVersion < updateEntry.VersionNumber)
+                                {
+                                    // Appleseed.Framework.Helpers.LogHelper.Logger.Log(Appleseed.Framework.Site.Configuration.LogLevel.Debug, "Detected version to apply: " + myUpdate.Version);
+                                    updateEntry.Apply = true;
+
+                                    // get a list of <Installer> nodes
+                                    var installers = release.SelectNodes("Modules/Installer/text()");
+
+                                    // iterate over the <Installer> Nodes (in original document order)
+                                    // (we can do this because XmlNodeList implements IEnumerable)
+                                    foreach (XmlNode installer in installers)
+                                    {
+                                        // and build an ArrayList of the scripts... 
+                                        updateEntry.Modules.Add(installer.Value);
+
+                                        // Appleseed.Framework.Helpers.LogHelper.Logger.Log(Appleseed.Framework.Site.Configuration.LogLevel.Debug, "Detected module to install: " + installer.Value);
+                                    }
+
+                                    // get a <Script> node, if any
+                                    var sqlScripts = release.SelectNodes("Scripts/Script/text()");
+
+                                    // iterate over the <Installer> Nodes (in original document order)
+                                    // (we can do this because XmlNodeList implements IEnumerable)
+                                    foreach (XmlNode sqlScript in sqlScripts)
+                                    {
+                                        // and build an ArrayList of the scripts... 
+                                        updateEntry.ScriptNames.Add(sqlScript.Value);
+
+                                        // Appleseed.Framework.Helpers.LogHelper.Logger.Log(Appleseed.Framework.Site.Configuration.LogLevel.Debug, "Detected script to run: " + sqlScript.Value);
+                                    }
+
+                                    tempScriptsList.Add(updateEntry);
+                                }
                             }
                         }
                     }
