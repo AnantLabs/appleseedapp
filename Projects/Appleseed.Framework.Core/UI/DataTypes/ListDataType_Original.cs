@@ -190,7 +190,7 @@ namespace Appleseed.Framework.DataTypes
                     var conv2 = TypeDescriptor.GetConverter(typeof(TEditor));
                     if (conv2 != null)
                     {
-                        var dd = conv2.ConvertFrom(this.InnerControl) as DropDownList;
+                        var dd = this.InnerControl as DropDownList;
                         if (dd != null)
                         {
                             var val = conv.ConvertFrom(dd.SelectedItem.Value);
