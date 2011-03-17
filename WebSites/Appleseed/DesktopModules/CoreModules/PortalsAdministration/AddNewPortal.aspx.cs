@@ -215,7 +215,7 @@ namespace Appleseed.AdminAll
         private void EditTable_UpdateControl(object sender, SettingsTableEventArgs e)
         {
             var edt = (SettingsTable)sender;
-            PortalSettings.UpdatePortalSetting(edt.ObjectID, ((SettingItem<string, TextBox>)e.CurrentItem).EditControl.ID, ((SettingItem<string, TextBox>)e.CurrentItem).Value);
+            PortalSettings.UpdatePortalSetting(edt.ObjectID, ((ISettingItem)e.CurrentItem).EditControl.ID, ((ISettingItem)e.CurrentItem).Value.ToString());
         }
 
         /// <summary>
