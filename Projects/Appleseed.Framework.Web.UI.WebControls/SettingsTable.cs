@@ -292,8 +292,8 @@ namespace Appleseed.Framework.Web.UI.WebControls
             foreach (string key in this.EditControls.Keys)
             {
                 var c = (Control)this.EditControls[key];
-                var currentItem = (SettingItem<string, TextBox>)this.settings[c.ID];
-                currentItem.EditControl = (TextBox)c;
+                var currentItem = (ISettingItem)this.settings[c.ID];
+                currentItem.EditControl = c;
                 this.OnUpdateControl(new SettingsTableEventArgs(currentItem));
             }
         }
@@ -427,13 +427,13 @@ namespace Appleseed.Framework.Web.UI.WebControls
 
             foreach (var key in this.settings.GetKeyList().Cast<string>().Where(key => this.settings[key] != null))
             {
-                if (!(this.settings[key] is SettingItem<string, TextBox>))
-                {
-                    // TODO: FIX THIS
-                    // ErrorHandler.Publish(Appleseed.Framework.LogLevel.Debug, "Unexpected '" + Settings[key].GetType().FullName + "' in settings table.");
-                }
-                else
-                {
+                //if (!(this.settings[key] is SettingItem<string, TextBox>))
+                //{
+                //    // TODO: FIX THIS
+                //    // ErrorHandler.Publish(Appleseed.Framework.LogLevel.Debug, "Unexpected '" + Settings[key].GetType().FullName + "' in settings table.");
+                //}
+                //else
+                //{
                     var order = ((ISettingItem)this.settings[key]).Order;
 
                     while (settingsOrder.ContainsKey(order))
@@ -444,7 +444,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                     }
 
                     settingsOrder.Add(order, key);
-                }
+                //}
             }
 
             return settingsOrder;
@@ -459,7 +459,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
         /// <returns>
         /// Fieldset control
         /// </returns>
-        private static HtmlGenericControl CreateNewFieldSet(SettingItem<string, TextBox> currentItem)
+        private static HtmlGenericControl CreateNewFieldSet(ISettingItem currentItem)
         {
             // start a new fieldset
             var fieldset = new HtmlGenericControl("fieldset");
@@ -505,7 +505,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
 
             foreach (string currentSetting in settingsOrder.GetValueList())
             {
-                var currentItem = (SettingItem<string, TextBox>)this.settings[currentSetting];
+                var currentItem = (ISettingItem) this.settings[currentSetting];
 
                 if (currentItem.Group != currentGroup)
                 {
@@ -573,7 +573,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
 
             foreach (string currentSetting in settingsOrder.GetValueList())
             {
-                var currentItem = (SettingItem<string, TextBox>)this.settings[currentSetting];
+                var currentItem = (ISettingItem)this.settings[currentSetting];
 
                 if (tabDefault.InnerText.Length == 0)
                 {
