@@ -163,9 +163,12 @@ namespace Appleseed.Framework.DataTypes
                 // Update value in control
                 var dd = this.InnerControl;
                 dd.ClearSelection();
-                if (dd.Items.FindByValue(this.Value.ToString()) != null)
+                if (this.Value != null)
                 {
-                    dd.Items.FindByValue(this.Value.ToString()).Selected = true;
+                    if (dd.Items.FindByValue(this.Value.ToString()) != null)
+                    {
+                        dd.Items.FindByValue(this.Value.ToString()).Selected = true;
+                    }
                 }
 
                 // Return control
