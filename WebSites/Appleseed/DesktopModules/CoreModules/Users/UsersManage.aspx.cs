@@ -238,13 +238,16 @@ namespace Appleseed.Content.Web.Modules
         private void Save_Click(Object Sender, EventArgs e)
         {
             // Persists user data
-            EditControl.SaveUserData();
+            var userId = EditControl.SaveUserData();
+            // if userId is empty, then something was wrong trying to save the user, so we stay in the page (the control should display the error message)
+            if (userId != Guid.Empty)
+            {
+                // remove cache before redirect
+                Context.Cache.Remove(Key.ModuleSettings(ModuleID));
 
-            // remove cache before redirect
-            Context.Cache.Remove(Key.ModuleSettings(ModuleID));
-
-            // Navigate back to admin page
-            Response.Redirect(HttpUrlBuilder.BuildUrl(PageID));
+                // Navigate back to admin page
+                Response.Redirect(HttpUrlBuilder.BuildUrl(PageID));
+            }
         }
 
         /// <summary>
