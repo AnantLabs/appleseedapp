@@ -1739,8 +1739,8 @@ namespace Appleseed.Framework.Site.Configuration
                 baseSettings.Add("SITESETTINGS_LANGLIST", langList);
 
                 var langDefault =
-                    new SettingItem<string, ListBox>(
-                        new ListDataType<string, ListBox>(AppleseedCultures, "DisplayName", "Name"))
+                    new SettingItem<string, DropDownList>(
+                        new ListDataType<string, DropDownList>(AppleseedCultures, "DisplayName", "Name"))
                         {
                             Group = group,
                             Order = groupOrderBase + 20,

@@ -68,8 +68,7 @@ namespace Appleseed.Content.Web.Modules
 
         private void EditTable_UpdateControl(object sender, SettingsTableEventArgs e)
         {
-            PortalSettings.UpdatePortalSetting(this.PortalSettings.PortalID, ((SettingItem<string, TextBox>)e.CurrentItem).EditControl.ID,
-                                               ((SettingItem<string, TextBox>)e.CurrentItem).Value);
+            PortalSettings.UpdatePortalSetting(this.PortalSettings.PortalID, ((ISettingItem)e.CurrentItem).EditControl.ID, ((ISettingItem)e.CurrentItem).Value.ToString());
         }
 
         public override Guid GuidID

@@ -102,8 +102,8 @@ namespace Appleseed.Content.Web.Modules
             ModuleSettingsCustom.UpdateCustomModuleSetting(
                 ModuleID,
                 (Guid)PortalSettings.CurrentUser.Identity.ProviderUserKey,
-                ((SettingItem<string, TextBox>)e.CurrentItem).EditControl.ID,
-                ((SettingItem<string, TextBox>)e.CurrentItem).Value);
+                ((ISettingItem)e.CurrentItem).EditControl.ID,
+                ((ISettingItem)e.CurrentItem).Value.ToString());
         }
     }
 }
