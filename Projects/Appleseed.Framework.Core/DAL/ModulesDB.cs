@@ -817,7 +817,7 @@ namespace Appleseed.Framework.Site.Data
                                 DesktopSource = dr.GetString(1),
                                 MobileSource = dr.GetString(2),
                                 Admin = dr.GetBoolean(3),
-                                GeneralModDefID = dr.GetInt32(4)
+                                GeneralModDefID = dr.GetGuid(4)
                             };
 
                         result.Add(genModDef);
@@ -1318,7 +1318,7 @@ namespace Appleseed.Framework.Site.Data
                     moduleDefinition.FriendlyName = dr["FriendlyName"].ToString();
                     moduleDefinition.DesktopSource = dr["DesktopSrc"].ToString();
                     moduleDefinition.MobileSource = dr["MobileSrc"].ToString();
-                    moduleDefinition.GeneralModDefID = Convert.ToInt32(dr["GeneralModDefID"]);
+                    moduleDefinition.GeneralModDefID = new Guid(dr["GeneralModDefID"].ToString());
                 }
 
                 dr.Close();

@@ -1660,7 +1660,7 @@ namespace Appleseed.Framework.Web.UI
                 {
                     // Slot 3, visitor-level scope.
                     script.AppendFormat(
-                        "pageTracker._setCustomVar( 3, \"Domain\", \"" + email.Substring(index + 1) + "\", 1);");
+                        "pageTracker._setCustomVar( 3, \"Domain\", \"" + email.Substring(index + 1).ToLowerInvariant() + "\", 1);");
                 }
             }
             
