@@ -292,8 +292,9 @@ namespace Appleseed.Framework.Web.UI.WebControls
             foreach (string key in this.EditControls.Keys)
             {
                 var c = (Control)this.EditControls[key];
-                var currentItem = (ISettingItem)this.settings[c.ID];
-                currentItem.EditControl = c;
+                //var currentItem = (ISettingItem)this.settings[c.ID];                
+                var currentItem = this.settings[key];
+                ((ISettingItem)currentItem).EditControl = c;
                 this.OnUpdateControl(new SettingsTableEventArgs(currentItem));
             }
         }

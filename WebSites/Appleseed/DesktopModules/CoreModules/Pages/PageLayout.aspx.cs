@@ -243,8 +243,8 @@ namespace Appleseed.Admin
         {
             Framework.Site.Configuration.PageSettings.UpdatePageSettings(
                 this.PageID, 
-                ((SettingItem<string, TextBox>)e.CurrentItem).EditControl.ID, 
-                ((SettingItem<string, TextBox>)e.CurrentItem).Value);
+                ((ISettingItem)e.CurrentItem).EditControl.ID, 
+                ((ISettingItem)e.CurrentItem).Value.ToString());
         }
 
         /// <summary>
