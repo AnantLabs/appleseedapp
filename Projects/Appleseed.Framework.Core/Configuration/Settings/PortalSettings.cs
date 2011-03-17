@@ -1575,6 +1575,29 @@ namespace Appleseed.Framework.Site.Configuration
                     };
                 baseSettings.Add("SITESETTINGS_LOGIN_TYPE", logonType);
 
+                // ReCaptcha public and private key
+                var recaptchaPrivateKey = new SettingItem<string, TextBox>()
+                {
+                    Required = false,
+                    Value = "6LeQmsASAAAAADS-WeMyg9mKo5l3ERKcB4LSQieI",
+                    EnglishName = "ReCaptcha private key",
+                    Description = "Insert here google's ReCaptcha private key for your portal's captchas.",
+                    Order = groupOrderBase + 22,
+                    Group = group
+                };
+                baseSettings.Add("SITESETTINGS_RECAPTCHA_PRIVATE_KEY", recaptchaPrivateKey);
+
+                var recaptchaPublicKey = new SettingItem<string, TextBox>()
+                {
+                    Required = false,
+                    Value = "6LeQmsASAAAAAIx9ZoRJXA44sajtJjPl2L_MFrTS",
+                    EnglishName = "ReCaptcha public key",
+                    Description = "Insert here google's ReCaptcha public key for your portal's captchas.",
+                    Order = groupOrderBase + 23,
+                    Group = group
+                };
+                baseSettings.Add("SITESETTINGS_RECAPTCHA_PUBLIC_KEY", recaptchaPublicKey);
+
                 groupOrderBase = (int)SettingItemGroup.META_SETTINGS;
                 group = SettingItemGroup.META_SETTINGS;
 
