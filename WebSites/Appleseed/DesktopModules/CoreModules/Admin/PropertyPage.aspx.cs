@@ -188,7 +188,7 @@ namespace Appleseed.Content.Web.Modules
         private void EditTable_UpdateControl(object sender,
                                              Appleseed.Framework.Web.UI.WebControls.SettingsTableEventArgs e)
         {
-            Framework.Site.Configuration.ModuleSettings.UpdateModuleSetting(ModuleID, ((SettingItem<string, TextBox>)e.CurrentItem).EditControl.ID, ((SettingItem<string, TextBox>)e.CurrentItem).Value);
+            Framework.Site.Configuration.ModuleSettings.UpdateModuleSetting(ModuleID, ((ISettingItem)e.CurrentItem).EditControl.ID, ((ISettingItem)e.CurrentItem).Value.ToString());
         }
     }
 }
