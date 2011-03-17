@@ -7,6 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
 namespace Appleseed.Framework.Core.BLL
 {
     /// <summary>
@@ -48,7 +49,7 @@ namespace Appleseed.Framework.Core.BLL
         /// <summary>
         /// Gets or sets GeneralModDefID.
         /// </summary>
-        public int GeneralModDefID { get; set; }
+        public Guid GeneralModDefID { get; set; }
 
         /// <summary>
         /// Gets or sets MobileSource.
