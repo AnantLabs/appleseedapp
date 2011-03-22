@@ -570,7 +570,7 @@ namespace Appleseed.Framework.Providers.AppleseedSiteMapProvider
                             : reader.GetString(this.indexAuthorizedRoles).Trim();
 
             var url = HttpUrlBuilder.BuildUrl(id);
-            if (!url.StartsWith("/") && !url.StartsWith(Path.ApplicationFullPath))
+            if (!string.IsNullOrEmpty(url) && !url.StartsWith("/") && !url.StartsWith(Path.ApplicationFullPath))
             {
                 url = HttpUrlBuilder.BuildUrl("~/Default.aspx", "sitemapTargetPage=" + id);
             }
