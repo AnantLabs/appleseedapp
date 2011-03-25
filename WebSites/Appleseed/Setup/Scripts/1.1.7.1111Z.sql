@@ -483,7 +483,7 @@ VALUES (5, '<style type="text/css">
     font-size:14px;
 }
 #fsn {
-    background-image:url("../../DesktopLayouts/Education/images/trans.png");
+    background-image:url("~/DesktopLayouts/Education/images/trans.png");
     display:block;
     height:25px;
     margin:10px auto -5px;
@@ -526,7 +526,7 @@ VALUES (5, '<style type="text/css">
     color:#666;}
 </style>
 <!-- include Cycle plugin -->
-<script type="text/javascript" src="../../aspnet_client/js/jquery.cycle.min.js"></script>
+<script type="text/javascript" src="~/aspnet_client/js/jquery.cycle.min.js"></script>
 <!--  initialize the slideshow when the DOM is ready -->
 <script type="text/javascript">
 $(document).ready(function () {
@@ -543,7 +543,7 @@ $(document).ready(function () {
     <ul class="slideshow">
             <!-- IMAGE & TEXT Number (1) -->
             <li class="content">
-                <img class="slider_image" src="../../Design/DesktopLayouts/Education/images/slider1.jpg" width="430" height="300"/>
+                <img class="slider_image" src="~/Design/DesktopLayouts/Education/images/slider1.jpg" width="430" height="300"/>
                     <div class="wrap_text">
                         <h1>Grow your business.</h1>
                             <h2>You downloaded Appleseed Portal to help you run your company online. As we work to make this easier for you in the upcoming versions. You still have to do some basic things. You should consider taking these steps as soon as you can if you haven''t.</h2>
@@ -553,7 +553,7 @@ $(document).ready(function () {
             </li>
             <!-- IMAGE & TEXT Number (2) -->
             <li class="content">
-                <img  class="slider_image" src="../../Design/DesktopLayouts/Education/images/slider2.jpg" width="430" height="300" />
+                <img  class="slider_image" src="~/Design/DesktopLayouts/Education/images/slider2.jpg" width="430" height="300" />
                     <div class="wrap_text">
                         <h1>Connect with others.</h1>
                             <h2>There are several ways for you to connect to other entrepreneurs, prospective customers and business partners. Here are a few suggestions that can get you started in your quest to build a great company.</h2>
@@ -563,7 +563,7 @@ $(document).ready(function () {
             </li>
             <!-- IMAGE & TEXT Number (3) -->
             <li class="content">
-                <img class="slider_image" src="../../Design/DesktopLayouts/Education/images/slider3.jpg" width="430" height="300" />
+                <img class="slider_image" src="~/Design/DesktopLayouts/Education/images/slider3.jpg" width="430" height="300" />
                     <div class="wrap_text">				
                         <h1>Trade with the world.</h1>
                             <h2>Once you have your business setup, and have a network of businesses to help you deliver your products and services, you are ready to trade. Start small, and go&nbsp;big. Sky is the limit, until you surpass it.</h2>
