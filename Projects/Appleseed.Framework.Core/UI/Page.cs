@@ -1612,9 +1612,7 @@ namespace Appleseed.Framework.Web.UI
             var useCustVars = false;
             try
             {
-                include = (ConfigurationManager.AppSettings["INCLUDE_GOOGLEANALYTICS_SETTINGS"] == null ||
-                                Convert.ToBoolean(ConfigurationManager.AppSettings["INCLUDE_GOOGLEANALYTICS_SETTINGS"])) &&
-                           this.PortalSettings.CustomSettings["SITESETTINGS_GOOGLEANALYTICS"] != null &&
+                include = this.PortalSettings.CustomSettings["SITESETTINGS_GOOGLEANALYTICS"] != null &&
                            !this.PortalSettings.CustomSettings["SITESETTINGS_GOOGLEANALYTICS"].ToString().Trim().Equals(string.Empty);
 
                 useCustVars = this.PortalSettings.CustomSettings["SITESETTINGS_GOOGLEANALYTICS_CUSTOMVARS"] != null &&
