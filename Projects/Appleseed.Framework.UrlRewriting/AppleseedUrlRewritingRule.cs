@@ -78,7 +78,19 @@ namespace Appleseed.Framework.UrlRewriting
         /// </returns>
         public override bool IsRewrite(string requestUrl)
         {
-            return requestUrl.Contains(string.Format("/{0}/", this.handlerFlag));
+            if (requestUrl.Contains(string.Format("/{0}/", this.handlerFlag))) {
+                return true;
+            }
+            var path = HttpContext.Current.Request.ApplicationPath;
+            if (!path.EndsWith("/"))
+            {
+                path = string.Concat(path,"/");
+            }
+            if (requestUrl.Equals(string.Format("{0}{1}", path, this.handlerFlag)))
+            {
+                return true;
+            }
+            return false;
         }
 
         /// <summary>
