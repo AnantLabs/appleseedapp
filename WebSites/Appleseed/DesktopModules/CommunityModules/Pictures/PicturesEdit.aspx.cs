@@ -179,30 +179,30 @@ namespace Appleseed.Content.Web.Modules
 
                 //Get Esperantus.Esperantus.Localize. resize option for Esperantus.Esperantus.Localize. thumbnail
                 Pictures.ResizeOption thumbnailResize =
-                    this.ModuleSettings["ThumbnailResize"].ToString() == string.Empty
+                    this.ModuleSettings["ThumbnailResize"].Value.ToString() == string.Empty
                         ?
                     Pictures.ResizeOption.FixedWidthHeight
                         :
-                    (Pictures.ResizeOption)Int32.Parse((SettingItem<int, TextBox>)this.ModuleSettings["ThumbnailResize"]);
+                    (Pictures.ResizeOption)Enum.Parse(typeof(Pictures.ResizeOption), this.ModuleSettings["ThumbnailResize"].Value.ToString());
 
                 //Get Esperantus.Esperantus.Localize. resize option for Esperantus.Esperantus.Localize. original picture
                 Pictures.ResizeOption originalResize =
-                    this.ModuleSettings["OriginalResize"].ToString() == string.Empty
+                    this.ModuleSettings["OriginalResize"].Value.ToString() == string.Empty
                         ?
                     Pictures.ResizeOption.NoResize
                         :
-                    (Pictures.ResizeOption)Int32.Parse((SettingItem<int, TextBox>)this.ModuleSettings["OriginalResize"]);
+                    (Pictures.ResizeOption)Enum.Parse(typeof(Pictures.ResizeOption), this.ModuleSettings["OriginalResize"].Value.ToString());
 
                 //Where are we going to save Esperantus.Esperantus.Localize. picture?
-                string PathToSave = string.Format("{0}\\", this.Server.MapPath(((SettingItem<string,TextBox>) this.ModuleSettings["AlbumPath"]).FullPath));
+                string PathToSave = string.Format("{0}\\", this.Server.MapPath(this.ModuleSettings["AlbumPath"].FullPath));
 
                 //Dimensions of Esperantus.Esperantus.Localize. thumbnail as specified in settings
-                int thumbnailWidth = Int32.Parse((SettingItem<int, TextBox>)this.ModuleSettings["ThumbnailWidth"]);
-                int thumbnailHeight = Int32.Parse((SettingItem<int, TextBox>)this.ModuleSettings["ThumbnailHeight"]);
+                int thumbnailWidth = (int)this.ModuleSettings["ThumbnailWidth"].Value;
+                int thumbnailHeight = (int)this.ModuleSettings["ThumbnailHeight"].Value;
 
                 //Dimensions of Esperantus.Esperantus.Localize. original picture as specified in settings
-                int originalWidth = Int32.Parse((SettingItem<int, TextBox>)this.ModuleSettings["OriginalWidth"]);
-                int originalHeight = Int32.Parse((SettingItem<int, TextBox>)this.ModuleSettings["OriginalHeight"]);
+                int originalWidth = (int)this.ModuleSettings["OriginalWidth"].Value;
+                int originalHeight = (int)this.ModuleSettings["OriginalHeight"].Value;
 
                 // See if Esperantus.Esperantus.Localize.y are doing a bulk load.  Esperantus.Esperantus.Localize.y must have specified
                 // a bulk load directory (which is on Esperantus.Esperantus.Localize. server) and Esperantus.Esperantus.Localize.y must not
