@@ -20,7 +20,7 @@
         </rbfwebui:boundcolumn>
         <rbfwebui:boundcolumn datafield="DeletedBy" headertext="Deleted By" sortexpression="DeletedBy">
         </rbfwebui:boundcolumn>
-        <rbfwebui:boundcolumn datafield="OriginalPageName" headertext="Original Tab" sortexpression="PageName">
+        <rbfwebui:boundcolumn datafield="OriginalPageName" headertext="Original Page" sortexpression="PageName">
         </rbfwebui:boundcolumn>
     </columns>
 </asp:datagrid>

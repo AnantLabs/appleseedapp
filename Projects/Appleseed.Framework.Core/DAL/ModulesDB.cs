@@ -23,6 +23,7 @@ namespace Appleseed.Framework.Site.Data
     using Appleseed.Framework.Settings;
     using Appleseed.Framework.Settings.Cache;
     using Appleseed.Framework.Site.Configuration;
+    using System.Web;
 
     /// <summary>
     /// Class that encapsulates all data logic necessary to add/query/delete
@@ -503,24 +504,20 @@ namespace Appleseed.Framework.Site.Data
         [History("JB - john@bowenweb.com", "2005/05/12", "Added support for Recycler module")]
         public void DeleteModule(int moduleId)
         {
-            /*
-            // BOWEN 11 June 2005 - BEGIN
             var portalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
             var useRecycler =
                 bool.Parse(
                     PortalSettings.GetPortalCustomSettings(
                         portalSettings.PortalID,
                         PortalSettings.GetPortalBaseSettings(portalSettings.PortalPath))["SITESETTINGS_USE_RECYCLER"].ToString());
-            */
-
-            // TODO: THIS LINE DISABLES THE RECYCLER DUE SOME TROUBLES WITH IT !!!!!! Fix those troubles and then remove comment.
-            const bool UseRecycler = false;
+            
+            //const bool UseRecycler = false;
 
 #pragma warning disable 162
             // ReSharper disable HeuristicUnreachableCode
             using (var connection = Config.SqlConnectionString)
             using (
-                var command = new SqlCommand(UseRecycler ? "rb_DeleteModuleToRecycler" : "rb_DeleteModule", connection))
+                var command = new SqlCommand(useRecycler ? "rb_DeleteModuleToRecycler" : "rb_DeleteModule", connection))
             {
                 // Mark the Command as a SPROC
                 command.CommandType = CommandType.StoredProcedure;
@@ -530,7 +527,7 @@ namespace Appleseed.Framework.Site.Data
                 command.Parameters.Add(parameterModuleId);
 
                 // ReSharper disable ConditionIsAlwaysTrueOrFalse
-                if (UseRecycler)
+                if (useRecycler)
                 {
                     // ReSharper restore ConditionIsAlwaysTrueOrFalse
                     // Recycler needs some extra params for entry
