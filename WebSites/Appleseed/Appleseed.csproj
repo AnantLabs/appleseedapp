@@ -6481,6 +6481,7 @@
     <Content Include="Setup\Scripts\2.0.0.1890.sql" />
     <Content Include="Setup\Scripts\2.0.0.1891.sql" />
     <Content Include="Setup\Scripts\2.0.0.1892.sql" />
+    <Content Include="Setup\Scripts\2.0.0.1893.sql" />
     <Content Include="Setup\Scripts\History.xml">
       <SubType>Designer</SubType>
     </Content>
