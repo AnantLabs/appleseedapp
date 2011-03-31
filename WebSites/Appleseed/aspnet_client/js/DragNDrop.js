@@ -53,7 +53,7 @@ function DnD() {
         });
         $('.draggable-container').sortable({ disabled: true });
 
-        PortalService.Reorder(result, CallbackMethod);
+         Appleseed.DesktopModules.CoreModules.Admin.PortalService.Reorder(result, CallbackMethod);
     }
 
 
