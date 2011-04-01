@@ -27,10 +27,5 @@
             <headerstyle cssclass="NormalBold" />
             <itemstyle cssclass="Normal" />
         </rbfwebui:boundcolumn>
-        <rbfwebui:boundcolumn datafield="LastSend" dataformatstring="{0:d}" headertext="Last Send"
-            sortexpression="LastSend" textkey="BLACKLIST_LASTSEND">
-            <headerstyle cssclass="NormalBold" />
-            <itemstyle cssclass="Normal" />
-        </rbfwebui:boundcolumn>
     </columns>
 </asp:datagrid>

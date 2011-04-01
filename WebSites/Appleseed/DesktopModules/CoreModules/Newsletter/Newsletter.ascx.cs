@@ -55,24 +55,13 @@ namespace Appleseed.Content.Web.Modules
 
                 if (!bool.Parse(Settings["TestMode"].ToString()))
                 {
-                    SqlDataReader dReader =
-                        newsletter.GetUsersNewsletter(this.PortalSettings.PortalID,
-                                                      Int32.Parse(Settings["NEWSLETTER_USERBLOCK"].ToString()),
-                                                      Int32.Parse(Settings["NEWSLETTER_DONOTRESENDWITHIN"].ToString()));
-                    try
+                    var users = newsletter.GetUsersNewsletter(this.PortalSettings.PortalID);
+                    foreach (dynamic user in users)
                     {
-                        while (dReader.Read())
-                        {
-                            DataRow dr = dt.NewRow();
-                            dr[0] = "<b>" + dReader["Name"].ToString() + ":</b> " + dReader["EMail"].ToString();
-                            dt.Rows.Add(dr);
-                        }
+                        DataRow dr = dt.NewRow();
+                        dr[0] = "<b>" + user.Name + ":</b> " + user.Email;
                     }
-                    finally
-                    {
-                        dReader.Close(); //by Manu, fixed bug 807858
-                    }
-
+                    
                     DataList1.DataSource = new DataView(dt);
                     DataList1.RepeatDirection = RepeatDirection.Vertical;
                     DataList1.RepeatLayout = RepeatLayout.Table;
@@ -82,11 +71,8 @@ namespace Appleseed.Content.Web.Modules
                     DataList1.DataBind();
                     DataList1.Visible = true;
 
-                    int cnt =
-                        newsletter.GetUsersNewsletterCount(this.PortalSettings.PortalID,
-                                                           Int32.Parse(Settings["NEWSLETTER_USERBLOCK"].ToString()),
-                                                           Int32.Parse(
-                                                               Settings["NEWSLETTER_DONOTRESENDWITHIN"].ToString()));
+                    int cnt = users.Count;
+
                     // Added EsperantusKeys for Localization 
                     // Mario Endara mario@softworks.com.uy 11/05/2004 
                     lblMessage.Text = General.GetString("NEWSLETTER_MSG").Replace("{1}", cnt.ToString());
@@ -163,8 +149,6 @@ namespace Appleseed.Content.Web.Modules
             PrewiewPanel.Visible = true;
             UsersPanel.Visible = false;
 
-            SmtpMail.SmtpServer = Config.SmtpServer;
-
             message = General.GetString("NEWSLETTER_SENDTO", "<b>Message:</b> sent to:<br>");
 
             try
@@ -173,37 +157,25 @@ namespace Appleseed.Content.Web.Modules
                 if (!bool.Parse(Settings["TestMode"].ToString()))
                 {
                     // Get Newsletter Users from DB
-                    SqlDataReader dReader =
-                        newsletter.GetUsersNewsletter(this.PortalSettings.PortalID,
-                                                      Int32.Parse(Settings["NEWSLETTER_USERBLOCK"].ToString()),
-                                                      Int32.Parse(Settings["NEWSLETTER_DONOTRESENDWITHIN"].ToString()));
-                    try
+                    var users = newsletter.GetUsersNewsletter(this.PortalSettings.PortalID);
+                    foreach (dynamic user in users) 
                     {
-                        while (dReader.Read())
+                        cnt++;
+                        message += user.Email + ", ";
+                        try
                         {
-                            cnt++;
-                            message += dReader["Email"].ToString() + ", ";
-                            try
-                            {
-                                //Send the email
-                                newsletter.SendMessage(txtEMail.Text, dReader["Email"].ToString(),
-                                                       dReader["Name"].ToString(), dReader["Password"].ToString(),
-                                                       Settings["NEWSLETTER_LOGINHOMEPAGE"].ToString(), txtSubject.Text,
-                                                       txtBody.Text, true, HtmlMode.Checked, InsertBreakLines.Checked);
-                                //Update db
-                                newsletter.SendNewsletterTo(this.PortalSettings.PortalID, dReader["Email"].ToString());
-                            }
-                            catch (Exception ex)
-                            {
-                                InvalidRecipients += dReader["Email"].ToString() + "<br>";
-                                BlacklistDB.AddToBlackList(this.PortalSettings.PortalID, dReader["Email"].ToString(),
-                                                           ex.Message);
-                            }
+                            //Send the email
+                            newsletter.SendMessage(txtEMail.Text, user.Email, user.Name, txtSubject.Text,
+                                                    txtBody.Text, true, HtmlMode.Checked, InsertBreakLines.Checked);
+                            // Here the systems used to notify the DB that an email was sent to the user. 
+                            // Since we implemented the MembershipProvider for Appleseed, we doesn't have a place to store this info,
+                            // thus, now the fact that an email was sent won't be persisted in the DB. However this should change in future releases.
                         }
-                    }
-                    finally
-                    {
-                        dReader.Close(); //by Manu, fixed bug 807858
+                        catch (Exception ex)
+                        {
+                            InvalidRecipients += user.Email + "<br/>";
+                            BlacklistDB.AddToBlackList(this.PortalSettings.PortalID, user.Email, ex.Message);
+                        }
                     }
                     lblMessage.Text =
                         General.GetString("NEWSLETTER_SENDINGTO", "Message has been sent to {1} registered users.").
@@ -211,8 +183,7 @@ namespace Appleseed.Content.Web.Modules
                 }
                 else
                 {
-                    newsletter.SendMessage(txtEMail.Text, txtEMail.Text, txtName.Text, "******",
-                                           Settings["NEWSLETTER_LOGINHOMEPAGE"].ToString(), txtSubject.Text,
+                    newsletter.SendMessage(txtEMail.Text, txtEMail.Text, txtName.Text, txtSubject.Text,
                                            txtBody.Text, true, HtmlMode.Checked, InsertBreakLines.Checked);
                     lblMessage.Text = General.GetString("NEWSLETTER_TESTSENDTO", "Test message sent to: ") +
                                       txtName.Text + " [" + txtEMail.Text + "]";
@@ -352,9 +323,6 @@ namespace Appleseed.Content.Web.Modules
         /// <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
         private void previewButton_Click(object sender, EventArgs e)
         {
-            //SmtpMail.SmtpServer = Portal.SmtpServer;
-            SmtpMail.SmtpServer = Config.SmtpServer;
-
             CreatedDate.Text = General.GetString("NEWSLETTER_LOCALTIME", "Local time: ") +
                                DateTime.Now.ToLongDateString();
 
@@ -362,38 +330,25 @@ namespace Appleseed.Content.Web.Modules
 
             string email;
             string name;
-            string password;
 
             if (!bool.Parse(Settings["TestMode"].ToString()))
             {
-                SqlDataReader dReader =
-                    newsletter.GetUsersNewsletter(this.PortalSettings.PortalID,
-                                                  Int32.Parse(Settings["NEWSLETTER_USERBLOCK"].ToString()),
-                                                  Int32.Parse(Settings["NEWSLETTER_DONOTRESENDWITHIN"].ToString()));
-                try
+                var users = newsletter.GetUsersNewsletter(this.PortalSettings.PortalID);
+                if (users.Count > 0)
                 {
-                    if (dReader.Read())
-                    {
-                        email = dReader["Email"].ToString();
-                        name = dReader["Name"].ToString();
-                        password = dReader["Password"].ToString();
-                    }
-                    else
-                    {
-                        lblMessage.Text = General.GetString("NEWSLETTER_NORECIPIENTS", "No recipients");
-                        return; //nothing more to do here
-                    }
+                    email = users[0].Email;
+                    name = users[0].Name;
                 }
-                finally
+                else
                 {
-                    dReader.Close(); //by Manu, fixed bug 807858
+                    lblMessage.Text = General.GetString("NEWSLETTER_NORECIPIENTS", "No recipients");
+                    return; //nothing more to do here
                 }
             }
             else
             {
                 email = txtEMail.Text;
                 name = txtName.Text;
-                password = "*******"; //Fake password
             }
 
             EditPanel.Visible = false;
@@ -403,8 +358,7 @@ namespace Appleseed.Content.Web.Modules
             lblTo.Text = name + " (" + email + ")";
             lblSubject.Text = txtSubject.Text;
             string body =
-                newsletter.SendMessage(txtEMail.Text, email, name, password,
-                                       Settings["NEWSLETTER_LOGINHOMEPAGE"].ToString(), txtSubject.Text, txtBody.Text,
+                newsletter.SendMessage(txtEMail.Text, email, name, txtSubject.Text, txtBody.Text,
                                        false, HtmlMode.Checked, InsertBreakLines.Checked);
             if (HtmlMode.Checked)
             {

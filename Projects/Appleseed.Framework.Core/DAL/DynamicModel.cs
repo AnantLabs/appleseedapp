@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Massive
+namespace Appleseed.Framework.Massive
 {
     using System;
     using System.Collections.Generic;

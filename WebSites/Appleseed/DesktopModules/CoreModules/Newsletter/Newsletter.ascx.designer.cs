@@ -166,15 +166,6 @@ namespace Appleseed.Content.Web.Modules {
         protected global::Appleseed.Framework.Web.UI.WebControls.Localize Literal5;
         
         /// <summary>
-        /// Literal6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.Localize Literal6;
-        
-        /// <summary>
         /// Literal7 control.
         /// </summary>
         /// <remarks>
@@ -182,15 +173,6 @@ namespace Appleseed.Content.Web.Modules {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Appleseed.Framework.Web.UI.WebControls.Localize Literal7;
-        
-        /// <summary>
-        /// Literal8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.Localize Literal8;
         
         /// <summary>
         /// previewButton control.

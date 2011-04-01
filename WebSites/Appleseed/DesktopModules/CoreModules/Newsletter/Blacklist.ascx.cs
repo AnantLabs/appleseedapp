@@ -27,7 +27,7 @@ namespace Appleseed.Admin
         protected string sortDirection;
 
         protected bool showColumnName, showColumnEmail, showColumnSendNewsletter;
-        protected bool showColumnReason, showColumnDate, showColumnLastSend;
+        protected bool showColumnReason, showColumnDate;
         protected bool showAllUsers, showSubscribersOnly;
 
         /// <summary>
@@ -54,7 +54,6 @@ namespace Appleseed.Admin
             showColumnSendNewsletter = "True" == Settings["BLACKLIST_SHOWCOLUMNSENDNEWSLETTER"].ToString();
             showColumnReason = "True" == Settings["BLACKLIST_SHOWCOLUMNREASON"].ToString();
             showColumnDate = "True" == Settings["BLACKLIST_SHOWCOLUMNDATE"].ToString();
-            showColumnLastSend = "True" == Settings["BLACKLIST_SHOWCOLUMNLASTSEND"].ToString();
             showAllUsers = "True" == Settings["BLACKLIST_SHOWALLUSERS"].ToString();
             showSubscribersOnly = "True" == Settings["BLACKLIST_SHOWSUBSCRIBERSONLY"].ToString();
 
@@ -131,8 +130,6 @@ namespace Appleseed.Admin
                 myDataGrid.Columns[3].Visible = false;
             if (!showColumnDate)
                 myDataGrid.Columns[4].Visible = false;
-            if (!showColumnLastSend)
-                myDataGrid.Columns[5].Visible = false;
         }
 
         /// <summary>
@@ -149,7 +146,7 @@ namespace Appleseed.Admin
         public Blacklist()
         {
             var setSortField =
-                new SettingItem<string, ListControl>(new ListDataType<string, ListControl>("Name;Email;SendNewsletter;Reason;Date;LastSend"));
+                new SettingItem<string, ListControl>(new ListDataType<string, ListControl>("Name;Email;SendNewsletter;Reason;Date"));
             setSortField.Required = true;
             setSortField.Value = "Name";
             setSortField.Order = 1;
@@ -179,11 +176,6 @@ namespace Appleseed.Admin
             showColumnDate.Order = 6;
             showColumnDate.Value = true;
             this.BaseSettings.Add("BLACKLIST_SHOWCOLUMNDATE", showColumnDate);
-
-            var showColumnLastSend = new SettingItem<bool, CheckBox>();
-            showColumnLastSend.Order = 7;
-            showColumnLastSend.Value = true;
-            this.BaseSettings.Add("BLACKLIST_SHOWCOLUMNLASTSEND", showColumnLastSend);
 
             var showAllUsers = new SettingItem<bool, CheckBox>();
             showAllUsers.Order = 8;
