@@ -108,20 +108,23 @@ namespace Appleseed.Framework.Content.Data
 			if (Config.UseSingleUserBase) portalID = 0;
 			
 			StringBuilder select;
-			select = new StringBuilder(2048);
-			select.Append(" SELECT usr.Name, usr.Email, usr.SendNewsletter, usr.LastSend");
+			select = new StringBuilder();
+			select.Append(" SELECT prof.Name, usr.Email, prof.SendNewsletter");
 			select.Append(", bl.Email AS Blacklisted, bl.Date, ISNULL(bl.Reason, '-') AS Reason");
-			select.Append(" FROM [rb_Users] usr, [rb_BlackList] bl");
-			if (showAllUsers)
-				select.Append(" WHERE usr.Email *= bl.Email");  // Note: the easy outer join!
+            select.Append(" FROM [aspnet_Membership] usr, [aspnet_CustomProfile] prof, ");
+            select.Append("[aspnet_Applications] app, [rb_Portals] por, [rb_BlackList] bl");
+            select.Append(" WHERE por.PortalID = " + portalID.ToString());
+            select.Append(" AND LOWER(por.PortalAlias) = app.LoweredApplicationName");
+            select.Append(" AND app.ApplicationId = usr.ApplicationId");
+            select.Append(" AND usr.UserId = prof.UserId");
+            if (showAllUsers)
+				select.Append(" AND usr.Email *= bl.Email");  // Note: the easy outer join!
 			else
-				select.Append(" WHERE usr.Email = bl.Email");
-			select.Append(" AND usr.PortalID = " + portalID.ToString());
-
+				select.Append(" AND usr.Email = bl.Email");
 			if (SendNewsletterOnly)
 				select.Append(" AND usr.SendNewsletter = 1");
 
-			select.Append(" ORDER BY bl.Date DESC, usr.Name");
+            select.Append(" ORDER BY bl.Date DESC, prof.Name");
 
 			return DBHelper.GetDataSet(select.ToString());
 		}
