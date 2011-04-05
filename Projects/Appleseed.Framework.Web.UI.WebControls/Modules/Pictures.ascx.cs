@@ -391,11 +391,11 @@ namespace Appleseed.Content.Web.Modules
         {
             base.OnLoad(e);
 
-            this.dlPictures.RepeatDirection = this.Settings["RepeatDirectionSetting"] == null
-                                                  ? RepeatDirection.Horizontal
-                                                  : (RepeatDirection)
-                                                    Int32.Parse(
-                                                        (SettingItem<int, TextBox>)this.BaseSettings["RepeatDirectionSetting"]);
+            this.dlPictures.RepeatDirection = RepeatDirection.Horizontal;
+            if (this.Settings.ContainsKey("RepeatDirectionSetting")) 
+            {
+                this.dlPictures.RepeatDirection = (RepeatDirection)this.Settings["RepeatDirectionSetting"].Value;
+            }
             this.dlPictures.RepeatColumns = Int32.Parse((SettingItem<int, TextBox>)this.Settings["RepeatColumns"]);
             this.dlPictures.ItemDataBound += this.Pictures_ItemDataBound;
             this.pgPictures.RecordsPerPage = Int32.Parse(this.Settings["PicturesPerPage"].ToString());

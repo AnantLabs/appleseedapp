@@ -83,16 +83,9 @@
                             {NAME} =
                             <rbfwebui:localize id="Literal5" runat="server" text="UserName" textkey="NEWSLETTER_USERNAME">
                             </rbfwebui:localize><br/>
-                            {PASSWORD} =
-                            <rbfwebui:localize id="Literal6" runat="server" text="Password" textkey="NEWSLETTER_PASSWORD">
-                            </rbfwebui:localize><br/>
                             {EMAIL} =
                             <rbfwebui:localize id="Literal7" runat="server" text="UserEmail" textkey="NEWSLETTER_USEREMAIL">
                             </rbfwebui:localize><br/>
-                            {LOGINURL} =
-                            <rbfwebui:localize id="Literal8" runat="server" text="A direct url that can be used to logon automatically"
-                                textkey="NEWSLETTER_DIRECTURL">
-                            </rbfwebui:localize></td>
                     </tr>
                     <tr valign="top">
                         <td nowrap="nowrap">

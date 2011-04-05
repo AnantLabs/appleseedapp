@@ -146,24 +146,10 @@ namespace Appleseed.Content.Web.Modules.AddModule
             dt_Pages.PrimaryKey = keys;
 
             parentTabDropDown.DataSource = dt_Pages;
-            //parentTabDropDown.DataValueField = "PageID";
-            //parentTabDropDown.DataTextField = "PageOrder";
+            parentTabDropDown.DataValueField = "PageID";
+            parentTabDropDown.DataTextField = "PageOrder1";
             parentTabDropDown.DataBind();
-            parentTabDropDown.Items.Insert(1, "Root");
-
-            //dt_Pages = null;
-
-            // Preselects current tab as parent
-            // Changes for Grischa Brockhaus copied by Mike Stone 7/1/2005
-            if (parentTabDropDown.SelectedIndex <= 0)
-            {
-                int currentTab = this.PortalSettings.ActivePage.PageID;
-                parentTabDropDown.SelectedValue = (currentTab.ToString());
-            }
-            //	parentTabDropDown.Items.FindByValue(currentTab .ToString()).Selected = true; 
-
-            // Translate
-            //parentTabDropDown.Item(0).Text =General.GetString("ROOT_LEVEL", "Root Level", parentTabDropDown);
+            parentTabDropDown.Items.Insert(0, new ListItem(General.GetString("ROOT_LEVEL", "Root Level"), "0"));
         }
 
         #endregion
@@ -202,33 +188,17 @@ namespace Appleseed.Content.Web.Modules.AddModule
                     t.Order = 990000;
 
                     // Get Parent Tab Id Convert only once used many times
-                    int parentTabID = int.Parse(parentTabDropDown.SelectedValue);
+                    var parentTabID = int.Parse(parentTabDropDown.SelectedValue);
 
 
                     // write tab to database
                     PagesDB tabs = new PagesDB();
-                    //t.ID = tabs.AddTab(portalSettings.PortalID, t.Name, viewPermissionRoles, t.Order);
-
-                    // Changed to use new method in TabsDB.cs now all parms are possible 
-                    // By Mike Stone (mstone@kaskaskia.edu) - 30/12/2004
                     t.ID =
                         tabs.AddPage(this.PortalSettings.PortalID, parentTabID, t.Name, t.Order, viewPermissionRoles,
                                      cb_ShowMobile.Checked, tb_MobileTabName.Text);
 
-                    //TODO.. the only way to update a parent id is throught update :S
-                    // Changed to AddTab method now supports the parm
-                    // Mike Stone - 30/12/2004
-                    //tabs.UpdateTab(portalSettings.PortalID, t.ID, parentTabID, t.Name, t.Order, viewPermissionRoles, t.Name, false);
-
-                    //Invalidate cache
-                    // Changed to access form directly 
-                    // mike stone - 30/12/2004
-                    //   Cache.Remove(Appleseed.Framework.Settings.Cache.Key.TabSettings(parentTabID));
-                    // Copied to here 29/12/2004 by Mike Stone
                     CurrentCache.RemoveAll("_TabNavigationSettings_");
-                    //Debug.WriteLine("************* Remove " + Key.TabSettings(parentTabID));
                     
-                    //Clear SiteMaps Cache
                     AppleseedSiteMapProvider.ClearAllAppleseedSiteMapCaches();
 
                     //Jump to Page option
