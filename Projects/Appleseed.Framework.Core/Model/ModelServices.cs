@@ -23,6 +23,7 @@ namespace Appleseed.Framework.Core.Model
     using Appleseed.Framework.Web.UI.WebControls;
 
     using Path = Appleseed.Framework.Settings.Path;
+    using Appleseed.Framework.Settings.Cache;
 
     /// <summary>
     /// The model services.
@@ -65,6 +66,16 @@ namespace Appleseed.Framework.Core.Model
         {
             var dictionary = new Dictionary<string, List<Control>>();
             var settings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+            
+            dynamic faultyModule = null;
+            var modErrKey = HttpContext.Current.Request.Params["modErr"]; 
+            //we receive this param if in the Application_Error it was discovered that a module is broken
+            if (!string.IsNullOrEmpty(modErrKey))
+            {
+                faultyModule = HttpContext.Current.Cache.Get(modErrKey);
+                HttpContext.Current.Cache.Remove(modErrKey);
+            }
+
             if (settings.ActivePage.Modules.Count > 0)
             {
                 var page = new Page();
@@ -119,6 +130,10 @@ namespace Appleseed.Framework.Core.Model
                                 var virtualPath = Path.ApplicationRoot + "/" + settings2.DesktopSrc;
                                 if (virtualPath.LastIndexOf('.') >= 0)
                                 {
+                                    if (faultyModule != null && faultyModule.ModuleDefID == settings2.ModuleDefID) 
+                                    {
+                                        throw new Exception(faultyModule.Message); //if this was the module that was generating the error, we then show the error.
+                                    }
                                     control = (PortalModuleControl)page.LoadControl(virtualPath);
                                 }
                                 else
