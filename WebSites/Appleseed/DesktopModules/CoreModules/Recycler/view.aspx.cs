@@ -48,7 +48,7 @@ namespace Appleseed
 
                         //on initial load, disable the restore button until they make a selection
                         restoreButton.Enabled = false;
-                        ddTabs.Items.Insert(0, "--Choose a Tab to Restore this Module--");
+                        ddTabs.Items.Insert(0, "--Choose a Page to Restore this Module--");
                     }
 
                     // create an instance of the module

@@ -32,7 +32,7 @@ namespace Appleseed.Content.Web.Modules
         protected Label lblMessage;
         protected SqlCommand sqlComm1;
         protected SqlDataAdapter sqlDA1;
-        protected string lastReportType;
+
 
         /// <summary>
         /// Initial Revision by Paul Yarrow, paul@paulyarrow.com, 2003-07-13
@@ -85,8 +85,6 @@ namespace Appleseed.Content.Web.Modules
                     sortField = (string) ViewState["SortField"];
                     sortDirection = (string) ViewState["sortDirection"];
                 }
-
-                lastReportType = cboReportType.SelectedItem.Value;
 
                 BindGrid();
 
@@ -154,68 +152,42 @@ namespace Appleseed.Content.Web.Modules
                 switch (cboReportType.SelectedItem.Value)
                 {
                     case "Detailed Site Log":
-
-                        if (cboReportType.SelectedItem.Value != lastReportType)
-                        {
-                            sortField = "ActivityTime";
-                            sortDirection = "DESC";
-                            ViewState["SortField"] = sortField;
-                            ViewState["sortDirection"] = sortDirection;
-                        }
-
+                        sortField = "ActivityTime";
+                        sortDirection = "DESC";
+                        ViewState["SortField"] = sortField;
+                        ViewState["sortDirection"] = sortDirection;
                         showChart = false;
-
                         break;
 
                     case "Page Popularity":
-
-                        if (cboReportType.SelectedItem.Value != lastReportType)
-                        {
-                            sortField = "Requests";
-                            sortDirection = "DESC";
-                            ViewState["SortField"] = sortField;
-                            ViewState["sortDirection"] = sortDirection;
-                        }
-
+                        sortField = "Requests";
+                        sortDirection = "DESC";
+                        ViewState["SortField"] = sortField;
+                        ViewState["sortDirection"] = sortDirection;
                         chartType = "pie";
                         break;
 
                     case "Most Active Users":
-
-                        if (cboReportType.SelectedItem.Value != lastReportType)
-                        {
-                            sortField = "Actions";
-                            sortDirection = "DESC";
-                            ViewState["SortField"] = sortField;
-                            ViewState["sortDirection"] = sortDirection;
-                        }
-
+                        sortField = "Actions";
+                        sortDirection = "DESC";
+                        ViewState["SortField"] = sortField;
+                        ViewState["sortDirection"] = sortDirection;
                         chartType = "pie";
                         break;
 
                     case "Page Views By Day":
-
-                        if (cboReportType.SelectedItem.Value != lastReportType)
-                        {
-                            sortField = "[Date]";
-                            sortDirection = "ASC";
-                            ViewState["SortField"] = sortField;
-                            ViewState["sortDirection"] = sortDirection;
-                        }
-
+                        sortField = "[Date]";
+                        sortDirection = "ASC";
+                        ViewState["SortField"] = sortField;
+                        ViewState["sortDirection"] = sortDirection;
                         chartType = "bar";
                         break;
 
                     case "Page Views By Browser Type":
-
-                        if (cboReportType.SelectedItem.Value != lastReportType)
-                        {
-                            sortField = "[Views]";
-                            sortDirection = "DESC";
-                            ViewState["SortField"] = sortField;
-                            ViewState["sortDirection"] = sortDirection;
-                        }
-
+                        sortField = "[Views]";
+                        sortDirection = "DESC";
+                        ViewState["SortField"] = sortField;
+                        ViewState["sortDirection"] = sortDirection;
                         chartType = "pie";
                         break;
                 }

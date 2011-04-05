@@ -1,11 +1,7 @@
-<%@ page autoeventwireup="false" inherits="Appleseed.recyclerViewPage"
+<%@ page autoeventwireup="false" inherits="Appleseed.recyclerViewPage"  MasterPageFile="~/Shared/SiteMasterDefault.master"
     language="c#" Codebehind="view.aspx.cs" %>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head id="htmlHead" runat="server"><title></title>
-</head>
-<body>
-    <form id="Form1" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="Server">
         <asp:panel id="pnlMain" runat="server" visible="True">
             <table cellpadding="0" cellspacing="0" class="PrintPage" width="100%">
                 <tr>
@@ -16,7 +12,7 @@
             </table>
             <rbfwebui:linkbutton id="UpdateButton" runat="server" cssclass="CommandButton" text="Update"></rbfwebui:linkbutton>
             <asp:dropdownlist id="ddTabs" runat="server" autopostback="True" datasource="<%# portalTabs %>"
-                datatextfield="PageName" datavaluefield="PageID" onselectedindexchanged="ddTabs_SelectedIndexChanged">
+                datatextfield="PageOrder1" datavaluefield="PageID" onselectedindexchanged="ddTabs_SelectedIndexChanged">
             </asp:dropdownlist>&nbsp;
             <rbfwebui:linkbutton id="restoreButton" runat="server" cssclass="CommandButton" onclick="restoreButton_Click"
                 text="Restore"></rbfwebui:linkbutton>&nbsp;
@@ -29,6 +25,4 @@
         <asp:panel id="pnlError" runat="server" visible="False">
             <rbfwebui:label id="Label1" runat="server" cssclass="Head" textkey="ERROR_403">Access / Edit rights have been denied</rbfwebui:label>
         </asp:panel>
-    </form>
-</body>
-</html>
+</asp:Content>

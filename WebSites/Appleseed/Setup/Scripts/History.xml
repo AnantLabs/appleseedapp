@@ -1178,6 +1178,32 @@
       <Script>2.0.0.1891.sql</Script>
     </Scripts>
   </Release>
-  
+
+  <Release>
+	<ID>1892</ID>
+	<Version>2.0.0.1892</Version>
+	<Date>2011-03-29T00:00:00.0000000-03:00</Date>
+	<Scripts>
+		<Script>2.0.0.1892.sql</Script>
+	</Scripts>
+  </Release>
+
+  <Release>
+	<ID>1893</ID>
+	<Version>2.0.0.1893</Version>
+	<Date>2011-03-30T00:00:00.0000000-03:00</Date>
+	<Scripts>
+		<Script>2.0.0.1893.sql</Script>
+	</Scripts>
+  </Release>
+
+  <Release>
+	<ID>1894</ID>
+	<Version>2.0.0.1894</Version>
+	<Date>2011-04-01T00:00:00.0000000-03:00</Date>
+	<Scripts>
+		<Script>2.0.0.1894.sql</Script>
+	</Scripts>
+  </Release>	
  
 </History>

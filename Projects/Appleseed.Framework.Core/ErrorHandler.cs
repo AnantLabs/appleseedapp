@@ -26,6 +26,7 @@ namespace Appleseed.Framework
     using System;
     using System.Collections.Generic;
     using System.Data.SqlClient;
+    using System.Dynamic;
     using System.IO;
     using System.Net;
     using System.Text;
@@ -35,6 +36,8 @@ namespace Appleseed.Framework
     using Appleseed.Framework.Helpers;
     using Appleseed.Framework.Settings;
     using Appleseed.Framework.Settings.Cache;
+    using Appleseed.Framework.Massive;
+    
 
     /// <summary>
     /// This class in combination with the Web.Config file handles all the Errors that are not caught programmatically
@@ -128,6 +131,8 @@ namespace Appleseed.Framework
                 var cacheKey = string.Empty;
                 StringBuilder sb;
 
+                dynamic errModule = null;
+
                 if (HttpContext.Current.Request.Url.AbsolutePath.EndsWith(Config.SmartErrorRedirect.Substring(2)))
                 {
                     HttpContext.Current.Response.Write("Sorry - a critical error has occurred - unable to continue");
@@ -176,6 +181,15 @@ namespace Appleseed.Framework
                         httpStatusCode = ((AppleseedRedirect)e).StatusCode;
                         redirectUrl = ((AppleseedRedirect)e).RedirectUrl;
                     }
+                    
+                    else if (string.IsNullOrEmpty(HttpContext.Current.Request.Params["modErr"]) && ((errModule = GetFaultyModule(e, PageId)) != null))
+                    {
+                        logLevel = LogLevel.Error;
+                        var errorGuid = Guid.NewGuid().ToString("N");
+                        HttpContext.Current.Cache.Add(errorGuid, errModule, null, System.Web.Caching.Cache.NoAbsoluteExpiration, new TimeSpan(0, 2, 0), System.Web.Caching.CacheItemPriority.Normal, null);
+                        redirectUrl = HttpUrlBuilder.BuildUrl("~/Default.aspx", PageId, "modErr=" + errorGuid);
+                    }
+
                     else if (e is AppleseedException)
                     {
                         logLevel = ((AppleseedException)e).Level;
@@ -192,32 +206,35 @@ namespace Appleseed.Framework
                         httpStatusCode = HttpStatusCode.InternalServerError; // default value
                     }
 
-                    // create unique id
-                    var myguid = Guid.NewGuid().ToString("N");
-                    auxMessage += string.Format("errorGUID: {0}", myguid);
-                    auxMessage += string.Format("\nUrl: {0}", HttpContext.Current.Request.Url);
-                    auxMessage += string.Format("\nUrlReferer: {0}", HttpContext.Current.Request.UrlReferrer);
-                    auxMessage += string.Format(
-                        "\nUser: {0}", 
-                        HttpContext.Current.User != null ? HttpContext.Current.User.Identity.Name : "unauthenticated");
-                    if (e != null)
+                    if (errModule != null)
                     {
-                        auxMessage += string.Format("\nStackTrace: {0}", e.StackTrace);
+                        // create unique id
+                        var myguid = Guid.NewGuid().ToString("N");
+                        auxMessage += string.Format("errorGUID: {0}", myguid);
+                        auxMessage += string.Format("\nUrl: {0}", HttpContext.Current.Request.Url);
+                        auxMessage += string.Format("\nUrlReferer: {0}", HttpContext.Current.Request.UrlReferrer);
+                        auxMessage += string.Format(
+                            "\nUser: {0}",
+                            HttpContext.Current.User != null ? HttpContext.Current.User.Identity.Name : "unauthenticated");
+                        if (e != null)
+                        {
+                            auxMessage += string.Format("\nStackTrace: {0}", e.StackTrace);
+                        }
+
+                        // log it
+                        var sw = new StringWriter();
+                        PublishToLog(logLevel, auxMessage, e, sw);
+
+                        // bundle the info
+                        var storedError = new List<object>(3) { logLevel, myguid, sw };
+
+                        // cache it
+                        sb = new StringBuilder(Portal.UniqueID);
+                        sb.Append("_rb_error_");
+                        sb.Append(myguid);
+                        cacheKey = sb.ToString();
+                        CurrentCache.Insert(cacheKey, storedError);
                     }
-
-                    // log it
-                    var sw = new StringWriter();
-                    PublishToLog(logLevel, auxMessage, e, sw);
-
-                    // bundle the info
-                    var storedError = new List<object>(3) { logLevel, myguid, sw };
-
-                    // cache it
-                    sb = new StringBuilder(Portal.UniqueID);
-                    sb.Append("_rb_error_");
-                    sb.Append(myguid);
-                    cacheKey = sb.ToString();
-                    CurrentCache.Insert(cacheKey, storedError);
                 }
                 catch
                 {
@@ -234,52 +251,13 @@ namespace Appleseed.Framework
                 }
                 finally
                 {
-                    if (redirectUrl.StartsWith("http://"))
+                    if (errModule != null)
                     {
                         HttpContext.Current.Response.Redirect(redirectUrl, true);
-                    }
-                    else if (redirectUrl.StartsWith("~/") && redirectUrl.IndexOf(".aspx") > 0)
-                    {
-                        // append parameters to redirect URL
-                        if (!redirectUrl.StartsWith(@"http://"))
-                        {
-                            sb = new StringBuilder();
-                            if (redirectUrl.IndexOf("?") != -1)
-                            {
-                                sb.Append(redirectUrl.Substring(0, redirectUrl.IndexOf("?") + 1));
-                                sb.Append(((int)httpStatusCode).ToString());
-                                sb.Append("&eid=");
-                                sb.Append(cacheKey);
-                                sb.Append("&");
-                                sb.Append(redirectUrl.Substring(redirectUrl.IndexOf("?") + 1));
-                                redirectUrl = sb.ToString();
-                            }
-                            else
-                            {
-                                sb.Append(redirectUrl);
-                                sb.Append("?");
-                                sb.Append(((int)httpStatusCode).ToString());
-                                sb.Append("&eid=");
-                                sb.Append(cacheKey);
-                                redirectUrl = sb.ToString();
-                            }
-                        }
-
-                        HttpContext.Current.Response.Redirect(redirectUrl, true);
-                    }
-                    else if (redirectUrl.StartsWith("~/") && redirectUrl.IndexOf(".htm") > 0)
-                    {
-                        HttpContext.Current.Response.WriteFile(redirectUrl);
-                        HttpContext.Current.Response.StatusCode = (int)httpStatusCode;
-                        HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.NoCache);
-                        HttpContext.Current.Response.End();
                     }
                     else
                     {
-                        HttpContext.Current.Response.Write("Sorry - a critical error has occurred - unable to continue");
-                        HttpContext.Current.Response.StatusCode = (int)HttpStatusCode.ServiceUnavailable;
-                        HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.NoCache);
-                        HttpContext.Current.Response.End();
+                        RedirectToErrorHandlerPage(redirectUrl, httpStatusCode, cacheKey);
                     }
                 }
             }
@@ -288,6 +266,121 @@ namespace Appleseed.Framework
                 Publish(LogLevel.Fatal, "Unexpected error in ErrorHandler", ex);
             }
         }
+
+        
+        
+
+
+
+        
+        private static void RedirectToErrorHandlerPage(string redirectUrl, HttpStatusCode httpStatusCode, string cacheKey)
+        {
+            if (redirectUrl.StartsWith("http://"))
+            {
+                HttpContext.Current.Response.Redirect(redirectUrl, true);
+            }
+            else if (redirectUrl.StartsWith("~/") && redirectUrl.IndexOf(".aspx") > 0)
+            {
+                // append parameters to redirect URL
+                if (!redirectUrl.StartsWith(@"http://"))
+                {
+                    var sb = new StringBuilder();
+                    if (redirectUrl.IndexOf("?") != -1)
+                    {
+                        sb.Append(redirectUrl.Substring(0, redirectUrl.IndexOf("?") + 1));
+                        sb.Append(((int)httpStatusCode).ToString());
+                        sb.Append("&eid=");
+                        sb.Append(cacheKey);
+                        sb.Append("&");
+                        sb.Append(redirectUrl.Substring(redirectUrl.IndexOf("?") + 1));
+                        redirectUrl = sb.ToString();
+                    }
+                    else
+                    {
+                        sb.Append(redirectUrl);
+                        sb.Append("?");
+                        sb.Append(((int)httpStatusCode).ToString());
+                        sb.Append("&eid=");
+                        sb.Append(cacheKey);
+                        redirectUrl = sb.ToString();
+                    }
+                }
+                HttpContext.Current.Response.Redirect(redirectUrl, true);
+            }
+            else if (redirectUrl.StartsWith("~/") && redirectUrl.IndexOf(".htm") > 0)
+            {
+                HttpContext.Current.Response.WriteFile(redirectUrl);
+                HttpContext.Current.Response.StatusCode = (int)httpStatusCode;
+                HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                HttpContext.Current.Response.End();
+            }
+            else
+            {
+                HttpContext.Current.Response.Write("Sorry - a critical error has occurred - unable to continue");
+                HttpContext.Current.Response.StatusCode = (int)HttpStatusCode.ServiceUnavailable;
+                HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                HttpContext.Current.Response.End();
+            }
+        }
+
+
+
+
+
+        private static int PageId
+        {
+            get
+            {
+                var pageId = 0;
+                if (HttpContext.Current != null && HttpContext.Current.Request.Params["PageID"] != null)
+                {
+                    pageId = Int32.Parse(HttpContext.Current.Request.Params["PageID"]);
+                }
+                return pageId;
+            }
+        }
+
+
+
+        private static dynamic GetFaultyModule(Exception exception, int pageId)
+        {
+            var trace = new System.Diagnostics.StackTrace(exception);
+            var model = new DynamicModel(connectionStringName: "ConnectionString");
+            var query = string.Concat(@"
+                    SELECT m.ModuleDefID
+                    FROM rb_GeneralModuleDefinitions gmd INNER JOIN 
+	                        rb_ModuleDefinitions md ON gmd.GeneralModDefID = md.GeneralModDefID INNER JOIN
+	                        rb_Modules m ON md.ModuleDefID = m.ModuleDefID INNER JOIN
+	                        rb_Pages p ON p.PageID = m.TabID AND md.PortalID = p.PortalID
+                    WHERE m.TabID = ", pageId.ToString(), @" 
+                      AND gmd.ClassName = @0 ");
+            var lastTypeWithError_FullName = string.Empty;
+            foreach (var frame in trace.GetFrames())
+            {
+                var typeWithError = frame.GetMethod().ReflectedType;
+                if (lastTypeWithError_FullName == typeWithError.FullName)
+                {
+                    continue;
+                }
+                lastTypeWithError_FullName = typeWithError.FullName;
+                var mids = model.Fetch(query, lastTypeWithError_FullName);
+                if (mids.Count > 0)
+                {
+                    dynamic firstResult = mids[0];
+                    dynamic result = new ExpandoObject();
+                    result.Message = string.Concat(exception.Message, " \r\n", exception.StackTrace);
+                    result.ModuleDefID = firstResult.ModuleDefID;
+                    return result;
+                }
+            }
+            if (exception.InnerException != null)
+            {
+                return GetFaultyModule(exception.InnerException, pageId);
+            }
+            return null;
+        }
+
+
 
         /// <summary>
         /// Publish an exception.
