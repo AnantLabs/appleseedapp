@@ -1633,20 +1633,18 @@ namespace Appleseed.Framework.Web.UI
 
             var script = new StringBuilder();
             script.AppendFormat("<script type=\"text/javascript\">");
-            script.AppendFormat(
-                "var gaJsHost = ((\"https:\" == document.location.protocol) ? \"https://ssl.\" : \"http://www.\");");
-            script.AppendFormat(
-                "document.write(unescape(\"%3Cscript src='\" + gaJsHost + \"google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E\"));");
+            script.AppendFormat("var gaJsHost = ((\"https:\" == document.location.protocol) ? \"https://ssl.\" : \"http://www.\");");
+            script.AppendFormat("document.write(unescape(\"%3Cscript src='\" + gaJsHost + \"google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E\"));");
             script.AppendFormat("</script>");
 
             script.AppendFormat("<script type=\"text/javascript\">");
             script.AppendFormat(
                 "try {{ var pageTracker = _gat._getTracker(\"{0}\");",
                 this.PortalSettings.CustomSettings["SITESETTINGS_GOOGLEANALYTICS"]);
-                script.AppendFormat("pageTracker._trackPageview();");
-				if (Request.IsAuthenticated && useCustVars)
+
+            if (Request.IsAuthenticated && useCustVars)
             {
-                    var email = Membership.GetUser().Email;                
+                var email = Membership.GetUser().Email;
                 var index = email.IndexOf('@');
 
                 // Slot 1, visitor-level scope.
@@ -1657,16 +1655,17 @@ namespace Appleseed.Framework.Web.UI
                 if (index >= 0 && index < email.Length - 1)
                 {
                     // Slot 3, visitor-level scope.
-                    script.AppendFormat(
-                        "pageTracker._setCustomVar( 3, \"Domain\", \"" + email.Substring(index + 1).ToLowerInvariant() + "\", 1);");
+                    script.AppendFormat("pageTracker._setCustomVar( 3, \"Domain\", \"" + email.Substring(index + 1).ToLowerInvariant() + "\", 1);");
                 }
             }
+            
+            script.AppendFormat("pageTracker._trackPageview();");
+
             
             script.AppendFormat("}} catch (err) {{ }}</script>");
 
             // TODO: Add tracking variables
-            this.ClientScript.RegisterStartupScript(
-                this.GetType(), "SITESETTINGS_GOOGLEANALYTICS", script.ToString(), false);
+            this.ClientScript.RegisterStartupScript(this.GetType(), "SITESETTINGS_GOOGLEANALYTICS", script.ToString(), false);
         }
 
         /// <summary>
