@@ -206,7 +206,7 @@ namespace Appleseed.Framework
                         httpStatusCode = HttpStatusCode.InternalServerError; // default value
                     }
 
-                    if (errModule != null)
+                    if (errModule == null)
                     {
                         // create unique id
                         var myguid = Guid.NewGuid().ToString("N");
@@ -258,7 +258,9 @@ namespace Appleseed.Framework
                     else
                     {
                         RedirectToErrorHandlerPage(redirectUrl, httpStatusCode, cacheKey);
+                        HttpContext.Current.Server.ClearError();
                     }
+                   
                 }
             }
             catch (Exception ex)
