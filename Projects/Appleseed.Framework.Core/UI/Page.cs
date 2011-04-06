@@ -1608,14 +1608,18 @@ namespace Appleseed.Framework.Web.UI
         /// </summary>
         private void InsertGlAnalyticsScript()
         {
-            var include = true;
             var useCustVars = false;
+
+            if (this.PortalSettings == null ||
+                 !this.PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_GOOGLEANALYTICS") ||
+                  this.PortalSettings.CustomSettings["SITESETTINGS_GOOGLEANALYTICS"].ToString().Equals(string.Empty))
+            {
+                return;
+            }
+
             try
             {
-                include = this.PortalSettings.CustomSettings["SITESETTINGS_GOOGLEANALYTICS"] != null &&
-                           !this.PortalSettings.CustomSettings["SITESETTINGS_GOOGLEANALYTICS"].ToString().Trim().Equals(string.Empty);
-
-                useCustVars = this.PortalSettings.CustomSettings["SITESETTINGS_GOOGLEANALYTICS_CUSTOMVARS"] != null &&
+                useCustVars = this.PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_GOOGLEANALYTICS_CUSTOMVARS") &&
                             Convert.ToBoolean(this.PortalSettings.CustomSettings["SITESETTINGS_GOOGLEANALYTICS_CUSTOMVARS"].ToString());
             }
             catch (Exception e)
@@ -1623,13 +1627,6 @@ namespace Appleseed.Framework.Web.UI
                 ErrorHandler.Publish(LogLevel.Warn, e);
             }
 
-            if (!include ||
-                (this.PortalSettings == null ||
-                 (this.PortalSettings.CustomSettings["SITESETTINGS_GOOGLEANALYTICS"] == null ||
-                  this.PortalSettings.CustomSettings["SITESETTINGS_GOOGLEANALYTICS"].ToString().Equals(string.Empty))))
-            {
-                return;
-            }
 
             var script = new StringBuilder();
             script.AppendFormat("<script type=\"text/javascript\">");
