@@ -251,16 +251,16 @@ namespace Appleseed.Framework
                 }
                 finally
                 {
+                    HttpContext.Current.Server.ClearError();
                     if (errModule != null)
                     {
-                        HttpContext.Current.Response.Redirect(redirectUrl, true);
+                        HttpContext.Current.Response.Redirect(redirectUrl, false);
                     }
                     else
                     {
                         RedirectToErrorHandlerPage(redirectUrl, httpStatusCode, cacheKey);
-                        HttpContext.Current.Server.ClearError();
                     }
-                   
+                    HttpContext.Current.ApplicationInstance.CompleteRequest();
                 }
             }
             catch (Exception ex)
@@ -279,7 +279,7 @@ namespace Appleseed.Framework
         {
             if (redirectUrl.StartsWith("http://"))
             {
-                HttpContext.Current.Response.Redirect(redirectUrl, true);
+                HttpContext.Current.Response.Redirect(redirectUrl, false);
             }
             else if (redirectUrl.StartsWith("~/") && redirectUrl.IndexOf(".aspx") > 0)
             {
@@ -307,7 +307,7 @@ namespace Appleseed.Framework
                         redirectUrl = sb.ToString();
                     }
                 }
-                HttpContext.Current.Response.Redirect(redirectUrl, true);
+                HttpContext.Current.Response.Redirect(redirectUrl, false);
             }
             else if (redirectUrl.StartsWith("~/") && redirectUrl.IndexOf(".htm") > 0)
             {
