@@ -204,17 +204,6 @@ namespace Appleseed
                 return; // this is Install page... so skip creation of PortalSettings
             }
 
-            var smartErrorRedirect = Config.SmartErrorRedirect;
-            if (smartErrorRedirect.StartsWith("~/"))
-            {
-                smartErrorRedirect = smartErrorRedirect.TrimStart(new[] { '~' });
-            }
-
-            if (requestPath.EndsWith(smartErrorRedirect.ToLower(CultureInfo.InvariantCulture)))
-            {
-                return; // this is SmartError page... so skip creation of PortalSettings
-            }
-
             var versionDelta = Database.DatabaseVersion.CompareTo(Portal.CodeVersion);
 
             // if DB and code versions do not match
@@ -358,6 +347,17 @@ namespace Appleseed
                             null);
                     }
                 }
+            }
+
+            var smartErrorRedirect = Config.SmartErrorRedirect;
+            if (smartErrorRedirect.StartsWith("~/"))
+            {
+                smartErrorRedirect = smartErrorRedirect.TrimStart(new[] { '~' });
+            }
+
+            if (requestPath.EndsWith(smartErrorRedirect.ToLower(CultureInfo.InvariantCulture)))
+            {
+                return; // this is SmartError page... so continue 
             }
 
             // WLF: This was backwards before so it would always set refreshSite true because the cookie was changed before it was checked.
