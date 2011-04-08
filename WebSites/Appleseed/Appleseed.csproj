@@ -5311,7 +5311,9 @@
     <Content Include="Design\Themes\Corporate-Black\Slyder_Styles.css" />
     <Content Include="Design\Themes\Corporate-Black\TabControl.css" />
     <Content Include="Design\Themes\Corporate-Black\TabsSubTabs.css" />
-    <Content Include="Design\Themes\Corporate-Black\Theme.xml" />
+    <Content Include="Design\Themes\Corporate-Black\Theme.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Design\Themes\Education-Alt\icon\add.gif" />
     <Content Include="Design\Themes\Education-Alt\icon\add.png" />
     <Content Include="Design\Themes\Education-Alt\icon\application.png" />
