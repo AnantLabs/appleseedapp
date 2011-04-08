@@ -2872,7 +2872,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                 if (HttpContext.Current != null && this.titleText == string.Empty)
                 {
                     var key = string.Format("MODULESETTINGS_TITLE_{0}", this.PortalSettings.PortalContentLanguage.Name);
-                    var setting = this.Settings[key];
+                    var setting = this.Settings.ContainsKey(key) ? this.Settings[key] : null;
 
                     // if it is not design time (and not overridden - Jes1111)
                     if (this.PortalSettings.PortalContentLanguage != CultureInfo.InvariantCulture && setting != null &&
