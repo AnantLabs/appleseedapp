@@ -3621,8 +3621,10 @@ namespace Appleseed.Framework.Web.UI.WebControls
         {
             var template = this.CurrentTheme.GetThemePart("ModuleLayout");
 
-            template = template.Replace("{Title}", this.TitleText);
-            template = template.Replace("{TitleRowStyle}", this.ShowTitle ? "display:inline" : "display:none");
+            var title = this.ShowTitle ? this.TitleText : "&nbsp;";
+            template = template.Replace("{Title}", title);
+            template = template.Replace("{TitleStyle}", this.ShowTitle ? "display:inline" : "display:none");
+            template = template.Replace("{NoTitleStyle}", this.ShowTitle ? "display:none" : "display:inline");
             template = template.Replace("{BodyBgColor}", this.CurrentTheme.GetThemePart("DefaultBodyBgColor"));
             template = template.Replace("{TitleBgColor}", this.CurrentTheme.GetThemePart("DefaultTitleBgColor"));
 
