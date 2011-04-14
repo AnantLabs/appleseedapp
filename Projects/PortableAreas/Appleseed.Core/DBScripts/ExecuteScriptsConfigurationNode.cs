@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Configuration;
 
+/// Agileworks execute scripts
 namespace Appleseed.Core.ExecuteScripts
 {
     public class ExecuteScriptsConfigurationNode : ConfigurationElement

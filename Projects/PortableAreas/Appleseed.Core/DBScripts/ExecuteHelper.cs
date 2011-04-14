@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Collections.Specialized;
 using System.Globalization;
 
+/// Agileworks execute scripts
 namespace Appleseed.Core.ExecuteScripts
 {
     public class ExecuteHelper
@@ -63,7 +64,6 @@ namespace Appleseed.Core.ExecuteScripts
                 catch (Exception)
                 {
                     LogInfo("DBVersion has wrong entry; assuming no database at all.");
-                    Console.WriteLine("DBVersion has wrong entry; assuming no database at all.");
                     minVersion = "-1";
                 }
                 string[] directories = Directory.GetDirectories(_ScriptsPath);
@@ -104,15 +104,13 @@ namespace Appleseed.Core.ExecuteScripts
                                                 {
                                                     string s = script.Substring(script.LastIndexOf('\\') + 1, script.Length - script.LastIndexOf('\\') - 1);
                                                     s = s.Substring(0, s.IndexOf('.'));
-                                                    //Console.WriteLine("Intento ejecutar el script " + s);
                                                     ValidateFileName(s);
                                                     s = s.Substring(0, 2);
                                                     int scriptName = Convert.ToInt16(s);
                                                     if ((scriptName > Convert.ToInt16(valueMinVersion) || name != dateMinVersion || valueMinVersion.Equals("-1")) &&
                                                         (scriptName <= Convert.ToInt16(valueVersion) || name != dateVersion || valueVersion.Equals("-1")))
                                                     {
-                                                        LogInfo("Ejecutando script -> " + directoryName + "_" + s);
-                                                        Console.WriteLine("Ejecutando script -> " + directoryName + "_" + s);
+                                                        LogInfo("Executing script: " + directoryName + "_" + s);
                                                         try
                                                         {
                                                             string command;
@@ -129,48 +127,43 @@ namespace Appleseed.Core.ExecuteScripts
                                                         }
                                                         catch (Exception ex)
                                                         {
-                                                            Console.WriteLine(ex.Message);
+                                                            LogInfo(ex.Message);
                                                         }
                                                     }
                                                 }
                                                 if (executionResult != -100)
                                                 {
-                                                    LogInfo("Actualizando la versión de la base");
-                                                    Console.WriteLine("Actualizando la versión de la base");
+                                                    LogInfo("Updating db version");
                                                     UpdateDBVersion(newDateVersion, newValueVersion, _connectionString, areaName);
                                                 }
                                             }
                                         }
                                         else
                                         {
-                                            LogInfo("Warning: La carpeta '" + directoryName + "' no tiene scripts dentro.");
-                                            Console.WriteLine("Warning: La carpeta '" + directoryName + "' no tiene scripts dentro.");
+                                            LogInfo("No scripts to execute");
                                         }
                                     }
                                 }
                                 else
                                 {
-                                    LogInfo("Warning: La carpeta '" + directoryName + "' no tiene el formato esperado. No se ejecutaron los archivos que contiene.");
-                                    Console.WriteLine("Warning: La carpeta '" + directoryName + "' no tiene el formato esperado. No se ejecutaron los archivos que contiene.");
+                                    LogInfo("Warning: '" + directoryName + "' has wrong format.");
                                 }
                             }
                         }
                         catch (Exception e)
                         {
-                            Console.WriteLine(e.Message);
+                            LogInfo(e.Message);
                         }
                     }
                 }
                 else
                 {
-                    LogInfo("Warning: El directorio de scripts esta vacio");
-                    Console.WriteLine("Warning: El directorio de scripts esta vacio");
+                    LogInfo("No scripts to execute");
                 }
             }
             catch (Exception e)
             {
-                LogInfo("Error general. Detalle -> " + e.Message);
-                Console.WriteLine("Error general. Detalle -> " + e.Message);
+                LogInfo("General error: " + e.Message);
             }
         }
 
@@ -212,7 +205,6 @@ namespace Appleseed.Core.ExecuteScripts
                 catch (Exception)
                 {
                     LogInfo("DBVersion has wrong entry; assuming no database at all.");
-                    Console.WriteLine("DBVersion has wrong entry; assuming no database at all.");
                     minVersion = "-1";
                 }
                 string[] directories = Directory.GetDirectories(_ScriptsPath);
@@ -220,12 +212,10 @@ namespace Appleseed.Core.ExecuteScripts
                 {
                     Array.Sort(directories);
 
-                    #region desglozo la version de la base y la que me pasan por parametro
                     string valueMinVersion = "-1";
                     long dateMinVersion = GetDateAndValueVersion(minVersion, out valueMinVersion);
                     string valueVersion = "-1";
                     long dateVersion = GetDateAndValueVersion(version, out valueVersion);
-                    #endregion
 
                     if (directories.Length != 0 && (dateMinVersion <= dateVersion || dateVersion == -1))
                     {
@@ -258,29 +248,25 @@ namespace Appleseed.Core.ExecuteScripts
                                     }
                                     else
                                     {
-                                        LogInfo("Warning: La carpeta '" + directoryName + "' no contiene scripts dentro.");
-                                        Console.WriteLine("Warning: La carpeta '" + directoryName + "' no contiene scripts dentro.");
+                                        LogInfo("No scripts to execute");
                                     }
                                 }
                             }
                             else
                             {
-                                LogInfo("Warning: La carpeta '" + directoryName + "' no tiene el formato esperado. No se consideraran los scripts que contenga.");
-                                Console.WriteLine("Warning: La carpeta '" + directoryName + "' no tiene el formato esperado. No se consideraran los scripts que contenga.");
+                                LogInfo("Warning: '" + directoryName + "' has wrong format.");
                             }
                         }
                     }
                 }
                 else
                 {
-                    LogInfo("Warning: El directorio de scripts esta vacio");
-                    Console.WriteLine("Warning: El directorio de scripts esta vacio");
+                    LogInfo("No scripts to execute");
                 }
             }
             catch (Exception e)
             {
-                LogInfo("Error general. Detalle -> " + e.Message);
-                Console.WriteLine("Error general. Detalle -> " + e.Message);
+                LogInfo("General error: " + e.Message);
             }
             return result;
         }
@@ -347,8 +333,7 @@ namespace Appleseed.Core.ExecuteScripts
             }
             catch (Exception ex)
             {
-                LogInfo("No se pudo obtener la versión de la base. Detalle -> " + ex.Message);
-                Console.WriteLine("No se pudo obtener la versión de la base. Detalle -> " + ex.Message);
+                LogInfo("Cannot get db version: " + ex.Message);
             }
             return result;
         }
@@ -378,7 +363,6 @@ namespace Appleseed.Core.ExecuteScripts
                     catch (Exception e)
                     {
                         LogInfo("SQL executing error: " + e.Message);
-                        Console.WriteLine("SQL executing error:" + e.Message);
                     }
                     finally
                     {
@@ -418,13 +402,10 @@ namespace Appleseed.Core.ExecuteScripts
                         sql += "')";
                         ExeSQL(sql, _connectionString);//inserta el registro con la version nueva
                     }
-                    //LogInfo("La version de la base de datos se actualizo a " + dateVersion.ToString() + "_" + valueVersion);
-                    //Console.WriteLine("La version de la base de datos se actualizo a " + dateVersion.ToString() + "_" + valueVersion);
                 }
                 catch (Exception ex)
                 {
                     LogInfo("Couldn´t update database: " + ex.Message);
-                    Console.WriteLine("Couldn´t update database: " + ex.Message);
                 }
             }
         }
@@ -475,7 +456,6 @@ namespace Appleseed.Core.ExecuteScripts
                     sp_createcmd.Transaction.Rollback();
                 }
                 LogInfo("SQL Command Error: " + currentCmd + " . Details: " + e.Message);
-                Console.WriteLine("SQL Command Error: " + currentCmd + " . Details: " + e.Message);
                 returnValue = -100;
 
             }
