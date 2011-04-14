@@ -1482,6 +1482,7 @@
     <Compile Include="LocalizationAdmin\StronglyTypedGlobalResources.aspx.designer.cs">
       <DependentUpon>StronglyTypedGlobalResources.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MessageHandler.cs" />
     <Compile Include="Shared\PanesMasterDefault.master.designer.cs">
       <DependentUpon>PanesMasterDefault.master</DependentUpon>
     </Compile>

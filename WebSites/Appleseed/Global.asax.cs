@@ -35,6 +35,8 @@ namespace Appleseed
 
     using Path = System.IO.Path;
     using Reader = Appleseed.Context.Reader;
+    using MvcContrib;
+    using Appleseed.Core.ApplicationBus;
 
     /// <summary>
     /// The global.
@@ -161,7 +163,7 @@ namespace Appleseed
                         if (lockKeyHolder.IndexOf("-") > -1)
                         {
                             ipList.AddRange(
-                                lockKeyHolder.Substring(0, lockKeyHolder.IndexOf("-")), 
+                                lockKeyHolder.Substring(0, lockKeyHolder.IndexOf("-")),
                                 lockKeyHolder.Substring(lockKeyHolder.IndexOf("-") + 1));
                         }
                         else
@@ -179,52 +181,12 @@ namespace Appleseed
             }
 
             // 3rd Check: is database/code version correct?
-            var requestUri = context.Request.Url;
+            var requestUri = context.Request.Url;            
             var requestPath = requestUri.AbsolutePath.ToLower(CultureInfo.InvariantCulture);
-            var databaseUpdateRedirect = Config.DatabaseUpdateRedirect;
-            if (databaseUpdateRedirect.StartsWith("~/"))
-            {
-                databaseUpdateRedirect = databaseUpdateRedirect.TrimStart(new[] { '~' });
-            }
+            var returnToRequest = CheckAndUpdateDB(context, requestPath);
 
-            if (requestPath.EndsWith(databaseUpdateRedirect.ToLower(CultureInfo.InvariantCulture)))
-            {
-                return; // this is DB Update page... so skip creation of PortalSettings
-            }
-
-            var installRedirect = Config.InstallerRedirect;
-            if (installRedirect.StartsWith("~/"))
-            {
-                installRedirect = installRedirect.TrimStart(new[] { '~', '/' });
-            }
-
-            installRedirect = installRedirect.ToLower(CultureInfo.InvariantCulture);
-            if (requestPath.EndsWith(installRedirect) || requestPath.Contains(installRedirect.Split(new[] { '/' })[0]))
-            {
-                return; // this is Install page... so skip creation of PortalSettings
-            }
-
-            var versionDelta = Database.DatabaseVersion.CompareTo(Portal.CodeVersion);
-
-            // if DB and code versions do not match
-            if (versionDelta != 0)
-            {
-                // ...and this is not DB Update page
-                var errorMessage = string.Format(
-                    "Database version: {0} Code version: {1}", Database.DatabaseVersion, Portal.CodeVersion);
-
-                if (versionDelta < 0)
-                {
-                    // DB Version is behind Code Version
-                    ErrorHandler.Publish(LogLevel.Warn, errorMessage);
-                    this.Response.Redirect(Framework.Settings.Path.ApplicationRoot + databaseUpdateRedirect, true);
-                }
-                else
-                {
-                    // DB version is ahead of Code Version
-                    ErrorHandler.Publish(LogLevel.Warn, errorMessage);
-                }
-            }
+            if (returnToRequest)
+                return;
 
             // ************ 'calculate' response to this request ************
             // Test 1 - try requested Alias and requested PageID
@@ -304,10 +266,10 @@ namespace Appleseed
                 {
                     // critical error - neither requested alias nor default alias could be found in DB
                     throw new AppleseedRedirect(
-                        Config.NoPortalErrorRedirect, 
-                        LogLevel.Fatal, 
-                        Config.NoPortalErrorResponse, 
-                        "Unable to load any portal - redirecting request to ErrorNoPortal page.", 
+                        Config.NoPortalErrorRedirect,
+                        LogLevel.Fatal,
+                        Config.NoPortalErrorResponse,
+                        "Unable to load any portal - redirecting request to ErrorNoPortal page.",
                         null);
                 }
 
@@ -329,10 +291,10 @@ namespace Appleseed
                     {
                         // we didn't get the portal we asked for
                         throw new AppleseedRedirect(
-                            Config.InvalidAliasRedirect, 
-                            LogLevel.Info, 
-                            HttpStatusCode.NotFound, 
-                            "Invalid Alias specified in request URL - redirecting (404) to InvalidAliasRedirect page.", 
+                            Config.InvalidAliasRedirect,
+                            LogLevel.Info,
+                            HttpStatusCode.NotFound,
+                            "Invalid Alias specified in request URL - redirecting (404) to InvalidAliasRedirect page.",
                             null);
                     }
 
@@ -340,10 +302,10 @@ namespace Appleseed
                     {
                         // we didn't get the page we asked for
                         throw new AppleseedRedirect(
-                            Config.InvalidPageIdRedirect, 
-                            LogLevel.Info, 
-                            HttpStatusCode.NotFound, 
-                            "Invalid PageID specified in request URL - redirecting (404) to InvalidPageIdRedirect page.", 
+                            Config.InvalidPageIdRedirect,
+                            LogLevel.Info,
+                            HttpStatusCode.NotFound,
+                            "Invalid PageID specified in request URL - redirecting (404) to InvalidPageIdRedirect page.",
                             null);
                     }
                 }
@@ -397,7 +359,8 @@ namespace Appleseed
                     var rawUrl = context.Request.RawUrl;
                     var newRefreshedCookie = new HttpCookie("refreshed", "true")
                         {
-                           Path = "/", Expires = DateTime.Now.AddMinutes(1) 
+                            Path = "/",
+                            Expires = DateTime.Now.AddMinutes(1)
                         };
                     if (refreshedCookie == null)
                     {
@@ -416,7 +379,7 @@ namespace Appleseed
                             rawUrl);
 
                     ErrorHandler.Publish(
-                        LogLevel.Warn, 
+                        LogLevel.Warn,
                         msg);
 
                     // sign-out, if refreshed parameter on the command line we will not call it again
@@ -430,7 +393,8 @@ namespace Appleseed
             {
                 var newRefreshedCookie = new HttpCookie("refreshed", "false")
                     {
-                       Path = "/", Expires = DateTime.Now.AddMinutes(1) 
+                        Path = "/",
+                        Expires = DateTime.Now.AddMinutes(1)
                     };
                 context.Response.Cookies.Set(newRefreshedCookie);
             }
@@ -446,6 +410,59 @@ namespace Appleseed
                     this.Response.Redirect(url);
                 }
             }
+        }
+
+        private bool CheckAndUpdateDB(HttpContext context, string requestPath)
+        {
+            var requestUri = context.Request.Url;            
+            var databaseUpdateRedirect = Config.DatabaseUpdateRedirect;
+
+
+            if (databaseUpdateRedirect.StartsWith("~/"))
+            {
+                databaseUpdateRedirect = databaseUpdateRedirect.TrimStart(new[] { '~' });
+            }
+
+            if (requestPath.EndsWith(databaseUpdateRedirect.ToLower(CultureInfo.InvariantCulture)))
+            {
+                return true; // this is DB Update page... so skip creation of PortalSettings
+            }
+
+            var installRedirect = Config.InstallerRedirect;
+            if (installRedirect.StartsWith("~/"))
+            {
+                installRedirect = installRedirect.TrimStart(new[] { '~', '/' });
+            }
+
+            installRedirect = installRedirect.ToLower(CultureInfo.InvariantCulture);
+            if (requestPath.EndsWith(installRedirect) || requestPath.Contains(installRedirect.Split(new[] { '/' })[0]))
+            {
+                return true; // this is Install page... so skip creation of PortalSettings
+            }
+
+            var versionDelta = Database.DatabaseVersion.CompareTo(Portal.CodeVersion);
+
+            // if DB and code versions do not match
+            if (versionDelta != 0)
+            {
+                // ...and this is not DB Update page
+                var errorMessage = string.Format(
+                    "Database version: {0} Code version: {1}", Database.DatabaseVersion, Portal.CodeVersion);
+
+                if (versionDelta < 0)
+                {
+                    // DB Version is behind Code Version
+                    ErrorHandler.Publish(LogLevel.Warn, errorMessage);
+                    this.Response.Redirect(Framework.Settings.Path.ApplicationRoot + databaseUpdateRedirect, true);
+                }
+                else
+                {
+                    // DB version is ahead of Code Version
+                    ErrorHandler.Publish(LogLevel.Warn, errorMessage);
+                }
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -522,9 +539,9 @@ namespace Appleseed
                 catch (Exception ex)
                 {
                     throw new AppleseedException(
-                        LogLevel.Fatal, 
-                        HttpStatusCode.ServiceUnavailable, 
-                        "ASPNET Account does not have rights to the file system", 
+                        LogLevel.Fatal,
+                        HttpStatusCode.ServiceUnavailable,
+                        "ASPNET Account does not have rights to the file system",
                         ex); // Jes1111
                 }
             }
@@ -534,9 +551,9 @@ namespace Appleseed
             {
                 PortalSettings.Scheduler =
                     CachedScheduler.GetScheduler(
-                        context.Server.MapPath(Framework.Settings.Path.ApplicationRoot), 
-                        Config.SqlConnectionString, 
-                        Config.SchedulerPeriod, 
+                        context.Server.MapPath(Framework.Settings.Path.ApplicationRoot),
+                        Config.SqlConnectionString,
+                        Config.SchedulerPeriod,
                         Config.SchedulerCacheSize);
                 PortalSettings.Scheduler.Start();
             }
@@ -547,10 +564,17 @@ namespace Appleseed
                 WebRequest.DefaultWebProxy = PortalSettings.GetProxy();
             }
 
+            //MVCContrib PortableAreas
+            Bus.AddMessageHandler(typeof(BusMessageHandler));
+            Bus.AddMessageHandler(typeof(DBScriptsHandler));            
+
             AreaRegistration.RegisterAllAreas();
+
             RegisterRoutes(RouteTable.Routes);
 
             InputBuilder.BootStrap();
+            
+            
         }
 
         #endregion
