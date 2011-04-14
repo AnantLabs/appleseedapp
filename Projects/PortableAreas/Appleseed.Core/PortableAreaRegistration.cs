@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using MvcContrib.PortableAreas;
+using Appleseed.Core.ApplicationBus;
 
 namespace Appleseed.Core
 {
@@ -33,8 +34,8 @@ namespace Appleseed.Core
                 new { action = "Index", controller = "Home", id = UrlParameter.Optional }
             );
 
-            this.RegisterAreaEmbeddedResources();
+            RegisterAreaEmbeddedResources();
+            PortableAreaUtils.RegisterScripts(this, context, bus);
         }
-
     }
 }
