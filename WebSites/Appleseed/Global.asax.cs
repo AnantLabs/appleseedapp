@@ -37,6 +37,7 @@ namespace Appleseed
     using Reader = Appleseed.Context.Reader;
     using MvcContrib;
     using Appleseed.Core.ApplicationBus;
+    using Appleseed.Framework.Update;
 
     /// <summary>
     /// The global.
@@ -140,6 +141,7 @@ namespace Appleseed
             }
 
             // 1st Check: is it a dangerously malformed request?
+            #region
             // Important patch http://support.microsoft.com/?kbid=887459
             if (context.Request.Path.IndexOf('\\') >= 0 ||
                 Path.GetFullPath(context.Request.PhysicalPath) != context.Request.PhysicalPath)
@@ -147,8 +149,11 @@ namespace Appleseed
                 throw new AppleseedRedirect(LogLevel.Warn, HttpStatusCode.NotFound, "Malformed request", null);
             }
 
+            #endregion
+
             // 2nd Check: is the AllPortals Lock switched on?
             // let the user through if client IP address is in LockExceptions list, otherwise throw...
+            #region
             if (Config.LockAllPortals)
             {
                 var rawUrl = context.Request.RawUrl.ToLower(CultureInfo.InvariantCulture);
@@ -179,15 +184,18 @@ namespace Appleseed
                     }
                 }
             }
+            #endregion
 
             // 3rd Check: is database/code version correct?
-            var requestUri = context.Request.Url;            
+            var requestUri = context.Request.Url;
             var requestPath = requestUri.AbsolutePath.ToLower(CultureInfo.InvariantCulture);
             var returnToRequest = CheckAndUpdateDB(context, requestPath);
 
             if (returnToRequest)
                 return;
 
+           
+            #region explanation
             // ************ 'calculate' response to this request ************
             // Test 1 - try requested Alias and requested PageID
             // Test 2 - try requested Alias and PageID 0
@@ -211,6 +219,8 @@ namespace Appleseed
             // - if requested Alias is invalid, default Alias will be used
             // - if requested PageID is found, it is shown
             // - if requested PageID is not found, PageID 0 (Home page) is shown
+            #endregion
+
             PortalSettings portalSettings = null;
 
             var pageId = Portal.PageID; // Get PageID from QueryString
@@ -243,7 +253,12 @@ namespace Appleseed
                 {
                     // If no database, must update
                     ErrorHandler.Publish(LogLevel.Error, dexc);
-                    this.Response.Redirect(Config.DatabaseUpdateRedirect);
+                    //this.Response.Redirect(Config.DatabaseUpdateRedirect);
+
+                    using (var s = new Services())
+                    {
+                        s.RunDBUpdate(Config.ConnectionString);
+                    }
                 }
 
                 // test returned result
@@ -319,7 +334,7 @@ namespace Appleseed
 
             if (requestPath.EndsWith(smartErrorRedirect.ToLower(CultureInfo.InvariantCulture)))
             {
-                return; // this is SmartError page... so continue 
+                return; // this is SmartError page... so continue             
             }
 
             // WLF: This was backwards before so it would always set refreshSite true because the cookie was changed before it was checked.
@@ -414,7 +429,7 @@ namespace Appleseed
 
         private bool CheckAndUpdateDB(HttpContext context, string requestPath)
         {
-            var requestUri = context.Request.Url;            
+            var requestUri = context.Request.Url;
             var databaseUpdateRedirect = Config.DatabaseUpdateRedirect;
 
 
@@ -564,17 +579,23 @@ namespace Appleseed
                 WebRequest.DefaultWebProxy = PortalSettings.GetProxy();
             }
 
-            //MVCContrib PortableAreas
-            Bus.AddMessageHandler(typeof(BusMessageHandler));
-            Bus.AddMessageHandler(typeof(DBScriptsHandler));            
+            /* MVCContrib PortableAreas*/
 
-            AreaRegistration.RegisterAllAreas();
+            //Handlers for bus messages
+            Bus.AddMessageHandler(typeof(BusMessageHandler));
+            Bus.AddMessageHandler(typeof(DBScriptsHandler));
+
+            //Register first core portable area (just in case...)
+            Appleseed.Core.PortableAreaUtils.RegisterArea<Appleseed.Core.AppleseedCoreRegistration>(RouteTable.Routes, false);
+
+            //Then, register all portable areas
+            AreaRegistration.RegisterAllAreas(true);
 
             RegisterRoutes(RouteTable.Routes);
 
             InputBuilder.BootStrap();
-            
-            
+
+
         }
 
         #endregion

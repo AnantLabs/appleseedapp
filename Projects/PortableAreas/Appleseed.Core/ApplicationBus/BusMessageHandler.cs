@@ -11,6 +11,7 @@ namespace Appleseed.Core.ApplicationBus
 
         public override void Handle(BusMessage message)
         {
+            //Nothing to do right now, maybe logging events or something
         }
     }
 }

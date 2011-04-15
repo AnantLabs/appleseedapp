@@ -5,6 +5,8 @@ using System.Web;
 using Appleseed.Core.ApplicationBus;
 using System.Reflection;
 using MvcContrib.PortableAreas;
+using System.Web.Routing;
+using System.Web.Mvc;
 
 namespace Appleseed.Core
 {
@@ -49,6 +51,18 @@ namespace Appleseed.Core
             var dbversions = resources.Where(d => d.Contains(".sql")).Select(d => d.Substring(d.IndexOf("._") + 2, 11));
 
             return dbversions.OrderBy(d => d).LastOrDefault();
+        }
+
+        public static void RegisterArea<T>(RouteCollection routes, object state) where T : AreaRegistration
+        {
+            AreaRegistration registration = (AreaRegistration)Activator.CreateInstance(typeof(T));
+            AreaRegistrationContext context = new AreaRegistrationContext(registration.AreaName, routes, state);
+            string tNamespace = registration.GetType().Namespace;
+            if (tNamespace != null)
+            {
+                context.Namespaces.Add(tNamespace + ".*");
+            }
+            registration.RegisterArea(context);
         }
     }
 }
