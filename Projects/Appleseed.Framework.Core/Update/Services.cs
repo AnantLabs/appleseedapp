@@ -90,8 +90,7 @@ namespace Appleseed.Framework.Update
 
                     // load the history file
                     var docPath =
-                        HttpContext.Current.Server.MapPath(
-                            string.Format("{0}/Setup/Scripts/History.xml", Path.ApplicationRoot));
+                        HttpContext.Current.Server.MapPath(string.Format("/Setup/Scripts/History.xml"));
                     
                     xmlDocument.Load(docPath);
 
@@ -218,7 +217,7 @@ namespace Appleseed.Framework.Update
                                     // It may be a module update only
                                     var currentScriptName =
                                         HttpContext.Current.Server.MapPath(
-                                            System.IO.Path.Combine(string.Format("{0}/Setup/Scripts/", Path.ApplicationRoot), scriptName));
+                                            System.IO.Path.Combine(string.Format("/Setup/Scripts/"), scriptName));
                                     ErrorHandler.Publish(
                                         LogLevel.Info,
                                         string.Format(
@@ -245,11 +244,7 @@ namespace Appleseed.Framework.Update
 
                                 // Installing modules
                                 foreach (var currentModuleInstaller in from string moduleInstaller in updateEntry.Modules
-                                                                       select
-                                                                           HttpContext.Current.Server.MapPath(
-                                                                               System.IO.Path.Combine(
-                                                                                   Path.ApplicationRoot + "/",
-                                                                                   moduleInstaller)))
+                                                                       select HttpContext.Current.Server.MapPath(System.IO.Path.Combine("/", moduleInstaller)))
                                 {
                                     try
                                     {
