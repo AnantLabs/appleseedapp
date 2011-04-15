@@ -1203,5 +1203,6 @@
   </Release>
 
   <!--DEPRECATED: Don´t add more scripts, this is only for backward compatibility -->
+  <!--Please use DBScripts folder in Appleseed.Core portable area -->
   
 </History>

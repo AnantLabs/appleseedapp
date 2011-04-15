@@ -291,9 +291,11 @@ namespace Appleseed.Framework.Settings
             get
             {
                 SqlConnection myConnection = new SqlConnection();
+
+
                 try
                 {
-                    myConnection.ConnectionString = ConnectionString;
+                    myConnection.ConnectionString = ConnectionString;                  
                 }
                 catch (System.ArgumentException ex) //connectionstring not well formed
                 {

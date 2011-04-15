@@ -529,7 +529,7 @@ namespace Appleseed
             // moved from PortalSettings
             var f = FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(Portal)).Location);
             HttpContext.Current.Application.Lock();
-            HttpContext.Current.Application["CodeVersion"] = f.FilePrivatePart;
+            HttpContext.Current.Application["CodeVersion"] = 1894; //f.FilePrivatePart;
             HttpContext.Current.Application.UnLock();
 
             ErrorHandler.Publish(
