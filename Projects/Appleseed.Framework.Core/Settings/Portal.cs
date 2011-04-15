@@ -38,8 +38,7 @@ namespace Appleseed.Framework.Settings
             get
             {
                 return context.Current != null && context.Current.Application["CodeVersion"] != null
-                           ? (int)context.Current.Application["CodeVersion"]
-                           : 0;
+                           ? (int)context.Current.Application["CodeVersion"] : 0;
             }
         }
 
