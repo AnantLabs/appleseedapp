@@ -430,19 +430,7 @@ namespace Appleseed
         private bool CheckAndUpdateDB(HttpContext context, string requestPath)
         {
             var requestUri = context.Request.Url;
-            var databaseUpdateRedirect = Config.DatabaseUpdateRedirect;
-
-
-            if (databaseUpdateRedirect.StartsWith("~/"))
-            {
-                databaseUpdateRedirect = databaseUpdateRedirect.TrimStart(new[] { '~' });
-            }
-
-            if (requestPath.EndsWith(databaseUpdateRedirect.ToLower(CultureInfo.InvariantCulture)))
-            {
-                return true; // this is DB Update page... so skip creation of PortalSettings
-            }
-
+            
             var installRedirect = Config.InstallerRedirect;
             if (installRedirect.StartsWith("~/"))
             {
@@ -455,6 +443,14 @@ namespace Appleseed
                 return true; // this is Install page... so skip creation of PortalSettings
             }
 
+            UpdateDB();
+
+            return false;
+        }
+
+        private void UpdateDB()
+        {
+           
             var versionDelta = Database.DatabaseVersion.CompareTo(Portal.CodeVersion);
 
             // if DB and code versions do not match
@@ -468,7 +464,10 @@ namespace Appleseed
                 {
                     // DB Version is behind Code Version
                     ErrorHandler.Publish(LogLevel.Warn, errorMessage);
-                    this.Response.Redirect(Framework.Settings.Path.ApplicationRoot + databaseUpdateRedirect, true);
+                    using (var s = new Services())
+                    {
+                        s.RunDBUpdate(Config.ConnectionString);
+                    }
                 }
                 else
                 {
@@ -476,8 +475,6 @@ namespace Appleseed
                     ErrorHandler.Publish(LogLevel.Warn, errorMessage);
                 }
             }
-
-            return false;
         }
 
         /// <summary>
@@ -579,22 +576,32 @@ namespace Appleseed
                 WebRequest.DefaultWebProxy = PortalSettings.GetProxy();
             }
 
-            /* MVCContrib PortableAreas*/
+            try
+            {
+                UpdateDB();
 
-            //Handlers for bus messages
-            Bus.AddMessageHandler(typeof(BusMessageHandler));
-            Bus.AddMessageHandler(typeof(DBScriptsHandler));
 
-            //Register first core portable area (just in case...)
-            Appleseed.Core.PortableAreaUtils.RegisterArea<Appleseed.Core.AppleseedCoreRegistration>(RouteTable.Routes, false);
+                /* MVCContrib PortableAreas*/
 
-            //Then, register all portable areas
-            AreaRegistration.RegisterAllAreas(true);
+                //Handlers for bus messages
+                Bus.AddMessageHandler(typeof(BusMessageHandler));
+                Bus.AddMessageHandler(typeof(DBScriptsHandler));
 
-            RegisterRoutes(RouteTable.Routes);
+                //Register first core portable area (just in case...)
+                Appleseed.Core.PortableAreaUtils.RegisterArea<Appleseed.Core.AppleseedCoreRegistration>(RouteTable.Routes, false);
 
-            InputBuilder.BootStrap();
+                //Then, register all portable areas
+                AreaRegistration.RegisterAllAreas(true);
 
+                RegisterRoutes(RouteTable.Routes);
+
+                InputBuilder.BootStrap();
+
+            }
+            catch (Exception exc)
+            {
+                ErrorHandler.Publish(LogLevel.Error, exc);
+            }
 
         }
 

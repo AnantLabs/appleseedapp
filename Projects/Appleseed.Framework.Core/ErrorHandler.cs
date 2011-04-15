@@ -156,7 +156,7 @@ namespace Appleseed.Framework
                         // db version is behind code version
                         logLevel = LogLevel.Fatal;
                         httpStatusCode = Config.DatabaseUpdateResponse;
-                        redirectUrl = Config.DatabaseUpdateRedirect;
+                        redirectUrl = Config.InvalidPageIdRedirect;
                     }
                     else if (e is CodeVersionException)
                     {

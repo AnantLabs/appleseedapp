@@ -515,10 +515,10 @@ namespace Appleseed.Framework.Settings
 		/// URL for redirect to Database Update page
 		/// <br/>
 		/// Default value: "~/Setup/Update.aspx"</summary>
-		public static string DatabaseUpdateRedirect
-		{
-			get { return GetString("DatabaseUpdateRedirect", "~/Installer/Update.aspx", false); }
-		}
+        //public static string DatabaseUpdateRedirect
+        //{
+        //    get { return GetString("DatabaseUpdateRedirect", "~/Installer/Update.aspx", false); }
+        //}
 
         /// <summary>
         /// URL for redirect to Installer page

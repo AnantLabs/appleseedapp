@@ -91,20 +91,27 @@ namespace Appleseed.Framework.Settings
             // new version - Jes1111 - 07/07/2005
             get
             {
-                if (context.Current.Items["PortalAlias"] == null)
+                try
                 {
-                    // not already in context
-                    var uniquePortalId = Config.DefaultPortal; // set default value
+                    if (context.Current.Items["PortalAlias"] == null)
+                    {
+                        // not already in context
+                        var uniquePortalId = Config.DefaultPortal; // set default value
 
-                    FindAlias(context.Current.Request, ref uniquePortalId); // will change uniquePortalID if it can
+                        FindAlias(context.Current.Request, ref uniquePortalId); // will change uniquePortalID if it can
 
-                    context.Current.Items.Add("PortalAlias", uniquePortalId); // add to context
+                        context.Current.Items.Add("PortalAlias", uniquePortalId); // add to context
 
-                    return uniquePortalId; // return current value
+                        return uniquePortalId; // return current value
+                    }
+
+                    // already in context
+                    return (string)context.Current.Items["PortalAlias"]; // return from context
                 }
-                
-                // already in context
-                return (string)context.Current.Items["PortalAlias"]; // return from context
+                catch
+                {
+                    return "Appleseed";
+                }
             }
         }
 
