@@ -21,6 +21,8 @@ namespace Appleseed.Installer
     using System.Xml;
 
     using Appleseed.Framework.Update;
+    using Appleseed.Framework;
+using System.Configuration;
 
     /// <summary>
     /// The default.
@@ -71,8 +73,8 @@ namespace Appleseed.Installer
 
         /// <summary>
         ///   The installer enabled.
-        /// </summary>
-        private const bool InstallerEnabled = true;
+        /// </summary> 
+        private const bool InstallerEnabled =  true;
 
         /// <summary>
         ///   constant string used to allow host to pass the database name to the wizard. If the database can be found in the
@@ -424,8 +426,18 @@ namespace Appleseed.Installer
 
             // We use the installer enabled flag to prevent someone from accidentally running the web installer, or
             // someone trying to maliciously trying to run the installer 
+
             if (InstallerEnabled)
             {
+                var cs = ConfigurationManager.ConnectionStrings["ConnectionString"];
+                if (cs != null)
+                {
+                    //If connectionstring, redirect to home
+                    if (!String.IsNullOrEmpty(cs.ConnectionString) && cs.ConnectionString != "foo")
+                        Response.Redirect("~");
+                }
+
+
                 this.messages = new ArrayList();
 
                 if (!this.Page.IsPostBack)
