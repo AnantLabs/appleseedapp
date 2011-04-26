@@ -40,7 +40,7 @@
       <Installer>DesktopModules/CoreModules/Roles/install.xml</Installer>
       <Installer>DesktopModules/CoreModules/Recycler/install.xml</Installer>
       <Installer>DesktopModules/CoreModules/SecurityCheck/install.xml</Installer>
-      <Installer>DesktopModules/CoreModules/SignIn/install.xml</Installer>      
+      <Installer>DesktopModules/CoreModules/SignIn/install.xml</Installer>
       <Installer>DesktopModules/CoreModules/SiteSettings/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/AmazonFull/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/Announcements/install.xml</Installer>
@@ -58,13 +58,10 @@
       <Installer>DesktopModules/CommunityModules/FAQs/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/FileDirectoryTree/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/FlashModule/install.xml</Installer>
-      <Installer>DesktopModules/CommunityModules/GoogleSearch/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/HTMLDocument/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/IframeModule/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/Image/install.xml</Installer>
-      <Installer>DesktopModules/CommunityModules/LDAPUserProfile/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/LanguageSwitcher/install.xml</Installer>
-      <Installer>DesktopModules/CommunityModules/Links/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/MapQuest/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/MileStones/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/PageKeyPhrase/install.xml</Installer>
@@ -72,7 +69,6 @@
       <Installer>DesktopModules/CommunityModules/PortalSearch/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/Quiz/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/Quote/install.xml</Installer>
-      <Installer>DesktopModules/CommunityModules/RoleAssignment/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/SendThoughts/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/ServiceItemList/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/Shortcut/install.xml</Installer>
@@ -928,7 +924,7 @@
       <Installer>DesktopModules/CommunityModules/SendThoughts/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/ServiceItemList/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/Shortcut/install.xml</Installer>
-      <Installer>DesktopModules/CommunityModules/SignIn/install.xml</Installer>      
+      <Installer>DesktopModules/CommunityModules/SignIn/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/SimpleMenu/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/SiteMap/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/Survey/install.xml</Installer>
@@ -1160,7 +1156,7 @@
       <Script>2.0.0.1889.sql</Script>
     </Scripts>
   </Release>
-	
+
   <Release>
     <ID>1890</ID>
     <Version>2.0.0.1890</Version>
@@ -1168,8 +1164,8 @@
     <Scripts>
       <Script>2.0.0.1890.sql</Script>
     </Scripts>
-  </Release>	
-  
+  </Release>
+
   <Release>
     <ID>1891</ID>
     <Version>2.0.0.1891</Version>
@@ -1180,30 +1176,33 @@
   </Release>
 
   <Release>
-	<ID>1892</ID>
-	<Version>2.0.0.1892</Version>
-	<Date>2011-03-29T00:00:00.0000000-03:00</Date>
-	<Scripts>
-		<Script>2.0.0.1892.sql</Script>
-	</Scripts>
+    <ID>1892</ID>
+    <Version>2.0.0.1892</Version>
+    <Date>2011-03-29T00:00:00.0000000-03:00</Date>
+    <Scripts>
+      <Script>2.0.0.1892.sql</Script>
+    </Scripts>
   </Release>
 
   <Release>
-	<ID>1893</ID>
-	<Version>2.0.0.1893</Version>
-	<Date>2011-03-30T00:00:00.0000000-03:00</Date>
-	<Scripts>
-		<Script>2.0.0.1893.sql</Script>
-	</Scripts>
+    <ID>1893</ID>
+    <Version>2.0.0.1893</Version>
+    <Date>2011-03-30T00:00:00.0000000-03:00</Date>
+    <Scripts>
+      <Script>2.0.0.1893.sql</Script>
+    </Scripts>
   </Release>
 
   <Release>
-	<ID>1894</ID>
-	<Version>2.0.0.1894</Version>
-	<Date>2011-04-01T00:00:00.0000000-03:00</Date>
-	<Scripts>
-		<Script>2.0.0.1894.sql</Script>
-	</Scripts>
-  </Release>	
- 
+    <ID>1894</ID>
+    <Version>2.0.0.1894</Version>
+    <Date>2011-04-01T00:00:00.0000000-03:00</Date>
+    <Scripts>
+      <Script>2.0.0.1894.sql</Script>
+    </Scripts>
+  </Release>
+
+  <!--DEPRECATED: Don´t add more scripts, this is only for backward compatibility -->
+  <!--Please use DBScripts folder in Appleseed.Core portable area -->
+  
 </History>

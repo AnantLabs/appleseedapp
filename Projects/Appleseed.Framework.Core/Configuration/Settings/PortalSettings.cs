@@ -406,23 +406,9 @@ namespace Appleseed.Framework.Site.Configuration
                 catch (SqlException sqex)
                 {
                     var requestUri = HttpContext.Current.Request.Url;
-                    var databaseUpdateRedirect = Config.DatabaseUpdateRedirect;
-                    if (databaseUpdateRedirect.StartsWith("~/"))
-                    {
-                        databaseUpdateRedirect = databaseUpdateRedirect.TrimStart(new[] { '~' });
-                    }
-
-                    if (
-                        !requestUri.AbsolutePath.ToLower(CultureInfo.InvariantCulture).EndsWith(
-                            databaseUpdateRedirect.ToLower(CultureInfo.InvariantCulture)))
-                    {
+                    
                         throw new DatabaseUnreachableException("This may be a new db", sqex);
-                    }
-                    else
-                    {
-                        ErrorHandler.Publish(LogLevel.Warn, "This may be a new db"); // Jes1111
-                    }
-
+                    
                     return;
                 }
                 finally

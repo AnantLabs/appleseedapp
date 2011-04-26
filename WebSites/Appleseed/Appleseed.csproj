@@ -1469,13 +1469,6 @@
     <Compile Include="Installer\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Installer\Update.aspx.cs">
-      <DependentUpon>Update.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Installer\Update.aspx.designer.cs">
-      <DependentUpon>Update.aspx</DependentUpon>
-    </Compile>
     <Compile Include="LocalizationAdmin\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
@@ -5017,9 +5010,7 @@
     <Content Include="Design\Themes\Appleseedcms\menu.css" />
     <Content Include="Design\Themes\Appleseedcms\TabControl.css" />
     <Content Include="Design\Themes\Appleseedcms\TabsSubTabs.css" />
-    <Content Include="Design\Themes\Appleseedcms\Theme.xml">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Design\Themes\Appleseedcms\Theme.xml" />
     <Content Include="Design\Themes\Clearly\default.css" />
     <Content Include="Design\Themes\Clearly\icon\add.gif" />
     <Content Include="Design\Themes\Clearly\icon\add.png" />
@@ -6289,7 +6280,6 @@
     <Content Include="Installer\style\compressed.css" />
     <Content Include="Installer\style\default.css" />
     <Content Include="Installer\style\style.css" />
-    <Content Include="Installer\Update.aspx" />
     <Content Include="LocalizationAdmin\Default.aspx" />
     <Content Include="LocalizationAdmin\images\MenuHighlight.png" />
     <Content Include="LocalizationAdmin\images\VertGradient.png" />

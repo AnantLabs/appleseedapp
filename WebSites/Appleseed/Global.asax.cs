@@ -35,6 +35,9 @@ namespace Appleseed
 
     using Path = System.IO.Path;
     using Reader = Appleseed.Context.Reader;
+    using MvcContrib;
+    using Appleseed.Core.ApplicationBus;
+    using Appleseed.Framework.Update;
 
     /// <summary>
     /// The global.
@@ -138,6 +141,7 @@ namespace Appleseed
             }
 
             // 1st Check: is it a dangerously malformed request?
+            #region
             // Important patch http://support.microsoft.com/?kbid=887459
             if (context.Request.Path.IndexOf('\\') >= 0 ||
                 Path.GetFullPath(context.Request.PhysicalPath) != context.Request.PhysicalPath)
@@ -145,8 +149,11 @@ namespace Appleseed
                 throw new AppleseedRedirect(LogLevel.Warn, HttpStatusCode.NotFound, "Malformed request", null);
             }
 
+            #endregion
+
             // 2nd Check: is the AllPortals Lock switched on?
             // let the user through if client IP address is in LockExceptions list, otherwise throw...
+            #region
             if (Config.LockAllPortals)
             {
                 var rawUrl = context.Request.RawUrl.ToLower(CultureInfo.InvariantCulture);
@@ -161,7 +168,7 @@ namespace Appleseed
                         if (lockKeyHolder.IndexOf("-") > -1)
                         {
                             ipList.AddRange(
-                                lockKeyHolder.Substring(0, lockKeyHolder.IndexOf("-")), 
+                                lockKeyHolder.Substring(0, lockKeyHolder.IndexOf("-")),
                                 lockKeyHolder.Substring(lockKeyHolder.IndexOf("-") + 1));
                         }
                         else
@@ -177,55 +184,18 @@ namespace Appleseed
                     }
                 }
             }
+            #endregion
 
             // 3rd Check: is database/code version correct?
             var requestUri = context.Request.Url;
             var requestPath = requestUri.AbsolutePath.ToLower(CultureInfo.InvariantCulture);
-            var databaseUpdateRedirect = Config.DatabaseUpdateRedirect;
-            if (databaseUpdateRedirect.StartsWith("~/"))
-            {
-                databaseUpdateRedirect = databaseUpdateRedirect.TrimStart(new[] { '~' });
-            }
+            var returnToRequest = CheckAndUpdateDB(context, requestPath);
 
-            if (requestPath.EndsWith(databaseUpdateRedirect.ToLower(CultureInfo.InvariantCulture)))
-            {
-                return; // this is DB Update page... so skip creation of PortalSettings
-            }
+            if (returnToRequest)
+                return;
 
-            var installRedirect = Config.InstallerRedirect;
-            if (installRedirect.StartsWith("~/"))
-            {
-                installRedirect = installRedirect.TrimStart(new[] { '~', '/' });
-            }
-
-            installRedirect = installRedirect.ToLower(CultureInfo.InvariantCulture);
-            if (requestPath.EndsWith(installRedirect) || requestPath.Contains(installRedirect.Split(new[] { '/' })[0]))
-            {
-                return; // this is Install page... so skip creation of PortalSettings
-            }
-
-            var versionDelta = Database.DatabaseVersion.CompareTo(Portal.CodeVersion);
-
-            // if DB and code versions do not match
-            if (versionDelta != 0)
-            {
-                // ...and this is not DB Update page
-                var errorMessage = string.Format(
-                    "Database version: {0} Code version: {1}", Database.DatabaseVersion, Portal.CodeVersion);
-
-                if (versionDelta < 0)
-                {
-                    // DB Version is behind Code Version
-                    ErrorHandler.Publish(LogLevel.Warn, errorMessage);
-                    this.Response.Redirect(Framework.Settings.Path.ApplicationRoot + databaseUpdateRedirect, true);
-                }
-                else
-                {
-                    // DB version is ahead of Code Version
-                    ErrorHandler.Publish(LogLevel.Warn, errorMessage);
-                }
-            }
-
+           
+            #region explanation
             // ************ 'calculate' response to this request ************
             // Test 1 - try requested Alias and requested PageID
             // Test 2 - try requested Alias and PageID 0
@@ -249,6 +219,8 @@ namespace Appleseed
             // - if requested Alias is invalid, default Alias will be used
             // - if requested PageID is found, it is shown
             // - if requested PageID is not found, PageID 0 (Home page) is shown
+            #endregion
+
             PortalSettings portalSettings = null;
 
             var pageId = Portal.PageID; // Get PageID from QueryString
@@ -281,7 +253,12 @@ namespace Appleseed
                 {
                     // If no database, must update
                     ErrorHandler.Publish(LogLevel.Error, dexc);
-                    this.Response.Redirect(Config.DatabaseUpdateRedirect);
+                    //this.Response.Redirect(Config.DatabaseUpdateRedirect);
+
+                    using (var s = new Services())
+                    {
+                        s.RunDBUpdate(Config.ConnectionString);
+                    }
                 }
 
                 // test returned result
@@ -304,10 +281,10 @@ namespace Appleseed
                 {
                     // critical error - neither requested alias nor default alias could be found in DB
                     throw new AppleseedRedirect(
-                        Config.NoPortalErrorRedirect, 
-                        LogLevel.Fatal, 
-                        Config.NoPortalErrorResponse, 
-                        "Unable to load any portal - redirecting request to ErrorNoPortal page.", 
+                        Config.NoPortalErrorRedirect,
+                        LogLevel.Fatal,
+                        Config.NoPortalErrorResponse,
+                        "Unable to load any portal - redirecting request to ErrorNoPortal page.",
                         null);
                 }
 
@@ -329,10 +306,10 @@ namespace Appleseed
                     {
                         // we didn't get the portal we asked for
                         throw new AppleseedRedirect(
-                            Config.InvalidAliasRedirect, 
-                            LogLevel.Info, 
-                            HttpStatusCode.NotFound, 
-                            "Invalid Alias specified in request URL - redirecting (404) to InvalidAliasRedirect page.", 
+                            Config.InvalidAliasRedirect,
+                            LogLevel.Info,
+                            HttpStatusCode.NotFound,
+                            "Invalid Alias specified in request URL - redirecting (404) to InvalidAliasRedirect page.",
                             null);
                     }
 
@@ -340,10 +317,10 @@ namespace Appleseed
                     {
                         // we didn't get the page we asked for
                         throw new AppleseedRedirect(
-                            Config.InvalidPageIdRedirect, 
-                            LogLevel.Info, 
-                            HttpStatusCode.NotFound, 
-                            "Invalid PageID specified in request URL - redirecting (404) to InvalidPageIdRedirect page.", 
+                            Config.InvalidPageIdRedirect,
+                            LogLevel.Info,
+                            HttpStatusCode.NotFound,
+                            "Invalid PageID specified in request URL - redirecting (404) to InvalidPageIdRedirect page.",
                             null);
                     }
                 }
@@ -357,7 +334,7 @@ namespace Appleseed
 
             if (requestPath.EndsWith(smartErrorRedirect.ToLower(CultureInfo.InvariantCulture)))
             {
-                return; // this is SmartError page... so continue 
+                return; // this is SmartError page... so continue             
             }
 
             // WLF: This was backwards before so it would always set refreshSite true because the cookie was changed before it was checked.
@@ -397,7 +374,8 @@ namespace Appleseed
                     var rawUrl = context.Request.RawUrl;
                     var newRefreshedCookie = new HttpCookie("refreshed", "true")
                         {
-                           Path = "/", Expires = DateTime.Now.AddMinutes(1) 
+                            Path = "/",
+                            Expires = DateTime.Now.AddMinutes(1)
                         };
                     if (refreshedCookie == null)
                     {
@@ -416,7 +394,7 @@ namespace Appleseed
                             rawUrl);
 
                     ErrorHandler.Publish(
-                        LogLevel.Warn, 
+                        LogLevel.Warn,
                         msg);
 
                     // sign-out, if refreshed parameter on the command line we will not call it again
@@ -430,7 +408,8 @@ namespace Appleseed
             {
                 var newRefreshedCookie = new HttpCookie("refreshed", "false")
                     {
-                       Path = "/", Expires = DateTime.Now.AddMinutes(1) 
+                        Path = "/",
+                        Expires = DateTime.Now.AddMinutes(1)
                     };
                 context.Response.Cookies.Set(newRefreshedCookie);
             }
@@ -444,6 +423,56 @@ namespace Appleseed
                 {
                     var url = HttpUrlBuilder.BuildUrl(mvcPageId);
                     this.Response.Redirect(url);
+                }
+            }
+        }
+
+        private bool CheckAndUpdateDB(HttpContext context, string requestPath)
+        {
+            var requestUri = context.Request.Url;
+            
+            var installRedirect = Config.InstallerRedirect;
+            if (installRedirect.StartsWith("~/"))
+            {
+                installRedirect = installRedirect.TrimStart(new[] { '~', '/' });
+            }
+
+            installRedirect = installRedirect.ToLower(CultureInfo.InvariantCulture);
+            if (requestPath.EndsWith(installRedirect) || requestPath.Contains(installRedirect.Split(new[] { '/' })[0]))
+            {
+                return true; // this is Install page... so skip creation of PortalSettings
+            }
+
+            UpdateDB();
+
+            return false;
+        }
+
+        private void UpdateDB()
+        {
+           
+            var versionDelta = Database.DatabaseVersion.CompareTo(Portal.CodeVersion);
+
+            // if DB and code versions do not match
+            if (versionDelta != 0)
+            {
+                // ...and this is not DB Update page
+                var errorMessage = string.Format(
+                    "Database version: {0} Code version: {1}", Database.DatabaseVersion, Portal.CodeVersion);
+
+                if (versionDelta < 0)
+                {
+                    // DB Version is behind Code Version
+                    ErrorHandler.Publish(LogLevel.Warn, errorMessage);
+                    using (var s = new Services())
+                    {
+                        s.RunDBUpdate(Config.ConnectionString);
+                    }
+                }
+                else
+                {
+                    // DB version is ahead of Code Version
+                    ErrorHandler.Publish(LogLevel.Warn, errorMessage);
                 }
             }
         }
@@ -497,7 +526,7 @@ namespace Appleseed
             // moved from PortalSettings
             var f = FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(Portal)).Location);
             HttpContext.Current.Application.Lock();
-            HttpContext.Current.Application["CodeVersion"] = f.FilePrivatePart;
+            HttpContext.Current.Application["CodeVersion"] = 1894; //f.FilePrivatePart;
             HttpContext.Current.Application.UnLock();
 
             ErrorHandler.Publish(
@@ -522,9 +551,9 @@ namespace Appleseed
                 catch (Exception ex)
                 {
                     throw new AppleseedException(
-                        LogLevel.Fatal, 
-                        HttpStatusCode.ServiceUnavailable, 
-                        "ASPNET Account does not have rights to the file system", 
+                        LogLevel.Fatal,
+                        HttpStatusCode.ServiceUnavailable,
+                        "ASPNET Account does not have rights to the file system",
                         ex); // Jes1111
                 }
             }
@@ -534,9 +563,9 @@ namespace Appleseed
             {
                 PortalSettings.Scheduler =
                     CachedScheduler.GetScheduler(
-                        context.Server.MapPath(Framework.Settings.Path.ApplicationRoot), 
-                        Config.SqlConnectionString, 
-                        Config.SchedulerPeriod, 
+                        context.Server.MapPath(Framework.Settings.Path.ApplicationRoot),
+                        Config.SqlConnectionString,
+                        Config.SchedulerPeriod,
                         Config.SchedulerCacheSize);
                 PortalSettings.Scheduler.Start();
             }
@@ -547,10 +576,33 @@ namespace Appleseed
                 WebRequest.DefaultWebProxy = PortalSettings.GetProxy();
             }
 
-            AreaRegistration.RegisterAllAreas();
-            RegisterRoutes(RouteTable.Routes);
+            try
+            {
+                UpdateDB();
 
-            InputBuilder.BootStrap();
+
+                /* MVCContrib PortableAreas*/
+
+                //Handlers for bus messages
+                Bus.AddMessageHandler(typeof(BusMessageHandler));
+                Bus.AddMessageHandler(typeof(DBScriptsHandler));
+
+                //Register first core portable area (just in case...)
+                Appleseed.Core.PortableAreaUtils.RegisterArea<Appleseed.Core.AppleseedCoreRegistration>(RouteTable.Routes, false);
+
+                //Then, register all portable areas
+                AreaRegistration.RegisterAllAreas(true);
+
+                RegisterRoutes(RouteTable.Routes);
+
+                InputBuilder.BootStrap();
+
+            }
+            catch (Exception exc)
+            {
+                ErrorHandler.Publish(LogLevel.Error, exc);
+            }
+
         }
 
         #endregion

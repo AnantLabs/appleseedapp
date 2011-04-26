@@ -125,7 +125,7 @@ namespace Appleseed.Framework
             try
             {
                 var e = HttpContext.Current.Server.GetLastError();
-
+                ErrorHandler.PublishToLog(LogLevel.Error, "Error no procesado", e);
                 var redirectUrl = Config.SmartErrorRedirect; // default value
                 var httpStatusCode = HttpStatusCode.InternalServerError; // default value
                 var cacheKey = string.Empty;
@@ -156,7 +156,7 @@ namespace Appleseed.Framework
                         // db version is behind code version
                         logLevel = LogLevel.Fatal;
                         httpStatusCode = Config.DatabaseUpdateResponse;
-                        redirectUrl = Config.DatabaseUpdateRedirect;
+                        redirectUrl = Config.InvalidPageIdRedirect;
                     }
                     else if (e is CodeVersionException)
                     {

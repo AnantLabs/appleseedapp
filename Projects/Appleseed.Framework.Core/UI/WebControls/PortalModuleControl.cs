@@ -2872,7 +2872,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                 if (HttpContext.Current != null && this.titleText == string.Empty)
                 {
                     var key = string.Format("MODULESETTINGS_TITLE_{0}", this.PortalSettings.PortalContentLanguage.Name);
-                    var setting = this.Settings[key];
+                    var setting = this.Settings.ContainsKey(key) ? this.Settings[key] : null;
 
                     // if it is not design time (and not overridden - Jes1111)
                     if (this.PortalSettings.PortalContentLanguage != CultureInfo.InvariantCulture && setting != null &&
@@ -3621,8 +3621,10 @@ namespace Appleseed.Framework.Web.UI.WebControls
         {
             var template = this.CurrentTheme.GetThemePart("ModuleLayout");
 
-            template = template.Replace("{Title}", this.TitleText);
-            template = template.Replace("{TitleRowStyle}", this.ShowTitle ? "display:inline" : "display:none");
+            var title = this.ShowTitle ? this.TitleText : "&nbsp;";
+            template = template.Replace("{Title}", title);
+            template = template.Replace("{TitleStyle}", this.ShowTitle ? "display:inline" : "display:none");
+            template = template.Replace("{NoTitleStyle}", this.ShowTitle ? "display:none" : "display:inline");
             template = template.Replace("{BodyBgColor}", this.CurrentTheme.GetThemePart("DefaultBodyBgColor"));
             template = template.Replace("{TitleBgColor}", this.CurrentTheme.GetThemePart("DefaultTitleBgColor"));
 

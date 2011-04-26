@@ -82,7 +82,7 @@
                                             </ul>
                                         </div>
                                         <div class="wizardsectionheader">
-                                            <strong>Environment Check:</strong></div>
+                                            <strong>Environment Check (for user <%=  System.Environment.UserDomainName + @"\" + System.Environment.UserName %>):</strong></div>
                                         <div class="wizardsection">
                                             <ul>
                                                 <li style="margin-bottom: 8px;">
