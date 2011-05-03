@@ -334,6 +334,9 @@
     </Compile>
     <Compile Include="UI\WebControls\PowerGrid.cs" />
     <Compile Include="UI\WebControls\ShopNavigation.cs" />
+    <Compile Include="UI\WebControls\SignInControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="UI\WebControls\SmartScroller.cs" />
     <Compile Include="UI\WebControls\SolpartNavigation.cs" />
     <Compile Include="UI\WebControls\SyrinxCkTextBox.cs">

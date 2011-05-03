@@ -1584,6 +1584,30 @@ namespace Appleseed.Framework.Site.Configuration
                 };
                 baseSettings.Add("SITESETTINGS_RECAPTCHA_PUBLIC_KEY", recaptchaPublicKey);
 
+                // Facebook keys
+                var facebookAppId = new SettingItem<string, TextBox>()
+                {
+                    Required = false,
+                    Value = "",
+                    EnglishName = "Facebook Application ID",
+                    Description = "Insert here facebook's Application ID for your portal.",
+                    Order = groupOrderBase + 24,
+                    Group = group
+                };
+                baseSettings.Add("SITESETTINGS_FACEBOOK_APP_ID", facebookAppId);
+
+                var facebookAppSecret = new SettingItem<string, TextBox>()
+                {
+                    Required = false,
+                    Value = "",
+                    EnglishName = "Facebook Application Secret",
+                    Description = "Insert here facebook's Application Secret for your portal.",
+                    Order = groupOrderBase + 25,
+                    Group = group
+                };
+                baseSettings.Add("SITESETTINGS_FACEBOOK_APP_SECRET", facebookAppSecret);
+
+
                 groupOrderBase = (int)SettingItemGroup.META_SETTINGS;
                 group = SettingItemGroup.META_SETTINGS;
 

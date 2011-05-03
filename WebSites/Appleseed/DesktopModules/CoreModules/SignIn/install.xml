@@ -15,4 +15,9 @@
 		<DesktopSource>DesktopModules/CoreModules/SignIn/SignInLink.ascx</DesktopSource>
 		<MobileSource></MobileSource>
 	</Module>	
+	<Module>
+		<FriendlyName>SignInFacebook</FriendlyName>
+		<DesktopSource>DesktopModules/CoreModules/SignIn/SignInFacebook.ascx</DesktopSource>
+		<MobileSource></MobileSource>
+	</Module>
 </Modules>
