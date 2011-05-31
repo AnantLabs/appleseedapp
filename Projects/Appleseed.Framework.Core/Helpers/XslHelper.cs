@@ -40,7 +40,7 @@ namespace Appleseed.Framework.Helpers
         /// <summary>
         ///   The portal settings.
         /// </summary>
-        private readonly PortalSettings portalSettings;
+        private readonly PortalSettings PortalSettings;
 
         /// <summary>
         ///   The membership user.
@@ -58,10 +58,10 @@ namespace Appleseed.Framework.Helpers
         {
             if (HttpContext.Current != null)
             {
-                this.portalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+                this.PortalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
 
                 var users = new UsersDB();
-                this.user = users.GetSingleUser(HttpContext.Current.User.Identity.Name, this.portalSettings.PortalAlias);
+                this.user = users.GetSingleUser(HttpContext.Current.User.Identity.Name, this.PortalSettings.PortalAlias);
             }
         }
 
@@ -245,7 +245,7 @@ namespace Appleseed.Framework.Helpers
         /// </returns>
         public XPathNodeIterator DesktopTabsXml()
         {
-            return this.portalSettings.PortalPagesXml.CreateNavigator().Select("*");
+            return this.PortalSettings.PortalPagesXml.CreateNavigator().Select("*");
         }
 
         /// <summary>
@@ -282,7 +282,7 @@ namespace Appleseed.Framework.Helpers
             try
             {
                 return this.FormatDateTime(
-                    dateStr, dataCulture, this.portalSettings.PortalDataFormattingCulture.Name, formatStr);
+                    dateStr, dataCulture, this.PortalSettings.PortalDataFormattingCulture.Name, formatStr);
             }
             catch
             {
@@ -308,8 +308,8 @@ namespace Appleseed.Framework.Helpers
             {
                 return this.FormatDateTime(
                     dateStr, 
-                    this.portalSettings.PortalDataFormattingCulture.Name, 
-                    this.portalSettings.PortalDataFormattingCulture.Name, 
+                    this.PortalSettings.PortalDataFormattingCulture.Name, 
+                    this.PortalSettings.PortalDataFormattingCulture.Name, 
                     formatStr);
             }
             catch
@@ -361,7 +361,7 @@ namespace Appleseed.Framework.Helpers
         {
             try
             {
-                var conv = dataCulture.ToLower() == this.portalSettings.PortalDataFormattingCulture.Name.ToLower()
+                var conv = dataCulture.ToLower() == this.PortalSettings.PortalDataFormattingCulture.Name.ToLower()
                                ? DateTime.ParseExact(
                                    dateStr, 
                                    "mm/dd/yyyy hh:mm:ss", 
@@ -369,7 +369,7 @@ namespace Appleseed.Framework.Helpers
                                    DateTimeStyles.AdjustToUniversal)
                                : DateTime.Parse(dateStr, new CultureInfo(dataCulture, false), DateTimeStyles.None);
 
-                return outputCulture.ToLower() == this.portalSettings.PortalDataFormattingCulture.Name.ToLower()
+                return outputCulture.ToLower() == this.PortalSettings.PortalDataFormattingCulture.Name.ToLower()
                            ? conv.ToString(formatStr)
                            : conv.ToString(formatStr, new CultureInfo(outputCulture, false));
             }
@@ -427,7 +427,7 @@ namespace Appleseed.Framework.Helpers
             try
             {
                 return this.FormatNumber(
-                    numberStr, dataCulture, this.portalSettings.PortalDataFormattingCulture.Name, formatStr);
+                    numberStr, dataCulture, this.PortalSettings.PortalDataFormattingCulture.Name, formatStr);
             }
             catch
             {
@@ -457,11 +457,11 @@ namespace Appleseed.Framework.Helpers
         {
             try
             {
-                var conv = dataCulture.ToLower() == this.portalSettings.PortalDataFormattingCulture.Name.ToLower()
+                var conv = dataCulture.ToLower() == this.PortalSettings.PortalDataFormattingCulture.Name.ToLower()
                                ? Double.Parse(numberStr)
                                : Double.Parse(numberStr, new CultureInfo(dataCulture, false));
 
-                return outputCulture.ToLower() == this.portalSettings.PortalDataFormattingCulture.Name.ToLower()
+                return outputCulture.ToLower() == this.PortalSettings.PortalDataFormattingCulture.Name.ToLower()
                            ? conv.ToString(formatStr)
                            : conv.ToString(formatStr, new CultureInfo(outputCulture, false));
             }
@@ -538,7 +538,7 @@ namespace Appleseed.Framework.Helpers
         /// </returns>
         public string PageID()
         {
-            return this.portalSettings.ActivePage.PageID.ToString();
+            return this.PortalSettings.ActivePage.PageID.ToString();
         }
 
         /// <summary>
@@ -549,7 +549,7 @@ namespace Appleseed.Framework.Helpers
         /// </returns>
         public string PortalAlias()
         {
-            return this.portalSettings.PortalAlias;
+            return this.PortalSettings.PortalAlias;
         }
 
         /// <summary>
@@ -560,7 +560,7 @@ namespace Appleseed.Framework.Helpers
         /// </returns>
         public string PortalContentLanguage()
         {
-            return this.portalSettings.PortalContentLanguage.Name;
+            return this.PortalSettings.PortalContentLanguage.Name;
         }
 
         /// <summary>
@@ -571,7 +571,7 @@ namespace Appleseed.Framework.Helpers
         /// </returns>
         public string PortalDataFormattingCulture()
         {
-            return this.portalSettings.PortalDataFormattingCulture.Name;
+            return this.PortalSettings.PortalDataFormattingCulture.Name;
         }
 
         /// <summary>
@@ -582,7 +582,7 @@ namespace Appleseed.Framework.Helpers
         /// </returns>
         public string PortalFullPath()
         {
-            return this.portalSettings.PortalFullPath;
+            return this.PortalSettings.PortalFullPath;
         }
 
         /// <summary>
@@ -593,7 +593,7 @@ namespace Appleseed.Framework.Helpers
         /// </returns>
         public string PortalID()
         {
-            return this.portalSettings.PortalID.ToString();
+            return this.PortalSettings.PortalID.ToString();
         }
 
         /// <summary>
@@ -604,7 +604,7 @@ namespace Appleseed.Framework.Helpers
         /// </returns>
         public string PortalLayoutPath()
         {
-            return this.portalSettings.PortalLayoutPath;
+            return this.PortalSettings.PortalLayoutPath;
         }
 
         /// <summary>
@@ -615,7 +615,7 @@ namespace Appleseed.Framework.Helpers
         /// </returns>
         public string PortalName()
         {
-            return this.portalSettings.PortalName;
+            return this.PortalSettings.PortalName;
         }
 
         /// <summary>
@@ -626,7 +626,7 @@ namespace Appleseed.Framework.Helpers
         /// </returns>
         public string PortalTitle()
         {
-            return this.portalSettings.PortalTitle;
+            return this.PortalSettings.PortalTitle;
         }
 
         /// <summary>
@@ -637,7 +637,7 @@ namespace Appleseed.Framework.Helpers
         /// </returns>
         public string PortalUILanguage()
         {
-            return this.portalSettings.PortalUILanguage.Name;
+            return this.PortalSettings.PortalUILanguage.Name;
         }
 
         /// <summary>
@@ -700,7 +700,7 @@ namespace Appleseed.Framework.Helpers
         /// </returns>
         public string TabTitle()
         {
-            return this.portalSettings.ActivePage.PageName;
+            return this.PortalSettings.ActivePage.PageName;
         }
 
         /// <summary>

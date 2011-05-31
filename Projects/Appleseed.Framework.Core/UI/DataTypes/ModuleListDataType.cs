@@ -52,8 +52,8 @@ namespace Appleseed.Framework.DataTypes
             get
             {
                 // Obtain PortalSettings from Current Context
-                var portalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
-                return new ModulesDB().GetModulesByName(this.InnerDataSource.ToString(), portalSettings.PortalID);
+                var PortalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+                return new ModulesDB().GetModulesByName(this.InnerDataSource.ToString(), PortalSettings.PortalID);
             }
         }
 

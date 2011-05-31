@@ -135,7 +135,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
             base.DataBind();
 
             // Obtain PortalSettings from Current Context 
-            ////var portalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+            ////var PortalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
 
             // Build list of tabs to be shown to user 
             var authorizedTabs = (ArrayList)this.GetInnerDataSource();
@@ -197,49 +197,49 @@ namespace Appleseed.Framework.Web.UI.WebControls
             if (HttpContext.Current != null)
             {
                 // Obtain PortalSettings from Current Context
-                var portalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+                var PortalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
 
                 switch (this.Bind)
                 {
                     case BindOption.BindOptionTop:
                         {
                             authorizedTabs = GetTabs(
-                                0, portalSettings.DesktopPages);
+                                0, PortalSettings.DesktopPages);
                             break;
                         }
 
                     case BindOption.BindOptionCurrentChilds:
                         {
                             var currentTabRoot =
-                                PortalSettings.GetRootPage(portalSettings.ActivePage, portalSettings.DesktopPages).
+                                PortalSettings.GetRootPage(PortalSettings.ActivePage, PortalSettings.DesktopPages).
                                     PageID;
                             authorizedTabs = GetTabs(
-                                currentTabRoot, portalSettings.DesktopPages);
+                                currentTabRoot, PortalSettings.DesktopPages);
                             break;
                         }
 
                     case BindOption.BindOptionSubtabSibling:
                         {
-                            int currentTabRoot = portalSettings.ActivePage.ParentPageID == 0 ? portalSettings.ActivePage.PageID : portalSettings.ActivePage.ParentPageID;
+                            int currentTabRoot = PortalSettings.ActivePage.ParentPageID == 0 ? PortalSettings.ActivePage.PageID : PortalSettings.ActivePage.ParentPageID;
 
                             authorizedTabs = GetTabs(
-                                currentTabRoot, portalSettings.DesktopPages);
+                                currentTabRoot, PortalSettings.DesktopPages);
                             break;
                         }
 
                     case BindOption.BindOptionChildren:
                         {
                             authorizedTabs = GetTabs(
-                                portalSettings.ActivePage.PageID,
-                                portalSettings.DesktopPages);
+                                PortalSettings.ActivePage.PageID,
+                                PortalSettings.DesktopPages);
                             break;
                         }
 
                     case BindOption.BindOptionSiblings:
                         {
                             authorizedTabs = GetTabs(
-                                portalSettings.ActivePage.ParentPageID,
-                                portalSettings.DesktopPages);
+                                PortalSettings.ActivePage.ParentPageID,
+                                PortalSettings.DesktopPages);
                             break;
                         }
 
@@ -247,14 +247,14 @@ namespace Appleseed.Framework.Web.UI.WebControls
                     case BindOption.BindOptionTabSibling:
                         {
                             authorizedTabs = GetTabs(
-                                portalSettings.ActivePage.PageID,
-                                portalSettings.DesktopPages);
+                                PortalSettings.ActivePage.PageID,
+                                PortalSettings.DesktopPages);
 
                             if (authorizedTabs.Count == 0)
                             {
                                 authorizedTabs = GetTabs(
-                                    portalSettings.ActivePage.ParentPageID,
-                                    portalSettings.DesktopPages);
+                                    PortalSettings.ActivePage.ParentPageID,
+                                    PortalSettings.DesktopPages);
                             }
 
                             break;
@@ -265,7 +265,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                         if (this.ParentPageID != -1)
                         {
                             authorizedTabs = GetTabs(
-                                this.ParentPageID, portalSettings.DesktopPages);
+                                this.ParentPageID, PortalSettings.DesktopPages);
                         }
 
                         break;

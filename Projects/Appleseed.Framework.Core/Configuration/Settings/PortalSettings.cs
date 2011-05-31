@@ -1619,7 +1619,7 @@ namespace Appleseed.Framework.Site.Configuration
                 TabUrlKeyword.Value = "Portal";
                 TabUrlKeyword.EnglishName = "Keyword to Identify all pages";
                 TabUrlKeyword.Description = "This setting is not fully implemented yet. It was to help with search engine optimisation by allowing you to specify a default keyword that would appear in your url."; 
-                _baseSettings.Add("SITESETTINGS_PAGE_URL_KEYWORD", TabUrlKeyword);
+                BaseSettings.Add("SITESETTINGS_PAGE_URL_KEYWORD", TabUrlKeyword);
                 */
                 var tabMetaKeyWords = new SettingItem<string, TextBox>
                     {

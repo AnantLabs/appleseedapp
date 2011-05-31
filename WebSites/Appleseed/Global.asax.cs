@@ -38,6 +38,9 @@ namespace Appleseed
     using MvcContrib;
     using Appleseed.Core.ApplicationBus;
     using Appleseed.Framework.Update;
+    using System.Configuration;
+    using MvcContrib.Routing;
+    using System.Collections.Generic;
 
     /// <summary>
     /// The global.
@@ -57,14 +60,17 @@ namespace Appleseed
             routes.IgnoreRoute("{*allaspx}", new { allaspx = @".*\.aspx(/.*)?" });
             routes.IgnoreRoute("{*allashx}", new { allashx = @".*\.ashx(/.*)?" });
             routes.IgnoreRoute("{*allasmx}", new { allasmx = @".*\.asmx(/.*)?" });
+            routes.IgnoreRoute("*.html|js|css|gif|jpg|jpeg|png|swf");
+            routes.IgnoreRoute("*/Scripts/*");
+            routes.IgnoreRoute("*/Portals/*");
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.IgnoreRoute(string.Empty);
 
-            // routes.MapRoute(
-            // "Default",                                             // Route name
-            // "{controller}/{action}/{id}",                          // URL with parameters
-            // new { controller = "Home", action = "Index", id = "" } // Parameter defaults
-            // );
+            routes.MapRoute(
+                 "Default",                                              // Route name
+                 "{controller}/{action}/{id}",                           // URL with parameters
+                 new { controller = "Home", action = "Index", id = "" } // Parameter defaults
+             );
         }
 
         /// <summary>
@@ -98,6 +104,10 @@ namespace Appleseed
         /// </param>
         protected void AppleseedApplication_BeginRequest(object sender, EventArgs e)
         {
+
+            /*Send a signal to allow custom js registration (not enabled yet)*/
+            Bus.Send(new JSRegisterDescriptor() { Scripts = new List<string>() });
+
             var contextReader = new Reader(new WebContextReader());
             var context = contextReader.Current;
 
@@ -191,10 +201,13 @@ namespace Appleseed
             var requestPath = requestUri.AbsolutePath.ToLower(CultureInfo.InvariantCulture);
             var returnToRequest = CheckAndUpdateDB(context, requestPath);
 
-            if (returnToRequest)
-                return;
 
-           
+            if (returnToRequest)
+            {
+                return;
+            }
+
+
             #region explanation
             // ************ 'calculate' response to this request ************
             // Test 1 - try requested Alias and requested PageID
@@ -430,7 +443,7 @@ namespace Appleseed
         private bool CheckAndUpdateDB(HttpContext context, string requestPath)
         {
             var requestUri = context.Request.Url;
-            
+
             var installRedirect = Config.InstallerRedirect;
             if (installRedirect.StartsWith("~/"))
             {
@@ -450,7 +463,7 @@ namespace Appleseed
 
         private void UpdateDB()
         {
-           
+
             var versionDelta = Database.DatabaseVersion.CompareTo(Portal.CodeVersion);
 
             // if DB and code versions do not match
@@ -521,6 +534,7 @@ namespace Appleseed
         /// </remarks>
         protected void Application_Start(object sender, EventArgs e)
         {
+
             var context = HttpContext.Current;
 
             // moved from PortalSettings
@@ -592,14 +606,22 @@ namespace Appleseed
 
                 //Then, register all portable areas
                 AreaRegistration.RegisterAllAreas(true);
-
-                RegisterRoutes(RouteTable.Routes);
-
-                InputBuilder.BootStrap();
+                if (ConfigurationManager.AppSettings["RouteTesting"] == null ||
+                    !bool.Parse(ConfigurationManager.AppSettings["RouteTesting"]))
+                {
+                    RegisterRoutes(RouteTable.Routes);
+                }
+                else
+                {
+                    RouteDebugger.RewriteRoutesForTesting(RouteTable.Routes);
+                }
+                InputBuilder.BootStrap();                
+                ValueProviderFactories.Factories.Add(new Microsoft.Web.Mvc.JsonValueProviderFactory());
 
             }
             catch (Exception exc)
             {
+
                 ErrorHandler.Publish(LogLevel.Error, exc);
             }
 

@@ -31,6 +31,7 @@ namespace Appleseed
     using Appleseed.Framework.Security;
 
     using Page = Appleseed.Framework.Web.UI.Page;
+    using System.Collections;
 
     /// <summary>
     /// The DesktopDefault.aspx page is used 
@@ -91,12 +92,16 @@ namespace Appleseed
         /// <c>true</c> if the specified HTML control has children; otherwise, <c>false</c>.
         /// </returns>
         private static bool HasChilds(
-            Control htmlControl, 
+            Control htmlControl,
             IDictionary<string, List<Control>> pageModules)
         {
+
+            var s = htmlControl;
+
             return
-                htmlControl.Controls.OfType<ContentPlaceHolder>().Any(
-                    control => pageModules.ContainsKey(control.ID.ToLower()));
+                htmlControl.Controls.OfType<Control>().Any(
+                control => pageModules.ContainsKey(String.IsNullOrEmpty(control.ID) ? "null" : control.ID.ToLower())
+                        || HasChilds(control, pageModules));
         }
 
         /// <summary>
@@ -109,7 +114,7 @@ namespace Appleseed
         /// The page modules by place holder.
         /// </param>
         private static void HideNotFilled(
-            Control topPlaceHolder, 
+            Control topPlaceHolder,
             IDictionary<string, List<Control>> pageModulesByPlaceHolder)
         {
             foreach (var htmlControl in
@@ -295,6 +300,35 @@ namespace Appleseed
                 {
                     var layoutPath = string.Concat(this.PortalSettings.PortalLayoutPath, LayoutBasePage);
                     var layoutControl = this.Page.LoadControl(layoutPath);
+
+                    var scripts = AppleseedMaster.GetBaseScripts();
+
+                    int index = 0;
+                    foreach (var script in scripts)
+                    {
+                        HtmlGenericControl include = new HtmlGenericControl("script");
+                        include.Attributes.Add("type", "text/javascript");
+                        include.Attributes.Add("src", script as string);
+                        this.Page.Header.Controls.AddAt(index++, include);
+                    }
+
+                    var cssHref = "/Design/jqueryUI/" + PortalSettings.PortalAlias + "/jquery-ui.custom.css";
+
+                    HtmlGenericControl cssinclude = new HtmlGenericControl("link");
+                    cssinclude.Attributes.Add("type", "text/css");
+                    cssinclude.Attributes.Add("rel", "stylesheet");
+                    cssinclude.Attributes.Add("href", cssHref);
+                    this.Page.Header.Controls.AddAt(index++, cssinclude);
+
+                    var uiculture = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
+                    var datepickerscript = "$(document).ready(function(){$.datepicker.setDefaults($.datepicker.regional['" + uiculture + "']);});";
+
+                    HtmlGenericControl includedp = new HtmlGenericControl("script");
+                    includedp.Attributes.Add("type", "text/javascript");
+                    includedp.InnerHtml = datepickerscript;
+                    this.Page.Header.Controls.AddAt(index++, includedp);
+
+
                     if (layoutControl != null)
                     {
                         this.LayoutPlaceHolder.Controls.Add(layoutControl);
@@ -303,8 +337,8 @@ namespace Appleseed
                     {
                         throw new FileNotFoundException(
                             string.Format(
-                                "While loading {1} layoutControl is null, control not found in path {0}!!", 
-                                layoutPath, 
+                                "While loading {1} layoutControl is null, control not found in path {0}!!",
+                                layoutPath,
                                 this.Request.RawUrl));
                     }
                 }

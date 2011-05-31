@@ -290,15 +290,15 @@ namespace Appleseed.AdminAll
                         if (!this.btnUseInstaller.Visible)
                         {
                             ModuleInstall.InstallGroup(
-                                this.Server.MapPath(Path.ApplicationRoot + "/" + this.InstallerFileName.Text), 
+                                this.Server.MapPath(Path.ApplicationRoot + "/" + this.InstallerFileName.Text),
                                 this.lblGUID.Text == string.Empty);
                         }
                         else
                         {
                             ModuleInstall.Install(
-                                this.FriendlyName.Text, 
-                                this.DesktopSrc.Text, 
-                                this.MobileSrc.Text, 
+                                this.FriendlyName.Text,
+                                this.DesktopSrc.Text,
+                                this.MobileSrc.Text,
                                 this.lblGUID.Text == string.Empty);
                         }
 
@@ -324,8 +324,8 @@ namespace Appleseed.AdminAll
                     for (var i = 0; i < this.PortalsName.Items.Count; i++)
                     {
                         modules.UpdateModuleDefinitions(
-                            this.defId, 
-                            Convert.ToInt32(this.PortalsName.Items[i].Value), 
+                            this.defId,
+                            Convert.ToInt32(this.PortalsName.Items[i].Value),
                             this.PortalsName.Items[i].Selected);
                     }
 
@@ -344,16 +344,16 @@ namespace Appleseed.AdminAll
                     if (!this.btnUseInstaller.Visible)
                     {
                         this.lblErrorDetail.Text += string.Format(
-                            " Installer: {0}", 
+                            " Installer: {0}",
                             this.Server.MapPath(
                                 string.Format("{0}/{1}", Path.ApplicationRoot, this.InstallerFileName.Text)));
                     }
                     else
                     {
                         this.lblErrorDetail.Text += string.Format(
-                            " Module: '{0}' - Source: '{1}' - Mobile: '{2}'", 
-                            this.FriendlyName.Text, 
-                            this.DesktopSrc.Text, 
+                            " Module: '{0}' - Source: '{1}' - Mobile: '{2}'",
+                            this.FriendlyName.Text,
+                            this.DesktopSrc.Text,
                             this.MobileSrc.Text);
                     }
 
@@ -378,22 +378,34 @@ namespace Appleseed.AdminAll
             var modulesRegistered = new List<string>();
             foreach (var file in new DirectoryInfo(this.Server.MapPath("~/bin/")).GetFiles("*.dll"))
             {
-                var assembly = Assembly.LoadFile(file.FullName);
-                var areaName = assembly.GetName().Name;
                 try
                 {
+                    var assembly = Assembly.ReflectionOnlyLoadFrom(file.FullName);
+                    AssemblyName[] refNames = assembly.GetReferencedAssemblies();
+                    foreach (AssemblyName refName in refNames)
+                    {
+                        var loadedAssem = Assembly.ReflectionOnlyLoad(refName.FullName);
+                    }
+
+                    var areaName = assembly.GetName().Name;
+
                     var modules = from t in assembly.GetTypes()
                                   where
                                       t.IsClass && t.Namespace == areaName + ".Controllers" &&
-                                      t.GetMethods().FirstOrDefault(d => d.Name == "Module") != null
+                                      t.GetMethods().FirstOrDefault(d => d.Name == "Module") != default(MethodInfo)
                                   select
-                                      new { AssemblyFullName = assembly.FullName, AreaName = areaName, Module = t.Name };
+                                      new
+                                      {
+                                          AssemblyFullName = assembly.FullName,
+                                          AreaName = areaName,
+                                          Controller = t.Name
+                                      };
 
                     foreach (var module in modules)
                     {
-                        var moduleName = module.Module.Replace("Controller", string.Empty);
-                        ModelServices.RegisterPortableAreaModule(module.AreaName, module.AssemblyFullName, moduleName);
-                        modulesRegistered.Add(string.Format("{0} - {1}", module.AreaName, moduleName));
+                        var controllerName = module.Controller.Replace("Controller", string.Empty);
+                        ModelServices.RegisterPortableAreaModule(module.AreaName, module.AssemblyFullName, controllerName);
+                        modulesRegistered.Add(string.Format("{0} - {1}", module.AreaName, controllerName));
                     }
                 }
                 catch (Exception exc)
@@ -417,25 +429,36 @@ namespace Appleseed.AdminAll
             var result = new List<ListItem>();
             foreach (var file in new DirectoryInfo(this.Server.MapPath("~/bin/")).GetFiles("*.dll"))
             {
-                var assembly = Assembly.LoadFile(file.FullName);
-                var areaName = assembly.GetName().Name;
                 try
                 {
+                    var assembly = Assembly.ReflectionOnlyLoadFrom(file.FullName);
+                    AssemblyName[] refNames = assembly.GetReferencedAssemblies();
+                    foreach (AssemblyName refName in refNames)
+                    {
+                        var loadedAssem = Assembly.ReflectionOnlyLoad(refName.FullName);
+                    }
+                    var areaName = assembly.GetName().Name;
+
                     var modules = from t in assembly.GetTypes()
                                   where
                                       t.IsClass && t.Namespace == areaName + ".Controllers" &&
-                                      t.GetMethods().FirstOrDefault(d => d.Name == "Module") != null
+                                      t.GetMethods().FirstOrDefault(d => d.Name == "Module") != default(MethodInfo)
                                   select
-                                      new { AssemblyFullName = assembly.FullName, AreaName = areaName, Module = t.Name };
+                                      new
+                                      {
+                                          AssemblyFullName = assembly.FullName,
+                                          AreaName = areaName,
+                                          Controller = t.Name
+                                      };
 
                     result.AddRange(
                         from module in modules
-                        let moduleName = module.Module.Replace("Controller", string.Empty)
+                        let controllerName = module.Controller.Replace("Controller", string.Empty)
                         let itemValue =
-                            String.Format("Areas\\{0}\\Views\\{1}\\Module", module.AreaName, moduleName)
+                            String.Format("Areas\\{0}\\Views\\{1}\\Module", module.AreaName, controllerName)
                         let itemText =
                             String.Format(
-                                "[PortableArea] Areas\\{0}\\Views\\{1}\\Module", module.AreaName, moduleName)
+                                "[PortableArea] Areas\\{0}\\Views\\{1}\\Module", module.AreaName, controllerName)
                         select new ListItem(itemText, itemValue));
                 }
                 catch (Exception exc)
@@ -548,17 +571,17 @@ namespace Appleseed.AdminAll
         /// <summary>
         ///   The installer.
         /// </summary>
-        Installer = 0, 
+        Installer = 0,
 
         /// <summary>
         ///   The manually.
         /// </summary>
-        Manually, 
+        Manually,
 
         /// <summary>
         ///   The MVC edit mode.
         /// </summary>
-        MVC, 
+        MVC,
 
         /// <summary>
         ///   The portable areas.

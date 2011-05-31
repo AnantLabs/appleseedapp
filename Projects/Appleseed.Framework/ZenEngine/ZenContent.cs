@@ -93,11 +93,11 @@ namespace Appleseed.Framework.Web.UI.WebControls
             innerDataSource = new ArrayList();
 
             // Obtain PortalSettings from Current Context
-            PortalSettings portalSettings = (PortalSettings) HttpContext.Current.Items["PortalSettings"];
+            PortalSettings PortalSettings = (PortalSettings) HttpContext.Current.Items["PortalSettings"];
 
             // Loop through each entry in the configuration system for this tab
             // Ensure that the visiting user has access to view the module
-            foreach (ModuleSettings _moduleSettings in portalSettings.ActivePage.Modules)
+            foreach (ModuleSettings _moduleSettings in PortalSettings.ActivePage.Modules)
             {
                 if (_moduleSettings.PaneName.ToLower() == Content.ToLower()
                     && PortalSecurity.IsInRoles(_moduleSettings.AuthorizedViewRoles))
@@ -128,12 +128,12 @@ namespace Appleseed.Framework.Web.UI.WebControls
                                 string.Concat(Path.ApplicationRoot, "/", _moduleSettings.DesktopSrc);
                             PortalModuleControl portalModule = (PortalModuleControl) Page.LoadControl(portalModuleName);
 
-                            portalModule.PortalID = portalSettings.PortalID;
+                            portalModule.PortalID = PortalSettings.PortalID;
                             portalModule.ModuleConfiguration = _moduleSettings;
 
                             //TODO: This is not the best place: should be done early
                             if ((portalModule.Cultures != null && portalModule.Cultures.Length == 0) ||
-                                (portalModule.Cultures + ";").IndexOf(portalSettings.PortalContentLanguage.Name + ";") >=
+                                (portalModule.Cultures + ";").IndexOf(PortalSettings.PortalContentLanguage.Name + ";") >=
                                 0)
                                 innerDataSource.Add(portalModule);
                         }
@@ -154,7 +154,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                         {
                             CachedPortalModuleControl portalModule = new CachedPortalModuleControl();
 
-                            portalModule.PortalID = portalSettings.PortalID;
+                            portalModule.PortalID = PortalSettings.PortalID;
                             portalModule.ModuleConfiguration = _moduleSettings;
 
                             innerDataSource.Add(portalModule);

@@ -29,10 +29,10 @@ namespace Appleseed.Framework.Web.UI.WebControls
             if (HttpContext.Current != null)
             {
                 // Obtain PortalSettings from Current Context
-                var portalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+                var PortalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
 
                 // Dynamically Populate the Portal Site Name
-                this.Text = portalSettings.PortalName;
+                this.Text = PortalSettings.PortalName;
             }
 
             base.DataBind();

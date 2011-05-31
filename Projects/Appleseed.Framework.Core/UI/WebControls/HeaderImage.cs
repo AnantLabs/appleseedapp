@@ -18,19 +18,19 @@ namespace Appleseed.Framework.Web.UI.WebControls
             if (HttpContext.Current != null)
             {
                 // Obtain PortalSettings from Current Context
-                PortalSettings portalSettings = (PortalSettings) HttpContext.Current.Items["PortalSettings"];
+                PortalSettings PortalSettings = (PortalSettings) HttpContext.Current.Items["PortalSettings"];
 
                 //PortalImage
-                if (portalSettings.CustomSettings["SITESETTINGS_LOGO"] != null &&
-                    portalSettings.CustomSettings["SITESETTINGS_LOGO"].ToString().Length != 0)
+                if (PortalSettings.CustomSettings["SITESETTINGS_LOGO"] != null &&
+                    PortalSettings.CustomSettings["SITESETTINGS_LOGO"].ToString().Length != 0)
                 {
                     ImageUrl =
-                        Path.WebPathCombine(Path.ApplicationRoot, portalSettings.PortalPath,
-                                            portalSettings.CustomSettings["SITESETTINGS_LOGO"].ToString());
+                        Path.WebPathCombine(Path.ApplicationRoot, PortalSettings.PortalPath,
+                                            PortalSettings.CustomSettings["SITESETTINGS_LOGO"].ToString());
                     // Added by Mario Endara to Reinforce portal Title for Search Engines <mario@softworks.com.uy>
-                    if (portalSettings.CustomSettings["SITESETTINGS_PAGE_TITLE"] != null &&
-                        portalSettings.CustomSettings["SITESETTINGS_PAGE_TITLE"].ToString().Length != 0)
-                        AlternateText = portalSettings.CustomSettings["SITESETTINGS_PAGE_TITLE"].ToString();
+                    if (PortalSettings.CustomSettings["SITESETTINGS_PAGE_TITLE"] != null &&
+                        PortalSettings.CustomSettings["SITESETTINGS_PAGE_TITLE"].ToString().Length != 0)
+                        AlternateText = PortalSettings.CustomSettings["SITESETTINGS_PAGE_TITLE"].ToString();
                     Visible = true;
                 }
                 else

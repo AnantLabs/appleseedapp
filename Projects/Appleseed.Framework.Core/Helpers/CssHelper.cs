@@ -47,7 +47,7 @@ namespace Appleseed.Framework.Helpers
         /// <summary>
         ///   The portal settings.
         /// </summary>
-        private PortalSettings portalSettings;
+        private PortalSettings PortalSettings;
 
         #endregion
 
@@ -60,7 +60,7 @@ namespace Appleseed.Framework.Helpers
         {
             if (HttpContext.Current != null)
             {
-                this.portalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+                this.PortalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
             }
         }
 

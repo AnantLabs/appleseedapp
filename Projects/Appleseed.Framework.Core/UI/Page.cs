@@ -1349,40 +1349,7 @@ namespace Appleseed.Framework.Web.UI
             }
 
             this.ModuleGuidInCookie();
-
-            if (!this.Page.ClientScript.IsStartupScriptRegistered("jQuery"))
-            {
-                this.Page.ClientScript.RegisterClientScriptInclude(
-                    this.Page.GetType(), "jQuery", "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.min.js");
-                this.Page.ClientScript.RegisterClientScriptInclude(
-                    this.Page.GetType(),
-                    "jQueryUI",
-                    "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js");
-                this.Page.ClientScript.RegisterClientScriptInclude(
-                    this.Page.GetType(),
-                    "jQueryValidate",
-                    "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js");
-                this.Page.ClientScript.RegisterClientScriptInclude(
-                    this.Page.GetType(),
-                    "bgiFrame",
-                    "http://jquery-ui.googlecode.com/svn/tags/latest/external/jquery.bgiframe-2.1.1.js");
-                this.Page.ClientScript.RegisterClientScriptInclude(
-                    this.Page.GetType(),
-                    "jQueryLang",
-                    "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/i18n/jquery-ui-i18n.min.js");
-
-                this.Page.ClientScript.RegisterClientScriptInclude(
-                    this.Page.GetType(), "DND", Path.ApplicationFullPath + "/aspnet_client/js/DragNDrop.js");
-            }
-
-            if (!this.Page.ClientScript.IsStartupScriptRegistered("BROWSER_VERSION_WARNING"))
-            {
-                this.Page.ClientScript.RegisterClientScriptInclude(
-                    this.Page.GetType(),
-                    "BROWSER_VERSION_WARNING",
-                    Path.ApplicationFullPath + "/aspnet_client/js/browser_upgrade_notification.js");
-            }
-
+          
             // AddThis
             if (!this.Page.ClientScript.IsStartupScriptRegistered("ADD_THIS"))
             {
@@ -1393,11 +1360,6 @@ namespace Appleseed.Framework.Web.UI
                     {
                         if (Convert.ToString(addThisUsernameSetting).Trim().Length > 0)
                         {
-                            // string publisherkey = Convert.ToString(publisherkeysetting);
-                            // Page.ClientScript.RegisterClientScriptInclude(this.Page.GetType(), "ADD_THIS",
-                            // "http://w.sharethis.com/button/sharethis.js#publisher=" + publisherkey.ToString() + "&amp;type=website&amp;post_services=facebook%2Ctwitter%2Cblogger&amp;button=false");
-
-                            // }
                             var addThisUsername = Convert.ToString(addThisUsernameSetting);
                             this.Page.ClientScript.RegisterClientScriptInclude(
                                 this.Page.GetType(),
@@ -1407,11 +1369,6 @@ namespace Appleseed.Framework.Web.UI
                     }
                 }
 
-                // <style type="text/css">
-                // body {font-family:helvetica,sans-serif;font-size:12px;}
-                // a.stbar.chicklet img {border:0;height:16px;width:16px;margin-right:3px;vertical-align:middle;}
-                // a.stbar.chicklet {height:16px;line-height:16px;}
-                // </style>"
             }
 
             base.OnInit(e);
