@@ -305,7 +305,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                 ArrayList list = new ArrayList();
 
                 // Obtain PortalSettings from Current Context
-                PortalSettings portalSettings = (PortalSettings) HttpContext.Current.Items["PortalSettings"];
+                PortalSettings PortalSettings = (PortalSettings) HttpContext.Current.Items["PortalSettings"];
 
                 string homeLink = "<a";
                 string menuLink;
@@ -345,12 +345,12 @@ namespace Appleseed.Framework.Web.UI.WebControls
                     bool HasEditPermissionsOnTabs = false;
                     int TabModuleID = 0;
 
-//					SqlDataReader result = modules.FindModulesByGuid(portalSettings.PortalID, TabGuid);
+//					SqlDataReader result = modules.FindModulesByGuid(PortalSettings.PortalID, TabGuid);
 //					while(result.Read()) 
 //					{
 //						TabModuleID=(int)result["ModuleId"];
 
-                    foreach (ModuleItem m in modules.FindModuleItemsByGuid(portalSettings.PortalID, TabGuid))
+                    foreach (ModuleItem m in modules.FindModuleItemsByGuid(PortalSettings.PortalID, TabGuid))
                     {
                         HasEditPermissionsOnTabs = PortalSecurity.HasEditPermissions(m.ID);
                         if (HasEditPermissionsOnTabs)
@@ -372,9 +372,9 @@ namespace Appleseed.Framework.Web.UI.WebControls
                         // added mID by Mario Endara <mario@softworks.com.uy> to support security check (2004/11/09)
                         menuLink = menuLink + " href='" +
                                    HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/Pages/PageLayout.aspx?PageID=") +
-                                   portalSettings.ActivePage.PageID + "&amp;mID=" + TabModuleID.ToString() +
-                                   "&amp;Alias=" + portalSettings.PortalAlias + "&amp;lang=" + portalSettings.PortalUILanguage +
-                                   "&amp;returntabid=" + portalSettings.ActivePage.PageID + "'>" +
+                                   PortalSettings.ActivePage.PageID + "&amp;mID=" + TabModuleID.ToString() +
+                                   "&amp;Alias=" + PortalSettings.PortalAlias + "&amp;lang=" + PortalSettings.PortalUILanguage +
+                                   "&amp;returntabid=" + PortalSettings.ActivePage.PageID + "'>" +
                                    General.GetString("HEADER_MANAGE_TAB", "Edit This Page", null) + "</a>";
                         list.Add(menuLink);
                     }
@@ -482,8 +482,8 @@ namespace Appleseed.Framework.Web.UI.WebControls
                     }
 
                     var allowNewRegistration = false;
-                    if (portalSettings.CustomSettings["SITESETTINGS_ALLOW_NEW_REGISTRATION"] != null)
-                        if (bool.Parse(portalSettings.CustomSettings["SITESETTINGS_ALLOW_NEW_REGISTRATION"].ToString()))
+                    if (PortalSettings.CustomSettings["SITESETTINGS_ALLOW_NEW_REGISTRATION"] != null)
+                        if (bool.Parse(PortalSettings.CustomSettings["SITESETTINGS_ALLOW_NEW_REGISTRATION"].ToString()))
                             allowNewRegistration = true;
 
                     if (ShowRegister && allowNewRegistration) {
@@ -508,7 +508,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                         if (CssClass.Length != 0)
                             menuLink = menuLink + " class=\"" + CssClass + "\"";
 
-                        menuLink = menuLink + " href='" + portalSettings.PortalSecurePath + "/Logon.aspx'>" +
+                        menuLink = menuLink + " href='" + PortalSettings.PortalSecurePath + "/Logon.aspx'>" +
                                    General.GetString("LOGON", "Logon", null) + "</a>";
                         list.Add(menuLink);
                     }

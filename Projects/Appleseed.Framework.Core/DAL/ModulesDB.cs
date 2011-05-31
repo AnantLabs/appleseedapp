@@ -504,12 +504,12 @@ namespace Appleseed.Framework.Site.Data
         [History("JB - john@bowenweb.com", "2005/05/12", "Added support for Recycler module")]
         public void DeleteModule(int moduleId)
         {
-            var portalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+            var PortalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
             var useRecycler =
                 bool.Parse(
                     PortalSettings.GetPortalCustomSettings(
-                        portalSettings.PortalID,
-                        PortalSettings.GetPortalBaseSettings(portalSettings.PortalPath))["SITESETTINGS_USE_RECYCLER"].ToString());
+                        PortalSettings.PortalID,
+                        PortalSettings.GetPortalBaseSettings(PortalSettings.PortalPath))["SITESETTINGS_USE_RECYCLER"].ToString());
             
             //const bool UseRecycler = false;
 

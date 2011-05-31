@@ -75,8 +75,8 @@ namespace Appleseed.Framework.DataTypes
         /// </returns>
         private static List<PageItem> GetPageList()
         {
-            var portalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
-            return new PagesDB().GetPagesFlat(portalSettings.PortalID);
+            var PortalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+            return new PagesDB().GetPagesFlat(PortalSettings.PortalID);
         }
 
         #endregion

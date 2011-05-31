@@ -12,7 +12,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
     public class PageKeyPhrase : Label
     {
         // Obtain PortalSettings from Current Context
-        private PortalSettings portalSettings = (PortalSettings) HttpContext.Current.Items["PortalSettings"];
+        private PortalSettings PortalSettings = (PortalSettings) HttpContext.Current.Items["PortalSettings"];
         private string _tabKeyPhrase;
         private string currentLanguage;
 
@@ -24,25 +24,25 @@ namespace Appleseed.Framework.Web.UI.WebControls
         {
             get
             {
-                currentLanguage = "TabKeyPhrase_" + portalSettings.PortalContentLanguage.Name.ToString();
-                if (portalSettings.PortalContentLanguage != CultureInfo.InvariantCulture
-                    && portalSettings.ActivePage.CustomSettings[currentLanguage] != null)
+                currentLanguage = "TabKeyPhrase_" + PortalSettings.PortalContentLanguage.Name.ToString();
+                if (PortalSettings.PortalContentLanguage != CultureInfo.InvariantCulture
+                    && PortalSettings.ActivePage.CustomSettings[currentLanguage] != null)
                 {
                     _tabKeyPhrase =
-                        (string) ViewState["TabKeyPhrase_" + portalSettings.PortalContentLanguage.Name.ToString()];
+                        (string) ViewState["TabKeyPhrase_" + PortalSettings.PortalContentLanguage.Name.ToString()];
                     if (_tabKeyPhrase != null)
                         return _tabKeyPhrase;
                     else
                     {
                         // Try to get this tab's key phrase
-                        _tabKeyPhrase = portalSettings.ActivePage.CustomSettings[currentLanguage].ToString();
+                        _tabKeyPhrase = PortalSettings.ActivePage.CustomSettings[currentLanguage].ToString();
 
-                        if (_tabKeyPhrase == string.Empty && portalSettings.CustomSettings != null)
+                        if (_tabKeyPhrase == string.Empty && PortalSettings.CustomSettings != null)
                         {
-                            _tabKeyPhrase = portalSettings.ActivePage.CustomSettings["TabKeyPhrase"].ToString();
+                            _tabKeyPhrase = PortalSettings.ActivePage.CustomSettings["TabKeyPhrase"].ToString();
 
                             if (_tabKeyPhrase == string.Empty)
-                                _tabKeyPhrase = portalSettings.CustomSettings["SITESETTINGS_PAGE_KEY_PHRASE"].ToString();
+                                _tabKeyPhrase = PortalSettings.CustomSettings["SITESETTINGS_PAGE_KEY_PHRASE"].ToString();
                         }
 
                         return _tabKeyPhrase;
@@ -55,14 +55,14 @@ namespace Appleseed.Framework.Web.UI.WebControls
                         return _tabKeyPhrase;
                     else
                     {
-                        if (portalSettings.ActivePage.CustomSettings["TabKeyPhrase"] != null)
+                        if (PortalSettings.ActivePage.CustomSettings["TabKeyPhrase"] != null)
                         {
                             // Try to get this tab's key phrase
-                            _tabKeyPhrase = portalSettings.ActivePage.CustomSettings["TabKeyPhrase"].ToString();
+                            _tabKeyPhrase = PortalSettings.ActivePage.CustomSettings["TabKeyPhrase"].ToString();
 
-                            if (_tabKeyPhrase == string.Empty && portalSettings.CustomSettings != null)
+                            if (_tabKeyPhrase == string.Empty && PortalSettings.CustomSettings != null)
                             {
-                                _tabKeyPhrase = portalSettings.CustomSettings["SITESETTINGS_PAGE_KEY_PHRASE"].ToString();
+                                _tabKeyPhrase = PortalSettings.CustomSettings["SITESETTINGS_PAGE_KEY_PHRASE"].ToString();
                             }
 
                             return _tabKeyPhrase;
@@ -73,9 +73,9 @@ namespace Appleseed.Framework.Web.UI.WebControls
             }
             set
             {
-                if (portalSettings.PortalContentLanguage != CultureInfo.InvariantCulture)
+                if (PortalSettings.PortalContentLanguage != CultureInfo.InvariantCulture)
                 {
-                    ViewState["TabKeyPhrase_" + portalSettings.PortalContentLanguage.Name.ToString()] = value;
+                    ViewState["TabKeyPhrase_" + PortalSettings.PortalContentLanguage.Name.ToString()] = value;
                 }
                 else
                 {

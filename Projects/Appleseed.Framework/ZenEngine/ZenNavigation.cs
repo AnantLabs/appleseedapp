@@ -22,7 +22,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
         /// <summary>
         /// 
         /// </summary>
-        protected PortalSettings portalSettings;
+        protected PortalSettings PortalSettings;
 
         /// <summary>
         /// 
@@ -113,9 +113,9 @@ namespace Appleseed.Framework.Web.UI.WebControls
         private void LoadControl(object sender, EventArgs e)
         {
             // Obtain PortalSettings from Current Context
-            portalSettings = (PortalSettings) HttpContext.Current.Items["PortalSettings"];
+            PortalSettings = (PortalSettings) HttpContext.Current.Items["PortalSettings"];
 
-            PortalPagesXml = portalSettings.PortalPagesXml;
+            PortalPagesXml = PortalSettings.PortalPagesXml;
 
             //base.DataBind();
         }
@@ -144,7 +144,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
             {
                 // build parameter list to pass to stylesheet
                 XsltArgumentList xslArg = new XsltArgumentList();
-                xslArg.AddParam("ActivePageId", "", portalSettings.ActivePage.PageID);
+                xslArg.AddParam("ActivePageId", "", PortalSettings.ActivePage.PageID);
                 xslArg.AddParam("ContainerCssClass", "", ContainerCssClass);
                 xslArg.AddParam("UsePageNameInUrl", "", UsePageNameInUrl.ToString().ToLower());
                 xslArg.AddParam("UsePathTraceInUrl", "", UsePathTraceInUrl.ToString().ToLower());

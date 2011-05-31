@@ -96,7 +96,7 @@ namespace Appleseed.Framework.Security
         /// <summary>
         /// ExtendCookie
         /// </summary>
-        /// <param name="portalSettings">
+        /// <param name="PortalSettings">
         /// The portal settings.
         /// </param>
         /// <param name="minuteAdd">
@@ -104,12 +104,12 @@ namespace Appleseed.Framework.Security
         /// </param>
         /// <remarks>
         /// </remarks>
-        public static void ExtendCookie(PortalSettings portalSettings, int minuteAdd)
+        public static void ExtendCookie(PortalSettings PortalSettings, int minuteAdd)
         {
             var time = DateTime.Now;
             var span = new TimeSpan(0, 0, minuteAdd, 0, 0);
 
-            HttpContext.Current.Response.Cookies["Appleseed_" + portalSettings.PortalAlias].Expires = time.Add(span);
+            HttpContext.Current.Response.Cookies["Appleseed_" + PortalSettings.PortalAlias].Expires = time.Add(span);
 
             return;
         }
@@ -117,15 +117,15 @@ namespace Appleseed.Framework.Security
         /// <summary>
         /// ExtendCookie
         /// </summary>
-        /// <param name="portalSettings">
+        /// <param name="PortalSettings">
         /// The portal settings.
         /// </param>
         /// <remarks>
         /// </remarks>
-        public static void ExtendCookie(PortalSettings portalSettings)
+        public static void ExtendCookie(PortalSettings PortalSettings)
         {
             var minuteAdd = Config.CookieExpire;
-            ExtendCookie(portalSettings, minuteAdd);
+            ExtendCookie(PortalSettings, minuteAdd);
             return;
         }
 
@@ -290,8 +290,8 @@ namespace Appleseed.Framework.Security
         public static IList<AppleseedRole> GetRoles()
         {
             // Obtain PortalSettings from Current Context
-            var portalSettings = (PortalSettings)HttpContext.Current.Items[StringsPortalSettings];
-            var portalId = portalSettings.PortalID;
+            var PortalSettings = (PortalSettings)HttpContext.Current.Items[StringsPortalSettings];
+            var portalId = PortalSettings.PortalID;
 
             // john.mandia@whitelightsolutions.com: 29th May 2004 When retrieving/editing/adding roles or users etc then portalID should be 0 if it is shared
             // But I commented this out as this check is done in UsersDB.GetRoles Anyway
@@ -308,8 +308,8 @@ namespace Appleseed.Framework.Security
                 // Get roles from UserRoles table, and add to cookie
                 var accountSystem = new UsersDB();
                 MembershipUser u = accountSystem.GetSingleUser(
-                    HttpContext.Current.User.Identity.Name, portalSettings.PortalAlias);
-                roles = accountSystem.GetRoles(u.Email, portalSettings.PortalAlias);
+                    HttpContext.Current.User.Identity.Name, PortalSettings.PortalAlias);
+                roles = accountSystem.GetRoles(u.Email, PortalSettings.PortalAlias);
             }
             catch (Exception exc)
             {
@@ -536,9 +536,9 @@ namespace Appleseed.Framework.Security
             {
                 // Obtain PortalSettings from Current Context
                 // WindowsAdmins added 28.4.2003 Cory Isakson
-                var portalSettings = (PortalSettings)HttpContext.Current.Items[StringsPortalSettings];
+                var PortalSettings = (PortalSettings)HttpContext.Current.Items[StringsPortalSettings];
                 var winRoles = new StringBuilder();
-                winRoles.Append(portalSettings.CustomSettings["WindowsAdmins"]);
+                winRoles.Append(PortalSettings.CustomSettings["WindowsAdmins"]);
                 winRoles.Append(";");
 
                 // jes1111 - winRoles.Append(ConfigurationSettings.AppSettings["ADAdministratorGroup"]);
@@ -707,13 +707,13 @@ namespace Appleseed.Framework.Security
         public static string SignOn(string user, string password, bool persistent, string redirectPage)
         {
             // Obtain PortalSettings from Current Context
-            var portalSettings = (PortalSettings)HttpContext.Current.Items[StringsPortalSettings];
+            var PortalSettings = (PortalSettings)HttpContext.Current.Items[StringsPortalSettings];
 
             MembershipUser usr;
             var accountSystem = new UsersDB();
 
             // Attempt to Validate User Credentials using UsersDB
-            usr = accountSystem.Login(user, password, portalSettings.PortalAlias);
+            usr = accountSystem.Login(user, password, PortalSettings.PortalAlias);
 
             // Thierry (tiptopweb), 12 Apr 2003: Save old ShoppingCartID
             // 			ShoppingCartDB shoppingCart = new ShoppingCartDB();
@@ -727,7 +727,7 @@ namespace Appleseed.Framework.Security
                     try
                     {
                         Monitoring.LogEntry(
-                            (Guid)usr.ProviderUserKey, portalSettings.PortalID, -1, "Logon", string.Empty);
+                            (Guid)usr.ProviderUserKey, PortalSettings.PortalID, -1, "Logon", string.Empty);
                     }
                     catch
                     {
@@ -744,7 +744,7 @@ namespace Appleseed.Framework.Security
                 // Set a cookie to persist authentication for each portal 
                 // so user can be reauthenticated 
                 // automatically if they chose to Remember Login
-                var hck = HttpContext.Current.Response.Cookies["Appleseed_" + portalSettings.PortalAlias.ToLower()];
+                var hck = HttpContext.Current.Response.Cookies["Appleseed_" + PortalSettings.PortalAlias.ToLower()];
                 if (hck != null)
                 {
                     hck.Value = usr.ToString(); // Fill all data: name + email + id
@@ -837,10 +837,10 @@ namespace Appleseed.Framework.Security
             if (removeLogin)
             {
                 // Obtain PortalSettings from Current Context
-                var portalSettings = (PortalSettings)HttpContext.Current.Items[StringsPortalSettings];
+                var PortalSettings = (PortalSettings)HttpContext.Current.Items[StringsPortalSettings];
 
                 // Invalidate Portal Alias Cookie security
-                var xhck = HttpContext.Current.Response.Cookies["Appleseed_" + portalSettings.PortalAlias.ToLower()];
+                var xhck = HttpContext.Current.Response.Cookies["Appleseed_" + PortalSettings.PortalAlias.ToLower()];
                 if (xhck != null)
                 {
                     xhck.Value = null;
@@ -856,12 +856,12 @@ namespace Appleseed.Framework.Security
             {
                 // Obtain PortalSettings from Current Context
                 // Ender 4 July 2003: Added to support the Monitoring module by Paul Yarrow
-                var portalSettings = (PortalSettings)HttpContext.Current.Items[StringsPortalSettings];
+                var PortalSettings = (PortalSettings)HttpContext.Current.Items[StringsPortalSettings];
 
                 // User Information
                 var users = new UsersDB();
                 MembershipUser user = users.GetSingleUser(
-                    HttpContext.Current.User.Identity.Name, portalSettings.PortalAlias);
+                    HttpContext.Current.User.Identity.Name, PortalSettings.PortalAlias);
 
                 if (user != null && user.ProviderUserKey != null)
                 {
@@ -874,7 +874,7 @@ namespace Appleseed.Framework.Security
                         {
                             if (Config.EnableMonitoring)
                             {
-                                Monitoring.LogEntry(uid, portalSettings.PortalID, -1, "Logoff", string.Empty);
+                                Monitoring.LogEntry(uid, PortalSettings.PortalID, -1, "Logoff", string.Empty);
                             }
                         }
                         catch
@@ -917,8 +917,8 @@ namespace Appleseed.Framework.Security
         private static string GetPermissions(int moduleId, string procedureName, string parameterRole)
         {
             // Obtain PortalSettings from Current Context
-            var portalSettings = (PortalSettings)HttpContext.Current.Items[StringsPortalSettings];
-            var portalId = portalSettings.PortalID;
+            var PortalSettings = (PortalSettings)HttpContext.Current.Items[StringsPortalSettings];
+            var portalId = PortalSettings.PortalID;
 
             // jviladiu@portalServices.net: Get users & roles from true portal (2004/09/23)
             if (Config.UseSingleUserBase)
@@ -996,8 +996,8 @@ namespace Appleseed.Framework.Security
             }
 
             // Obtain PortalSettings from Current Context
-            var portalSettings = (PortalSettings)HttpContext.Current.Items[StringsPortalSettings];
-            var portalID = portalSettings.PortalID;
+            var PortalSettings = (PortalSettings)HttpContext.Current.Items[StringsPortalSettings];
+            var portalID = PortalSettings.PortalID;
 
             // jviladiu@portalServices.net: Get users & roles from true portal (2004/09/23)
             if (Config.UseSingleUserBase)

@@ -59,10 +59,10 @@ namespace Appleseed.Framework.Web.UI.WebControls
             if (HttpContext.Current != null)
             {
                 // Obtain PortalSettings from Current Context
-                PortalSettings portalSettings = (PortalSettings) HttpContext.Current.Items["PortalSettings"];
+                PortalSettings PortalSettings = (PortalSettings) HttpContext.Current.Items["PortalSettings"];
 
                 // PortalTitle                
-                Text = portalSettings.PortalName;
+                Text = PortalSettings.PortalName;
             }
         }
 

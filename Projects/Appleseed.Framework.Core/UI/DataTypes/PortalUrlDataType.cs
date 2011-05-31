@@ -49,8 +49,8 @@ namespace Appleseed.Framework.DataTypes
             }
 
             // Obtain PortalSettings from Current Context
-            var portalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
-            this.PortalPathPrefix = portalSettings.PortalFullPath;
+            var PortalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+            this.PortalPathPrefix = PortalSettings.PortalFullPath;
             if (!this.PortalPathPrefix.EndsWith("/"))
             {
                 this.PortalPathPrefix += "/";

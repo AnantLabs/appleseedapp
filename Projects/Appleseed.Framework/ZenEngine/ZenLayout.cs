@@ -682,12 +682,12 @@ namespace Appleseed.Framework.Web.UI.WebControls
             HybridDictionary counts = new HybridDictionary(3);
             string _key;
 
-            PortalSettings portalSettings = (PortalSettings) HttpContext.Current.Items["PortalSettings"];
+            PortalSettings PortalSettings = (PortalSettings) HttpContext.Current.Items["PortalSettings"];
 
-            if (portalSettings.ActivePage.Modules.Count > 0)
+            if (PortalSettings.ActivePage.Modules.Count > 0)
             {
                 // Loop through each entry in the configuration system for this tab
-                foreach (ModuleSettings _moduleSettings in portalSettings.ActivePage.Modules)
+                foreach (ModuleSettings _moduleSettings in PortalSettings.ActivePage.Modules)
                 {
                     // Ensure that the visiting user has access to view the current module
                     if (PortalSecurity.IsInRoles(_moduleSettings.AuthorizedViewRoles) == true)

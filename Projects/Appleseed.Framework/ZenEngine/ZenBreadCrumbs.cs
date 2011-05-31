@@ -66,23 +66,23 @@ namespace Appleseed.Framework.Web.UI.WebControls
             if (HttpContext.Current != null)
             {
                 // Obtain PortalSettings from Current Context 
-                PortalSettings portalSettings = (PortalSettings) HttpContext.Current.Items["PortalSettings"];
+                PortalSettings PortalSettings = (PortalSettings) HttpContext.Current.Items["PortalSettings"];
 
                 //Display breadcrumbs if the user has click a tab link  (Without hit the Database again)
-                if (portalSettings.ActivePage.PageID > 0)
+                if (PortalSettings.ActivePage.PageID > 0)
                 {
                     ArrayList authorizedTabs = new ArrayList();
                     int addedTabs = 0;
-                    for (int i = 0; i < portalSettings.DesktopPages.Count; i++)
+                    for (int i = 0; i < PortalSettings.DesktopPages.Count; i++)
                     {
-                        PageStripDetails tab = (PageStripDetails) portalSettings.DesktopPages[i];
+                        PageStripDetails tab = (PageStripDetails) PortalSettings.DesktopPages[i];
 
                         if (PortalSecurity.IsInRoles(tab.AuthorizedRoles))
                             authorizedTabs.Add(tab);
                         addedTabs++;
                     }
 
-                    crumbs = GetBreadCrumbs(portalSettings.ActivePage, authorizedTabs);
+                    crumbs = GetBreadCrumbs(PortalSettings.ActivePage, authorizedTabs);
                     crumbs.Sort();
                 }
                 else

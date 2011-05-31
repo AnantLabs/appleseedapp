@@ -159,11 +159,11 @@ namespace Appleseed.Framework.Web.UI.WebControls
         {
             string url = string.Empty;
             // Obtain PortalSettings from Current Context 
-            PortalSettings portalSettings = (PortalSettings) HttpContext.Current.Items["PortalSettings"];
+            PortalSettings PortalSettings = (PortalSettings) HttpContext.Current.Items["PortalSettings"];
             try
             {
                 // current theme
-                Theme CurrentTheme = portalSettings.GetCurrentTheme();
+                Theme CurrentTheme = PortalSettings.GetCurrentTheme();
 
                 //TODO: verify default works in all cases
                 Image image = CurrentTheme.GetImage(name, "~/Design/Themes/Default/" + name.Substring(8));

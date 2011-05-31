@@ -66,9 +66,9 @@ namespace Appleseed.Framework.Core.Model
         {
             var dictionary = new Dictionary<string, List<Control>>();
             var settings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
-            
+
             dynamic faultyModule = null;
-            var modErrKey = HttpContext.Current.Request.Params["modErr"]; 
+            var modErrKey = HttpContext.Current.Request.Params["modErr"];
             //we receive this param if in the Application_Error it was discovered that a module is broken
             if (!string.IsNullOrEmpty(modErrKey))
             {
@@ -130,7 +130,7 @@ namespace Appleseed.Framework.Core.Model
                                 var virtualPath = Path.ApplicationRoot + "/" + settings2.DesktopSrc;
                                 if (virtualPath.LastIndexOf('.') >= 0)
                                 {
-                                    if (faultyModule != null && faultyModule.ModuleDefID == settings2.ModuleDefID) 
+                                    if (faultyModule != null && faultyModule.ModuleDefID == settings2.ModuleDefID)
                                     {
                                         throw new Exception(faultyModule.Message); //if this was the module that was generating the error, we then show the error.
                                     }
@@ -143,7 +143,7 @@ namespace Appleseed.Framework.Core.Model
                                     var areaName = (strArray[1].ToLower() == "views") ? string.Empty : strArray[1];
                                     var controllerName = strArray[strArray.Length - 2];
                                     var actionName = strArray[strArray.Length - 1];
-                                    
+
                                     // var ns = strArray[2];
                                     control =
                                         (PortalModuleControl)
@@ -169,8 +169,8 @@ namespace Appleseed.Framework.Core.Model
                             {
                                 exception = exception1;
                                 ErrorHandler.Publish(
-                                    LogLevel.Error, 
-                                    string.Format("DesktopPanes: Unable to load control '{0}'!", settings2.DesktopSrc), 
+                                    LogLevel.Error,
+                                    string.Format("DesktopPanes: Unable to load control '{0}'!", settings2.DesktopSrc),
                                     exception);
                                 if (PortalSecurity.IsInRoles("Admins"))
                                 {
@@ -201,8 +201,8 @@ namespace Appleseed.Framework.Core.Model
                             {
                                 exception = exception2;
                                 ErrorHandler.Publish(
-                                    LogLevel.Error, 
-                                    string.Format("DesktopPanes: Unable to load cached control '{0}'!", settings2.DesktopSrc), 
+                                    LogLevel.Error,
+                                    string.Format("DesktopPanes: Unable to load cached control '{0}'!", settings2.DesktopSrc),
                                     exception);
                                 if (PortalSecurity.IsInRoles("Admins"))
                                 {
@@ -251,13 +251,13 @@ namespace Appleseed.Framework.Core.Model
         /// </summary>
         /// <param name="areaName">Name of the area.</param>
         /// <param name="assemblyFullName">Full name of the assembly.</param>
-        /// <param name="module">The module.</param>
+        /// <param name="controllerName">The module.</param>
         /// <returns></returns>
-        public static Guid RegisterPortableAreaModule(string areaName, string assemblyFullName, string module)
+        public static Guid RegisterPortableAreaModule(string areaName, string assemblyFullName, string controllerName)
         {
             Guid mId;
             var sdb = new ModulesDB();
-            var friendlyName = String.Format("{0} - {1}", areaName, module);
+            var friendlyName = String.Format("{0} - {1}", areaName, controllerName);
             try
             {
                 mId = sdb.GetGeneralModuleDefinitionByName(friendlyName);
@@ -265,7 +265,7 @@ namespace Appleseed.Framework.Core.Model
             catch (ArgumentException)
             {
                 // No existe el módulo, entonces lo creo
-                mId = AddPortableArea(areaName, assemblyFullName, module, friendlyName, sdb);
+                mId = AddPortableArea(areaName, assemblyFullName, controllerName, friendlyName, sdb);
             }
 
             return mId;
@@ -308,10 +308,10 @@ namespace Appleseed.Framework.Core.Model
         /// <param name="sdb">The SDB.</param>
         /// <returns></returns>
         private static Guid AddPortableArea(
-            string areaName, string assemblyFullName, string module, string friendlyName, ModulesDB sdb)
+            string areaName, string assemblyFullName, string controllerName, string friendlyName, ModulesDB sdb)
         {
             var mId = Guid.NewGuid();
-            var action = string.Format("Areas/{0}/Views/Home/Module", areaName);
+            var action = string.Format("Areas/{0}/Views/{1}/Module", areaName, controllerName);
             sdb.AddGeneralModuleDefinitions(
                 mId, friendlyName, action, string.Empty, assemblyFullName, areaName, false, false);
 

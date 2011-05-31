@@ -1,1 +1,1 @@
-<%@ Page CodeBehind="Default.aspx.cs" SmartNavigation="False" Language="c#" AutoEventWireup="True" Inherits="AppleseedWebApplication.Default" Culture="Auto:en-US" UICulture="Auto:en-US" %>
+<%@ Page CodeBehind="Default.aspx.cs" SmartNavigation="False" Language="c#" AutoEventWireup="True" Inherits="Appleseed.Default" Culture="Auto:en-US" UICulture="Auto:en-US" %>

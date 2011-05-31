@@ -214,14 +214,14 @@ namespace Appleseed.Framework.DataTypes
         /// <param name="showUpload">
         /// The show Upload.
         /// </param>
-        /// <param name="portalSettings">
+        /// <param name="PortalSettings">
         /// The portal Settings.
         /// </param>
         /// <returns>
         /// The HTML editor interface.
         /// </returns>
         public IHtmlEditor GetEditor(
-            Control placeHolderHtmlEditor, int moduleId, bool showUpload, PortalSettings portalSettings)
+            Control placeHolderHtmlEditor, int moduleId, bool showUpload, PortalSettings PortalSettings)
         {
             IHtmlEditor desktopText;
             var moduleImageFolder = ModuleSettings.GetModuleSettings(moduleId)["MODULE_IMAGE_FOLDER"].ToString();
@@ -244,7 +244,7 @@ namespace Appleseed.Framework.DataTypes
                             ImageFolder = moduleImageFolder, 
                             BasePath = Path.WebPathCombine(Path.ApplicationRoot, "aspnet_client/FCKeditorV2.6.6/"), 
                             AutoDetectLanguage = false, 
-                            DefaultLanguage = portalSettings.PortalUILanguage.Name.Substring(0, 2), 
+                            DefaultLanguage = PortalSettings.PortalUILanguage.Name.Substring(0, 2), 
                             ID = string.Concat("FCKTextBox", uniqueId), 
                             ImageBrowserURL =
                                 Path.WebPathCombine(
@@ -260,7 +260,7 @@ namespace Appleseed.Framework.DataTypes
                                         conector))
                         };
 
-                    // fckv2.EditorAreaCSS = portalSettings.GetCurrentTheme().CssFile;
+                    // fckv2.EditorAreaCSS = PortalSettings.GetCurrentTheme().CssFile;
                     desktopText = fckv2;
                     break;
 
@@ -273,7 +273,7 @@ namespace Appleseed.Framework.DataTypes
                             ImageFolder = moduleImageFolder, 
                             BaseContentUrl = Path.WebPathCombine(Path.ApplicationRoot, "aspnet_client/ckeditor/"), 
                             Resizable = false, 
-                            Language = portalSettings.PortalUILanguage.TwoLetterISOLanguageName
+                            Language = PortalSettings.PortalUILanguage.TwoLetterISOLanguageName
                         };
 
                     desktopText = sckvtb;
@@ -287,9 +287,9 @@ namespace Appleseed.Framework.DataTypes
                                     Path.ApplicationFullPath, 
                                     "app_support/ftb.imagegallery.aspx?rif={0}&cif={0}&mID=" + moduleId), 
                             ImageFolder = moduleImageFolder, 
-                            ImageGalleryPath = Path.WebPathCombine(portalSettings.PortalFullPath, moduleImageFolder), 
+                            ImageGalleryPath = Path.WebPathCombine(PortalSettings.PortalFullPath, moduleImageFolder), 
                             ID = string.Concat("FreeText", uniqueId), 
-                            Language = GetFtbLanguage(portalSettings.PortalUILanguage.Name), 
+                            Language = GetFtbLanguage(PortalSettings.PortalUILanguage.Name), 
                             JavaScriptLocation = ResourceLocation.ExternalFile, 
                             ButtonImagesLocation = ResourceLocation.ExternalFile, 
                             ToolbarImagesLocation = ResourceLocation.ExternalFile, 

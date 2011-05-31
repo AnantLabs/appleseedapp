@@ -78,6 +78,13 @@
     <DocumentationFile>bin\Release\Appleseed.Framework.Core.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DUEMETRI.UI.WebControls.HWMenu, Version=1.0.0.1335, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libs\DUEMETRI.UI.WebControls.HWMenu.dll</HintPath>
+    </Reference>
+    <Reference Include="DUEMETRI.UI.WebControls.Panes">
+      <HintPath>..\..\Libs\DUEMETRI.UI.WebControls.Panes.dll</HintPath>
+    </Reference>
     <Reference Include="FlashMovie, Version=1.0.1587.40940, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libs\FlashMovie.dll</HintPath>
@@ -126,7 +133,7 @@
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Extensions.Design" />
-    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libs\System.Web.Mvc.dll</HintPath>
     </Reference>
@@ -259,6 +266,9 @@
     <Compile Include="Settings\Portal.cs" />
     <Compile Include="Provider\UrlBuilderProvider.cs" />
     <Compile Include="Setup\IInstaller.cs" />
+    <Compile Include="UI\AppleseedMaster.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="UI\DataTypes\ApplicationUrlDataType.cs" />
     <Compile Include="UI\DataTypes\BaseDataType.cs" />
     <Compile Include="UI\DataTypes\CheckBoxListDataType.cs" />
@@ -359,10 +369,6 @@
     <None Include="Settings\Appleseed.Settings.cd" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DUEMETRI.UI.WebControls.HWMenu\HWMenu\DUEMETRI.UI.WebControls.HWMenu.csproj">
-      <Project>{DCDA0619-FD70-42B6-B2DA-78EAFA4BE955}</Project>
-      <Name>DUEMETRI.UI.WebControls.HWMenu</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PortableAreas\Appleseed.Core\Appleseed.Core.csproj">
       <Project>{22C4BA46-65C9-49E2-8A23-86DD2F44B744}</Project>
       <Name>Appleseed.Core</Name>
