@@ -148,6 +148,12 @@
     <Reference Include="Evolve.MailTemplates">
       <HintPath>..\..\Libs\Evolve.MailTemplates.dll</HintPath>
     </Reference>
+    <Reference Include="Facebook">
+      <HintPath>..\..\Libs\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook.Web">
+      <HintPath>..\..\Libs\Facebook.Web.dll</HintPath>
+    </Reference>
     <Reference Include="FirebirdSql.Data.FirebirdClient">
       <HintPath>..\..\Libs\FirebirdSql.Data.FirebirdClient.dll</HintPath>
     </Reference>
@@ -214,6 +220,9 @@
     </Reference>
     <Reference Include="MySql.Data">
       <HintPath>..\..\Libs\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\Libs\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Sitemaps">
       <HintPath>..\..\Libs\Newtonsoft.Sitemaps.dll</HintPath>
@@ -1430,6 +1439,12 @@
     </Compile>
     <Compile Include="DesktopModules\CoreModules\SignIn\SigninCool.ascx.designer.cs">
       <DependentUpon>SigninCool.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CoreModules\SignIn\SignInFacebook.ascx.cs">
+      <DependentUpon>SignInFacebook.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CoreModules\SignIn\SignInFacebook.ascx.designer.cs">
+      <DependentUpon>SignInFacebook.ascx</DependentUpon>
     </Compile>
     <Compile Include="DesktopModules\CoreModules\SignIn\SigninLink.ascx.cs">
       <DependentUpon>SigninLink.ascx</DependentUpon>
@@ -6294,6 +6309,7 @@
     <Content Include="DesktopModules\CoreModules\SignIn\Signin.ascx" />
     <Content Include="DesktopModules\CoreModules\SignIn\SigninCool.ascx" />
     <Content Include="DesktopModules\CoreModules\SignIn\SignInCool_readme.txt" />
+    <Content Include="DesktopModules\CoreModules\SignIn\SignInFacebook.ascx" />
     <Content Include="DesktopModules\CoreModules\SignIn\SigninLink.ascx" />
     <Content Include="DesktopModules\CoreModules\SignIn\SignInLink_readme.txt" />
     <Content Include="DesktopModules\CoreModules\SignIn\SignInLoginView.ascx" />
