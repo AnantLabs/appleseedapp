@@ -221,60 +221,60 @@ namespace Appleseed.Framework.Web.UI.WebControls
             if (HttpContext.Current != null)
             {
                 // Obtain PortalSettings from Current Context
-                var portalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+                var PortalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
 
                 switch (this.Bind)
                 {
                     case BindOption.BindOptionTop:
                         {
                             authorizedTabs = this.GetTabs(
-                                0, portalSettings.ActivePage.PageID, portalSettings.DesktopPages);
+                                0, PortalSettings.ActivePage.PageID, PortalSettings.DesktopPages);
                             break;
                         }
 
                     case BindOption.BindOptionCurrentChilds:
                         {
                             var currentTabRoot =
-                                PortalSettings.GetRootPage(portalSettings.ActivePage, portalSettings.DesktopPages).
+                                PortalSettings.GetRootPage(PortalSettings.ActivePage, PortalSettings.DesktopPages).
                                     PageID;
                             authorizedTabs = this.GetTabs(
-                                currentTabRoot, portalSettings.ActivePage.PageID, portalSettings.DesktopPages);
+                                currentTabRoot, PortalSettings.ActivePage.PageID, PortalSettings.DesktopPages);
                             break;
                         }
 
                     case BindOption.BindOptionSubtabSibling:
                         {
                             int currentTabRoot;
-                            if (portalSettings.ActivePage.ParentPageID == 0)
+                            if (PortalSettings.ActivePage.ParentPageID == 0)
                             {
-                                currentTabRoot = portalSettings.ActivePage.PageID;
+                                currentTabRoot = PortalSettings.ActivePage.PageID;
                             }
                             else
                             {
-                                currentTabRoot = portalSettings.ActivePage.ParentPageID;
+                                currentTabRoot = PortalSettings.ActivePage.ParentPageID;
                             }
 
                             authorizedTabs = this.GetTabs(
-                                currentTabRoot, portalSettings.ActivePage.PageID, portalSettings.DesktopPages);
+                                currentTabRoot, PortalSettings.ActivePage.PageID, PortalSettings.DesktopPages);
                             break;
 
                             // 						int tmpPageID = 0;
-                            // 						if(portalSettings.ActivePage.ParentPageID == 0)
+                            // 						if(PortalSettings.ActivePage.ParentPageID == 0)
                             // 						{
-                            // 							tmpPageID = portalSettings.ActivePage.PageID;
+                            // 							tmpPageID = PortalSettings.ActivePage.PageID;
                             // 						}
                             // 						else
                             // 						{
-                            // 							tmpPageID = portalSettings.ActivePage.ParentPageID;
+                            // 							tmpPageID = PortalSettings.ActivePage.ParentPageID;
                             // 						}
-                            // 						ArrayList parentTabs = GetTabs(tmpPageID, portalSettings.DesktopPages);
+                            // 						ArrayList parentTabs = GetTabs(tmpPageID, PortalSettings.DesktopPages);
                             // 						try
                             // 						{
                             // 							if (parentTabs.Count > 0)
                             // 							{
                             // 								PageStripDetails currentParentTab = (PageStripDetails) parentTabs[this.SelectedIndex];
                             // 								this.SelectedIndex = -1;
-                            // 								authorizedTabs = GetTabs(portalSettings.ActivePage.PageID, currentParentTab.Pages);
+                            // 								authorizedTabs = GetTabs(PortalSettings.ActivePage.PageID, currentParentTab.Pages);
                             // 							}
                             // 						}
                             // 						catch
@@ -285,18 +285,18 @@ namespace Appleseed.Framework.Web.UI.WebControls
                     case BindOption.BindOptionChildren:
                         {
                             authorizedTabs = this.GetTabs(
-                                portalSettings.ActivePage.PageID, 
-                                portalSettings.ActivePage.PageID, 
-                                portalSettings.DesktopPages);
+                                PortalSettings.ActivePage.PageID, 
+                                PortalSettings.ActivePage.PageID, 
+                                PortalSettings.DesktopPages);
                             break;
                         }
 
                     case BindOption.BindOptionSiblings:
                         {
                             authorizedTabs = this.GetTabs(
-                                portalSettings.ActivePage.ParentPageID, 
-                                portalSettings.ActivePage.PageID, 
-                                portalSettings.DesktopPages);
+                                PortalSettings.ActivePage.ParentPageID, 
+                                PortalSettings.ActivePage.PageID, 
+                                PortalSettings.DesktopPages);
                             break;
                         }
 
@@ -304,16 +304,16 @@ namespace Appleseed.Framework.Web.UI.WebControls
                     case BindOption.BindOptionTabSibling:
                         {
                             authorizedTabs = this.GetTabs(
-                                portalSettings.ActivePage.PageID, 
-                                portalSettings.ActivePage.PageID, 
-                                portalSettings.DesktopPages);
+                                PortalSettings.ActivePage.PageID, 
+                                PortalSettings.ActivePage.PageID, 
+                                PortalSettings.DesktopPages);
 
                             if (authorizedTabs.Count == 0)
                             {
                                 authorizedTabs = this.GetTabs(
-                                    portalSettings.ActivePage.ParentPageID, 
-                                    portalSettings.ActivePage.PageID, 
-                                    portalSettings.DesktopPages);
+                                    PortalSettings.ActivePage.ParentPageID, 
+                                    PortalSettings.ActivePage.PageID, 
+                                    PortalSettings.DesktopPages);
                             }
 
                             break;
@@ -324,7 +324,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                         if (this.ParentPageID != -1)
                         {
                             authorizedTabs = this.GetTabs(
-                                this.ParentPageID, portalSettings.ActivePage.PageID, portalSettings.DesktopPages);
+                                this.ParentPageID, PortalSettings.ActivePage.PageID, PortalSettings.DesktopPages);
                         }
 
                         break;

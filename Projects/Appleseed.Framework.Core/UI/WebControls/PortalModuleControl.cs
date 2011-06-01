@@ -458,20 +458,20 @@ namespace Appleseed.Framework.Web.UI.WebControls
             {
                 // null in DesignMode
                 // Added: Jes1111 - 2004-08-03
-                var portalSettings1 = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+                var PortalSettings1 = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
 
                 // end addition: Jes1111
-                if (portalSettings1 != null)
+                if (PortalSettings1 != null)
                 {
                     // fix by The Bitland Prince
-                    this.PortalID = portalSettings1.PortalID;
+                    this.PortalID = PortalSettings1.PortalID;
 
                     // added: Jes1111 2004-08-02 - custom module theme
-                    if (portalSettings1.CustomSettings.ContainsKey("SITESETTINGS_ALLOW_MODULE_CUSTOM_THEMES") &&
-                        portalSettings1.CustomSettings["SITESETTINGS_ALLOW_MODULE_CUSTOM_THEMES"].ToString().Length != 0 &&
-                        bool.Parse(portalSettings1.CustomSettings["SITESETTINGS_ALLOW_MODULE_CUSTOM_THEMES"].ToString()))
+                    if (PortalSettings1.CustomSettings.ContainsKey("SITESETTINGS_ALLOW_MODULE_CUSTOM_THEMES") &&
+                        PortalSettings1.CustomSettings["SITESETTINGS_ALLOW_MODULE_CUSTOM_THEMES"].ToString().Length != 0 &&
+                        bool.Parse(PortalSettings1.CustomSettings["SITESETTINGS_ALLOW_MODULE_CUSTOM_THEMES"].ToString()))
                     {
-                        var tempList = new List<object>(new ThemeManager(portalSettings1.PortalPath).GetThemes());
+                        var tempList = new List<object>(new ThemeManager(PortalSettings1.PortalPath).GetThemes());
                         var themeList =
                             tempList.Cast<ThemeItem>().Where(item => item.Name.ToLower().StartsWith("module")).ToList();
 
@@ -629,7 +629,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
             // EmailButton.Value = "False";
             // EmailButton.Order = _groupOrderBase + 30;
             // EmailButton.Group = _Group;
-            // this._baseSettings.Add("ShowEmailButton",EmailButton);
+            // this.BaseSettings.Add("ShowEmailButton",EmailButton);
 
             // Show arrows buttons to move modules (admin only, property authorize)
             var arrowButtons = new SettingItem<bool, CheckBox>
@@ -1913,7 +1913,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                     else
                     {
                         // End Change Geert.Audenaert@Syntegra.Com
-                        // if (portalSettings.AlwaysShowEditButton == true || PortalSecurity.IsInRoles(moduleConfiguration.AuthorizedEditRoles))
+                        // if (PortalSettings.AlwaysShowEditButton == true || PortalSecurity.IsInRoles(moduleConfiguration.AuthorizedEditRoles))
                         this.canEdit = PortalSecurity.IsInRoles(this.moduleConfiguration.AuthorizedEditRoles) ? 1 : 2;
 
                         // Change by Geert.Audenaert@Syntegra.Com
@@ -2009,18 +2009,18 @@ namespace Appleseed.Framework.Web.UI.WebControls
                     // Change 8/April/2003 Jes1111
                     // changes to Language behaviour require addition of culture names to cache key
                     // Jes1111 2003/04/24 - Added PortalAlias to cachekey
-                    var portalSettings1 = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+                    var PortalSettings1 = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
                     var sb = new StringBuilder();
                     sb.Append("rb_");
-                    sb.Append(portalSettings1.PortalAlias);
+                    sb.Append(PortalSettings1.PortalAlias);
                     sb.Append("_mid");
                     sb.Append(this.ModuleID.ToString());
                     sb.Append("[");
-                    sb.Append(portalSettings1.PortalContentLanguage);
+                    sb.Append(PortalSettings1.PortalContentLanguage);
                     sb.Append("+");
-                    sb.Append(portalSettings1.PortalUILanguage);
+                    sb.Append(PortalSettings1.PortalUILanguage);
                     sb.Append("+");
-                    sb.Append(portalSettings1.PortalDataFormattingCulture);
+                    sb.Append(PortalSettings1.PortalDataFormattingCulture);
                     sb.Append("]");
 
                     return sb.ToString();
@@ -4923,7 +4923,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
             var admin = new ModulesDB();
             admin.UpdateModuleOrder(this.OriginalModuleID, 99, targetPane);
 
-            // reload the portalSettings from the database
+            // reload the PortalSettings from the database
             HttpContext.Current.Items["PortalSettings"] = new PortalSettings(
                 this.PageID, this.PortalSettings.PortalAlias);
             this.Page.PortalSettings = (PortalSettings)this.Context.Items["PortalSettings"];

@@ -51,8 +51,8 @@ namespace Appleseed.Framework.Localization
             if (HttpContext.Current != null && HttpContext.Current.Items["PortalSettings"] != null)
             {
                 //Do not remove these checks!! It fails installing modules on startup
-                PortalSettings _portalSettings = (PortalSettings) HttpContext.Current.Items["PortalSettings"];
-                strLangList = _portalSettings.GetLanguageList();
+                PortalSettings PortalSettings = (PortalSettings) HttpContext.Current.Items["PortalSettings"];
+                strLangList = PortalSettings.GetLanguageList();
             }
             
             LanguageCultureCollection langList;

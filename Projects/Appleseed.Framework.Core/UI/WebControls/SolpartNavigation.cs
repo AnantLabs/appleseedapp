@@ -161,7 +161,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
             // bool currentTabOnly = (Bind == BindOption.BindOptionCurrentChilds); 
 
             // Obtain PortalSettings from Current Context 
-            var portalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+            var PortalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
 
             // Build list of tabs to be shown to user 
             var authorizedTabs = this.setAutorizedTabsWithImage();
@@ -178,16 +178,16 @@ namespace Appleseed.Framework.Web.UI.WebControls
                         myTab.PageImage, 
                         this.giveMeUrl(myTab.PageName, myTab.PageID), 
                         false);
-                    if (portalSettings.ActivePage.PageID == myTab.PageID)
+                    if (PortalSettings.ActivePage.PageID == myTab.PageID)
                     {
-                        this.ShopMenu(myTab, portalSettings.ActivePage.PageID);
+                        this.ShopMenu(myTab, PortalSettings.ActivePage.PageID);
                     }
                 }
                 else
                 {
                     // gman3001: Statement Added/Modified 2004/10/06
                     // for now only set default css styles for the active root menu item, if it is not a products menu
-                    if (this.IsActiveTabIn(portalSettings.ActivePage.PageID, myTab))
+                    if (this.IsActiveTabIn(PortalSettings.ActivePage.PageID, myTab))
                     {
                         this.AddGraphMenuItem(
                             null, 
@@ -210,7 +210,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                             false);
                     }
 
-                    this.RecourseMenu(myTab, portalSettings.ActivePage.PageID);
+                    this.RecourseMenu(myTab, PortalSettings.ActivePage.PageID);
                 }
             }
         }
@@ -232,59 +232,59 @@ namespace Appleseed.Framework.Web.UI.WebControls
             if (HttpContext.Current != null)
             {
                 // Obtain PortalSettings from Current Context
-                var portalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+                var PortalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
 
                 switch (this.Bind)
                 {
                     case BindOption.BindOptionTop:
                         {
                             authorizedTabs = this.GetTabs(
-                                0, portalSettings.ActivePage.PageID, portalSettings.DesktopPages);
+                                0, PortalSettings.ActivePage.PageID, PortalSettings.DesktopPages);
                             break;
                         }
 
                     case BindOption.BindOptionCurrentChilds:
                         {
                             var currentTabRoot =
-                                PortalSettings.GetRootPage(portalSettings.ActivePage, portalSettings.DesktopPages).
+                                PortalSettings.GetRootPage(PortalSettings.ActivePage, PortalSettings.DesktopPages).
                                     PageID;
                             authorizedTabs = this.GetTabs(
-                                currentTabRoot, portalSettings.ActivePage.PageID, portalSettings.DesktopPages);
+                                currentTabRoot, PortalSettings.ActivePage.PageID, PortalSettings.DesktopPages);
                             break;
                         }
 
                     case BindOption.BindOptionSubtabSibling:
                         {
                             int currentTabRoot;
-                            if (portalSettings.ActivePage.ParentPageID == 0)
+                            if (PortalSettings.ActivePage.ParentPageID == 0)
                             {
-                                currentTabRoot = portalSettings.ActivePage.PageID;
+                                currentTabRoot = PortalSettings.ActivePage.PageID;
                             }
                             else
                             {
-                                currentTabRoot = portalSettings.ActivePage.ParentPageID;
+                                currentTabRoot = PortalSettings.ActivePage.ParentPageID;
                             }
 
                             authorizedTabs = this.GetTabs(
-                                currentTabRoot, portalSettings.ActivePage.PageID, portalSettings.DesktopPages);
+                                currentTabRoot, PortalSettings.ActivePage.PageID, PortalSettings.DesktopPages);
                             break;
                         }
 
                     case BindOption.BindOptionChildren:
                         {
                             authorizedTabs = this.GetTabs(
-                                portalSettings.ActivePage.PageID, 
-                                portalSettings.ActivePage.PageID, 
-                                portalSettings.DesktopPages);
+                                PortalSettings.ActivePage.PageID, 
+                                PortalSettings.ActivePage.PageID, 
+                                PortalSettings.DesktopPages);
                             break;
                         }
 
                     case BindOption.BindOptionSiblings:
                         {
                             authorizedTabs = this.GetTabs(
-                                portalSettings.ActivePage.ParentPageID, 
-                                portalSettings.ActivePage.PageID, 
-                                portalSettings.DesktopPages);
+                                PortalSettings.ActivePage.ParentPageID, 
+                                PortalSettings.ActivePage.PageID, 
+                                PortalSettings.DesktopPages);
                             break;
                         }
 
@@ -292,16 +292,16 @@ namespace Appleseed.Framework.Web.UI.WebControls
                     case BindOption.BindOptionTabSibling:
                         {
                             authorizedTabs = this.GetTabs(
-                                portalSettings.ActivePage.PageID, 
-                                portalSettings.ActivePage.PageID, 
-                                portalSettings.DesktopPages);
+                                PortalSettings.ActivePage.PageID, 
+                                PortalSettings.ActivePage.PageID, 
+                                PortalSettings.DesktopPages);
 
                             if (authorizedTabs.Count == 0)
                             {
                                 authorizedTabs = this.GetTabs(
-                                    portalSettings.ActivePage.ParentPageID, 
-                                    portalSettings.ActivePage.PageID, 
-                                    portalSettings.DesktopPages);
+                                    PortalSettings.ActivePage.ParentPageID, 
+                                    PortalSettings.ActivePage.PageID, 
+                                    PortalSettings.DesktopPages);
                             }
 
                             break;
@@ -312,7 +312,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                         if (this.ParentPageID != -1)
                         {
                             authorizedTabs = this.GetTabs(
-                                this.ParentPageID, portalSettings.ActivePage.PageID, portalSettings.DesktopPages);
+                                this.ParentPageID, PortalSettings.ActivePage.PageID, PortalSettings.DesktopPages);
                         }
 
                         break;
@@ -514,8 +514,8 @@ namespace Appleseed.Framework.Web.UI.WebControls
             string customcss, 
             string customhighlightcss)
         {
-            var portalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
-            var pathGraph = HttpContext.Current.Server.MapPath(portalSettings.PortalLayoutPath + "/menuimages/");
+            var PortalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+            var pathGraph = HttpContext.Current.Server.MapPath(PortalSettings.PortalLayoutPath + "/menuimages/");
             var tabTranslation = tabname;
             if (translation)
             {
@@ -703,12 +703,12 @@ namespace Appleseed.Framework.Web.UI.WebControls
         {
             base.SystemScriptPath = string.Concat(
                 Path.ApplicationRoot, "/aspnet_client/SolpartWebControls_SolpartMenu/1_4_0_0/");
-            var portalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+            var PortalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
             var solpart = string.Concat(Path.ApplicationRoot, "/aspnet_client/SolpartWebControls_SolpartMenu/1_4_0_0/");
 
             if (this.ShowIconMenu)
             {
-                base.SystemImagesPath = Path.WebPathCombine(portalSettings.PortalLayoutPath, "menuimages/");
+                base.SystemImagesPath = Path.WebPathCombine(PortalSettings.PortalLayoutPath, "menuimages/");
                 var menuDirectory = HttpContext.Current.Server.MapPath(base.SystemImagesPath);
 
                 // Create directory and copy standard images for solpart
@@ -795,8 +795,8 @@ namespace Appleseed.Framework.Web.UI.WebControls
 
             if (!CurrentCache.Exists(Key.TabNavigationSettings(tab, "Shop")))
             {
-                var portalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
-                var exists = new ModulesDB().ExistModuleProductsInPage(tab, portalSettings.PortalID);
+                var PortalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+                var exists = new ModulesDB().ExistModuleProductsInPage(tab, PortalSettings.PortalID);
                 CurrentCache.Insert(Key.TabNavigationSettings(tab, "Shop"), exists);
             }
 

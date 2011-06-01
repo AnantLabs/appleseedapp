@@ -222,6 +222,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libs\Novell.Directory.Ldap.dll</HintPath>
     </Reference>
+    <Reference Include="NuGet.Core, Version=1.0.11220.104, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libs\NuGet.Core.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\..\Libs\nunit.framework.dll</HintPath>
     </Reference>
@@ -1635,6 +1639,10 @@
     <ProjectReference Include="..\..\Projects\PortableAreas\Appleseed.Core\Appleseed.Core.csproj">
       <Project>{22C4BA46-65C9-49E2-8A23-86DD2F44B744}</Project>
       <Name>Appleseed.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Projects\PortableAreas\SelfUpdater\SelfUpdater.csproj">
+      <Project>{DBAED848-FEE6-45D4-9086-E519E0A077A2}</Project>
+      <Name>SelfUpdater</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -4022,6 +4030,30 @@
     <Content Include="aspnet_client\ie7\0_9\README.txt" />
     <Content Include="aspnet_client\ie7\0_9\test-trans.png" />
     <Content Include="aspnet_client\ie7\0_9\test.html" />
+    <Content Include="aspnet_client\jQuery\jquery-1.6.1-vsdoc.js" />
+    <Content Include="aspnet_client\jQuery\jquery-1.6.1.js" />
+    <Content Include="aspnet_client\jQuery\jquery-1.6.1.min.js" />
+    <Content Include="aspnet_client\jQuery\jquery-ui-1.8.11.js" />
+    <Content Include="aspnet_client\jQuery\jquery-ui-1.8.11.min.js" />
+    <Content Include="aspnet_client\jQuery\jquery-ui-i18n.min.js" />
+    <Content Include="aspnet_client\jQuery\jquery.bgiframe.js" />
+    <Content Include="aspnet_client\jQuery\jquery.bgiframe.min.js" />
+    <Content Include="aspnet_client\jQuery\jquery.unobtrusive-ajax.js" />
+    <Content Include="aspnet_client\jQuery\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="aspnet_client\jQuery\jquery.validate-vsdoc.js" />
+    <Content Include="aspnet_client\jQuery\jquery.validate.js" />
+    <Content Include="aspnet_client\jQuery\jquery.validate.min.js" />
+    <Content Include="aspnet_client\jQuery\jquery.validate.unobtrusive.js" />
+    <Content Include="aspnet_client\jQuery\jquery.validate.unobtrusive.min.js" />
+    <Content Include="aspnet_client\jQuery\MicrosoftAjax.debug.js" />
+    <Content Include="aspnet_client\jQuery\MicrosoftAjax.js" />
+    <Content Include="aspnet_client\jQuery\MicrosoftMvcAjax.debug.js" />
+    <Content Include="aspnet_client\jQuery\MicrosoftMvcAjax.js" />
+    <Content Include="aspnet_client\jQuery\MicrosoftMvcJQueryValidation.js" />
+    <Content Include="aspnet_client\jQuery\MicrosoftMvcValidation.debug.js" />
+    <Content Include="aspnet_client\jQuery\MicrosoftMvcValidation.js" />
+    <Content Include="aspnet_client\jQuery\modernizr-1.7.js" />
+    <Content Include="aspnet_client\jQuery\modernizr-1.7.min.js" />
     <Content Include="aspnet_client\js\browser_upgrade_notification.js" />
     <Content Include="aspnet_client\js\ControlPanelMenu.js" />
     <Content Include="aspnet_client\js\DragNDrop.js" />

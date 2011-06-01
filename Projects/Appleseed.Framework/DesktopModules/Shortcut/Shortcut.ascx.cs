@@ -58,9 +58,9 @@ namespace Appleseed.Content.Web.Modules
             }
 
             // Do not remove these checks!! It fails installing modules on startup
-            var portalSettings1 = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+            var PortalSettings1 = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
 
-            var p = portalSettings1.PortalID;
+            var p = PortalSettings1.PortalID;
 
             // Get a list of modules of the current running portal
             var linkedModule =

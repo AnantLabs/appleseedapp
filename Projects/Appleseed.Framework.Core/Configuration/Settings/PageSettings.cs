@@ -56,7 +56,7 @@ namespace Appleseed.Framework.Site.Configuration
         /// <remarks>
         ///   thierry (tiptopweb)
         ///   to have dropdown list for the themes and layout, we need the data path for the portal (for private theme and layout)
-        ///   we need the portalPath here for this use and it has to be set from the current portalSettings before getting the
+        ///   we need the portalPath here for this use and it has to be set from the current PortalSettings before getting the
         ///   CustomSettings for a tab
         /// </remarks>
         private string portalPath;

@@ -5,7 +5,7 @@ using Appleseed.Framework.Security;
 using System.Web;
 
 
-namespace AppleseedWebApplication
+namespace Appleseed
 {
     /// <summary>
     /// The Default.aspx page simply tests 

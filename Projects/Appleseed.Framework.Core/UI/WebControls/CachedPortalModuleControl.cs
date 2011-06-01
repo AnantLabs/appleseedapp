@@ -79,18 +79,18 @@ namespace Appleseed.Framework.Web.UI.WebControls
                 // changes to Language behaviour require addition of culture names to cache key
                 // Jes1111 - 24/April/2003 - added portal alias to cachekey (to facilitate identification
                 // when examining cache contents)
-                PortalSettings portalSettings = (PortalSettings) HttpContext.Current.Items["PortalSettings"];
+                PortalSettings PortalSettings = (PortalSettings) HttpContext.Current.Items["PortalSettings"];
                 StringBuilder sb = new StringBuilder();
                 sb.Append("rb_");
-                sb.Append(portalSettings.PortalAlias.ToLower());
+                sb.Append(PortalSettings.PortalAlias.ToLower());
                 sb.Append("_mid");
                 sb.Append(ModuleID.ToString());
                 sb.Append("[");
-                sb.Append(portalSettings.PortalContentLanguage);
+                sb.Append(PortalSettings.PortalContentLanguage);
                 sb.Append("+");
-                sb.Append(portalSettings.PortalUILanguage);
+                sb.Append(PortalSettings.PortalUILanguage);
                 sb.Append("+");
-                sb.Append(portalSettings.PortalDataFormattingCulture);
+                sb.Append(PortalSettings.PortalDataFormattingCulture);
                 sb.Append("]");
 
                 return sb.ToString();

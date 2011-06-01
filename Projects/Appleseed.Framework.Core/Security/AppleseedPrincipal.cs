@@ -38,8 +38,8 @@ namespace Appleseed.Framework.Security {
                 }
 
                 UsersDB users = new UsersDB();
-                PortalSettings portalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
-                return users.GetSingleUser( base.Identity.Name, portalSettings.PortalAlias  );
+                PortalSettings PortalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+                return users.GetSingleUser( base.Identity.Name, PortalSettings.PortalAlias  );
             }
         }
 

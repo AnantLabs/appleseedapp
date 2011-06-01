@@ -119,10 +119,10 @@ namespace Appleseed.Framework.Web.UI.WebControls
             var currentTabOnly = this.Bind == BindOption.BindOptionCurrentChilds;
 
             // Obtain PortalSettings from Current Context 
-            var portalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+            var PortalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
 
             // Build list of tabs to be shown to user 
-            var authorizedTabs = portalSettings.DesktopPages.Cast<PageStripDetails>().Where(tab => PortalSecurity.IsInRoles(tab.AuthorizedRoles)).ToList();
+            var authorizedTabs = PortalSettings.DesktopPages.Cast<PageStripDetails>().Where(tab => PortalSecurity.IsInRoles(tab.AuthorizedRoles)).ToList();
 
             // Menu 
 
@@ -140,7 +140,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
             {
                 if (authorizedTabs.Count >= 0)
                 {
-                    var mytab = PortalSettings.GetRootPage(portalSettings.ActivePage, authorizedTabs);
+                    var mytab = PortalSettings.GetRootPage(PortalSettings.ActivePage, authorizedTabs);
 
                     if (mytab.Pages.Count > 0)
                     {
@@ -183,8 +183,8 @@ namespace Appleseed.Framework.Web.UI.WebControls
             {
                 // get index and id from this page and transmit them
                 // Obtain PortalSettings from Current Context 
-                var portalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
-                var tabIdShop = portalSettings.ActivePage.PageID;
+                var PortalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+                var tabIdShop = PortalSettings.ActivePage.PageID;
 
                 var mn = new MenuTreeNode(mytab.PageName)
                     {
@@ -205,8 +205,8 @@ namespace Appleseed.Framework.Web.UI.WebControls
         /// </summary>
         private void AddShopHomeNode()
         {
-            var portalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
-            var tabIdShop = portalSettings.ActivePage.PageID;
+            var PortalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+            var tabIdShop = PortalSettings.ActivePage.PageID;
 
             var mn = new MenuTreeNode(General.GetString("PRODUCT_HOME", "Shop Home"))
                 {

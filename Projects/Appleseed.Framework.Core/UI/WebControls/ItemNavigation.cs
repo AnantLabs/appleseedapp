@@ -61,8 +61,8 @@ namespace Appleseed.Framework.Web.UI.WebControls
 
             // get index and id from this page and transmit them
             // Obtain PortalSettings from Current Context 
-            var portalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
-            var tabIdItemsRoot = portalSettings.ActivePage.PageID;
+            var PortalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+            var tabIdItemsRoot = PortalSettings.ActivePage.PageID;
 
             var mn = new MenuTreeNode(mytab.PageName)
                 {
@@ -116,8 +116,8 @@ namespace Appleseed.Framework.Web.UI.WebControls
         /// </summary>
         private void AddRootNode()
         {
-            var portalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
-            var tabItemsRoot = portalSettings.ActivePage;
+            var PortalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+            var tabItemsRoot = PortalSettings.ActivePage;
 
             using (var mn = new MenuTreeNode(tabItemsRoot.PageName))
             {

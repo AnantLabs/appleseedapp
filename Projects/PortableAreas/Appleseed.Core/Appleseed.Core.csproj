@@ -79,7 +79,10 @@
     <Reference Include="System.Data.DataSetExtensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libs\System.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -99,6 +102,9 @@
     <Compile Include="ApplicationBus\DBScriptsHandler.cs" />
     <Compile Include="ApplicationBus\DBScriptsMessage.cs" />
     <Compile Include="ApplicationBus\BusMessageHandler.cs" />
+    <Compile Include="ApplicationBus\JSRegisterDescriptor.cs" />
+    <Compile Include="ApplicationBus\JSRegisterHandler.cs" />
+    <Compile Include="Authorization\AppleseedAuthorize.cs" />
     <Compile Include="PortableAreaUtils.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DBScripts\ExecuteHelper.cs" />
@@ -142,7 +148,9 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Models\AppleseedModel.edmx">
