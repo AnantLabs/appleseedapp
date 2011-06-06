@@ -107,14 +107,11 @@
     <Compile Include="WebProjectSystem.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\img\koala.jpg" />
-    <Content Include="Content\style.css" />
     <Content Include="Scripts\autoupdate.js" />
     <Content Include="Scripts\UpdateModule.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Updates\Module.ascx" />
