@@ -143,6 +143,8 @@
 		<add key="LANGUAGE_ES" value="ES"></add>
 		<add key="ImagesRepository" value="/Content/Uploads" />
 		<add key="ImagesRepositoryRelative" value="/Content/Uploads" />
+		<add key="PackageSource" value="http://example.com" />
+		<add key="RouteTesting" value="false" />
 	</appSettings>
 	<system.net>
 		<mailSettings>
