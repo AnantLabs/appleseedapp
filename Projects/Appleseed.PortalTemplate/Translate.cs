@@ -23,7 +23,7 @@ namespace Appleseed.PortalTemplate
         private int moduleIndex;
         #region rb entities into DTOs
 
-        public  PortalsDTO TranslateRb_PortalsIntoPortalDTO(rb_Portals portal)
+        public PortalsDTO TranslateRb_PortalsIntoPortalDTO(rb_Portals portal)
         {
             PortalsDTO _portal = new PortalsDTO();
             _portal.AlwaysShowEditButton = portal.AlwaysShowEditButton;
@@ -47,16 +47,17 @@ namespace Appleseed.PortalTemplate
             return _portal;
         }
 
-        public  PortalSettingsDTO TranslateRb_PortalSettingsIntoPortalSettingsDTO(rb_PortalSettings portalSettings)
+        public PortalSettingsDTO TranslateRb_PortalSettingsIntoPortalSettingsDTO(rb_PortalSettings portalSettings)
         {
             PortalSettingsDTO _portalSettings = new PortalSettingsDTO();
             _portalSettings.PortalID = portalSettings.PortalID;
             _portalSettings.SettingName = portalSettings.SettingName;
             _portalSettings.SettingValue = portalSettings.SettingValue;
+
             return _portalSettings;
         }
 
-        public  PagesDTO TranslateRb_PagesIntoPagesDTO(rb_Pages pages)
+        public PagesDTO TranslateRb_PagesIntoPagesDTO(rb_Pages pages)
         {
             PagesDTO _pages = new PagesDTO();
             _pages.AuthorizedRoles = pages.AuthorizedRoles;
@@ -86,7 +87,7 @@ namespace Appleseed.PortalTemplate
             return _pages;
         }
 
-        public  TabSettingsDTO TranslateRb_TabSettingsIntoTabSettingsDTO(rb_TabSetting settings)
+        public TabSettingsDTO TranslateRb_TabSettingsIntoTabSettingsDTO(rb_TabSetting settings)
         {
             TabSettingsDTO _settings = new TabSettingsDTO();
             _settings.SettingName = settings.SettingName;
@@ -95,54 +96,56 @@ namespace Appleseed.PortalTemplate
             return _settings;
         }
 
-        public  ModulesDTO TranslateRb_ModulesIntoModulesDTO(rb_Modules modules)
+        public ModulesDTO TranslateRb_ModulesIntoModulesDTO(rb_Modules module)
         {
-            ModulesDTO _modules = new ModulesDTO();
-            _modules.AuthorizedAddRoles = modules.AuthorizedAddRoles;
-            _modules.AuthorizedApproveRoles = modules.AuthorizedApproveRoles;
-            _modules.AuthorizedDeleteModuleRoles = modules.AuthorizedDeleteModuleRoles;
-            _modules.AuthorizedDeleteRoles = modules.AuthorizedDeleteRoles;
-            _modules.AuthorizedEditRoles = modules.AuthorizedEditRoles;
-            _modules.AuthorizedMoveModuleRoles = modules.AuthorizedMoveModuleRoles;
-            _modules.AuthorizedPropertiesRoles = modules.AuthorizedPropertiesRoles;
-            _modules.AuthorizedPublishingRoles = modules.AuthorizedPublishingRoles;
-            _modules.AuthorizedViewRoles = modules.AuthorizedViewRoles;
-            _modules.CacheTime = modules.CacheTime;
-            _modules.LastEditor = modules.LastEditor;
-            _modules.LastModified = modules.LastModified;
-            _modules.ModuleDefID = modules.ModuleDefID;
-            _modules.ModuleID = modules.ModuleID;
-            _modules.ModuleOrder = modules.ModuleOrder;
-            _modules.ModuleTitle = modules.ModuleTitle;
-            _modules.NewVersion = modules.NewVersion;
-            _modules.PaneName = modules.PaneName;
-            _modules.ShowEveryWhere = modules.ShowEveryWhere;
-            _modules.ShowMobile = modules.ShowMobile;
-            _modules.StagingLastEditor = modules.StagingLastEditor;
-            _modules.StagingLastModified = modules.StagingLastModified;
-            _modules.SupportCollapsable = modules.SupportCollapsable;
-            _modules.SupportWorkflow = modules.SupportWorkflow;
-            _modules.TabID = modules.TabID;
-            _modules.WorkflowState = modules.WorkflowState;
+            ModulesDTO _module = new ModulesDTO();
+            _module.AuthorizedAddRoles = module.AuthorizedAddRoles;
+            _module.AuthorizedApproveRoles = module.AuthorizedApproveRoles;
+            _module.AuthorizedDeleteModuleRoles = module.AuthorizedDeleteModuleRoles;
+            _module.AuthorizedDeleteRoles = module.AuthorizedDeleteRoles;
+            _module.AuthorizedEditRoles = module.AuthorizedEditRoles;
+            _module.AuthorizedMoveModuleRoles = module.AuthorizedMoveModuleRoles;
+            _module.AuthorizedPropertiesRoles = module.AuthorizedPropertiesRoles;
+            _module.AuthorizedPublishingRoles = module.AuthorizedPublishingRoles;
+            _module.AuthorizedViewRoles = module.AuthorizedViewRoles;
+            _module.CacheTime = module.CacheTime;
+            _module.LastEditor = module.LastEditor;
+            _module.LastModified = module.LastModified;
+            _module.ModuleDefID = module.ModuleDefID;
+            _module.ModuleID = module.ModuleID;
+            _module.ModuleOrder = module.ModuleOrder;
+            _module.ModuleTitle = module.ModuleTitle;
+            _module.NewVersion = module.NewVersion;
+            _module.PaneName = module.PaneName;
+            _module.ShowEveryWhere = module.ShowEveryWhere;
+            _module.ShowMobile = module.ShowMobile;
+            _module.StagingLastEditor = module.StagingLastEditor;
+            _module.StagingLastModified = module.StagingLastModified;
+            _module.SupportCollapsable = module.SupportCollapsable;
+            _module.SupportWorkflow = module.SupportWorkflow;
+            _module.TabID = module.TabID;
+            _module.WorkflowState = module.WorkflowState;
 
             List<ModuleSettingsDTO> settings = new List<ModuleSettingsDTO>();
-            foreach (rb_ModuleSettings m in modules.rb_ModuleSettings) {
+            foreach (rb_ModuleSettings m in module.rb_ModuleSettings) {
                 settings.Add(TranslateRb_ModuleSettingsIntoModuleSettingsDTO(m));
             }
-            _modules.ModuleSettings = settings;
-            _modules.ModuleDefinitions = TranslateRb_ModuleDefinitionsIntoModuleDefinitionsDTO(modules.rb_ModuleDefinition);
-            
+            _module.ModuleSettings = settings;
+            _module.ModuleDefinitions = TranslateRb_ModuleDefinitionsIntoModuleDefinitionsDTO(module.rb_ModuleDefinition);
 
             Page p = new Page();
-            string portalModuleName = string.Concat(Appleseed.Framework.Settings.Path.ApplicationRoot, "/", this.DesktopSources[_modules.ModuleDefinitions.GeneralModDefID]);
-            PortalModuleControl portalModule = (PortalModuleControl)p.LoadControl(portalModuleName);
-            if (portalModule is IModuleExportable) {
-                _modules.Content = ((IModuleExportable)portalModule).GetContentData(modules.ModuleID);
+            string portalModuleName = string.Concat(Appleseed.Framework.Settings.Path.ApplicationRoot, "/", this.DesktopSources[_module.ModuleDefinitions.GeneralModDefID]);
+            if (!portalModuleName.Contains("/Areas/") && !portalModuleName.StartsWith("Areas/")) {
+                PortalModuleControl portalModule = (PortalModuleControl)p.LoadControl(portalModuleName);
+                if (portalModule is IModuleExportable) {
+                    _module.Content = ((IModuleExportable)portalModule).GetContentData(module.ModuleID);
+                }
             }
-            return _modules;
+
+            return _module;
         }
 
-        private  ModuleDefinitionsDTO TranslateRb_ModuleDefinitionsIntoModuleDefinitionsDTO(rb_ModuleDefinition definitions)
+        private ModuleDefinitionsDTO TranslateRb_ModuleDefinitionsIntoModuleDefinitionsDTO(rb_ModuleDefinition definitions)
         {
             ModuleDefinitionsDTO _definitions = new ModuleDefinitionsDTO();
             _definitions.GeneralModDefID = definitions.GeneralModDefID;
@@ -151,17 +154,18 @@ namespace Appleseed.PortalTemplate
             return _definitions;
         }
 
-        public  HtmlTextDTO TranslateRb_HtmlTextIntoHtmlTextDTO(rb_HtmlText html)
+        public HtmlTextDTO TranslateRb_HtmlTextIntoHtmlTextDTO(rb_HtmlText html)
         {
             HtmlTextDTO _html = new HtmlTextDTO();
             _html.DesktopHtml = html.DesktopHtml;
             _html.MobileDetails = html.MobileDetails;
             _html.MobileSummary = html.MobileSummary;
             _html.ModuleID = html.ModuleID;
+
             return _html;
         }
 
-        public  ModuleSettingsDTO TranslateRb_ModuleSettingsIntoModuleSettingsDTO(rb_ModuleSettings settings)
+        public ModuleSettingsDTO TranslateRb_ModuleSettingsIntoModuleSettingsDTO(rb_ModuleSettings settings)
         {
             ModuleSettingsDTO _settings = new ModuleSettingsDTO();
             _settings.ModuleID = settings.ModuleID;
@@ -214,6 +218,7 @@ namespace Appleseed.PortalTemplate
             _portalSettings.PortalID = portalSettings.PortalID;
             _portalSettings.SettingName = portalSettings.SettingName;
             _portalSettings.SettingValue = portalSettings.SettingValue;
+
             return _portalSettings;
         }
 
@@ -262,63 +267,67 @@ namespace Appleseed.PortalTemplate
             return _settings;
         }
 
-        public rb_Modules TranslateModulesDTOIntoRb_Modules(ModulesDTO modules)
+        public rb_Modules TranslateModulesDTOIntoRb_Modules(ModulesDTO module)
         {
-            if (this.DesktopSources.ContainsKey(modules.ModuleDefinitions.GeneralModDefID)) {
+            if (this.DesktopSources.ContainsKey(module.ModuleDefinitions.GeneralModDefID)) {
 
-                rb_Modules _modules = new rb_Modules();
-                _modules.AuthorizedAddRoles = modules.AuthorizedAddRoles;
-                _modules.AuthorizedApproveRoles = modules.AuthorizedApproveRoles;
-                _modules.AuthorizedDeleteModuleRoles = modules.AuthorizedDeleteModuleRoles;
-                _modules.AuthorizedDeleteRoles = modules.AuthorizedDeleteRoles;
-                _modules.AuthorizedEditRoles = modules.AuthorizedEditRoles;
-                _modules.AuthorizedMoveModuleRoles = modules.AuthorizedMoveModuleRoles;
-                _modules.AuthorizedPropertiesRoles = modules.AuthorizedPropertiesRoles;
-                _modules.AuthorizedPublishingRoles = modules.AuthorizedPublishingRoles;
-                _modules.AuthorizedViewRoles = modules.AuthorizedViewRoles;
-                _modules.CacheTime = modules.CacheTime;
-                _modules.LastEditor = modules.LastEditor;
-                _modules.LastModified = modules.LastModified;
-                _modules.ModuleDefID = modules.ModuleDefID;
-                _modules.ModuleID = modules.ModuleID;
-                _modules.ModuleOrder = modules.ModuleOrder;
-                _modules.ModuleTitle = modules.ModuleTitle;
-                _modules.NewVersion = modules.NewVersion;
-                _modules.PaneName = modules.PaneName;
-                _modules.ShowEveryWhere = modules.ShowEveryWhere;
-                _modules.ShowMobile = modules.ShowMobile;
-                _modules.StagingLastEditor = modules.StagingLastEditor;
-                _modules.StagingLastModified = modules.StagingLastModified;
-                _modules.SupportCollapsable = modules.SupportCollapsable;
-                _modules.SupportWorkflow = modules.SupportWorkflow;
-                _modules.TabID = modules.TabID;
-                _modules.WorkflowState = modules.WorkflowState;
+                rb_Modules _module = new rb_Modules();
+                _module.AuthorizedAddRoles = module.AuthorizedAddRoles;
+                _module.AuthorizedApproveRoles = module.AuthorizedApproveRoles;
+                _module.AuthorizedDeleteModuleRoles = module.AuthorizedDeleteModuleRoles;
+                _module.AuthorizedDeleteRoles = module.AuthorizedDeleteRoles;
+                _module.AuthorizedEditRoles = module.AuthorizedEditRoles;
+                _module.AuthorizedMoveModuleRoles = module.AuthorizedMoveModuleRoles;
+                _module.AuthorizedPropertiesRoles = module.AuthorizedPropertiesRoles;
+                _module.AuthorizedPublishingRoles = module.AuthorizedPublishingRoles;
+                _module.AuthorizedViewRoles = module.AuthorizedViewRoles;
+                _module.CacheTime = module.CacheTime;
+                _module.LastEditor = module.LastEditor;
+                _module.LastModified = module.LastModified;
+                _module.ModuleDefID = module.ModuleDefID;
+                _module.ModuleID = module.ModuleID;
+                _module.ModuleOrder = module.ModuleOrder;
+                _module.ModuleTitle = module.ModuleTitle;
+                _module.NewVersion = module.NewVersion;
+                _module.PaneName = module.PaneName;
+                _module.ShowEveryWhere = module.ShowEveryWhere;
+                _module.ShowMobile = module.ShowMobile;
+                _module.StagingLastEditor = module.StagingLastEditor;
+                _module.StagingLastModified = module.StagingLastModified;
+                _module.SupportCollapsable = module.SupportCollapsable;
+                _module.SupportWorkflow = module.SupportWorkflow;
+                _module.TabID = module.TabID;
+                _module.WorkflowState = module.WorkflowState;
 
-                _modules.rb_ModuleSettings = new EntitySet<rb_ModuleSettings>();
-                foreach (ModuleSettingsDTO m in modules.ModuleSettings) {
-                    _modules.rb_ModuleSettings.Add(TranslateModuleSettingsDTOIntoRb_ModuleSettings(m));
+                _module.rb_ModuleSettings = new EntitySet<rb_ModuleSettings>();
+                foreach (ModuleSettingsDTO m in module.ModuleSettings) {
+                    _module.rb_ModuleSettings.Add(TranslateModuleSettingsDTOIntoRb_ModuleSettings(m));
                 }
-                if (this.ModuleDefinitionsDeserialized.ContainsKey(modules.ModuleDefinitions.GeneralModDefID)) {
-                    rb_ModuleDefinition def;
-                    this.ModuleDefinitionsDeserialized.TryGetValue(modules.ModuleDefinitions.GeneralModDefID, out def);
-                    _modules.rb_ModuleDefinition = def;
+                if (this.ModuleDefinitionsDeserialized.ContainsKey(module.ModuleDefinitions.GeneralModDefID)) {
+                    rb_ModuleDefinition def = this.ModuleDefinitionsDeserialized[module.ModuleDefinitions.GeneralModDefID];
+                    _module.rb_ModuleDefinition = def;
                 } else {
-                    _modules.rb_ModuleDefinition = TranslateModuleDefinitionsDTOIntoRb_ModuleDefinitions(modules.ModuleDefinitions);
-                    this.ModuleDefinitionsDeserialized.Add(modules.ModuleDefinitions.GeneralModDefID, _modules.rb_ModuleDefinition);
+                    _module.rb_ModuleDefinition = TranslateModuleDefinitionsDTOIntoRb_ModuleDefinitions(module.ModuleDefinitions);
+                    this.ModuleDefinitionsDeserialized.Add(module.ModuleDefinitions.GeneralModDefID, _module.rb_ModuleDefinition);
                 }
 
                 Page p = new Page();
-                string portalModuleName = string.Concat(Appleseed.Framework.Settings.Path.ApplicationRoot, "/", this.DesktopSources[_modules.rb_ModuleDefinition.GeneralModDefID]);
-                PortalModuleControl portalModule = (PortalModuleControl)p.LoadControl(portalModuleName);
-                if (portalModule is IModuleExportable) {
-                    this.ContentModules.Add(moduleIndex, modules.Content);
-                    //((IModuleExportable)portalModule).SetContentData(modules.ModuleID, modules.Content, this.PTDataContext);
+                string portalModuleName = string.Concat(Appleseed.Framework.Settings.Path.ApplicationRoot, "/", this.DesktopSources[_module.rb_ModuleDefinition.GeneralModDefID]);
+                if (!portalModuleName.Contains("/Areas/") && !portalModuleName.StartsWith("Areas/")) {
+                    PortalModuleControl portalModule = (PortalModuleControl)p.LoadControl(portalModuleName);
+
+                    if (portalModule is IModuleExportable) {
+                        this.ContentModules.Add(moduleIndex, module.Content);
+                        //((IModuleExportable)portalModule).SetContentData(modules.ModuleID, modules.Content, this.PTDataContext);
+                    }
                 }
                 moduleIndex++;
-                return _modules;
+
+                return _module;
+
             } else {
                 moduleIndex++;
-                this.ModulesNotInserted.Add(modules.ModuleID, modules.ModuleTitle);
+                this.ModulesNotInserted.Add(module.ModuleID, module.ModuleTitle);
                 return null;
             }
         }
@@ -360,6 +369,7 @@ namespace Appleseed.PortalTemplate
             _definitions.GeneralModDefID = definitions.GeneralModDefID;
             _definitions.ModuleDefID = definitions.ModuleDefID;
             _definitions.PortalID = definitions.PortalID;
+
             return _definitions;
         }
 
@@ -389,7 +399,7 @@ namespace Appleseed.PortalTemplate
             get;
             set;
         }
-        
+
         public Dictionary<int, int> PageList
         {
             get;

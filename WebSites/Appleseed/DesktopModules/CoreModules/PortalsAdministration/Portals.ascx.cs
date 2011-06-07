@@ -5,6 +5,7 @@ using System.Web.UI;
 using Appleseed.Framework;
 using Appleseed.Framework.Site.Data;
 using Appleseed.Framework.Web.UI.WebControls;
+using Appleseed.PortalTemplate;
 //using Abtour.PortalTemplate;
 
 namespace Appleseed.Content.Web.Modules
@@ -161,20 +162,26 @@ namespace Appleseed.Content.Web.Modules
 
         protected void SerializeBtn_Click(object sender, EventArgs e)
         {
-            //if (portalList.SelectedIndex != -1) {
-            //    IPortalTemplateServices services = PortalTemplateFactory.GetPortalTemplateServices(new PortalTemplateRepository());
-            //    PortalItem p = (PortalItem)portals[portalList.SelectedIndex];
-            //    bool ok = services.SerializePortal(p.ID, GetPhysicalPackageTemplatesPath() + "\\");
-            //    if (!ok) {
-            //        ErrorMessage.Visible = true;
-            //        ErrorMessage.Text = "There was an error on serialize the portal <br>";
-            //    } else {
-            //        ErrorMessage.Visible = false;
-            //    }
-            //} else {
-            //    ErrorMessage.Visible = true;
-            //    ErrorMessage.Text = "You must select a portal <br>";
-            //}
+            if (portalList.SelectedIndex != -1)
+            {
+                IPortalTemplateServices services = PortalTemplateFactory.GetPortalTemplateServices(new PortalTemplateRepository());
+                PortalItem p = (PortalItem)portals[portalList.SelectedIndex];
+                bool ok = services.SerializePortal(p.ID, GetPhysicalPackageTemplatesPath() + "\\");
+                if (!ok)
+                {
+                    ErrorMessage.Visible = true;
+                    ErrorMessage.Text = "There was an error on serialize the portal <br>";
+                }
+                else
+                {
+                    ErrorMessage.Visible = false;
+                }
+            }
+            else
+            {
+                ErrorMessage.Visible = true;
+                ErrorMessage.Text = "You must select a portal <br>";
+            }
         }
     }
 }
