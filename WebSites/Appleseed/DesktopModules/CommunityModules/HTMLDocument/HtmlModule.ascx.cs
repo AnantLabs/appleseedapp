@@ -27,13 +27,16 @@ namespace Appleseed.DesktopModules.CommunityModules.HTMLDocument
     using Appleseed.Framework.Security;
     using Appleseed.Framework.Settings;
     using Appleseed.Framework.Web.UI.WebControls;
+    using Appleseed.PortalTemplate;
+    using Appleseed.PortalTemplate.DTOs;
+    using System.Xml.Serialization;
 
     /// <summary>
     /// HTML Document Module
     ///   Represents any text that can contain HTML
     ///   Edited with HTMLeditors
     /// </summary>
-    public partial class HtmlModule : PortalModuleControl
+    public partial class HtmlModule : PortalModuleControl, IModuleExportable
     {
         // , IModuleExportable
         // Added by Hongwei Shen(Hongwei.shen@gmail.com) 10/9/2005
@@ -439,38 +442,45 @@ namespace Appleseed.DesktopModules.CommunityModules.HTMLDocument
 
         #endregion
 
-        // #region IModuleExportable Members
+        #region IModuleExportable Members
 
-        // public string GetContentData(int moduleId)
-        // {
-        // IPortalTemplateServices services = PortalTemplateFactory.GetPortalTemplateServices(new PortalTemplateRepository());
-        // HtmlTextDTO _html = services.GetHtmlTextDTO(moduleId);
-        // if (_html == null) {
-        // return string.Empty;
-        // } else {
-        // System.IO.StringWriter xout = new System.IO.StringWriter();
-        // XmlSerializer xs = new XmlSerializer(typeof(HtmlTextDTO));
-        // xs.Serialize(xout, _html);
-        // return xout.ToString();
-        // }
-        // }
+        public string GetContentData(int moduleId)
+        {
+            IPortalTemplateServices services = PortalTemplateFactory.GetPortalTemplateServices(new PortalTemplateRepository());
+            HtmlTextDTO _html = services.GetHtmlTextDTO(moduleId);
+            if (_html == null)
+            {
+                return string.Empty;
+            }
+            else
+            {
+                System.IO.StringWriter xout = new System.IO.StringWriter();
+                XmlSerializer xs = new XmlSerializer(typeof(HtmlTextDTO));
+                xs.Serialize(xout, _html);
+                return xout.ToString();
+            }
+        }
 
-        // public bool SetContentData(int moduleId, string content)
-        // {
-        // if (content == null || content.Equals(string.Empty)) {
-        // //si el contenido es nullo es porque no existe ningun registro en htmltext para el modulo
-        // return true;
-        // } else {
-        // IPortalTemplateServices services = PortalTemplateFactory.GetPortalTemplateServices(new PortalTemplateRepository());
-        // HtmlTextDTO _html = new HtmlTextDTO();
-        // System.IO.StringReader xin = new System.IO.StringReader(content);
-        // XmlSerializer xs = new XmlSerializer(typeof(HtmlTextDTO));
-        // _html = (HtmlTextDTO)xs.Deserialize(xin);
+        public bool SetContentData(int moduleId, string content)
+        {
+            if (content == null || content.Equals(string.Empty))
+            {
+                //si el contenido es nullo es porque no existe ningun registro en htmltext para el modulo
+                return true;
+            }
+            else
+            {
+                IPortalTemplateServices services = PortalTemplateFactory.GetPortalTemplateServices(new PortalTemplateRepository());
+                HtmlTextDTO _html = new HtmlTextDTO();
+                System.IO.StringReader xin = new System.IO.StringReader(content);
+                XmlSerializer xs = new XmlSerializer(typeof(HtmlTextDTO));
+                _html = (HtmlTextDTO)xs.Deserialize(xin);
 
-        // return services.SaveHtmlText(moduleId, _html);
-        // }
-        // }
+                return services.SaveHtmlText(moduleId, _html);
+            }
+        }
 
-        // #endregion
+        #endregion
+
     }
 }

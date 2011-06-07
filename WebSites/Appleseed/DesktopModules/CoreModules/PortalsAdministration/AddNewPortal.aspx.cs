@@ -52,9 +52,8 @@ namespace Appleseed.AdminAll
             //                PortalSecurity.AccessDeniedEdit();
 
             // If this is the first visit to the page, populate the site data
-            if (Page.IsPostBack == false)
-            {
-                
+            if (Page.IsPostBack == false) {
+
                 ddlXMLTemplates.DataSource = GetXMLTemplateList();
                 ddlXMLTemplates.DataBind();
                 if (ddlXMLTemplates.Items.Count != 0) {
@@ -62,7 +61,7 @@ namespace Appleseed.AdminAll
                 } else {
                     chkUseXMLTemplate.Enabled = false;
                 }
-               
+
             }
 
 
@@ -85,7 +84,7 @@ namespace Appleseed.AdminAll
         {
             List<string> result = new List<string>();
             string path = GetPhysicalPackageTemplatesPath();
-            
+
             if (Directory.Exists(path)) {
                 DirectoryInfo directory = new DirectoryInfo(path);
                 FileInfo[] templates = directory.GetFiles("*.xml");
@@ -104,7 +103,7 @@ namespace Appleseed.AdminAll
             return path;
         }
 
-        
+
 
 
         /// <summary>
@@ -129,19 +128,17 @@ namespace Appleseed.AdminAll
         {
             base.OnUpdate(e);
 
-            if (Page.IsValid)
-            {
+            if (Page.IsValid) {
                 //Get Solutions
                 PortalsDB portals = new PortalsDB();
 
-                try
-                {
+                try {
                     PathField.Text = PathField.Text.Replace("/", string.Empty);
                     PathField.Text = PathField.Text.Replace("\\", string.Empty);
                     PathField.Text = PathField.Text.Replace(".", string.Empty);
 
 
-                    if (chkUseXMLTemplate.Checked == false) {
+                    if (!chkUseXMLTemplate.Checked) {
                         // Create portal the "old" way
                         int NewPortalID =
                             portals.CreatePortal(this.PortalSettings.PortalID, AliasField.Text, TitleField.Text, PathField.Text);
@@ -151,7 +148,7 @@ namespace Appleseed.AdminAll
                         EditTable.UpdateControls();
                     } else {
 
-                        bool createdOk=true;
+                        bool createdOk = true;
                         int newPortalID = CreatePortal(out createdOk);
                         if (!createdOk) {
                             string aux = General.GetString("NEW_PORTAL_ERROR", "There was an error on creating the portal", this);
@@ -165,9 +162,7 @@ namespace Appleseed.AdminAll
 
                     // Redirect back to calling page
                     RedirectBackToReferringPage();
-                }
-                catch (Exception ex)
-                {
+                } catch (Exception ex) {
                     string aux =
                         General.GetString("NEW_PORTAL_ERROR", "There was an error on creating the portal", this);
                     ErrorHandler.Publish(LogLevel.Error, aux, ex);
@@ -253,12 +248,9 @@ namespace Appleseed.AdminAll
 
             // Create and Fill the DataSet
             DataSet myDataSet = new DataSet();
-            try
-            {
+            try {
                 myCommand.Fill(myDataSet);
-            }
-            finally
-            {
+            } finally {
                 myCommand.Dispose();
                 myConnection.Close();
                 myConnection.Dispose();
@@ -308,19 +300,15 @@ namespace Appleseed.AdminAll
             SqlDataReader myReader = GetTemplateModuleDefinitions(templateID, myConnection);
 
             // Always call Read before accessing data.
-            while (myReader.Read())
-            {
+            while (myReader.Read()) {
                 module.id = (int)myReader["ModuleDefID"];
                 module.GuidID = GetGeneralModuleDefinitionByName(myReader["FriendlyName"].ToString(), my2ndConnection);
-                try
-                {
+                try {
                     // save module definitions in the new portal
                     modules.UpdateModuleDefinitions(module.GuidID, newPortalID, true);
                     // Save the modules into a list for finding them later
                     templateModules.Add(module);
-                }
-                catch
-                {
+                } catch {
                     // tried to add a Module thas doesn´t exists in this implementation of the portal
                 }
             }
@@ -347,8 +335,7 @@ namespace Appleseed.AdminAll
             myReader = GetTabsByPortal(templateID, myConnection);
 
             // Always call Read before accessing data.
-            while (myReader.Read())
-            {
+            while (myReader.Read()) {
                 // Save the tabs into a list for finding them later
                 tab.oldID = (int)myReader["PageID"];
                 tab.newID =
@@ -365,15 +352,13 @@ namespace Appleseed.AdminAll
             myReader = GetTabsByPortal(templateID, myConnection);
 
             // Always call Read before accessing data.
-            while (myReader.Read())
-            {
+            while (myReader.Read()) {
                 // Find the news TabID and ParentTabID
                 IEnumerator myEnumerator = templateTabs.GetEnumerator();
                 int newTabID = -1;
                 int newParentTabID = -1;
 
-                while (myEnumerator.MoveNext() && (newTabID == -1 || newParentTabID == -1))
-                {
+                while (myEnumerator.MoveNext() && (newTabID == -1 || newParentTabID == -1)) {
                     tab = (tabTemplate)myEnumerator.Current;
                     if (tab.oldID == (int)myReader["PageID"])
                         newTabID = tab.newID;
@@ -393,14 +378,12 @@ namespace Appleseed.AdminAll
                 // and create them in the new Portal
                 SqlDataReader result;
 
-                try
-                {
+                try {
                     result = GetPageModules(Int32.Parse(myReader["PageID"].ToString()), my2ndConnection);
 
                     object myValue;
 
-                    while (result.Read())
-                    {
+                    while (result.Read()) {
                         ModuleSettings m = new ModuleSettings();
                         m.ModuleID = (int)result["ModuleID"];
                         m.ModuleDefID = (int)result["ModuleDefID"];
@@ -443,22 +426,16 @@ namespace Appleseed.AdminAll
                                                ? (WorkflowState)(0 + (byte)myValue)
                                                : WorkflowState.Original;
 
-                        try
-                        {
+                        try {
                             myValue = result["SupportCollapsable"];
-                        }
-                        catch
-                        {
+                        } catch {
                             myValue = DBNull.Value;
                         }
                         m.SupportCollapsable = DBNull.Value != myValue ? (bool)myValue : false;
 
-                        try
-                        {
+                        try {
                             myValue = result["ShowEveryWhere"];
-                        }
-                        catch
-                        {
+                        } catch {
                             myValue = DBNull.Value;
                         }
                         m.ShowEveryWhere = DBNull.Value != myValue ? (bool)myValue : false;
@@ -473,15 +450,13 @@ namespace Appleseed.AdminAll
                         myEnumerator = templateModules.GetEnumerator();
                         int newModuleDefID = 0;
 
-                        while (myEnumerator.MoveNext() && newModuleDefID == 0)
-                        {
+                        while (myEnumerator.MoveNext() && newModuleDefID == 0) {
                             module = (moduleTemplate)myEnumerator.Current;
                             if (module.id == m.ModuleDefID)
                                 newModuleDefID = modules.GetModuleDefinitionByGuid(newPortalID, module.GuidID);
                         }
 
-                        if (newModuleDefID > 0)
-                        {
+                        if (newModuleDefID > 0) {
                             // add the module to the new tab
                             int newModuleID = modules.AddModule(newTabID, m.ModuleOrder, m.PaneName, m.ModuleTitle,
                                                                 newModuleDefID, m.CacheTime, m.AuthorizedEditRoles,
@@ -496,8 +471,7 @@ namespace Appleseed.AdminAll
                             // At the end, get all ModuleSettings and save them in the new module
                             SqlDataReader dr = GetModuleSettings(m.ModuleID, my3rdConnection);
 
-                            while (dr.Read())
-                            {
+                            while (dr.Read()) {
                                 Framework.Site.Configuration.ModuleSettings.UpdateModuleSetting(newModuleID, dr["SettingName"].ToString(),
                                                                    dr["SettingValue"].ToString());
                             }
@@ -506,9 +480,7 @@ namespace Appleseed.AdminAll
                     }
 
                     result.Close();
-                }
-                catch
-                {
+                } catch {
                     // Error? ignore Tab ...
                 }
             }
@@ -518,8 +490,7 @@ namespace Appleseed.AdminAll
             myReader = GetPortalCustomSettings(templateID, myConnection);
 
             // Always call Read before accessing data.
-            while (myReader.Read())
-            {
+            while (myReader.Read()) {
                 PortalSettings.UpdatePortalSetting(newPortalID, myReader["SettingName"].ToString(),
                                                    myReader["SettingValue"].ToString());
             }
@@ -644,21 +615,15 @@ namespace Appleseed.AdminAll
             // Execute the command
             myCommand.ExecuteNonQuery();
 
-            if (parameterModuleID.Value != null && parameterModuleID.Value.ToString().Length != 0)
-            {
-                try
-                {
+            if (parameterModuleID.Value != null && parameterModuleID.Value.ToString().Length != 0) {
+                try {
                     return new Guid(parameterModuleID.Value.ToString());
-                }
-                catch (Exception ex)
-                {
+                } catch (Exception ex) {
                     ErrorHandler.Publish(LogLevel.Error,
                                          "'" + parameterModuleID.Value.ToString() + "' seems not a valid GUID.", ex);
                     throw;
                 }
-            }
-            else
-            {
+            } else {
                 ErrorHandler.Publish(LogLevel.Error, "Null GUID!.", new ArgumentException("Null GUID!", "GUID"));
             }
             throw new ArgumentException("Invalid GUID", "GUID");
