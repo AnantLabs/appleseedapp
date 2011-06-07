@@ -65,6 +65,7 @@ namespace Appleseed
             scripts.Add("/aspnet_client/jQuery/jquery.unobtrusive-ajax.min.js");
 
             scripts.Add("/aspnet_client/jQuery/modernizr-1.7.min.js");
+			scripts.Add("/aspnet_client/jQuery/jquery.cookie.js");
 
             scripts.Add("/aspnet_client/jQuery/MicrosoftAjax.js");
             scripts.Add("/aspnet_client/jQuery/MicrosoftMvcAjax.js");
