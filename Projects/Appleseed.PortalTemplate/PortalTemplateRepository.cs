@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Collections;
 using Appleseed.PortalTemplate.DTOs;
+using System.Configuration;
 
 namespace Appleseed.PortalTemplate
 {
@@ -14,7 +15,7 @@ namespace Appleseed.PortalTemplate
 
         public PortalTemplateRepository()
         {
-            db = new PortalTemplateDataContext();
+            db = new PortalTemplateDataContext(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
         }
 
         public PortalsDTO GetPortal(int portalID)

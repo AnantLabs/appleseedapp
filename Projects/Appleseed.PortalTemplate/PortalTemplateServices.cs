@@ -24,6 +24,7 @@ namespace Appleseed.PortalTemplate
     using Appleseed.PortalTemplate.DTOs;
 
     using Path = Appleseed.Framework.Settings.Path;
+    using System.Configuration;
 
     /// <summary>
     /// The portal template services.
@@ -95,14 +96,13 @@ namespace Appleseed.PortalTemplate
             string file, string portalName, string portalAlias, string portalPath, out int portalId)
         {
             var result = true;
-            try
-            {
+            try {
                 var fs = new FileStream(file, FileMode.Open);
                 var xs = new XmlSerializer(typeof(PortalsDTO));
                 var portal = (PortalsDTO)xs.Deserialize(fs);
                 fs.Close();
 
-                var db = new PortalTemplateDataContext();
+                var db = new PortalTemplateDataContext(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
                 var desktopSources = this.iptRepository.GetDesktopSources();
 
                 var translate = new Translate { DesktopSources = desktopSources, PTDataContext = db };
@@ -115,23 +115,14 @@ namespace Appleseed.PortalTemplate
 
                 db.rb_Portals.InsertOnSubmit(_portal);
 
-                try
-                {
-                    db.SubmitChanges(ConflictMode.FailOnFirstConflict);
-                    portalId = _portal.PortalID;
-                    this.SaveModuleContent(_portal, desktopSources, translate.ContentModules);
-                    AlterModuleSettings(_portal, translate.PageList, desktopSources);
-                    AlterModuleDefinitions(_portal.PortalID, translate.ModuleDefinitionsDeserialized);
-                }
-                catch (Exception e)
-                {
-                    result = false;
-                    portalId = -1;
-                    ErrorHandler.Publish(LogLevel.Error, "There was an error on creating the portal", e);
-                }
-            }
-            catch (Exception ex)
-            {
+                db.SubmitChanges(ConflictMode.FailOnFirstConflict);
+                portalId = _portal.PortalID;
+                this.SaveModuleContent(_portal, desktopSources, translate.ContentModules);
+                AlterModuleSettings(_portal, translate.PageList, desktopSources);
+                AlterModuleDefinitions(_portal.PortalID, translate.ModuleDefinitionsDeserialized);
+
+
+            } catch (Exception ex) {
                 result = false;
                 portalId = -1;
                 ErrorHandler.Publish(LogLevel.Error, "There was an error on creating the portal", ex);
@@ -168,9 +159,8 @@ namespace Appleseed.PortalTemplate
         public bool SaveHtmlText(int moduleId, HtmlTextDTO html)
         {
             var result = true;
-            try
-            {
-                var db = new PortalTemplateDataContext();
+            try {
+                var db = new PortalTemplateDataContext(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
                 var translate = new Translate();
                 var htmlText = translate.TranslateHtmlTextDTOIntoRb_HtmlText(html);
                 htmlText.ModuleID = moduleId;
@@ -179,9 +169,7 @@ namespace Appleseed.PortalTemplate
                 db.rb_HtmlTexts.InsertOnSubmit(htmlText);
                 db.rb_HtmlText_sts.InsertOnSubmit(htmlst);
                 db.SubmitChanges(ConflictMode.FailOnFirstConflict);
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 result = false;
                 ErrorHandler.Publish(LogLevel.Error, "There was an error saving the content modules", ex);
             }
@@ -204,12 +192,10 @@ namespace Appleseed.PortalTemplate
         public bool SerializePortal(int portalId, string path)
         {
             var result = true;
-            try
-            {
+            try {
                 var portal = this.iptRepository.GetPortal(portalId);
                 var dir = new DirectoryInfo(path);
-                if (!dir.Exists)
-                {
+                if (!dir.Exists) {
                     dir.Create();
                 }
 
@@ -218,9 +204,7 @@ namespace Appleseed.PortalTemplate
                 var xs = new XmlSerializer(typeof(PortalsDTO));
                 xs.Serialize(fs, portal);
                 fs.Close();
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 result = false;
                 ErrorHandler.Publish(LogLevel.Error, "There was an error on serialize the portal", ex);
             }
@@ -245,26 +229,22 @@ namespace Appleseed.PortalTemplate
         /// </param>
         private static void AlterModuleDefinitions(int portalId, Dictionary<Guid, rb_ModuleDefinition> moduleDefinitions)
         {
-            var db = new PortalTemplateDataContext();
+            var db = new PortalTemplateDataContext(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             var keys = moduleDefinitions.Keys.ToList();
-            try
-            {
-                foreach (var key in keys)
-                {
+            try {
+                foreach (var key in keys) {
                     rb_ModuleDefinition oldDef;
                     moduleDefinitions.TryGetValue(key, out oldDef);
-                    var def =
-                        db.rb_ModuleDefinitions.Where(
-                            d =>
-                            d.PortalID == oldDef.PortalID && d.GeneralModDefID == key &&
-                            d.ModuleDefID != oldDef.ModuleDefID).First();
-                    def.PortalID = portalId;
+                    var def = db.rb_ModuleDefinitions
+                        .Where(d => d.PortalID == oldDef.PortalID && d.GeneralModDefID == key && d.ModuleDefID == oldDef.ModuleDefID) /*ModuleDefID is already updated so must match*/
+                        .OrderByDescending(d => d.ModuleDefID)
+                        .First(); /*to avoid possible duplicates, Last() is not supported*/
+
+                    def.PortalID = portalId;                   
                 }
 
                 db.SubmitChanges(ConflictMode.FailOnFirstConflict);
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 ErrorHandler.Publish(LogLevel.Error, "There was an error on modifying the module definitions", e);
             }
         }
@@ -285,47 +265,41 @@ namespace Appleseed.PortalTemplate
             rb_Portals portal, IDictionary<int, int> pageList, IDictionary<Guid, string> desktopSources)
         {
             var p = new Page();
-            var db = new PortalTemplateDataContext();
+            var db = new PortalTemplateDataContext(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             var modules = db.rb_Modules.Where(m => m.rb_Pages.PortalID == portal.PortalID).ToList();
-            foreach (var module in modules)
-            {
+            foreach (var module in modules) {
                 var portalModuleName = string.Concat(
                     Path.ApplicationRoot, "/", desktopSources[module.rb_ModuleDefinition.GeneralModDefID]);
-                var portalModule = (PortalModuleControl)p.LoadControl(portalModuleName);
-                foreach (var key in
-                    portalModule.BaseSettings.Keys.Cast<string>().Where(
-                        key =>
-                        key.Equals("TARGETURL") ||
-                        portalModule.BaseSettings[key] is PageListDataType))
-                {
-                    try
-                    {
-                        var setting = module.rb_ModuleSettings.First(s => s.SettingName.Equals(key));
-                        var oldPageId =
-                            Regex.Match(setting.SettingValue, "(/\\d+/)|(^\\d+$)", RegexOptions.IgnoreCase).Value.
-                                Replace("/", string.Empty);
-                        var newPageId = portal.rb_Pages[pageList[Convert.ToInt16(oldPageId)]].PageID;
-                        setting.SettingValue = setting.SettingValue.Replace(oldPageId, newPageId.ToString());
-                    }
-                    catch (Exception e)
-                    {
-                        ErrorHandler.Publish(
-                            LogLevel.Error, 
-                            string.Format(
-                                "There was an error on modifying the module settings for moduleID= {0} and setting= {1}", 
-                                module.ModuleID, 
-                                key), 
-                            e);
+                if (!portalModuleName.Contains("/Areas/") && !portalModuleName.StartsWith("Areas/")) {
+                    var portalModule = (PortalModuleControl)p.LoadControl(portalModuleName);
+                    foreach (var key in
+                        portalModule.BaseSettings.Keys.Cast<string>().Where(
+                            key =>
+                            key.Equals("TARGETURL") ||
+                            portalModule.BaseSettings[key] is PageListDataType)) {
+                        try {
+                            var setting = module.rb_ModuleSettings.First(s => s.SettingName.Equals(key));
+                            var oldPageId =
+                                Regex.Match(setting.SettingValue, "(/\\d+/)|(^\\d+$)", RegexOptions.IgnoreCase).Value.
+                                    Replace("/", string.Empty);
+                            var newPageId = portal.rb_Pages[pageList[Convert.ToInt16(oldPageId)]].PageID;
+                            setting.SettingValue = setting.SettingValue.Replace(oldPageId, newPageId.ToString());
+                        } catch (Exception e) {
+                            ErrorHandler.Publish(
+                                LogLevel.Error,
+                                string.Format(
+                                    "There was an error on modifying the module settings for moduleID= {0} and setting= {1}",
+                                    module.ModuleID,
+                                    key),
+                                e);
+                        }
                     }
                 }
             }
 
-            try
-            {
+            try {
                 db.SubmitChanges(ConflictMode.FailOnFirstConflict);
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 ErrorHandler.Publish(LogLevel.Error, "There was an error on modifying the module settings", e);
             }
         }
@@ -347,20 +321,18 @@ namespace Appleseed.PortalTemplate
         {
             var p = new Page();
             var moduleIndex = 0;
-            foreach (var module in portal.rb_Pages.SelectMany(page => page.rb_Modules))
-            {
-                if (contentModules.ContainsKey(moduleIndex))
-                {
+            foreach (var module in portal.rb_Pages.SelectMany(page => page.rb_Modules)) {
+                if (contentModules.ContainsKey(moduleIndex)) {
                     var portalModuleName = string.Concat(
                         Path.ApplicationRoot, "/", desktopSources[module.rb_ModuleDefinition.GeneralModDefID]);
-                    var portalModule = (PortalModuleControl)p.LoadControl(portalModuleName);
-                    if (portalModule is IModuleExportable)
-                    {
-                        string content;
-                        if (!contentModules.TryGetValue(moduleIndex, out content) ||
-                            !((IModuleExportable)portalModule).SetContentData(module.ModuleID, content))
-                        {
-                            this.ModulesNotInserted.Add(module.ModuleID, module.ModuleTitle);
+                    if (!portalModuleName.Contains("/Areas/") && !portalModuleName.StartsWith("Areas/")) {
+                        var portalModule = (PortalModuleControl)p.LoadControl(portalModuleName);
+                        if (portalModule is IModuleExportable) {
+                            string content;
+                            if (!contentModules.TryGetValue(moduleIndex, out content) ||
+                                !((IModuleExportable)portalModule).SetContentData(module.ModuleID, content)) {
+                                this.ModulesNotInserted.Add(module.ModuleID, module.ModuleTitle);
+                            }
                         }
                     }
                 }
