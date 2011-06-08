@@ -5,22 +5,17 @@
 </script>
 <script src="<%: Url.Resource("Scripts.UpdateModule.js") %>" type="text/javascript"></script>
 <div class="installed_modules">
-    <% if (Model.Count == 0)
-       {%>
+    <% if (Model.Count == 0) {%>
     There are no packages installed
-    <%}
-       else
-       { %>
-    <% foreach (var m in Model)
-       {%>
+    <%} else { %>
+    <% foreach (var m in Model) {%>
     <div class="moduleinfo">
         <%= m.Installed.Id%>
         <%= m.Installed.Version%>
     </div>
     <div id="updateDiv">
         <%
-           if (m.Update != null)
-           {%>
+           if (m.Update != null) {%>
         Update Available !
         <ul>
             <li>
@@ -29,9 +24,7 @@
                 <a id="update<%: m.Update.Id %>" href="javascript:void(0)" onclick="updateModule('<%: m.Update.Id %>')">
                     Install update</a></li>
         </ul>
-        <%}
-else
-{%>
+        <%} else {%>
         No Updates Available
         <%               }%>
         <hr />

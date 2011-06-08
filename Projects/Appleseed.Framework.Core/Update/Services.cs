@@ -244,7 +244,7 @@ namespace Appleseed.Framework.Update
 
                                 // Installing modules
                                 foreach (var currentModuleInstaller in from string moduleInstaller in updateEntry.Modules
-                                                                       select HttpContext.Current.Server.MapPath(System.IO.Path.Combine("/", moduleInstaller)))
+                                                                       select HttpContext.Current.Server.MapPath(System.IO.Path.Combine("~/", moduleInstaller)))
                                 {
                                     try
                                     {
