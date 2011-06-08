@@ -18,20 +18,20 @@
                         <table>
                             <tr>
                                 <td>
-                                    <rbfwebui:imagebutton id="EditBtn" runat="server" alternatetext="Edit selected portal"
-                                        textkey="EDIT_PORTAL" onclick="EditBtn_Click" />
+                                    <rbfwebui:ImageButton ID="EditBtn" runat="server" AlternateText="Edit selected portal"
+                                        TextKey="EDIT_PORTAL" OnClick="EditBtn_Click" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <rbfwebui:imagebutton id="DeleteBtn" runat="server" alternatetext="Delete selected portal"
-                                        textkey="DELETE_PORTAL" onclick="DeleteBtn_Click" />
+                                    <rbfwebui:ImageButton ID="DeleteBtn" runat="server" AlternateText="Delete selected portal"
+                                        TextKey="DELETE_PORTAL" OnClick="DeleteBtn_Click" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:LinkButton ID="SerializeBtn" runat="server" Text="Serialize selected portal"
-                                        OnClick="SerializeBtn_Click" />
+                                    <rbfwebui:ImageButton ID="ExportBtn" runat="server" AlternateText="Export selected portal"
+                                        TextKey="EXPORT_PORTAL" OnClick="SerializeBtn_Click" />
                                 </td>
                             </tr>
                         </table>
@@ -39,7 +39,8 @@
                 </tr>
             </table>
             <p class="Normal">
-                <rbfwebui:label id="ErrorMessage" runat="server" cssclass="Error" visible="false"></rbfwebui:label>
+                <rbfwebui:Label ID="ErrorMessage" runat="server" CssClass="Error" Visible="false"></rbfwebui:Label>
+                <rbfwebui:Label ID="SuccessMessage" runat="server" Visible="false"></rbfwebui:Label>
             </p>
         </td>
     </tr>
