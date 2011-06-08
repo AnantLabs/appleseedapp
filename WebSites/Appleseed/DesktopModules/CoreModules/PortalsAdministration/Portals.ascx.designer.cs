@@ -22,13 +22,13 @@ namespace Appleseed.Content.Web.Modules {
         protected global::System.Web.UI.WebControls.ListBox portalList;
         
         /// <summary>
-        /// SerializeBtn control.
+        /// ExportBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton SerializeBtn;
+        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton ExportBtn;
         
         /// <summary>
         /// ErrorMessage control.
@@ -38,5 +38,14 @@ namespace Appleseed.Content.Web.Modules {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Appleseed.Framework.Web.UI.WebControls.Label ErrorMessage;
+        
+        /// <summary>
+        /// SuccessMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Appleseed.Framework.Web.UI.WebControls.Label SuccessMessage;
     }
 }

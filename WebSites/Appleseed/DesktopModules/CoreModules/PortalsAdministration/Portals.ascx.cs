@@ -63,6 +63,8 @@ namespace Appleseed.Content.Web.Modules
             }
             EditBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Edit", "Edit.gif").ImageUrl;
             DeleteBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Delete", "Delete.gif").ImageUrl;
+            ExportBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Save", "Save.gif").ImageUrl;
+
             DeleteBtn.Attributes.Add("onclick", "return confirmDelete();");
         }
 
@@ -170,11 +172,14 @@ namespace Appleseed.Content.Web.Modules
                 if (!ok)
                 {
                     ErrorMessage.Visible = true;
-                    ErrorMessage.Text = "There was an error on serialize the portal <br>";
+                    SuccessMessage.Visible = false;
+                    ErrorMessage.Text = "Export failed (full error logged) <br>";
                 }
                 else
                 {
                     ErrorMessage.Visible = false;
+                    SuccessMessage.Visible = true;
+                    SuccessMessage.Text = "Export succeeded! <br>";
                 }
             }
             else
