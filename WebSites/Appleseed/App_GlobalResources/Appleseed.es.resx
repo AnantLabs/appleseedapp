@@ -1692,10 +1692,10 @@
   <data name="IT" xml:space="preserve">
     <value>Título (it)</value>
   </data>
-  <data name="IT-IT" xml:space="preserve">
-    <value>Título (it-IT)</value>
+  <data name="IT_IT" xml:space="preserve">
+    <value>Título (IT_IT)</value>
   </data>
-  <data name="IT-IT_DESCRIPTION" xml:space="preserve">
+  <data name="IT_IT_DESCRIPTION" xml:space="preserve">
     <value>Establecer titulo para cultura italiana (Italia).</value>
   </data>
   <data name="IT_DESCRIPTION" xml:space="preserve">
@@ -2466,7 +2466,7 @@
   <data name="PRODUCT_TOTAL_EXPENSES" xml:space="preserve">
     <value>Total de Gastos</value>
   </data>
-  <data name="PRODUCT_TOTAL_PRICE_(INC._TAXES)" xml:space="preserve">
+  <data name="PRODUCT_TOTAL_PRICE_(INC_TAXES)" xml:space="preserve">
     <value>Precio Total (impuestos.incl)</value>
   </data>
   <data name="PRODUCT_TOTAL_TAXES" xml:space="preserve">
@@ -3642,7 +3642,7 @@
   <data name="ERROR_VALID_EXPIRE_DATE" xml:space="preserve">
     <value>Entra una fecha válida</value>
   </data>
-  <data name="ES-ES_DESCRIPTION" xml:space="preserve">
+  <data name="ES_ES_DESCRIPTION" xml:space="preserve">
     <value>Establecer Titulo para cultura española (España).</value>
   </data>
   <data name="FAQ_QUESTION_ERR" xml:space="preserve">
@@ -3777,10 +3777,10 @@
   <data name="MODULESETTINGS_TITLE_CA_DESCRIPTION" xml:space="preserve">
     <value>Título en Catalán</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_ES-ES" xml:space="preserve">
-    <value>Título (es-ES)</value>
+  <data name="MODULESETTINGS_TITLE_ES_ES" xml:space="preserve">
+    <value>Título (ES_ES)</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_ES-ES_DESCRIPTION" xml:space="preserve">
+  <data name="MODULESETTINGS_TITLE_ES_ES_DESCRIPTION" xml:space="preserve">
     <value>Establecer Título en Español (España)</value>
   </data>
   <data name="MODULESETTINGS_TITLE_IT" xml:space="preserve">
@@ -4158,7 +4158,7 @@
   <data name="SignInType" xml:space="preserve">
     <value>Tipo de Identificación</value>
   </data>
-  <data name="TABKEYPHRASE_ES-ES_DESCRIPTION" xml:space="preserve">
+  <data name="TABKEYPHRASE_ES_ES_DESCRIPTION" xml:space="preserve">
     <value>Frase clave para esta página de Cultura Española (España).</value>
   </data>
   <data name="TI_ROLEADMINISTRATIONREMOVEFROMROLE" xml:space="preserve">
@@ -4230,8 +4230,8 @@
   <data name="EMF_TO" xml:space="preserve">
     <value>Para</value>
   </data>
-  <data name="ES-ES" xml:space="preserve">
-    <value>Título (es-ES)</value>
+  <data name="ES_ES" xml:space="preserve">
+    <value>Título (ES_ES)</value>
   </data>
   <data name="FAQ_A" xml:space="preserve">
     <value>Respuesta</value>
@@ -4305,8 +4305,8 @@
   <data name="AM_BOTOMPANEL" xml:space="preserve">
     <value>Panel Inferior</value>
   </data>
-  <data name="TABKEYPHRASE_ES-ES" xml:space="preserve">
-    <value>Frase clave para la página (es-ES)</value>
+  <data name="TABKEYPHRASE_ES_ES" xml:space="preserve">
+    <value>Frase clave para la página (ES_ES)</value>
   </data>
   <data name="ERROR_NOT_ALLOWED_PARENT" xml:space="preserve">
     <value>No se permite seleccionar este padre</value>
@@ -4347,16 +4347,16 @@
   <data name="GATEWAY_WIRE_TRANSFER" xml:space="preserve">
     <value>Wire Transfer</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_EN-GB" xml:space="preserve">
-    <value>Title (en-GB)</value>
+  <data name="MODULESETTINGS_TITLE_EN_GB" xml:space="preserve">
+    <value>Title (EN_GB)</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_EN-GB_DESCRIPTION" xml:space="preserve">
+  <data name="MODULESETTINGS_TITLE_EN_GB_DESCRIPTION" xml:space="preserve">
     <value>Set title for English (United Kingdom) culture.</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_NL-BE" xml:space="preserve">
-    <value>Title (nl-BE)</value>
+  <data name="MODULESETTINGS_TITLE_NL_BE" xml:space="preserve">
+    <value>Title (NL_BE)</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_NL-BE_DESCRIPTION" xml:space="preserve">
+  <data name="MODULESETTINGS_TITLE_NL_BE_DESCRIPTION" xml:space="preserve">
     <value>Set title for Dutch (Belgium) culture.</value>
   </data>
   <data name="TEMPLATE" xml:space="preserve">

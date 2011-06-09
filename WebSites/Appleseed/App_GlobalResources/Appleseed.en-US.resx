@@ -1654,10 +1654,10 @@
   <data name="IT">
     <value>Title (it)</value>
   </data>
-  <data name="IT-IT">
-    <value>Title (it-IT)</value>
+  <data name="IT_IT">
+    <value>Title (IT_IT)</value>
   </data>
-  <data name="IT-IT_DESCRIPTION">
+  <data name="IT_IT_DESCRIPTION">
     <value>Set title for Italian (Italy) culture.</value>
   </data>
   <data name="IT_DESCRIPTION">
@@ -1999,10 +1999,10 @@
   <data name="THEME_DESCRIPTION">
     <value>Choose theme for this module</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_EN-GB">
-    <value>Title (en-GB)</value>
+  <data name="MODULESETTINGS_TITLE_EN_GB">
+    <value>Title (EN_GB)</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_EN-GB_DESCRIPTION">
+  <data name="MODULESETTINGS_TITLE_EN_GB_DESCRIPTION">
     <value>Set title for English (United Kingdom) culture.</value>
   </data>
   <data name="MODULESETTINGS_TITLE_FR">
@@ -2011,10 +2011,10 @@
   <data name="MODULESETTINGS_TITLE_FR_DESCRIPTION">
     <value>Set title for French culture.</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_NL-BE">
-    <value>Title (nl-BE)</value>
+  <data name="MODULESETTINGS_TITLE_NL_BE">
+    <value>Title (NL_BE)</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_NL-BE_DESCRIPTION">
+  <data name="MODULESETTINGS_TITLE_NL_BE_DESCRIPTION">
     <value>Set title for Dutch (Belgium) culture.</value>
   </data>
   <data name="MODULESETTINGS_TITLE_ZH_CN">
@@ -2386,7 +2386,7 @@
   <data name="PRODUCT_TOTAL_EXPENSES">
     <value>Total Expenses</value>
   </data>
-  <data name="PRODUCT_TOTAL_PRICE_(INC._TAXES)">
+  <data name="PRODUCT_TOTAL_PRICE_(INC_TAXES)">
     <value>Total Price (inc Taxes)</value>
   </data>
   <data name="PRODUCT_TOTAL_TAXES">
@@ -3331,8 +3331,8 @@
   <data name="AM_BOTOMPANEL">
     <value>Bottom Pane</value>
   </data>
-  <data name="TABKEYPHRASE_ES-ES">
-    <value>Page Key Phrase (es-ES)</value>
+  <data name="TABKEYPHRASE_ES_ES">
+    <value>Page Key Phrase (ES_ES)</value>
   </data>
   <data name="ERROR_NOT_ALLOWED_PARENT">
     <value>Selecting this parent is not allowed</value>

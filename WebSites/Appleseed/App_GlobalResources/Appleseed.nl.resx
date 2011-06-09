@@ -1653,10 +1653,10 @@
   <data name="ES_DESCRIPTION">
       <value>Titel voor Spaanse cultuur.</value>
   </data>
-  <data name="ES-ES">
-      <value>Titel (es-es)</value>
+  <data name="ES_ES">
+      <value>Titel (ES_ES)</value>
   </data>
-  <data name="ES-ES_DESCRIPTION">
+  <data name="ES_ES_DESCRIPTION">
       <value>Titel voor Spaanse cultuur.</value>
   </data>
   <data name="EVENTS_ADD">
@@ -1937,10 +1937,10 @@
   <data name="IT_DESCRIPTION">
       <value>Vastgestelde titel voor Italiaanse cultuur.</value>
   </data>
-  <data name="IT-IT">
-      <value>Titel (it-IT)</value>
+  <data name="IT_IT">
+      <value>Titel (IT_IT)</value>
   </data>
-  <data name="IT-IT_DESCRIPTION">
+  <data name="IT_IT_DESCRIPTION">
       <value>Titel voor Italiaanse (Italië) cultuur.</value>
   </data>
   <data name="LANGSWITCHTDISPLAY_CULTURELIST">
@@ -2283,10 +2283,10 @@
   <data name="MODULESETTINGS_TITLE_EN_DESCRIPTION">
       <value>Titel voor Engelse cultuur.</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_EN-GB">
-      <value>Titel (en-GB)</value>
+  <data name="MODULESETTINGS_TITLE_EN_GB">
+      <value>Titel (EN_GB)</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_EN-GB_DESCRIPTION">
+  <data name="MODULESETTINGS_TITLE_EN_GB_DESCRIPTION">
       <value>Titel voor Engelse (Verenigd Koninkrijk) cultuur.</value>
   </data>
   <data name="MODULESETTINGS_TITLE_EN_US">
@@ -2301,10 +2301,10 @@
   <data name="MODULESETTINGS_TITLE_ES_DESCRIPTION">
       <value>Titel voor Spaanse cultuur.</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_ES-ES">
-      <value>Titel (es-es)</value>
+  <data name="MODULESETTINGS_TITLE_ES_ES">
+      <value>Titel (ES_ES)</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_ES-ES_DESCRIPTION">
+  <data name="MODULESETTINGS_TITLE_ES_ES_DESCRIPTION">
       <value>Titel voor Spaanse cultuur.</value>
   </data>
   <data name="MODULESETTINGS_TITLE_FR">
@@ -2319,10 +2319,10 @@
   <data name="MODULESETTINGS_TITLE_IT_DESCRIPTION">
       <value>Titel voor Italiaanse cultuur.</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_NL-BE">
-      <value>Titel (nl-BE)</value>
+  <data name="MODULESETTINGS_TITLE_NL_BE">
+      <value>Titel (NL_BE)</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_NL-BE_DESCRIPTION">
+  <data name="MODULESETTINGS_TITLE_NL_BE_DESCRIPTION">
       <value>Titel voor Belgische cultuur</value>
   </data>
   <data name="MODULESETTINGS_TITLE_ZH_CN"></data>
@@ -2671,7 +2671,7 @@
       <value>Totaal</value>
   </data>
   <data name="PRODUCT_TOTAL_EXPENSES"></data>
-  <data name="PRODUCT_TOTAL_PRICE_(INC._TAXES)"></data>
+  <data name="PRODUCT_TOTAL_PRICE_(INC_TAXES)"></data>
   <data name="PRODUCT_TOTAL_TAXES"></data>
   <data name="PRODUCT_TOTAL_WEIGHT"></data>
   <data name="PRODUCT_TOTAL_WITH_TAXES"></data>
@@ -3395,8 +3395,8 @@
   <data name="TABKEYPHRASE_EN_DESCRIPTION"></data>
   <data name="TABKEYPHRASE_ES"></data>
   <data name="TABKEYPHRASE_ES_DESCRIPTION"></data>
-  <data name="TABKEYPHRASE_ES-ES"></data>
-  <data name="TABKEYPHRASE_ES-ES_DESCRIPTION"></data>
+  <data name="TABKEYPHRASE_ES_ES"></data>
+  <data name="TABKEYPHRASE_ES_ES_DESCRIPTION"></data>
   <data name="TABKEYPHRASE_SR_SP_CYRL"></data>
   <data name="TABKEYPHRASE_SR_SP_CYRL_DESCRIPTION"></data>
   <data name="TABKEYPHRASE_SR_SP_LATN"></data>
@@ -3575,8 +3575,8 @@
   <data name="TRANSLATOR_EMAIL">
       <value>info@goyaweb.nl</value>
   </data>
-  <data name="TR-TR"></data>
-  <data name="TR-TR_DESCRIPTION"></data>
+  <data name="TR_TR"></data>
+  <data name="TR_TR_DESCRIPTION"></data>
   <data name="TYPE"></data>
   <data name="UNCHECKED_USERS">
       <value>Niet geverifieerde gebruikers</value>

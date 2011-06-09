@@ -2621,11 +2621,11 @@
 	<data name="ES">
 		<value>Title (es)</value>
 	</data>
-	<data name="ES-ES">
-		<value>ES-ES</value>
+	<data name="ES_ES">
+		<value>ES_ES</value>
 	</data>
-	<data name="ES-ES_DESCRIPTION">
-		<value>ES-ES_DESCRIPTION</value>
+	<data name="ES_ES_DESCRIPTION">
+		<value>ES_ES_DESCRIPTION</value>
 	</data>
 	<data name="ES_DESCRIPTION">
 		<value>Set title for Spanish culture.</value>
@@ -2972,11 +2972,11 @@
 	<data name="IT">
 		<value>Titre (it)</value>
 	</data>
-	<data name="IT-IT">
-		<value>Titre (it-IT)</value>
+	<data name="IT_IT">
+		<value>Titre (IT_IT)</value>
 	</data>
-	<data name="IT-IT_DESCRIPTION">
-		<value>IT-IT_DESCRIPTION</value>
+	<data name="IT_IT_DESCRIPTION">
+		<value>IT_IT_DESCRIPTION</value>
 	</data>
 	<data name="IT_DESCRIPTION">
 		<value>Placez le titre pour la culture italienne.</value>
@@ -3449,10 +3449,10 @@
 	<data name="MODULESETTINGS_TITLE_EN">
 		<value>Title (en)</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-GB">
-		<value>Title (en-GB)</value>
+	<data name="MODULESETTINGS_TITLE_EN_GB">
+		<value>Title (EN_GB)</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-GB_DESCRIPTION">
+	<data name="MODULESETTINGS_TITLE_EN_GB_DESCRIPTION">
 		<value>Set title for English (United Kingdom) culture.</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_EN_US">
@@ -3467,11 +3467,11 @@
 	<data name="MODULESETTINGS_TITLE_ES">
 		<value>Title (es)</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ES-ES">
-		<value>MODULESETTINGS_TITLE_ES-ES</value>
+	<data name="MODULESETTINGS_TITLE_ES_ES">
+		<value>MODULESETTINGS_TITLE_ES_ES</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ES-ES_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_ES-ES_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_ES_ES_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_ES_ES_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_ES_DESCRIPTION">
 		<value>Set title for Spanish culture.</value>
@@ -3488,10 +3488,10 @@
 	<data name="MODULESETTINGS_TITLE_IT_DESCRIPTION">
 		<value>MODULESETTINGS_TITLE_IT_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_NL-BE">
-		<value>Title (nl-BE)</value>
+	<data name="MODULESETTINGS_TITLE_NL_BE">
+		<value>Title (NL_BE)</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_NL-BE_DESCRIPTION">
+	<data name="MODULESETTINGS_TITLE_NL_BE_DESCRIPTION">
 		<value>Set title for Dutch (Belgium) culture.</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_ZH_CN">
@@ -3980,7 +3980,7 @@
 	<data name="PRODUCT_TOTAL_EXPENSES">
 		<value>Total général</value>
 	</data>
-	<data name="PRODUCT_TOTAL_PRICE_(INC._TAXES)">
+	<data name="PRODUCT_TOTAL_PRICE_(INC_TAXES)">
 		<value>Total TTC</value>
 	</data>
 	<data name="PRODUCT_TOTAL_TAXES">
@@ -4931,11 +4931,11 @@
 	<data name="TABKEYPHRASE_ES">
 		<value>Tab Key Phrase (es)</value>
 	</data>
-	<data name="TABKEYPHRASE_ES-ES">
-		<value>TABKEYPHRASE_ES-ES</value>
+	<data name="TABKEYPHRASE_ES_ES">
+		<value>TABKEYPHRASE_ES_ES</value>
 	</data>
-	<data name="TABKEYPHRASE_ES-ES_DESCRIPTION">
-		<value>TABKEYPHRASE_ES-ES_DESCRIPTION</value>
+	<data name="TABKEYPHRASE_ES_ES_DESCRIPTION">
+		<value>TABKEYPHRASE_ES_ES_DESCRIPTION</value>
 	</data>
 	<data name="TABKEYPHRASE_ES_DESCRIPTION">
 		<value>Key Phrase this Tab/Page for Spanish culture.</value>
@@ -5159,11 +5159,11 @@
 	<data name="TR">
 		<value>TR</value>
 	</data>
-	<data name="TR-TR">
-		<value>TR-TR</value>
+	<data name="TR_TR">
+		<value>TR_TR</value>
 	</data>
-	<data name="TR-TR_DESCRIPTION">
-		<value>TR-TR_DESCRIPTION</value>
+	<data name="TR_TR_DESCRIPTION">
+		<value>TR_TR_DESCRIPTION</value>
 	</data>
 	<data name="TR_DESCRIPTION">
 		<value>TR_DESCRIPTION</value>

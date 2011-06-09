@@ -2623,10 +2623,10 @@
 	<data name="ES">
 		<value>Títol (es)</value>
 	</data>
-	<data name="ES-ES">
-		<value>Títol (es-ES)</value>
+	<data name="ES_ES">
+		<value>Títol (ES_ES)</value>
 	</data>
-	<data name="ES-ES_DESCRIPTION">
+	<data name="ES_ES_DESCRIPTION">
 		<value>Establir Títol per a cultura espanyola (Espanya).</value>
 	</data>
 	<data name="ES_DESCRIPTION">
@@ -2974,10 +2974,10 @@
 	<data name="IT">
 		<value>Títol (it)</value>
 	</data>
-	<data name="IT-IT">
-		<value>Títol (it-IT)</value>
+	<data name="IT_IT">
+		<value>Títol (IT_IT)</value>
 	</data>
-	<data name="IT-IT_DESCRIPTION">
+	<data name="IT_IT_DESCRIPTION">
 		<value>Establir títol per a cultura italiana (Italia).</value>
 	</data>
 	<data name="IT_DESCRIPTION">
@@ -3451,11 +3451,11 @@
 	<data name="MODULESETTINGS_TITLE_EN">
 		<value>Títol (en)</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-GB">
-		<value>MODULESETTINGS_TITLE_EN-GB</value>
+	<data name="MODULESETTINGS_TITLE_EN_GB">
+		<value>MODULESETTINGS_TITLE_EN_GB</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-GB_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_EN-GB_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_EN_GB_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_EN_GB_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_EN_US">
 		<value>Títol (EN_US)</value>
@@ -3469,10 +3469,10 @@
 	<data name="MODULESETTINGS_TITLE_ES">
 		<value>Títol (es)</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ES-ES">
-		<value>Títol (es-ES)</value>
+	<data name="MODULESETTINGS_TITLE_ES_ES">
+		<value>Títol (ES_ES)</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ES-ES_DESCRIPTION">
+	<data name="MODULESETTINGS_TITLE_ES_ES_DESCRIPTION">
 		<value>Establir Títol en Castellà (Espanya)</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_ES_DESCRIPTION">
@@ -3490,11 +3490,11 @@
 	<data name="MODULESETTINGS_TITLE_IT_DESCRIPTION">
 		<value>Título en Italiano</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_NL-BE">
-		<value>MODULESETTINGS_TITLE_NL-BE</value>
+	<data name="MODULESETTINGS_TITLE_NL_BE">
+		<value>MODULESETTINGS_TITLE_NL_BE</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_NL-BE_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_NL-BE_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_NL_BE_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_NL_BE_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_ZH_CN">
 		<value>Títol (ZH_CN)</value>
@@ -3982,7 +3982,7 @@
 	<data name="PRODUCT_TOTAL_EXPENSES">
 		<value>Total de Gastos</value>
 	</data>
-	<data name="PRODUCT_TOTAL_PRICE_(INC._TAXES)">
+	<data name="PRODUCT_TOTAL_PRICE_(INC_TAXES)">
 		<value>Preu Total (impostos.incl)</value>
 	</data>
 	<data name="PRODUCT_TOTAL_TAXES">
@@ -4934,10 +4934,10 @@
 	<data name="TABKEYPHRASE_ES">
 		<value>Frase clave de la Página (es)</value>
 	</data>
-	<data name="TABKEYPHRASE_ES-ES">
-		<value>Frase clave para la página (es-ES)</value>
+	<data name="TABKEYPHRASE_ES_ES">
+		<value>Frase clave para la página (ES_ES)</value>
 	</data>
-	<data name="TABKEYPHRASE_ES-ES_DESCRIPTION">
+	<data name="TABKEYPHRASE_ES_ES_DESCRIPTION">
 		<value>Frase clave para esta página de Cultura Española (España).</value>
 	</data>
 	<data name="TABKEYPHRASE_ES_DESCRIPTION">
@@ -5162,11 +5162,11 @@
 	<data name="TR">
 		<value>TR</value>
 	</data>
-	<data name="TR-TR">
-		<value>TR-TR</value>
+	<data name="TR_TR">
+		<value>TR_TR</value>
 	</data>
-	<data name="TR-TR_DESCRIPTION">
-		<value>TR-TR_DESCRIPTION</value>
+	<data name="TR_TR_DESCRIPTION">
+		<value>TR_TR_DESCRIPTION</value>
 	</data>
 	<data name="TR_DESCRIPTION">
 		<value>TR_DESCRIPTION</value>

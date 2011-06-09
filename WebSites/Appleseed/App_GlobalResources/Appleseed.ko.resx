@@ -2563,10 +2563,10 @@
 	<data name="ES">
 		<value/>
 	</data>
-	<data name="ES-ES">
+	<data name="ES_ES">
 		<value/>
 	</data>
-	<data name="ES-ES_DESCRIPTION">
+	<data name="ES_ES_DESCRIPTION">
 		<value/>
 	</data>
 	<data name="ES_DESCRIPTION">
@@ -2914,10 +2914,10 @@
 	<data name="IT">
 		<value>제목 (it)</value>
 	</data>
-	<data name="IT-IT">
-		<value>제목 (it-IT)</value>
+	<data name="IT_IT">
+		<value>제목 (IT_IT)</value>
 	</data>
-	<data name="IT-IT_DESCRIPTION">
+	<data name="IT_IT_DESCRIPTION">
 		<value>이탈리아 제목 설정.</value>
 	</data>
 	<data name="IT_DESCRIPTION">
@@ -3391,11 +3391,11 @@
 	<data name="MODULESETTINGS_TITLE_EN">
 		<value/>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-GB">
-		<value>MODULESETTINGS_TITLE_EN-GB</value>
+	<data name="MODULESETTINGS_TITLE_EN_GB">
+		<value>MODULESETTINGS_TITLE_EN_GB</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-GB_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_EN-GB_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_EN_GB_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_EN_GB_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_EN_US">
 		<value/>
@@ -3409,10 +3409,10 @@
 	<data name="MODULESETTINGS_TITLE_ES">
 		<value/>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ES-ES">
+	<data name="MODULESETTINGS_TITLE_ES_ES">
 		<value/>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ES-ES_DESCRIPTION">
+	<data name="MODULESETTINGS_TITLE_ES_ES_DESCRIPTION">
 		<value/>
 	</data>
 	<data name="MODULESETTINGS_TITLE_ES_DESCRIPTION">
@@ -3430,11 +3430,11 @@
 	<data name="MODULESETTINGS_TITLE_IT_DESCRIPTION">
 		<value>MODULESETTINGS_TITLE_IT_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_NL-BE">
-		<value>MODULESETTINGS_TITLE_NL-BE</value>
+	<data name="MODULESETTINGS_TITLE_NL_BE">
+		<value>MODULESETTINGS_TITLE_NL_BE</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_NL-BE_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_NL-BE_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_NL_BE_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_NL_BE_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_ZH_CN">
 		<value>제목 (ZH_CN)</value>
@@ -3922,7 +3922,7 @@
 	<data name="PRODUCT_TOTAL_EXPENSES">
 		<value/>
 	</data>
-	<data name="PRODUCT_TOTAL_PRICE_(INC._TAXES)">
+	<data name="PRODUCT_TOTAL_PRICE_(INC_TAXES)">
 		<value/>
 	</data>
 	<data name="PRODUCT_TOTAL_TAXES">
@@ -4873,11 +4873,11 @@
 	<data name="TABKEYPHRASE_ES">
 		<value>TABKEYPHRASE_ES</value>
 	</data>
-	<data name="TABKEYPHRASE_ES-ES">
-		<value>TABKEYPHRASE_ES-ES</value>
+	<data name="TABKEYPHRASE_ES_ES">
+		<value>TABKEYPHRASE_ES_ES</value>
 	</data>
-	<data name="TABKEYPHRASE_ES-ES_DESCRIPTION">
-		<value>TABKEYPHRASE_ES-ES_DESCRIPTION</value>
+	<data name="TABKEYPHRASE_ES_ES_DESCRIPTION">
+		<value>TABKEYPHRASE_ES_ES_DESCRIPTION</value>
 	</data>
 	<data name="TABKEYPHRASE_ES_DESCRIPTION">
 		<value>TABKEYPHRASE_ES_DESCRIPTION</value>
@@ -5101,10 +5101,10 @@
 	<data name="TR">
 		<value/>
 	</data>
-	<data name="TR-TR">
+	<data name="TR_TR">
 		<value/>
 	</data>
-	<data name="TR-TR_DESCRIPTION">
+	<data name="TR_TR_DESCRIPTION">
 		<value/>
 	</data>
 	<data name="TR_DESCRIPTION">

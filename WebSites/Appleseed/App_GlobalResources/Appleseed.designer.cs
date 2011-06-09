@@ -7879,7 +7879,7 @@ namespace Resources {
         /// </summary>
         internal static string ES_ES {
             get {
-                return ResourceManager.GetString("ES-ES", resourceCulture);
+                return ResourceManager.GetString("ES_ES", resourceCulture);
             }
         }
         
@@ -7888,7 +7888,7 @@ namespace Resources {
         /// </summary>
         internal static string ES_ES_DESCRIPTION {
             get {
-                return ResourceManager.GetString("ES-ES_DESCRIPTION", resourceCulture);
+                return ResourceManager.GetString("ES_ES_DESCRIPTION", resourceCulture);
             }
         }
         
@@ -8955,11 +8955,11 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Title (it-IT).
+        ///   Looks up a localized string similar to Title (IT_IT).
         /// </summary>
         internal static string IT_IT {
             get {
-                return ResourceManager.GetString("IT-IT", resourceCulture);
+                return ResourceManager.GetString("IT_IT", resourceCulture);
             }
         }
         
@@ -8968,7 +8968,7 @@ namespace Resources {
         /// </summary>
         internal static string IT_IT_DESCRIPTION {
             get {
-                return ResourceManager.GetString("IT-IT_DESCRIPTION", resourceCulture);
+                return ResourceManager.GetString("IT_IT_DESCRIPTION", resourceCulture);
             }
         }
         
@@ -10278,11 +10278,11 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Title (en-GB).
+        ///   Looks up a localized string similar to Title (EN_GB).
         /// </summary>
         internal static string MODULESETTINGS_TITLE_EN_GB {
             get {
-                return ResourceManager.GetString("MODULESETTINGS_TITLE_EN-GB", resourceCulture);
+                return ResourceManager.GetString("MODULESETTINGS_TITLE_EN_GB", resourceCulture);
             }
         }
         
@@ -10291,7 +10291,7 @@ namespace Resources {
         /// </summary>
         internal static string MODULESETTINGS_TITLE_EN_GB_DESCRIPTION {
             get {
-                return ResourceManager.GetString("MODULESETTINGS_TITLE_EN-GB_DESCRIPTION", resourceCulture);
+                return ResourceManager.GetString("MODULESETTINGS_TITLE_EN_GB_DESCRIPTION", resourceCulture);
             }
         }
         
@@ -10336,7 +10336,7 @@ namespace Resources {
         /// </summary>
         internal static string MODULESETTINGS_TITLE_ES_ES {
             get {
-                return ResourceManager.GetString("MODULESETTINGS_TITLE_ES-ES", resourceCulture);
+                return ResourceManager.GetString("MODULESETTINGS_TITLE_ES_ES", resourceCulture);
             }
         }
         
@@ -10345,7 +10345,7 @@ namespace Resources {
         /// </summary>
         internal static string MODULESETTINGS_TITLE_ES_ES_DESCRIPTION {
             get {
-                return ResourceManager.GetString("MODULESETTINGS_TITLE_ES-ES_DESCRIPTION", resourceCulture);
+                return ResourceManager.GetString("MODULESETTINGS_TITLE_ES_ES_DESCRIPTION", resourceCulture);
             }
         }
         
@@ -10386,11 +10386,11 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Title (nl-BE).
+        ///   Looks up a localized string similar to Title (NL_BE).
         /// </summary>
         internal static string MODULESETTINGS_TITLE_NL_BE {
             get {
-                return ResourceManager.GetString("MODULESETTINGS_TITLE_NL-BE", resourceCulture);
+                return ResourceManager.GetString("MODULESETTINGS_TITLE_NL_BE", resourceCulture);
             }
         }
         
@@ -10399,7 +10399,7 @@ namespace Resources {
         /// </summary>
         internal static string MODULESETTINGS_TITLE_NL_BE_DESCRIPTION {
             get {
-                return ResourceManager.GetString("MODULESETTINGS_TITLE_NL-BE_DESCRIPTION", resourceCulture);
+                return ResourceManager.GetString("MODULESETTINGS_TITLE_NL_BE_DESCRIPTION", resourceCulture);
             }
         }
         
@@ -12062,9 +12062,9 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Total Price (inc Taxes).
         /// </summary>
-        internal static string PRODUCT_TOTAL_PRICE__INC__TAXES_ {
+        internal static string PRODUCT_TOTAL_PRICE__INC_TAXES_ {
             get {
-                return ResourceManager.GetString("PRODUCT_TOTAL_PRICE_(INC._TAXES)", resourceCulture);
+                return ResourceManager.GetString("PRODUCT_TOTAL_PRICE_(INC_TAXES)", resourceCulture);
             }
         }
         
@@ -14926,7 +14926,7 @@ namespace Resources {
         /// </summary>
         internal static string TABKEYPHRASE_ES_ES {
             get {
-                return ResourceManager.GetString("TABKEYPHRASE_ES-ES", resourceCulture);
+                return ResourceManager.GetString("TABKEYPHRASE_ES_ES", resourceCulture);
             }
         }
         
@@ -14935,7 +14935,7 @@ namespace Resources {
         /// </summary>
         internal static string TABKEYPHRASE_ES_ES_DESCRIPTION {
             get {
-                return ResourceManager.GetString("TABKEYPHRASE_ES-ES_DESCRIPTION", resourceCulture);
+                return ResourceManager.GetString("TABKEYPHRASE_ES_ES_DESCRIPTION", resourceCulture);
             }
         }
         
@@ -15691,7 +15691,7 @@ namespace Resources {
         /// </summary>
         internal static string TR_TR {
             get {
-                return ResourceManager.GetString("TR-TR", resourceCulture);
+                return ResourceManager.GetString("TR_TR", resourceCulture);
             }
         }
         
@@ -15700,7 +15700,7 @@ namespace Resources {
         /// </summary>
         internal static string TR_TR_DESCRIPTION {
             get {
-                return ResourceManager.GetString("TR-TR_DESCRIPTION", resourceCulture);
+                return ResourceManager.GetString("TR_TR_DESCRIPTION", resourceCulture);
             }
         }
         
