@@ -368,11 +368,11 @@
 	<data name="BANK">
 		<value>Банк</value>
 	</data>
-	<data name="BG-BG">
-		<value>BG-BG</value>
+	<data name="BG_BG">
+		<value>BG_BG</value>
 	</data>
-	<data name="BG-BG_DESCRIPTION">
-		<value>BG-BG_DESCRIPTION</value>
+	<data name="BG_BG_DESCRIPTION">
+		<value>BG_BG_DESCRIPTION</value>
 	</data>
 	<data name="BIND_OPTION_CHILDREN">
 		<value>BIND_OPTION_CHILDREN</value>
@@ -1985,11 +1985,11 @@
 	<data name="CUSTOMTHEMEALT_DESCRIPTION">
 		<value>CUSTOMTHEMEALT_DESCRIPTION</value>
 	</data>
-	<data name="DA-DK">
-		<value>DA-DK</value>
+	<data name="DA_DK">
+		<value>DA_DK</value>
 	</data>
-	<data name="DA-DK_DESCRIPTION">
-		<value>DA-DK_DESCRIPTION</value>
+	<data name="DA_DK_DESCRIPTION">
+		<value>DA_DK_DESCRIPTION</value>
 	</data>
 	<data name="DATE">
 		<value>Дата</value>
@@ -2012,17 +2012,17 @@
 	<data name="DBTOOL_QUERYEXECUTE">
 		<value>DBTOOL_QUERYEXECUTE</value>
 	</data>
-	<data name="DE-CH">
-		<value>DE-CH</value>
+	<data name="DE_CH">
+		<value>DE_CH</value>
 	</data>
-	<data name="DE-CH_DESCRIPTION">
-		<value>DE-CH_DESCRIPTION</value>
+	<data name="DE_CH_DESCRIPTION">
+		<value>DE_CH_DESCRIPTION</value>
 	</data>
-	<data name="DE-DE">
-		<value>DE-DE</value>
+	<data name="DE_DE">
+		<value>DE_DE</value>
 	</data>
-	<data name="DE-DE_DESCRIPTION">
-		<value>DE-DE_DESCRIPTION</value>
+	<data name="DE_DE_DESCRIPTION">
+		<value>DE_DE_DESCRIPTION</value>
 	</data>
 	<data name="DECLINE">
 		<value>Ні, дякую!</value>
@@ -2339,11 +2339,11 @@
 	<data name="EN">
 		<value>EN</value>
 	</data>
-	<data name="EN-US">
-		<value>EN-US</value>
+	<data name="EN_US">
+		<value>EN_US</value>
 	</data>
-	<data name="EN-US_DESCRIPTION">
-		<value>EN-US_DESCRIPTION</value>
+	<data name="EN_US_DESCRIPTION">
+		<value>EN_US_DESCRIPTION</value>
 	</data>
 	<data name="EN_DESCRIPTION">
 		<value>EN_DESCRIPTION</value>
@@ -3434,11 +3434,11 @@
 	<data name="MODULESETTINGS_THEME_DESCRIPTION">
 		<value>MODULESETTINGS_THEME_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_BG-BG">
-		<value>MODULESETTINGS_TITLE_BG-BG</value>
+	<data name="MODULESETTINGS_TITLE_BG_BG">
+		<value>MODULESETTINGS_TITLE_BG_BG</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_BG-BG_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_BG-BG_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_BG_BG_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_BG_BG_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_CA">
 		<value>MODULESETTINGS_TITLE_CA</value>
@@ -3455,11 +3455,11 @@
 	<data name="MODULESETTINGS_TITLE_EN-GB_DESCRIPTION">
 		<value>MODULESETTINGS_TITLE_EN-GB_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-US">
-		<value>MODULESETTINGS_TITLE_EN-US</value>
+	<data name="MODULESETTINGS_TITLE_EN_US">
+		<value>MODULESETTINGS_TITLE_EN_US</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-US_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_EN-US_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_EN_US_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_EN_US_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_EN_DESCRIPTION">
 		<value>MODULESETTINGS_TITLE_EN_DESCRIPTION</value>
@@ -3494,11 +3494,11 @@
 	<data name="MODULESETTINGS_TITLE_NL-BE_DESCRIPTION">
 		<value>MODULESETTINGS_TITLE_NL-BE_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ZH-CN">
-		<value>MODULESETTINGS_TITLE_ZH-CN</value>
+	<data name="MODULESETTINGS_TITLE_ZH_CN">
+		<value>MODULESETTINGS_TITLE_ZH_CN</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ZH-CN_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_ZH-CN_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_ZH_CN_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_ZH_CN_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_WIDTH_STRETCHING">
 		<value>MODULESETTINGS_WIDTH_STRETCHING</value>
@@ -4913,11 +4913,11 @@
 	<data name="TABKEYPHRASE">
 		<value>TABKEYPHRASE</value>
 	</data>
-	<data name="TABKEYPHRASE_BG-BG">
-		<value>TABKEYPHRASE_BG-BG</value>
+	<data name="TABKEYPHRASE_BG_BG">
+		<value>TABKEYPHRASE_BG_BG</value>
 	</data>
-	<data name="TABKEYPHRASE_BG-BG_DESCRIPTION">
-		<value>TABKEYPHRASE_BG-BG_DESCRIPTION</value>
+	<data name="TABKEYPHRASE_BG_BG_DESCRIPTION">
+		<value>TABKEYPHRASE_BG_BG_DESCRIPTION</value>
 	</data>
 	<data name="TABKEYPHRASE_DESCRIPTION">
 		<value>TABKEYPHRASE_DESCRIPTION</value>
@@ -5426,11 +5426,11 @@
 	<data name="YEARS">
 		<value>YEARS</value>
 	</data>
-	<data name="ZH-CN">
-		<value>ZH-CN</value>
+	<data name="ZH_CN">
+		<value>ZH_CN</value>
 	</data>
-	<data name="ZH-CN_DESCRIPTION">
-		<value>ZH-CN_DESCRIPTION</value>
+	<data name="ZH_CN_DESCRIPTION">
+		<value>ZH_CN_DESCRIPTION</value>
 	</data>
 	<data name="ZIP">
 		<value>Поштовий індекс</value>

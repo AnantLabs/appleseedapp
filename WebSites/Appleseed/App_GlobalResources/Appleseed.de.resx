@@ -368,11 +368,11 @@
 	<data name="BANK">
 		<value>Bank</value>
 	</data>
-	<data name="BG-BG">
-		<value>BG-BG</value>
+	<data name="BG_BG">
+		<value>BG_BG</value>
 	</data>
-	<data name="BG-BG_DESCRIPTION">
-		<value>BG-BG_DESCRIPTION</value>
+	<data name="BG_BG_DESCRIPTION">
+		<value>BG_BG_DESCRIPTION</value>
 	</data>
 	<data name="BIND_OPTION_CHILDREN">
 		<value>BindOptionChildren</value>
@@ -1985,11 +1985,11 @@
 	<data name="CUSTOMTHEMEALT_DESCRIPTION">
 		<value>Setzt eine benutzerdefinierte alternative Vorlage für diese Seite</value>
 	</data>
-	<data name="DA-DK">
-		<value>Titel (da-DK)</value>
+	<data name="DA_DK">
+		<value>Titel (DA_DK)</value>
 	</data>
-	<data name="DA-DK_DESCRIPTION">
-		<value>Setzt Titel für Dänisch (da-DK)</value>
+	<data name="DA_DK_DESCRIPTION">
+		<value>Setzt Titel für Dänisch (DA_DK)</value>
 	</data>
 	<data name="DATE">
 		<value>Datum</value>
@@ -2012,17 +2012,17 @@
 	<data name="DBTOOL_QUERYEXECUTE">
 		<value>DB-Tool Abfrage ausführen</value>
 	</data>
-	<data name="DE-CH">
-		<value>Titel  (de-CH)</value>
+	<data name="DE_CH">
+		<value>Titel  (DE_CH)</value>
 	</data>
-	<data name="DE-CH_DESCRIPTION">
-		<value>Setzt Titel für Deutsch (de-CH)</value>
+	<data name="DE_CH_DESCRIPTION">
+		<value>Setzt Titel für Deutsch (DE_CH)</value>
 	</data>
-	<data name="DE-DE">
-		<value>Titel  (de-DE)</value>
+	<data name="DE_DE">
+		<value>Titel  (DE_DE)</value>
 	</data>
-	<data name="DE-DE_DESCRIPTION">
-		<value>Setzt Titel für Deutsch (de-DE)</value>
+	<data name="DE_DE_DESCRIPTION">
+		<value>Setzt Titel für Deutsch (DE_DE)</value>
 	</data>
 	<data name="DECLINE">
 		<value>Nein, danke!</value>
@@ -2339,11 +2339,11 @@
 	<data name="EN">
 		<value>Titel  (en)</value>
 	</data>
-	<data name="EN-US">
-		<value>Titel (en-US)</value>
+	<data name="EN_US">
+		<value>Titel (EN_US)</value>
 	</data>
-	<data name="EN-US_DESCRIPTION">
-		<value>Setzt Titel für Englisch (en-US)</value>
+	<data name="EN_US_DESCRIPTION">
+		<value>Setzt Titel für Englisch (EN_US)</value>
 	</data>
 	<data name="EN_DESCRIPTION">
 		<value>Setzt Titel für Englisch (en)</value>
@@ -3434,11 +3434,11 @@
 	<data name="MODULESETTINGS_THEME_DESCRIPTION">
 		<value>Wählen Sie eine Vorlage für das Module</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_BG-BG">
-		<value>MODULESETTINGS_TITLE_BG-BG</value>
+	<data name="MODULESETTINGS_TITLE_BG_BG">
+		<value>MODULESETTINGS_TITLE_BG_BG</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_BG-BG_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_BG-BG_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_BG_BG_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_BG_BG_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_CA">
 		<value>MODULESETTINGS_TITLE_CA</value>
@@ -3455,10 +3455,10 @@
 	<data name="MODULESETTINGS_TITLE_EN-GB_DESCRIPTION">
 		<value>Set title for English (United Kingdom) culture.</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-US">
-		<value>Title (en-US)</value>
+	<data name="MODULESETTINGS_TITLE_EN_US">
+		<value>Title (EN_US)</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-US_DESCRIPTION">
+	<data name="MODULESETTINGS_TITLE_EN_US_DESCRIPTION">
 		<value>Set title for English (United States) culture.</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_EN_DESCRIPTION">
@@ -3494,10 +3494,10 @@
 	<data name="MODULESETTINGS_TITLE_NL-BE_DESCRIPTION">
 		<value>Set title for Dutch (Belgium) culture.</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ZH-CN">
-		<value>Title (zh-CN)</value>
+	<data name="MODULESETTINGS_TITLE_ZH_CN">
+		<value>Title (ZH_CN)</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ZH-CN_DESCRIPTION">
+	<data name="MODULESETTINGS_TITLE_ZH_CN_DESCRIPTION">
 		<value>Set title for Chinese (People’s Republic of China) culture.</value>
 	</data>
 	<data name="MODULESETTINGS_WIDTH_STRETCHING">
@@ -4725,7 +4725,7 @@
 		<value>Vorschriften Datei</value>
 	</data>
 	<data name="SITESETTINGS_TERMS_OF_SERVICE_DESCRIPTION">
-		<value>Type here a file name used for showing terms and condition in each register page. Provide localized version adding _&lt;culturename&gt;. E.g. Terms.txt, will search for Terms.txt and for Terms_en-US.txt</value>
+		<value>Type here a file name used for showing terms and condition in each register page. Provide localized version adding _&lt;culturename&gt;. E.g. Terms.txt, will search for Terms.txt and for Terms_EN_US.txt</value>
 	</data>
 	<data name="SITESETTINGS_THEME">
 		<value>Vorlage</value>
@@ -4913,11 +4913,11 @@
 	<data name="TABKEYPHRASE">
 		<value>Standard Seiten Keyphrase</value>
 	</data>
-	<data name="TABKEYPHRASE_BG-BG">
-		<value>TABKEYPHRASE_BG-BG</value>
+	<data name="TABKEYPHRASE_BG_BG">
+		<value>TABKEYPHRASE_BG_BG</value>
 	</data>
-	<data name="TABKEYPHRASE_BG-BG_DESCRIPTION">
-		<value>TABKEYPHRASE_BG-BG_DESCRIPTION</value>
+	<data name="TABKEYPHRASE_BG_BG_DESCRIPTION">
+		<value>TABKEYPHRASE_BG_BG_DESCRIPTION</value>
 	</data>
 	<data name="TABKEYPHRASE_DESCRIPTION">
 		<value>This setting can be used by a module or by a control. It allows you to define a common message for the entire portal e.g. Welcome to x portal! This can be used for search engine optimisation. It allows you to define a keyword rich phrase to be used throug</value>
@@ -5061,7 +5061,7 @@
 		<value>Nutzungsbedingen / AGB</value>
 	</data>
 	<data name="TERMSOFSERVICE_DESCRIPTION">
-		<value>Type here a file name used for showing terms and condition in each register page. Provide localized version adding _&lt;culturename&gt;. E.g. Terms.txt, will search for Terms.txt and for Terms_en-US.txt</value>
+		<value>Type here a file name used for showing terms and condition in each register page. Provide localized version adding _&lt;culturename&gt;. E.g. Terms.txt, will search for Terms.txt and for Terms_EN_US.txt</value>
 	</data>
 	<data name="TESTMODE">
 		<value>Test Modus</value>
@@ -5426,10 +5426,10 @@
 	<data name="YEARS">
 		<value>Jahr(e)</value>
 	</data>
-	<data name="ZH-CN">
-		<value>Title (zh-CN)</value>
+	<data name="ZH_CN">
+		<value>Title (ZH_CN)</value>
 	</data>
-	<data name="ZH-CN_DESCRIPTION">
+	<data name="ZH_CN_DESCRIPTION">
 		<value>Set title for Chinese (People’s Republic of China) culture.</value>
 	</data>
 	<data name="ZIP">

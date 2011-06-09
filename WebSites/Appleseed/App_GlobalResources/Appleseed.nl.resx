@@ -302,8 +302,8 @@
       <value>Terug</value>
   </data>
   <data name="BANK"></data>
-  <data name="BG-BG"></data>
-  <data name="BG-BG_DESCRIPTION"></data>
+  <data name="BG_BG"></data>
+  <data name="BG_BG_DESCRIPTION"></data>
   <data name="BIND_OPTION_CHILDREN"></data>
   <data name="BIND_OPTION_CURRENT_CHILDS"></data>
   <data name="BIND_OPTION_DEFINED_PARENT"></data>
@@ -1084,8 +1084,8 @@
   <data name="CUSTOMTHEMEALT_DESCRIPTION">
       <value>Selecteer een alternatief thema specifiek voor de modules van deze pagina</value>
   </data>
-  <data name="DA-DK"></data>
-  <data name="DA-DK_DESCRIPTION"></data>
+  <data name="DA_DK"></data>
+  <data name="DA_DK_DESCRIPTION"></data>
   <data name="DATE">
       <value>Datum</value>
   </data>
@@ -1105,19 +1105,19 @@
   <data name="DBTOOL_QUERYEXECUTE">
       <value>Query uitvoeren</value>
   </data>
-  <data name="DE-CH">
-      <value>Titel [de-CH]</value>
+  <data name="DE_CH">
+      <value>Titel [DE_CH]</value>
   </data>
-  <data name="DE-CH_DESCRIPTION">
+  <data name="DE_CH_DESCRIPTION">
       <value>Titel voor Duits (Zwitserland) cultuur</value>
   </data>
   <data name="DECLINE">
       <value>Nee, dank u!</value>
   </data>
-  <data name="DE-DE">
-      <value>Titel [de-DE]</value>
+  <data name="DE_DE">
+      <value>Titel [DE_DE]</value>
   </data>
-  <data name="DE-DE_DESCRIPTION">
+  <data name="DE_DE_DESCRIPTION">
       <value>Titel voor Duits (Duitsland) cultuur</value>
   </data>
   <data name="DEFAULT_IMAGE_EDITOR">
@@ -1548,10 +1548,10 @@
   <data name="ENHANCEDLINKS_SWITCHERTYPES_DESCRIPTION">
       <value>Selecteer hoe module eruit moet zien</value>
   </data>
-  <data name="EN-US">
-      <value>Titel (en-US)</value>
+  <data name="EN_US">
+      <value>Titel (EN_US)</value>
   </data>
-  <data name="EN-US_DESCRIPTION">
+  <data name="EN_US_DESCRIPTION">
       <value>Titel voor Engels (Verenigde Staten) cultuur.</value>
   </data>
   <data name="ERROR">
@@ -2273,8 +2273,8 @@
   <data name="MODULESETTINGS_THEME_DESCRIPTION">
       <value>Kies thema voor deze module</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_BG-BG"></data>
-  <data name="MODULESETTINGS_TITLE_BG-BG_DESCRIPTION"></data>
+  <data name="MODULESETTINGS_TITLE_BG_BG"></data>
+  <data name="MODULESETTINGS_TITLE_BG_BG_DESCRIPTION"></data>
   <data name="MODULESETTINGS_TITLE_CA"></data>
   <data name="MODULESETTINGS_TITLE_CA_DESCRIPTION"></data>
   <data name="MODULESETTINGS_TITLE_EN">
@@ -2289,10 +2289,10 @@
   <data name="MODULESETTINGS_TITLE_EN-GB_DESCRIPTION">
       <value>Titel voor Engelse (Verenigd Koninkrijk) cultuur.</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_EN-US">
-      <value>Titel (en-US)</value>
+  <data name="MODULESETTINGS_TITLE_EN_US">
+      <value>Titel (EN_US)</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_EN-US_DESCRIPTION">
+  <data name="MODULESETTINGS_TITLE_EN_US_DESCRIPTION">
       <value>Titel voor Engelse (Verenigde Staten) cultuur.</value>
   </data>
   <data name="MODULESETTINGS_TITLE_ES">
@@ -2325,8 +2325,8 @@
   <data name="MODULESETTINGS_TITLE_NL-BE_DESCRIPTION">
       <value>Titel voor Belgische cultuur</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_ZH-CN"></data>
-  <data name="MODULESETTINGS_TITLE_ZH-CN_DESCRIPTION"></data>
+  <data name="MODULESETTINGS_TITLE_ZH_CN"></data>
+  <data name="MODULESETTINGS_TITLE_ZH_CN_DESCRIPTION"></data>
   <data name="MODULESETTINGS_WIDTH_STRETCHING">
       <value>Module automatsch oprekken</value>
   </data>
@@ -3388,8 +3388,8 @@
   <data name="TABKEYPHRASE">
       <value>Standaard pagina Keyphrase</value>
   </data>
-  <data name="TABKEYPHRASE_BG-BG"></data>
-  <data name="TABKEYPHRASE_BG-BG_DESCRIPTION"></data>
+  <data name="TABKEYPHRASE_BG_BG"></data>
+  <data name="TABKEYPHRASE_BG_BG_DESCRIPTION"></data>
   <data name="TABKEYPHRASE_DESCRIPTION"></data>
   <data name="TABKEYPHRASE_EN"></data>
   <data name="TABKEYPHRASE_EN_DESCRIPTION"></data>
@@ -3498,7 +3498,7 @@
       <value>Algemene Voorwaarden</value>
   </data>
   <data name="TERMSOFSERVICE_DESCRIPTION">
-      <value>Geef hier bestandsnaam op met Algemene voorwaarden. Deze zal in registratiepagina getoond worden. Provide localized version adding _&lt;culturename&gt;. E.g. Terms.txt, will search for Terms.txt and for Terms_en-US.txt</value>
+      <value>Geef hier bestandsnaam op met Algemene voorwaarden. Deze zal in registratiepagina getoond worden. Provide localized version adding _&lt;culturename&gt;. E.g. Terms.txt, will search for Terms.txt and for Terms_EN_US.txt</value>
   </data>
   <data name="TESTMODE">
       <value>Testmodus</value>
@@ -3791,10 +3791,10 @@
   <data name="YEARS">
       <value>Jaren (Max)</value>
   </data>
-  <data name="ZH-CN">
-      <value>Titel (zh-cn)</value>
+  <data name="ZH_CN">
+      <value>Titel (ZH_CN)</value>
   </data>
-  <data name="ZH-CN_DESCRIPTION">
+  <data name="ZH_CN_DESCRIPTION">
       <value>Titel voor de Chinese cultuur (van de Volksrepubliek China).</value>
   </data>
   <data name="ZIP">

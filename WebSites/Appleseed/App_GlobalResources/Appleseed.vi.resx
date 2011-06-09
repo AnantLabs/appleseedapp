@@ -448,11 +448,11 @@
   <data name="BANK">
     <value>Bank</value>
   </data>
-  <data name="BG-BG">
-    <value>BG-BG</value>
+  <data name="BG_BG">
+    <value>BG_BG</value>
   </data>
-  <data name="BG-BG_DESCRIPTION">
-    <value>BG-BG_DESCRIPTION</value>
+  <data name="BG_BG_DESCRIPTION">
+    <value>BG_BG_DESCRIPTION</value>
   </data>
   <data name="BINDTOTAB">
     <value>Bind to tab</value>
@@ -880,10 +880,10 @@
   <data name="CUSTOMTHEME_DESCRIPTION">
     <value>Set a custom theme for the modules in this tab only</value>
   </data>
-  <data name="DA-DK">
-    <value>Title (da-DK)</value>
+  <data name="DA_DK">
+    <value>Title (DA_DK)</value>
   </data>
-  <data name="DA-DK_DESCRIPTION">
+  <data name="DA_DK_DESCRIPTION">
     <value>Set title for Danish (Denmark) culture.</value>
   </data>
   <data name="DATE">
@@ -919,16 +919,16 @@
   <data name="DBTOOL_QUERYEXECUTE">
     <value>Execute Query</value>
   </data>
-  <data name="DE-CH">
-    <value>Title (de-CH)</value>
+  <data name="DE_CH">
+    <value>Title (DE_CH)</value>
   </data>
-  <data name="DE-CH_DESCRIPTION">
+  <data name="DE_CH_DESCRIPTION">
     <value>Set title for German (Switzerland) culture.</value>
   </data>
-  <data name="DE-DE">
-    <value>Title (de-DE)</value>
+  <data name="DE_DE">
+    <value>Title (DE_DE)</value>
   </data>
-  <data name="DE-DE_DESCRIPTION">
+  <data name="DE_DE_DESCRIPTION">
     <value>Set title for German (Germany) culture.</value>
   </data>
   <data name="DECLINE">
@@ -1165,16 +1165,16 @@
   <data name="MODULESETTINGS_TITLE_EN">
     <value>Title (en)</value>
   </data>
-  <data name="EN-US">
-    <value>Title (en-US)</value>
+  <data name="EN_US">
+    <value>Title (EN_US)</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_EN-US">
-    <value>Title (en-US)</value>
+  <data name="MODULESETTINGS_TITLE_EN_US">
+    <value>Title (EN_US)</value>
   </data>
-  <data name="EN-US_DESCRIPTION">
+  <data name="EN_US_DESCRIPTION">
     <value>Set title for English (United States) culture.</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_EN-US_DESCRIPTION">
+  <data name="MODULESETTINGS_TITLE_EN_US_DESCRIPTION">
     <value>Set title for English (United States) culture.</value>
   </data>
   <data name="END_DATE">
@@ -2032,16 +2032,16 @@
   <data name="MODULESETTINGS_TITLE_NL-BE_DESCRIPTION">
     <value>Set title for Dutch (Belgium) culture.</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_ZH-CN">
-    <value>Title (zh-CN)</value>
+  <data name="MODULESETTINGS_TITLE_ZH_CN">
+    <value>Title (ZH_CN)</value>
   </data>
-  <data name="ZH-CN">
-    <value>Title (zh-CN)</value>
+  <data name="ZH_CN">
+    <value>Title (ZH_CN)</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_ZH-CN_DESCRIPTION">
+  <data name="MODULESETTINGS_TITLE_ZH_CN_DESCRIPTION">
     <value>Set title for Chinese (People’s Republic of China) culture.</value>
   </data>
-  <data name="ZH-CN_DESCRIPTION">
+  <data name="ZH_CN_DESCRIPTION">
     <value>Set title for Chinese (People’s Republic of China) culture.</value>
   </data>
   <data name="MODULESETTINGS_WIDTH_STRETCHING">
@@ -2951,10 +2951,10 @@
     <value>Terms file name</value>
   </data>
   <data name="SITESETTINGS_TERMS_OF_SERVICE_DESCRIPTION">
-    <value>Type here a file name used for showing terms and condition in each register page. Provide localized version adding _&lt;culturename&gt;. E.g. Terms.txt, will search for Terms.txt and for Terms_en-US.txt</value>
+    <value>Type here a file name used for showing terms and condition in each register page. Provide localized version adding _&lt;culturename&gt;. E.g. Terms.txt, will search for Terms.txt and for Terms_EN_US.txt</value>
   </data>
   <data name="TERMSOFSERVICE_DESCRIPTION">
-    <value>Type here a file name used for showing terms and condition in each register page. Provide localized version adding _&lt;culturename&gt;. E.g. Terms.txt, will search for Terms.txt and for Terms_en-US.txt</value>
+    <value>Type here a file name used for showing terms and condition in each register page. Provide localized version adding _&lt;culturename&gt;. E.g. Terms.txt, will search for Terms.txt and for Terms_EN_US.txt</value>
   </data>
   <data name="SITESETTINGS_THEME_DESCRIPTION">
     <value>Specify the site level theme here.</value>
