@@ -368,11 +368,11 @@
 	<data name="BANK">
 		<value>Banque</value>
 	</data>
-	<data name="BG-BG">
-		<value>BG-BG</value>
+	<data name="BG_BG">
+		<value>BG_BG</value>
 	</data>
-	<data name="BG-BG_DESCRIPTION">
-		<value>BG-BG_DESCRIPTION</value>
+	<data name="BG_BG_DESCRIPTION">
+		<value>BG_BG_DESCRIPTION</value>
 	</data>
 	<data name="BIND_OPTION_CHILDREN">
 		<value>BindOptionChildren</value>
@@ -1985,10 +1985,10 @@
 	<data name="CUSTOMTHEMEALT_DESCRIPTION">
 		<value>Thème utilisé pour cette page uniquement</value>
 	</data>
-	<data name="DA-DK">
-		<value>Titre (da-DK)</value>
+	<data name="DA_DK">
+		<value>Titre (DA_DK)</value>
 	</data>
-	<data name="DA-DK_DESCRIPTION">
+	<data name="DA_DK_DESCRIPTION">
 		<value/>
 	</data>
 	<data name="DATE">
@@ -2012,16 +2012,16 @@
 	<data name="DBTOOL_QUERYEXECUTE">
 		<value>Exécuter la requête</value>
 	</data>
-	<data name="DE-CH">
-		<value>Titre (de-CH)</value>
+	<data name="DE_CH">
+		<value>Titre (DE_CH)</value>
 	</data>
-	<data name="DE-CH_DESCRIPTION">
+	<data name="DE_CH_DESCRIPTION">
 		<value>Set title for German (Switzerland) culture.</value>
 	</data>
-	<data name="DE-DE">
-		<value>Titre (de-DE)</value>
+	<data name="DE_DE">
+		<value>Titre (DE_DE)</value>
 	</data>
-	<data name="DE-DE_DESCRIPTION">
+	<data name="DE_DE_DESCRIPTION">
 		<value>Set title for German (Germany) culture.</value>
 	</data>
 	<data name="DECLINE">
@@ -2339,10 +2339,10 @@
 	<data name="EN">
 		<value>Titre (en)</value>
 	</data>
-	<data name="EN-US">
-		<value>Titre (en-US)</value>
+	<data name="EN_US">
+		<value>Titre (EN_US)</value>
 	</data>
-	<data name="EN-US_DESCRIPTION">
+	<data name="EN_US_DESCRIPTION">
 		<value>Set title for English (United States) culture.</value>
 	</data>
 	<data name="EN_DESCRIPTION">
@@ -3434,11 +3434,11 @@
 	<data name="MODULESETTINGS_THEME_DESCRIPTION">
 		<value>Sélectionner un thème</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_BG-BG">
-		<value>MODULESETTINGS_TITLE_BG-BG</value>
+	<data name="MODULESETTINGS_TITLE_BG_BG">
+		<value>MODULESETTINGS_TITLE_BG_BG</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_BG-BG_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_BG-BG_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_BG_BG_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_BG_BG_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_CA">
 		<value>MODULESETTINGS_TITLE_CA</value>
@@ -3455,10 +3455,10 @@
 	<data name="MODULESETTINGS_TITLE_EN-GB_DESCRIPTION">
 		<value>Set title for English (United Kingdom) culture.</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-US">
-		<value>Titre (en-US)</value>
+	<data name="MODULESETTINGS_TITLE_EN_US">
+		<value>Titre (EN_US)</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-US_DESCRIPTION">
+	<data name="MODULESETTINGS_TITLE_EN_US_DESCRIPTION">
 		<value>Set title for English (United States) culture.</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_EN_DESCRIPTION">
@@ -3494,10 +3494,10 @@
 	<data name="MODULESETTINGS_TITLE_NL-BE_DESCRIPTION">
 		<value>Set title for Dutch (Belgium) culture.</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ZH-CN">
-		<value>Titre (zh-CN)</value>
+	<data name="MODULESETTINGS_TITLE_ZH_CN">
+		<value>Titre (ZH_CN)</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ZH-CN_DESCRIPTION">
+	<data name="MODULESETTINGS_TITLE_ZH_CN_DESCRIPTION">
 		<value>Set title for Chinese (People’s Republic of China) culture.</value>
 	</data>
 	<data name="MODULESETTINGS_WIDTH_STRETCHING">
@@ -4913,11 +4913,11 @@
 	<data name="TABKEYPHRASE">
 		<value>Phrase par défaut de la page</value>
 	</data>
-	<data name="TABKEYPHRASE_BG-BG">
-		<value>TABKEYPHRASE_BG-BG</value>
+	<data name="TABKEYPHRASE_BG_BG">
+		<value>TABKEYPHRASE_BG_BG</value>
 	</data>
-	<data name="TABKEYPHRASE_BG-BG_DESCRIPTION">
-		<value>TABKEYPHRASE_BG-BG_DESCRIPTION</value>
+	<data name="TABKEYPHRASE_BG_BG_DESCRIPTION">
+		<value>TABKEYPHRASE_BG_BG_DESCRIPTION</value>
 	</data>
 	<data name="TABKEYPHRASE_DESCRIPTION">
 		<value>Ce paramètre optionnel vous permet de définir un message commun pour tout le portail, par exemple "Bienvenue sur le portail x !". Il peut être utilisé pour optimiser les moteurs de recherche et est accessible aux modules ou aux controles.</value>
@@ -5426,10 +5426,10 @@
 	<data name="YEARS">
 		<value>Years (Max)</value>
 	</data>
-	<data name="ZH-CN">
-		<value>Titre (zh-CN)</value>
+	<data name="ZH_CN">
+		<value>Titre (ZH_CN)</value>
 	</data>
-	<data name="ZH-CN_DESCRIPTION">
+	<data name="ZH_CN_DESCRIPTION">
 		<value>Set title for Chinese (People’s Republic of China) culture.</value>
 	</data>
 	<data name="ZIP">

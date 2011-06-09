@@ -310,10 +310,10 @@
 	<data name="BANK">
 		<value>Banka</value>
 	</data>
-	<data name="BG-BG">
+	<data name="BG_BG">
 		<value/>
 	</data>
-	<data name="BG-BG_DESCRIPTION">
+	<data name="BG_BG_DESCRIPTION">
 		<value/>
 	</data>
 	<data name="BIND_OPTION_CHILDREN">
@@ -1927,10 +1927,10 @@
 	<data name="CUSTOMTHEMEALT_DESCRIPTION">
 		<value>Namj prilagođenu alternativnu temu samo za module u ovom tabu</value>
 	</data>
-	<data name="DA-DK">
-		<value>Naslov (da-DK)</value>
+	<data name="DA_DK">
+		<value>Naslov (DA_DK)</value>
 	</data>
-	<data name="DA-DK_DESCRIPTION">
+	<data name="DA_DK_DESCRIPTION">
 		<value>Namjesti naslov za Dansku (Denmark) kulturu.</value>
 	</data>
 	<data name="DATE">
@@ -1954,16 +1954,16 @@
 	<data name="DBTOOL_QUERYEXECUTE">
 		<value>Izvrši upit</value>
 	</data>
-	<data name="DE-CH">
-		<value>Naslov (de-CH)</value>
+	<data name="DE_CH">
+		<value>Naslov (DE_CH)</value>
 	</data>
-	<data name="DE-CH_DESCRIPTION">
+	<data name="DE_CH_DESCRIPTION">
 		<value>Naslov za German (Switzerland) kulturu.</value>
 	</data>
-	<data name="DE-DE">
-		<value>Naslov (de-DE)</value>
+	<data name="DE_DE">
+		<value>Naslov (DE_DE)</value>
 	</data>
-	<data name="DE-DE_DESCRIPTION">
+	<data name="DE_DE_DESCRIPTION">
 		<value>Postavi naslov za German (Germany) kulturu.</value>
 	</data>
 	<data name="DECLINE">
@@ -2281,10 +2281,10 @@
 	<data name="EN">
 		<value>Naslov (en)</value>
 	</data>
-	<data name="EN-US">
-		<value>Naslov (en-US)</value>
+	<data name="EN_US">
+		<value>Naslov (EN_US)</value>
 	</data>
-	<data name="EN-US_DESCRIPTION">
+	<data name="EN_US_DESCRIPTION">
 		<value>Naslov za Englesku/English (United States) kulturu.</value>
 	</data>
 	<data name="EN_DESCRIPTION">
@@ -3376,10 +3376,10 @@
 	<data name="MODULESETTINGS_THEME_DESCRIPTION">
 		<value>Izaberite temu za ovaj modul</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_BG-BG">
+	<data name="MODULESETTINGS_TITLE_BG_BG">
 		<value/>
 	</data>
-	<data name="MODULESETTINGS_TITLE_BG-BG_DESCRIPTION">
+	<data name="MODULESETTINGS_TITLE_BG_BG_DESCRIPTION">
 		<value/>
 	</data>
 	<data name="MODULESETTINGS_TITLE_CA">
@@ -3397,10 +3397,10 @@
 	<data name="MODULESETTINGS_TITLE_EN-GB_DESCRIPTION">
 		<value>MODULESETTINGS_TITLE_EN-GB_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-US">
-		<value>Naslov (en-US)</value>
+	<data name="MODULESETTINGS_TITLE_EN_US">
+		<value>Naslov (EN_US)</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-US_DESCRIPTION">
+	<data name="MODULESETTINGS_TITLE_EN_US_DESCRIPTION">
 		<value>Naslov za English (United States) kulturu.</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_EN_DESCRIPTION">
@@ -3436,10 +3436,10 @@
 	<data name="MODULESETTINGS_TITLE_NL-BE_DESCRIPTION">
 		<value>MODULESETTINGS_TITLE_NL-BE_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ZH-CN">
-		<value>Naslov (zh-CN)</value>
+	<data name="MODULESETTINGS_TITLE_ZH_CN">
+		<value>Naslov (ZH_CN)</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ZH-CN_DESCRIPTION">
+	<data name="MODULESETTINGS_TITLE_ZH_CN_DESCRIPTION">
 		<value>Naslov za Chinese (People’s Republic od China) kulturu.</value>
 	</data>
 	<data name="MODULESETTINGS_WIDTH_STRETCHING">
@@ -4667,7 +4667,7 @@
 		<value>Naziv datoteke uvjeta (Terms of service)</value>
 	</data>
 	<data name="SITESETTINGS_TERMS_OF_SERVICE_DESCRIPTION">
-		<value>Unesite ovde naziv datoteke koji će prikazivati pravila i uvjete na svakoj strani za registraciju. Omogučite lokalizirane verzije dodajući _&lt;nazivkulture&gt;. Npr Terms.txt, će tražiti za Terms.txt i za Terms_en-US.txt</value>
+		<value>Unesite ovde naziv datoteke koji će prikazivati pravila i uvjete na svakoj strani za registraciju. Omogučite lokalizirane verzije dodajući _&lt;nazivkulture&gt;. Npr Terms.txt, će tražiti za Terms.txt i za Terms_EN_US.txt</value>
 	</data>
 	<data name="SITESETTINGS_THEME">
 		<value>Tema</value>
@@ -4855,10 +4855,10 @@
 	<data name="TABKEYPHRASE">
 		<value>Default Tab / Strana Fraza</value>
 	</data>
-	<data name="TABKEYPHRASE_BG-BG">
+	<data name="TABKEYPHRASE_BG_BG">
 		<value/>
 	</data>
-	<data name="TABKEYPHRASE_BG-BG_DESCRIPTION">
+	<data name="TABKEYPHRASE_BG_BG_DESCRIPTION">
 		<value/>
 	</data>
 	<data name="TABKEYPHRASE_DESCRIPTION">
@@ -5003,7 +5003,7 @@
 		<value>Uvjeti usluge</value>
 	</data>
 	<data name="TERMSOFSERVICE_DESCRIPTION">
-		<value>Unesite ovdje naziv datoteke koji će prikazivati pravila i uvjete na svakoj strani za registraciju. Omogućite lokalizirane verzije dodajući _&lt;nazivkulture&gt;. Npr Terms.txt, će tražiti za Terms.txt i za Terms_en-US.txt</value>
+		<value>Unesite ovdje naziv datoteke koji će prikazivati pravila i uvjete na svakoj strani za registraciju. Omogućite lokalizirane verzije dodajući _&lt;nazivkulture&gt;. Npr Terms.txt, će tražiti za Terms.txt i za Terms_EN_US.txt</value>
 	</data>
 	<data name="TESTMODE">
 		<value>Test mod</value>
@@ -5368,10 +5368,10 @@
 	<data name="YEARS">
 		<value>YEARS</value>
 	</data>
-	<data name="ZH-CN">
-		<value>Naslov (zh-CN)</value>
+	<data name="ZH_CN">
+		<value>Naslov (ZH_CN)</value>
 	</data>
-	<data name="ZH-CN_DESCRIPTION">
+	<data name="ZH_CN_DESCRIPTION">
 		<value>Naslov za Chinese (People’s Republic od China) kulturu.</value>
 	</data>
 	<data name="ZIP">

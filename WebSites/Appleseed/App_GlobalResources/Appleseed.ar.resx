@@ -368,10 +368,10 @@
 	<data name="BANK">
 		<value>بنك</value>
 	</data>
-	<data name="BG-BG">
+	<data name="BG_BG">
 		<value/>
 	</data>
-	<data name="BG-BG_DESCRIPTION">
+	<data name="BG_BG_DESCRIPTION">
 		<value/>
 	</data>
 	<data name="BIND_OPTION_CHILDREN">
@@ -1985,10 +1985,10 @@
 	<data name="CUSTOMTHEMEALT_DESCRIPTION">
 		<value>إعداد موضوع بديل لهذه الوحدة في هذا التبويب فقط</value>
 	</data>
-	<data name="DA-DK">
+	<data name="DA_DK">
 		<value>عنوان</value>
 	</data>
-	<data name="DA-DK_DESCRIPTION">
+	<data name="DA_DK_DESCRIPTION">
 		<value>إعداد عنوان للثقافة الدنماركية (الدنمارك)</value>
 	</data>
 	<data name="DATE">
@@ -2012,16 +2012,16 @@
 	<data name="DBTOOL_QUERYEXECUTE">
 		<value>تنفيذ الخلفية</value>
 	</data>
-	<data name="DE-CH">
+	<data name="DE_CH">
 		<value>عنوان</value>
 	</data>
-	<data name="DE-CH_DESCRIPTION">
+	<data name="DE_CH_DESCRIPTION">
 		<value>إعداد عنوان للثقافة الألمانية (سويسرا)</value>
 	</data>
-	<data name="DE-DE">
+	<data name="DE_DE">
 		<value>عنوان</value>
 	</data>
-	<data name="DE-DE_DESCRIPTION">
+	<data name="DE_DE_DESCRIPTION">
 		<value>إعداد عنوان للثقافة الألمانية</value>
 	</data>
 	<data name="DECLINE">
@@ -2339,10 +2339,10 @@
 	<data name="EN">
 		<value>عنوان</value>
 	</data>
-	<data name="EN-US">
+	<data name="EN_US">
 		<value>عنوان</value>
 	</data>
-	<data name="EN-US_DESCRIPTION">
+	<data name="EN_US_DESCRIPTION">
 		<value>إعداد عنوان للثقافة الأنجليزية (الولايات المتحدة الأمريكية)</value>
 	</data>
 	<data name="EN_DESCRIPTION">
@@ -3434,11 +3434,11 @@
 	<data name="MODULESETTINGS_THEME_DESCRIPTION">
 		<value>MODULESETTINGS_THEME_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_BG-BG">
-		<value>MODULESETTINGS_TITLE_BG-BG</value>
+	<data name="MODULESETTINGS_TITLE_BG_BG">
+		<value>MODULESETTINGS_TITLE_BG_BG</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_BG-BG_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_BG-BG_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_BG_BG_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_BG_BG_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_CA">
 		<value>MODULESETTINGS_TITLE_CA</value>
@@ -3455,11 +3455,11 @@
 	<data name="MODULESETTINGS_TITLE_EN-GB_DESCRIPTION">
 		<value>MODULESETTINGS_TITLE_EN-GB_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-US">
-		<value>MODULESETTINGS_TITLE_EN-US</value>
+	<data name="MODULESETTINGS_TITLE_EN_US">
+		<value>MODULESETTINGS_TITLE_EN_US</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-US_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_EN-US_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_EN_US_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_EN_US_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_EN_DESCRIPTION">
 		<value>MODULESETTINGS_TITLE_EN_DESCRIPTION</value>
@@ -3494,11 +3494,11 @@
 	<data name="MODULESETTINGS_TITLE_NL-BE_DESCRIPTION">
 		<value>MODULESETTINGS_TITLE_NL-BE_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ZH-CN">
-		<value>MODULESETTINGS_TITLE_ZH-CN</value>
+	<data name="MODULESETTINGS_TITLE_ZH_CN">
+		<value>MODULESETTINGS_TITLE_ZH_CN</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ZH-CN_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_ZH-CN_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_ZH_CN_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_ZH_CN_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_WIDTH_STRETCHING">
 		<value>MODULESETTINGS_WIDTH_STRETCHING</value>
@@ -4725,7 +4725,7 @@
 		<value>شروط اسم الملف</value>
 	</data>
 	<data name="SITESETTINGS_TERMS_OF_SERVICE_DESCRIPTION">
-		<value> ادخل هنا اسم الملف الذي سيتم استخدامه في عرض المصطلحات والشروط في كل صفحة تسجيل.تقديم النسخ العملية بإضافة &gt;اسم الثقافة&lt; E.g. Terms.txt,، ويتم البحث عن Terms.txt و عن Terms_en-US.txt</value>
+		<value> ادخل هنا اسم الملف الذي سيتم استخدامه في عرض المصطلحات والشروط في كل صفحة تسجيل.تقديم النسخ العملية بإضافة &gt;اسم الثقافة&lt; E.g. Terms.txt,، ويتم البحث عن Terms.txt و عن Terms_EN_US.txt</value>
 	</data>
 	<data name="SITESETTINGS_THEME">
 		<value>موضوع</value>
@@ -4915,10 +4915,10 @@
 	<data name="TABKEYPHRASE">
 		<value>التبويب الافتراضي / الجملية الأساسية في الصفحة</value>
 	</data>
-	<data name="TABKEYPHRASE_BG-BG">
+	<data name="TABKEYPHRASE_BG_BG">
 		<value/>
 	</data>
-	<data name="TABKEYPHRASE_BG-BG_DESCRIPTION">
+	<data name="TABKEYPHRASE_BG_BG_DESCRIPTION">
 		<value/>
 	</data>
 	<data name="TABKEYPHRASE_DESCRIPTION">
@@ -5063,7 +5063,7 @@
 		<value>شروط الخدمات</value>
 	</data>
 	<data name="TERMSOFSERVICE_DESCRIPTION">
-		<value>ادخل هنا اسم الملف الذي سيتم استخدامه في عرض المصطلحات والشروط في كل صفحة تسجيل.تقديم النسخ العملية بإضافة &gt;اسم الثقافة&lt; E.g. Terms.txt,، ويتم البحث عن Terms.txt و عن Terms_en-US.txt</value>
+		<value>ادخل هنا اسم الملف الذي سيتم استخدامه في عرض المصطلحات والشروط في كل صفحة تسجيل.تقديم النسخ العملية بإضافة &gt;اسم الثقافة&lt; E.g. Terms.txt,، ويتم البحث عن Terms.txt و عن Terms_EN_US.txt</value>
 	</data>
 	<data name="TESTMODE">
 		<value>مجال الأختبار</value>
@@ -5428,10 +5428,10 @@
 	<data name="YEARS">
 		<value>YEARS</value>
 	</data>
-	<data name="ZH-CN">
+	<data name="ZH_CN">
 		<value>عنوان</value>
 	</data>
-	<data name="ZH-CN_DESCRIPTION">
+	<data name="ZH_CN_DESCRIPTION">
 		<value>إعداد عنوان للثقافة اليبانية </value>
 	</data>
 	<data name="ZIP">
