@@ -1728,10 +1728,10 @@
   <data name="IT" xml:space="preserve">
     <value>Title (it)</value>
   </data>
-  <data name="IT-IT" xml:space="preserve">
-    <value>Title (it-IT)</value>
+  <data name="IT_IT" xml:space="preserve">
+    <value>Title (IT_IT)</value>
   </data>
-  <data name="IT-IT_DESCRIPTION" xml:space="preserve">
+  <data name="IT_IT_DESCRIPTION" xml:space="preserve">
     <value>Set title for Italian (Italy) culture.</value>
   </data>
   <data name="IT_DESCRIPTION" xml:space="preserve">
@@ -2073,10 +2073,10 @@
   <data name="THEME_DESCRIPTION" xml:space="preserve">
     <value>Choose theme for this module</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_EN-GB" xml:space="preserve">
-    <value>Title (en-GB)</value>
+  <data name="MODULESETTINGS_TITLE_EN_GB" xml:space="preserve">
+    <value>Title (EN_GB)</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_EN-GB_DESCRIPTION" xml:space="preserve">
+  <data name="MODULESETTINGS_TITLE_EN_GB_DESCRIPTION" xml:space="preserve">
     <value>Set title for English (United Kingdom) culture.</value>
   </data>
   <data name="MODULESETTINGS_TITLE_FR" xml:space="preserve">
@@ -2085,10 +2085,10 @@
   <data name="MODULESETTINGS_TITLE_FR_DESCRIPTION" xml:space="preserve">
     <value>Set title for French culture.</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_NL-BE" xml:space="preserve">
-    <value>Title (nl-BE)</value>
+  <data name="MODULESETTINGS_TITLE_NL_BE" xml:space="preserve">
+    <value>Title (NL_BE)</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_NL-BE_DESCRIPTION" xml:space="preserve">
+  <data name="MODULESETTINGS_TITLE_NL_BE_DESCRIPTION" xml:space="preserve">
     <value>Set title for Dutch (Belgium) culture.</value>
   </data>
   <data name="MODULESETTINGS_TITLE_ZH_CN" xml:space="preserve">
@@ -2514,7 +2514,7 @@
   <data name="PRODUCT_TOTAL_EXPENSES" xml:space="preserve">
     <value>Total Expenses</value>
   </data>
-  <data name="PRODUCT_TOTAL_PRICE_(INC._TAXES)" xml:space="preserve">
+  <data name="PRODUCT_TOTAL_PRICE_(INC_TAXES)" xml:space="preserve">
     <value>Total Price (inc Taxes)</value>
   </data>
   <data name="PRODUCT_TOTAL_TAXES" xml:space="preserve">
@@ -3498,8 +3498,8 @@
   <data name="AM_BOTOMPANEL" xml:space="preserve">
     <value>Bottom Pane</value>
   </data>
-  <data name="TABKEYPHRASE_ES-ES" xml:space="preserve">
-    <value>Page Key Phrase (es-ES)</value>
+  <data name="TABKEYPHRASE_ES_ES" xml:space="preserve">
+    <value>Page Key Phrase (ES_ES)</value>
   </data>
   <data name="ERROR_NOT_ALLOWED_PARENT" xml:space="preserve">
     <value>Selecting this parent is not allowed</value>

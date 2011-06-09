@@ -2621,11 +2621,11 @@
 	<data name="ES">
 		<value>ES</value>
 	</data>
-	<data name="ES-ES">
+	<data name="ES_ES">
 		<value/>
 	</data>
-	<data name="ES-ES_DESCRIPTION">
-		<value>ES-ES_DESCRIPTION</value>
+	<data name="ES_ES_DESCRIPTION">
+		<value>ES_ES_DESCRIPTION</value>
 	</data>
 	<data name="ES_DESCRIPTION">
 		<value>ES_DESCRIPTION</value>
@@ -2972,10 +2972,10 @@
 	<data name="IT">
 		<value>عنوان</value>
 	</data>
-	<data name="IT-IT">
+	<data name="IT_IT">
 		<value>عنوان</value>
 	</data>
-	<data name="IT-IT_DESCRIPTION">
+	<data name="IT_IT_DESCRIPTION">
 		<value>إعداد عنوان للثقافة الإيطالية (إيطالي)</value>
 	</data>
 	<data name="IT_DESCRIPTION">
@@ -3449,11 +3449,11 @@
 	<data name="MODULESETTINGS_TITLE_EN">
 		<value>MODULESETTINGS_TITLE_EN</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-GB">
-		<value>MODULESETTINGS_TITLE_EN-GB</value>
+	<data name="MODULESETTINGS_TITLE_EN_GB">
+		<value>MODULESETTINGS_TITLE_EN_GB</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-GB_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_EN-GB_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_EN_GB_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_EN_GB_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_EN_US">
 		<value>MODULESETTINGS_TITLE_EN_US</value>
@@ -3467,11 +3467,11 @@
 	<data name="MODULESETTINGS_TITLE_ES">
 		<value>MODULESETTINGS_TITLE_ES</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ES-ES">
-		<value>MODULESETTINGS_TITLE_ES-ES</value>
+	<data name="MODULESETTINGS_TITLE_ES_ES">
+		<value>MODULESETTINGS_TITLE_ES_ES</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ES-ES_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_ES-ES_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_ES_ES_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_ES_ES_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_ES_DESCRIPTION">
 		<value>MODULESETTINGS_TITLE_ES_DESCRIPTION</value>
@@ -3488,11 +3488,11 @@
 	<data name="MODULESETTINGS_TITLE_IT_DESCRIPTION">
 		<value>MODULESETTINGS_TITLE_IT_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_NL-BE">
-		<value>MODULESETTINGS_TITLE_NL-BE</value>
+	<data name="MODULESETTINGS_TITLE_NL_BE">
+		<value>MODULESETTINGS_TITLE_NL_BE</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_NL-BE_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_NL-BE_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_NL_BE_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_NL_BE_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_ZH_CN">
 		<value>MODULESETTINGS_TITLE_ZH_CN</value>
@@ -3980,7 +3980,7 @@
 	<data name="PRODUCT_TOTAL_EXPENSES">
 		<value>إجمالي المصاريف</value>
 	</data>
-	<data name="PRODUCT_TOTAL_PRICE_(INC._TAXES)">
+	<data name="PRODUCT_TOTAL_PRICE_(INC_TAXES)">
 		<value>إجمالي السعر</value>
 	</data>
 	<data name="PRODUCT_TOTAL_TAXES">
@@ -4933,11 +4933,11 @@
 	<data name="TABKEYPHRASE_ES">
 		<value>تبويب الجملة الأساسية (اللغة الأسبانية)</value>
 	</data>
-	<data name="TABKEYPHRASE_ES-ES">
-		<value>TABKEYPHRASE_ES-ES</value>
+	<data name="TABKEYPHRASE_ES_ES">
+		<value>TABKEYPHRASE_ES_ES</value>
 	</data>
-	<data name="TABKEYPHRASE_ES-ES_DESCRIPTION">
-		<value>TABKEYPHRASE_ES-ES_DESCRIPTION</value>
+	<data name="TABKEYPHRASE_ES_ES_DESCRIPTION">
+		<value>TABKEYPHRASE_ES_ES_DESCRIPTION</value>
 	</data>
 	<data name="TABKEYPHRASE_ES_DESCRIPTION">
 		<value>الجملة الأساسية للتبويب/الصفحة للثقافة الأسبانية</value>
@@ -5161,10 +5161,10 @@
 	<data name="TR">
 		<value/>
 	</data>
-	<data name="TR-TR">
+	<data name="TR_TR">
 		<value/>
 	</data>
-	<data name="TR-TR_DESCRIPTION">
+	<data name="TR_TR_DESCRIPTION">
 		<value/>
 	</data>
 	<data name="TR_DESCRIPTION">

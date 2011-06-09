@@ -2640,11 +2640,11 @@
   <data name="ES" xml:space="preserve">
     <value>ES</value>
   </data>
-  <data name="ES-ES" xml:space="preserve">
-    <value>ES-ES</value>
+  <data name="ES_ES" xml:space="preserve">
+    <value>ES_ES</value>
   </data>
-  <data name="ES-ES_DESCRIPTION" xml:space="preserve">
-    <value>ES-ES_DESCRIPTION</value>
+  <data name="ES_ES_DESCRIPTION" xml:space="preserve">
+    <value>ES_ES_DESCRIPTION</value>
   </data>
   <data name="ES_DESCRIPTION" xml:space="preserve">
     <value>ES_DESCRIPTION</value>
@@ -2991,10 +2991,10 @@
   <data name="IT" xml:space="preserve">
     <value>标题(it)</value>
   </data>
-  <data name="IT-IT" xml:space="preserve">
-    <value>Title (it-IT)</value>
+  <data name="IT_IT" xml:space="preserve">
+    <value>Title (IT_IT)</value>
   </data>
-  <data name="IT-IT_DESCRIPTION" xml:space="preserve">
+  <data name="IT_IT_DESCRIPTION" xml:space="preserve">
     <value>Set title for Italian (Italy) culture.</value>
   </data>
   <data name="IT_DESCRIPTION" xml:space="preserve">
@@ -3468,11 +3468,11 @@
   <data name="MODULESETTINGS_TITLE_EN" xml:space="preserve">
     <value>MODULESETTINGS_TITLE_EN</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_EN-GB" xml:space="preserve">
-    <value>MODULESETTINGS_TITLE_EN-GB</value>
+  <data name="MODULESETTINGS_TITLE_EN_GB" xml:space="preserve">
+    <value>MODULESETTINGS_TITLE_EN_GB</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_EN-GB_DESCRIPTION" xml:space="preserve">
-    <value>MODULESETTINGS_TITLE_EN-GB_DESCRIPTION</value>
+  <data name="MODULESETTINGS_TITLE_EN_GB_DESCRIPTION" xml:space="preserve">
+    <value>MODULESETTINGS_TITLE_EN_GB_DESCRIPTION</value>
   </data>
   <data name="MODULESETTINGS_TITLE_EN_US" xml:space="preserve">
     <value>MODULESETTINGS_TITLE_EN_US</value>
@@ -3486,11 +3486,11 @@
   <data name="MODULESETTINGS_TITLE_ES" xml:space="preserve">
     <value>MODULESETTINGS_TITLE_ES</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_ES-ES" xml:space="preserve">
-    <value>MODULESETTINGS_TITLE_ES-ES</value>
+  <data name="MODULESETTINGS_TITLE_ES_ES" xml:space="preserve">
+    <value>MODULESETTINGS_TITLE_ES_ES</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_ES-ES_DESCRIPTION" xml:space="preserve">
-    <value>MODULESETTINGS_TITLE_ES-ES_DESCRIPTION</value>
+  <data name="MODULESETTINGS_TITLE_ES_ES_DESCRIPTION" xml:space="preserve">
+    <value>MODULESETTINGS_TITLE_ES_ES_DESCRIPTION</value>
   </data>
   <data name="MODULESETTINGS_TITLE_ES_DESCRIPTION" xml:space="preserve">
     <value>MODULESETTINGS_TITLE_ES_DESCRIPTION</value>
@@ -3507,11 +3507,11 @@
   <data name="MODULESETTINGS_TITLE_IT_DESCRIPTION" xml:space="preserve">
     <value>MODULESETTINGS_TITLE_IT_DESCRIPTION</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_NL-BE" xml:space="preserve">
-    <value>MODULESETTINGS_TITLE_NL-BE</value>
+  <data name="MODULESETTINGS_TITLE_NL_BE" xml:space="preserve">
+    <value>MODULESETTINGS_TITLE_NL_BE</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_NL-BE_DESCRIPTION" xml:space="preserve">
-    <value>MODULESETTINGS_TITLE_NL-BE_DESCRIPTION</value>
+  <data name="MODULESETTINGS_TITLE_NL_BE_DESCRIPTION" xml:space="preserve">
+    <value>MODULESETTINGS_TITLE_NL_BE_DESCRIPTION</value>
   </data>
   <data name="MODULESETTINGS_TITLE_ZH_CN" xml:space="preserve">
     <value>MODULESETTINGS_TITLE_ZH_CN</value>
@@ -3999,8 +3999,8 @@
   <data name="PRODUCT_TOTAL_EXPENSES" xml:space="preserve">
     <value>PRODUCT_TOTAL_EXPENSES</value>
   </data>
-  <data name="PRODUCT_TOTAL_PRICE_(INC._TAXES)" xml:space="preserve">
-    <value>PRODUCT_TOTAL_PRICE_(INC._TAXES)</value>
+  <data name="PRODUCT_TOTAL_PRICE_(INC_TAXES)" xml:space="preserve">
+    <value>PRODUCT_TOTAL_PRICE_(INC_TAXES)</value>
   </data>
   <data name="PRODUCT_TOTAL_TAXES" xml:space="preserve">
     <value>Total Taxes</value>
@@ -4950,11 +4950,11 @@
   <data name="TABKEYPHRASE_ES" xml:space="preserve">
     <value>TABKEYPHRASE_ES</value>
   </data>
-  <data name="TABKEYPHRASE_ES-ES" xml:space="preserve">
-    <value>TABKEYPHRASE_ES-ES</value>
+  <data name="TABKEYPHRASE_ES_ES" xml:space="preserve">
+    <value>TABKEYPHRASE_ES_ES</value>
   </data>
-  <data name="TABKEYPHRASE_ES-ES_DESCRIPTION" xml:space="preserve">
-    <value>TABKEYPHRASE_ES-ES_DESCRIPTION</value>
+  <data name="TABKEYPHRASE_ES_ES_DESCRIPTION" xml:space="preserve">
+    <value>TABKEYPHRASE_ES_ES_DESCRIPTION</value>
   </data>
   <data name="TABKEYPHRASE_ES_DESCRIPTION" xml:space="preserve">
     <value>TABKEYPHRASE_ES_DESCRIPTION</value>
@@ -5178,11 +5178,11 @@
   <data name="TR" xml:space="preserve">
     <value>TR</value>
   </data>
-  <data name="TR-TR" xml:space="preserve">
-    <value>TR-TR</value>
+  <data name="TR_TR" xml:space="preserve">
+    <value>TR_TR</value>
   </data>
-  <data name="TR-TR_DESCRIPTION" xml:space="preserve">
-    <value>TR-TR_DESCRIPTION</value>
+  <data name="TR_TR_DESCRIPTION" xml:space="preserve">
+    <value>TR_TR_DESCRIPTION</value>
   </data>
   <data name="TR_DESCRIPTION" xml:space="preserve">
     <value>TR_DESCRIPTION</value>

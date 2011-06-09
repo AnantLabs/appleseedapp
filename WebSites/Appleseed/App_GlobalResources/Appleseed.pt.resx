@@ -1666,11 +1666,11 @@
   <data name="IT">
     <value>Título (it)</value>
   </data>
-  <data name="IT-IT">
-    <value>IT-IT</value>
+  <data name="IT_IT">
+    <value>IT_IT</value>
   </data>
-  <data name="IT-IT_DESCRIPTION">
-    <value>IT-IT_DESCRIPTION</value>
+  <data name="IT_IT_DESCRIPTION">
+    <value>IT_IT_DESCRIPTION</value>
   </data>
   <data name="IT_DESCRIPTION">
     <value>Ajuste o título para a cultura italiana.</value>
@@ -2008,11 +2008,11 @@
   <data name="THEME_DESCRIPTION">
     <value>THEME_DESCRIPTION</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_EN-GB">
-    <value>MODULESETTINGS_TITLE_EN-GB</value>
+  <data name="MODULESETTINGS_TITLE_EN_GB">
+    <value>MODULESETTINGS_TITLE_EN_GB</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_EN-GB_DESCRIPTION">
-    <value>MODULESETTINGS_TITLE_EN-GB_DESCRIPTION</value>
+  <data name="MODULESETTINGS_TITLE_EN_GB_DESCRIPTION">
+    <value>MODULESETTINGS_TITLE_EN_GB_DESCRIPTION</value>
   </data>
   <data name="MODULESETTINGS_TITLE_FR">
     <value>MODULESETTINGS_TITLE_FR</value>
@@ -2020,11 +2020,11 @@
   <data name="MODULESETTINGS_TITLE_FR_DESCRIPTION">
     <value>MODULESETTINGS_TITLE_FR_DESCRIPTION</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_NL-BE">
-    <value>MODULESETTINGS_TITLE_NL-BE</value>
+  <data name="MODULESETTINGS_TITLE_NL_BE">
+    <value>MODULESETTINGS_TITLE_NL_BE</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_NL-BE_DESCRIPTION">
-    <value>MODULESETTINGS_TITLE_NL-BE_DESCRIPTION</value>
+  <data name="MODULESETTINGS_TITLE_NL_BE_DESCRIPTION">
+    <value>MODULESETTINGS_TITLE_NL_BE_DESCRIPTION</value>
   </data>
   <data name="MODULESETTINGS_TITLE_ZH_CN">
     <value>Título (ZH_CN)</value>
@@ -2398,8 +2398,8 @@
   <data name="PRODUCT_TOTAL_EXPENSES">
     <value>PRODUCT_TOTAL_EXPENSES</value>
   </data>
-  <data name="PRODUCT_TOTAL_PRICE_(INC._TAXES)">
-    <value>PRODUCT_TOTAL_PRICE_(INC._TAXES)</value>
+  <data name="PRODUCT_TOTAL_PRICE_(INC_TAXES)">
+    <value>PRODUCT_TOTAL_PRICE_(INC_TAXES)</value>
   </data>
   <data name="PRODUCT_TOTAL_TAXES">
     <value>PRODUCT_TOTAL_TAXES</value>
@@ -3769,8 +3769,8 @@
   <data name="ERROR_VALID_EXPIRE_DATE">
     <value>ERROR_VALID_EXPIRE_DATE</value>
   </data>
-  <data name="ES-ES_DESCRIPTION">
-    <value>ES-ES_DESCRIPTION</value>
+  <data name="ES_ES_DESCRIPTION">
+    <value>ES_ES_DESCRIPTION</value>
   </data>
   <data name="F100">
     <value>F100</value>
@@ -3949,11 +3949,11 @@
   <data name="MODULESETTINGS_TITLE_CA_DESCRIPTION">
     <value>MODULESETTINGS_TITLE_CA_DESCRIPTION</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_ES-ES">
-    <value>MODULESETTINGS_TITLE_ES-ES</value>
+  <data name="MODULESETTINGS_TITLE_ES_ES">
+    <value>MODULESETTINGS_TITLE_ES_ES</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_ES-ES_DESCRIPTION">
-    <value>MODULESETTINGS_TITLE_ES-ES_DESCRIPTION</value>
+  <data name="MODULESETTINGS_TITLE_ES_ES_DESCRIPTION">
+    <value>MODULESETTINGS_TITLE_ES_ES_DESCRIPTION</value>
   </data>
   <data name="MODULESETTINGS_TITLE_IT">
     <value>MODULESETTINGS_TITLE_IT</value>
@@ -4330,8 +4330,8 @@
   <data name="SignInType">
     <value>SignInType</value>
   </data>
-  <data name="TABKEYPHRASE_ES-ES_DESCRIPTION">
-    <value>TABKEYPHRASE_ES-ES_DESCRIPTION</value>
+  <data name="TABKEYPHRASE_ES_ES_DESCRIPTION">
+    <value>TABKEYPHRASE_ES_ES_DESCRIPTION</value>
   </data>
   <data name="TITLE_FOR_CULTURE">
     <value>TITLE_FOR_CULTURE</value>
@@ -5359,8 +5359,8 @@
   <data name="EMF_TO">
     <value>EMF_TO</value>
   </data>
-  <data name="ES-ES">
-    <value>ES-ES</value>
+  <data name="ES_ES">
+    <value>ES_ES</value>
   </data>
   <data name="FAQ_A">
     <value>FAQ_A</value>
@@ -5380,11 +5380,11 @@
   <data name="TR">
     <value>TR</value>
   </data>
-  <data name="TR-TR">
-    <value>TR-TR</value>
+  <data name="TR_TR">
+    <value>TR_TR</value>
   </data>
-  <data name="TR-TR_DESCRIPTION">
-    <value>TR-TR_DESCRIPTION</value>
+  <data name="TR_TR_DESCRIPTION">
+    <value>TR_TR_DESCRIPTION</value>
   </data>
   <data name="TR_DESCRIPTION">
     <value>TR_DESCRIPTION</value>
@@ -5440,8 +5440,8 @@
   <data name="AM_BOTOMPANEL">
     <value>Painel Inferior</value>
   </data>
-  <data name="TABKEYPHRASE_ES-ES">
-    <value>Frase chave da página (es-ES)</value>
+  <data name="TABKEYPHRASE_ES_ES">
+    <value>Frase chave da página (ES_ES)</value>
   </data>
   <data name="ERROR_NOT_ALLOWED_PARENT">
     <value>Nao e permitido seleccionar este pai</value>

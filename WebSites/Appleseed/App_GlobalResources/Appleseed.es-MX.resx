@@ -1634,10 +1634,10 @@
   <data name="IT">
     <value>Titulo (it)</value>
   </data>
-  <data name="IT-IT">
-    <value>Titulo (it-IT)</value>
+  <data name="IT_IT">
+    <value>Titulo (IT_IT)</value>
   </data>
-  <data name="IT-IT_DESCRIPTION">
+  <data name="IT_IT_DESCRIPTION">
     <value>Establecer titulo para cultura italiana (Italia).</value>
   </data>
   <data name="IT_DESCRIPTION">
@@ -1976,11 +1976,11 @@
   <data name="THEME_DESCRIPTION">
     <value>Descripción del Tema</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_EN-GB">
-    <value>MODULESETTINGS_TITLE_EN-GB</value>
+  <data name="MODULESETTINGS_TITLE_EN_GB">
+    <value>MODULESETTINGS_TITLE_EN_GB</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_EN-GB_DESCRIPTION">
-    <value>MODULESETTINGS_TITLE_EN-GB_DESCRIPTION</value>
+  <data name="MODULESETTINGS_TITLE_EN_GB_DESCRIPTION">
+    <value>MODULESETTINGS_TITLE_EN_GB_DESCRIPTION</value>
   </data>
   <data name="MODULESETTINGS_TITLE_FR">
     <value>MODULESETTINGS_TITLE_FR</value>
@@ -1988,11 +1988,11 @@
   <data name="MODULESETTINGS_TITLE_FR_DESCRIPTION">
     <value>MODULESETTINGS_TITLE_FR_DESCRIPTION</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_NL-BE">
-    <value>MODULESETTINGS_TITLE_NL-BE</value>
+  <data name="MODULESETTINGS_TITLE_NL_BE">
+    <value>MODULESETTINGS_TITLE_NL_BE</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_NL-BE_DESCRIPTION">
-    <value>MODULESETTINGS_TITLE_NL-BE_DESCRIPTION</value>
+  <data name="MODULESETTINGS_TITLE_NL_BE_DESCRIPTION">
+    <value>MODULESETTINGS_TITLE_NL_BE_DESCRIPTION</value>
   </data>
   <data name="MODULESETTINGS_TITLE_ZH_CN">
     <value>Titulo (ZH_CN)</value>
@@ -2372,7 +2372,7 @@
   <data name="PRODUCT_TOTAL_EXPENSES">
     <value>Total de Gastos</value>
   </data>
-  <data name="PRODUCT_TOTAL_PRICE_(INC._TAXES)">
+  <data name="PRODUCT_TOTAL_PRICE_(INC_TAXES)">
     <value>Precio Total (impuestos.incl)</value>
   </data>
   <data name="PRODUCT_TOTAL_TAXES">
@@ -3673,7 +3673,7 @@
   <data name="ERROR_VALID_EXPIRE_DATE">
     <value>Ingrese una fecha correcta de expiracion.</value>
   </data>
-  <data name="ES-ES_DESCRIPTION">
+  <data name="ES_ES_DESCRIPTION">
     <value>Establecer Titulo para cultura española (España).</value>
   </data>
   <data name="F100">
@@ -3838,10 +3838,10 @@
   <data name="MODULESETTINGS_TITLE_CA_DESCRIPTION">
     <value>MODULESETTINGS_TITLE_CA_DESCRIPTION</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_ES-ES">
-    <value>Titulo (es-ES)</value>
+  <data name="MODULESETTINGS_TITLE_ES_ES">
+    <value>Titulo (ES_ES)</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_ES-ES_DESCRIPTION">
+  <data name="MODULESETTINGS_TITLE_ES_ES_DESCRIPTION">
     <value>Establecer Título en Español (España)</value>
   </data>
   <data name="MODULESETTINGS_TITLE_IT">
@@ -4204,8 +4204,8 @@
   <data name="SignInType">
     <value>Tipo de Identificación</value>
   </data>
-  <data name="TABKEYPHRASE_ES-ES_DESCRIPTION">
-    <value>TABKEYPHRASE_ES-ES_DESCRIPTION</value>
+  <data name="TABKEYPHRASE_ES_ES_DESCRIPTION">
+    <value>TABKEYPHRASE_ES_ES_DESCRIPTION</value>
   </data>
   <data name="TITLE_FOR_CULTURE">
     <value>TITLE_FOR_CULTURE</value>
@@ -4243,8 +4243,8 @@
   <data name="CREATED_ON">
     <value>Creado por</value>
   </data>
-  <data name="ES-ES">
-    <value>Titulo (es-ES)</value>
+  <data name="ES_ES">
+    <value>Titulo (ES_ES)</value>
   </data>
   <data name="FAQ_A">
     <value>R</value>
@@ -4309,8 +4309,8 @@
   <data name="AM_BOTOMPANEL">
     <value>Panel Inferior</value>
   </data>
-  <data name="TABKEYPHRASE_ES-ES">
-    <value>Frase clave para la página (es-ES)</value>
+  <data name="TABKEYPHRASE_ES_ES">
+    <value>Frase clave para la página (ES_ES)</value>
   </data>
   <data name="ERROR_NOT_ALLOWED_PARENT">
     <value>No se permite seleccionar este padre</value>
