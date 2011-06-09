@@ -13,6 +13,15 @@ namespace Appleseed.Content.Web.Modules {
     public partial class Portals {
         
         /// <summary>
+        /// lblPortals control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Appleseed.Framework.Web.UI.WebControls.Label lblPortals;
+        
+        /// <summary>
         /// portalList control.
         /// </summary>
         /// <remarks>
@@ -28,7 +37,7 @@ namespace Appleseed.Content.Web.Modules {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton ExportBtn;
+        protected global::Appleseed.Framework.Web.UI.WebControls.Button ExportBtn;
         
         /// <summary>
         /// ErrorMessage control.
@@ -47,5 +56,59 @@ namespace Appleseed.Content.Web.Modules {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Appleseed.Framework.Web.UI.WebControls.Label SuccessMessage;
+        
+        /// <summary>
+        /// lblTemplates control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Appleseed.Framework.Web.UI.WebControls.Label lblTemplates;
+        
+        /// <summary>
+        /// templatesList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox templatesList;
+        
+        /// <summary>
+        /// btnDeleteTemplate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton btnDeleteTemplate;
+        
+        /// <summary>
+        /// btnSaveTemplate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton btnSaveTemplate;
+        
+        /// <summary>
+        /// TemplateErrorMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Appleseed.Framework.Web.UI.WebControls.Label TemplateErrorMessage;
+        
+        /// <summary>
+        /// TemplateSuccessMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Appleseed.Framework.Web.UI.WebControls.Label TemplateSuccessMessage;
     }
 }

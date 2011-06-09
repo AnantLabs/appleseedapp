@@ -6,7 +6,9 @@ using Appleseed.Framework;
 using Appleseed.Framework.Site.Data;
 using Appleseed.Framework.Web.UI.WebControls;
 using Appleseed.PortalTemplate;
-//using Abtour.PortalTemplate;
+using System.Collections.Generic;
+using System.Linq;
+using System.IO;
 
 namespace Appleseed.Content.Web.Modules
 {
@@ -21,12 +23,24 @@ namespace Appleseed.Content.Web.Modules
         protected ArrayList portals;
 
         /// <summary>
+        /// 
+        /// </summary>
+        protected IList templates;
+
+        /// <summary>
         /// Admin Module
         /// </summary>
         /// <value></value>
         public override bool AdminModule
         {
             get { return true; }
+        }
+
+        IPortalTemplateServices templateServices;
+
+        public Portals()
+        {
+            templateServices = PortalTemplateFactory.GetPortalTemplateServices(new PortalTemplateRepository());
         }
 
         /// <summary>
@@ -37,38 +51,56 @@ namespace Appleseed.Content.Web.Modules
         /// <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
         private void Page_Load(object sender, EventArgs e)
         {
+            LoadPortalList();
+            LoadTemplatesList();
+
+            // If this is the first visit to the page, bind the tab data to the page listbox
+            if (!Page.IsPostBack) {
+                portalList.DataBind();
+                templatesList.DataBind();
+            }
+
+            EditBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Edit", "Edit.gif").ImageUrl;
+            DeleteBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Delete", "Delete.gif").ImageUrl;
+            //ExportBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Right", "arrow_right.png").ImageUrl;
+
+            //btnEditTemplate.ImageUrl = this.CurrentTheme.GetImage("Buttons_Edit", "Edit.gif").ImageUrl;
+            btnDeleteTemplate.ImageUrl = this.CurrentTheme.GetImage("Buttons_Delete", "Delete.gif").ImageUrl;
+            btnSaveTemplate.ImageUrl = this.CurrentTheme.GetImage("Buttons_Save", "Save.gif").ImageUrl;
+
+            DeleteBtn.Attributes.Add("onclick", "return confirmDelete();");
+            btnDeleteTemplate.Attributes.Add("onclick", "return confirmDelete();");
+        }
+
+
+
+        private void LoadTemplatesList()
+        {
+
+            var templateList = templateServices.GetTemplates(PortalSettings.PortalAlias, PortalSettings.PortalFullPath);
+
+            templates = (from t in templateList select new { Name = t, ID = t }).ToList();
+        }
+
+        private void LoadPortalList()
+        {
             portals = new ArrayList();
             PortalsDB portalsDb = new PortalsDB();
             SqlDataReader dr = portalsDb.GetPortals();
-            try
-            {
-                while (dr.Read())
-                {
+            try {
+                while (dr.Read()) {
                     PortalItem p = new PortalItem();
                     p.Name = dr["PortalName"].ToString();
                     p.Path = dr["PortalPath"].ToString();
                     p.ID = Convert.ToInt32(dr["PortalID"].ToString());
                     portals.Add(p);
                 }
-            }
-            finally
-            {
+            } finally {
                 dr.Close(); //by Manu, fixed bug 807858
             }
-
-            // If this is the first visit to the page, bind the tab data to the page listbox
-            if (Page.IsPostBack == false)
-            {
-                portalList.DataBind();
-            }
-            EditBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Edit", "Edit.gif").ImageUrl;
-            DeleteBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Delete", "Delete.gif").ImageUrl;
-            ExportBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Save", "Save.gif").ImageUrl;
-
-            DeleteBtn.Attributes.Add("onclick", "return confirmDelete();");
         }
 
-        
+
 
         /// <summary>
         /// GUID of module (mandatory)
@@ -101,12 +133,10 @@ namespace Appleseed.Content.Web.Modules
         /// </summary>
         protected override void OnDelete()
         {
-            if (portalList.SelectedIndex != -1)
-            {
-                try
-                {
+            if (portalList.SelectedIndex != -1) {
+                try {
                     // must delete from database too
-                    PortalItem p = (PortalItem) portals[portalList.SelectedIndex];
+                    PortalItem p = (PortalItem)portals[portalList.SelectedIndex];
                     PortalsDB portalsdb = new PortalsDB();
                     //Response.Write("Will delete " + p.Name);
                     portalsdb.DeletePortal(p.ID);
@@ -115,9 +145,7 @@ namespace Appleseed.Content.Web.Modules
                     portals.RemoveAt(portalList.SelectedIndex);
                     // rebind list
                     portalList.DataBind();
-                }
-                catch (SqlException sqlex)
-                {
+                } catch (SqlException sqlex) {
                     string aux =
                         General.GetString("DELETE_PORTAL_ERROR", "There was an error on deleting the portal", this);
                     Appleseed.Framework.ErrorHandler.Publish(Appleseed.Framework.LogLevel.Error, aux, sqlex);
@@ -132,10 +160,9 @@ namespace Appleseed.Content.Web.Modules
         /// </summary>
         protected override void OnEdit()
         {
-            if (portalList.SelectedIndex != -1)
-            {
+            if (portalList.SelectedIndex != -1) {
                 // must delete from database too
-                PortalItem p = (PortalItem) portals[portalList.SelectedIndex];
+                PortalItem p = (PortalItem)portals[portalList.SelectedIndex];
 
                 //Add new portal
                 // added mID by Mario Endara <mario@softworks.com.uy> to support security check (2004/11/09)
@@ -153,40 +180,67 @@ namespace Appleseed.Content.Web.Modules
             OnDelete();
         }
 
-        private string GetPhysicalPackageTemplatesPath()
+        protected void SerializeBtn_Click(object sender, EventArgs e)
         {
-            string path = Appleseed.Framework.Settings.Path.ApplicationPhysicalPath;
-            path = string.Format(@"{0}{1}\PortalTemplates", path, this.PortalSettings.PortalFullPath.Substring(1));
-            path = path.Replace("/", @"\");
-            return path;
+            if (portalList.SelectedIndex != -1) {
+                IPortalTemplateServices services = PortalTemplateFactory.GetPortalTemplateServices(new PortalTemplateRepository());
+                PortalItem p = (PortalItem)portals[portalList.SelectedIndex];
+                bool ok = services.SerializePortal(p.ID, PortalSettings.PortalAlias, PortalSettings.PortalFullPath);
+                if (!ok) {
+
+                    DisplayMessage(ErrorMessage, "Export failed (full error logged) <br>");
+                } else {
+                    DisplayMessage(SuccessMessage, "Export succeeded! <br>");
+                }
+            } else {
+                DisplayMessage(ErrorMessage, "You must select a portal <br>");
+            }
+
+            LoadTemplatesList();
+            templatesList.DataBind();
         }
 
 
-        protected void SerializeBtn_Click(object sender, EventArgs e)
+
+        protected void btnDeleteTemplate_Click(object sender, ImageClickEventArgs e)
         {
-            if (portalList.SelectedIndex != -1)
-            {
-                IPortalTemplateServices services = PortalTemplateFactory.GetPortalTemplateServices(new PortalTemplateRepository());
-                PortalItem p = (PortalItem)portals[portalList.SelectedIndex];
-                bool ok = services.SerializePortal(p.ID, GetPhysicalPackageTemplatesPath() + "\\");
-                if (!ok)
-                {
-                    ErrorMessage.Visible = true;
-                    SuccessMessage.Visible = false;
-                    ErrorMessage.Text = "Export failed (full error logged) <br>";
-                }
-                else
-                {
-                    ErrorMessage.Visible = false;
-                    SuccessMessage.Visible = true;
-                    SuccessMessage.Text = "Export succeeded! <br>";
-                }
+            if (portalList.SelectedIndex != -1) {
+                string templateName = ((dynamic)templates[templatesList.SelectedIndex]).Name;
+
+                templateServices.DeleteTemplate(templateName, PortalSettings.PortalFullPath);
+
+                LoadTemplatesList();
+                templatesList.DataBind();
+            } else {
+                DisplayMessage(TemplateErrorMessage, "You must select a template <br>");
             }
-            else
-            {
-                ErrorMessage.Visible = true;
-                ErrorMessage.Text = "You must select a portal <br>";
+        }
+
+        protected void btnSaveTemplate_Click(object sender, ImageClickEventArgs e)
+        {
+            if (portalList.SelectedIndex != -1) {
+                string templateName = ((dynamic)templates[templatesList.SelectedIndex]).Name;
+
+                FileInfo file = templateServices.GetTemplateInfo(templateName, PortalSettings.PortalFullPath);
+
+                Response.ContentType = "text/xml";
+                Response.AppendHeader("Content-Disposition", "attachment; filename=" + templateName);
+                Response.TransmitFile(file.FullName);
+                Response.End();
+            } else {
+                DisplayMessage(TemplateErrorMessage, "You must select a template <br>");
             }
+        }
+
+        private void DisplayMessage(Label lblControl, string message)
+        {
+            ErrorMessage.Visible = false;
+            SuccessMessage.Visible = false;
+            TemplateErrorMessage.Visible = false;
+            TemplateSuccessMessage.Visible = false;
+
+            lblControl.Visible = true;
+            lblControl.Text = message;
         }
     }
 }
