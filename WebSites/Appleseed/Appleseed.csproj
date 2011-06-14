@@ -1450,13 +1450,6 @@
     <Compile Include="DesktopModules\CoreModules\SignIn\SigninCool.ascx.designer.cs">
       <DependentUpon>SigninCool.ascx</DependentUpon>
     </Compile>
-    <Compile Include="DesktopModules\CoreModules\SignIn\SignInFacebook.ascx.cs">
-      <DependentUpon>SignInFacebook.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CoreModules\SignIn\SignInFacebook.ascx.designer.cs">
-      <DependentUpon>SignInFacebook.ascx</DependentUpon>
-    </Compile>
     <Compile Include="DesktopModules\CoreModules\SignIn\SigninLink.ascx.cs">
       <DependentUpon>SigninLink.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1470,20 +1463,6 @@
     </Compile>
     <Compile Include="DesktopModules\CoreModules\SignIn\SignInLoginView.ascx.designer.cs">
       <DependentUpon>SignInLoginView.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CoreModules\SignIn\SignInOnlyFacebook.ascx.cs">
-      <DependentUpon>SignInOnlyFacebook.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CoreModules\SignIn\SignInOnlyFacebook.ascx.designer.cs">
-      <DependentUpon>SignInOnlyFacebook.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CoreModules\SignIn\SignInOnlyTwitter.ascx.cs">
-      <DependentUpon>SignInOnlyTwitter.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CoreModules\SignIn\SignInOnlyTwitter.ascx.designer.cs">
-      <DependentUpon>SignInOnlyTwitter.ascx</DependentUpon>
     </Compile>
     <Compile Include="DesktopModules\CoreModules\SignIn\SignInSocialNetwork.ascx.cs">
       <DependentUpon>SignInSocialNetwork.ascx</DependentUpon>
@@ -6344,12 +6323,9 @@
     <Content Include="DesktopModules\CoreModules\SignIn\Signin.ascx" />
     <Content Include="DesktopModules\CoreModules\SignIn\SigninCool.ascx" />
     <Content Include="DesktopModules\CoreModules\SignIn\SignInCool_readme.txt" />
-    <Content Include="DesktopModules\CoreModules\SignIn\SignInFacebook.ascx" />
     <Content Include="DesktopModules\CoreModules\SignIn\SigninLink.ascx" />
     <Content Include="DesktopModules\CoreModules\SignIn\SignInLink_readme.txt" />
     <Content Include="DesktopModules\CoreModules\SignIn\SignInLoginView.ascx" />
-    <Content Include="DesktopModules\CoreModules\SignIn\SignInOnlyFacebook.ascx" />
-    <Content Include="DesktopModules\CoreModules\SignIn\SignInOnlyTwitter.ascx" />
     <Content Include="DesktopModules\CoreModules\SignIn\SignInSocialNetwork.ascx" />
     <Content Include="DesktopModules\CoreModules\SignIn\SignIn_readme.txt" />
     <Content Include="DesktopModules\CoreModules\SiteSettings\install.xml" />
