@@ -4,6 +4,7 @@
 	<configSections>
 		<section name="dataConfiguration" type="Microsoft.Practices.EnterpriseLibrary.Data.Configuration.DatabaseSettings, Microsoft.Practices.EnterpriseLibrary.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null" />
 		<section name="cachingConfiguration" type="Microsoft.Practices.EnterpriseLibrary.Caching.Configuration.CacheManagerSettings, Microsoft.Practices.EnterpriseLibrary.Caching, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null" />
+		<section name="facebookSettings" type="Facebook.FacebookConfigurationSection" />
 		<sectionGroup name="blowery.web">
 			<section name="httpCompress" type="blowery.Web.HttpCompress.SectionHandler, blowery.Web.HttpCompress" />
 		</sectionGroup>
@@ -614,6 +615,7 @@
     </behaviors>
     <serviceHostingEnvironment multipleSiteBindingsEnabled="true" />
   </system.serviceModel>
+  <facebookSettings appId="1" appSecret="1" />
 </configuration>
                                                                                                                                            
                                                                                                                                     
