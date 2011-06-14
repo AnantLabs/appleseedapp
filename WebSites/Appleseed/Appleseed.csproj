@@ -290,6 +290,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libs\TripleASP.TableEditor.dll</HintPath>
     </Reference>
+    <Reference Include="Twitterizer2">
+      <HintPath>..\..\Libs\Twitterizer2.dll</HintPath>
+    </Reference>
     <Reference Include="UrlRewritingNet.UrlRewriter, Version=2.0.60829.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libs\UrlRewritingNet.UrlRewriter.dll</HintPath>
@@ -1426,6 +1429,13 @@
     <Compile Include="DesktopModules\CoreModules\SecurityCheck\SecurityCheck.ascx.designer.cs">
       <DependentUpon>SecurityCheck.ascx</DependentUpon>
     </Compile>
+    <Compile Include="DesktopModules\CoreModules\SignIn\LogInTweeter.aspx.cs">
+      <DependentUpon>LogInTweeter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CoreModules\SignIn\LogInTweeter.aspx.designer.cs">
+      <DependentUpon>LogInTweeter.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DesktopModules\CoreModules\SignIn\Signin.ascx.cs">
       <DependentUpon>Signin.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1460,6 +1470,27 @@
     </Compile>
     <Compile Include="DesktopModules\CoreModules\SignIn\SignInLoginView.ascx.designer.cs">
       <DependentUpon>SignInLoginView.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CoreModules\SignIn\SignInOnlyFacebook.ascx.cs">
+      <DependentUpon>SignInOnlyFacebook.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CoreModules\SignIn\SignInOnlyFacebook.ascx.designer.cs">
+      <DependentUpon>SignInOnlyFacebook.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CoreModules\SignIn\SignInOnlyTwitter.ascx.cs">
+      <DependentUpon>SignInOnlyTwitter.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CoreModules\SignIn\SignInOnlyTwitter.ascx.designer.cs">
+      <DependentUpon>SignInOnlyTwitter.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CoreModules\SignIn\SignInSocialNetwork.ascx.cs">
+      <DependentUpon>SignInSocialNetwork.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CoreModules\SignIn\SignInSocialNetwork.ascx.designer.cs">
+      <DependentUpon>SignInSocialNetwork.ascx</DependentUpon>
     </Compile>
     <Compile Include="DesktopModules\CoreModules\SiteSettings\SiteSettings.ascx.cs">
       <DependentUpon>SiteSettings.ascx</DependentUpon>
@@ -6306,7 +6337,10 @@
     <Content Include="DesktopModules\CoreModules\Roles\SecurityRoles.aspx" />
     <Content Include="DesktopModules\CoreModules\SecurityCheck\install.xml" />
     <Content Include="DesktopModules\CoreModules\SecurityCheck\SecurityCheck.ascx" />
-    <Content Include="DesktopModules\CoreModules\SignIn\install.xml" />
+    <Content Include="DesktopModules\CoreModules\SignIn\install.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="DesktopModules\CoreModules\SignIn\LogInTweeter.aspx" />
     <Content Include="DesktopModules\CoreModules\SignIn\Signin.ascx" />
     <Content Include="DesktopModules\CoreModules\SignIn\SigninCool.ascx" />
     <Content Include="DesktopModules\CoreModules\SignIn\SignInCool_readme.txt" />
@@ -6314,6 +6348,9 @@
     <Content Include="DesktopModules\CoreModules\SignIn\SigninLink.ascx" />
     <Content Include="DesktopModules\CoreModules\SignIn\SignInLink_readme.txt" />
     <Content Include="DesktopModules\CoreModules\SignIn\SignInLoginView.ascx" />
+    <Content Include="DesktopModules\CoreModules\SignIn\SignInOnlyFacebook.ascx" />
+    <Content Include="DesktopModules\CoreModules\SignIn\SignInOnlyTwitter.ascx" />
+    <Content Include="DesktopModules\CoreModules\SignIn\SignInSocialNetwork.ascx" />
     <Content Include="DesktopModules\CoreModules\SignIn\SignIn_readme.txt" />
     <Content Include="DesktopModules\CoreModules\SiteSettings\install.xml" />
     <Content Include="DesktopModules\CoreModules\SiteSettings\SiteSettings.ascx" />
@@ -6323,6 +6360,7 @@
     <Content Include="favicon.ico" />
     <Content Include="get_aspx_ver.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="images\sign-in-with-twitter-l.png" />
     <Content Include="Installer\default.aspx" />
     <Content Include="Installer\images\installer_top_bg.png" />
     <Content Include="Installer\LICENSE-2.0.html" />
@@ -6399,6 +6437,23 @@
     <Content Include="Portals\_Appleseed\xml\sales2.xsl" />
     <Content Include="rb_logs\rb_logs.txt" />
     <Content Include="robots.txt" />
+    <Content Include="Setup\jqueryui\css\ui-darkness\images\ui-bg_flat_30_cccccc_40x100.png" />
+    <Content Include="Setup\jqueryui\css\ui-darkness\images\ui-bg_flat_50_5c5c5c_40x100.png" />
+    <Content Include="Setup\jqueryui\css\ui-darkness\images\ui-bg_glass_20_555555_1x400.png" />
+    <Content Include="Setup\jqueryui\css\ui-darkness\images\ui-bg_glass_40_0078a3_1x400.png" />
+    <Content Include="Setup\jqueryui\css\ui-darkness\images\ui-bg_glass_40_ffc73d_1x400.png" />
+    <Content Include="Setup\jqueryui\css\ui-darkness\images\ui-bg_gloss-wave_25_333333_500x100.png" />
+    <Content Include="Setup\jqueryui\css\ui-darkness\images\ui-bg_highlight-soft_80_eeeeee_1x100.png" />
+    <Content Include="Setup\jqueryui\css\ui-darkness\images\ui-bg_inset-soft_25_000000_1x100.png" />
+    <Content Include="Setup\jqueryui\css\ui-darkness\images\ui-bg_inset-soft_30_f58400_1x100.png" />
+    <Content Include="Setup\jqueryui\css\ui-darkness\images\ui-icons_222222_256x240.png" />
+    <Content Include="Setup\jqueryui\css\ui-darkness\images\ui-icons_4b8e0b_256x240.png" />
+    <Content Include="Setup\jqueryui\css\ui-darkness\images\ui-icons_a83300_256x240.png" />
+    <Content Include="Setup\jqueryui\css\ui-darkness\images\ui-icons_cccccc_256x240.png" />
+    <Content Include="Setup\jqueryui\css\ui-darkness\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Setup\jqueryui\css\ui-darkness\jquery-ui-1.8.13.custom.css" />
+    <Content Include="Setup\jqueryui\js\jquery-1.5.1.min.js" />
+    <Content Include="Setup\jqueryui\js\jquery-ui-1.8.13.custom.min.js" />
     <Content Include="Setup\Scripts\1.1.7.1111.sql" />
     <Content Include="Setup\Scripts\1.1.7.1111Z.sql" />
     <Content Include="Setup\Scripts\1.1.7.1111_Localization.sql" />

@@ -166,6 +166,20 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
                 BirthdayField = _defaultRegisterDate;
             }
         }
+        if (Session["CameFromSocialNetwork"] != null) {
+            if ((bool)Session["CameFromSocialNetwork"]) {
+                trPwd.Visible = false;
+                trPwdAgain.Visible = false;
+            }
+        }
+        if (Session["FacebookUserName"] != null) {
+            this.tfEmail.Text = (string)Session["FacebookUserName"];
+            this.tfEmail.ReadOnly = true;
+
+        }
+        if (Session["FacebookName"] != null) {
+            this.tfName.Text = (string)Session["FacebookName"];
+        }
     }
 
     private void LoadBirthDateControls()
@@ -337,41 +351,108 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
 
     public Guid SaveUserData()
     {
-        if (!EditMode)
-        {
+        if (!EditMode) {
             Guid result = Guid.Empty;
+            if (Session["CameFromSocialNetwork"] == null) {
+                MembershipCreateStatus status = MembershipCreateStatus.Success;
+                MembershipUser user = Membership.Provider.CreateUser(tfEmail.Text, tfPwd.Text, tfEmail.Text, "question", "answer", true, Guid.NewGuid(), out status);
+                this.lblError.Text = string.Empty;
 
-            MembershipCreateStatus status = MembershipCreateStatus.Success;
-            MembershipUser user = Membership.Provider.CreateUser(tfEmail.Text, tfPwd.Text, tfEmail.Text, "question", "answer", true, Guid.NewGuid(), out status);
-            this.lblError.Text = string.Empty;
+                switch (status) {
+                    case MembershipCreateStatus.DuplicateEmail:
+                    case MembershipCreateStatus.DuplicateUserName:
+                        this.lblError.Text = Resources.Appleseed.USER_ALREADY_EXISTS;
+                        break;
+                    case MembershipCreateStatus.ProviderError:
+                        break;
+                    case MembershipCreateStatus.Success:
+                        UpdateProfile();
+                        result = (Guid)user.ProviderUserKey;
+                        //if the user is registering himself (thus, is not yet authenticated) we will sign him on and send him to the home page.
+                        if (!Context.User.Identity.IsAuthenticated) {
+                            PortalSecurity.SignOn(tfEmail.Text, tfPwd.Text, false, HttpUrlBuilder.BuildUrl());
+                        }
+                        break;
+                    // for every other error message...
+                    default:
+                        this.lblError.Text = Resources.Appleseed.USER_SAVING_ERROR;
+                        break;
+                }
+                return result;
+            } else {
 
-            switch (status)
-            {
-                case MembershipCreateStatus.DuplicateEmail:
-                case MembershipCreateStatus.DuplicateUserName:
-                    this.lblError.Text = Resources.Appleseed.USER_ALREADY_EXISTS;
-                    break;
-                case MembershipCreateStatus.ProviderError:
-                    break;
-                case MembershipCreateStatus.Success:
-                    UpdateProfile();
-                    result = (Guid)user.ProviderUserKey;
-                    //if the user is registering himself (thus, is not yet authenticated) we will sign him on and send him to the home page.
-                    if (!Context.User.Identity.IsAuthenticated)
-                    {
-                        PortalSecurity.SignOn(tfEmail.Text, tfPwd.Text, false, HttpUrlBuilder.BuildUrl());
+                if (Session["TwitterUserName"] != null) {
+                    // Register Twitter
+                    string userName = (string)Session["TwitterUserName"];
+                    string password = (string)Session["TwitterPassword"];
+                    MembershipCreateStatus status = MembershipCreateStatus.Success;
+                    MembershipUser user = Membership.Provider.CreateUser(userName, password, tfEmail.Text, "question", "answer", true, Guid.NewGuid(), out status);
+                    this.lblError.Text = string.Empty;
+
+                    switch (status) {
+                        case MembershipCreateStatus.DuplicateEmail:
+                        case MembershipCreateStatus.DuplicateUserName:
+                            this.lblError.Text = Resources.Appleseed.USER_ALREADY_EXISTS;
+                            break;
+                        case MembershipCreateStatus.ProviderError:
+                            break;
+                        case MembershipCreateStatus.Success:
+                            UpdateProfile();
+                            result = (Guid)user.ProviderUserKey;
+                            //if the user is registering himself (thus, is not yet authenticated) we will sign him on and send him to the home page.
+                            if (!Context.User.Identity.IsAuthenticated) {
+                                Session.Contents.Remove("CameFromSocialNetwork");
+                                PortalSecurity.SignOn(userName, password, false, HttpUrlBuilder.BuildUrl());
+                            }
+
+                            break;
+                        // for every other error message...
+                        default:
+                            this.lblError.Text = Resources.Appleseed.USER_SAVING_ERROR;
+                            break;
                     }
-                    break;
-                // for every other error message...
-                default:
-                    this.lblError.Text = Resources.Appleseed.USER_SAVING_ERROR;
-                    break;
-            }
-            return result;
 
-        }
-        else
-        {
+                    return result;
+                } else if (Session["FacebookUserName"] != null) {
+                    // Register Facebook
+                    string userName = (string)Session["FacebookUserName"];
+                    string password = (string)Session["FacebookPassword"];
+                    MembershipCreateStatus status = MembershipCreateStatus.Success;
+                    MembershipUser user = Membership.Provider.CreateUser(userName, password, userName, "question", "answer", true, Guid.NewGuid(), out status);
+                    this.lblError.Text = string.Empty;
+
+                    switch (status) {
+                        case MembershipCreateStatus.DuplicateEmail:
+                        case MembershipCreateStatus.DuplicateUserName:
+                            this.lblError.Text = Resources.Appleseed.USER_ALREADY_EXISTS;
+                            break;
+                        case MembershipCreateStatus.ProviderError:
+                            break;
+                        case MembershipCreateStatus.Success:
+                            UpdateProfile();
+                            result = (Guid)user.ProviderUserKey;
+                            //if the user is registering himself (thus, is not yet authenticated) we will sign him on and send him to the home page.
+                            if (!Context.User.Identity.IsAuthenticated) {
+                                Session.Contents.Remove("CameFromSocialNetwork");
+                                PortalSecurity.SignOn(userName, password, false, HttpUrlBuilder.BuildUrl());
+                            }
+
+                            break;
+                        // for every other error message...
+                        default:
+                            this.lblError.Text = Resources.Appleseed.USER_SAVING_ERROR;
+                            break;
+                    }
+
+                    return result;
+
+                } else {
+                    return result;
+                }
+            }
+            
+
+        } else {
             UpdateProfile();
             return (Guid)Membership.GetUser(tfEmail.Text, false).ProviderUserKey;
         }
@@ -379,45 +460,60 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
 
 
 
-    private void UpdateProfile()
+   private void UpdateProfile()
     {
-        var profile = ProfileBase.Create(tfEmail.Text);
-        profile.SetPropertyValue("BirthDate", BirthdayField);
-        profile.SetPropertyValue("Company", tfCompany.Text);
-        profile.SetPropertyValue("CountryID", ddlCountry.SelectedValue);
-        profile.SetPropertyValue("Email", tfEmail.Text);
-        profile.SetPropertyValue("Name", tfName.Text);
-        profile.SetPropertyValue("Phone", tfPhone.Text);
-        profile.SetPropertyValue("SendNewsletter", this.chbReceiveNews.Checked);
-        try
-        {
-            profile.Save();
-            this.pnlSuceeded.Visible = true;
-            this.pnlForm.Visible = false;
-            if (EditMode && !OuterCreation)
-            {
-                this.lblSuceeded.Text = Resources.Appleseed.USER_UPDATED_SUCCESFULLY;
-            }
-            else
-            {
-                if (OuterCreation)
-                {
+
+        if (Session["CameFromSocialNetwork"] == null) {
+            var profile = ProfileBase.Create(tfEmail.Text);
+            profile.SetPropertyValue("BirthDate", BirthdayField);
+            profile.SetPropertyValue("Company", tfCompany.Text);
+            profile.SetPropertyValue("CountryID", ddlCountry.SelectedValue);
+            profile.SetPropertyValue("Email", tfEmail.Text);
+            profile.SetPropertyValue("Name", tfName.Text);
+            profile.SetPropertyValue("Phone", tfPhone.Text);
+            profile.SetPropertyValue("SendNewsletter", this.chbReceiveNews.Checked);
+
+            try {
+                profile.Save();
+                this.pnlSuceeded.Visible = true;
+                this.pnlForm.Visible = false;
+                if (EditMode && !OuterCreation) {
                     this.lblSuceeded.Text = Resources.Appleseed.USER_UPDATED_SUCCESFULLY;
-                    if (chbSendNotification.Checked)
-                    {
-                        SendOuterCreationNotification(tfEmail.Text);
+                } else {
+                    if (OuterCreation) {
+                        this.lblSuceeded.Text = Resources.Appleseed.USER_UPDATED_SUCCESFULLY;
+                        if (chbSendNotification.Checked) {
+                            SendOuterCreationNotification(tfEmail.Text);
+                        }
+                    } else {
+                        this.lblSuceeded.Text = Resources.Appleseed.USER_UPDATED_SUCCESFULLY + "." + Resources.Appleseed.ENTER_THROUGH_HOMEPAGE;
                     }
                 }
-                else
-                {
-                    this.lblSuceeded.Text = Resources.Appleseed.USER_UPDATED_SUCCESFULLY + "." + Resources.Appleseed.ENTER_THROUGH_HOMEPAGE;
-                }
+            } catch (Exception exc) {
+                this.lblError.Text = Resources.Appleseed.USER_SAVING_ERROR;
+                ErrorHandler.Publish(LogLevel.Error, "Error al salvar un perfil", exc);
             }
-        }
-        catch (Exception exc)
-        {
-            this.lblError.Text = Resources.Appleseed.USER_SAVING_ERROR;
-            ErrorHandler.Publish(LogLevel.Error, "Error al salvar un perfil", exc);
+        } else {
+            string username = null;
+            if(Session["TwitterUserName"] != null)
+                username = (string)Session["TwitterUserName"];
+            else if(Session["FacebookUserName"] != null)
+                username = (string)Session["FacebookUserName"];
+            var profile = ProfileBase.Create(username);
+            profile.SetPropertyValue("BirthDate", BirthdayField);
+            profile.SetPropertyValue("Company", tfCompany.Text);
+            profile.SetPropertyValue("CountryID", ddlCountry.SelectedValue);
+            profile.SetPropertyValue("Email", tfEmail.Text);
+            profile.SetPropertyValue("Name", tfName.Text);
+            profile.SetPropertyValue("Phone", tfPhone.Text);
+            profile.SetPropertyValue("SendNewsletter", this.chbReceiveNews.Checked);
+            try {
+                profile.Save();
+
+            } catch (Exception exc) {
+                this.lblError.Text = Resources.Appleseed.USER_SAVING_ERROR;
+                ErrorHandler.Publish(LogLevel.Error, "Error al salvar un perfil", exc);
+            }
         }
     }
 

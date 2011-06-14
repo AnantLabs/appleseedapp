@@ -478,15 +478,9 @@ namespace Appleseed.Framework.Users.Data
         /// <remarks>
         /// UserLogin Stored Procedure
         /// </remarks>
-        public MembershipUser Login(string email, string password, string portalAlias)
+        public MembershipUser Login(string userName, string password, string portalAlias)
         {
-            var userName = MembershipProvider.GetUserNameByEmail(
-                /*CurrentPortalSettings.PortalAlias*/ portalAlias, email);
-
-            if (string.IsNullOrEmpty(userName))
-            {
-                return null;
-            }
+            
 
             var user = (AppleseedUser)MembershipProvider.GetUser(userName, true);
             if (user != null)

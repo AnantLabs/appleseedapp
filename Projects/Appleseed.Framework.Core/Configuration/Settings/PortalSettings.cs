@@ -1607,6 +1607,26 @@ namespace Appleseed.Framework.Site.Configuration
                 };
                 baseSettings.Add("SITESETTINGS_FACEBOOK_APP_SECRET", facebookAppSecret);
 
+                // Twitter keys
+                var twitterAppId = new SettingItem<string, TextBox>() {
+                    Required = false,
+                    Value = "",
+                    EnglishName = "Twitter Application ID",
+                    Description = "Insert here twitter's Application ID for your portal.",
+                    Order = groupOrderBase + 26,
+                    Group = group
+                };
+                baseSettings.Add("SITESETTINGS_TWITTER_APP_ID", twitterAppId);
+
+                var twitterAppSecret = new SettingItem<string, TextBox>() {
+                    Required = false,
+                    Value = "",
+                    EnglishName = "Twitter Application Secret",
+                    Description = "Insert here twitter's Application Secret for your portal.",
+                    Order = groupOrderBase + 27,
+                    Group = group
+                };
+                baseSettings.Add("SITESETTINGS_TWITTER_APP_SECRET", twitterAppSecret);
 
                 groupOrderBase = (int)SettingItemGroup.META_SETTINGS;
                 group = SettingItemGroup.META_SETTINGS;

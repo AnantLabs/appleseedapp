@@ -16,8 +16,9 @@
 		<MobileSource></MobileSource>
 	</Module>	
 	<Module>
-		<FriendlyName>SignInFacebook</FriendlyName>
-		<DesktopSource>DesktopModules/CoreModules/SignIn/SignInFacebook.ascx</DesktopSource>
+		<FriendlyName>SignInSocialNetwork</FriendlyName>
+		<DesktopSource>DesktopModules/CoreModules/SignIn/SignInSocialNetwork.ascx</DesktopSource>
 		<MobileSource></MobileSource>
 	</Module>
+  
 </Modules>
