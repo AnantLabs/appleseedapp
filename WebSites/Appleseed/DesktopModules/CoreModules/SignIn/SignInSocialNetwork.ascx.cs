@@ -120,7 +120,7 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
                 Session["FacebookName"] = me.name;
 
                 Session["FacebookPassword"] = GeneratePasswordHash(me.email);
-                string urlRegister = ConvertRelativeUrlToAbsoluteUrl("/DesktopModules/CoreModules/Register/Register.aspx");
+                string urlRegister = ConvertRelativeUrlToAbsoluteUrl("~/DesktopModules/CoreModules/Register/Register.aspx");
                 Response.Redirect(urlRegister);
             } else
                 PortalSecurity.SignOn(me.email, GeneratePasswordHash(me.email));
@@ -165,7 +165,7 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
                 string appId = PortalSettings.CustomSettings["SITESETTINGS_TWITTER_APP_ID"].ToString();
                 var appSecret = PortalSettings.CustomSettings["SITESETTINGS_TWITTER_APP_SECRET"].ToString();
 
-                string server = ConvertRelativeUrlToAbsoluteUrl("/DesktopModules/CoreModules/SignIn/LogInTweeter.aspx");
+                string server = ConvertRelativeUrlToAbsoluteUrl("~/DesktopModules/CoreModules/SignIn/LogInTweeter.aspx");
                 Session["TwitterAppId"] = appId;
                 Session["TwitterAppSecret"] = appSecret;
 

@@ -39,7 +39,7 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
 
                     Session["TwitterUserName"] = userName;
                     Session["TwitterPassword"] = password;
-                    string urlRegister = ConvertRelativeUrlToAbsoluteUrl("/DesktopModules/CoreModules/Register/Register.aspx");
+                    string urlRegister = ConvertRelativeUrlToAbsoluteUrl("~/DesktopModules/CoreModules/Register/Register.aspx");
                     Response.Redirect(urlRegister);
 
 
