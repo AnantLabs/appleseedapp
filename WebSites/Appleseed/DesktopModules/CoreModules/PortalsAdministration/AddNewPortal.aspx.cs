@@ -53,8 +53,9 @@ namespace Appleseed.AdminAll
 
             // If this is the first visit to the page, populate the site data
             if (Page.IsPostBack == false) {
+                var templateServices = PortalTemplateFactory.GetPortalTemplateServices(new PortalTemplateRepository());
 
-                ddlXMLTemplates.DataSource = GetXMLTemplateList();
+                ddlXMLTemplates.DataSource = templateServices.GetTemplates(PortalSettings.PortalAlias, PortalSettings.PortalFullPath);
                 ddlXMLTemplates.DataBind();
                 if (ddlXMLTemplates.Items.Count != 0) {
                     ddlXMLTemplates.SelectedIndex = 0;
@@ -80,28 +81,7 @@ namespace Appleseed.AdminAll
             }
         }
 
-        private List<string> GetXMLTemplateList()
-        {
-            List<string> result = new List<string>();
-            string path = GetPhysicalPackageTemplatesPath();
-
-            if (Directory.Exists(path)) {
-                DirectoryInfo directory = new DirectoryInfo(path);
-                FileInfo[] templates = directory.GetFiles("*.xml");
-                foreach (FileInfo template in templates) {
-                    result.Add(template.Name);
-                }
-            }
-            return result;
-        }
-
-        private string GetPhysicalPackageTemplatesPath()
-        {
-            string path = Appleseed.Framework.Settings.Path.ApplicationPhysicalPath;
-            path = string.Format(@"{0}{1}\PortalTemplates", path, this.PortalSettings.PortalFullPath.Substring(1));
-            path = path.Replace("/", @"\");
-            return path;
-        }
+       
 
 
 
@@ -183,7 +163,7 @@ namespace Appleseed.AdminAll
             IPortalTemplateServices services = PortalTemplateFactory.GetPortalTemplateServices(repository);
             int newPortalID = 1;
 
-            createdOk = services.DeserializePortal(GetPhysicalPackageTemplatesPath() + "\\" + fileName, portalName, portalAlias, portalPath, out newPortalID);
+            createdOk = services.DeserializePortal(fileName, portalName, portalAlias, portalPath, out newPortalID);
             if (createdOk && !Config.UseSingleUserBase) {
                 string AdminEmail = "admin@Appleseedportal.net";
 

@@ -310,11 +310,11 @@
 	<data name="BANK">
 		<value>은행</value>
 	</data>
-	<data name="BG-BG">
-		<value>BG-BG</value>
+	<data name="BG_BG">
+		<value>BG_BG</value>
 	</data>
-	<data name="BG-BG_DESCRIPTION">
-		<value>BG-BG_DESCRIPTION</value>
+	<data name="BG_BG_DESCRIPTION">
+		<value>BG_BG_DESCRIPTION</value>
 	</data>
 	<data name="BIND_OPTION_CHILDREN">
 		<value>BIND_OPTION_CHILDREN</value>
@@ -1927,11 +1927,11 @@
 	<data name="CUSTOMTHEMEALT_DESCRIPTION">
 		<value>이 탭의 모듈에만 다른 자체 테마 설정</value>
 	</data>
-	<data name="DA-DK">
-		<value>DA-DK</value>
+	<data name="DA_DK">
+		<value>DA_DK</value>
 	</data>
-	<data name="DA-DK_DESCRIPTION">
-		<value>DA-DK_DESCRIPTION</value>
+	<data name="DA_DK_DESCRIPTION">
+		<value>DA_DK_DESCRIPTION</value>
 	</data>
 	<data name="DATE">
 		<value>일자</value>
@@ -1954,16 +1954,16 @@
 	<data name="DBTOOL_QUERYEXECUTE">
 		<value>DBTOOL_QUERYEXECUTE</value>
 	</data>
-	<data name="DE-CH">
-		<value>제목 (de-CH)</value>
+	<data name="DE_CH">
+		<value>제목 (DE_CH)</value>
 	</data>
-	<data name="DE-CH_DESCRIPTION">
+	<data name="DE_CH_DESCRIPTION">
 		<value>독일 (스위스) 제목 설정.</value>
 	</data>
-	<data name="DE-DE">
-		<value>제목 (de-DE)</value>
+	<data name="DE_DE">
+		<value>제목 (DE_DE)</value>
 	</data>
-	<data name="DE-DE_DESCRIPTION">
+	<data name="DE_DE_DESCRIPTION">
 		<value>독일 제목 설정.</value>
 	</data>
 	<data name="DECLINE">
@@ -2281,10 +2281,10 @@
 	<data name="EN">
 		<value>제목 (en)</value>
 	</data>
-	<data name="EN-US">
-		<value>제목 (en-US)</value>
+	<data name="EN_US">
+		<value>제목 (EN_US)</value>
 	</data>
-	<data name="EN-US_DESCRIPTION">
+	<data name="EN_US_DESCRIPTION">
 		<value>미국 지역을 위한 설명을 입력하십시오.</value>
 	</data>
 	<data name="EN_DESCRIPTION">
@@ -2563,10 +2563,10 @@
 	<data name="ES">
 		<value/>
 	</data>
-	<data name="ES-ES">
+	<data name="ES_ES">
 		<value/>
 	</data>
-	<data name="ES-ES_DESCRIPTION">
+	<data name="ES_ES_DESCRIPTION">
 		<value/>
 	</data>
 	<data name="ES_DESCRIPTION">
@@ -2914,10 +2914,10 @@
 	<data name="IT">
 		<value>제목 (it)</value>
 	</data>
-	<data name="IT-IT">
-		<value>제목 (it-IT)</value>
+	<data name="IT_IT">
+		<value>제목 (IT_IT)</value>
 	</data>
-	<data name="IT-IT_DESCRIPTION">
+	<data name="IT_IT_DESCRIPTION">
 		<value>이탈리아 제목 설정.</value>
 	</data>
 	<data name="IT_DESCRIPTION">
@@ -3376,11 +3376,11 @@
 	<data name="MODULESETTINGS_THEME_DESCRIPTION">
 		<value>모듈에 사용될 테마를 선택하십시오.</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_BG-BG">
-		<value>MODULESETTINGS_TITLE_BG-BG</value>
+	<data name="MODULESETTINGS_TITLE_BG_BG">
+		<value>MODULESETTINGS_TITLE_BG_BG</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_BG-BG_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_BG-BG_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_BG_BG_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_BG_BG_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_CA">
 		<value>MODULESETTINGS_TITLE_CA</value>
@@ -3391,16 +3391,16 @@
 	<data name="MODULESETTINGS_TITLE_EN">
 		<value/>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-GB">
-		<value>MODULESETTINGS_TITLE_EN-GB</value>
+	<data name="MODULESETTINGS_TITLE_EN_GB">
+		<value>MODULESETTINGS_TITLE_EN_GB</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-GB_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_EN-GB_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_EN_GB_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_EN_GB_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-US">
+	<data name="MODULESETTINGS_TITLE_EN_US">
 		<value/>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-US_DESCRIPTION">
+	<data name="MODULESETTINGS_TITLE_EN_US_DESCRIPTION">
 		<value>미국 지역을 위한 제목을 입력하십시오.</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_EN_DESCRIPTION">
@@ -3409,10 +3409,10 @@
 	<data name="MODULESETTINGS_TITLE_ES">
 		<value/>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ES-ES">
+	<data name="MODULESETTINGS_TITLE_ES_ES">
 		<value/>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ES-ES_DESCRIPTION">
+	<data name="MODULESETTINGS_TITLE_ES_ES_DESCRIPTION">
 		<value/>
 	</data>
 	<data name="MODULESETTINGS_TITLE_ES_DESCRIPTION">
@@ -3430,16 +3430,16 @@
 	<data name="MODULESETTINGS_TITLE_IT_DESCRIPTION">
 		<value>MODULESETTINGS_TITLE_IT_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_NL-BE">
-		<value>MODULESETTINGS_TITLE_NL-BE</value>
+	<data name="MODULESETTINGS_TITLE_NL_BE">
+		<value>MODULESETTINGS_TITLE_NL_BE</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_NL-BE_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_NL-BE_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_NL_BE_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_NL_BE_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ZH-CN">
-		<value>제목 (zh-CN)</value>
+	<data name="MODULESETTINGS_TITLE_ZH_CN">
+		<value>제목 (ZH_CN)</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ZH-CN_DESCRIPTION">
+	<data name="MODULESETTINGS_TITLE_ZH_CN_DESCRIPTION">
 		<value>중국 지역을 위한 제목을 입력하십시오. (People’s Republic of China)</value>
 	</data>
 	<data name="MODULESETTINGS_WIDTH_STRETCHING">
@@ -3922,7 +3922,7 @@
 	<data name="PRODUCT_TOTAL_EXPENSES">
 		<value/>
 	</data>
-	<data name="PRODUCT_TOTAL_PRICE_(INC._TAXES)">
+	<data name="PRODUCT_TOTAL_PRICE_(INC_TAXES)">
 		<value/>
 	</data>
 	<data name="PRODUCT_TOTAL_TAXES">
@@ -4667,7 +4667,7 @@
 		<value>약관 파일 이름</value>
 	</data>
 	<data name="SITESETTINGS_TERMS_OF_SERVICE_DESCRIPTION">
-		<value>각 등록 페이지에 제시할 이용약관 파일 이름을 입력하십시오. _&lt;지역(로케일) 이름&gt;을 붙여 지역별 버전을 준비하십시오. 예를 들면,Terms.txt 는Terms.txt 및 Terms_en-US.txt 를 검색하게 됩니다.</value>
+		<value>각 등록 페이지에 제시할 이용약관 파일 이름을 입력하십시오. _&lt;지역(로케일) 이름&gt;을 붙여 지역별 버전을 준비하십시오. 예를 들면,Terms.txt 는Terms.txt 및 Terms_EN_US.txt 를 검색하게 됩니다.</value>
 	</data>
 	<data name="SITESETTINGS_THEME">
 		<value>테마</value>
@@ -4855,11 +4855,11 @@
 	<data name="TABKEYPHRASE">
 		<value>기본 탭/페이지 핵심어구</value>
 	</data>
-	<data name="TABKEYPHRASE_BG-BG">
-		<value>TABKEYPHRASE_BG-BG</value>
+	<data name="TABKEYPHRASE_BG_BG">
+		<value>TABKEYPHRASE_BG_BG</value>
 	</data>
-	<data name="TABKEYPHRASE_BG-BG_DESCRIPTION">
-		<value>TABKEYPHRASE_BG-BG_DESCRIPTION</value>
+	<data name="TABKEYPHRASE_BG_BG_DESCRIPTION">
+		<value>TABKEYPHRASE_BG_BG_DESCRIPTION</value>
 	</data>
 	<data name="TABKEYPHRASE_DESCRIPTION">
 		<value>이 설정값은 모듈 또는 컨트롤에 사용될수 있습니다. Welcome to x portal! 과 같이 전체 포탈을 위한 일반적인 메시지를 작성할 수 있습니다. 이는 검색 엔진 최적화를 위해 사용될 수 있으며, 포탈 전체에서 통용되는 키워드 어구를 정의할 수 있도록 해줍니다. </value>
@@ -4873,11 +4873,11 @@
 	<data name="TABKEYPHRASE_ES">
 		<value>TABKEYPHRASE_ES</value>
 	</data>
-	<data name="TABKEYPHRASE_ES-ES">
-		<value>TABKEYPHRASE_ES-ES</value>
+	<data name="TABKEYPHRASE_ES_ES">
+		<value>TABKEYPHRASE_ES_ES</value>
 	</data>
-	<data name="TABKEYPHRASE_ES-ES_DESCRIPTION">
-		<value>TABKEYPHRASE_ES-ES_DESCRIPTION</value>
+	<data name="TABKEYPHRASE_ES_ES_DESCRIPTION">
+		<value>TABKEYPHRASE_ES_ES_DESCRIPTION</value>
 	</data>
 	<data name="TABKEYPHRASE_ES_DESCRIPTION">
 		<value>TABKEYPHRASE_ES_DESCRIPTION</value>
@@ -5003,7 +5003,7 @@
 		<value>서비스 약관</value>
 	</data>
 	<data name="TERMSOFSERVICE_DESCRIPTION">
-		<value>각 등록 페이지에 제시할 이용약관 파일 이름을 입력하십시오. _&lt;지역(로케일) 이름&gt;을 붙여 지역별 버전을 준비하십시오. 예를 들면,Terms.txt 는Terms.txt 및 Terms_en-US.txt 를 검색하게 됩니다.</value>
+		<value>각 등록 페이지에 제시할 이용약관 파일 이름을 입력하십시오. _&lt;지역(로케일) 이름&gt;을 붙여 지역별 버전을 준비하십시오. 예를 들면,Terms.txt 는Terms.txt 및 Terms_EN_US.txt 를 검색하게 됩니다.</value>
 	</data>
 	<data name="TESTMODE">
 		<value>테스트 모드</value>
@@ -5101,10 +5101,10 @@
 	<data name="TR">
 		<value/>
 	</data>
-	<data name="TR-TR">
+	<data name="TR_TR">
 		<value/>
 	</data>
-	<data name="TR-TR_DESCRIPTION">
+	<data name="TR_TR_DESCRIPTION">
 		<value/>
 	</data>
 	<data name="TR_DESCRIPTION">
@@ -5368,10 +5368,10 @@
 	<data name="YEARS">
 		<value>YEARS</value>
 	</data>
-	<data name="ZH-CN">
-		<value>제목 (zh-CN)</value>
+	<data name="ZH_CN">
+		<value>제목 (ZH_CN)</value>
 	</data>
-	<data name="ZH-CN_DESCRIPTION">
+	<data name="ZH_CN_DESCRIPTION">
 		<value>(중화 인민 공화국) 중국 문화를 위해 제목을 놓으십시요.</value>
 	</data>
 	<data name="ZIP">

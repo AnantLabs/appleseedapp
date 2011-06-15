@@ -368,10 +368,10 @@
 	<data name="BANK">
 		<value>Банка</value>
 	</data>
-	<data name="BG-BG">
-		<value>Заглавие (bg-BG)</value>
+	<data name="BG_BG">
+		<value>Заглавие (BG_BG)</value>
 	</data>
-	<data name="BG-BG_DESCRIPTION">
+	<data name="BG_BG_DESCRIPTION">
 		<value>Заглавие за локализация (Bulgaria).</value>
 	</data>
 	<data name="BIND_OPTION_CHILDREN">
@@ -1985,11 +1985,11 @@
 	<data name="CUSTOMTHEMEALT_DESCRIPTION">
 		<value>Поставяне на променена допълнителна тема само за модулите в този класьор</value>
 	</data>
-	<data name="DA-DK">
-		<value>DA-DK</value>
+	<data name="DA_DK">
+		<value>DA_DK</value>
 	</data>
-	<data name="DA-DK_DESCRIPTION">
-		<value>DA-DK_DESCRIPTION</value>
+	<data name="DA_DK_DESCRIPTION">
+		<value>DA_DK_DESCRIPTION</value>
 	</data>
 	<data name="DATE">
 		<value>Дата</value>
@@ -2012,16 +2012,16 @@
 	<data name="DBTOOL_QUERYEXECUTE">
 		<value>DBTOOL_QUERYEXECUTE</value>
 	</data>
-	<data name="DE-CH">
-		<value>Заглавие (de-CH)</value>
+	<data name="DE_CH">
+		<value>Заглавие (DE_CH)</value>
 	</data>
-	<data name="DE-CH_DESCRIPTION">
+	<data name="DE_CH_DESCRIPTION">
 		<value>Заглавие за локализация (Switzerland)</value>
 	</data>
-	<data name="DE-DE">
-		<value>Заглавие (de-DE)</value>
+	<data name="DE_DE">
+		<value>Заглавие (DE_DE)</value>
 	</data>
-	<data name="DE-DE_DESCRIPTION">
+	<data name="DE_DE_DESCRIPTION">
 		<value>Заглавие за локализация (Germany)</value>
 	</data>
 	<data name="DECLINE">
@@ -2339,10 +2339,10 @@
 	<data name="EN">
 		<value>Заглавие (en)</value>
 	</data>
-	<data name="EN-US">
-		<value>Заглавие (en-US)</value>
+	<data name="EN_US">
+		<value>Заглавие (EN_US)</value>
 	</data>
-	<data name="EN-US_DESCRIPTION">
+	<data name="EN_US_DESCRIPTION">
 		<value>Заглавие за локализация (United States).</value>
 	</data>
 	<data name="EN_DESCRIPTION">
@@ -2621,11 +2621,11 @@
 	<data name="ES">
 		<value>ES</value>
 	</data>
-	<data name="ES-ES">
-		<value>ES-ES</value>
+	<data name="ES_ES">
+		<value>ES_ES</value>
 	</data>
-	<data name="ES-ES_DESCRIPTION">
-		<value>ES-ES_DESCRIPTION</value>
+	<data name="ES_ES_DESCRIPTION">
+		<value>ES_ES_DESCRIPTION</value>
 	</data>
 	<data name="ES_DESCRIPTION">
 		<value>ES_DESCRIPTION</value>
@@ -2972,10 +2972,10 @@
 	<data name="IT">
 		<value>Заглавие (it)</value>
 	</data>
-	<data name="IT-IT">
-		<value>Заглавие (it-IT)</value>
+	<data name="IT_IT">
+		<value>Заглавие (IT_IT)</value>
 	</data>
-	<data name="IT-IT_DESCRIPTION">
+	<data name="IT_IT_DESCRIPTION">
 		<value>Заглавие за локализация (Italy).</value>
 	</data>
 	<data name="IT_DESCRIPTION">
@@ -3434,10 +3434,10 @@
 	<data name="MODULESETTINGS_THEME_DESCRIPTION">
 		<value>Изберете тема за този модул</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_BG-BG">
-		<value>Заглавие (bg-BG)</value>
+	<data name="MODULESETTINGS_TITLE_BG_BG">
+		<value>Заглавие (BG_BG)</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_BG-BG_DESCRIPTION">
+	<data name="MODULESETTINGS_TITLE_BG_BG_DESCRIPTION">
 		<value>Поставяне заглавие на български (Bulgaria).</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_CA">
@@ -3449,16 +3449,16 @@
 	<data name="MODULESETTINGS_TITLE_EN">
 		<value>MODULESETTINGS_TITLE_EN</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-GB">
-		<value>MODULESETTINGS_TITLE_EN-GB</value>
+	<data name="MODULESETTINGS_TITLE_EN_GB">
+		<value>MODULESETTINGS_TITLE_EN_GB</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-GB_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_EN-GB_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_EN_GB_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_EN_GB_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-US">
-		<value>Заглавие (en-US)</value>
+	<data name="MODULESETTINGS_TITLE_EN_US">
+		<value>Заглавие (EN_US)</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-US_DESCRIPTION">
+	<data name="MODULESETTINGS_TITLE_EN_US_DESCRIPTION">
 		<value>Заглавие за локализация (English).</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_EN_DESCRIPTION">
@@ -3467,11 +3467,11 @@
 	<data name="MODULESETTINGS_TITLE_ES">
 		<value>MODULESETTINGS_TITLE_ES</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ES-ES">
-		<value>MODULESETTINGS_TITLE_ES-ES</value>
+	<data name="MODULESETTINGS_TITLE_ES_ES">
+		<value>MODULESETTINGS_TITLE_ES_ES</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ES-ES_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_ES-ES_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_ES_ES_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_ES_ES_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_ES_DESCRIPTION">
 		<value>MODULESETTINGS_TITLE_ES_DESCRIPTION</value>
@@ -3488,16 +3488,16 @@
 	<data name="MODULESETTINGS_TITLE_IT_DESCRIPTION">
 		<value>MODULESETTINGS_TITLE_IT_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_NL-BE">
-		<value>MODULESETTINGS_TITLE_NL-BE</value>
+	<data name="MODULESETTINGS_TITLE_NL_BE">
+		<value>MODULESETTINGS_TITLE_NL_BE</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_NL-BE_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_NL-BE_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_NL_BE_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_NL_BE_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ZH-CN">
-		<value>Заглавие (zh-CN)</value>
+	<data name="MODULESETTINGS_TITLE_ZH_CN">
+		<value>Заглавие (ZH_CN)</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ZH-CN_DESCRIPTION">
+	<data name="MODULESETTINGS_TITLE_ZH_CN_DESCRIPTION">
 		<value>Заглавие за локализация (Chinese).</value>
 	</data>
 	<data name="MODULESETTINGS_WIDTH_STRETCHING">
@@ -3980,8 +3980,8 @@
 	<data name="PRODUCT_TOTAL_EXPENSES">
 		<value>PRODUCT_TOTAL_EXPENSES</value>
 	</data>
-	<data name="PRODUCT_TOTAL_PRICE_(INC._TAXES)">
-		<value>PRODUCT_TOTAL_PRICE_(INC._TAXES)</value>
+	<data name="PRODUCT_TOTAL_PRICE_(INC_TAXES)">
+		<value>PRODUCT_TOTAL_PRICE_(INC_TAXES)</value>
 	</data>
 	<data name="PRODUCT_TOTAL_TAXES">
 		<value>Тотал данъци</value>
@@ -4725,7 +4725,7 @@
 		<value>Име на файл с Общи условия</value>
 	</data>
 	<data name="SITESETTINGS_TERMS_OF_SERVICE_DESCRIPTION">
-		<value>Напишете име на файл за изобразяване на ’Общи условия за ползване’ на всяка регистрирана страница. Осигурете локализираната версия, добавяйки ’_&lt;код държава&gt;’ към името на файла ви. Например, ’Terms.txt’ ще търси за ’Terms_bg-BG.txt’</value>
+		<value>Напишете име на файл за изобразяване на ’Общи условия за ползване’ на всяка регистрирана страница. Осигурете локализираната версия, добавяйки ’_&lt;код държава&gt;’ към името на файла ви. Например, ’Terms.txt’ ще търси за ’Terms_BG_BG.txt’</value>
 	</data>
 	<data name="SITESETTINGS_THEME">
 		<value>Тема</value>
@@ -4913,10 +4913,10 @@
 	<data name="TABKEYPHRASE">
 		<value>Низ от ключови думи за класьор / страница</value>
 	</data>
-	<data name="TABKEYPHRASE_BG-BG">
-		<value>Описателни бележки на класьор (bg-BG)</value>
+	<data name="TABKEYPHRASE_BG_BG">
+		<value>Описателни бележки на класьор (BG_BG)</value>
 	</data>
-	<data name="TABKEYPHRASE_BG-BG_DESCRIPTION">
+	<data name="TABKEYPHRASE_BG_BG_DESCRIPTION">
 		<value>Описателни бележки на класьор / страница на български.</value>
 	</data>
 	<data name="TABKEYPHRASE_DESCRIPTION">
@@ -4931,11 +4931,11 @@
 	<data name="TABKEYPHRASE_ES">
 		<value>TABKEYPHRASE_ES</value>
 	</data>
-	<data name="TABKEYPHRASE_ES-ES">
-		<value>TABKEYPHRASE_ES-ES</value>
+	<data name="TABKEYPHRASE_ES_ES">
+		<value>TABKEYPHRASE_ES_ES</value>
 	</data>
-	<data name="TABKEYPHRASE_ES-ES_DESCRIPTION">
-		<value>TABKEYPHRASE_ES-ES_DESCRIPTION</value>
+	<data name="TABKEYPHRASE_ES_ES_DESCRIPTION">
+		<value>TABKEYPHRASE_ES_ES_DESCRIPTION</value>
 	</data>
 	<data name="TABKEYPHRASE_ES_DESCRIPTION">
 		<value>TABKEYPHRASE_ES_DESCRIPTION</value>
@@ -5061,7 +5061,7 @@
 		<value>Общи условия за ползване</value>
 	</data>
 	<data name="TERMSOFSERVICE_DESCRIPTION">
-		<value>Напишете име на файл за изобразяване на ’Общи условия за ползване’ на всяка регистрирана страница. Осигурете локализираната версия, добавяйки _&lt;код държава&gt; към името на файла ви. Например, ’Terms.txt’ ще търси за ’Terms_bg-BG.txt’</value>
+		<value>Напишете име на файл за изобразяване на ’Общи условия за ползване’ на всяка регистрирана страница. Осигурете локализираната версия, добавяйки _&lt;код държава&gt; към името на файла ви. Например, ’Terms.txt’ ще търси за ’Terms_BG_BG.txt’</value>
 	</data>
 	<data name="TESTMODE">
 		<value>Режим тест</value>
@@ -5159,11 +5159,11 @@
 	<data name="TR">
 		<value>TR</value>
 	</data>
-	<data name="TR-TR">
-		<value>TR-TR</value>
+	<data name="TR_TR">
+		<value>TR_TR</value>
 	</data>
-	<data name="TR-TR_DESCRIPTION">
-		<value>TR-TR_DESCRIPTION</value>
+	<data name="TR_TR_DESCRIPTION">
+		<value>TR_TR_DESCRIPTION</value>
 	</data>
 	<data name="TR_DESCRIPTION">
 		<value>TR_DESCRIPTION</value>
@@ -5426,10 +5426,10 @@
 	<data name="YEARS">
 		<value>YEARS</value>
 	</data>
-	<data name="ZH-CN">
-		<value>Заглавие (zh-CN)</value>
+	<data name="ZH_CN">
+		<value>Заглавие (ZH_CN)</value>
 	</data>
-	<data name="ZH-CN_DESCRIPTION">
+	<data name="ZH_CN_DESCRIPTION">
 		<value>Заглавие за локализация (Chinese).</value>
 	</data>
 	<data name="ZIP">

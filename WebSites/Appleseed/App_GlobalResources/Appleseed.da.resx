@@ -368,11 +368,11 @@
 	<data name="BANK">
 		<value>Bank</value>
 	</data>
-	<data name="BG-BG">
-		<value>BG-BG</value>
+	<data name="BG_BG">
+		<value>BG_BG</value>
 	</data>
-	<data name="BG-BG_DESCRIPTION">
-		<value>BG-BG_DESCRIPTION</value>
+	<data name="BG_BG_DESCRIPTION">
+		<value>BG_BG_DESCRIPTION</value>
 	</data>
 	<data name="BIND_OPTION_CHILDREN">
 		<value>BIND_OPTION_CHILDREN</value>
@@ -1985,10 +1985,10 @@
 	<data name="CUSTOMTHEMEALT_DESCRIPTION">
 		<value>CUSTOMTHEMEALT_DESCRIPTION</value>
 	</data>
-	<data name="DA-DK">
-		<value>Titel (da-DK)</value>
+	<data name="DA_DK">
+		<value>Titel (DA_DK)</value>
 	</data>
-	<data name="DA-DK_DESCRIPTION">
+	<data name="DA_DK_DESCRIPTION">
 		<value>Angiv titel for dansk (Danmark) kultur.</value>
 	</data>
 	<data name="DATE">
@@ -2012,16 +2012,16 @@
 	<data name="DBTOOL_QUERYEXECUTE">
 		<value>DBTOOL_QUERYEXECUTE</value>
 	</data>
-	<data name="DE-CH">
-		<value>Titel (de-CH)</value>
+	<data name="DE_CH">
+		<value>Titel (DE_CH)</value>
 	</data>
-	<data name="DE-CH_DESCRIPTION">
+	<data name="DE_CH_DESCRIPTION">
 		<value>Angiv titel for tysk (Schweiz) kultur.</value>
 	</data>
-	<data name="DE-DE">
-		<value>Titel (de-DE)</value>
+	<data name="DE_DE">
+		<value>Titel (DE_DE)</value>
 	</data>
-	<data name="DE-DE_DESCRIPTION">
+	<data name="DE_DE_DESCRIPTION">
 		<value>Angiv titel for tysk (Tyskland) kultur.</value>
 	</data>
 	<data name="DECLINE">
@@ -2339,11 +2339,11 @@
 	<data name="EN">
 		<value>Titel (en)</value>
 	</data>
-	<data name="EN-US">
-		<value>EN-US</value>
+	<data name="EN_US">
+		<value>EN_US</value>
 	</data>
-	<data name="EN-US_DESCRIPTION">
-		<value>EN-US_DESCRIPTION</value>
+	<data name="EN_US_DESCRIPTION">
+		<value>EN_US_DESCRIPTION</value>
 	</data>
 	<data name="EN_DESCRIPTION">
 		<value>Angiv titel for engelsk kultur.</value>
@@ -2621,11 +2621,11 @@
 	<data name="ES">
 		<value>ES</value>
 	</data>
-	<data name="ES-ES">
-		<value>ES-ES</value>
+	<data name="ES_ES">
+		<value>ES_ES</value>
 	</data>
-	<data name="ES-ES_DESCRIPTION">
-		<value>ES-ES_DESCRIPTION</value>
+	<data name="ES_ES_DESCRIPTION">
+		<value>ES_ES_DESCRIPTION</value>
 	</data>
 	<data name="ES_DESCRIPTION">
 		<value>ES_DESCRIPTION</value>
@@ -2972,10 +2972,10 @@
 	<data name="IT">
 		<value>Title (it)</value>
 	</data>
-	<data name="IT-IT">
-		<value>Title (it-IT)</value>
+	<data name="IT_IT">
+		<value>Title (IT_IT)</value>
 	</data>
-	<data name="IT-IT_DESCRIPTION">
+	<data name="IT_IT_DESCRIPTION">
 		<value>Angiv titel for italiensk (Italien) kultur.</value>
 	</data>
 	<data name="IT_DESCRIPTION">
@@ -3434,11 +3434,11 @@
 	<data name="MODULESETTINGS_THEME_DESCRIPTION">
 		<value>Afkryds her for at benytte tema til dette modul</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_BG-BG">
-		<value>MODULESETTINGS_TITLE_BG-BG</value>
+	<data name="MODULESETTINGS_TITLE_BG_BG">
+		<value>MODULESETTINGS_TITLE_BG_BG</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_BG-BG_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_BG-BG_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_BG_BG_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_BG_BG_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_CA">
 		<value>MODULESETTINGS_TITLE_CA</value>
@@ -3449,17 +3449,17 @@
 	<data name="MODULESETTINGS_TITLE_EN">
 		<value>MODULESETTINGS_TITLE_EN</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-GB">
-		<value>MODULESETTINGS_TITLE_EN-GB</value>
+	<data name="MODULESETTINGS_TITLE_EN_GB">
+		<value>MODULESETTINGS_TITLE_EN_GB</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-GB_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_EN-GB_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_EN_GB_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_EN_GB_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-US">
-		<value>MODULESETTINGS_TITLE_EN-US</value>
+	<data name="MODULESETTINGS_TITLE_EN_US">
+		<value>MODULESETTINGS_TITLE_EN_US</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-US_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_EN-US_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_EN_US_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_EN_US_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_EN_DESCRIPTION">
 		<value>MODULESETTINGS_TITLE_EN_DESCRIPTION</value>
@@ -3467,11 +3467,11 @@
 	<data name="MODULESETTINGS_TITLE_ES">
 		<value>MODULESETTINGS_TITLE_ES</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ES-ES">
-		<value>MODULESETTINGS_TITLE_ES-ES</value>
+	<data name="MODULESETTINGS_TITLE_ES_ES">
+		<value>MODULESETTINGS_TITLE_ES_ES</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ES-ES_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_ES-ES_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_ES_ES_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_ES_ES_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_ES_DESCRIPTION">
 		<value>MODULESETTINGS_TITLE_ES_DESCRIPTION</value>
@@ -3488,17 +3488,17 @@
 	<data name="MODULESETTINGS_TITLE_IT_DESCRIPTION">
 		<value>MODULESETTINGS_TITLE_IT_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_NL-BE">
-		<value>MODULESETTINGS_TITLE_NL-BE</value>
+	<data name="MODULESETTINGS_TITLE_NL_BE">
+		<value>MODULESETTINGS_TITLE_NL_BE</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_NL-BE_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_NL-BE_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_NL_BE_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_NL_BE_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ZH-CN">
-		<value>MODULESETTINGS_TITLE_ZH-CN</value>
+	<data name="MODULESETTINGS_TITLE_ZH_CN">
+		<value>MODULESETTINGS_TITLE_ZH_CN</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ZH-CN_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_ZH-CN_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_ZH_CN_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_ZH_CN_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_WIDTH_STRETCHING">
 		<value>MODULESETTINGS_WIDTH_STRETCHING</value>
@@ -3980,8 +3980,8 @@
 	<data name="PRODUCT_TOTAL_EXPENSES">
 		<value>PRODUCT_TOTAL_EXPENSES</value>
 	</data>
-	<data name="PRODUCT_TOTAL_PRICE_(INC._TAXES)">
-		<value>PRODUCT_TOTAL_PRICE_(INC._TAXES)</value>
+	<data name="PRODUCT_TOTAL_PRICE_(INC_TAXES)">
+		<value>PRODUCT_TOTAL_PRICE_(INC_TAXES)</value>
 	</data>
 	<data name="PRODUCT_TOTAL_TAXES">
 		<value>PRODUCT_TOTAL_TAXES</value>
@@ -4725,7 +4725,7 @@
 		<value>Service betingelser filnavn</value>
 	</data>
 	<data name="SITESETTINGS_TERMS_OF_SERVICE_DESCRIPTION">
-		<value>Angiv her et navn på en fil hvori der står service-og-vilkår-for-anvendelse til bruger registrerings siden. Der søges automatisk efter sprog ved at tilføje _&lt;culturename&gt;. Eksempel: Terms.txt. Der søges nu først efter Terms.txt og dernæst efter Terms_da.txt (eller Terms_da-DK.txt)</value>
+		<value>Angiv her et navn på en fil hvori der står service-og-vilkår-for-anvendelse til bruger registrerings siden. Der søges automatisk efter sprog ved at tilføje _&lt;culturename&gt;. Eksempel: Terms.txt. Der søges nu først efter Terms.txt og dernæst efter Terms_da.txt (eller Terms_DA_DK.txt)</value>
 	</data>
 	<data name="SITESETTINGS_THEME">
 		<value>Tema</value>
@@ -4913,11 +4913,11 @@
 	<data name="TABKEYPHRASE">
 		<value>TABKEYPHRASE</value>
 	</data>
-	<data name="TABKEYPHRASE_BG-BG">
-		<value>TABKEYPHRASE_BG-BG</value>
+	<data name="TABKEYPHRASE_BG_BG">
+		<value>TABKEYPHRASE_BG_BG</value>
 	</data>
-	<data name="TABKEYPHRASE_BG-BG_DESCRIPTION">
-		<value>TABKEYPHRASE_BG-BG_DESCRIPTION</value>
+	<data name="TABKEYPHRASE_BG_BG_DESCRIPTION">
+		<value>TABKEYPHRASE_BG_BG_DESCRIPTION</value>
 	</data>
 	<data name="TABKEYPHRASE_DESCRIPTION">
 		<value>TABKEYPHRASE_DESCRIPTION</value>
@@ -4931,11 +4931,11 @@
 	<data name="TABKEYPHRASE_ES">
 		<value>TABKEYPHRASE_ES</value>
 	</data>
-	<data name="TABKEYPHRASE_ES-ES">
-		<value>TABKEYPHRASE_ES-ES</value>
+	<data name="TABKEYPHRASE_ES_ES">
+		<value>TABKEYPHRASE_ES_ES</value>
 	</data>
-	<data name="TABKEYPHRASE_ES-ES_DESCRIPTION">
-		<value>TABKEYPHRASE_ES-ES_DESCRIPTION</value>
+	<data name="TABKEYPHRASE_ES_ES_DESCRIPTION">
+		<value>TABKEYPHRASE_ES_ES_DESCRIPTION</value>
 	</data>
 	<data name="TABKEYPHRASE_ES_DESCRIPTION">
 		<value>TABKEYPHRASE_ES_DESCRIPTION</value>
@@ -5061,7 +5061,7 @@
 		<value>Service betingelse</value>
 	</data>
 	<data name="TERMSOFSERVICE_DESCRIPTION">
-		<value>Angiv her et navn på en fil hvori der står service-og-vilkår-for-anvendelse til bruger registrerings siden. Der søges automatisk efter sprog ved at tilføje _&lt;culturename&gt;. Eksempel: Terms.txt. Der søges nu først efter Terms.txt og dernæst efter Terms_da.txt (eller Terms_da-DK.txt)</value>
+		<value>Angiv her et navn på en fil hvori der står service-og-vilkår-for-anvendelse til bruger registrerings siden. Der søges automatisk efter sprog ved at tilføje _&lt;culturename&gt;. Eksempel: Terms.txt. Der søges nu først efter Terms.txt og dernæst efter Terms_da.txt (eller Terms_DA_DK.txt)</value>
 	</data>
 	<data name="TESTMODE">
 		<value>Test mode</value>
@@ -5159,11 +5159,11 @@
 	<data name="TR">
 		<value>TR</value>
 	</data>
-	<data name="TR-TR">
-		<value>TR-TR</value>
+	<data name="TR_TR">
+		<value>TR_TR</value>
 	</data>
-	<data name="TR-TR_DESCRIPTION">
-		<value>TR-TR_DESCRIPTION</value>
+	<data name="TR_TR_DESCRIPTION">
+		<value>TR_TR_DESCRIPTION</value>
 	</data>
 	<data name="TR_DESCRIPTION">
 		<value>TR_DESCRIPTION</value>
@@ -5426,11 +5426,11 @@
 	<data name="YEARS">
 		<value>YEARS</value>
 	</data>
-	<data name="ZH-CN">
-		<value>ZH-CN</value>
+	<data name="ZH_CN">
+		<value>ZH_CN</value>
 	</data>
-	<data name="ZH-CN_DESCRIPTION">
-		<value>ZH-CN_DESCRIPTION</value>
+	<data name="ZH_CN_DESCRIPTION">
+		<value>ZH_CN_DESCRIPTION</value>
 	</data>
 	<data name="ZIP">
 		<value>Postnummer</value>
