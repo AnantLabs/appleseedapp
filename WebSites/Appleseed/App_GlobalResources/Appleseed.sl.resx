@@ -310,11 +310,11 @@
 	<data name="BANK">
 		<value>Banka</value>
 	</data>
-	<data name="BG-BG">
-		<value>BG-BG</value>
+	<data name="BG_BG">
+		<value>BG_BG</value>
 	</data>
-	<data name="BG-BG_DESCRIPTION">
-		<value>BG-BG_DESCRIPTION</value>
+	<data name="BG_BG_DESCRIPTION">
+		<value>BG_BG_DESCRIPTION</value>
 	</data>
 	<data name="BIND_OPTION_CHILDREN">
 		<value>BIND_OPTION_CHILDREN</value>
@@ -1927,11 +1927,11 @@
 	<data name="CUSTOMTHEMEALT_DESCRIPTION">
 		<value>Nastavi lastno alternativno temo za module samo za ta list</value>
 	</data>
-	<data name="DA-DK">
-		<value>DA-DK</value>
+	<data name="DA_DK">
+		<value>DA_DK</value>
 	</data>
-	<data name="DA-DK_DESCRIPTION">
-		<value>DA-DK_DESCRIPTION</value>
+	<data name="DA_DK_DESCRIPTION">
+		<value>DA_DK_DESCRIPTION</value>
 	</data>
 	<data name="DATE">
 		<value>Datum</value>
@@ -1954,16 +1954,16 @@
 	<data name="DBTOOL_QUERYEXECUTE">
 		<value>DBTOOL_QUERYEXECUTE</value>
 	</data>
-	<data name="DE-CH">
-		<value>Naslov (de-CH)</value>
+	<data name="DE_CH">
+		<value>Naslov (DE_CH)</value>
 	</data>
-	<data name="DE-CH_DESCRIPTION">
+	<data name="DE_CH_DESCRIPTION">
 		<value>Nastavite naslov za nemško (švicarsko) kulturo</value>
 	</data>
-	<data name="DE-DE">
-		<value>Naslov (de-DE)</value>
+	<data name="DE_DE">
+		<value>Naslov (DE_DE)</value>
 	</data>
-	<data name="DE-DE_DESCRIPTION">
+	<data name="DE_DE_DESCRIPTION">
 		<value>Nastavite naslov za nemško (nemško) kulturo</value>
 	</data>
 	<data name="DECLINE">
@@ -2281,10 +2281,10 @@
 	<data name="EN">
 		<value>Naslov (en)</value>
 	</data>
-	<data name="EN-US">
+	<data name="EN_US">
 		<value/>
 	</data>
-	<data name="EN-US_DESCRIPTION">
+	<data name="EN_US_DESCRIPTION">
 		<value/>
 	</data>
 	<data name="EN_DESCRIPTION">
@@ -2563,11 +2563,11 @@
 	<data name="ES">
 		<value>ES</value>
 	</data>
-	<data name="ES-ES">
-		<value>ES-ES</value>
+	<data name="ES_ES">
+		<value>ES_ES</value>
 	</data>
-	<data name="ES-ES_DESCRIPTION">
-		<value>ES-ES_DESCRIPTION</value>
+	<data name="ES_ES_DESCRIPTION">
+		<value>ES_ES_DESCRIPTION</value>
 	</data>
 	<data name="ES_DESCRIPTION">
 		<value>ES_DESCRIPTION</value>
@@ -2914,10 +2914,10 @@
 	<data name="IT">
 		<value>Naslov (it)</value>
 	</data>
-	<data name="IT-IT">
-		<value>Naslov (it-IT)</value>
+	<data name="IT_IT">
+		<value>Naslov (IT_IT)</value>
 	</data>
-	<data name="IT-IT_DESCRIPTION">
+	<data name="IT_IT_DESCRIPTION">
 		<value>Nastavite naslov za italijansko (Italija) kulturo</value>
 	</data>
 	<data name="IT_DESCRIPTION">
@@ -3376,11 +3376,11 @@
 	<data name="MODULESETTINGS_THEME_DESCRIPTION">
 		<value>Izberi temo za ta modul</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_BG-BG">
-		<value>MODULESETTINGS_TITLE_BG-BG</value>
+	<data name="MODULESETTINGS_TITLE_BG_BG">
+		<value>MODULESETTINGS_TITLE_BG_BG</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_BG-BG_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_BG-BG_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_BG_BG_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_BG_BG_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_CA">
 		<value>MODULESETTINGS_TITLE_CA</value>
@@ -3391,16 +3391,16 @@
 	<data name="MODULESETTINGS_TITLE_EN">
 		<value>MODULESETTINGS_TITLE_EN</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-GB">
-		<value>MODULESETTINGS_TITLE_EN-GB</value>
+	<data name="MODULESETTINGS_TITLE_EN_GB">
+		<value>MODULESETTINGS_TITLE_EN_GB</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-GB_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_EN-GB_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_EN_GB_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_EN_GB_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-US">
-		<value>Naslov (en-US)</value>
+	<data name="MODULESETTINGS_TITLE_EN_US">
+		<value>Naslov (EN_US)</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-US_DESCRIPTION">
+	<data name="MODULESETTINGS_TITLE_EN_US_DESCRIPTION">
 		<value>Nastavi naslov za angleško kulturo (ZDA)</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_EN_DESCRIPTION">
@@ -3409,11 +3409,11 @@
 	<data name="MODULESETTINGS_TITLE_ES">
 		<value>MODULESETTINGS_TITLE_ES</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ES-ES">
-		<value>MODULESETTINGS_TITLE_ES-ES</value>
+	<data name="MODULESETTINGS_TITLE_ES_ES">
+		<value>MODULESETTINGS_TITLE_ES_ES</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ES-ES_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_ES-ES_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_ES_ES_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_ES_ES_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_ES_DESCRIPTION">
 		<value>MODULESETTINGS_TITLE_ES_DESCRIPTION</value>
@@ -3430,16 +3430,16 @@
 	<data name="MODULESETTINGS_TITLE_IT_DESCRIPTION">
 		<value>MODULESETTINGS_TITLE_IT_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_NL-BE">
-		<value>MODULESETTINGS_TITLE_NL-BE</value>
+	<data name="MODULESETTINGS_TITLE_NL_BE">
+		<value>MODULESETTINGS_TITLE_NL_BE</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_NL-BE_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_NL-BE_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_NL_BE_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_NL_BE_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ZH-CN">
-		<value>Naslov (zh-CN)</value>
+	<data name="MODULESETTINGS_TITLE_ZH_CN">
+		<value>Naslov (ZH_CN)</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ZH-CN_DESCRIPTION">
+	<data name="MODULESETTINGS_TITLE_ZH_CN_DESCRIPTION">
 		<value>Nastavi naslov za kitajsko kulturo (Ljudska republika Kitajska)</value>
 	</data>
 	<data name="MODULESETTINGS_WIDTH_STRETCHING">
@@ -3922,7 +3922,7 @@
 	<data name="PRODUCT_TOTAL_EXPENSES">
 		<value>PRODUCT_TOTAL_EXPENSES</value>
 	</data>
-	<data name="PRODUCT_TOTAL_PRICE_(INC._TAXES)">
+	<data name="PRODUCT_TOTAL_PRICE_(INC_TAXES)">
 		<value/>
 	</data>
 	<data name="PRODUCT_TOTAL_TAXES">
@@ -4855,11 +4855,11 @@
 	<data name="TABKEYPHRASE">
 		<value>Privzeti list / ključna fraza strani</value>
 	</data>
-	<data name="TABKEYPHRASE_BG-BG">
-		<value>TABKEYPHRASE_BG-BG</value>
+	<data name="TABKEYPHRASE_BG_BG">
+		<value>TABKEYPHRASE_BG_BG</value>
 	</data>
-	<data name="TABKEYPHRASE_BG-BG_DESCRIPTION">
-		<value>TABKEYPHRASE_BG-BG_DESCRIPTION</value>
+	<data name="TABKEYPHRASE_BG_BG_DESCRIPTION">
+		<value>TABKEYPHRASE_BG_BG_DESCRIPTION</value>
 	</data>
 	<data name="TABKEYPHRASE_DESCRIPTION">
 		<value>To nastavitev lahko uporablja modul ali gradnik. Dovoljuje definiranje skupnega opisa za celoten portal.</value>
@@ -4873,11 +4873,11 @@
 	<data name="TABKEYPHRASE_ES">
 		<value>TABKEYPHRASE_ES</value>
 	</data>
-	<data name="TABKEYPHRASE_ES-ES">
-		<value>TABKEYPHRASE_ES-ES</value>
+	<data name="TABKEYPHRASE_ES_ES">
+		<value>TABKEYPHRASE_ES_ES</value>
 	</data>
-	<data name="TABKEYPHRASE_ES-ES_DESCRIPTION">
-		<value>TABKEYPHRASE_ES-ES_DESCRIPTION</value>
+	<data name="TABKEYPHRASE_ES_ES_DESCRIPTION">
+		<value>TABKEYPHRASE_ES_ES_DESCRIPTION</value>
 	</data>
 	<data name="TABKEYPHRASE_ES_DESCRIPTION">
 		<value>TABKEYPHRASE_ES_DESCRIPTION</value>
@@ -5003,7 +5003,7 @@
 		<value>Pogoji storitev</value>
 	</data>
 	<data name="TERMSOFSERVICE_DESCRIPTION">
-		<value>Vpišite ime datoteke s pogoji uporabe. Za lokalizacijo pripišite imenu datoteke _&lt;imekulture&gt;. Npr. Pogoji.txt poišče Pogoji.txt in Pogoji_en-US.txt</value>
+		<value>Vpišite ime datoteke s pogoji uporabe. Za lokalizacijo pripišite imenu datoteke _&lt;imekulture&gt;. Npr. Pogoji.txt poišče Pogoji.txt in Pogoji_EN_US.txt</value>
 	</data>
 	<data name="TESTMODE">
 		<value>Testni način</value>
@@ -5101,11 +5101,11 @@
 	<data name="TR">
 		<value>TR</value>
 	</data>
-	<data name="TR-TR">
-		<value>TR-TR</value>
+	<data name="TR_TR">
+		<value>TR_TR</value>
 	</data>
-	<data name="TR-TR_DESCRIPTION">
-		<value>TR-TR_DESCRIPTION</value>
+	<data name="TR_TR_DESCRIPTION">
+		<value>TR_TR_DESCRIPTION</value>
 	</data>
 	<data name="TR_DESCRIPTION">
 		<value>TR_DESCRIPTION</value>
@@ -5368,10 +5368,10 @@
 	<data name="YEARS">
 		<value>YEARS</value>
 	</data>
-	<data name="ZH-CN">
-		<value>Naslov (zh-CN)</value>
+	<data name="ZH_CN">
+		<value>Naslov (ZH_CN)</value>
 	</data>
-	<data name="ZH-CN_DESCRIPTION">
+	<data name="ZH_CN_DESCRIPTION">
 		<value>Vpišite naslov za kitajsko kulturo (Ljudska republika Kitajska)</value>
 	</data>
 	<data name="ZIP">

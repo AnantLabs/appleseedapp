@@ -557,9 +557,7 @@ select.NormalTextBox{
 select#Content_ContentPane_ctl01_EditTable_SITESETTINGS_LANGLIST{
     height: 125px!important;
 }
-select#Content_ContentPane_ctl03_tabList,
-select#Content_ContentPane_ctl02_tabList,
-select#Content_ContentPane_ctl01_portalList{
+select.SelectList{
 	height:250px!important;
 	max-height:250px!important;
 }

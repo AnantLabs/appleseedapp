@@ -390,11 +390,11 @@
   <data name="BANK" xml:space="preserve">
     <value>Bank</value>
   </data>
-  <data name="BG-BG" xml:space="preserve">
-    <value>BG-BG</value>
+  <data name="BG_BG" xml:space="preserve">
+    <value>BG_BG</value>
   </data>
-  <data name="BG-BG_DESCRIPTION" xml:space="preserve">
-    <value>BG-BG_DESCRIPTION</value>
+  <data name="BG_BG_DESCRIPTION" xml:space="preserve">
+    <value>BG_BG_DESCRIPTION</value>
   </data>
   <data name="BIND_OPTION_CHILDREN" xml:space="preserve">
     <value>BindOptionChildren</value>
@@ -2010,10 +2010,10 @@
   <data name="CUSTOMTHEMEALT_DESCRIPTION" xml:space="preserve">
     <value>Set a custom alternate theme for the modules in this tab only</value>
   </data>
-  <data name="DA-DK" xml:space="preserve">
-    <value>Title (da-DK)</value>
+  <data name="DA_DK" xml:space="preserve">
+    <value>Title (DA_DK)</value>
   </data>
-  <data name="DA-DK_DESCRIPTION" xml:space="preserve">
+  <data name="DA_DK_DESCRIPTION" xml:space="preserve">
     <value>Set title for Danish (Denmark) culture.</value>
   </data>
   <data name="DATE" xml:space="preserve">
@@ -2037,16 +2037,16 @@
   <data name="DBTOOL_QUERYEXECUTE" xml:space="preserve">
     <value>Execute Query</value>
   </data>
-  <data name="DE-CH" xml:space="preserve">
-    <value>Title (de-CH)</value>
+  <data name="DE_CH" xml:space="preserve">
+    <value>Title (DE_CH)</value>
   </data>
-  <data name="DE-CH_DESCRIPTION" xml:space="preserve">
+  <data name="DE_CH_DESCRIPTION" xml:space="preserve">
     <value>Set title for German (Switzerland) culture.</value>
   </data>
-  <data name="DE-DE" xml:space="preserve">
-    <value>Title (de-DE)</value>
+  <data name="DE_DE" xml:space="preserve">
+    <value>Title (DE_DE)</value>
   </data>
-  <data name="DE-DE_DESCRIPTION" xml:space="preserve">
+  <data name="DE_DE_DESCRIPTION" xml:space="preserve">
     <value>Set title for German (Germany) culture.</value>
   </data>
   <data name="DECLINE" xml:space="preserve">
@@ -2370,10 +2370,10 @@
   <data name="EN" xml:space="preserve">
     <value>Title (en)</value>
   </data>
-  <data name="EN-US" xml:space="preserve">
-    <value>Title (en-US)</value>
+  <data name="EN_US" xml:space="preserve">
+    <value>Title (EN_US)</value>
   </data>
-  <data name="EN-US_DESCRIPTION" xml:space="preserve">
+  <data name="EN_US_DESCRIPTION" xml:space="preserve">
     <value>Set title for English (United States) culture.</value>
   </data>
   <data name="EN_DESCRIPTION" xml:space="preserve">
@@ -2652,10 +2652,10 @@
   <data name="ES" xml:space="preserve">
     <value>Title (es)</value>
   </data>
-  <data name="ES-ES" xml:space="preserve">
+  <data name="ES_ES" xml:space="preserve">
     <value />
   </data>
-  <data name="ES-ES_DESCRIPTION" xml:space="preserve">
+  <data name="ES_ES_DESCRIPTION" xml:space="preserve">
     <value />
   </data>
   <data name="ES_DESCRIPTION" xml:space="preserve">
@@ -3003,10 +3003,10 @@
   <data name="IT" xml:space="preserve">
     <value>Title (it)</value>
   </data>
-  <data name="IT-IT" xml:space="preserve">
-    <value>Title (it-IT)</value>
+  <data name="IT_IT" xml:space="preserve">
+    <value>Title (IT_IT)</value>
   </data>
-  <data name="IT-IT_DESCRIPTION" xml:space="preserve">
+  <data name="IT_IT_DESCRIPTION" xml:space="preserve">
     <value>Set title for Italian (Italy) culture.</value>
   </data>
   <data name="IT_DESCRIPTION" xml:space="preserve">
@@ -3465,10 +3465,10 @@
   <data name="MODULESETTINGS_THEME_DESCRIPTION" xml:space="preserve">
     <value>Choose theme for this module</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_BG-BG" xml:space="preserve">
+  <data name="MODULESETTINGS_TITLE_BG_BG" xml:space="preserve">
     <value />
   </data>
-  <data name="MODULESETTINGS_TITLE_BG-BG_DESCRIPTION" xml:space="preserve">
+  <data name="MODULESETTINGS_TITLE_BG_BG_DESCRIPTION" xml:space="preserve">
     <value />
   </data>
   <data name="MODULESETTINGS_TITLE_CA" xml:space="preserve">
@@ -3480,16 +3480,16 @@
   <data name="MODULESETTINGS_TITLE_EN" xml:space="preserve">
     <value>Title (en)</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_EN-GB" xml:space="preserve">
-    <value>Title (en-GB)</value>
+  <data name="MODULESETTINGS_TITLE_EN_GB" xml:space="preserve">
+    <value>Title (EN_GB)</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_EN-GB_DESCRIPTION" xml:space="preserve">
+  <data name="MODULESETTINGS_TITLE_EN_GB_DESCRIPTION" xml:space="preserve">
     <value>Set title for English (United Kingdom) culture.</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_EN-US" xml:space="preserve">
-    <value>Title (en-US)</value>
+  <data name="MODULESETTINGS_TITLE_EN_US" xml:space="preserve">
+    <value>Title (EN_US)</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_EN-US_DESCRIPTION" xml:space="preserve">
+  <data name="MODULESETTINGS_TITLE_EN_US_DESCRIPTION" xml:space="preserve">
     <value>Set title for English (United States) culture.</value>
   </data>
   <data name="MODULESETTINGS_TITLE_EN_DESCRIPTION" xml:space="preserve">
@@ -3498,10 +3498,10 @@
   <data name="MODULESETTINGS_TITLE_ES" xml:space="preserve">
     <value>Title (es)</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_ES-ES" xml:space="preserve">
+  <data name="MODULESETTINGS_TITLE_ES_ES" xml:space="preserve">
     <value />
   </data>
-  <data name="MODULESETTINGS_TITLE_ES-ES_DESCRIPTION" xml:space="preserve">
+  <data name="MODULESETTINGS_TITLE_ES_ES_DESCRIPTION" xml:space="preserve">
     <value />
   </data>
   <data name="MODULESETTINGS_TITLE_ES_DESCRIPTION" xml:space="preserve">
@@ -3519,16 +3519,16 @@
   <data name="MODULESETTINGS_TITLE_IT_DESCRIPTION" xml:space="preserve">
     <value />
   </data>
-  <data name="MODULESETTINGS_TITLE_NL-BE" xml:space="preserve">
-    <value>Title (nl-BE)</value>
+  <data name="MODULESETTINGS_TITLE_NL_BE" xml:space="preserve">
+    <value>Title (NL_BE)</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_NL-BE_DESCRIPTION" xml:space="preserve">
+  <data name="MODULESETTINGS_TITLE_NL_BE_DESCRIPTION" xml:space="preserve">
     <value>Set title for Dutch (Belgium) culture.</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_ZH-CN" xml:space="preserve">
-    <value>Title (zh-CN)</value>
+  <data name="MODULESETTINGS_TITLE_ZH_CN" xml:space="preserve">
+    <value>Title (ZH_CN)</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_ZH-CN_DESCRIPTION" xml:space="preserve">
+  <data name="MODULESETTINGS_TITLE_ZH_CN_DESCRIPTION" xml:space="preserve">
     <value>Set title for Chinese (People’s Republic of China) culture.</value>
   </data>
   <data name="MODULESETTINGS_WIDTH_STRETCHING" xml:space="preserve">
@@ -4011,7 +4011,7 @@
   <data name="PRODUCT_TOTAL_EXPENSES" xml:space="preserve">
     <value>Total Expenses</value>
   </data>
-  <data name="PRODUCT_TOTAL_PRICE_(INC._TAXES)" xml:space="preserve">
+  <data name="PRODUCT_TOTAL_PRICE_(INC_TAXES)" xml:space="preserve">
     <value>Total Price (inc Taxes)</value>
   </data>
   <data name="PRODUCT_TOTAL_TAXES" xml:space="preserve">
@@ -4759,7 +4759,7 @@
     <value>Terms file name</value>
   </data>
   <data name="SITESETTINGS_TERMS_OF_SERVICE_DESCRIPTION" xml:space="preserve">
-    <value>Type here a file name used for showing terms and condition in each register page. Provide localized version adding _&lt;culturename&gt;. E.g. Terms.txt, will search for Terms.txt and for Terms_en-US.txt</value>
+    <value>Type here a file name used for showing terms and condition in each register page. Provide localized version adding _&lt;culturename&gt;. E.g. Terms.txt, will search for Terms.txt and for Terms_EN_US.txt</value>
   </data>
   <data name="SITESETTINGS_THEME" xml:space="preserve">
     <value>Theme</value>
@@ -4947,10 +4947,10 @@
   <data name="TABKEYPHRASE" xml:space="preserve">
     <value>Default Tab / Page Keyphrase</value>
   </data>
-  <data name="TABKEYPHRASE_BG-BG" xml:space="preserve">
+  <data name="TABKEYPHRASE_BG_BG" xml:space="preserve">
     <value />
   </data>
-  <data name="TABKEYPHRASE_BG-BG_DESCRIPTION" xml:space="preserve">
+  <data name="TABKEYPHRASE_BG_BG_DESCRIPTION" xml:space="preserve">
     <value />
   </data>
   <data name="TABKEYPHRASE_DESCRIPTION" xml:space="preserve">
@@ -4965,10 +4965,10 @@
   <data name="TABKEYPHRASE_ES" xml:space="preserve">
     <value>Tab Key Phrase (es)</value>
   </data>
-  <data name="TABKEYPHRASE_ES-ES" xml:space="preserve">
+  <data name="TABKEYPHRASE_ES_ES" xml:space="preserve">
     <value />
   </data>
-  <data name="TABKEYPHRASE_ES-ES_DESCRIPTION" xml:space="preserve">
+  <data name="TABKEYPHRASE_ES_ES_DESCRIPTION" xml:space="preserve">
     <value />
   </data>
   <data name="TABKEYPHRASE_ES_DESCRIPTION" xml:space="preserve">
@@ -5095,7 +5095,7 @@
     <value>Terms of Service</value>
   </data>
   <data name="TERMSOFSERVICE_DESCRIPTION" xml:space="preserve">
-    <value>Type here a file name used for showing terms and condition in each register page. Provide localized version adding _&lt;culturename&gt;. E.g. Terms.txt, will search for Terms.txt and for Terms_en-US.txt</value>
+    <value>Type here a file name used for showing terms and condition in each register page. Provide localized version adding _&lt;culturename&gt;. E.g. Terms.txt, will search for Terms.txt and for Terms_EN_US.txt</value>
   </data>
   <data name="TESTMODE" xml:space="preserve">
     <value>Test Mode</value>
@@ -5193,10 +5193,10 @@
   <data name="TR" xml:space="preserve">
     <value />
   </data>
-  <data name="TR-TR" xml:space="preserve">
+  <data name="TR_TR" xml:space="preserve">
     <value />
   </data>
-  <data name="TR-TR_DESCRIPTION" xml:space="preserve">
+  <data name="TR_TR_DESCRIPTION" xml:space="preserve">
     <value />
   </data>
   <data name="TR_DESCRIPTION" xml:space="preserve">
@@ -5460,10 +5460,10 @@
   <data name="YEARS" xml:space="preserve">
     <value>Years (Max)</value>
   </data>
-  <data name="ZH-CN" xml:space="preserve">
-    <value>Title (zh-CN)</value>
+  <data name="ZH_CN" xml:space="preserve">
+    <value>Title (ZH_CN)</value>
   </data>
-  <data name="ZH-CN_DESCRIPTION" xml:space="preserve">
+  <data name="ZH_CN_DESCRIPTION" xml:space="preserve">
     <value>Set title for Chinese (People’s Republic of China) culture.</value>
   </data>
   <data name="ZIP" xml:space="preserve">
@@ -5591,15 +5591,15 @@ function confirmDelete()
   <data name="SIGNIN_SET_NEW_PWD_MSG" xml:space="preserve">
     <value>You can set a new password for your account going to the following link:</value>
   </data>
-  <data name="Signin_SendPasswordBtnClick_Please_enter_you_email_address">
-    <value xml:space="preserve">Please enter you email address</value>
+  <data name="Signin_SendPasswordBtnClick_Please_enter_you_email_address" xml:space="preserve">
+    <value>Please enter you email address</value>
   </data>
-  <data name="Signin_LoginBtnClick_Login_failed">
-    <value xml:space="preserve">Login failed</value>
+  <data name="Signin_LoginBtnClick_Login_failed" xml:space="preserve">
+    <value>Login failed</value>
   </data>
-	<data name="Discussion_unknown">
-		<value xml:space="preserve">unknown</value>
-	</data>
+  <data name="Discussion_unknown" xml:space="preserve">
+    <value>unknown</value>
+  </data>
   <data name="PASSWORD_AGAIN" xml:space="preserve">
     <value>Repeat password</value>
   </data>
@@ -5614,5 +5614,11 @@ function confirmDelete()
   </data>
   <data name="CHANGE_PWD_WRONG_PWD" xml:space="preserve">
     <value>Wrong password</value>
+  </data>
+  <data name="TEMPLATE" xml:space="preserve">
+    <value>Templates</value>
+  </data>
+  <data name="TEMPLATES" xml:space="preserve">
+    <value>Templates</value>
   </data>
 </root>

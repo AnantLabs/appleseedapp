@@ -369,11 +369,11 @@
 	<data name="BANK">
 		<value>Banc</value>
 	</data>
-	<data name="BG-BG">
-		<value>BG-BG</value>
+	<data name="BG_BG">
+		<value>BG_BG</value>
 	</data>
-	<data name="BG-BG_DESCRIPTION">
-		<value>BG-BG_DESCRIPTION</value>
+	<data name="BG_BG_DESCRIPTION">
+		<value>BG_BG_DESCRIPTION</value>
 	</data>
 	<data name="BIND_OPTION_CHILDREN">
 		<value>BIND_OPTION_CHILDREN</value>
@@ -1987,10 +1987,10 @@
 	<data name="CUSTOMTHEMEALT_DESCRIPTION">
 		<value>Utilitzar Tema personal alternatiu sols en aquesta pàgina</value>
 	</data>
-	<data name="DA-DK">
-		<value>Títol (da-DK)</value>
+	<data name="DA_DK">
+		<value>Títol (DA_DK)</value>
 	</data>
-	<data name="DA-DK_DESCRIPTION">
+	<data name="DA_DK_DESCRIPTION">
 		<value>Establir Títol per a cultura danesa (de-DK)</value>
 	</data>
 	<data name="DATE">
@@ -2014,16 +2014,16 @@
 	<data name="DBTOOL_QUERYEXECUTE">
 		<value>Executar Sentència</value>
 	</data>
-	<data name="DE-CH">
+	<data name="DE_CH">
 		<value>Títol</value>
 	</data>
-	<data name="DE-CH_DESCRIPTION">
+	<data name="DE_CH_DESCRIPTION">
 		<value>Establir Títol per a cultura alemanya (Suiza)</value>
 	</data>
-	<data name="DE-DE">
-		<value>Títol (de-DE)</value>
+	<data name="DE_DE">
+		<value>Títol (DE_DE)</value>
 	</data>
-	<data name="DE-DE_DESCRIPTION">
+	<data name="DE_DE_DESCRIPTION">
 		<value>Establir Títol per a cultura alemana (Alemanya)</value>
 	</data>
 	<data name="DECLINE">
@@ -2341,10 +2341,10 @@
 	<data name="EN">
 		<value>Títol (en)</value>
 	</data>
-	<data name="EN-US">
-		<value>Títol (en-US)</value>
+	<data name="EN_US">
+		<value>Títol (EN_US)</value>
 	</data>
-	<data name="EN-US_DESCRIPTION">
+	<data name="EN_US_DESCRIPTION">
 		<value>Establir títol per a cultura anglesa (Estats Units).</value>
 	</data>
 	<data name="EN_DESCRIPTION">
@@ -2623,10 +2623,10 @@
 	<data name="ES">
 		<value>Títol (es)</value>
 	</data>
-	<data name="ES-ES">
-		<value>Títol (es-ES)</value>
+	<data name="ES_ES">
+		<value>Títol (ES_ES)</value>
 	</data>
-	<data name="ES-ES_DESCRIPTION">
+	<data name="ES_ES_DESCRIPTION">
 		<value>Establir Títol per a cultura espanyola (Espanya).</value>
 	</data>
 	<data name="ES_DESCRIPTION">
@@ -2974,10 +2974,10 @@
 	<data name="IT">
 		<value>Títol (it)</value>
 	</data>
-	<data name="IT-IT">
-		<value>Títol (it-IT)</value>
+	<data name="IT_IT">
+		<value>Títol (IT_IT)</value>
 	</data>
-	<data name="IT-IT_DESCRIPTION">
+	<data name="IT_IT_DESCRIPTION">
 		<value>Establir títol per a cultura italiana (Italia).</value>
 	</data>
 	<data name="IT_DESCRIPTION">
@@ -3436,11 +3436,11 @@
 	<data name="MODULESETTINGS_THEME_DESCRIPTION">
 		<value>Escogir tema per aquest mòdul</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_BG-BG">
-		<value>MODULESETTINGS_TITLE_BG-BG</value>
+	<data name="MODULESETTINGS_TITLE_BG_BG">
+		<value>MODULESETTINGS_TITLE_BG_BG</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_BG-BG_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_BG-BG_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_BG_BG_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_BG_BG_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_CA">
 		<value>Título (Catalán)</value>
@@ -3451,16 +3451,16 @@
 	<data name="MODULESETTINGS_TITLE_EN">
 		<value>Títol (en)</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-GB">
-		<value>MODULESETTINGS_TITLE_EN-GB</value>
+	<data name="MODULESETTINGS_TITLE_EN_GB">
+		<value>MODULESETTINGS_TITLE_EN_GB</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-GB_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_EN-GB_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_EN_GB_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_EN_GB_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-US">
-		<value>Títol (en-US)</value>
+	<data name="MODULESETTINGS_TITLE_EN_US">
+		<value>Títol (EN_US)</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-US_DESCRIPTION">
+	<data name="MODULESETTINGS_TITLE_EN_US_DESCRIPTION">
 		<value>Establir Títol per a cultura anglesa (Estats Units)</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_EN_DESCRIPTION">
@@ -3469,10 +3469,10 @@
 	<data name="MODULESETTINGS_TITLE_ES">
 		<value>Títol (es)</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ES-ES">
-		<value>Títol (es-ES)</value>
+	<data name="MODULESETTINGS_TITLE_ES_ES">
+		<value>Títol (ES_ES)</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ES-ES_DESCRIPTION">
+	<data name="MODULESETTINGS_TITLE_ES_ES_DESCRIPTION">
 		<value>Establir Títol en Castellà (Espanya)</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_ES_DESCRIPTION">
@@ -3490,16 +3490,16 @@
 	<data name="MODULESETTINGS_TITLE_IT_DESCRIPTION">
 		<value>Título en Italiano</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_NL-BE">
-		<value>MODULESETTINGS_TITLE_NL-BE</value>
+	<data name="MODULESETTINGS_TITLE_NL_BE">
+		<value>MODULESETTINGS_TITLE_NL_BE</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_NL-BE_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_NL-BE_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_NL_BE_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_NL_BE_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ZH-CN">
-		<value>Títol (zh-CN)</value>
+	<data name="MODULESETTINGS_TITLE_ZH_CN">
+		<value>Títol (ZH_CN)</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ZH-CN_DESCRIPTION">
+	<data name="MODULESETTINGS_TITLE_ZH_CN_DESCRIPTION">
 		<value>Establir títol per a cultura china.</value>
 	</data>
 	<data name="MODULESETTINGS_WIDTH_STRETCHING">
@@ -3982,7 +3982,7 @@
 	<data name="PRODUCT_TOTAL_EXPENSES">
 		<value>Total de Gastos</value>
 	</data>
-	<data name="PRODUCT_TOTAL_PRICE_(INC._TAXES)">
+	<data name="PRODUCT_TOTAL_PRICE_(INC_TAXES)">
 		<value>Preu Total (impostos.incl)</value>
 	</data>
 	<data name="PRODUCT_TOTAL_TAXES">
@@ -4916,11 +4916,11 @@
 	<data name="TABKEYPHRASE">
 		<value>Frase clau de la Pàgina</value>
 	</data>
-	<data name="TABKEYPHRASE_BG-BG">
-		<value>TABKEYPHRASE_BG-BG</value>
+	<data name="TABKEYPHRASE_BG_BG">
+		<value>TABKEYPHRASE_BG_BG</value>
 	</data>
-	<data name="TABKEYPHRASE_BG-BG_DESCRIPTION">
-		<value>TABKEYPHRASE_BG-BG_DESCRIPTION</value>
+	<data name="TABKEYPHRASE_BG_BG_DESCRIPTION">
+		<value>TABKEYPHRASE_BG_BG_DESCRIPTION</value>
 	</data>
 	<data name="TABKEYPHRASE_DESCRIPTION">
 		<value>Aquesta característica pot ser utilitzada per un mòdul o un control. Permet definir un missatge comú per a tot el portal. Per exemple ’Benvingut al Portal!’ Això també pot ser utilitzat per a optimitzar les recerques.</value>
@@ -4934,10 +4934,10 @@
 	<data name="TABKEYPHRASE_ES">
 		<value>Frase clave de la Página (es)</value>
 	</data>
-	<data name="TABKEYPHRASE_ES-ES">
-		<value>Frase clave para la página (es-ES)</value>
+	<data name="TABKEYPHRASE_ES_ES">
+		<value>Frase clave para la página (ES_ES)</value>
 	</data>
-	<data name="TABKEYPHRASE_ES-ES_DESCRIPTION">
+	<data name="TABKEYPHRASE_ES_ES_DESCRIPTION">
 		<value>Frase clave para esta página de Cultura Española (España).</value>
 	</data>
 	<data name="TABKEYPHRASE_ES_DESCRIPTION">
@@ -5162,11 +5162,11 @@
 	<data name="TR">
 		<value>TR</value>
 	</data>
-	<data name="TR-TR">
-		<value>TR-TR</value>
+	<data name="TR_TR">
+		<value>TR_TR</value>
 	</data>
-	<data name="TR-TR_DESCRIPTION">
-		<value>TR-TR_DESCRIPTION</value>
+	<data name="TR_TR_DESCRIPTION">
+		<value>TR_TR_DESCRIPTION</value>
 	</data>
 	<data name="TR_DESCRIPTION">
 		<value>TR_DESCRIPTION</value>
@@ -5429,10 +5429,10 @@
 	<data name="YEARS">
 		<value>YEARS</value>
 	</data>
-	<data name="ZH-CN">
-		<value>Títol (zh-CN)</value>
+	<data name="ZH_CN">
+		<value>Títol (ZH_CN)</value>
 	</data>
-	<data name="ZH-CN_DESCRIPTION">
+	<data name="ZH_CN_DESCRIPTION">
 		<value>Establir títol per a la cultura chinessa (Republica Popular)</value>
 	</data>
 	<data name="ZIP">

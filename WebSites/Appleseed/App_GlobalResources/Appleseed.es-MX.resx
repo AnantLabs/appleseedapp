@@ -852,10 +852,10 @@
   <data name="CUSTOMTHEME_DESCRIPTION">
     <value>Usar Tema personalizado sólo en esta página</value>
   </data>
-  <data name="DA-DK">
-    <value>Titulo (da-DK)</value>
+  <data name="DA_DK">
+    <value>Titulo (DA_DK)</value>
   </data>
-  <data name="DA-DK_DESCRIPTION">
+  <data name="DA_DK_DESCRIPTION">
     <value>Establecer Titulo para cultura danesa (de-DK)</value>
   </data>
   <data name="DATE">
@@ -891,16 +891,16 @@
   <data name="DBTOOL_QUERYEXECUTE">
     <value>Ejecutar Sentencia</value>
   </data>
-  <data name="DE-CH">
+  <data name="DE_CH">
     <value>Título</value>
   </data>
-  <data name="DE-CH_DESCRIPTION">
+  <data name="DE_CH_DESCRIPTION">
     <value>Establecer Titulo para cultura alemana (Suiza)</value>
   </data>
-  <data name="DE-DE">
-    <value>Title (de-DE)</value>
+  <data name="DE_DE">
+    <value>Title (DE_DE)</value>
   </data>
-  <data name="DE-DE_DESCRIPTION">
+  <data name="DE_DE_DESCRIPTION">
     <value>Establecer Titulo para cultura alemana (Alemania)</value>
   </data>
   <data name="DECLINE">
@@ -1136,16 +1136,16 @@
   <data name="MODULESETTINGS_TITLE_EN">
     <value>Titulo (en)</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_EN-US">
-    <value>Titulo (en-US)</value>
+  <data name="MODULESETTINGS_TITLE_EN_US">
+    <value>Titulo (EN_US)</value>
   </data>
-  <data name="EN-US">
-    <value>Titulo (en-US)</value>
+  <data name="EN_US">
+    <value>Titulo (EN_US)</value>
   </data>
-  <data name="EN-US_DESCRIPTION">
+  <data name="EN_US_DESCRIPTION">
     <value>Establecer Titulo para cultura inglesa (Estados Unidos)</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_EN-US_DESCRIPTION">
+  <data name="MODULESETTINGS_TITLE_EN_US_DESCRIPTION">
     <value>Establecer Titulo para cultura inglesa (Estados Unidos)</value>
   </data>
   <data name="END_DATE">
@@ -1634,10 +1634,10 @@
   <data name="IT">
     <value>Titulo (it)</value>
   </data>
-  <data name="IT-IT">
-    <value>Titulo (it-IT)</value>
+  <data name="IT_IT">
+    <value>Titulo (IT_IT)</value>
   </data>
-  <data name="IT-IT_DESCRIPTION">
+  <data name="IT_IT_DESCRIPTION">
     <value>Establecer titulo para cultura italiana (Italia).</value>
   </data>
   <data name="IT_DESCRIPTION">
@@ -1976,11 +1976,11 @@
   <data name="THEME_DESCRIPTION">
     <value>Descripción del Tema</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_EN-GB">
-    <value>MODULESETTINGS_TITLE_EN-GB</value>
+  <data name="MODULESETTINGS_TITLE_EN_GB">
+    <value>MODULESETTINGS_TITLE_EN_GB</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_EN-GB_DESCRIPTION">
-    <value>MODULESETTINGS_TITLE_EN-GB_DESCRIPTION</value>
+  <data name="MODULESETTINGS_TITLE_EN_GB_DESCRIPTION">
+    <value>MODULESETTINGS_TITLE_EN_GB_DESCRIPTION</value>
   </data>
   <data name="MODULESETTINGS_TITLE_FR">
     <value>MODULESETTINGS_TITLE_FR</value>
@@ -1988,22 +1988,22 @@
   <data name="MODULESETTINGS_TITLE_FR_DESCRIPTION">
     <value>MODULESETTINGS_TITLE_FR_DESCRIPTION</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_NL-BE">
-    <value>MODULESETTINGS_TITLE_NL-BE</value>
+  <data name="MODULESETTINGS_TITLE_NL_BE">
+    <value>MODULESETTINGS_TITLE_NL_BE</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_NL-BE_DESCRIPTION">
-    <value>MODULESETTINGS_TITLE_NL-BE_DESCRIPTION</value>
+  <data name="MODULESETTINGS_TITLE_NL_BE_DESCRIPTION">
+    <value>MODULESETTINGS_TITLE_NL_BE_DESCRIPTION</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_ZH-CN">
-    <value>Titulo (zh-CN)</value>
+  <data name="MODULESETTINGS_TITLE_ZH_CN">
+    <value>Titulo (ZH_CN)</value>
   </data>
-  <data name="ZH-CN">
-    <value>Titulo (zh-CN)</value>
+  <data name="ZH_CN">
+    <value>Titulo (ZH_CN)</value>
   </data>
-  <data name="ZH-CN_DESCRIPTION">
+  <data name="ZH_CN_DESCRIPTION">
     <value>Establecer titulo para la cultura china (Republica Popular)</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_ZH-CN_DESCRIPTION">
+  <data name="MODULESETTINGS_TITLE_ZH_CN_DESCRIPTION">
     <value>Establecer titulo para la cultura china (Republica Popular)</value>
   </data>
   <data name="MODULESETTINGS_WIDTH_STRETCHING">
@@ -2372,7 +2372,7 @@
   <data name="PRODUCT_TOTAL_EXPENSES">
     <value>Total de Gastos</value>
   </data>
-  <data name="PRODUCT_TOTAL_PRICE_(INC._TAXES)">
+  <data name="PRODUCT_TOTAL_PRICE_(INC_TAXES)">
     <value>Precio Total (impuestos.incl)</value>
   </data>
   <data name="PRODUCT_TOTAL_TAXES">
@@ -3673,7 +3673,7 @@
   <data name="ERROR_VALID_EXPIRE_DATE">
     <value>Ingrese una fecha correcta de expiracion.</value>
   </data>
-  <data name="ES-ES_DESCRIPTION">
+  <data name="ES_ES_DESCRIPTION">
     <value>Establecer Titulo para cultura española (España).</value>
   </data>
   <data name="F100">
@@ -3838,10 +3838,10 @@
   <data name="MODULESETTINGS_TITLE_CA_DESCRIPTION">
     <value>MODULESETTINGS_TITLE_CA_DESCRIPTION</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_ES-ES">
-    <value>Titulo (es-ES)</value>
+  <data name="MODULESETTINGS_TITLE_ES_ES">
+    <value>Titulo (ES_ES)</value>
   </data>
-  <data name="MODULESETTINGS_TITLE_ES-ES_DESCRIPTION">
+  <data name="MODULESETTINGS_TITLE_ES_ES_DESCRIPTION">
     <value>Establecer Título en Español (España)</value>
   </data>
   <data name="MODULESETTINGS_TITLE_IT">
@@ -4204,8 +4204,8 @@
   <data name="SignInType">
     <value>Tipo de Identificación</value>
   </data>
-  <data name="TABKEYPHRASE_ES-ES_DESCRIPTION">
-    <value>TABKEYPHRASE_ES-ES_DESCRIPTION</value>
+  <data name="TABKEYPHRASE_ES_ES_DESCRIPTION">
+    <value>TABKEYPHRASE_ES_ES_DESCRIPTION</value>
   </data>
   <data name="TITLE_FOR_CULTURE">
     <value>TITLE_FOR_CULTURE</value>
@@ -4243,8 +4243,8 @@
   <data name="CREATED_ON">
     <value>Creado por</value>
   </data>
-  <data name="ES-ES">
-    <value>Titulo (es-ES)</value>
+  <data name="ES_ES">
+    <value>Titulo (ES_ES)</value>
   </data>
   <data name="FAQ_A">
     <value>R</value>
@@ -4309,8 +4309,8 @@
   <data name="AM_BOTOMPANEL">
     <value>Panel Inferior</value>
   </data>
-  <data name="TABKEYPHRASE_ES-ES">
-    <value>Frase clave para la página (es-ES)</value>
+  <data name="TABKEYPHRASE_ES_ES">
+    <value>Frase clave para la página (ES_ES)</value>
   </data>
   <data name="ERROR_NOT_ALLOWED_PARENT">
     <value>No se permite seleccionar este padre</value>
@@ -4327,11 +4327,11 @@
   <data name="ALPHA_LIST_READMORELINK">
     <value>Read More</value>
   </data>
-  <data name="BG-BG">
-    <value>BG-BG</value>
+  <data name="BG_BG">
+    <value>BG_BG</value>
   </data>
-  <data name="BG-BG_DESCRIPTION">
-    <value>BG-BG_DESCRIPTION</value>
+  <data name="BG_BG_DESCRIPTION">
+    <value>BG_BG_DESCRIPTION</value>
   </data>
   <data name="CONFIRM_PASSWORD">
     <value>Confirm password</value>

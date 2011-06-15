@@ -97,7 +97,7 @@ namespace Appleseed.PortalTemplate
         {
             var result = true;
             try {
-                var fs = new FileStream(file, FileMode.Open);
+                var fs = new FileStream(GetPhysicalPackageTemplatesPath(portalPath) + "\\" + file, FileMode.Open);
                 var xs = new XmlSerializer(typeof(PortalsDTO));
                 var portal = (PortalsDTO)xs.Deserialize(fs);
                 fs.Close();
@@ -189,10 +189,11 @@ namespace Appleseed.PortalTemplate
         /// <returns>
         /// The serialize portal.
         /// </returns>
-        public bool SerializePortal(int portalId, string path)
+        public bool SerializePortal(int portalId, string portalAlias, string portalFullPath)
         {
             var result = true;
             try {
+                string path = GetPhysicalPackageTemplatesPath(portalFullPath);
                 var portal = this.iptRepository.GetPortal(portalId);
                 var dir = new DirectoryInfo(path);
                 if (!dir.Exists) {
@@ -200,7 +201,7 @@ namespace Appleseed.PortalTemplate
                 }
 
                 var fs = new FileStream(
-                    path + portal.PortalAlias + DateTime.Now.ToString("dd-MM-yyyy") + ".XML", FileMode.Create);
+                    path + "\\" + portal.PortalAlias + DateTime.Now.ToString("dd-MM-yyyy") + ".XML", FileMode.Create);
                 var xs = new XmlSerializer(typeof(PortalsDTO));
                 xs.Serialize(fs, portal);
                 fs.Close();
@@ -240,7 +241,7 @@ namespace Appleseed.PortalTemplate
                         .OrderByDescending(d => d.ModuleDefID)
                         .First(); /*to avoid possible duplicates, Last() is not supported*/
 
-                    def.PortalID = portalId;                   
+                    def.PortalID = portalId;
                 }
 
                 db.SubmitChanges(ConflictMode.FailOnFirstConflict);
@@ -342,5 +343,49 @@ namespace Appleseed.PortalTemplate
         }
 
         #endregion
+
+
+        public List<string> GetTemplates(string portalAlias, string portalFullPath)
+        {
+            List<string> result = new List<string>();
+            string path = GetPhysicalPackageTemplatesPath(portalFullPath);
+
+            if (Directory.Exists(path)) {
+                DirectoryInfo directory = new DirectoryInfo(path);
+                FileInfo[] templates = directory.GetFiles("*.xml");
+                foreach (FileInfo template in templates) {
+                    result.Add(template.Name);
+                }
+            }
+            return result;
+        }
+
+        private string GetPhysicalPackageTemplatesPath(string portalFullPath)
+        {
+            string path = Appleseed.Framework.Settings.Path.ApplicationPhysicalPath;
+            path = string.Format(@"{0}{1}\PortalTemplates", path, portalFullPath);
+            path = path.Replace("/", @"\");
+            return path;
+        }
+
+
+        public void DeleteTemplate(string templateName, string portalFullPath)
+        {
+            File.Delete(GetPhysicalPackageTemplatesPath(portalFullPath) + "\\" + templateName);
+        }
+
+        public byte[] GetTemplate(string templateName, string portalFullPath)
+        {
+            byte[] fileBytes = File.ReadAllBytes(GetPhysicalPackageTemplatesPath(portalFullPath) + "\\" + templateName);
+
+            return fileBytes;
+        }
+
+        public FileInfo GetTemplateInfo(string templateName, string portalFullPath)
+        {
+            FileInfo fInfo = new FileInfo(GetPhysicalPackageTemplatesPath(portalFullPath) + "\\" + templateName);
+
+            return fInfo;
+        }
     }
 }

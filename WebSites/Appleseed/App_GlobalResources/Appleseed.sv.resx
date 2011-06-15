@@ -368,11 +368,11 @@
 	<data name="BANK">
 		<value>Bank</value>
 	</data>
-	<data name="BG-BG">
-		<value>BG-BG</value>
+	<data name="BG_BG">
+		<value>BG_BG</value>
 	</data>
-	<data name="BG-BG_DESCRIPTION">
-		<value>BG-BG_DESCRIPTION</value>
+	<data name="BG_BG_DESCRIPTION">
+		<value>BG_BG_DESCRIPTION</value>
 	</data>
 	<data name="BIND_OPTION_CHILDREN">
 		<value>BIND_OPTION_CHILDREN</value>
@@ -1985,11 +1985,11 @@
 	<data name="CUSTOMTHEMEALT_DESCRIPTION">
 		<value>Välj ett alternativt tema för modulerna under denna fliken.</value>
 	</data>
-	<data name="DA-DK">
-		<value>DA-DK</value>
+	<data name="DA_DK">
+		<value>DA_DK</value>
 	</data>
-	<data name="DA-DK_DESCRIPTION">
-		<value>DA-DK_DESCRIPTION</value>
+	<data name="DA_DK_DESCRIPTION">
+		<value>DA_DK_DESCRIPTION</value>
 	</data>
 	<data name="DATE">
 		<value>Datum</value>
@@ -2012,16 +2012,16 @@
 	<data name="DBTOOL_QUERYEXECUTE">
 		<value>DBTOOL_QUERYEXECUTE</value>
 	</data>
-	<data name="DE-CH">
-		<value>Titel (de-CH)</value>
+	<data name="DE_CH">
+		<value>Titel (DE_CH)</value>
 	</data>
-	<data name="DE-CH_DESCRIPTION">
+	<data name="DE_CH_DESCRIPTION">
 		<value>Välj Tysk (Schweizisk) Titel</value>
 	</data>
-	<data name="DE-DE">
-		<value>Titel (de-DE)</value>
+	<data name="DE_DE">
+		<value>Titel (DE_DE)</value>
 	</data>
-	<data name="DE-DE_DESCRIPTION">
+	<data name="DE_DE_DESCRIPTION">
 		<value>Välj Tysk Titel</value>
 	</data>
 	<data name="DECLINE">
@@ -2339,10 +2339,10 @@
 	<data name="EN">
 		<value>Titel (en)</value>
 	</data>
-	<data name="EN-US">
-		<value>Titel (en-US)</value>
+	<data name="EN_US">
+		<value>Titel (EN_US)</value>
 	</data>
-	<data name="EN-US_DESCRIPTION">
+	<data name="EN_US_DESCRIPTION">
 		<value>Välj engelsk (Amerikansk) titel</value>
 	</data>
 	<data name="EN_DESCRIPTION">
@@ -2621,11 +2621,11 @@
 	<data name="ES">
 		<value>ES</value>
 	</data>
-	<data name="ES-ES">
-		<value>ES-ES</value>
+	<data name="ES_ES">
+		<value>ES_ES</value>
 	</data>
-	<data name="ES-ES_DESCRIPTION">
-		<value>ES-ES_DESCRIPTION</value>
+	<data name="ES_ES_DESCRIPTION">
+		<value>ES_ES_DESCRIPTION</value>
 	</data>
 	<data name="ES_DESCRIPTION">
 		<value>ES_DESCRIPTION</value>
@@ -2972,10 +2972,10 @@
 	<data name="IT">
 		<value>Titel (it)</value>
 	</data>
-	<data name="IT-IT">
-		<value>Titel (it-IT)</value>
+	<data name="IT_IT">
+		<value>Titel (IT_IT)</value>
 	</data>
-	<data name="IT-IT_DESCRIPTION">
+	<data name="IT_IT_DESCRIPTION">
 		<value>Välj Italiensk titel</value>
 	</data>
 	<data name="IT_DESCRIPTION">
@@ -3434,11 +3434,11 @@
 	<data name="MODULESETTINGS_THEME_DESCRIPTION">
 		<value>Välj tema för den här modulen</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_BG-BG">
-		<value>MODULESETTINGS_TITLE_BG-BG</value>
+	<data name="MODULESETTINGS_TITLE_BG_BG">
+		<value>MODULESETTINGS_TITLE_BG_BG</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_BG-BG_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_BG-BG_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_BG_BG_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_BG_BG_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_CA">
 		<value>MODULESETTINGS_TITLE_CA</value>
@@ -3449,16 +3449,16 @@
 	<data name="MODULESETTINGS_TITLE_EN">
 		<value>MODULESETTINGS_TITLE_EN</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-GB">
-		<value>MODULESETTINGS_TITLE_EN-GB</value>
+	<data name="MODULESETTINGS_TITLE_EN_GB">
+		<value>MODULESETTINGS_TITLE_EN_GB</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-GB_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_EN-GB_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_EN_GB_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_EN_GB_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-US">
-		<value>Titel (en-US)</value>
+	<data name="MODULESETTINGS_TITLE_EN_US">
+		<value>Titel (EN_US)</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-US_DESCRIPTION">
+	<data name="MODULESETTINGS_TITLE_EN_US_DESCRIPTION">
 		<value>Välj Engelsk (Amerikansk) titel</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_EN_DESCRIPTION">
@@ -3467,11 +3467,11 @@
 	<data name="MODULESETTINGS_TITLE_ES">
 		<value>MODULESETTINGS_TITLE_ES</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ES-ES">
-		<value>MODULESETTINGS_TITLE_ES-ES</value>
+	<data name="MODULESETTINGS_TITLE_ES_ES">
+		<value>MODULESETTINGS_TITLE_ES_ES</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ES-ES_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_ES-ES_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_ES_ES_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_ES_ES_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_ES_DESCRIPTION">
 		<value>MODULESETTINGS_TITLE_ES_DESCRIPTION</value>
@@ -3488,16 +3488,16 @@
 	<data name="MODULESETTINGS_TITLE_IT_DESCRIPTION">
 		<value>MODULESETTINGS_TITLE_IT_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_NL-BE">
-		<value>MODULESETTINGS_TITLE_NL-BE</value>
+	<data name="MODULESETTINGS_TITLE_NL_BE">
+		<value>MODULESETTINGS_TITLE_NL_BE</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_NL-BE_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_NL-BE_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_NL_BE_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_NL_BE_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ZH-CN">
-		<value>Titel (zh-CN)</value>
+	<data name="MODULESETTINGS_TITLE_ZH_CN">
+		<value>Titel (ZH_CN)</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ZH-CN_DESCRIPTION">
+	<data name="MODULESETTINGS_TITLE_ZH_CN_DESCRIPTION">
 		<value>Välj Kinesisk titel</value>
 	</data>
 	<data name="MODULESETTINGS_WIDTH_STRETCHING">
@@ -3980,7 +3980,7 @@
 	<data name="PRODUCT_TOTAL_EXPENSES">
 		<value>PRODUCT_TOTAL_EXPENSES</value>
 	</data>
-	<data name="PRODUCT_TOTAL_PRICE_(INC._TAXES)">
+	<data name="PRODUCT_TOTAL_PRICE_(INC_TAXES)">
 		<value/>
 	</data>
 	<data name="PRODUCT_TOTAL_TAXES">
@@ -4913,11 +4913,11 @@
 	<data name="TABKEYPHRASE">
 		<value>Standardnyckelord för Flikar / Sidor.</value>
 	</data>
-	<data name="TABKEYPHRASE_BG-BG">
-		<value>TABKEYPHRASE_BG-BG</value>
+	<data name="TABKEYPHRASE_BG_BG">
+		<value>TABKEYPHRASE_BG_BG</value>
 	</data>
-	<data name="TABKEYPHRASE_BG-BG_DESCRIPTION">
-		<value>TABKEYPHRASE_BG-BG_DESCRIPTION</value>
+	<data name="TABKEYPHRASE_BG_BG_DESCRIPTION">
+		<value>TABKEYPHRASE_BG_BG_DESCRIPTION</value>
 	</data>
 	<data name="TABKEYPHRASE_DESCRIPTION">
 		<value>Den här inställningen kan användas av en modul eller en kontrol. Du kan ange ett standardmeddelande för Portalen T ex "Välkommen till Portalen X.</value>
@@ -4931,11 +4931,11 @@
 	<data name="TABKEYPHRASE_ES">
 		<value>TABKEYPHRASE_ES</value>
 	</data>
-	<data name="TABKEYPHRASE_ES-ES">
-		<value>TABKEYPHRASE_ES-ES</value>
+	<data name="TABKEYPHRASE_ES_ES">
+		<value>TABKEYPHRASE_ES_ES</value>
 	</data>
-	<data name="TABKEYPHRASE_ES-ES_DESCRIPTION">
-		<value>TABKEYPHRASE_ES-ES_DESCRIPTION</value>
+	<data name="TABKEYPHRASE_ES_ES_DESCRIPTION">
+		<value>TABKEYPHRASE_ES_ES_DESCRIPTION</value>
 	</data>
 	<data name="TABKEYPHRASE_ES_DESCRIPTION">
 		<value>TABKEYPHRASE_ES_DESCRIPTION</value>
@@ -5163,10 +5163,10 @@ Sidor.</value>
 	<data name="TR">
 		<value/>
 	</data>
-	<data name="TR-TR">
+	<data name="TR_TR">
 		<value/>
 	</data>
-	<data name="TR-TR_DESCRIPTION">
+	<data name="TR_TR_DESCRIPTION">
 		<value/>
 	</data>
 	<data name="TR_DESCRIPTION">
@@ -5430,10 +5430,10 @@ Sidor.</value>
 	<data name="YEARS">
 		<value>YEARS</value>
 	</data>
-	<data name="ZH-CN">
-		<value>Titel (zh-CN)</value>
+	<data name="ZH_CN">
+		<value>Titel (ZH_CN)</value>
 	</data>
-	<data name="ZH-CN_DESCRIPTION">
+	<data name="ZH_CN_DESCRIPTION">
 		<value>Välj kinesiskt Ttitel.</value>
 	</data>
 	<data name="ZIP">

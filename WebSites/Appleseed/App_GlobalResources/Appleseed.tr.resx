@@ -368,11 +368,11 @@
 	<data name="BANK">
 		<value>Banka</value>
 	</data>
-	<data name="BG-BG">
-		<value>BG-BG</value>
+	<data name="BG_BG">
+		<value>BG_BG</value>
 	</data>
-	<data name="BG-BG_DESCRIPTION">
-		<value>BG-BG_DESCRIPTION</value>
+	<data name="BG_BG_DESCRIPTION">
+		<value>BG_BG_DESCRIPTION</value>
 	</data>
 	<data name="BIND_OPTION_CHILDREN">
 		<value>BIND_OPTION_CHILDREN</value>
@@ -1985,11 +1985,11 @@
 	<data name="CUSTOMTHEMEALT_DESCRIPTION">
 		<value>Sadece bu sayfadaki modüllerde uygulanacak özel alternatif stili seçin</value>
 	</data>
-	<data name="DA-DK">
-		<value>DA-DK</value>
+	<data name="DA_DK">
+		<value>DA_DK</value>
 	</data>
-	<data name="DA-DK_DESCRIPTION">
-		<value>DA-DK_DESCRIPTION</value>
+	<data name="DA_DK_DESCRIPTION">
+		<value>DA_DK_DESCRIPTION</value>
 	</data>
 	<data name="DATE">
 		<value>Tarih</value>
@@ -2012,16 +2012,16 @@
 	<data name="DBTOOL_QUERYEXECUTE">
 		<value>DBTOOL_QUERYEXECUTE</value>
 	</data>
-	<data name="DE-CH">
-		<value>Başlık (de-CH)</value>
+	<data name="DE_CH">
+		<value>Başlık (DE_CH)</value>
 	</data>
-	<data name="DE-CH_DESCRIPTION">
+	<data name="DE_CH_DESCRIPTION">
 		<value>Almanca (İsviçre) Başlık</value>
 	</data>
-	<data name="DE-DE">
-		<value>Başlık (de-DE)</value>
+	<data name="DE_DE">
+		<value>Başlık (DE_DE)</value>
 	</data>
-	<data name="DE-DE_DESCRIPTION">
+	<data name="DE_DE_DESCRIPTION">
 		<value>Almanca (Almanya) Başlık</value>
 	</data>
 	<data name="DECLINE">
@@ -2339,10 +2339,10 @@
 	<data name="EN">
 		<value>Başlık (en)</value>
 	</data>
-	<data name="EN-US">
-		<value>Başlık (en-US)</value>
+	<data name="EN_US">
+		<value>Başlık (EN_US)</value>
 	</data>
-	<data name="EN-US_DESCRIPTION">
+	<data name="EN_US_DESCRIPTION">
 		<value>İngilizce(ABD) Başlık</value>
 	</data>
 	<data name="EN_DESCRIPTION">
@@ -2621,11 +2621,11 @@
 	<data name="ES">
 		<value>ES</value>
 	</data>
-	<data name="ES-ES">
-		<value>ES-ES</value>
+	<data name="ES_ES">
+		<value>ES_ES</value>
 	</data>
-	<data name="ES-ES_DESCRIPTION">
-		<value>ES-ES_DESCRIPTION</value>
+	<data name="ES_ES_DESCRIPTION">
+		<value>ES_ES_DESCRIPTION</value>
 	</data>
 	<data name="ES_DESCRIPTION">
 		<value>ES_DESCRIPTION</value>
@@ -2972,10 +2972,10 @@
 	<data name="IT">
 		<value>Başlık (it)</value>
 	</data>
-	<data name="IT-IT">
-		<value>Başlık (it-IT)</value>
+	<data name="IT_IT">
+		<value>Başlık (IT_IT)</value>
 	</data>
-	<data name="IT-IT_DESCRIPTION">
+	<data name="IT_IT_DESCRIPTION">
 		<value>İtalyanca(İtalya) Başlık</value>
 	</data>
 	<data name="IT_DESCRIPTION">
@@ -3434,11 +3434,11 @@
 	<data name="MODULESETTINGS_THEME_DESCRIPTION">
 		<value>MODULESETTINGS_THEME_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_BG-BG">
-		<value>MODULESETTINGS_TITLE_BG-BG</value>
+	<data name="MODULESETTINGS_TITLE_BG_BG">
+		<value>MODULESETTINGS_TITLE_BG_BG</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_BG-BG_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_BG-BG_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_BG_BG_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_BG_BG_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_CA">
 		<value>MODULESETTINGS_TITLE_CA</value>
@@ -3449,17 +3449,17 @@
 	<data name="MODULESETTINGS_TITLE_EN">
 		<value>MODULESETTINGS_TITLE_EN</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-GB">
-		<value>MODULESETTINGS_TITLE_EN-GB</value>
+	<data name="MODULESETTINGS_TITLE_EN_GB">
+		<value>MODULESETTINGS_TITLE_EN_GB</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-GB_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_EN-GB_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_EN_GB_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_EN_GB_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-US">
-		<value>MODULESETTINGS_TITLE_EN-US</value>
+	<data name="MODULESETTINGS_TITLE_EN_US">
+		<value>MODULESETTINGS_TITLE_EN_US</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_EN-US_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_EN-US_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_EN_US_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_EN_US_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_EN_DESCRIPTION">
 		<value>MODULESETTINGS_TITLE_EN_DESCRIPTION</value>
@@ -3467,11 +3467,11 @@
 	<data name="MODULESETTINGS_TITLE_ES">
 		<value>MODULESETTINGS_TITLE_ES</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ES-ES">
-		<value>MODULESETTINGS_TITLE_ES-ES</value>
+	<data name="MODULESETTINGS_TITLE_ES_ES">
+		<value>MODULESETTINGS_TITLE_ES_ES</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ES-ES_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_ES-ES_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_ES_ES_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_ES_ES_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_TITLE_ES_DESCRIPTION">
 		<value>MODULESETTINGS_TITLE_ES_DESCRIPTION</value>
@@ -3488,17 +3488,17 @@
 	<data name="MODULESETTINGS_TITLE_IT_DESCRIPTION">
 		<value>MODULESETTINGS_TITLE_IT_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_NL-BE">
-		<value>MODULESETTINGS_TITLE_NL-BE</value>
+	<data name="MODULESETTINGS_TITLE_NL_BE">
+		<value>MODULESETTINGS_TITLE_NL_BE</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_NL-BE_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_NL-BE_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_NL_BE_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_NL_BE_DESCRIPTION</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ZH-CN">
-		<value>MODULESETTINGS_TITLE_ZH-CN</value>
+	<data name="MODULESETTINGS_TITLE_ZH_CN">
+		<value>MODULESETTINGS_TITLE_ZH_CN</value>
 	</data>
-	<data name="MODULESETTINGS_TITLE_ZH-CN_DESCRIPTION">
-		<value>MODULESETTINGS_TITLE_ZH-CN_DESCRIPTION</value>
+	<data name="MODULESETTINGS_TITLE_ZH_CN_DESCRIPTION">
+		<value>MODULESETTINGS_TITLE_ZH_CN_DESCRIPTION</value>
 	</data>
 	<data name="MODULESETTINGS_WIDTH_STRETCHING">
 		<value>MODULESETTINGS_WIDTH_STRETCHING</value>
@@ -3980,8 +3980,8 @@
 	<data name="PRODUCT_TOTAL_EXPENSES">
 		<value>PRODUCT_TOTAL_EXPENSES</value>
 	</data>
-	<data name="PRODUCT_TOTAL_PRICE_(INC._TAXES)">
-		<value>PRODUCT_TOTAL_PRICE_(INC._TAXES)</value>
+	<data name="PRODUCT_TOTAL_PRICE_(INC_TAXES)">
+		<value>PRODUCT_TOTAL_PRICE_(INC_TAXES)</value>
 	</data>
 	<data name="PRODUCT_TOTAL_TAXES">
 		<value>Toplam (Vergiler dahil)</value>
@@ -4617,7 +4617,7 @@
 		<value>Dil Listesi:</value>
 	</data>
 	<data name="SITESETTINGS_LANGLIST_DESCRIPTION">
-		<value>Sitenin desteklediği dillerin listesi, formatı &lt;UI-Culture&gt;-&lt;Formatting-Culture&gt;. Örnek. tr-TR;en-US;</value>
+		<value>Sitenin desteklediği dillerin listesi, formatı &lt;UI-Culture&gt;-&lt;Formatting-Culture&gt;. Örnek. TR_TR;EN_US;</value>
 	</data>
 	<data name="SITESETTINGS_LOGO">
 		<value>Logo</value>
@@ -4725,7 +4725,7 @@
 		<value>Hizmet Şartları Dosyası</value>
 	</data>
 	<data name="SITESETTINGS_TERMS_OF_SERVICE_DESCRIPTION">
-		<value>Buraya üyelik sırasında kullanıcılara gösterilmek üzere kullanılacak hizmet şartlarını içeren bir dosya adı yazın. Hizmet şartları kişinin o an kullandığı kültür dilini göre gösterilir. Bu yüzden dökümanı diğer dillerdeki sürümlerini  dosyaAdi_&lt;dil&gt; şeklinde kaydedin.  Örneğin Terms.txt, dosyasının  Amerika için sürümü Terms_en-US.txt şeklinde kaydedilmelidir.</value>
+		<value>Buraya üyelik sırasında kullanıcılara gösterilmek üzere kullanılacak hizmet şartlarını içeren bir dosya adı yazın. Hizmet şartları kişinin o an kullandığı kültür dilini göre gösterilir. Bu yüzden dökümanı diğer dillerdeki sürümlerini  dosyaAdi_&lt;dil&gt; şeklinde kaydedin.  Örneğin Terms.txt, dosyasının  Amerika için sürümü Terms_EN_US.txt şeklinde kaydedilmelidir.</value>
 	</data>
 	<data name="SITESETTINGS_THEME">
 		<value>Stil</value>
@@ -4913,11 +4913,11 @@
 	<data name="TABKEYPHRASE">
 		<value>Varsayılan Sayfa / Sayfa Anahtar Kelime İfadesi</value>
 	</data>
-	<data name="TABKEYPHRASE_BG-BG">
-		<value>TABKEYPHRASE_BG-BG</value>
+	<data name="TABKEYPHRASE_BG_BG">
+		<value>TABKEYPHRASE_BG_BG</value>
 	</data>
-	<data name="TABKEYPHRASE_BG-BG_DESCRIPTION">
-		<value>TABKEYPHRASE_BG-BG_DESCRIPTION</value>
+	<data name="TABKEYPHRASE_BG_BG_DESCRIPTION">
+		<value>TABKEYPHRASE_BG_BG_DESCRIPTION</value>
 	</data>
 	<data name="TABKEYPHRASE_DESCRIPTION">
 		<value>Bu ayar ya bir modül ya da bir kontrol tarafından kullanılabilir, Bütün site için genel bir mesaj tanımlanmasını sağlar. ör. X Sitesine Hoşgeldiniz. Burası arama motorları ile optimizasyon için kullanaılabilir. Bunu dışında bu alan size anahtar kelime ve veya ifade tanımlamanıza izin verir. </value>
@@ -4931,11 +4931,11 @@
 	<data name="TABKEYPHRASE_ES">
 		<value>TABKEYPHRASE_ES</value>
 	</data>
-	<data name="TABKEYPHRASE_ES-ES">
-		<value>TABKEYPHRASE_ES-ES</value>
+	<data name="TABKEYPHRASE_ES_ES">
+		<value>TABKEYPHRASE_ES_ES</value>
 	</data>
-	<data name="TABKEYPHRASE_ES-ES_DESCRIPTION">
-		<value>TABKEYPHRASE_ES-ES_DESCRIPTION</value>
+	<data name="TABKEYPHRASE_ES_ES_DESCRIPTION">
+		<value>TABKEYPHRASE_ES_ES_DESCRIPTION</value>
 	</data>
 	<data name="TABKEYPHRASE_ES_DESCRIPTION">
 		<value>TABKEYPHRASE_ES_DESCRIPTION</value>
@@ -5061,7 +5061,7 @@
 		<value>Hizmet Şartları Dosyası</value>
 	</data>
 	<data name="TERMSOFSERVICE_DESCRIPTION">
-		<value>Buraya üyelik sırasında kullanıcılara gösterilmek üzere kullanılacak hizmet şartlarını içeren bir dosya adı yazın. Hizmet şartları kişinin o an kullandığı kültür dilini göre gösterilir. Bu yüzden dökümanı diğer dillerdeki sürümlerini  dosyaAdi_&lt;dil&gt; şeklinde kaydedin.  Örneğin Terms.txt, dosyasının  Amerika için sürümü Terms_en-US.txt şeklinde kaydedilmelidir.</value>
+		<value>Buraya üyelik sırasında kullanıcılara gösterilmek üzere kullanılacak hizmet şartlarını içeren bir dosya adı yazın. Hizmet şartları kişinin o an kullandığı kültür dilini göre gösterilir. Bu yüzden dökümanı diğer dillerdeki sürümlerini  dosyaAdi_&lt;dil&gt; şeklinde kaydedin.  Örneğin Terms.txt, dosyasının  Amerika için sürümü Terms_EN_US.txt şeklinde kaydedilmelidir.</value>
 	</data>
 	<data name="TESTMODE">
 		<value>Test Durumu</value>
@@ -5159,10 +5159,10 @@
 	<data name="TR">
 		<value>Başlık (tr)</value>
 	</data>
-	<data name="TR-TR">
-		<value>Başlık (tr-TR)</value>
+	<data name="TR_TR">
+		<value>Başlık (TR_TR)</value>
 	</data>
-	<data name="TR-TR_DESCRIPTION">
+	<data name="TR_TR_DESCRIPTION">
 		<value>Türkçe(Türkiye) Başlık</value>
 	</data>
 	<data name="TR_DESCRIPTION">
@@ -5426,10 +5426,10 @@
 	<data name="YEARS">
 		<value>YEARS</value>
 	</data>
-	<data name="ZH-CN">
-		<value>Başlık (zh-CN)</value>
+	<data name="ZH_CN">
+		<value>Başlık (ZH_CN)</value>
 	</data>
-	<data name="ZH-CN_DESCRIPTION">
+	<data name="ZH_CN_DESCRIPTION">
 		<value>Çince (Çin Halk Cumhuriyeti) Başlık</value>
 	</data>
 	<data name="ZIP">
