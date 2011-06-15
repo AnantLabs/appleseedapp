@@ -301,33 +301,7 @@ namespace Appleseed
                     var layoutPath = string.Concat(this.PortalSettings.PortalLayoutPath, LayoutBasePage);
                     var layoutControl = this.Page.LoadControl(layoutPath);
 
-                    var scripts = AppleseedMaster.GetBaseScripts();
-
-                    int index = 0;
-                    foreach (var script in scripts)
-                    {
-                        HtmlGenericControl include = new HtmlGenericControl("script");
-                        include.Attributes.Add("type", "text/javascript");
-                        include.Attributes.Add("src", script as string);
-                        this.Page.Header.Controls.AddAt(index++, include);
-                    }
-
-                    var cssHref = "/Design/jqueryUI/" + PortalSettings.PortalAlias + "/jquery-ui.custom.css";
-
-                    HtmlGenericControl cssinclude = new HtmlGenericControl("link");
-                    cssinclude.Attributes.Add("type", "text/css");
-                    cssinclude.Attributes.Add("rel", "stylesheet");
-                    cssinclude.Attributes.Add("href", cssHref);
-                    this.Page.Header.Controls.AddAt(index++, cssinclude);
-
-                    var uiculture = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
-                    var datepickerscript = "$(document).ready(function(){$.datepicker.setDefaults($.datepicker.regional['" + uiculture + "']);});";
-
-                    HtmlGenericControl includedp = new HtmlGenericControl("script");
-                    includedp.Attributes.Add("type", "text/javascript");
-                    includedp.InnerHtml = datepickerscript;
-                    this.Page.Header.Controls.AddAt(index++, includedp);
-
+                    AppleseedMaster.InsertAllScripts(Page, Context);
 
                     if (layoutControl != null)
                     {
