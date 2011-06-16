@@ -142,14 +142,14 @@ namespace Appleseed.Content.Web.Modules
                 if (ItemID == 0)
                 {
                     // Add the announcement within the Announcements table
-                    announcementDB.AddAnnouncement(ModuleID, ItemID, PortalSettings.CurrentUser.Identity.Email,
+                    announcementDB.AddAnnouncement(ModuleID, ItemID, PortalSettings.CurrentUser.Identity.UserName,
                                                    TitleField.Text, DateTime.Parse(ExpireField.Text), DesktopText.Text,
                                                    MoreLinkField.Text, MobileMoreField.Text);
                 }
                 else
                 {
                     // Update the announcement within the Announcements table
-                    announcementDB.UpdateAnnouncement(ModuleID, ItemID, PortalSettings.CurrentUser.Identity.Email,
+                    announcementDB.UpdateAnnouncement(ModuleID, ItemID, PortalSettings.CurrentUser.Identity.UserName,
                                                       TitleField.Text, DateTime.Parse(ExpireField.Text),
                                                       DesktopText.Text, MoreLinkField.Text, MobileMoreField.Text);
                 }

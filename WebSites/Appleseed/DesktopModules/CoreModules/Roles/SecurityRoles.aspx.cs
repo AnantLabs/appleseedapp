@@ -107,8 +107,8 @@ namespace Appleseed.Content.Web.Modules
             UsersDB users = new UsersDB();
 
             Label lblUserEmail = (Label)e.Item.FindControl("lblUserEmail");
-
-            AppleseedUser user = (AppleseedUser)Membership.GetUser(lblUserEmail.Text);
+            string userName = Membership.GetUserNameByEmail(lblUserEmail.Text);
+            AppleseedUser user = (AppleseedUser)Membership.GetUser(userName);
 
             if (e.CommandName == "delete")
             {

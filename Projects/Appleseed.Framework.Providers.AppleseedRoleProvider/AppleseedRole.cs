@@ -31,7 +31,10 @@ namespace Appleseed.Framework.Providers.AppleseedRoleProvider
         {
             this.Id = roleId;
             this.Name = roleName;
-            this.Description = string.Empty;
+            if (roleName.Equals("Admins"))
+                this.Description = string.Empty;
+            else
+                this.Description = roleName;
         }
 
         /// <summary>

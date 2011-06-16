@@ -119,14 +119,14 @@ namespace Appleseed.Content.Web.Modules
                 if (ItemID == 0)
                 {
                     // Add the contact within the contacts table
-                    contacts.AddContact(ModuleID, ItemID, PortalSettings.CurrentUser.Identity.Email, NameField.Text,
+                    contacts.AddContact(ModuleID, ItemID, PortalSettings.CurrentUser.Identity.UserName, NameField.Text,
                                         RoleField.Text, EmailField.Text, Contact1Field.Text, Contact2Field.Text,
                                         FaxField.Text, AddressField.Text);
                 }
                 else
                 {
                     // Update the contact within the contacts table
-                    contacts.UpdateContact(ModuleID, ItemID, PortalSettings.CurrentUser.Identity.Email, NameField.Text,
+                    contacts.UpdateContact(ModuleID, ItemID, PortalSettings.CurrentUser.Identity.UserName, NameField.Text,
                                            RoleField.Text, EmailField.Text, Contact1Field.Text, Contact2Field.Text,
                                            FaxField.Text, AddressField.Text);
                 }

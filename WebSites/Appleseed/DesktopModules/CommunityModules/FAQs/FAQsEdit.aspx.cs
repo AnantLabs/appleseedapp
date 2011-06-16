@@ -122,13 +122,13 @@ namespace Appleseed.Content.Web.Modules
                 if (itemID == -1)
                 {
                     //  Add the question within the questions table
-                    questions.AddFAQ(ModuleID, itemID, PortalSettings.CurrentUser.Identity.Email, Question.Text,
+                    questions.AddFAQ(ModuleID, itemID, PortalSettings.CurrentUser.Identity.UserName, Question.Text,
                                      DesktopText.Text);
                 }
                 else
                 {
                     //  Update the question within the questions table
-                    questions.UpdateFAQ(ModuleID, itemID, PortalSettings.CurrentUser.Identity.Email, Question.Text,
+                    questions.UpdateFAQ(ModuleID, itemID, PortalSettings.CurrentUser.Identity.UserName, Question.Text,
                                         DesktopText.Text);
                 }
 

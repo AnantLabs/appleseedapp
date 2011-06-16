@@ -97,10 +97,10 @@ namespace Appleseed.Content.Web.Modules
             {
                 MilestonesDB milestonesDb = new MilestonesDB();
                 if (ItemID <= 0)
-                    milestonesDb.AddMilestones(ItemID, ModuleID, PortalSettings.CurrentUser.Identity.Email, DateTime.Now,
+                    milestonesDb.AddMilestones(ItemID, ModuleID, PortalSettings.CurrentUser.Identity.UserName, DateTime.Now,
                                                TitleField.Text, DateTime.Parse(EstCompleteDate.Text), StatusBox.Text);
                 else
-                    milestonesDb.UpdateMilestones(ItemID, ModuleID, PortalSettings.CurrentUser.Identity.Email,
+                    milestonesDb.UpdateMilestones(ItemID, ModuleID, PortalSettings.CurrentUser.Identity.UserName,
                                                   DateTime.Now, TitleField.Text, DateTime.Parse(EstCompleteDate.Text),
                                                   StatusBox.Text);
 

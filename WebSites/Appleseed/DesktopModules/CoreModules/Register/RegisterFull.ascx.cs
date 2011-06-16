@@ -152,7 +152,7 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
                     {
                         ErrorHandler.Publish(LogLevel.Error, Resources.Appleseed.PROFILE_COUNTRY_WRONG_ID, exc);
                     }
-                    this.tfEmail.Text = profileCommon.UserName;
+                    this.tfEmail.Text = (string)profileCommon.GetPropertyValue("Email");
                     this.tfEmail.Enabled = false;
                     this.tfName.Text = (string)profileCommon.GetPropertyValue("Name");
                     this.tfPhone.Text = (string)profileCommon.GetPropertyValue("Phone");
@@ -170,6 +170,8 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
             if ((bool)Session["CameFromSocialNetwork"]) {
                 trPwd.Visible = false;
                 trPwdAgain.Visible = false;
+                lnkChangePassword.Visible = false;
+                panChangePwd.Visible = false;
             }
         }
         if (Session["FacebookUserName"] != null) {
@@ -453,8 +455,16 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
             
 
         } else {
+            string Email = tfEmail.Text;
+            string UserName = Membership.GetUserNameByEmail(Email);
+            if (!UserName.Equals(Email)) {
+                // The user Came from twitter
+                Session["CameFromSocialNetwork"] = true;
+                Session["TwitterUserName"] = UserName;
+                Session["deleteCookies"] = true;
+            }
             UpdateProfile();
-            return (Guid)Membership.GetUser(tfEmail.Text, false).ProviderUserKey;
+            return (Guid)Membership.GetUser(UserName, false).ProviderUserKey;
         }
     }
 
@@ -514,6 +524,11 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
                 this.lblError.Text = Resources.Appleseed.USER_SAVING_ERROR;
                 ErrorHandler.Publish(LogLevel.Error, "Error al salvar un perfil", exc);
             }
+            if (Session["deleteCookies"] != null) {
+                Session.Remove("CameFromSocialNetwork");
+                Session.Remove("TwitterUserName");
+                Session.Remove("deleteCookies");
+            }
         }
     }
 
@@ -531,7 +546,7 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
         //TODO
         string msg = Resources.Appleseed.NEW_USER_CREATED + this.PortalSettings.PortalName;
         msg += "<br/>" + Resources.Appleseed.USER + ": " + email;
-        string pwd = Membership.GetUser(email).GetPassword();
+        string pwd = Membership.GetUser(UserName).GetPassword();
         pwd = String.IsNullOrEmpty(pwd) ? "<vacío>" : pwd;
         msg += "<br/>" + Resources.Appleseed.PASSWORD + ": " + pwd;
         string uName = UserName;
@@ -539,7 +554,7 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
         {
             uName = Convert.ToString(this.PortalSettings.CustomSettings["SITESETTINGS_ON_REGISTER_SEND_FROM"]);
         }
-        SendMail(email, uName, "Nuevo usuario en " + this.PortalSettings.PortalName + "!", msg);
+        SendMail(email, email, "Nuevo usuario en " + this.PortalSettings.PortalName + "!", msg);
     }
 
     private void SendMail(string to, string from, string subject, string content)

@@ -51,7 +51,7 @@ namespace Appleseed.Content.Web.Modules
             //*********************************************************
             SurveyDB SurveyCheck = new SurveyDB();
             // puts the desc of Survey in the title
-            lblDescSurvey.Text = SurveyCheck.ExistAddSurvey(ModuleID, PortalSettings.CurrentUser.Identity.Email);
+            lblDescSurvey.Text = SurveyCheck.ExistAddSurvey(ModuleID, PortalSettings.CurrentUser.Identity.UserName);
 
             //TBD: Create a sproc that gets these fields:
             //CreatedBy.Text = (string) dr["CreatedByUser"];

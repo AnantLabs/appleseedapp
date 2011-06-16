@@ -90,7 +90,7 @@ namespace Appleseed.Content.Web.Modules
                 {
                     //New article - set defaults
                     StartField.Text = DateTime.Now.ToString();
-                    CreatedBy.Text = PortalSettings.CurrentUser.Identity.Email;
+                    CreatedBy.Text = PortalSettings.CurrentUser.Identity.UserName;
                     CreatedDate.Text = DateTime.Now.ToString();
                 }
             }
@@ -128,13 +128,13 @@ namespace Appleseed.Content.Web.Modules
                 }
                 if (ItemID == 0)
                 {
-                    blogData.AddBlog(ModuleID, PortalSettings.CurrentUser.Identity.Email,
+                    blogData.AddBlog(ModuleID, PortalSettings.CurrentUser.Identity.UserName,
                                      ((HTMLText) TitleField.Text).InnerText, ((HTMLText) ExcerptField.Text).InnerText,
                                      Server.HtmlEncode(DesktopText.Text), DateTime.Parse(StartField.Text), true);
                 }
                 else
                 {
-                    blogData.UpdateBlog(ModuleID, ItemID, PortalSettings.CurrentUser.Identity.Email,
+                    blogData.UpdateBlog(ModuleID, ItemID, PortalSettings.CurrentUser.Identity.UserName,
                                         ((HTMLText) TitleField.Text).InnerText, ((HTMLText) ExcerptField.Text).InnerText,
                                         Server.HtmlEncode(DesktopText.Text), DateTime.Parse(StartField.Text), true);
                 }

@@ -211,7 +211,7 @@ namespace Appleseed.Content.Web.Modules.Discussion
 
             // Add new message (updating the "ItemID" on the page)
             ItemID =
-                discuss.AddMessage(ModuleID, ItemID, PortalSettings.CurrentUser.Identity.Email,
+                discuss.AddMessage(ModuleID, ItemID, PortalSettings.CurrentUser.Identity.UserName,
                                    Server.HtmlEncode(TitleField.Text), BodyField.Text, GetMode());
 
             // The following code can be used if you want to create new threads
