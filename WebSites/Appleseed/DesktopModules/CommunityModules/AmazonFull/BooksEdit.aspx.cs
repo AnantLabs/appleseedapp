@@ -98,13 +98,13 @@ namespace Appleseed.Content.Web.Modules
                 if (ItemID == 0)
                 {
                     // Add the book within the books table
-                    bookDB.Addrb_BookList(ModuleID, PortalSettings.CurrentUser.Identity.Email, ISBNField.Text,
+                    bookDB.Addrb_BookList(ModuleID, PortalSettings.CurrentUser.Identity.UserName, ISBNField.Text,
                                           CaptionTextBox.Text);
                 }
                 else
                 {
                     // Update the book
-                    bookDB.Updaterb_BookList(ItemID, PortalSettings.CurrentUser.Identity.Email, ISBNField.Text,
+                    bookDB.Updaterb_BookList(ItemID, PortalSettings.CurrentUser.Identity.UserName, ISBNField.Text,
                                              CaptionTextBox.Text);
                 }
 

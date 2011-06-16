@@ -22,7 +22,7 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["TwitterAppId"] != null && Session["TwitterAppSecret"] != null) {
+            try{
                 string consumerKey = Session["TwitterAppId"] as string;
                 string consumerSecret = Session["TwitterAppSecret"] as string;
                 OAuthTokenResponse accessTokenResponse = OAuthUtility.GetAccessToken(consumerKey, consumerSecret,
@@ -44,14 +44,13 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
 
 
                 } else {
-                    Session.Contents.Remove("CameFromSocialNetwork");
-                    Session.Remove("CameFromSocialNetwork");
+                    
                     PortalSecurity.SignOn(userName, password);
 
                 }
 
-            } else {
-
+            } 
+            catch(TwitterizerException  ex){
                 string urlRegister = ConvertRelativeUrlToAbsoluteUrl("");
                 Response.Redirect(urlRegister);
 
