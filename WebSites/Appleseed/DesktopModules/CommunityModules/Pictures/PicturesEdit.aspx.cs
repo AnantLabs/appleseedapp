@@ -320,13 +320,13 @@ namespace Appleseed.Content.Web.Modules
                         SetMetadata("Caption", Caption.Text);
                         SetMetadata("Keywords", Keywords.Text);
                         SetMetadata("UploadDate", DateTime.Now.ToString());
-                        SetMetadata("CreatedBy", PortalSettings.CurrentUser.Identity.Email);
+                        SetMetadata("CreatedBy", PortalSettings.CurrentUser.Identity.UserName);
                         SetMetadata("DisplayOrder", displayOrder.ToString());
 
                         //Add new picture to Esperantus.Esperantus.Localize. database
                         ItemID =
                             pictures.AddPicture(ModuleID, ItemID, displayOrder, MetadataXml, ShortDescription.Text,
-                                                Keywords.Text, PortalSettings.CurrentUser.Identity.Email, DateTime.Now);
+                                                Keywords.Text, PortalSettings.CurrentUser.Identity.UserName, DateTime.Now);
                     }
                 }
                 else
@@ -460,7 +460,7 @@ namespace Appleseed.Content.Web.Modules
                     SetMetadata("Caption", Caption.Text);
                     SetMetadata("Keywords", Keywords.Text);
                     SetMetadata("UploadDate", DateTime.Now.ToString());
-                    SetMetadata("CreatedBy", PortalSettings.CurrentUser.Identity.Email);
+                    SetMetadata("CreatedBy", PortalSettings.CurrentUser.Identity.UserName);
                     SetMetadata("DisplayOrder", displayOrder.ToString());
 
                     if (ItemID == 0)
@@ -468,7 +468,7 @@ namespace Appleseed.Content.Web.Modules
                         //If this is a new picture add it to Esperantus.Esperantus.Localize. database
                         ItemID =
                             pictures.AddPicture(ModuleID, ItemID, displayOrder, MetadataXml, ShortDescription.Text,
-                                                Keywords.Text, PortalSettings.CurrentUser.Identity.Email, DateTime.Now);
+                                                Keywords.Text, PortalSettings.CurrentUser.Identity.UserName, DateTime.Now);
                     }
                     else
                     {

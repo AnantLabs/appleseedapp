@@ -185,7 +185,7 @@ namespace Appleseed.Content.Web.Modules
                 // Change for save contenType and document buffer
                 // documents.UpdateDocument(ModuleID, ItemID, PortalSettings.CurrentUser.Identity.Email, NameField.Text, PathField.Text, CategoryField.Text, new byte[0], 0, string.Empty );
                 string contentType = PathField.Text.Substring(PathField.Text.LastIndexOf(".") + 1).ToLower();
-                documents.UpdateDocument(ModuleID, ItemID, PortalSettings.CurrentUser.Identity.Email, NameField.Text,
+                documents.UpdateDocument(ModuleID, ItemID, PortalSettings.CurrentUser.Identity.UserName, NameField.Text,
                                          PathField.Text, CategoryField.Text, buffer, size, contentType);
 
                 RedirectBackToReferringPage();

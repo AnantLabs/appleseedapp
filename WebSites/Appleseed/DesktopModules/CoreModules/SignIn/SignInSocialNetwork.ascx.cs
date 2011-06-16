@@ -40,18 +40,23 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
                 errfb.Visible = true;
             }
 
-            var TwitterRequestToken = GetTwitterRequestToken();
-            if (TwitterRequestToken != null) {
-                Uri authenticationUri = OAuthUtility.BuildAuthorizationUri(TwitterRequestToken.Token, true);
+            try { 
+                var TwitterRequestToken = GetTwitterRequestToken();
+                if (TwitterRequestToken != null) {
+                    Uri authenticationUri = OAuthUtility.BuildAuthorizationUri(TwitterRequestToken.Token, true);
 
-                string url = authenticationUri.AbsoluteUri;
-                LogIn.Text = "Log in Twitter";
-                LogIn.NavigateUrl = url;
+                    string url = authenticationUri.AbsoluteUri;
+                    LogIn.Text = "Log in Twitter";
+                    LogIn.NavigateUrl = url;
 
 
 
-            } else {
-                //TODO: ocultar boton y mostrar warning
+                } else {
+                    //TODO: ocultar boton y mostrar warning
+                    logintwit_div.Visible = false;
+                    errtwit.Visible = true;
+                }
+             } catch (TwitterizerException ex) {
                 logintwit_div.Visible = false;
                 errtwit.Visible = true;
             }
@@ -114,8 +119,9 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
         {
             var client = new FacebookWebClient();
             dynamic me = client.Get("me");
+            Session["CameFromSocialNetwork"] = true;
             if (Membership.GetUser(me.email) == null) {
-                Session["CameFromSocialNetwork"] = true;
+                
                 Session["FacebookUserName"] = me.email;
                 Session["FacebookName"] = me.name;
 

@@ -125,7 +125,7 @@ namespace Appleseed.Content.Web.Modules
                 {
                     UsersDB u = new UsersDB();
                     PortalSettings portalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
-                    System.Web.Security.MembershipUser s = u.GetSingleUser(PortalSettings.CurrentUser.Identity.Email, portalSettings.PortalAlias);
+                    System.Web.Security.MembershipUser s = u.GetSingleUser(PortalSettings.CurrentUser.Identity.UserName, portalSettings.PortalAlias);
                     try
                     {
                         userID = (Guid)s.ProviderUserKey;

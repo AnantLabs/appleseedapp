@@ -124,7 +124,7 @@ namespace Appleseed.Content.Web.Modules
                 if (ItemID == 0)
                 {
                     // Add the link within the Links table
-                    enhancedLinks.AddEnhancedLink(ModuleID, ItemID, PortalSettings.CurrentUser.Identity.Email,
+                    enhancedLinks.AddEnhancedLink(ModuleID, ItemID, PortalSettings.CurrentUser.Identity.UserName,
                                                   TitleField.Text, UrlField.Text, MobileUrlField.Text,
                                                   Int32.Parse(ViewOrderField.Text), DescriptionField.Text, Src.Text, 0,
                                                   TargetField.SelectedItem.Text);
@@ -132,7 +132,7 @@ namespace Appleseed.Content.Web.Modules
                 else
                 {
                     // Update the link within the Links table
-                    enhancedLinks.UpdateEnhancedLink(ModuleID, ItemID, PortalSettings.CurrentUser.Identity.Email,
+                    enhancedLinks.UpdateEnhancedLink(ModuleID, ItemID, PortalSettings.CurrentUser.Identity.UserName,
                                                      TitleField.Text, UrlField.Text, MobileUrlField.Text,
                                                      Int32.Parse(ViewOrderField.Text), DescriptionField.Text, Src.Text,
                                                      0, TargetField.SelectedItem.Text);

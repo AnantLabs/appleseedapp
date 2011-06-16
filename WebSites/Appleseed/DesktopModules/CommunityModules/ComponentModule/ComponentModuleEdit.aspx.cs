@@ -84,7 +84,7 @@ namespace Appleseed.Content.Web.Modules
                 // Create an instance of the Event DB component
                 ComponentModuleDB comp = new ComponentModuleDB();
 
-                comp.UpdateComponentModule(ModuleID, PortalSettings.CurrentUser.Identity.Email, TitleField.Text,
+                comp.UpdateComponentModule(ModuleID, PortalSettings.CurrentUser.Identity.UserName, TitleField.Text,
                                            ComponentField.Text);
 
                 // Redirect back to the portal home page

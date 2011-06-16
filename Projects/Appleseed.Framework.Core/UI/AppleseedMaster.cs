@@ -11,6 +11,9 @@ using Appleseed.Framework;
 
 namespace Appleseed
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class AppleseedMaster : System.Web.Mvc.ViewMasterPage
     {
         /// <summary>
@@ -24,10 +27,15 @@ namespace Appleseed
             base.OnLoad(e);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="context"></param>
         public static void InsertAllScripts(Page page, HttpContext context)
         {
             if (!page.ClientScript.IsClientScriptBlockRegistered("allscripts")) {
-                var scripts = GetBaseScripts();
+                var scripts = GetBaseScripts(page);
 
                 int index = 0;
                 foreach (var script in scripts) {
@@ -40,7 +48,8 @@ namespace Appleseed
                 var portalSettings = (PortalSettings)context.Items["PortalSettings"];
 
                 if (portalSettings != null) {
-                    var cssHref = "/Design/jqueryUI/" + portalSettings.PortalAlias + "/jquery-ui.custom.css";
+                    var cssHref =  page.ResolveUrl("~/Design/jqueryUI/" + portalSettings.PortalAlias + "/jquery-ui.custom.css");
+                   
 
                     HtmlGenericControl include = new HtmlGenericControl("link");
                     include.Attributes.Add("type", "text/css");
@@ -63,6 +72,10 @@ namespace Appleseed
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public static string GetExtraScripts()
         {
             string scripts = string.Empty;
@@ -79,24 +92,28 @@ namespace Appleseed
             return scripts;
         }
 
-        public static ArrayList GetBaseScripts()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static ArrayList GetBaseScripts(Page page)
         {
             var scripts = new ArrayList();
 
-            scripts.Add("/aspnet_client/jQuery/jquery-1.6.1.min.js");
-            scripts.Add("/aspnet_client/jQuery/jquery-ui-1.8.11.min.js");
-            scripts.Add("/aspnet_client/jQuery/jquery.validate.min.js");
-            scripts.Add("/aspnet_client/jQuery/jquery.validate.unobtrusive.min.js");
-            scripts.Add("/aspnet_client/jQuery/jquery.bgiframe.min.js");
-            scripts.Add("/aspnet_client/jQuery/jquery-ui-i18n.min.js");
-            scripts.Add("/aspnet_client/jQuery/jquery.unobtrusive-ajax.min.js");
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery-1.6.1.min.js"));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery-ui-1.8.11.min.js"));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.validate.min.js"));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.validate.unobtrusive.min.js"));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.bgiframe.min.js"));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery-ui-i18n.min.js"));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.unobtrusive-ajax.min.js"));
 
-            scripts.Add("/aspnet_client/jQuery/modernizr-1.7.min.js");
-            scripts.Add("/aspnet_client/jQuery/jquery.cookie.js");
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/modernizr-1.7.min.js"));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.cookie.js"));
 
-            scripts.Add("/aspnet_client/jQuery/MicrosoftAjax.js");
-            scripts.Add("/aspnet_client/jQuery/MicrosoftMvcAjax.js");
-            scripts.Add("/aspnet_client/jQuery/MicrosoftMvcValidation.js");
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/MicrosoftAjax.js"));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/MicrosoftMvcAjax.js"));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/MicrosoftMvcValidation.js"));
 
             scripts.Add("/aspnet_client/js/DragNDrop.js");
             scripts.Add("/aspnet_client/js/browser_upgrade_notification.js");

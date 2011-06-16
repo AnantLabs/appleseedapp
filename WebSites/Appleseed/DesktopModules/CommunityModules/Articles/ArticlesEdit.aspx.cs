@@ -123,7 +123,7 @@ namespace Appleseed.Content.Web.Modules
                     ExpireField.Text =
                         DateTime.Now.AddDays(int.Parse(this.ModuleSettings["DefaultVisibleDays"].ToString())).
                             ToShortDateString();
-                    CreatedBy.Text = PortalSettings.CurrentUser.Identity.Email;
+                    CreatedBy.Text = PortalSettings.CurrentUser.Identity.UserName;
                     CreatedDate.Text = DateTime.Now.ToString();
                 }
             }
@@ -163,7 +163,7 @@ namespace Appleseed.Content.Web.Modules
                 }
                 if (ItemID == 0)
                 {
-                    Articles.AddArticle(ModuleID, PortalSettings.CurrentUser.Identity.Email,
+                    Articles.AddArticle(ModuleID, PortalSettings.CurrentUser.Identity.UserName,
                                         ((HTMLText) TitleField.Text).InnerText,
                                         ((HTMLText) SubtitleField.Text).InnerText, AbstractText.Text,
                                         Server.HtmlEncode(DesktopText.Text), DateTime.Parse(StartField.Text),
@@ -171,7 +171,7 @@ namespace Appleseed.Content.Web.Modules
                 }
                 else
                 {
-                    Articles.UpdateArticle(ModuleID, ItemID, PortalSettings.CurrentUser.Identity.Email,
+                    Articles.UpdateArticle(ModuleID, ItemID, PortalSettings.CurrentUser.Identity.UserName,
                                            ((HTMLText) TitleField.Text).InnerText,
                                            ((HTMLText) SubtitleField.Text).InnerText, AbstractText.Text,
                                            Server.HtmlEncode(DesktopText.Text), DateTime.Parse(StartField.Text),
