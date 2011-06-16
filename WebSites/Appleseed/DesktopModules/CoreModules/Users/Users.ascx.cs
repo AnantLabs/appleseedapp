@@ -9,6 +9,7 @@ using Appleseed.Framework.Web.UI.WebControls;
 using History=Appleseed.Framework.History;
 using LinkButton=Appleseed.Framework.Web.UI.WebControls.LinkButton;
 using Localize=Appleseed.Framework.Web.UI.WebControls.Localize;
+using System.Web.Security;
 
 namespace Appleseed.Content.Web.Modules
 {
@@ -157,8 +158,9 @@ namespace Appleseed.Content.Web.Modules
             GridViewRow row = usersGrid.Rows[e.NewEditIndex];
             HttpContext.Current.Items["userName"] = "";
             string _email = ((HtmlAnchor) row.FindControl("lnkUser")).InnerText.Trim();
+            string _userName = Membership.GetUserNameByEmail(_email);
             string redurl = Path.ApplicationRoot + "/DesktopModules/CoreModules/Users/UsersManage.aspx?mid=" + ModuleID +
-                            "&username=" + _email;
+                            "&username=" + _userName;
             Response.Redirect(redurl);
         }
 

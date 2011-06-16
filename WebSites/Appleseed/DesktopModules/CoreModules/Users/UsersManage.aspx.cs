@@ -321,6 +321,7 @@ namespace Appleseed.Content.Web.Modules
 
             // remove "All Users", "Authenticated Users" and "Unauthenticated Users" pseudo-roles
             AppleseedRole pseudoRole = new AppleseedRole(AppleseedRoleProvider.AllUsersGuid, AppleseedRoleProvider.AllUsersRoleName);
+            
             if (allRolesList.Contains(pseudoRole))
             {
                 allRolesList.Remove(pseudoRole);

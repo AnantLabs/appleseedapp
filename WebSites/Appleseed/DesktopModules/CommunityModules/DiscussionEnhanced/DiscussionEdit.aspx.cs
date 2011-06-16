@@ -263,8 +263,8 @@ namespace Appleseed.Content.Web.Modules.DiscussionEnhanced
             // Add new message (updating the "ItemID" on the page)
             this.ItemID = discuss.AddMessage(
                 this.ModuleID, 
-                this.ItemID, 
-                PortalSettings.CurrentUser.Identity.Email, 
+                this.ItemID,
+                PortalSettings.CurrentUser.Identity.UserName, 
                 this.Server.HtmlEncode(this.TitleField.Text), 
                 this.BodyField.Text, 
                 this.GetMode());

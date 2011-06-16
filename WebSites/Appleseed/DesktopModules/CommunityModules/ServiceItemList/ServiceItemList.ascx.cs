@@ -101,7 +101,7 @@ namespace Appleseed.Content.Web.Modules
                 Guid userID = Guid.Empty;
 
                 UsersDB u = new UsersDB();
-                AppleseedUser s = u.GetSingleUser(PortalSettings.CurrentUser.Identity.Email, this.PortalSettings.PortalAlias);
+                AppleseedUser s = u.GetSingleUser(PortalSettings.CurrentUser.Identity.UserName, this.PortalSettings.PortalAlias);
                 try
                 {
                     userID = (Guid)s.ProviderUserKey;

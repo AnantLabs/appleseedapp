@@ -404,7 +404,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                                                                                                           PortalSettings
                                                                                                               .CurrentUser
                                                                                                               .Identity.
-                                                                                                              Email ) +
+                                                                                                                UserName) +
                                        "'>" + "Profile" + "</a>";
                             list.Add( menuLink );
                         }
@@ -421,7 +421,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                                                                                                               .
                                                                                                               CurrentUser
                                                                                                               .Identity.
-                                                                                                              Email ) +
+                                                                                                              UserName) +
                                        "'>" +
                                        General.GetString( "HEADER_EDIT_PROFILE", "Edit profile", this ) + "</a>";
                             list.Add( menuLink );

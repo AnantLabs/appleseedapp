@@ -165,8 +165,8 @@ namespace Appleseed.Content.Web.Modules
 
                             tasks.AddTask(
                                 linkedModuleID, 
-                                this.ItemID, 
-                                PortalSettings.CurrentUser.Identity.Email, 
+                                this.ItemID,
+                                PortalSettings.CurrentUser.Identity.UserName, 
                                 this.TitleField.Text, 
                                 DateTime.Parse(this.StartField.Text), 
                                 this.DesktopText.Text, 
@@ -181,8 +181,8 @@ namespace Appleseed.Content.Web.Modules
                     // Add to current
                     tasks.AddTask(
                         this.ModuleID, 
-                        this.ItemID, 
-                        PortalSettings.CurrentUser.Identity.Email, 
+                        this.ItemID,
+                        PortalSettings.CurrentUser.Identity.UserName, 
                         this.TitleField.Text, 
                         DateTime.Parse(this.StartField.Text), 
                         this.DesktopText.Text, 
@@ -197,8 +197,8 @@ namespace Appleseed.Content.Web.Modules
                     // Update the task within the Tasks table
                     tasks.UpdateTask(
                         this.ModuleID, 
-                        this.ItemID, 
-                        PortalSettings.CurrentUser.Identity.Email, 
+                        this.ItemID,
+                        PortalSettings.CurrentUser.Identity.UserName, 
                         this.TitleField.Text, 
                         DateTime.Parse(this.StartField.Text), 
                         this.DesktopText.Text, 

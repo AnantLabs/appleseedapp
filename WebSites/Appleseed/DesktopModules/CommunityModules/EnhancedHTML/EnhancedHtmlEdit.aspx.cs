@@ -381,7 +381,7 @@ namespace Appleseed.Content.Web.Modules
                     break;
             }
 
-            string user = PortalSettings.CurrentUser.Identity.Email;
+            string user = PortalSettings.CurrentUser.Identity.UserName;
             EnhancedHtmlDB tdb1 = new EnhancedHtmlDB();
             if (lstPages.SelectedIndex >= 0)
             {
