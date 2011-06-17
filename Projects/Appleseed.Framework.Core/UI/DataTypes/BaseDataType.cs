@@ -178,7 +178,10 @@ namespace Appleseed.Framework.DataTypes
                     var txt = this.InnerControl as TextBox;
                     if (txt != null)
                     {
-                        this.Value = (T)Convert.ChangeType(txt.Text, typeof(T));
+                        if (typeof(T).Name == "Uri")
+                            this.Value = (T)Convert.ChangeType((new System.Uri(txt.Text)),typeof(T));
+                        else
+                            this.Value = (T)Convert.ChangeType(txt.Text, typeof(T));
                     }
                 }
                 else

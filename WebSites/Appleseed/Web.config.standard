@@ -100,15 +100,15 @@
 		<add key="LockAllPortals" value="false" />
 		<add key="LockKeyHolders" value="127.0.0.1" />
 		<add key="LockResponse" value="503" />
-		<add key="LockRedirect" value="~/app_support/ErrorLocked.html" />
+		<add key="LockRedirect" value="~/app_support/ErrorLocked.aspx" />
 		<add key="CriticalErrorResponse" value="503" />
-		<add key="CriticalErrorRedirect" value="~/app_support/GeneralError.html" />
+		<add key="CriticalErrorRedirect" value="~/app_support/GeneralError.aspx" />
 		<add key="NoPortalErrorResponse" value="404" />
-		<add key="NoPortalErrorRedirect" value="~/app_support/ErrorNoPortal.html" />
+		<add key="NoPortalErrorRedirect" value="~/app_support/ErrorNoPortal.aspx" />
 		<add key="CodeUpdateResponse" value="503" />
-		<add key="CodeUpdateRedirect" value="~/app_support/GeneralError.html" />
+		<add key="CodeUpdateRedirect" value="~/app_support/GeneralError.aspx" />
 		<add key="DatabaseErrorResponse" value="503" />
-		<add key="DatabaseErrorRedirect" value="~/app_support/GeneralError.html" />
+		<add key="DatabaseErrorRedirect" value="~/app_support/GeneralError.aspx" />
 		<add key="ForceExpire" value="false" />
 		<add key="CookieExpire" value="60" />
 		<add key="AlternateLogLocation" />
@@ -329,7 +329,7 @@
 		</authentication>
 		<!-- Set here max upload size -->
 		<httpRuntime useFullyQualifiedRedirectUrl="true" maxRequestLength="50000" requestPathInvalidCharacters="" requestValidationMode="2.0" />
-		<customErrors defaultRedirect="~/app_support/GeneralError.html" mode="RemoteOnly" />
+		<customErrors defaultRedirect="~/app_support/GeneralError.aspx" mode="RemoteOnly" />
 		<httpHandlers>
       <add verb="*" path="sitemap.axd" type="Newtonsoft.Sitemaps.SitemapHandler, Newtonsoft.Sitemaps"/>
 			<add path="ChartImg.axd" verb="GET,HEAD, POST" type="System.Web.UI.DataVisualization.Charting.ChartHttpHandler, System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" validate="false" />
