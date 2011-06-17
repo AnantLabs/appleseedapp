@@ -196,8 +196,9 @@ namespace Appleseed.Framework.DataTypes
                         var dd = this.InnerControl as DropDownList;
                         if (dd != null)
                         {
-                            var val = conv.ConvertFrom(dd.SelectedItem.Value);
-                            this.Value = (dd.SelectedItem != null ? val : string.Empty) is T ? (T)(dd.SelectedItem != null ? val : string.Empty) : default(T);
+                            //var val = conv.ConvertFrom(dd.SelectedItem.Value);
+                            this.Value = (dd.SelectedItem != null ? (conv.ConvertFrom(dd.SelectedItem.Value)) : string.Empty) is T ? 
+                                (T)(dd.SelectedItem != null ? (conv.ConvertFrom(dd.SelectedItem.Value)) : string.Empty) : default(T);
                         }
                     }
                 }
