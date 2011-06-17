@@ -322,7 +322,7 @@ namespace AppleseedWebApplication.Error
             }
 
             pageContent.Controls.Add(new LiteralControl(sb.ToString()));
-            this.Response.StatusCode = httpStatusCode;
+            //this.Response.StatusCode = httpStatusCode;
             this.Response.Cache.SetCacheability(HttpCacheability.NoCache);
         }
 
