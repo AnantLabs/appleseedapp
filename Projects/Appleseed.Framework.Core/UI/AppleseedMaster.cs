@@ -8,6 +8,7 @@ using System.Web;
 using System.Xml.Linq;
 using System;
 using Appleseed.Framework;
+using System.IO;
 
 namespace Appleseed
 {
@@ -44,12 +45,12 @@ namespace Appleseed
                     include.Attributes.Add("src", script as string);
                     page.Header.Controls.AddAt(index++, include);
                 }
-                
+
                 var portalSettings = (PortalSettings)context.Items["PortalSettings"];
 
                 if (portalSettings != null) {
-                    var cssHref =  page.ResolveUrl("~/Design/jqueryUI/" + portalSettings.PortalAlias + "/jquery-ui.custom.css");
-                   
+                    var cssHref = page.ResolveUrl("~/Design/jqueryUI/" + portalSettings.PortalAlias + "/jquery-ui.custom.css");
+
 
                     HtmlGenericControl include = new HtmlGenericControl("link");
                     include.Attributes.Add("type", "text/css");
@@ -81,9 +82,11 @@ namespace Appleseed
             string scripts = string.Empty;
             try {
                 string filePath = HttpContext.Current.Server.MapPath("~/Scripts/Scripts.xml");
-                XDocument xml = XDocument.Load(filePath);
-                foreach (var s in xml.Descendants("scripts").DescendantNodes()) {
-                    scripts += s.ToString() + Environment.NewLine;
+                if (File.Exists(filePath)) {
+                    XDocument xml = XDocument.Load(filePath);
+                    foreach (var s in xml.Descendants("scripts").DescendantNodes()) {
+                        scripts += s.ToString() + Environment.NewLine;
+                    }
                 }
             } catch (Exception exc) {
                 ErrorHandler.Publish(LogLevel.Debug, exc);
