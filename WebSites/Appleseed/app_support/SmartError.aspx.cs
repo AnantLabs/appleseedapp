@@ -306,7 +306,7 @@ namespace AppleseedWebApplication.Error
                             "<h3>{0} - {1}</h3>", 
                             General.GetString("SMARTERROR_SUPPORTDETAILS_HEADING", "Support Details", null), 
                             httpStatusCode);
-                        sb.Append(renderedEvent);
+                        sb.Append(renderedEvent); 
                     }
                 }
                 catch
