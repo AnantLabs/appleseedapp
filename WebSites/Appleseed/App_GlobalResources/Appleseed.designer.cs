@@ -16549,5 +16549,21 @@ namespace Resources {
                 return ResourceManager.GetString("ZIP", resourceCulture);
             }
         }
+
+        internal static string FACEBOOK_ERROR
+        {
+            get
+            {
+                return ResourceManager.GetString("FACEBOOK_ERROR", resourceCulture);
+            }
+        }
+
+        internal static string TWITTER_ERROR
+        {
+            get
+            {
+                return ResourceManager.GetString("TWITTER_ERROR", resourceCulture);
+            }
+        }
     }
 }

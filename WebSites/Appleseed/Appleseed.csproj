@@ -506,6 +506,13 @@
     <Compile Include="app_support\ftb.imagegallery.aspx.designer.cs">
       <DependentUpon>ftb.imagegallery.aspx</DependentUpon>
     </Compile>
+    <Compile Include="app_support\GeneralError.aspx.cs">
+      <DependentUpon>GeneralError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="app_support\GeneralError.aspx.designer.cs">
+      <DependentUpon>GeneralError.aspx</DependentUpon>
+    </Compile>
     <Compile Include="app_support\print.aspx.designer.cs">
       <DependentUpon>print.aspx</DependentUpon>
     </Compile>
@@ -1864,6 +1871,7 @@
     <Content Include="app_support\FCK.filemanager\upload.aspx" />
     <Content Include="app_support\FCKconnectorV2.aspx" />
     <Content Include="app_support\ftb.imagegallery.aspx" />
+    <Content Include="app_support\GeneralError.aspx" />
     <Content Include="app_support\GeneralError.html" />
     <Content Include="app_support\print.aspx" />
     <Content Include="app_support\SmartError.aspx" />
