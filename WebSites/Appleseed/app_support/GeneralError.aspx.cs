@@ -298,8 +298,15 @@ namespace Appleseed.Error
                         }
                     }
 
+                    // check if it has to show the full detail error message
+                    bool showError = false;
+                    if (this.PortalSettings.CustomSettings["DETAIL_ERROR_MESSAGE"] != null) {
+                        showError = bool.Parse(this.PortalSettings.CustomSettings["DETAIL_ERROR_MESSAGE"].ToString());
+                    }
+
+
                     // check if requestor's IP address is in allowed list
-                    if (ipList.CheckNumber(this.Request.UserHostAddress))
+                    if (ipList.CheckNumber(this.Request.UserHostAddress) || showError)
                     {
                         // we can show error details
                         sb.AppendFormat(

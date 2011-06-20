@@ -3510,4 +3510,10 @@
   <data name="TEMPLATES" xml:space="preserve">
     <value>Templates</value>
   </data>
+  <data name="FACEBOOK_ERROR" xml:space="preserve">
+    <value>There's been an error with Facebook. Please try again later.</value>
+  </data>
+  <data name="TWITTER_ERROR" xml:space="preserve">
+    <value>There's been an error with Twitter. Please try again later.</value>
+  </data>
 </root>

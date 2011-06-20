@@ -98,7 +98,7 @@
 		<add key="DatabaseUpdateRedirect" value="~/Installer/Update.aspx" />
 		<add key="InstallerRedirect" value="~/Installer/default.aspx" />
 		<add key="LockAllPortals" value="false" />
-		<add key="LockKeyHolders" value="127.0.0.1" />
+		<add key="LockKeyHolders" value="127.0.0.1;::1" />
 		<add key="LockResponse" value="503" />
 		<add key="LockRedirect" value="~/app_support/ErrorLocked.aspx" />
 		<add key="CriticalErrorResponse" value="503" />

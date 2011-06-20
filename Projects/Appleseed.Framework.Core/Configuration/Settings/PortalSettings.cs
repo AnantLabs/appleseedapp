@@ -1908,6 +1908,16 @@ namespace Appleseed.Framework.Site.Configuration
                     };
                 baseSettings.Add("SITESETTINGS_USE_RECYCLER", useRecycler);
 
+                var detailErrorMessage = new SettingItem<bool, CheckBox> {
+                    Order = groupOrderBase + 56,
+                    Group = group,
+                    Value = false,
+                    EnglishName = "Show Detail Error Message",
+                    Description =
+                        "Check to show Full detail Error Message when showing error."
+                };
+                baseSettings.Add("DETAIL_ERROR_MESSAGE", detailErrorMessage);
+
                 // BOWEN 11 June 2005
                 #endregion
 

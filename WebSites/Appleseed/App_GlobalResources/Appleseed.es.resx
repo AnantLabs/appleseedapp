@@ -4365,4 +4365,10 @@
   <data name="TEMPLATES" xml:space="preserve">
     <value>Templates</value>
   </data>
+  <data name="FACEBOOK_ERROR" xml:space="preserve">
+    <value>Ha ocurrido un error con Facebook. Por favor inténtalo nuevamente mas tarde.</value>
+  </data>
+  <data name="TWITTER_ERROR" xml:space="preserve">
+    <value>Ha ocurrido un error con Twitter. Por favor inténtalo nuevamente mas tarde.</value>
+  </data>
 </root>

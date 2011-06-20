@@ -27,18 +27,25 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            var facebookContext = GetFacebookWebContext();
-            if (facebookContext != null) {
-                appId.Value = PortalSettings.CustomSettings["SITESETTINGS_FACEBOOK_APP_ID"].ToString();
-                if (facebookContext.IsAuthenticated()) {
-                    //Here is were i check if the user login via facebook
-                    FacebookSignInMethod();
+            try {
+                var facebookContext = GetFacebookWebContext();
+                if (facebookContext != null) {
+                    appId.Value = PortalSettings.CustomSettings["SITESETTINGS_FACEBOOK_APP_ID"].ToString();
+                    if (facebookContext.IsAuthenticated()) {
+                        //Here is were i check if the user login via facebook
+                        FacebookSignInMethod();
+                    }
+                } else {
+                    //TODO: ocultar boton y mostrar warning
+                    loginfb_div.Visible = false;
+                    errfb.Visible = true;
                 }
-            } else {
-                //TODO: ocultar boton y mostrar warning
+            } catch (FacebookApiException) {
                 loginfb_div.Visible = false;
                 errfb.Visible = true;
+                errfb.Text = Resources.Appleseed.FACEBOOK_ERROR;
             }
+            
 
             try { 
                 var TwitterRequestToken = GetTwitterRequestToken();
@@ -59,6 +66,7 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
              } catch (TwitterizerException ex) {
                 logintwit_div.Visible = false;
                 errtwit.Visible = true;
+                errtwit.Text = Resources.Appleseed.TWITTER_ERROR;
             }
         }
 
