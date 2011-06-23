@@ -2887,9 +2887,15 @@ namespace Appleseed.Framework.Web.UI.WebControls
                                              : "TitleText Placeholder";
                     }
                 }
-
-                var title = string.Format(
-                    "<span id=\"mTitle_{0}\" class=\"editTitle\">{1}</span>", this.ModuleID, this.titleText);
+                string title;
+                if (PortalSecurity.HasEditPermissions(this.ModuleID)) {
+                    string callurl = string.Format("http://{0}{1}", Request.Url.Host, Page.ResolveUrl("~/Home/SaveTitle")); 
+                    
+                    title = string.Format(
+                       "<span id=\"mTitle_{0}\" class=\"editTitle\" onclick=EditTitleInLine(\'{2}\')>{1} </span>", this.ModuleID, this.titleText, callurl);
+                } else
+                    title = string.Format(
+                        "<span id=\"mTitle_{0}\" class=\"editTitle\">{1}</span>", this.ModuleID, this.titleText);
                 return title;
             }
 

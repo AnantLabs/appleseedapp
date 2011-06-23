@@ -13,7 +13,10 @@ using System.Text.RegularExpressions;  // This is for password validation
 using System.Security.Cryptography;
 using Appleseed.Framework.Security;
 using Appleseed.Framework;
-using System.Web.Profile;  // This is where the hash functions reside
+using System.Web.Profile;
+using Appleseed.Framework.Settings;
+using Appleseed.Framework.Site.Configuration;
+using Appleseed.Framework.Web.UI.WebControls;
 
 
 namespace Appleseed.DesktopModules.CoreModules.SignIn
@@ -22,56 +25,64 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            try{
-                string consumerKey = Session["TwitterAppId"] as string;
-                string consumerSecret = Session["TwitterAppSecret"] as string;
-                OAuthTokenResponse accessTokenResponse = OAuthUtility.GetAccessToken(consumerKey, consumerSecret,
-                                                                                        Request.QueryString["oauth_token"],
-                                                                                        Request.QueryString["oauth_verifier"]);
+            if (!Request.IsAuthenticated) {
+                try {
 
-                Session["CameFromSocialNetwork"] = true;
+                    if (Session["TwitterAppId"] != null && Session["TwitterAppSecret"] != null) {
 
-                string userName = "Twitter_" + accessTokenResponse.ScreenName;
-                string password = GeneratePasswordHash(userName);
+                        string consumerKey = Session["TwitterAppId"] as string;
+                        string consumerSecret = Session["TwitterAppSecret"] as string;
 
-                if (Membership.GetUser(userName) == null) {
-                    //The user doesnt exists, needs to be registered
+                        OAuthTokenResponse accessTokenResponse = OAuthUtility.GetAccessToken(consumerKey, consumerSecret,
+                                                                                                Request.QueryString["oauth_token"],
+                                                                                                Request.QueryString["oauth_verifier"]);
 
-                    Session["TwitterUserName"] = userName;
-                    Session["TwitterPassword"] = password;
-                    string urlRegister = ConvertRelativeUrlToAbsoluteUrl("~/DesktopModules/CoreModules/Register/Register.aspx");
-                    Response.Redirect(urlRegister);
+                        Session["CameFromSocialNetwork"] = true;
+
+                        string userName = "Twitter_" + accessTokenResponse.ScreenName;
+                        string password = GeneratePasswordHash(userName);
+
+                        if (Membership.GetUser(userName) == null) {
+                            //The user doesnt exists, needs to be registered
+
+                            Session["TwitterUserName"] = userName;
+                            Session["TwitterPassword"] = password;
+                            string urlRegister = ConvertRelativeUrlToAbsoluteUrl("~/DesktopModules/CoreModules/Register/Register.aspx");
+                            Response.Redirect(urlRegister);
 
 
-                } else {
-                    
-                    PortalSecurity.SignOn(userName, password);
+                        } else {
 
+                            PortalSecurity.SignOn(userName, password);
+                            string urlRegister = ConvertRelativeUrlToAbsoluteUrl("");
+                            Response.Redirect(urlRegister);
+                        }
+                    } else {
+                        ErrorHandler.Publish(LogLevel.Error, "TwitterSettings are not correct");
+                        string _redirectUrl = Config.SmartErrorRedirect;
+                        Response.Redirect(_redirectUrl);
+                    }
+
+                } catch (TwitterizerException ex) {
+
+                    ErrorHandler.Publish(LogLevel.Error, ex);
+                    string _redirectUrl = Config.SmartErrorRedirect;
+                    Response.Redirect(_redirectUrl);
                 }
-
-            } 
-            catch(TwitterizerException  ex){
-                string urlRegister = ConvertRelativeUrlToAbsoluteUrl("");
-                Response.Redirect(urlRegister);
-
             }
-                
-            
-            
         }
-        
+
         public string GeneratePasswordHash(string thisPassword)
         {
             MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
             byte[] tmpSource;
             byte[] tmpHash;
-    
+
             tmpSource = ASCIIEncoding.ASCII.GetBytes(thisPassword); // Turn password into byte array
             tmpHash = md5.ComputeHash(tmpSource);
 
             StringBuilder sOutput = new StringBuilder(tmpHash.Length);
-            for (int i = 0; i < tmpHash.Length; i++)
-            {
+            for (int i = 0; i < tmpHash.Length; i++) {
                 sOutput.Append(tmpHash[i].ToString("X2"));  // X2 formats to hexadecimal
             }
             return sOutput.ToString();

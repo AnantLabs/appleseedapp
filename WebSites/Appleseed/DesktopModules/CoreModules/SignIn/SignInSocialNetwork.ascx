@@ -9,7 +9,7 @@
                 <div runat="server" id="loginfb_div">
                     <fb:login-button autologoutlink="true" perms="email">Login with Facebook</fb:login-button>
                 </div>
-                <asp:Label runat="server" ForeColor="Red" ID="errfb" Visible="false">Facebook settings are not correct</asp:Label>
+                <%--<asp:Label runat="server" ForeColor="Red" ID="errfb" Visible="false">Facebook settings are not correct</asp:Label>--%>
             </td>
         </tr>
          <tr>
@@ -17,7 +17,7 @@
                 <div runat="server" id="logintwit_div">
                    <asp:HyperLink runat="server" ImageUrl="~/images/sign-in-with-twitter-l.png" ID="LogIn" ></asp:HyperLink>
                 </div>
-                <asp:Label runat="server" ForeColor="Red" ID="errtwit" Visible="false">Twitter settings are not correct</asp:Label>
+                <%--<asp:Label runat="server" ForeColor="Red" ID="errtwit" Visible="false">Twitter settings are not correct</asp:Label>--%>
             </td>
         </tr>
         
