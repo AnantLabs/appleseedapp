@@ -1440,6 +1440,9 @@
       <DependentUpon>LogInTweeter.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="DesktopModules\CoreModules\SignIn\LogInTweeter.aspx.designer.cs">
+      <DependentUpon>LogInTweeter.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DesktopModules\CoreModules\SignIn\Signin.ascx.cs">
       <DependentUpon>Signin.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1861,15 +1864,11 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app_support\ErrorLocked.html" />
-    <Content Include="app_support\ErrorNoFilePermission.html" />
-    <Content Include="app_support\ErrorNoPortal.html" />
     <Content Include="app_support\FCK.filemanager\imagegallery.aspx" />
     <Content Include="app_support\FCK.filemanager\upload.aspx" />
     <Content Include="app_support\FCKconnectorV2.aspx" />
     <Content Include="app_support\ftb.imagegallery.aspx" />
     <Content Include="app_support\GeneralError.aspx" />
-    <Content Include="app_support\GeneralError.html" />
     <Content Include="app_support\print.aspx" />
     <Content Include="app_support\SmartError.aspx" />
     <Content Include="app_support\ZenNavigation\BindAll.xslt" />

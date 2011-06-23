@@ -315,8 +315,9 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
     {
         get
         {
-            //string uid = string.Empty;
-            string uid = PortalSettings.CurrentUser.Identity.UserName;
+            string uid = string.Empty;
+            if(PortalSettings.CurrentUser != null && PortalSettings.CurrentUser.Identity != null)
+                uid = PortalSettings.CurrentUser.Identity.UserName;
             //if (Request.Params["userName"] != null)
             //{
             //    uid = Request.Params["userName"];
