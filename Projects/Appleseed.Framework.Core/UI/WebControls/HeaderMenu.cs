@@ -400,11 +400,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                                 menuLink = menuLink + " class=\"" + CssClass + "\"";
 
                             menuLink = menuLink + " href='" +
-                                       HttpUrlBuilder.BuildUrl( "~/DesktopModules/CoreModules/Register/Register.aspx", "userName=" +
-                                                                                                          PortalSettings
-                                                                                                              .CurrentUser
-                                                                                                              .Identity.
-                                                                                                                UserName) +
+                                       HttpUrlBuilder.BuildUrl( "~/DesktopModules/CoreModules/Register/Register.aspx") +
                                        "'>" + "Profile" + "</a>";
                             list.Add( menuLink );
                         }
@@ -416,12 +412,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                                 menuLink = menuLink + " class=\"" + CssClass + "\"";
 
                             menuLink = menuLink + " href='" +
-                                       HttpUrlBuilder.BuildUrl( "~/DesktopModules/CoreModules/Register/Register.aspx", "userName=" +
-                                                                                                          PortalSettings
-                                                                                                              .
-                                                                                                              CurrentUser
-                                                                                                              .Identity.
-                                                                                                              UserName) +
+                                       HttpUrlBuilder.BuildUrl( "~/DesktopModules/CoreModules/Register/Register.aspx") +
                                        "'>" +
                                        General.GetString( "HEADER_EDIT_PROFILE", "Edit profile", this ) + "</a>";
                             list.Add( menuLink );

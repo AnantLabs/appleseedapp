@@ -22,15 +22,6 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl loginfb_div;
         
         /// <summary>
-        /// errfb control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label errfb;
-        
-        /// <summary>
         /// logintwit_div control.
         /// </summary>
         /// <remarks>
@@ -47,15 +38,6 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink LogIn;
-        
-        /// <summary>
-        /// errtwit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label errtwit;
         
         /// <summary>
         /// lblError control.

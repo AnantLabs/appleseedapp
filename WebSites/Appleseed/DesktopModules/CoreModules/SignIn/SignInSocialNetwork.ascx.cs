@@ -20,53 +20,70 @@ using System.Text;
 using Appleseed.Framework.Settings;
 using Twitterizer;
 using System.Security.Cryptography;
+using Appleseed.Framework.Web.UI.WebControls;
 
 namespace Appleseed.DesktopModules.CoreModules.SignIn
 {
     public partial class SignInSocialNetwork : SignInControl
+
     {
+        public SignInSocialNetwork()
+        {
+            var hideAutomatically = new SettingItem<bool, CheckBox>() {
+                Value = true,
+                EnglishName = "Hide automatically",
+                Order = 20
+            };
+            this.BaseSettings.Add("SIGNIN_AUTOMATICALLYHIDE", hideAutomatically);
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            try {
-                var facebookContext = GetFacebookWebContext();
-                if (facebookContext != null) {
-                    appId.Value = PortalSettings.CustomSettings["SITESETTINGS_FACEBOOK_APP_ID"].ToString();
-                    if (facebookContext.IsAuthenticated()) {
-                        //Here is were i check if the user login via facebook
-                        FacebookSignInMethod();
-                    }
-                } else {
-                    //TODO: ocultar boton y mostrar warning
-                    loginfb_div.Visible = false;
-                    errfb.Visible = true;
-                }
-            } catch (FacebookApiException) {
-                loginfb_div.Visible = false;
-                errfb.Visible = true;
-                errfb.Text = Resources.Appleseed.FACEBOOK_ERROR;
+            bool hide = false;
+
+            if (this.Settings["SIGNIN_AUTOMATICALLYHIDE"] != null) {
+                hide = bool.Parse(this.Settings["SIGNIN_AUTOMATICALLYHIDE"].ToString());
             }
-            
 
-            try { 
-                var TwitterRequestToken = GetTwitterRequestToken();
-                if (TwitterRequestToken != null) {
-                    Uri authenticationUri = OAuthUtility.BuildAuthorizationUri(TwitterRequestToken.Token, true);
-
-                    string url = authenticationUri.AbsoluteUri;
-                    LogIn.Text = "Log in Twitter";
-                    LogIn.NavigateUrl = url;
-
-
-
-                } else {
-                    //TODO: ocultar boton y mostrar warning
-                    logintwit_div.Visible = false;
-                    errtwit.Visible = true;
+            if (hide && this.Request.IsAuthenticated) {
+                this.Visible = false;
+            } else {
+                try {
+                    var facebookContext = GetFacebookWebContext();
+                    if (facebookContext != null) {
+                        appId.Value = PortalSettings.CustomSettings["SITESETTINGS_FACEBOOK_APP_ID"].ToString();
+                        if (facebookContext.IsAuthenticated()) {
+                            //Here is were i check if the user login via facebook
+                            FacebookSignInMethod();
+                        }
+                    } else {
+                        //TODO: ocultar boton y mostrar warning
+                        loginfb_div.Visible = false;
+                        ErrorHandler.Publish(LogLevel.Error, "Facebook settings are not correct");
+                    }
+                } catch (FacebookApiException ex) {
+                    loginfb_div.Visible = false;
+                    ErrorHandler.Publish(LogLevel.Error, Resources.Appleseed.FACEBOOK_ERROR, ex);
                 }
-             } catch (TwitterizerException ex) {
-                logintwit_div.Visible = false;
-                errtwit.Visible = true;
-                errtwit.Text = Resources.Appleseed.TWITTER_ERROR;
+
+
+                try {
+                    var TwitterRequestToken = GetTwitterRequestToken();
+                    if (TwitterRequestToken != null) {
+                        Uri authenticationUri = OAuthUtility.BuildAuthorizationUri(TwitterRequestToken.Token, true);
+
+                        string url = authenticationUri.AbsoluteUri;
+                        LogIn.Text = "Log in Twitter";
+                        LogIn.NavigateUrl = url;
+                    } else {
+                        //TODO: ocultar boton y mostrar warning
+                        logintwit_div.Visible = false;
+                        ErrorHandler.Publish(LogLevel.Error, "Twitter settings are not correct");
+                    }
+                } catch (TwitterizerException ex) {
+                    logintwit_div.Visible = false;
+                    ErrorHandler.Publish(LogLevel.Error, Resources.Appleseed.TWITTER_ERROR, ex);
+                }
             }
         }
 
@@ -105,22 +122,26 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
         /// </summary>
         internal FacebookWebContext GetFacebookWebContext()
         {
-            if (PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_FACEBOOK_APP_ID") &&
-                !PortalSettings.CustomSettings["SITESETTINGS_FACEBOOK_APP_ID"].ToString().Equals(string.Empty) &&
-                PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_FACEBOOK_APP_SECRET") &&
-                !PortalSettings.CustomSettings["SITESETTINGS_FACEBOOK_APP_SECRET"].ToString().Equals(string.Empty)) {
-                string appId = PortalSettings.CustomSettings["SITESETTINGS_FACEBOOK_APP_ID"].ToString();
-                var appSecret = PortalSettings.CustomSettings["SITESETTINGS_FACEBOOK_APP_SECRET"].ToString();
+            try {
+                if (PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_FACEBOOK_APP_ID") &&
+                    !PortalSettings.CustomSettings["SITESETTINGS_FACEBOOK_APP_ID"].ToString().Equals(string.Empty) &&
+                    PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_FACEBOOK_APP_SECRET") &&
+                    !PortalSettings.CustomSettings["SITESETTINGS_FACEBOOK_APP_SECRET"].ToString().Equals(string.Empty)) {
+                    string appId = PortalSettings.CustomSettings["SITESETTINGS_FACEBOOK_APP_ID"].ToString();
+                    var appSecret = PortalSettings.CustomSettings["SITESETTINGS_FACEBOOK_APP_SECRET"].ToString();
 
-                if (FacebookWebContext.Current.Settings != null) {
-                    var facebookConfigurationSection = new FacebookConfigurationSection();
-                    facebookConfigurationSection.AppId = appId;
-                    facebookConfigurationSection.AppSecret = appSecret;
-                    return new FacebookWebContext(facebookConfigurationSection);
+                    if (FacebookWebContext.Current.Settings != null) {
+                        var facebookConfigurationSection = new FacebookConfigurationSection();
+                        facebookConfigurationSection.AppId = appId;
+                        facebookConfigurationSection.AppSecret = appSecret;
+                        return new FacebookWebContext(facebookConfigurationSection);
+                    }
                 }
-            }
 
-            return null;
+                return null;
+            } catch (Exception) {
+                return null;
+            }
         }
 
         private void FacebookSignInMethod()
@@ -138,6 +159,11 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
                 Response.Redirect(urlRegister);
             } else
                 PortalSecurity.SignOn(me.email, GeneratePasswordHash(me.email));
+            if (this.Settings["SIGNIN_AUTOMATICALLYHIDE"] != null) {
+                bool hide = bool.Parse(this.Settings["SIGNIN_AUTOMATICALLYHIDE"].ToString());
+                this.Visible = false;
+            }
+
             
         }
 
@@ -172,24 +198,28 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
 
         internal OAuthTokenResponse GetTwitterRequestToken()
         {
-            if (PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_TWITTER_APP_ID") &&
-                !PortalSettings.CustomSettings["SITESETTINGS_TWITTER_APP_ID"].ToString().Equals(string.Empty) &&
-                PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_TWITTER_APP_SECRET") &&
-                !PortalSettings.CustomSettings["SITESETTINGS_TWITTER_APP_SECRET"].ToString().Equals(string.Empty)) {
-                string appId = PortalSettings.CustomSettings["SITESETTINGS_TWITTER_APP_ID"].ToString();
-                var appSecret = PortalSettings.CustomSettings["SITESETTINGS_TWITTER_APP_SECRET"].ToString();
+            try {
+                if (PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_TWITTER_APP_ID") &&
+                    !PortalSettings.CustomSettings["SITESETTINGS_TWITTER_APP_ID"].ToString().Equals(string.Empty) &&
+                    PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_TWITTER_APP_SECRET") &&
+                    !PortalSettings.CustomSettings["SITESETTINGS_TWITTER_APP_SECRET"].ToString().Equals(string.Empty)) {
+                    string appId = PortalSettings.CustomSettings["SITESETTINGS_TWITTER_APP_ID"].ToString();
+                    var appSecret = PortalSettings.CustomSettings["SITESETTINGS_TWITTER_APP_SECRET"].ToString();
 
-                string server = ConvertRelativeUrlToAbsoluteUrl("~/DesktopModules/CoreModules/SignIn/LogInTweeter.aspx");
-                Session["TwitterAppId"] = appId;
-                Session["TwitterAppSecret"] = appSecret;
+                    string server = ConvertRelativeUrlToAbsoluteUrl("~/DesktopModules/CoreModules/SignIn/LogInTweeter.aspx");
+                    Session["TwitterAppId"] = appId;
+                    Session["TwitterAppSecret"] = appSecret;
 
-                OAuthTokenResponse requestToken = OAuthUtility.GetRequestToken(appId, appSecret, server);
+                    OAuthTokenResponse requestToken = OAuthUtility.GetRequestToken(appId, appSecret, server);
 
-                return requestToken;
+                    return requestToken;
 
+                }
+
+                return null;
+            } catch (Exception) {
+                return null;
             }
-
-            return null;
         }
 
         public string ConvertRelativeUrlToAbsoluteUrl(string relativeUrl)

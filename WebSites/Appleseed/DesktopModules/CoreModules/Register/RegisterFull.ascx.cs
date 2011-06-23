@@ -315,15 +315,16 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
     {
         get
         {
-            string uid = string.Empty;
-            if (Request.Params["userName"] != null)
-            {
-                uid = Request.Params["userName"];
-            }
-            if (uid.Length == 0 && HttpContext.Current.Items["userName"] != null)
-            {
-                uid = HttpContext.Current.Items["userName"].ToString();
-            }
+            //string uid = string.Empty;
+            string uid = PortalSettings.CurrentUser.Identity.UserName;
+            //if (Request.Params["userName"] != null)
+            //{
+            //    uid = Request.Params["userName"];
+            //}
+            //if (uid.Length == 0 && HttpContext.Current.Items["userName"] != null)
+            //{
+            //    uid = HttpContext.Current.Items["userName"].ToString();
+            //}
             return uid;
         }
     }

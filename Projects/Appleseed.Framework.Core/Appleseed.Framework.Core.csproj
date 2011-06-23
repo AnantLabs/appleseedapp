@@ -372,10 +372,6 @@
     <None Include="Settings\Appleseed.Settings.cd" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PortableAreas\Appleseed.Core\Appleseed.Core.csproj">
-      <Project>{22C4BA46-65C9-49E2-8A23-86DD2F44B744}</Project>
-      <Name>Appleseed.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Appleseed.Framework.Providers.AppleseedMembershipProvider\Appleseed.Framework.Providers.AppleseedMembershipProvider.csproj">
       <Project>{6BC1E6D4-1DD7-4CDB-B362-F390D40DDFFC}</Project>
       <Name>Appleseed.Framework.Providers.AppleseedMembershipProvider</Name>

@@ -110,6 +110,7 @@ namespace Appleseed
             scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.bgiframe.min.js"));
             scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery-ui-i18n.min.js"));
             scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.unobtrusive-ajax.min.js"));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.jeditable.js"));
 
             scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/modernizr-1.7.min.js"));
             scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.cookie.js"));
@@ -118,11 +119,12 @@ namespace Appleseed
             scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/MicrosoftMvcAjax.js"));
             scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/MicrosoftMvcValidation.js"));
 
-            scripts.Add("/aspnet_client/js/DragNDrop.js");
-            scripts.Add("/aspnet_client/js/browser_upgrade_notification.js");
+            scripts.Add(page.ResolveUrl("~/aspnet_client/js/DragNDrop.js"));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/js/browser_upgrade_notification.js"));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/js/AppleseedScripts.js"));
 
-            scripts.Add("/aspnet_client/CSSControlAdapters/AdapterUtils.js");
-            scripts.Add("/aspnet_client/CSSControlAdapters/MenuAdapter.js");
+            scripts.Add(page.ResolveUrl("~/aspnet_client/CSSControlAdapters/AdapterUtils.js"));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/CSSControlAdapters/MenuAdapter.js"));
             return scripts;
         }
     }

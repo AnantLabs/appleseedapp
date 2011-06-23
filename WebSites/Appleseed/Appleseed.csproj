@@ -1440,9 +1440,6 @@
       <DependentUpon>LogInTweeter.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="DesktopModules\CoreModules\SignIn\LogInTweeter.aspx.designer.cs">
-      <DependentUpon>LogInTweeter.aspx</DependentUpon>
-    </Compile>
     <Compile Include="DesktopModules\CoreModules\SignIn\Signin.ascx.cs">
       <DependentUpon>Signin.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4072,6 +4069,8 @@
     <Content Include="aspnet_client\jQuery\jquery-ui-i18n.min.js" />
     <Content Include="aspnet_client\jQuery\jquery.bgiframe.js" />
     <Content Include="aspnet_client\jQuery\jquery.bgiframe.min.js" />
+    <Content Include="aspnet_client\jQuery\jquery.cookie.js" />
+    <Content Include="aspnet_client\jQuery\jquery.jeditable.js" />
     <Content Include="aspnet_client\jQuery\jquery.unobtrusive-ajax.js" />
     <Content Include="aspnet_client\jQuery\jquery.unobtrusive-ajax.min.js" />
     <Content Include="aspnet_client\jQuery\jquery.validate-vsdoc.js" />
