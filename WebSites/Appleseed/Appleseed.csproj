@@ -4086,6 +4086,7 @@
     <Content Include="aspnet_client\jQuery\MicrosoftMvcValidation.js" />
     <Content Include="aspnet_client\jQuery\modernizr-1.7.js" />
     <Content Include="aspnet_client\jQuery\modernizr-1.7.min.js" />
+    <Content Include="aspnet_client\js\AppleseedScripts.js" />
     <Content Include="aspnet_client\js\browser_upgrade_notification.js" />
     <Content Include="aspnet_client\js\ControlPanelMenu.js" />
     <Content Include="aspnet_client\js\DragNDrop.js" />
