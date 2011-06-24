@@ -544,7 +544,7 @@ namespace Appleseed.Framework.Settings
 		/// Default value: "~/app_support/GeneralError.html"</summary>
 		public static string DatabaseErrorRedirect
 		{
-			get { return GetString("DatabaseErrorRedirect", "~/app_support/GeneralError.html", false); }
+			get { return GetString("DatabaseErrorRedirect", "~/app_support/GeneralError.aspx", false); }
 		}
 
 		/// <summary>
@@ -562,7 +562,7 @@ namespace Appleseed.Framework.Settings
 		/// Default value: "~/app_support/GeneralError.html"</summary>
 		public static string CodeUpdateRedirect
 		{
-			get { return GetString("CodeUpdateRedirect", "~/app_support/GeneralError.html", false); }
+			get { return GetString("CodeUpdateRedirect", "~/app_support/GeneralError.aspx", false); }
 		}
 
 		/// <summary>
@@ -580,7 +580,7 @@ namespace Appleseed.Framework.Settings
 		/// Default value: "~/app_support/GeneralError.html"</summary>
 		public static string CriticalErrorRedirect
 		{
-			get { return GetString("CriticalErrorRedirect", "~/app_support/GeneralError.html", false); }
+            get { return GetString("CriticalErrorRedirect", "~/app_support/GeneralError.aspx", false); }
 		}
 
 		/// <summary>
@@ -598,7 +598,7 @@ namespace Appleseed.Framework.Settings
 		/// Default value: "~/app_support/GeneralError.html"</summary>
 		public static string NoPortalErrorRedirect
 		{
-			get { return GetString("NoPortalErrorRedirect", "~/app_support/ErrorNoPortal.html", false); }
+			get { return GetString("NoPortalErrorRedirect", "~/app_support/smartError.aspx", false); }
 		}
 
 		/// <summary>
@@ -635,7 +635,7 @@ namespace Appleseed.Framework.Settings
 		/// Default value: "~/app_support/GeneralError.html"</summary>
 		public static string LockRedirect
 		{
-			get { return GetString("LockRedirect", "~/app_support/GeneralError.html", false); }
+			get { return GetString("LockRedirect", "~/app_support/GeneralError.aspx", false); }
 		}
 
 		/// <summary>

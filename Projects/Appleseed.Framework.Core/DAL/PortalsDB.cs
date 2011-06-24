@@ -22,6 +22,7 @@ namespace Appleseed.Framework.Site.Data
     using Appleseed.Framework.Users.Data;
 
     using Path = Appleseed.Framework.Settings.Path;
+    using System.Web.Profile;
 
     /// <summary>
     /// Class that encapsulates all data logic necessary to add/query/delete
@@ -271,6 +272,17 @@ namespace Appleseed.Framework.Site.Data
                 // Create the "Admins" role for the new portal
                 var roleId = user.AddRole(portalAlias, "Admins");
                 var userId = user.AddUser(StringsAdmin, AdminEmail, StringsAdmin, portalAlias);
+
+                // Create the "Admins" profile for the new portal
+                var profile = ProfileBase.Create(AdminEmail);
+                profile.SetPropertyValue("Email", AdminEmail);
+                profile.SetPropertyValue("Name", "admin");
+                try {
+                    profile.Save();
+
+                } catch (Exception exc) {
+                    
+                }
 
                 // Create a new row in a many to many table (userroles)
                 // giving the "admins" role to the stradmin user
