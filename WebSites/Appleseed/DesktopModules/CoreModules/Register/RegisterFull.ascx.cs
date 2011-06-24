@@ -21,6 +21,7 @@ using Appleseed.Framework.Settings;
 using Appleseed.Framework.Site.Configuration;
 using Appleseed.Framework.Web.UI;
 using Appleseed.Framework.Web.UI.WebControls;
+using System.Security.Cryptography;
 
 
 public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalModuleControl, IEditUserProfile
@@ -153,6 +154,12 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
                         ErrorHandler.Publish(LogLevel.Error, Resources.Appleseed.PROFILE_COUNTRY_WRONG_ID, exc);
                     }
                     this.tfEmail.Text = (string)profileCommon.GetPropertyValue("Email");
+                    //if (!UserName.Equals(this.tfEmail.Text) || ((string)profileCommon.GetPropertyValue("Password")).Equals(GeneratePasswordHash(UserName))) { 
+                    //    trPwd.Visible = false;
+                    //    trPwdAgain.Visible = false;
+                    //    lnkChangePassword.Visible = false;
+                    //    panChangePwd.Visible = false;
+                    //}
                     this.tfEmail.Enabled = false;
                     this.tfName.Text = (string)profileCommon.GetPropertyValue("Name");
                     this.tfPhone.Text = (string)profileCommon.GetPropertyValue("Phone");
@@ -278,7 +285,7 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
 
     protected void cvCurrentPwdCorrect_ServerValidate(object source, ServerValidateEventArgs args)
     {
-        args.IsValid = Membership.Provider.ValidateUser(tfEmail.Text, txtCurrentPwd.Text);
+        args.IsValid = Membership.Provider.ValidateUser(UserName, txtCurrentPwd.Text);
     }
 
 
@@ -298,7 +305,7 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
         {
             try
             {
-                Membership.Provider.ChangePassword(tfEmail.Text, txtCurrentPwd.Text, txtNewPwd.Text);
+                Membership.Provider.ChangePassword(UserName, txtCurrentPwd.Text, txtNewPwd.Text);
             }
             catch (Exception ex)
             {
@@ -649,4 +656,20 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
     }
 
     #endregion
+
+    private string GeneratePasswordHash(string thisPassword)
+    {
+        MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+        byte[] tmpSource;
+        byte[] tmpHash;
+
+        tmpSource = ASCIIEncoding.ASCII.GetBytes(thisPassword); // Turn password into byte array
+        tmpHash = md5.ComputeHash(tmpSource);
+
+        StringBuilder sOutput = new StringBuilder(tmpHash.Length);
+        for (int i = 0; i < tmpHash.Length; i++) {
+            sOutput.Append(tmpHash[i].ToString("X2"));  // X2 formats to hexadecimal
+        }
+        return sOutput.ToString();
+    }
 }

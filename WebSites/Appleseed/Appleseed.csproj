@@ -1869,6 +1869,7 @@
     <Content Include="app_support\FCKconnectorV2.aspx" />
     <Content Include="app_support\ftb.imagegallery.aspx" />
     <Content Include="app_support\GeneralError.aspx" />
+    <Content Include="app_support\GeneralError.html" />
     <Content Include="app_support\print.aspx" />
     <Content Include="app_support\SmartError.aspx" />
     <Content Include="app_support\ZenNavigation\BindAll.xslt" />
