@@ -53,9 +53,9 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
 
                         } else {
 
-                            PortalSecurity.SignOn(userName, password);
-                            string urlRegister = ConvertRelativeUrlToAbsoluteUrl("");
-                            Response.Redirect(urlRegister);
+                            string urlHome = ConvertRelativeUrlToAbsoluteUrl("");
+                            PortalSecurity.SignOn(userName, password, false, urlHome);
+                            
                         }
                     } else {
                         ErrorHandler.Publish(LogLevel.Error, "TwitterSettings are not correct");

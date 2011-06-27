@@ -40,9 +40,10 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
         protected void Page_Load(object sender, EventArgs e)
         {
             bool hide = false;
-
-            if (this.Settings["SIGNIN_AUTOMATICALLYHIDE"] != null) {
-                hide = bool.Parse(this.Settings["SIGNIN_AUTOMATICALLYHIDE"].ToString());
+            
+            if (this.BaseSettings.ContainsKey("SIGNIN_AUTOMATICALLYHIDE") && !this.BaseSettings["SIGNIN_AUTOMATICALLYHIDE"].ToString().Equals(string.Empty)) {
+                //if (this.Settings["SIGNIN_AUTOMATICALLYHIDE"] != null) {
+                hide = bool.Parse(this.BaseSettings["SIGNIN_AUTOMATICALLYHIDE"].ToString());
             }
 
             if (hide && this.Request.IsAuthenticated) {

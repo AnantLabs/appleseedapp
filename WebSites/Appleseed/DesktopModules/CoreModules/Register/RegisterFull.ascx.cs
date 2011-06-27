@@ -153,7 +153,10 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
                     {
                         ErrorHandler.Publish(LogLevel.Error, Resources.Appleseed.PROFILE_COUNTRY_WRONG_ID, exc);
                     }
-                    this.tfEmail.Text = (string)profileCommon.GetPropertyValue("Email");
+                    if (((string)profileCommon.GetPropertyValue("Email")).Equals(string.Empty))
+                        this.tfEmail.Text = UserName;
+                    else
+                        this.tfEmail.Text = (string)profileCommon.GetPropertyValue("Email");
                     //if (!UserName.Equals(this.tfEmail.Text) || ((string)profileCommon.GetPropertyValue("Password")).Equals(GeneratePasswordHash(UserName))) { 
                     //    trPwd.Visible = false;
                     //    trPwdAgain.Visible = false;

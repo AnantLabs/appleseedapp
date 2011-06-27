@@ -345,7 +345,8 @@ Is not well formed. Check the setting SITESETTINGS_ON_REGISTER_SEND_FROM of port
                 ((SettingItem<bool, CheckBox>)this.Settings["MODULESETTINGS_SHOW_TITLE"]).Value = false;
             }
 
-            if (this.PortalSettings.CustomSettings["SITESETTINGS_ALLOW_NEW_REGISTRATION"] != null)
+            if (this.Settings.ContainsKey("SITESETTINGS_ALLOW_NEW_REGISTRATION") && !this.Settings["SITESETTINGS_ALLOW_NEW_REGISTRATION"].ToString().Equals(string.Empty))
+            //if (this.PortalSettings.CustomSettings["SITESETTINGS_ALLOW_NEW_REGISTRATION"] != null)
             {
                 if (!bool.Parse(this.PortalSettings.CustomSettings["SITESETTINGS_ALLOW_NEW_REGISTRATION"].ToString()))
                 {
@@ -353,22 +354,26 @@ Is not well formed. Check the setting SITESETTINGS_ON_REGISTER_SEND_FROM of port
                 }
             }
 
-            if (this.Settings["SIGNIN_AUTOMATICALLYHIDE"] != null)
+            if (this.Settings.ContainsKey("SIGNIN_AUTOMATICALLYHIDE") && !this.Settings["SIGNIN_AUTOMATICALLYHIDE"].ToString().Equals(string.Empty))
+            //if (this.Settings["SIGNIN_AUTOMATICALLYHIDE"] != null)
             {
                 hide = bool.Parse(this.Settings["SIGNIN_AUTOMATICALLYHIDE"].ToString());
             }
 
-            if (this.Settings["SIGNIN_ALLOW_AUTOCOMPLETE"] != null)
+            if (this.Settings.ContainsKey("SIGNIN_ALLOW_AUTOCOMPLETE") && !this.Settings["SIGNIN_ALLOW_AUTOCOMPLETE"].ToString().Equals(string.Empty))
+            //if (this.Settings["SIGNIN_ALLOW_AUTOCOMPLETE"] != null)
             {
                 autocomplete = bool.Parse(this.Settings["SIGNIN_ALLOW_AUTOCOMPLETE"].ToString());
             }
 
-            if (this.Settings["SIGNIN_ALLOW_REMEMBER_LOGIN"] != null)
+            if (this.Settings.ContainsKey("SIGNIN_ALLOW_REMEMBER_LOGIN") && !this.Settings["SIGNIN_ALLOW_REMEMBER_LOGIN"].ToString().Equals(string.Empty))
+            //if (this.Settings["SIGNIN_ALLOW_REMEMBER_LOGIN"] != null)
             {
                 this.RememberCheckBox.Visible = bool.Parse(this.Settings["SIGNIN_ALLOW_REMEMBER_LOGIN"].ToString());
             }
 
-            if (this.Settings["SIGNIN_ALLOW_SEND_PASSWORD"] != null)
+            if (this.Settings.ContainsKey("SIGNIN_ALLOW_SEND_PASSWORD") && !this.Settings["SIGNIN_ALLOW_SEND_PASSWORD"].ToString().Equals(string.Empty))
+            //if (this.Settings["SIGNIN_ALLOW_SEND_PASSWORD"] != null)
             {
                 this.SendPasswordBtn.Visible = bool.Parse(this.Settings["SIGNIN_ALLOW_SEND_PASSWORD"].ToString());
             }

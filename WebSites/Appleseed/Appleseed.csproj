@@ -1450,6 +1450,13 @@
     <Compile Include="DesktopModules\CoreModules\SignIn\Signin.ascx.designer.cs">
       <DependentUpon>Signin.ascx</DependentUpon>
     </Compile>
+    <Compile Include="DesktopModules\CoreModules\SignIn\SignInBoth.ascx.cs">
+      <DependentUpon>SignInBoth.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CoreModules\SignIn\SignInBoth.ascx.designer.cs">
+      <DependentUpon>SignInBoth.ascx</DependentUpon>
+    </Compile>
     <Compile Include="DesktopModules\CoreModules\SignIn\SigninCool.ascx.cs">
       <DependentUpon>SigninCool.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -6329,6 +6336,7 @@
     </Content>
     <Content Include="DesktopModules\CoreModules\SignIn\LogInTweeter.aspx" />
     <Content Include="DesktopModules\CoreModules\SignIn\Signin.ascx" />
+    <Content Include="DesktopModules\CoreModules\SignIn\SignInBoth.ascx" />
     <Content Include="DesktopModules\CoreModules\SignIn\SigninCool.ascx" />
     <Content Include="DesktopModules\CoreModules\SignIn\SignInCool_readme.txt" />
     <Content Include="DesktopModules\CoreModules\SignIn\SigninLink.ascx" />
@@ -6344,6 +6352,7 @@
     <Content Include="favicon.ico" />
     <Content Include="get_aspx_ver.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="images\1x1black.gif" />
     <Content Include="images\sign-in-with-twitter-l.png" />
     <Content Include="Installer\default.aspx" />
     <Content Include="Installer\images\installer_top_bg.png" />

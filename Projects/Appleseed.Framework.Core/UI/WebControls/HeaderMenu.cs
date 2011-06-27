@@ -33,7 +33,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
 
         private bool _showLogon = false;
         private bool _dialogLogon = false;
-        private string _dialogLogonControlPath = "~/DesktopModules/CoreModules/SignIn/SignIn.ascx";
+        private string _dialogLogonControlPath = "~/DesktopModules/CoreModules/SignIn/SignInBoth.ascx";
         private bool _showSecureLogon = false; // Thierry (Tiptopweb), 5 May 2003: add link to Secure directory
         private bool _showHome = true;
         private bool _showTabMan = true; // Ozan, 2 June 2004: add link for tab management 
@@ -551,13 +551,23 @@ namespace Appleseed.Framework.Web.UI.WebControls
         {
             if (ShowLogon && DialogLogon && _logonControl != null)
             {
-                writer.Write(string.Concat("<div id=\"", this.ClientID ,"_logon_dialog\" style=\"display:none\">"));
+                writer.Write(string.Concat("<div id=\"", this.ClientID ,"_logon_dialog\" style=\"display:none\" >"));
                 _logonControl.RenderControl(writer);
                 writer.Write("</div>");
                 
                 writer.Write("<script type=\"text/javascript\">");
 
-                writer.Write(string.Concat(@"
+                PortalSettings PortalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+                if ((PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_TWITTER_APP_ID") &&
+                PortalSettings.CustomSettings["SITESETTINGS_TWITTER_APP_ID"].ToString().Equals(string.Empty) ||
+                PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_TWITTER_APP_SECRET") &&
+                PortalSettings.CustomSettings["SITESETTINGS_TWITTER_APP_SECRET"].ToString().Equals(string.Empty)) &&
+                (PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_FACEBOOK_APP_ID") &&
+                PortalSettings.CustomSettings["SITESETTINGS_FACEBOOK_APP_ID"].ToString().Equals(string.Empty) ||
+                PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_FACEBOOK_APP_SECRET") &&
+                PortalSettings.CustomSettings["SITESETTINGS_FACEBOOK_APP_SECRET"].ToString().Equals(string.Empty))
+                ) {
+                    writer.Write(string.Concat(@"
                         $(document).ready(function () {
                             var $dialog = $('#", this.ClientID, @"_logon_dialog')
                             .dialog({
@@ -578,7 +588,31 @@ namespace Appleseed.Framework.Web.UI.WebControls
                             }
                         });"
                     )); 
-                
+
+                } else {
+                     writer.Write(string.Concat(@"
+                        $(document).ready(function () {
+                            var $dialog = $('#", this.ClientID, @"_logon_dialog')
+                            .dialog({
+                                autoOpen: false,
+                                modal: true,
+                                width: 480,
+                                resizable: false,
+                                open: function (type, data) { $(this).parent().appendTo('form'); }
+                            });
+
+                            $('#", this.ClientID, @"_logon_link').click(function () {
+                                $dialog.dialog('open');
+                                // prevent the default action, e.g., following a link
+                                return false;
+                            });
+                            //this is a hack, we should find another way to know if the dialog should autoopen.
+                            if ($('#", this.ClientID, @"_logon_dialog span.Error').html()) {
+                                $dialog.dialog('open');
+                            }
+                        });"
+                        ));
+                }
                 writer.Write("</script>");
             }
             base.Render(writer);
