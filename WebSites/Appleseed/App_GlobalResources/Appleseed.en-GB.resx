@@ -3510,4 +3510,7 @@
   <data name="TWITTER_ERROR" xml:space="preserve">
     <value>There's been an error with Twitter. Please try again later.</value>
   </data>
+  <data name="SIGNIN_SHOW_FACEBOOK_OPTIONS" xml:space="preserve">
+    <value>Or maybe you can sign in with</value>
+  </data>
 </root>

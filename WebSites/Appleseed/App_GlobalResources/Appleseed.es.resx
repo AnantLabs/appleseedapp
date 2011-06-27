@@ -4371,4 +4371,7 @@
   <data name="TWITTER_ERROR" xml:space="preserve">
     <value>Ha ocurrido un error con Twitter. Por favor inténtalo nuevamente mas tarde.</value>
   </data>
+  <data name="SIGNIN_SHOW_FACEBOOK_OPTIONS" xml:space="preserve">
+    <value>O tal vez puedas loguearte con</value>
+  </data>
 </root>

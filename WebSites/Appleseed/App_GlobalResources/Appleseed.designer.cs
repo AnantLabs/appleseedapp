@@ -16565,5 +16565,13 @@ namespace Resources {
                 return ResourceManager.GetString("TWITTER_ERROR", resourceCulture);
             }
         }
+
+        internal static string SIGNIN_SHOW_FACEBOOK_OPTIONS
+        {
+            get
+            {
+                return ResourceManager.GetString("SIGNIN_SHOW_FACEBOOK_OPTIONS", resourceCulture);
+            }
+        }
     }
 }
