@@ -1,5 +1,5 @@
 
-<%@ Page AutoEventWireup="True" Inherits="AppleseedWebApplication.Error.SmartError" Language="c#"
+<%@ Page AutoEventWireup="True" Inherits="Appleseed.Error.SmartError" Language="c#"
     CodeBehind="SmartError.aspx.cs" MasterPageFile="~/Shared/SiteMasterDefault.master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="Server">

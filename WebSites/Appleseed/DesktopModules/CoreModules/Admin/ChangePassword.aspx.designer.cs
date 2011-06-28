@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AppleseedWebApplication.DesktopModules.CoreModules.Admin {
+namespace Appleseed.DesktopModules.CoreModules.Admin {
     
     
     public partial class ChangePassword {

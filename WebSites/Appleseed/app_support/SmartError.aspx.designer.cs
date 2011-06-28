@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AppleseedWebApplication.Error {
+namespace Appleseed.Error {
     
     
     public partial class SmartError {

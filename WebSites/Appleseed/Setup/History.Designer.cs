@@ -10,7 +10,8 @@
 
 #pragma warning disable 1591
 
-namespace AppleseedWebApplication.Setup {
+namespace Appleseed.Setup
+{
     
     
     /// <summary>

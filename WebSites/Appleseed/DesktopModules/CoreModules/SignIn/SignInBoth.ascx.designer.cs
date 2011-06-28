@@ -28,7 +28,7 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AppleseedWebApplication.DesktopModules.CoreModules.SignIn.Signin Signin1;
+        protected global::Appleseed.DesktopModules.CoreModules.SignIn.Signin Signin1;
         
         /// <summary>
         /// SocialNetwork control.

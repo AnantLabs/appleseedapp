@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ChangePassword.aspx.cs"
-     MasterPageFile="~/Shared/SiteMasterDefault.master" Inherits="AppleseedWebApplication.DesktopModules.CoreModules.Admin.ChangePassword" %>
+     MasterPageFile="~/Shared/SiteMasterDefault.master" Inherits="Appleseed.DesktopModules.CoreModules.Admin.ChangePassword" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="Server">
     <div class="div_ev_Table">

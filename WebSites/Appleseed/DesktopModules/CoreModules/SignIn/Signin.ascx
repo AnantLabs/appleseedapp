@@ -1,4 +1,4 @@
-<%@ Control Inherits="AppleseedWebApplication.DesktopModules.CoreModules.SignIn.Signin"
+<%@ Control Inherits="Appleseed.DesktopModules.CoreModules.SignIn.Signin"
     Language="c#" CodeBehind="Signin.ascx.cs" %>
 <table align="center" border="0" cellpadding="1" cellspacing="1" width="100%">
     <tr>

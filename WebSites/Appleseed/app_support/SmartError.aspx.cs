@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace AppleseedWebApplication.Error
+namespace Appleseed.Error
 {
     using System;
     using System.Collections;
