@@ -17,7 +17,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace AppleseedWebApplication.DesktopModules.CoreModules.SignIn
+namespace Appleseed.DesktopModules.CoreModules.SignIn
 {
     using System;
 using System.Data.SqlClient;

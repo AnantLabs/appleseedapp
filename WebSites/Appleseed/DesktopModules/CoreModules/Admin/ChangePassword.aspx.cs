@@ -12,7 +12,7 @@ using Appleseed.Framework;
 using Appleseed.Framework.Helpers;
 
 
-namespace AppleseedWebApplication.DesktopModules.CoreModules.Admin
+namespace Appleseed.DesktopModules.CoreModules.Admin
 {
     public partial class ChangePassword : Appleseed.Framework.Web.UI.Page
     {

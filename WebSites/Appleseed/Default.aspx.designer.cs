@@ -7,7 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AppleseedWebApplication {
+namespace Appleseed
+{
     
     
     public partial class Default {

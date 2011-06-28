@@ -1,4 +1,4 @@
-﻿namespace AppleseedWebApplication.API
+﻿namespace Appleseed.API
 {
     using System.ServiceModel;
 
