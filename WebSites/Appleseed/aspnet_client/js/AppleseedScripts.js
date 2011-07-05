@@ -6,8 +6,10 @@ function EditTitleInLine(url){
 				tooltip   : "Click to edit...",
 				name : "Editable.FieldName",
 				id   : "elementid",
+				cancel : 'Cancel',
+         		submit : 'OK',
 				type : "text",
-				cssclass : 'NormalTextBox valid',
+				cssclass : 'CommandButton'
 
 	});
 	
@@ -19,12 +21,29 @@ function EditTitleInLine(url){
 	   var result = value;
 	   // var pagina = data;
 	   edits[settings.name] = [value];
+	   var succ = origvalue;
 	   var returned = $.ajax({
 			   url: url, 
 			   type: "POST",
-			   data: "id="+textbox.id+"&value="+result,
+			   async: false,
+			   data: {
+					id: textbox.id,
+					value: result
+			   },
+			   success : function(data){
+					
+					if(data.result = 'true'){
+						succ = result;
+						
+					}
+					else{
+						succ = origvalue;
+						
+					};
+					
+			   }
 			   });
-	   return(result);
+	   return(succ);
 	 }
 	
 }
