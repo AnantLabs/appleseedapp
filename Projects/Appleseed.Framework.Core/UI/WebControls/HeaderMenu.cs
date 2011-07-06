@@ -33,7 +33,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
 
         private bool _showLogon = false;
         private bool _dialogLogon = false;
-        private string _dialogLogonControlPath = "~/DesktopModules/CoreModules/SignIn/SignInBoth.ascx";
+        private string _dialogLogonControlPath = "~/DesktopModules/CoreModules/SignIn/SignIn.ascx";
         private bool _showSecureLogon = false; // Thierry (Tiptopweb), 5 May 2003: add link to Secure directory
         private bool _showHome = true;
         private bool _showTabMan = true; // Ozan, 2 June 2004: add link for tab management 
