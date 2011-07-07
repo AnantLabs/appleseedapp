@@ -15,6 +15,7 @@
             <asp:Table runat="server">
                 <asp:TableRow>
                     <asp:TableCell>
+                        
                         <asp:Label runat="server" ID="labelSocialNetwork"></asp:Label>
                     </asp:TableCell>
                 </asp:TableRow>

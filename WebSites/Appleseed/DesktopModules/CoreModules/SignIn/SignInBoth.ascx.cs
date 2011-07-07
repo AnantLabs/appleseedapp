@@ -28,5 +28,22 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
             labelSocialNetwork.Text = Resources.Appleseed.SIGNIN_SHOW_FACEBOOK_OPTIONS;
 
         }
+
+        #region Properties
+
+        public override Guid GuidID
+        {
+            get
+            {
+                return new Guid("{A1783E61-C038-439C-BA35-7743D69580DA}");
+            }
+        }
+
+        #endregion
+
+        public override void Logoff()
+        {
+            this.SignInSocialNetwork1.Logoff();
+        }
     }
 }

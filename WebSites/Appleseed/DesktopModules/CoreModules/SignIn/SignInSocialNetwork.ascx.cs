@@ -4,10 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Facebook.Web;
 using System.Web.Security;
 using Appleseed.Framework.Site.Configuration;
-using Facebook;
 using Appleseed.Framework.Security;
 using Appleseed.Framework;
 using System.Web.Profile;
@@ -21,12 +19,17 @@ using Appleseed.Framework.Settings;
 using Twitterizer;
 using System.Security.Cryptography;
 using Appleseed.Framework.Web.UI.WebControls;
+using Facebook.Web;
+using Facebook;
 
 namespace Appleseed.DesktopModules.CoreModules.SignIn
 {
     public partial class SignInSocialNetwork : SignInControl
 
     {
+
+        protected string TwitterLink;
+
         public SignInSocialNetwork()
         {
             var hideAutomatically = new SettingItem<bool, CheckBox>() {
@@ -53,6 +56,7 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
                     var facebookContext = GetFacebookWebContext();
                     if (facebookContext != null) {
                         appId.Value = PortalSettings.CustomSettings["SITESETTINGS_FACEBOOK_APP_ID"].ToString();
+                        appidfacebook.Value = PortalSettings.CustomSettings["SITESETTINGS_FACEBOOK_APP_ID"].ToString();
                         if (facebookContext.IsAuthenticated()) {
                             //Here is were i check if the user login via facebook
                             FacebookSignInMethod();
@@ -72,10 +76,13 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
                     var TwitterRequestToken = GetTwitterRequestToken();
                     if (TwitterRequestToken != null) {
                         Uri authenticationUri = OAuthUtility.BuildAuthorizationUri(TwitterRequestToken.Token, true);
-
+                        
                         string url = authenticationUri.AbsoluteUri;
                         LogIn.Text = "Log in Twitter";
                         LogIn.NavigateUrl = url;
+                        
+
+                        
                     } else {
                         //TODO: ocultar boton y mostrar warning
                         logintwit_div.Visible = false;
@@ -86,6 +93,15 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
                     ErrorHandler.Publish(LogLevel.Error, Resources.Appleseed.TWITTER_ERROR, ex);
                 }
             }
+        }
+
+        protected string getTwitterLink() { 
+            var TwitterRequestToken = GetTwitterRequestToken();
+            if (TwitterRequestToken != null) {
+                Uri authenticationUri = OAuthUtility.BuildAuthorizationUri(TwitterRequestToken.Token, true);
+                return authenticationUri.AbsoluteUri;
+            }
+            return null;
         }
 
         private void UpdateProfile()
@@ -156,7 +172,7 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
                 Session["FacebookName"] = me.name;
 
                 Session["FacebookPassword"] = GeneratePasswordHash(me.email);
-                string urlRegister = ConvertRelativeUrlToAbsoluteUrl("~/DesktopModules/CoreModules/Register/Register.aspx");
+                string urlRegister = ConvertRelativeUrlToAbsoluteUrl(HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/Register/Register.aspx"));
                 Response.Redirect(urlRegister);
             } else
                 PortalSecurity.SignOn(me.email, GeneratePasswordHash(me.email));
@@ -189,7 +205,19 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
             var context = GetFacebookWebContext();
             if (context != null && context.IsAuthenticated()) {
                 context.DeleteAuthCookie();
+
             }
+
+            var cookie = Request.Cookies.Get("fbs_149415540871");
+            cookie.Expires = DateTime.Now.AddDays(-3);
+            cookie.Value = "";
+            Response.SetCookie(cookie);
+
+            cookie = Request.Cookies.Get("lavelapuerca");
+            cookie.Expires = DateTime.Now.AddDays(-3);
+            cookie.Value = "";
+            Response.SetCookie(cookie);
+
             Session.RemoveAll();
         }
 
@@ -206,8 +234,8 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
                     !PortalSettings.CustomSettings["SITESETTINGS_TWITTER_APP_SECRET"].ToString().Equals(string.Empty)) {
                     string appId = PortalSettings.CustomSettings["SITESETTINGS_TWITTER_APP_ID"].ToString();
                     var appSecret = PortalSettings.CustomSettings["SITESETTINGS_TWITTER_APP_SECRET"].ToString();
-
-                    string server = ConvertRelativeUrlToAbsoluteUrl("~/DesktopModules/CoreModules/SignIn/LogInTweeter.aspx");
+                    
+                    string server = ConvertRelativeUrlToAbsoluteUrl(HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/SignIn/LogInTweeter.aspx"));                        //ConvertRelativeUrlToAbsoluteUrl("~/DesktopModules/CoreModules/SignIn/LogInTweeter.aspx");
                     Session["TwitterAppId"] = appId;
                     Session["TwitterAppSecret"] = appSecret;
 
@@ -228,11 +256,11 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
 
             if (Request.IsSecureConnection)
 
-                return string.Format("https://{0}{1}", Request.Url.Host, Page.ResolveUrl(relativeUrl));
+                return string.Format("https://{0}{1}", Request.Url.Host, relativeUrl);
 
             else
 
-                return string.Format("http://{0}{1}", Request.Url.Host, Page.ResolveUrl(relativeUrl));
+                return string.Format("http://{0}{1}", Request.Url.Host, relativeUrl);
 
         }
 

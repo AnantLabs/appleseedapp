@@ -1,4 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SignInSocialNetwork.ascx.cs" Inherits="Appleseed.DesktopModules.CoreModules.SignIn.SignInSocialNetwork" %>
+
+
+<input type="hidden" runat="server" id="appidfacebook"/>
 <div id="fb-root"></div>
  <script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
  
@@ -8,6 +11,7 @@
             <td>
                 <div runat="server" id="loginfb_div">
                     <fb:login-button autologoutlink="true" perms="email">Login with Facebook</fb:login-button>
+                    
                 </div>
                 <%--<asp:Label runat="server" ForeColor="Red" ID="errfb" Visible="false">Facebook settings are not correct</asp:Label>--%>
             </td>
@@ -15,12 +19,15 @@
          <tr>
             <td>
                 <div runat="server" id="logintwit_div">
-                   <asp:HyperLink runat="server" ImageUrl="~/images/sign-in-with-twitter-l.png" ID="LogIn" ></asp:HyperLink>
+                    <% if (!string.IsNullOrEmpty(Request.QueryString.Get("iframe"))) {%>
+                        <a id="twit" class="twitterlink" href="http://www.google.com" onclick="gotoTwitter('<%= getTwitterLink() %>');return false;"><img src="../../../images/sign-in-with-twitter-l.png" </a>
+                    <%} else { %>
+                        <asp:HyperLink runat="server" ImageUrl="~/images/sign-in-with-twitter-l.png" ID="LogIn" class="twitterlink" ></asp:HyperLink>
+                    <%} %>
                 </div>
                 <%--<asp:Label runat="server" ForeColor="Red" ID="errtwit" Visible="false">Twitter settings are not correct</asp:Label>--%>
             </td>
         </tr>
-        
         <tr>
             <td>
                 <asp:Label ID="lblError" runat="server" Visible="false" EnableViewState="false" ForeColor="Red"
@@ -48,6 +55,10 @@
         window.location.reload();
     });
 
+    function gotoTwitter(link) {
+        window.parent.location = link 
+    }
+    
  </script>
 
 

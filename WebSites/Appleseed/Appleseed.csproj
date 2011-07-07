@@ -1478,6 +1478,13 @@
     <Compile Include="DesktopModules\CoreModules\SignIn\SignInLoginView.ascx.designer.cs">
       <DependentUpon>SignInLoginView.ascx</DependentUpon>
     </Compile>
+    <Compile Include="DesktopModules\CoreModules\SignIn\SignInPage.aspx.cs">
+      <DependentUpon>SignInPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CoreModules\SignIn\SignInPage.aspx.designer.cs">
+      <DependentUpon>SignInPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DesktopModules\CoreModules\SignIn\SignInSocialNetwork.ascx.cs">
       <DependentUpon>SignInSocialNetwork.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -6331,6 +6338,7 @@
     <Content Include="DesktopModules\CoreModules\Roles\SecurityRoles.aspx" />
     <Content Include="DesktopModules\CoreModules\SecurityCheck\install.xml" />
     <Content Include="DesktopModules\CoreModules\SecurityCheck\SecurityCheck.ascx" />
+    <Content Include="DesktopModules\CoreModules\SignIn\empty.htm" />
     <Content Include="DesktopModules\CoreModules\SignIn\install.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -6342,6 +6350,7 @@
     <Content Include="DesktopModules\CoreModules\SignIn\SigninLink.ascx" />
     <Content Include="DesktopModules\CoreModules\SignIn\SignInLink_readme.txt" />
     <Content Include="DesktopModules\CoreModules\SignIn\SignInLoginView.ascx" />
+    <Content Include="DesktopModules\CoreModules\SignIn\SignInPage.aspx" />
     <Content Include="DesktopModules\CoreModules\SignIn\SignInSocialNetwork.ascx" />
     <Content Include="DesktopModules\CoreModules\SignIn\SignIn_readme.txt" />
     <Content Include="DesktopModules\CoreModules\SiteSettings\install.xml" />
