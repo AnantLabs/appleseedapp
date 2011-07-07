@@ -551,68 +551,97 @@ namespace Appleseed.Framework.Web.UI.WebControls
         {
             if (ShowLogon && DialogLogon && _logonControl != null)
             {
-                writer.Write(string.Concat("<div id=\"", this.ClientID ,"_logon_dialog\" style=\"display:none\" >"));
-                _logonControl.RenderControl(writer);
+                PortalSettings PortalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+                string iframewidth = "400px";
+                string dialogwidth = "440";
+                if (PortalSettings.CustomSettings["SITESETTINGS_LOGIN_TYPE"].ToString().Contains("signin.ascx")) {
+                    iframewidth = "250px";
+                    dialogwidth = "280";
+                } else {
+                    if (PortalSettings.CustomSettings["SITESETTINGS_LOGIN_TYPE"].ToString().Contains("both.ascx")) {
+                        if ((PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_TWITTER_APP_ID") &&
+                            PortalSettings.CustomSettings["SITESETTINGS_TWITTER_APP_ID"].ToString().Equals(string.Empty) ||
+                            PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_TWITTER_APP_SECRET") &&
+                            PortalSettings.CustomSettings["SITESETTINGS_TWITTER_APP_SECRET"].ToString().Equals(string.Empty)) &&
+                            (PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_FACEBOOK_APP_ID") &&
+                            PortalSettings.CustomSettings["SITESETTINGS_FACEBOOK_APP_ID"].ToString().Equals(string.Empty) ||
+                            PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_FACEBOOK_APP_SECRET") &&
+                            PortalSettings.CustomSettings["SITESETTINGS_FACEBOOK_APP_SECRET"].ToString().Equals(string.Empty))
+                            ) {
+                            iframewidth = "250px";
+                            dialogwidth = "280";
+                        }
+                    }
+                }
+                string div = this.ClientID + "_logon_dialog";
+                var url = HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/SignIn/SignInPage.aspx?iframe=true");
+                writer.Write(string.Concat("<div id=\"", this.ClientID, "_logon_dialog\" style=\"display:none\" >"));
+                writer.Write(string.Concat("<div id=\"AppleseedLogin\" style=\"height: 300px !important\" >"));
+                writer.Write("<iframe id=\"iframeAppleseedLogin\" src=\"/DesktopModules/CoreModules/SignIn/empty.htm\" onload=\"check()\" width=\""+iframewidth+"\" height=\"295px\"></iframe>");
                 writer.Write("</div>");
                 
+                //_logonControl.RenderControl(writer);
+                writer.Write("</div>");
                 writer.Write("<script type=\"text/javascript\">");
 
-                PortalSettings PortalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
-                if ((PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_TWITTER_APP_ID") &&
-                PortalSettings.CustomSettings["SITESETTINGS_TWITTER_APP_ID"].ToString().Equals(string.Empty) ||
-                PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_TWITTER_APP_SECRET") &&
-                PortalSettings.CustomSettings["SITESETTINGS_TWITTER_APP_SECRET"].ToString().Equals(string.Empty)) &&
-                (PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_FACEBOOK_APP_ID") &&
-                PortalSettings.CustomSettings["SITESETTINGS_FACEBOOK_APP_ID"].ToString().Equals(string.Empty) ||
-                PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_FACEBOOK_APP_SECRET") &&
-                PortalSettings.CustomSettings["SITESETTINGS_FACEBOOK_APP_SECRET"].ToString().Equals(string.Empty))
-                ) {
-                    writer.Write(string.Concat(@"
+                
+                //string ajax = "$.ajax({" +
+                //              "url: " + "\"" + url + "\"," +
+                //              "cache: false," +
+                //              "success: function(data){" +
+                //              "$('<div>').html(data).dialog();" +
+                //              "}" +
+                //              "});";
+
+
+                writer.Write(string.Concat(@"
                         $(document).ready(function () {
-                            var $dialog = $('#", this.ClientID, @"_logon_dialog')
-                            .dialog({
+                            $('#iframeAppleseedLogin').attr('src','/DesktopModules/CoreModules/SignIn/empty.htm');
+                            $('#AppleseedLogin').dialog({
                                 autoOpen: false,
                                 modal: true,
-                                resizable: false,
-                                open: function (type, data) { $(this).parent().appendTo('form'); }
+                                width: ",dialogwidth,@",
+                                height: 310,
+                                resizable: false
                             });
 
                             $('#", this.ClientID, @"_logon_link').click(function () {
-                                $dialog.dialog('open');
-                                // prevent the default action, e.g., following a link
-                                return false;
+                                $('#iframeAppleseedLogin').attr('src','",url, @"');
+                                
+                               
+
+                                $('#AppleseedLogin').dialog('open');
+                                
+
+                                
+                                return false;    
                             });
                             //this is a hack, we should find another way to know if the dialog should autoopen.
-                            if ($('#", this.ClientID, @"_logon_dialog span.Error').html()) {
-                                $dialog.dialog('open');
-                            }
+                           
                         });"
-                    )); 
+                       ));
+                string empty = HttpUrlBuilder.BuildUrl("/DesktopModules/CoreModules/SignIn/empty.htm");
 
-                } else {
-                     writer.Write(string.Concat(@"
-                        $(document).ready(function () {
-                            var $dialog = $('#", this.ClientID, @"_logon_dialog')
-                            .dialog({
-                                autoOpen: false,
-                                modal: true,
-                                width: 480,
-                                resizable: false,
-                                open: function (type, data) { $(this).parent().appendTo('form'); }
-                            });
-
-                            $('#", this.ClientID, @"_logon_link').click(function () {
-                                $dialog.dialog('open');
-                                // prevent the default action, e.g., following a link
-                                return false;
-                            });
-                            //this is a hack, we should find another way to know if the dialog should autoopen.
-                            if ($('#", this.ClientID, @"_logon_dialog span.Error').html()) {
-                                $dialog.dialog('open');
-                            }
-                        });"
-                        ));
-                }
+                
+                writer.Write("\nfunction check(){\n" +
+                "$(document).ready(function () {\n" +
+                    "$('#iframeAppleseedLogin').ready(function() {\n" +
+                        "if(!(document.getElementById('iframeAppleseedLogin').src.match(\"/empty.htm\"))){\n" +
+                        "try{\n" +
+                        "if(!(document.getElementById(\"iframeAppleseedLogin\").contentWindow.location.href =="+
+                                                              "document.getElementById(\"iframeAppleseedLogin\").src)){\n" +
+                                      "window.parent.location = document.getElementById(\"iframeAppleseedLogin\").contentWindow.location.href;\n" +
+                                "$('#AppleseedLogin').dialog('close');\n" +
+                                "}\n" +
+                        "}\n" +
+                        "catch (e) {}\n" +
+                    "}\n" +
+                        "})\n" +
+                 "})\n" +
+                            "};\n"
+                       );
+                
+                
                 writer.Write("</script>");
             }
             base.Render(writer);

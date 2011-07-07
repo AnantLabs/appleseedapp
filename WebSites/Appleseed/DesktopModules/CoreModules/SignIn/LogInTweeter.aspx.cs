@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.UI;
+
 using System.Web.UI.WebControls;
 using Twitterizer;
 using System.Web.Security;
@@ -17,11 +17,12 @@ using System.Web.Profile;
 using Appleseed.Framework.Settings;
 using Appleseed.Framework.Site.Configuration;
 using Appleseed.Framework.Web.UI.WebControls;
+using Appleseed.Framework.Web.UI;
 
 
 namespace Appleseed.DesktopModules.CoreModules.SignIn
 {
-    public partial class LogInTweeter : System.Web.UI.Page
+    public partial class LogInTweeter : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

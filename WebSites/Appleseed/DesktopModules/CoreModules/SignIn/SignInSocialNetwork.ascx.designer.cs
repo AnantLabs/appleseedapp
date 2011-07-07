@@ -13,6 +13,15 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn {
     public partial class SignInSocialNetwork {
         
         /// <summary>
+        /// appidfacebook control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden appidfacebook;
+        
+        /// <summary>
         /// loginfb_div control.
         /// </summary>
         /// <remarks>
