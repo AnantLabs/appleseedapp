@@ -552,13 +552,9 @@ namespace Appleseed.Framework.Web.UI.WebControls
             if (ShowLogon && DialogLogon && _logonControl != null)
             {
                 PortalSettings PortalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
-                string iframewidth = "400px";
-                string dialogwidth = "440";
-                if (PortalSettings.CustomSettings["SITESETTINGS_LOGIN_TYPE"].ToString().Contains("signin.ascx")) {
-                    iframewidth = "250px";
-                    dialogwidth = "280";
-                } else {
-                    if (PortalSettings.CustomSettings["SITESETTINGS_LOGIN_TYPE"].ToString().Contains("both.ascx")) {
+                string iframewidth = "250px";
+                string dialogwidth = "280";
+                if (PortalSettings.CustomSettings["SITESETTINGS_LOGIN_TYPE"].ToString().Contains("both.ascx")) {
                         if ((PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_TWITTER_APP_ID") &&
                             PortalSettings.CustomSettings["SITESETTINGS_TWITTER_APP_ID"].ToString().Equals(string.Empty) ||
                             PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_TWITTER_APP_SECRET") &&
@@ -570,8 +566,10 @@ namespace Appleseed.Framework.Web.UI.WebControls
                             ) {
                             iframewidth = "250px";
                             dialogwidth = "280";
+                        } else {
+                            iframewidth = "400px";
+                            dialogwidth = "440";
                         }
-                    }
                 }
                 string div = this.ClientID + "_logon_dialog";
                 var url = HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/SignIn/SignInPage.aspx?iframe=true");
