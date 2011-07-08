@@ -20,7 +20,7 @@
             <td>
                 <div runat="server" id="logintwit_div">
                     <% if (!string.IsNullOrEmpty(Request.QueryString.Get("iframe"))) {%>
-                        <a id="twit" class="twitterlink" href="http://www.google.com" onclick="gotoTwitter('<%= getTwitterLink() %>');return false;"><img src="../../../images/sign-in-with-twitter-l.png" </a>
+                        <a id="twit" class="twitterlink" href="#" onclick="gotoTwitter('<%= getTwitterLink() %>');return false;"><img src="../../../images/sign-in-with-twitter-l.png" </a>
                     <%} else { %>
                         <asp:HyperLink runat="server" ImageUrl="~/images/sign-in-with-twitter-l.png" ID="LogIn" class="twitterlink" ></asp:HyperLink>
                     <%} %>

@@ -45,7 +45,7 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
             bool hide = false;
             
             if (this.BaseSettings.ContainsKey("SIGNIN_AUTOMATICALLYHIDE") && !this.BaseSettings["SIGNIN_AUTOMATICALLYHIDE"].ToString().Equals(string.Empty)) {
-                //if (this.Settings["SIGNIN_AUTOMATICALLYHIDE"] != null) {
+                //if (this.Settings["SIGNIN_AUTOMATICALLYHIDE"] != null) 
                 hide = bool.Parse(this.BaseSettings["SIGNIN_AUTOMATICALLYHIDE"].ToString());
             }
 

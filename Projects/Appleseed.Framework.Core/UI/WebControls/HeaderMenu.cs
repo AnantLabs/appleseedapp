@@ -571,11 +571,12 @@ namespace Appleseed.Framework.Web.UI.WebControls
                             dialogwidth = "440";
                         }
                 }
+                string empty = HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/SignIn/empty.htm");
                 string div = this.ClientID + "_logon_dialog";
                 var url = HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/SignIn/SignInPage.aspx?iframe=true");
                 writer.Write(string.Concat("<div id=\"", this.ClientID, "_logon_dialog\" style=\"display:none\" >"));
                 writer.Write(string.Concat("<div id=\"AppleseedLogin\" style=\"height: 300px !important\" >"));
-                writer.Write("<iframe id=\"iframeAppleseedLogin\" src=\"/DesktopModules/CoreModules/SignIn/empty.htm\" onload=\"check()\" width=\""+iframewidth+"\" height=\"295px\"></iframe>");
+                writer.Write("<iframe id=\"iframeAppleseedLogin\" src=\""+empty+"\" onload=\"check()\" width=\""+iframewidth+"\" height=\"295px\"></iframe>");
                 writer.Write("</div>");
                 
                 //_logonControl.RenderControl(writer);
@@ -594,7 +595,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
 
                 writer.Write(string.Concat(@"
                         $(document).ready(function () {
-                            $('#iframeAppleseedLogin').attr('src','/DesktopModules/CoreModules/SignIn/empty.htm');
+                            $('#iframeAppleseedLogin').attr('src','",empty,@"');
                             $('#AppleseedLogin').dialog({
                                 autoOpen: false,
                                 modal: true,
@@ -618,7 +619,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                            
                         });"
                        ));
-                string empty = HttpUrlBuilder.BuildUrl("/DesktopModules/CoreModules/SignIn/empty.htm");
+                
 
                 
                 writer.Write("\nfunction check(){\n" +

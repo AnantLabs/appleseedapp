@@ -54,7 +54,7 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
 
                         } else {
 
-                            string urlHome = ConvertRelativeUrlToAbsoluteUrl("");
+                            string urlHome = ConvertRelativeUrlToAbsoluteUrl("~");
                             PortalSecurity.SignOn(userName, password, false, urlHome);
                             
                         }
