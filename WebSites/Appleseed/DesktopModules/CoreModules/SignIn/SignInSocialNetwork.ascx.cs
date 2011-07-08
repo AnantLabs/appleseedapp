@@ -204,19 +204,10 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
         {
             var context = GetFacebookWebContext();
             if (context != null && context.IsAuthenticated()) {
-                context.DeleteAuthCookie();
+               context.DeleteAuthCookie();
 
             }
-
-            var cookie = Request.Cookies.Get("fbs_149415540871");
-            cookie.Expires = DateTime.Now.AddDays(-3);
-            cookie.Value = "";
-            Response.SetCookie(cookie);
-
-            cookie = Request.Cookies.Get("lavelapuerca");
-            cookie.Expires = DateTime.Now.AddDays(-3);
-            cookie.Value = "";
-            Response.SetCookie(cookie);
+            
 
             Session.RemoveAll();
         }

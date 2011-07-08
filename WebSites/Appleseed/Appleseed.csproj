@@ -148,10 +148,12 @@
     <Reference Include="Evolve.MailTemplates">
       <HintPath>..\..\Libs\Evolve.MailTemplates.dll</HintPath>
     </Reference>
-    <Reference Include="Facebook">
+    <Reference Include="Facebook, Version=5.0.40.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libs\Facebook.dll</HintPath>
     </Reference>
-    <Reference Include="Facebook.Web">
+    <Reference Include="Facebook.Web, Version=5.0.40.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libs\Facebook.Web.dll</HintPath>
     </Reference>
     <Reference Include="FirebirdSql.Data.FirebirdClient">
