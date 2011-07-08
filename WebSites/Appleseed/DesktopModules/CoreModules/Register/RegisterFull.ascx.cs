@@ -157,12 +157,7 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
                         this.tfEmail.Text = UserName;
                     else
                         this.tfEmail.Text = (string)profileCommon.GetPropertyValue("Email");
-                    //if (!UserName.Equals(this.tfEmail.Text) || ((string)profileCommon.GetPropertyValue("Password")).Equals(GeneratePasswordHash(UserName))) { 
-                    //    trPwd.Visible = false;
-                    //    trPwdAgain.Visible = false;
-                    //    lnkChangePassword.Visible = false;
-                    //    panChangePwd.Visible = false;
-                    //}
+                 
                     this.tfEmail.Enabled = false;
                     this.tfName.Text = (string)profileCommon.GetPropertyValue("Name");
                     this.tfPhone.Text = (string)profileCommon.GetPropertyValue("Phone");
@@ -520,8 +515,8 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
             string username = null;
             if(Session["TwitterUserName"] != null)
                 username = (string)Session["TwitterUserName"];
-            else if(Session["FacebookUserName"] != null)
-                username = (string)Session["FacebookUserName"];
+            else 
+                username = tfEmail.Text;
             var profile = ProfileBase.Create(username);
             profile.SetPropertyValue("BirthDate", BirthdayField);
             profile.SetPropertyValue("Company", tfCompany.Text);
