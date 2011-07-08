@@ -22,7 +22,7 @@
 	</Module>
   <Module>
     <FriendlyName>SignInBoth</FriendlyName>
-    <DesktopSource>DesktopModules/CoreModules/SignIn/SignInSocialBoth.ascx</DesktopSource>
+    <DesktopSource>DesktopModules/CoreModules/SignIn/SignInBoth.ascx</DesktopSource>
     <MobileSource></MobileSource>
   </Module>
   

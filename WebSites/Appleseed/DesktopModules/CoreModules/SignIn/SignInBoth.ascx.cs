@@ -5,28 +5,51 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Appleseed.Framework.Site.Configuration;
+using Appleseed.Framework;
 
 namespace Appleseed.DesktopModules.CoreModules.SignIn
 {
     public partial class SignInBoth : Appleseed.Framework.UI.WebControls.SignInControl
     {
+
+        public SignInBoth()
+        {
+            var hideAutomatically = new SettingItem<bool, CheckBox>() {
+                Value = true,
+                EnglishName = "Hide automatically",
+                Order = 20
+            };
+            this.BaseSettings.Add("SIGNIN_AUTOMATICALLYHIDE", hideAutomatically);
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if ((PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_TWITTER_APP_ID") &&
-                PortalSettings.CustomSettings["SITESETTINGS_TWITTER_APP_ID"].ToString().Equals(string.Empty) ||
-                PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_TWITTER_APP_SECRET") &&
-                PortalSettings.CustomSettings["SITESETTINGS_TWITTER_APP_SECRET"].ToString().Equals(string.Empty)) &&
-                (PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_FACEBOOK_APP_ID") &&
-                PortalSettings.CustomSettings["SITESETTINGS_FACEBOOK_APP_ID"].ToString().Equals(string.Empty) ||
-                PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_FACEBOOK_APP_SECRET") &&
-                PortalSettings.CustomSettings["SITESETTINGS_FACEBOOK_APP_SECRET"].ToString().Equals(string.Empty))
-            ) {
+            bool hide = false;
 
-                SocialNetwork.Visible = false;
-            
+            if (this.BaseSettings.ContainsKey("SIGNIN_AUTOMATICALLYHIDE") && !this.BaseSettings["SIGNIN_AUTOMATICALLYHIDE"].ToString().Equals(string.Empty)) {
+                //if (this.Settings["SIGNIN_AUTOMATICALLYHIDE"] != null) 
+                hide = bool.Parse(this.BaseSettings["SIGNIN_AUTOMATICALLYHIDE"].ToString());
             }
-            labelSocialNetwork.Text = Resources.Appleseed.SIGNIN_SHOW_FACEBOOK_OPTIONS;
 
+            if (hide && this.Request.IsAuthenticated) {
+                this.Visible = false;
+            } else {
+
+                if ((PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_TWITTER_APP_ID") &&
+                    PortalSettings.CustomSettings["SITESETTINGS_TWITTER_APP_ID"].ToString().Equals(string.Empty) ||
+                    PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_TWITTER_APP_SECRET") &&
+                    PortalSettings.CustomSettings["SITESETTINGS_TWITTER_APP_SECRET"].ToString().Equals(string.Empty)) &&
+                    (PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_FACEBOOK_APP_ID") &&
+                    PortalSettings.CustomSettings["SITESETTINGS_FACEBOOK_APP_ID"].ToString().Equals(string.Empty) ||
+                    PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_FACEBOOK_APP_SECRET") &&
+                    PortalSettings.CustomSettings["SITESETTINGS_FACEBOOK_APP_SECRET"].ToString().Equals(string.Empty))
+                ) {
+
+                    SocialNetwork.Visible = false;
+
+                }
+                labelSocialNetwork.Text = Resources.Appleseed.SIGNIN_SHOW_FACEBOOK_OPTIONS;
+            }
         }
 
         #region Properties
