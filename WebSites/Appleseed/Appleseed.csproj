@@ -518,6 +518,13 @@
     <Compile Include="app_support\print.aspx.designer.cs">
       <DependentUpon>print.aspx</DependentUpon>
     </Compile>
+    <Compile Include="app_support\SimpleError.aspx.cs">
+      <DependentUpon>SimpleError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="app_support\SimpleError.aspx.designer.cs">
+      <DependentUpon>SimpleError.aspx</DependentUpon>
+    </Compile>
     <Compile Include="app_support\SmartError.aspx.designer.cs">
       <DependentUpon>SmartError.aspx</DependentUpon>
     </Compile>
@@ -1887,6 +1894,7 @@
     <Content Include="app_support\GeneralError.aspx" />
     <Content Include="app_support\GeneralError.html" />
     <Content Include="app_support\print.aspx" />
+    <Content Include="app_support\SimpleError.aspx" />
     <Content Include="app_support\SmartError.aspx" />
     <Content Include="app_support\ZenNavigation\BindAll.xslt" />
     <Content Include="app_support\ZenNavigation\BindRootChildren.xslt" />

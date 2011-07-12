@@ -99,7 +99,7 @@ namespace Appleseed.Error
         /// </remarks>
         public void Page_Error(object sender, EventArgs e)
         {
-            this.Response.Redirect("~/app_support/GeneralError.html", true);
+            this.Response.Redirect("~/app_support/SimpleError.aspx", true);
         }
 
         #endregion
