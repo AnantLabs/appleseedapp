@@ -372,12 +372,13 @@ namespace Appleseed.DesktopModules.CommunityModules.HTMLDocument
             "Moved data reader code to the DB class where it belongs & commented it out.")]
         protected override void OnInit(EventArgs e)
         {
+            
             this.HtmlHolder.EnableViewState = false;
 
             // Add title
             // ModuleTitle = new DesktopModuleTitle();
             this.EditUrl = "~/DesktopModules/CommunityModules/HTMLDocument/HtmlEdit.aspx";
-
+            
             // Controls.AddAt(0, ModuleTitle);
             var text = new HtmlTextDB();
             this.Content = this.Server.HtmlDecode(text.GetHtmlTextString(this.ModuleID, this.Version));
@@ -386,6 +387,29 @@ namespace Appleseed.DesktopModules.CommunityModules.HTMLDocument
             this.HtmlLiteral.DataBind();
             this.HtmlHolder.Controls.Add(this.HtmlLiteral);
 
+            if (PortalSecurity.HasEditPermissions(this.ModuleID)) {
+                var editor = Settings["Editor"].ToString();
+                var width = int.Parse(Settings["Width"].ToString()) + 100;
+                var height = int.Parse(Settings["Height"].ToString());
+                if (editor.Equals("FreeTextBox")) {
+                    height += 220;
+                } else if (editor.Equals("FCKeditor")) {
+                    height += 120;
+                } else if (editor.Equals("TinyMCE Editor")) {
+                    height += 140;
+                } else if (editor.Equals("Code Mirror Plain Text")) {
+                    height += 140;
+                } else if (editor.Equals("Syrinx CkEditor")) {
+                    height += 300;
+                } else {
+                    height += 140;
+                }
+                var url = HttpUrlBuilder.BuildUrl("~/DesktopModules/CommunityModules/HTMLDocument/HtmlEditModal.aspx?mID="+this.ModuleID);
+                this.HtmlModuleText.Attributes.Add("onclick", "editHtml(" + ModuleID.ToString() + "," + this.PageID + "," + width.ToString() + "," + height.ToString() +",'"+url+ "');");
+                this.HtmlModuleDialog.Attributes.Add("class", "HtmlModuleDialog" + ModuleID.ToString());
+                this.HtmlMoudleIframe.Attributes.Add("class", "HtmlMoudleIframe" + ModuleID.ToString());
+            }
+            
             base.OnInit(e);
         }
 
@@ -482,5 +506,18 @@ namespace Appleseed.DesktopModules.CommunityModules.HTMLDocument
 
         #endregion
 
+        private string ConvertRelativeUrlToAbsoluteUrl(string relativeUrl)
+        {
+
+            if (Request.IsSecureConnection)
+
+                return string.Format("https://{0}{1}", Request.Url.Host, relativeUrl);
+
+            else
+
+                return string.Format("http://{0}{1}", Request.Url.Host, relativeUrl);
+
+        }
+        
     }
 }

@@ -48,3 +48,20 @@ function EditTitleInLine(url){
 	
 }
 
+function editHtml(id, pageID, dialogwidth, dialogheigth, dir) {
+
+        var divDialog = "HtmlModuleDialog" + id;
+        var iframe = "HtmlMoudleIframe" + id;
+		var url = dir+"&pageID"+pageID;
+        $('.' + iframe).attr('src', url );
+        $('.' + divDialog).dialog({
+			width: dialogwidth,
+			height: dialogheigth,
+			resizable : false
+		});
+
+
+    }
+	
+               
+            

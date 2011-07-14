@@ -1825,7 +1825,7 @@
     <value>Login failed!</value>
   </data>
   <data name="LOGON" xml:space="preserve">
-    <value>Logon</value>
+    <value>Login</value>
   </data>
   <data name="MAINTAIN_ASPECT_FIXED_HEIGHT" xml:space="preserve">
     <value>Maintain aspect fixed height</value>

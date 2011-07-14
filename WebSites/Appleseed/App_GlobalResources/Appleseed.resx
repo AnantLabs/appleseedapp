@@ -3211,7 +3211,7 @@
     <value>Logoff</value>
   </data>
   <data name="LOGON" xml:space="preserve">
-    <value>Logon</value>
+    <value>Login</value>
   </data>
   <data name="MACHINENAME" xml:space="preserve">
     <value />
@@ -5620,5 +5620,14 @@ function confirmDelete()
   </data>
   <data name="TEMPLATES" xml:space="preserve">
     <value>Templates</value>
+  </data>
+  <data name="FACEBOOK_ERROR" xml:space="preserve">
+    <value>There's been an error with Facebook. Please try again later.</value>
+  </data>
+  <data name="SIGNIN_SHOW_FACEBOOK_OPTIONS" xml:space="preserve">
+    <value>Or maybe you can sign in with</value>
+  </data>
+  <data name="TWITTER_ERROR" xml:space="preserve">
+    <value>There's been an error with Twitter. Please try again later.</value>
   </data>
 </root>

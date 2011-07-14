@@ -837,6 +837,13 @@
     <Compile Include="DesktopModules\CommunityModules\HTMLDocument\HtmlEdit.aspx.designer.cs">
       <DependentUpon>HtmlEdit.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DesktopModules\CommunityModules\HTMLDocument\HtmlEditModal.aspx.cs">
+      <DependentUpon>HtmlEditModal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\HTMLDocument\HtmlEditModal.aspx.designer.cs">
+      <DependentUpon>HtmlEditModal.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DesktopModules\CommunityModules\HTMLDocument\HtmlModule.ascx.cs">
       <DependentUpon>HtmlModule.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5823,6 +5830,7 @@
     <Content Include="DesktopModules\CommunityModules\FlashModule\UploadFlash.aspx" />
     <Content Include="DesktopModules\CommunityModules\HTMLDocument\HtmlDocument.xml" />
     <Content Include="DesktopModules\CommunityModules\HTMLDocument\HtmlEdit.aspx" />
+    <Content Include="DesktopModules\CommunityModules\HTMLDocument\HtmlEditModal.aspx" />
     <Content Include="DesktopModules\CommunityModules\HTMLDocument\HtmlModule.ascx" />
     <Content Include="DesktopModules\CommunityModules\HTMLDocument\install.sql" />
     <Content Include="DesktopModules\CommunityModules\HTMLDocument\install.xml" />
