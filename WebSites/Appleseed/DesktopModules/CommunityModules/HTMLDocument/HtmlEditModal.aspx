@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    
+    <script type="text/javascript" src="../../../aspnet_client/jQuery/jquery-1.6.1.js"></script>
+    <script type="text/javascript" src="../../../aspnet_client/jQuery/jquery-ui-1.8.11.js"></script>
 </head>
 <body style="background-image: none !important">
     <form id="htmleditmodalform" runat="server">
@@ -42,7 +43,18 @@
             <asp:PlaceHolder ID="PlaceHolderButtons" runat="server"></asp:PlaceHolder>
         </p>
     </div>
-    
+    <div id="dialogclass" runat="server"></div>
     </form>
 </body>
 </html>
+
+<script type="text/javascript">
+
+    $('#EditHtmlCancelButton').click(function () {
+        var dialog = 'HtmlModuleDialog'+$("#dialogclass").attr('class');
+        window.parent.$('.'+dialog).dialog('close');
+    });
+
+
+
+</script>

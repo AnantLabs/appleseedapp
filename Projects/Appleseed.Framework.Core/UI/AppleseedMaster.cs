@@ -57,7 +57,19 @@ namespace Appleseed
                     include.Attributes.Add("rel", "stylesheet");
                     include.Attributes.Add("href", cssHref);
                     page.Header.Controls.AddAt(index++, include);
+
+
+
                 }
+
+                var csshref = page.ResolveUrl("~/aspnet_client/CSSControlAdapters/HtmlEditStyle.css");
+
+
+                HtmlGenericControl Include = new HtmlGenericControl("link");
+                Include.Attributes.Add("type", "text/css");
+                Include.Attributes.Add("rel", "stylesheet");
+                Include.Attributes.Add("href", csshref);
+                page.Header.Controls.AddAt(index++, Include);
 
                 var uiculture = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
                 var datepickerscript = "$(document).ready(function(){$.datepicker.setDefaults($.datepicker.regional['" + uiculture + "']);});";

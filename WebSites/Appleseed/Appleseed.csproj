@@ -2598,6 +2598,7 @@
     <Content Include="aspnet_client\CodeMirror\js\unittests.js" />
     <Content Include="aspnet_client\CodeMirror\js\util.js" />
     <Content Include="aspnet_client\CSSControlAdapters\AdapterUtils.js" />
+    <Content Include="aspnet_client\CSSControlAdapters\HtmlEditStyle.css" />
     <Content Include="aspnet_client\CSSControlAdapters\MenuAdapter.js" />
     <Content Include="aspnet_client\CSSControlAdapters\TreeViewAdapter.js" />
     <Content Include="aspnet_client\DUEMETRI_UI_WebControls_HWMenu\1_0_0_0\1x1.gif" />
