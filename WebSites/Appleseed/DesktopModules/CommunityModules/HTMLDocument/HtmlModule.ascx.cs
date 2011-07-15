@@ -405,9 +405,12 @@ namespace Appleseed.DesktopModules.CommunityModules.HTMLDocument
                     height += 140;
                 }
                 var url = HttpUrlBuilder.BuildUrl("~/DesktopModules/CommunityModules/HTMLDocument/HtmlEditModal.aspx?mID="+this.ModuleID);
-                this.HtmlModuleText.Attributes.Add("onclick", "editHtml(" + ModuleID.ToString() + "," + this.PageID + "," + width.ToString() + "," + height.ToString() +",'"+url+ "');");
+                this.HtmlModuleText.Attributes.Add("onclick", "setDialog(" + ModuleID.ToString() + "," + width.ToString() + ","+ (height + 10).ToString()+");editHtml(" + ModuleID.ToString() + "," + this.PageID  + ",\"" + url + "\");");
+                this.HtmlModuleText.Attributes.Add("class", "Html_Edit");
                 this.HtmlModuleDialog.Attributes.Add("class", "HtmlModuleDialog" + ModuleID.ToString());
                 this.HtmlMoudleIframe.Attributes.Add("class", "HtmlMoudleIframe" + ModuleID.ToString());
+                this.HtmlMoudleIframe.Attributes.Add("width", "98%");
+                this.HtmlMoudleIframe.Attributes.Add("height", "99%");
             }
             
             base.OnInit(e);
@@ -506,18 +509,7 @@ namespace Appleseed.DesktopModules.CommunityModules.HTMLDocument
 
         #endregion
 
-        private string ConvertRelativeUrlToAbsoluteUrl(string relativeUrl)
-        {
-
-            if (Request.IsSecureConnection)
-
-                return string.Format("https://{0}{1}", Request.Url.Host, relativeUrl);
-
-            else
-
-                return string.Format("http://{0}{1}", Request.Url.Host, relativeUrl);
-
-        }
+        
         
     }
 }

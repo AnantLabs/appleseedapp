@@ -2895,7 +2895,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                        "<span id=\"mTitle_{0}\" class=\"editTitle\" onclick=EditTitleInLine(\'{2}\')>{1} </span>", this.ModuleID, this.titleText, callurl);
                 } else
                     title = string.Format(
-                        "<span id=\"mTitle_{0}\" class=\"editTitle\">{1}</span>", this.ModuleID, this.titleText);
+                        "<span id=\"mTitle_{0}\">{1}</span>", this.ModuleID, this.titleText);
                 return title;
             }
 

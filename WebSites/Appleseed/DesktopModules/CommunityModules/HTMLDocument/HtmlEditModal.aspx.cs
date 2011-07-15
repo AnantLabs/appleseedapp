@@ -84,6 +84,7 @@ namespace Appleseed.DesktopModules.CommunityModules.HTMLDocument
             this.PlaceHolderButtons.Controls.Add(this.UpdateButton);
             this.PlaceHolderButtons.Controls.Add(new LiteralControl("&#160;"));
             this.CancelButton.CssClass = "CommandButton";
+            this.CancelButton.ID = "EditHtmlCancelButton";
             this.PlaceHolderButtons.Controls.Add(this.CancelButton);
 
             // Obtain a single row of text information
@@ -106,6 +107,8 @@ namespace Appleseed.DesktopModules.CommunityModules.HTMLDocument
             } finally {
                 dr.Close();
             }
+
+            this.dialogclass.Attributes.Add("class", this.ModuleID.ToString());
 
             base.OnInit(e);
         }
@@ -130,7 +133,7 @@ namespace Appleseed.DesktopModules.CommunityModules.HTMLDocument
 
         protected override void OnCancel(EventArgs e)
         {
-            Response.Write("<script type=\"text/javascript\">window.parent.location = window.parent.location.href;</script>");
+           
             //base.OnCancel(e);
 
             

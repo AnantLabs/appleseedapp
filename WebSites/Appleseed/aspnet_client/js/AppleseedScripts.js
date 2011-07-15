@@ -48,16 +48,27 @@ function EditTitleInLine(url){
 	
 }
 
-function editHtml(id, pageID, dialogwidth, dialogheigth, dir) {
+function setDialog(id, dialogwidth, dialogheigth) {
+	var divDialog = "HtmlModuleDialog" + id;
+    var iframe = "HtmlMoudleIframe" + id;
+	$('.' + iframe).ready(function() {
+			$('.' + divDialog).dialog({
+				width: dialogwidth,
+				height: dialogheigth,
+				resizable : false,
+				autoOpen: false
+			});
+		});
+}
+
+function editHtml(id, pageID, dir) {
 
         var divDialog = "HtmlModuleDialog" + id;
         var iframe = "HtmlMoudleIframe" + id;
 		var url = dir+"&pageID"+pageID;
         $('.' + iframe).attr('src', url );
-        $('.' + divDialog).dialog({
-			width: dialogwidth,
-			height: dialogheigth,
-			resizable : false
+		$('.' + iframe).ready(function() {
+			$('.' + divDialog).dialog("open");
 		});
 
 
