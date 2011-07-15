@@ -405,7 +405,7 @@ namespace Appleseed.DesktopModules.CommunityModules.HTMLDocument
                     height += 140;
                 }
                 var url = HttpUrlBuilder.BuildUrl("~/DesktopModules/CommunityModules/HTMLDocument/HtmlEditModal.aspx?mID="+this.ModuleID);
-                this.HtmlModuleText.Attributes.Add("onclick", "setDialog(" + ModuleID.ToString() + "," + width.ToString() + ","+ (height + 10).ToString()+");editHtml(" + ModuleID.ToString() + "," + this.PageID  + ",\"" + url + "\");");
+                this.HtmlModuleText.Attributes.Add("OnDblClick", "setDialog(" + ModuleID.ToString() + "," + width.ToString() + "," + (height + 10).ToString() + ");editHtml(" + ModuleID.ToString() + "," + this.PageID + ",\"" + url + "\");");
                 this.HtmlModuleText.Attributes.Add("class", "Html_Edit");
                 this.HtmlModuleDialog.Attributes.Add("class", "HtmlModuleDialog" + ModuleID.ToString());
                 this.HtmlMoudleIframe.Attributes.Add("class", "HtmlMoudleIframe" + ModuleID.ToString());

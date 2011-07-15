@@ -5,6 +5,7 @@ function EditTitleInLine(url){
 				indicator : "Saving...",
 				tooltip   : "Click to edit...",
 				name : "Editable.FieldName",
+				event     : "dblclick",
 				id   : "elementid",
 				cancel : 'Cancel',
          		submit : 'OK',
