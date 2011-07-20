@@ -11241,11 +11241,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There&apos;s been an error saving you password..
+        /// </summary>
+        internal static string PASSWORD_CHANGE_ERROR {
+            get {
+                return ResourceManager.GetString("PASSWORD_CHANGE_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter value to modify the password. If you don&apos;t want to change it, leave it empty..
         /// </summary>
         internal static string PASSWORD_CHANGE_EXPLANATION {
             get {
                 return ResourceManager.GetString("PASSWORD_CHANGE_EXPLANATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your password has been successfully changed..
+        /// </summary>
+        internal static string PASSWORD_CHANGE_SUCCESSFULL {
+            get {
+                return ResourceManager.GetString("PASSWORD_CHANGE_SUCCESSFULL", resourceCulture);
             }
         }
         

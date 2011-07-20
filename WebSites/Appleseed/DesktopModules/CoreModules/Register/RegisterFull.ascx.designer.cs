@@ -12,6 +12,24 @@
 public partial class DesktopModules_CoreModules_Register_RegisterFull {
     
     /// <summary>
+    /// NotifySaveContainer control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlGenericControl NotifySaveContainer;
+    
+    /// <summary>
+    /// messageS_lbl control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label messageS_lbl;
+    
+    /// <summary>
     /// lblTitle control.
     /// </summary>
     /// <remarks>
