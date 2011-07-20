@@ -1,5 +1,28 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="RegisterFull.ascx.cs" Inherits="DesktopModules_CoreModules_Register_RegisterFull" %>
 <%@ Register TagPrefix="recaptcha" Namespace="Recaptcha" Assembly="Recaptcha" %>
+
+<div class="div_Password_Change">
+    <div runat="server" id="NotifySaveContainer" class="ui-widget" adv="adv">
+        <div style="padding: 0pt 0.7em; height: 30px;" class="ui-state-highlight ui-corner-all" id="NotifySave" >
+        
+            <p style="font-size:12pt; float: left">
+                <span style="float: left; margin-right: 0.3em;" class="ui-icon ui-icon-info"></span>
+            
+                <asp:Label runat="server" ID="messageS_lbl"></asp:Label>
+            </p>
+            <a class="ui-dialog-titlebar-close ui-corner-all" href="javascript: void(0);" onclick="hide();" unselectable="on" role="button" style="float: right; padding-left:auto; margin-top: 0.5em">
+                <span class="ui-icon ui-icon-closethick">close</span>
+            </a>
+        </div>
+    
+    
+    </div>
+</div>
+
+
+
+
+
 <table border="0" cellpadding="0" cellspacing="0" class="registerTable">
         <tr>
         <td align="left" valign="top" width="30">
@@ -309,6 +332,11 @@
                     $pwdDialog.dialog('open');
             <% } %>
         });
+
+        function hide(){
+            $(".div_Password_Change").attr('style',"display: none;");
+            return false;
+        }
     </script>
 
     

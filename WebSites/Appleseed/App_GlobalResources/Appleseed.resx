@@ -5630,4 +5630,10 @@ function confirmDelete()
   <data name="TWITTER_ERROR" xml:space="preserve">
     <value>There's been an error with Twitter. Please try again later.</value>
   </data>
+  <data name="PASSWORD_CHANGE_ERROR" xml:space="preserve">
+    <value>There's been an error saving you password.</value>
+  </data>
+  <data name="PASSWORD_CHANGE_SUCCESSFULL" xml:space="preserve">
+    <value>Your password has been successfully changed.</value>
+  </data>
 </root>

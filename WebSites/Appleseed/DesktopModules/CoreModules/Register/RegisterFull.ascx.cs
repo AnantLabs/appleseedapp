@@ -106,6 +106,7 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
             this.lblSuceeded.Text = string.Empty;
             this.pnlSuceeded.Visible = false;
             this.pnlForm.Visible = true;
+            NotifySaveContainer.Visible = false;
 
             this.btnSave.Visible = !this.Request.FilePath.Contains("UsersManage.aspx");
 
@@ -304,10 +305,15 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
             try
             {
                 Membership.Provider.ChangePassword(UserName, txtCurrentPwd.Text, txtNewPwd.Text);
+                messageS_lbl.Text = (string)Resources.Appleseed.PASSWORD_CHANGE_SUCCESSFULL;
+                NotifySaveContainer.Visible = true;
             }
             catch (Exception ex)
             {
                 lblError.Text = ex.Message;
+                messageS_lbl.Text = (string)Resources.Appleseed.PASSWORD_CHANGE_ERROR;
+                NotifySaveContainer.Visible = true;
+
             }
         }
         else

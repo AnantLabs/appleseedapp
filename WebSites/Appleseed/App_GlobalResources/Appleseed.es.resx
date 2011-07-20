@@ -4374,4 +4374,10 @@
   <data name="SIGNIN_SHOW_FACEBOOK_OPTIONS" xml:space="preserve">
     <value>O tal vez puedas loguearte con</value>
   </data>
+  <data name="PASSWORD_CHANGE_ERROR" xml:space="preserve">
+    <value>Hubo un error al guardar su password.</value>
+  </data>
+  <data name="PASSWORD_CHANGE_SUCCESSFULL" xml:space="preserve">
+    <value>El password se ha guardado satisfactoriamente.</value>
+  </data>
 </root>
