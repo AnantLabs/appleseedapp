@@ -13,6 +13,8 @@ namespace Appleseed.Framework.Provider
     using System.Configuration;
     using System.Linq;
     using System.Xml;
+    using System.Collections.Specialized;
+    using Appleseed.Framework.Configuration.Provider;
 
     /// <summary>
     /// The provider configuration.
@@ -124,8 +126,15 @@ namespace Appleseed.Framework.Provider
                 switch (provider.Name)
                 {
                     case "add":
-                        this.providers.Add(
-                            attrName.Value, new ProviderSettings(attrName.Value, provider.Attributes["type"].Value));
+                        if (attrName.Value.Equals("SqlUrlBuilder")) {
+                            NameValueCollection col = new NameValueCollection();
+                            for (int i = 0; i < provider.Attributes.Count; i++) {
+                                col.Add(provider.Attributes.Item(i).Name, provider.Attributes.Item(i).Value);
+                            }
+                            
+                            this.providers.Add(attrName.Value, new AppleseedProviderSettings(attrName.Value, provider.Attributes["type"].Value,col));
+                        } else
+                            this.providers.Add(attrName.Value, new ProviderSettings(attrName.Value, provider.Attributes["type"].Value));
                         break;
 
                     case "remove":

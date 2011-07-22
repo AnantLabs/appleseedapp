@@ -269,6 +269,8 @@ namespace Appleseed.Framework
             return BuildUrl(targetPage, pageId, modId, null, string.Empty, string.Empty, string.Empty);
         }
 
+
+                
         /// <summary>
         /// Takes a Tab ID and builds the url for get the desidered page (non default)
         ///     containing the application path, portal alias, tab ID, and language.
@@ -450,6 +452,31 @@ namespace Appleseed.Framework
         {
             return Path.WebPathCombine(values);
         }
+
+        public static bool ValidateProperUrl(Uri url, int pageId)
+        {
+            string query = url.Query;
+            int index = query.IndexOf('&');
+            if (index > 0) {
+                // Removing the first element that its the pageId, to only add the other querys
+                var customAttributes = query.Substring(index + 1, query.Length - index - 1);
+                return url.AbsolutePath.Equals(BuildUrl("~/" + DefaultPage, pageId, customAttributes));
+            }
+            else
+                return url.AbsolutePath.Equals(BuildUrl(pageId));
+        }
+
+        public static string getProperUrl(Uri url, int pageId) {
+            string query = url.Query;
+            int index = query.IndexOf('&');
+            if (index > 0) {
+                
+                var customAttributes = query.Substring(index + 1, query.Length - index - 1);
+                return BuildUrl("~/" + DefaultPage, pageId, customAttributes);
+            } else
+                return BuildUrl(pageId);
+        }
+
 
         #endregion
     }

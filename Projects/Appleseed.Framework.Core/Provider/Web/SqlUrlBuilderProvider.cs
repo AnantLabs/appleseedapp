@@ -73,14 +73,14 @@ namespace Appleseed.Framework.Web
             {
                 sb.Append(targetPage);
                 return sb.ToString();
-            }
+            }//?
 
             HttpContext.Current.Trace.Warn("Target Page = " + targetPage);
 
             // Separate path
             // If page contains path, or it is not an aspx 
             // or handlerFlag is not set: do not use handler
-            if (targetPage.LastIndexOf('/') > 0 || !targetPage.EndsWith(".aspx") || _handlerFlag.Length == 0)
+            if (targetPage.LastIndexOf('/') > 0 || !targetPage.EndsWith(".aspx"))
             {
                 sb.Append(targetPage);
                 sb.Append("?");
@@ -122,8 +122,10 @@ namespace Appleseed.Framework.Web
             else // use handler
             {
                 // Add smarturl tag
-                sb.Append(_handlerFlag);
-                sb.Append("/");
+                if (!string.IsNullOrEmpty(_handlerFlag)) {
+                    sb.Append(_handlerFlag);
+                    sb.Append("/");
+                }
 
                 // Add custom Keywords to the Url
                 if (urlKeywords != null && urlKeywords != string.Empty)
@@ -175,25 +177,15 @@ namespace Appleseed.Framework.Web
                     sb.Append("/");
                 }
 
-                if (_pageidNoSplitter)
-                {
-                    // Add pageID to URL
-                    sb.Append( "pageid" );
-                    sb.Append( _defaultSplitter + pageID );
-                    sb.Append( "/" );
-                }
-                else
-                {
-                    sb.Append( pageID );
-                    sb.Append( "/" );
-                }
+                
+                sb.Append( pageID );
+                sb.Append( "/" );
+                
 
-                // TODO : Need to fix page names rewrites
-                // if (targetPage == DefaultPage)
-                //		sb.Append(_pageName);
-                //	else
-                //		sb.Append(targetPage);
-                sb.Append( _friendlyPageName );
+                if(!string.IsNullOrEmpty(_pageName))// TODO : Need to fix page names rewrites
+                    sb.Append(_pageName);
+                else
+                    sb.Append( _friendlyPageName );
 
                 //Return page
                 return sb.ToString().Replace("//", "/");
@@ -228,8 +220,7 @@ namespace Appleseed.Framework.Web
             }
             else
             {
-                if (ConfigurationManager.AppSettings["HandlerFlag"] != null)
-                    _handlerFlag = ConfigurationManager.AppSettings["HandlerFlag"];
+                _handlerFlag = string.Empty;
             }
 
             // For legacy support first check provider settings then web.config/Appleseed.config legacy settings

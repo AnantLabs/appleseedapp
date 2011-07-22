@@ -39,3 +39,4 @@ WebSites/Appleseed/[Ww]eb.[Cc]onfig
 *.vs10x
 glob:WebSites/Appleseed/App_Data/appleseed_log.LDF
 glob:WebSites/Appleseed/App_Data/appleseed.mdf
+WebSites/Appleseed/rb_logs/DbScriptsLog.txt
