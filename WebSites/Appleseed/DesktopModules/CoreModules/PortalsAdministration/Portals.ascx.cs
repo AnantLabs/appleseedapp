@@ -218,7 +218,7 @@ namespace Appleseed.Content.Web.Modules
 
         protected void btnSaveTemplate_Click(object sender, ImageClickEventArgs e)
         {
-            if (portalList.SelectedIndex != -1) {
+            if (templatesList.SelectedIndex != -1) {
                 string templateName = ((dynamic)templates[templatesList.SelectedIndex]).Name;
 
                 FileInfo file = templateServices.GetTemplateInfo(templateName, PortalSettings.PortalFullPath);

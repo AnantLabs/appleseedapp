@@ -166,16 +166,18 @@ namespace Appleseed
         /// </param>
         private void DesktopDefault_Load(object sender, EventArgs e)
         {
-            if (!this.Request.Url.PathAndQuery.Contains("site"))
-            {
                 var pageId = this.PortalSettings.ActivePage.PageID;
                 if (pageId == 0)
                 {
                     pageId = Convert.ToInt32(SiteMap.RootNode.ChildNodes[0].Key);
+                    this.Response.Redirect(HttpUrlBuilder.BuildUrl(pageId));
                 }
 
-                this.Response.Redirect(HttpUrlBuilder.BuildUrl(pageId));
-            }
+                if (!HttpUrlBuilder.ValidateProperUrl(this.Request.Url, PageID)) 
+                {
+                    this.Response.Redirect(HttpUrlBuilder.getProperUrl(this.Request.Url, PageID));
+                }
+            
 
             if (!PortalSecurity.IsInRoles(this.PortalSettings.ActivePage.AuthorizedRoles) &&
                 !this.User.IsInRole("Admins"))

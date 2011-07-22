@@ -156,6 +156,7 @@
     <Compile Include="Configuration\LogLevel.cs" />
     <Compile Include="Configuration\LogProperties.cs" />
     <Compile Include="Configuration\LogProvider.cs" />
+    <Compile Include="Configuration\Provider\AppleseedProviderSettings.cs" />
     <Compile Include="Configuration\Provider\ProviderConfiguration.cs" />
     <Compile Include="Configuration\Provider\ProviderConfigurationHandler.cs" />
     <Compile Include="Configuration\Provider\ProviderHelper.cs" />

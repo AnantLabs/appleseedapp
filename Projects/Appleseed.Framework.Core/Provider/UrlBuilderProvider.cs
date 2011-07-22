@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Web;
 using System.Web.Caching;
 using Appleseed.Framework.Provider;
+using Appleseed.Framework.Configuration.Provider;
 
 namespace Appleseed.Framework.Web
 {
@@ -45,7 +46,8 @@ namespace Appleseed.Framework.Web
             // Get the names of providers
             ProviderConfiguration config = ProviderConfiguration.GetProviderConfiguration(providerType);
             // Read specific configuration information for this provider
-            ProviderSettings providerSettings = (ProviderSettings) config.Providers[config.DefaultProvider];
+            //ProviderSettings providerSettings = (ProviderSettings) config.Providers[config.DefaultProvider];
+            AppleseedProviderSettings providerSettings = (AppleseedProviderSettings)config.Providers[config.DefaultProvider];
             // In the cache?
             cacheKey = "Appleseed::Web::UrlBuilder::" + config.DefaultProvider;
 
