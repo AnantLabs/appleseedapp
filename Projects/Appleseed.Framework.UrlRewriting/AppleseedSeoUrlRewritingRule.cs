@@ -78,7 +78,17 @@ namespace Appleseed.Framework.UrlRewriting
 
             var parts = url.Split(new char[] { '/' }, System.StringSplitOptions.RemoveEmptyEntries);
 
-            var rewrittenUrl = string.Format("/{0}", this.friendlyPageName);
+            // If it is an virtual app
+            var path = HttpContext.Current.Request.ApplicationPath;
+            var rewrittenUrl = "/";
+            
+            if (!path.Equals('/')) {
+                rewrittenUrl += path;
+                if (!path.EndsWith("/")) {
+                    rewrittenUrl += "/";
+                }
+            }
+            rewrittenUrl += string.Format("{0}", this.friendlyPageName);
 
             var pageId = "0"; //this is made in order to allow urls formed only with the handler (/site/ been the default). Those urls will be redirected to the portal home.
             if (parts.Length >= 2) {
