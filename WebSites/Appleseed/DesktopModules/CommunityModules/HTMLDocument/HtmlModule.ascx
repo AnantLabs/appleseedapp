@@ -2,7 +2,7 @@
     CodeBehind="HtmlModule.ascx.cs" %>
 
 
-<div id="HtmlModuleText" runat="server" >
+<div id="HtmlModuleText" runat="server" title=" Double Click to Edit... ">
     <asp:PlaceHolder ID="HtmlHolder" runat="server"></asp:PlaceHolder>
     <div id="HtmlModuleDialog" runat="server" style="display: none" title="Edit Html">
         <iframe id="HtmlMoudleIframe" runat="server" ></iframe>
