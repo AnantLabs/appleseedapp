@@ -328,6 +328,10 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
         {
             string uid = string.Empty;
 
+            if (Request.Path.Contains("/Users/") && Request.Params["userName"] == null) {
+                return uid;
+            }
+
             if (Request.Params["userName"] != null) {
                 uid = Request.Params["userName"];
             }
