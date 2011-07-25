@@ -105,7 +105,7 @@ namespace Appleseed.Framework.UrlRewriting
 
             //Agregar los query que haya en el ultimo, y el hash
             string last = parts[parts.Length - 1];
-            //Hay algun atributo de query
+            // Hay algun atributo de query
             if(last.IndexOf('?') > 0){
                 var queryparts = last.Split(new char[] { '&' }, System.StringSplitOptions.RemoveEmptyEntries);
                 queryparts[0] = queryparts[0].Substring(1, queryparts[0].Length - 1);
