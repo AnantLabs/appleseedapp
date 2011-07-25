@@ -69,55 +69,57 @@ namespace Appleseed.Framework.Web
             }
             sb.Append("/");
 
-            if (!targetPage.EndsWith(".aspx")) //Images
-            {
-                sb.Append(targetPage);
-                return sb.ToString();
-            }//?
+            //if (!targetPage.EndsWith(".aspx")) //Images
+            //{
+            //    sb.Append(targetPage);
+            //    return sb.ToString();
+            //}
 
             HttpContext.Current.Trace.Warn("Target Page = " + targetPage);
 
             // Separate path
             // If page contains path, or it is not an aspx 
             // or handlerFlag is not set: do not use handler
-            if (targetPage.LastIndexOf('/') > 0 || !targetPage.EndsWith(".aspx"))
+            if (targetPage.LastIndexOf('/') > 0)
             {
                 sb.Append(targetPage);
-                sb.Append("?");
-                // Add pageID to URL
-                sb.Append("pageID=");
-                sb.Append(pageID.ToString());
-
-                // Add Alias to URL
-                if (_aliasInUrl)
-                {
-                    sb.Append("&alias="); // changed for compatibility with handler
-                    sb.Append(currentAlias);
+                // if !!targetPage.EndsWith(".aspx") it's an image. Return
+                if (!targetPage.EndsWith(".aspx")) {
+                    return sb.ToString();
                 }
+                else {
+                    sb.Append("?");
+                    // Add pageID to URL
+                    sb.Append("pageID=");
+                    sb.Append(pageID.ToString());
 
-                // Add ModID to URL
-                if (modID > 0)
-                {
-                    sb.Append("&mid=");
-                    sb.Append(modID.ToString());
-                }
+                    // Add Alias to URL
+                    if (_aliasInUrl) {
+                        sb.Append("&alias="); // changed for compatibility with handler
+                        sb.Append(currentAlias);
+                    }
 
-                // Add Language to URL
-                if (_langInUrl)
-                {
-                    sb.Append("&lang="); // changed for compatibility with handler
-                    sb.Append(culture.Name); // manu fix: culture.Name
-                }
+                    // Add ModID to URL
+                    if (modID > 0) {
+                        sb.Append("&mid=");
+                        sb.Append(modID.ToString());
+                    }
 
-                // Add custom attributes
-                if (customAttributes != null && customAttributes != string.Empty)
-                {
-                    sb.Append("&");
-                    customAttributes = customAttributes.ToString().Replace("/", "&");
-                    customAttributes = customAttributes.ToString().Replace(_defaultSplitter, "=");
-                    sb.Append(customAttributes);
+                    // Add Language to URL
+                    if (_langInUrl) {
+                        sb.Append("&lang="); // changed for compatibility with handler
+                        sb.Append(culture.Name); // manu fix: culture.Name
+                    }
+
+                    // Add custom attributes
+                    if (customAttributes != null && customAttributes != string.Empty) {
+                        sb.Append("&");
+                        customAttributes = customAttributes.ToString().Replace("/", "&");
+                        customAttributes = customAttributes.ToString().Replace(_defaultSplitter, "=");
+                        sb.Append(customAttributes);
+                    }
+                    return sb.ToString().Replace("&&", "&");
                 }
-                return sb.ToString().Replace("&&", "&");
             }
             else // use handler
             {

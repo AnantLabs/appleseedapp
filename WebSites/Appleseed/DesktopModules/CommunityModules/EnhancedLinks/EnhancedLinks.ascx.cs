@@ -240,7 +240,7 @@ namespace Appleseed.Content.Web.Modules
                 {
                     if (IsNumeric(linkStr))
                     {
-                        return HttpUrlBuilder.BuildUrl("~/DesktopDefault.aspx?tabid=" + linkStr);
+                        return HttpUrlBuilder.BuildUrl("~/"+HttpUrlBuilder.DefaultPage,"tabid=" + linkStr);
                     }
                     else
                     {

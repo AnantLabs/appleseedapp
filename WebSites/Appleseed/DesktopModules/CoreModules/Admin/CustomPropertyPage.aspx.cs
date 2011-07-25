@@ -73,7 +73,7 @@ namespace Appleseed.Content.Web.Modules
         {
             OnUpdate(e);
             if (Page.IsValid == true)
-                Response.Redirect(Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/Default.aspx", PageID));
+                Response.Redirect(Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/" + HttpUrlBuilder.DefaultPage, PageID));
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace Appleseed.Content.Web.Modules
 
         protected override void OnCancel(EventArgs e)
         {
-            Response.Redirect(Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/Default.aspx", PageID));
+            Response.Redirect(Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/" + HttpUrlBuilder.DefaultPage, PageID));
         }
 
         private void EditTable_UpdateControl(object sender,

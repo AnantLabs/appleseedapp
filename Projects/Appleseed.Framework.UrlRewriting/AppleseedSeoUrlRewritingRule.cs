@@ -62,7 +62,7 @@ namespace Appleseed.Framework.UrlRewriting
             }
 
             //To match the url form (atr1/atr2/.../atrn)optional/number/name.aspx(?a=x&b=y&...&c=z#xxx)optional
-            regex = new Regex("^(.*)/([0-9]*)/(.*)\\.aspx(\\?.*)?", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+            regex = new Regex("^(.*)/([0-9]*)/(.*)(\\?.*)?", RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
         }
 

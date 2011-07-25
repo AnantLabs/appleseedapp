@@ -187,7 +187,7 @@ namespace Appleseed.Framework
                         logLevel = LogLevel.Error;
                         var errorGuid = Guid.NewGuid().ToString("N");
                         HttpContext.Current.Cache.Add(errorGuid, errModule, null, System.Web.Caching.Cache.NoAbsoluteExpiration, new TimeSpan(0, 2, 0), System.Web.Caching.CacheItemPriority.Normal, null);
-                        redirectUrl = HttpUrlBuilder.BuildUrl("~/Default.aspx", PageId, "modErr=" + errorGuid);
+                        redirectUrl = HttpUrlBuilder.BuildUrl("~/" + HttpUrlBuilder.DefaultPage, PageId, "modErr=" + errorGuid);
                     }
 
                     else if (e is AppleseedException)

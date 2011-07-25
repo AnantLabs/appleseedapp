@@ -86,7 +86,7 @@ namespace Appleseed.Admin
                     {
                         // Redirect to New Form - Mike Stone 19/12/2004
                         returnPage =
-                            HttpUrlBuilder.BuildUrl("~/DesktopDefault.aspx", NewPageID,
+                            HttpUrlBuilder.BuildUrl("~/" + HttpUrlBuilder.DefaultPage, NewPageID,
                                                     "SelectedPageID=" + NewPageID.ToString());
                     }
                     else

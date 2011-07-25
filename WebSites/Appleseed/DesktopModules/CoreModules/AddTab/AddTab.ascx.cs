@@ -207,7 +207,7 @@ namespace Appleseed.Content.Web.Modules.AddModule
                     {
                         // Redirect to New Page/Tab - Mike Stone 30/12/2004
                         // modified by Hongwei Shen 9/25/2005
-                        // returnTab = HttpUrlBuilder.BuildUrl("~/DesktopDefault.aspx", t.ID, "SelectedTabID=" + t.ID.ToString());
+                        // returnTab = HttpUrlBuilder.BuildUrl(""~/"+HttpUrlBuilder.DefaultPage", t.ID, "SelectedTabID=" + t.ID.ToString());
                         string newPage = "~/" + t.Name.Trim().Replace(" ", "_") + ".aspx";
                         returnTab = HttpUrlBuilder.BuildUrl(newPage, t.ID);
                     }
@@ -218,9 +218,9 @@ namespace Appleseed.Content.Web.Modules.AddModule
                         // or you will get an error about edit access denied.
 
                         // Modified by Hongwei Shen 9/25/2005 to fix: QueryString["tabID"] maybe null.
-                        // returnTab = HttpUrlBuilder.BuildUrl("~/DesktopDefault.aspx", int.Parse(Request.QueryString["tabID"]), "SelectedTabID=" + t.ID.ToString());
+                        // returnTab = HttpUrlBuilder.BuildUrl("~/"+HttpUrlBuilder.DefaultPage, int.Parse(Request.QueryString["tabID"]), "SelectedTabID=" + t.ID.ToString());
                         returnTab =
-                            HttpUrlBuilder.BuildUrl("~/DesktopDefault.aspx", PageID, "SelectedTabID=" + t.ID.ToString());
+                            HttpUrlBuilder.BuildUrl("~/" + HttpUrlBuilder.DefaultPage, PageID, "SelectedTabID=" + t.ID.ToString());
                     }
                     Response.Redirect(returnTab);
                 }

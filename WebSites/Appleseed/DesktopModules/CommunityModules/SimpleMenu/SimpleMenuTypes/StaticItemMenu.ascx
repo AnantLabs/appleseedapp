@@ -8,12 +8,12 @@
     <SelectedItemStyle CssClass="sm_SelectedTab" />
     <SelectedItemTemplate>
         <!--
-            &#160;<a href='<%#Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/Default.aspx" , this.GlobalPortalSettings.ActivePage.PageID,"ItemId="  + ((Appleseed.Framework.Site.Configuration.PageStripDetails) Container.DataItem).PageID)%>'>
+            &#160;<a href='<%#Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/"+HttpUrlBuilder.DefaultPage , this.GlobalPortalSettings.ActivePage.PageID,"ItemId="  + ((Appleseed.Framework.Site.Configuration.PageStripDetails) Container.DataItem).PageID)%>'>
                 <%# ((Appleseed.Framework.Site.Configuration.PageStripDetails) Container.DataItem).PageName %>
                 &#160;
 -->
         <!-- Modified by Hongwei Shen(hongwei.shen@gmail.com) in fixing the url not correct problem, 05/07/2005 -->
-        &#160;<a href='<%#Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/Default.aspx" , ((Appleseed.Framework.Site.Configuration.PageStripDetails) Container.DataItem).PageID, "")%>'>
+        &#160;<a href='<%#Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/"+HttpUrlBuilder.DefaultPage , ((Appleseed.Framework.Site.Configuration.PageStripDetails) Container.DataItem).PageID, "")%>'>
             <%# ((Appleseed.Framework.Site.Configuration.PageStripDetails) Container.DataItem).PageName %>
         </a>&#160;
         <!-- end of modification -->
@@ -21,11 +21,11 @@
     <AlternatingItemStyle CssClass="sm_OtherSubTabsAlt" />
     <AlternatingItemTemplate>
         <!--
-            &#160;<a href='<%#Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/Default.aspx" , this.GlobalPortalSettings.ActivePage.PageID,"ItemId=" + ((Appleseed.Framework.Site.Configuration.PageStripDetails) Container.DataItem).PageID)%>'>
+            &#160;<a href='<%#Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/"+HttpUrlBuilder.DefaultPage , this.GlobalPortalSettings.ActivePage.PageID,"ItemId=" + ((Appleseed.Framework.Site.Configuration.PageStripDetails) Container.DataItem).PageID)%>'>
                 <%# ((Appleseed.Framework.Site.Configuration.PageStripDetails) Container.DataItem).PageName %>&#160; 
 -->
         <!-- Modified by Hongwei Shen(hongwei.shen@gmail.com) in fixing the url not correct problem, 05/07/2005 -->
-        &#160;<a href='<%#Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/Default.aspx" , ((Appleseed.Framework.Site.Configuration.PageStripDetails) Container.DataItem).PageID, "")%>'>
+        &#160;<a href='<%#Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/"+HttpUrlBuilder.DefaultPage , ((Appleseed.Framework.Site.Configuration.PageStripDetails) Container.DataItem).PageID, "")%>'>
             <%# ((Appleseed.Framework.Site.Configuration.PageStripDetails) Container.DataItem).PageName %>
         </a>&#160;
         <!-- end of modification -->
@@ -33,12 +33,12 @@
     <ItemStyle CssClass="sm_OtherSubTabs" />
     <ItemTemplate>
         <!--
-            &#160;<a href='<%#Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/Default.aspx" ,this.GlobalPortalSettings.ActivePage.PageID, "ItemId=" + ((Appleseed.Framework.Site.Configuration.PageStripDetails) Container.DataItem).PageID)%>'>
+            &#160;<a href='<%#Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/"+HttpUrlBuilder.DefaultPage ,this.GlobalPortalSettings.ActivePage.PageID, "ItemId=" + ((Appleseed.Framework.Site.Configuration.PageStripDetails) Container.DataItem).PageID)%>'>
                 <%# ((Appleseed.Framework.Site.Configuration.PageStripDetails) Container.DataItem).PageName %>
             </a>&#160;
 -->
         <!-- Modified by Hongwei Shen(hongwei.shen@gmail.com) in fixing the url not correct problem, 05/07/2005 -->
-        &#160;<a href='<%#Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/Default.aspx", ((Appleseed.Framework.Site.Configuration.PageStripDetails) Container.DataItem).PageID, "")%>'>
+        &#160;<a href='<%#Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/"+HttpUrlBuilder.DefaultPage, ((Appleseed.Framework.Site.Configuration.PageStripDetails) Container.DataItem).PageID, "")%>'>
             <%# ((Appleseed.Framework.Site.Configuration.PageStripDetails) Container.DataItem).PageName %>
         </a>&#160;
         <!-- end of modification -->

@@ -324,7 +324,7 @@ namespace Appleseed.Content.Web.Modules
                                     PortalSettings.GetRootPage(Convert.ToInt32(strTabID), this.PortalSettings.DesktopPages).
                                         PageID;
                                 strLink =
-                                    HttpUrlBuilder.BuildUrl("~/DesktopDefault.aspx", tabID,
+                                    HttpUrlBuilder.BuildUrl("~/" + HttpUrlBuilder.DefaultPage, tabID,
                                                             "mID=" + strModuleID + "&ItemID=" + strTabID);
                                 break;
 
@@ -332,7 +332,7 @@ namespace Appleseed.Content.Web.Modules
                                 // José Viladiu
                                 // Added support to link to the specific page
                                 strLink =
-                                    HttpUrlBuilder.BuildUrl("~/DesktopDefault.aspx", Convert.ToInt32(strTabID),
+                                    HttpUrlBuilder.BuildUrl("~/" + HttpUrlBuilder.DefaultPage, Convert.ToInt32(strTabID),
                                                             strLocate);
                                 break;
                             default:
