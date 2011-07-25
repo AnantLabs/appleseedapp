@@ -291,7 +291,7 @@ namespace Appleseed.Content.Web.Modules
             // Add Portal Root when showing all tabs
             if (!currentTabOnly)
             {
-                this.list.Add(new SitemapItem(0, portalSettings.PortalName, HttpUrlBuilder.BuildUrl("~/"), 0));
+                this.list.Add(new SitemapItem(0, portalSettings.PortalName, HttpUrlBuilder.BuildUrl("~/" + HttpUrlBuilder.DefaultPage), 0));
                 level++;
             }
 

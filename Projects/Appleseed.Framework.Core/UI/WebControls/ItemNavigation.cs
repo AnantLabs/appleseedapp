@@ -67,7 +67,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
             var mn = new MenuTreeNode(mytab.PageName)
                 {
                     // change the link to stay on the same page and call a category product
-                    Link = HttpUrlBuilder.BuildUrl("~/DesktopDefault.aspx", tabIdItemsRoot, "ItemID=" + mytab.PageID),
+                    Link = HttpUrlBuilder.BuildUrl("~/" + HttpUrlBuilder.DefaultPage, tabIdItemsRoot, "ItemID=" + mytab.PageID),
                     Width = this.Width
                 };
 
@@ -100,7 +100,8 @@ namespace Appleseed.Framework.Web.UI.WebControls
                                     let mnc = new MenuTreeNode(mysubTab.PageName)
                                         {
                                             // change PageID into ItemID for the product module on the same page
-                                            Link = HttpUrlBuilder.BuildUrl("~/DesktopDefault.aspx", tabIdItemsRoot, string.Format("ItemID={0}", mysubTab.PageID)), Width = mn.Width
+                                            Link = HttpUrlBuilder.BuildUrl("~/" + HttpUrlBuilder.DefaultPage, tabIdItemsRoot, string.Format("ItemID={0}", mysubTab.PageID)),
+                                            Width = mn.Width
                                         }
                                     select this.RecourseMenu(tabIdItemsRoot, mysubTab.Pages, mnc))
                 {
@@ -122,7 +123,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
             using (var mn = new MenuTreeNode(tabItemsRoot.PageName))
             {
                 // change the link to stay on the same page and call a category product
-                mn.Link = HttpUrlBuilder.BuildUrl("~/DesktopDefault.aspx", tabItemsRoot.PageID);
+                mn.Link = HttpUrlBuilder.BuildUrl("~/" + HttpUrlBuilder.DefaultPage, tabItemsRoot.PageID);
                 mn.Width = this.Width;
                 this.Childs.Add(mn);
             }

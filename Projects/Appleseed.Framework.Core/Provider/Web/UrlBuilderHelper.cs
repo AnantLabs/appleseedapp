@@ -230,7 +230,6 @@ namespace Appleseed.Framework.Web
 								{
 									_pageName = Convert.ToString(pageElements["PageName"]);
 									_pageName = Regex.Replace(_pageName, @"[^A-Za-z0-9]", "-");
-									_pageName += ".aspx";
 
 									// insert value in cache so it doesn't always try to retrieve it
 

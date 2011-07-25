@@ -222,7 +222,7 @@ namespace Appleseed.DesktopModules.CoreModules.Pages
 
                     this.OrderPages();
                     this.Response.Redirect(
-                        HttpUrlBuilder.BuildUrl("~/DesktopDefault.aspx", this.PageID, "SelectedPageID=" + t.ID));
+                        HttpUrlBuilder.BuildUrl("~/" + HttpUrlBuilder.DefaultPage, this.PageID, "SelectedPageID=" + t.ID));
                 }
                 catch (SqlException)
                 {
@@ -343,7 +343,7 @@ namespace Appleseed.DesktopModules.CoreModules.Pages
                 t.Order += delta;
                 this.OrderPages();
                 this.Response.Redirect(
-                    HttpUrlBuilder.BuildUrl("~/DesktopDefault.aspx", this.PageID, "selectedtabID=" + t.ID));
+                    HttpUrlBuilder.BuildUrl("~/" + HttpUrlBuilder.DefaultPage, this.PageID, "selectedtabID=" + t.ID));
             }
         }
 

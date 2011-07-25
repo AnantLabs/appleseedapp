@@ -572,7 +572,7 @@ namespace Appleseed.Framework.Providers.AppleseedSiteMapProvider
             var url = HttpUrlBuilder.BuildUrl(id);
             if (!string.IsNullOrEmpty(url) && !url.StartsWith("/") && !url.StartsWith(Path.ApplicationFullPath))
             {
-                url = HttpUrlBuilder.BuildUrl("~/Default.aspx", "sitemapTargetPage=" + id);
+                url = HttpUrlBuilder.BuildUrl("~/" + HttpUrlBuilder.DefaultPage, "sitemapTargetPage=" + id);
             }
 
             // If roles were specified, turn the list into a string array

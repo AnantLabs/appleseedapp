@@ -65,7 +65,7 @@ namespace Appleseed.Admin
                 // Get portalaias
                 if (this.Request.Params["alias"] != null)
                 {
-                    _alias = HttpUrlBuilder.BuildUrl("~/Default.aspx", 0, string.Empty, this.Request.Params["alias"]);
+                    _alias = HttpUrlBuilder.BuildUrl("~/" + HttpUrlBuilder.DefaultPage, 0, string.Empty, this.Request.Params["alias"]);
                 }
 
                 if (this.Request.Params["pageId"] != null)

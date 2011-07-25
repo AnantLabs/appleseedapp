@@ -628,7 +628,7 @@ namespace Appleseed.Framework.Security
         /// </remarks>
         public static void PortalHome()
         {
-            HttpContext.Current.Response.Redirect(HttpUrlBuilder.BuildUrl("~/Default.aspx"));
+            HttpContext.Current.Response.Redirect(HttpUrlBuilder.BuildUrl("~/"+HttpUrlBuilder.DefaultPage));
         }
 
         /// <summary>
@@ -797,7 +797,7 @@ namespace Appleseed.Framework.Security
         /// </remarks>
         public static void SignOut()
         {
-            SignOut(HttpUrlBuilder.BuildUrl("~/Default.aspx"), true);
+            SignOut(HttpUrlBuilder.BuildUrl("~/" + HttpUrlBuilder.DefaultPage), true);
         }
 
         /// <summary>
