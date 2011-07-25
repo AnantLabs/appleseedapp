@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Caching;
 using Appleseed.Framework.Settings;
+using System.Text;
 
 namespace Appleseed.Framework.Web
 {
@@ -29,6 +30,7 @@ namespace Appleseed.Framework.Web
 		public const string TabLinkID = "TabLink";
 		public const string PageNameID = "UrlPageName";
 		public const string UrlKeywordsID = "TabUrlKeyword";
+        public const string PageTitleID = "UrlPageTitle";
 
 		/// <summary>
 		/// Builds up a cache key for Url Elements/Properties
@@ -53,6 +55,7 @@ namespace Appleseed.Framework.Web
 			string tabLinkCacheKey = UrlElementCacheKey(pageID, TabLinkID);
 			string pageNameCacheKey = UrlElementCacheKey(pageID, PageNameID);
 			string urlKeywordsCacheKey = UrlElementCacheKey(pageID, UrlKeywordsID);
+            string PageTitleCacheKey = UrlElementCacheKey(pageID, PageTitleID);
 
 			if (applicationCache[placeHolderCacheKey] != null)
 				applicationCache.Remove(placeHolderCacheKey);
@@ -65,6 +68,9 @@ namespace Appleseed.Framework.Web
 
 			if (applicationCache[urlKeywordsCacheKey] != null)
 				applicationCache.Remove(urlKeywordsCacheKey);
+
+            if (applicationCache[PageTitleCacheKey] != null)
+                applicationCache.Remove(PageTitleCacheKey);
 		}
 
 		/// <summary>
@@ -186,7 +192,7 @@ namespace Appleseed.Framework.Web
 		/// <param name="_tabLink">Is this Url a link to an external site/resource</param>
 		/// <param name="_urlKeywords">Are there any keywords that should be added to this url</param>
 		/// <param name="_pageName">Does this url have a friendly page name other than the default</param>
-		public static void GetUrlElements(int pageID, double cacheDuration, ref bool _isPlaceHolder, ref string _tabLink, ref string _urlKeywords, ref string _pageName)
+		public static void GetUrlElements(int pageID, double cacheDuration, ref bool _isPlaceHolder, ref string _tabLink, ref string _urlKeywords, ref string _pageSeoName, ref string _pageTitle)
 		{
 			// pageID 0 is a default page shared across portals with no real settings
 			if (pageID == 0)
@@ -196,12 +202,13 @@ namespace Appleseed.Framework.Web
 			string tabLinkKey = UrlElementCacheKey(pageID, TabLinkID);
 			string pageNameKey = UrlElementCacheKey(pageID, PageNameID);
 			string urlKeywordsKey = UrlElementCacheKey(pageID, UrlKeywordsID);
+            string pageTitleKey = UrlElementCacheKey(pageID, PageTitleID);
 
 			// calling HttpContext.Current.Cache all the time incurs a small performance hit so get a reference to it once and reuse that for greater performance
 			Cache applicationCache = HttpContext.Current.Cache;
 
 			// if any values are null refetch
-			if (applicationCache[isPlaceHolderKey] == null || applicationCache[tabLinkKey] == null || applicationCache[pageNameKey] == null || applicationCache[urlKeywordsKey] == null)
+			if (applicationCache[isPlaceHolderKey] == null || applicationCache[tabLinkKey] == null || applicationCache[pageNameKey] == null || applicationCache[urlKeywordsKey] == null || applicationCache[pageTitleKey] == null)
 			{
 				using (SqlConnection conn = new SqlConnection(SiteConnectionString))
 				{
@@ -210,7 +217,15 @@ namespace Appleseed.Framework.Web
 						// Open the connection
 						conn.Open();
 
-						using (SqlCommand cmd = new SqlCommand("SELECT ISNULL((SELECT SettingValue FROM rb_TabSettings WHERE TabID=" + pageID.ToString() + " AND SettingName = '" + PageNameID + "'),'') as PageName,ISNULL((SELECT SettingValue FROM rb_TabSettings WHERE TabID=" + pageID.ToString() + " AND SettingName = '" + UrlKeywordsID + "'),'') as Keywords,ISNULL((SELECT SettingValue FROM rb_TabSettings WHERE TabID=" + pageID.ToString() + " AND SettingName = '" + TabLinkID + "'),'') as ExternalLink,ISNULL((SELECT SettingValue FROM rb_TabSettings WHERE TabID=" + pageID.ToString() + " AND SettingName = '" + IsPlaceHolderID + "'),'') as IsPlaceHolder", conn))
+                        StringBuilder sql = new StringBuilder();
+
+                        sql.AppendFormat("SELECT ISNULL((SELECT SettingValue FROM rb_TabSettings WHERE TabID={0} AND SettingName = '{1}'),'') as PageSEOName,", pageID.ToString(), PageNameID);
+                        sql.AppendFormat("ISNULL((SELECT PageName FROM rb_Pages WHERE PageID={0} ),'') as PageTitle, ", pageID.ToString());
+                        sql.AppendFormat("ISNULL((SELECT SettingValue FROM rb_TabSettings WHERE TabID={0} AND SettingName = '{1}'),'') as Keywords,", pageID.ToString(), UrlKeywordsID);
+                        sql.AppendFormat("ISNULL((SELECT SettingValue FROM rb_TabSettings WHERE TabID={0} AND SettingName = '{1}'),'') as ExternalLink,", pageID.ToString(), TabLinkID);
+                        sql.AppendFormat("ISNULL((SELECT SettingValue FROM rb_TabSettings WHERE TabID={0} AND SettingName = '{1}'),'') as IsPlaceHolder", pageID.ToString(), IsPlaceHolderID);
+
+						using (SqlCommand cmd = new SqlCommand(sql.ToString(), conn))
 						{
 							// 1. Instantiate a new command above
 							// 2. populate values
@@ -226,10 +241,10 @@ namespace Appleseed.Framework.Web
 								// String[] dependencyKey = new String[1];
 								// dependencyKey[0] = Appleseed.Framework.Settings.Cache.Key.TabSettings(pageID);
 
-								if (pageElements["PageName"].ToString() != String.Empty)
+                                if (pageElements["PageSEOName"].ToString() != String.Empty)
 								{
-									_pageName = Convert.ToString(pageElements["PageName"]);
-									_pageName = Regex.Replace(_pageName, @"[^A-Za-z0-9]", "-");
+                                    _pageSeoName = Convert.ToString(pageElements["PageSEOName"]);
+                                    _pageSeoName = Regex.Replace(_pageSeoName, @"[^A-Za-z0-9]", "-");
 
 									// insert value in cache so it doesn't always try to retrieve it
 
@@ -237,11 +252,11 @@ namespace Appleseed.Framework.Web
 									// applicationCache.Insert(pageNameKey, _pageName, new CacheDependency(null, dependencyKey));
 									if (cacheDuration == 0)
 									{
-										applicationCache.Insert(pageNameKey, _pageName);
+                                        applicationCache.Insert(pageNameKey, _pageSeoName);
 									}
 									else
 									{
-										applicationCache.Insert(pageNameKey, _pageName, null, DateTime.Now.AddMinutes(cacheDuration), Cache.NoSlidingExpiration);
+                                        applicationCache.Insert(pageNameKey, _pageSeoName, null, DateTime.Now.AddMinutes(cacheDuration), Cache.NoSlidingExpiration);
 									}
 								}
 								else
@@ -259,6 +274,28 @@ namespace Appleseed.Framework.Web
 										applicationCache.Insert(pageNameKey, string.Empty, null, DateTime.Now.AddMinutes(cacheDuration), Cache.NoSlidingExpiration);
 									}
 								}
+
+                                if (!string.IsNullOrEmpty(pageElements["PageTitle"].ToString())) {
+
+                                    _pageTitle = Convert.ToString(pageElements["PageTitle"]);
+                                    _pageTitle = Regex.Replace(_pageTitle, @"[^A-Za-z0-9]", "-");
+
+
+                                    if (cacheDuration == 0) {
+                                        applicationCache.Insert(pageNameKey, _pageTitle);
+                                    } else {
+                                        applicationCache.Insert(pageNameKey, _pageTitle, null, DateTime.Now.AddMinutes(cacheDuration), Cache.NoSlidingExpiration);
+                                    }
+                                } else {
+                                    if (cacheDuration == 0) {
+                                        applicationCache.Insert(pageNameKey, string.Empty);
+                                    } else {
+                                        applicationCache.Insert(pageNameKey, string.Empty, null, DateTime.Now.AddMinutes(cacheDuration), Cache.NoSlidingExpiration);
+                                    }
+                                
+                                
+                                
+                                }
 
 								if (pageElements["Keywords"].ToString() != String.Empty)
 								{
@@ -336,8 +373,8 @@ namespace Appleseed.Framework.Web
 			{
 				// if cached value is empty string then leave it as default
 				if (applicationCache[pageNameKey].ToString() != String.Empty)
-					_pageName = applicationCache[pageNameKey].ToString();
-
+					_pageSeoName = applicationCache[pageNameKey].ToString();
+                _pageTitle = applicationCache[pageTitleKey].ToString();
 				_urlKeywords = applicationCache[urlKeywordsKey].ToString();
 				_tabLink = applicationCache[tabLinkKey].ToString();
 				_isPlaceHolder = bool.Parse(applicationCache[isPlaceHolderKey].ToString());

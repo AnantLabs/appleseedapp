@@ -41,11 +41,12 @@ namespace Appleseed.Framework.Web
             bool _isPlaceHolder = false;
             string _tabLink = string.Empty;
             string _urlKeywords = string.Empty;
-            string _pageName = _friendlyPageName;
+            string _pageName = string.Empty;
+            string _pageTitle = string.Empty;
 
             // Get Url Elements this helper method (Will either retrieve from cache or database)
             UrlBuilderHelper.GetUrlElements(pageID, _cacheMinutes, ref _isPlaceHolder, ref _tabLink, ref _urlKeywords,
-                                            ref _pageName);
+                                            ref _pageName, ref _pageTitle);
 
             //2_aug_2004 Cory Isakson
             //Begin Navigation Enhancements
@@ -182,12 +183,15 @@ namespace Appleseed.Framework.Web
                 
                 sb.Append( pageID );
                 sb.Append( "/" );
-                
 
-                if(!string.IsNullOrEmpty(_pageName))// TODO : Need to fix page names rewrites
+
+                if (!string.IsNullOrEmpty(_pageName))// TODO : Need to fix page names rewrites
                     sb.Append(_pageName);
                 else
-                    sb.Append( _friendlyPageName );
+                    if (!string.IsNullOrEmpty(_pageTitle))
+                        sb.Append(_pageTitle);
+                    else
+                        sb.Append( _friendlyPageName );
 
                 //Return page
                 return sb.ToString().Replace("//", "/");
