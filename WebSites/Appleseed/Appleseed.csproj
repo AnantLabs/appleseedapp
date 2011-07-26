@@ -5829,7 +5829,9 @@
     <Content Include="DesktopModules\CommunityModules\FlashModule\FlashModule.ascx" />
     <Content Include="DesktopModules\CommunityModules\FlashModule\install.xml" />
     <Content Include="DesktopModules\CommunityModules\FlashModule\UploadFlash.aspx" />
-    <Content Include="DesktopModules\CommunityModules\HTMLDocument\HtmlDocument.xml" />
+    <Content Include="DesktopModules\CommunityModules\HTMLDocument\HtmlDocument.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="DesktopModules\CommunityModules\HTMLDocument\HtmlEdit.aspx" />
     <Content Include="DesktopModules\CommunityModules\HTMLDocument\HtmlEditModal.aspx" />
     <Content Include="DesktopModules\CommunityModules\HTMLDocument\HtmlModule.ascx" />
