@@ -173,9 +173,9 @@ namespace Appleseed
                     this.Response.Redirect(HttpUrlBuilder.BuildUrl(pageId));
                 }
 
-                if (!HttpUrlBuilder.ValidateProperUrl(this.Request.Url, PageID)) 
+                if (!HttpUrlBuilder.ValidateProperUrl(this.Request.Url, pageId)) 
                 {
-                    this.Response.Redirect(HttpUrlBuilder.getProperUrl(this.Request.Url, PageID));
+                    this.Response.Redirect(HttpUrlBuilder.getProperUrl(this.Request.Url, pageId));
                 }
             
 
