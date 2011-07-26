@@ -204,7 +204,7 @@ namespace Appleseed.Content.Web.Modules
 
         protected void btnDeleteTemplate_Click(object sender, ImageClickEventArgs e)
         {
-            if (portalList.SelectedIndex != -1) {
+            if (templatesList.SelectedIndex != -1) {
                 string templateName = ((dynamic)templates[templatesList.SelectedIndex]).Name;
 
                 templateServices.DeleteTemplate(templateName, PortalSettings.PortalFullPath);

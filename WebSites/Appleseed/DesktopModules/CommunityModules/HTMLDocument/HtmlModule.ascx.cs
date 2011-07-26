@@ -382,6 +382,13 @@ namespace Appleseed.DesktopModules.CommunityModules.HTMLDocument
             // Controls.AddAt(0, ModuleTitle);
             var text = new HtmlTextDB();
             this.Content = this.Server.HtmlDecode(text.GetHtmlTextString(this.ModuleID, this.Version));
+            if(string.IsNullOrEmpty(this.Content.ToString())){
+                this.Content = "Add content here ...<br/><br/><br/><br/>";
+            
+            }
+
+
+
             this.HtmlLiteral = new LiteralControl(this.Content.ToString());
             this.HtmlLiteral.DataBinding += HtmlLiteralDataBinding;
             this.HtmlLiteral.DataBind();
