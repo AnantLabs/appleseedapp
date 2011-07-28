@@ -102,7 +102,7 @@
                                                 <asp:TextBox ID="tfPwdAgain" runat="server" TextMode="Password"
                                                     ValidationGroup="USER"></asp:TextBox>
                                                 <asp:CompareValidator ID="cfvPwd" runat="server" 
-                                                    ControlToValidate="tfPwd" ControlToCompare="tfPwdAgain" 
+                                                    ControlToValidate="tfPwdAgain" ControlToCompare="tfPwd" 
                                                     Type="String" Operator="Equal" Display="Dynamic"
                                                     ValidationGroup="USER"
                                                     Text="<%$ Resources:Appleseed, PASSWORD_NOT_MATCH%>" textkey="PASSWORD_NOT_MATCH" Font-Size="11px"></asp:CompareValidator>
@@ -284,9 +284,9 @@
                                 </div>
                                 <div>
                                     <asp:CompareValidator ID="cfvNewPwdAgain" runat="server" 
-                                        ControlToValidate="txtNewPwd" ControlToCompare="txtNewPwdAgain" 
+                                        ControlToValidate="txtNewPwdAgain" ControlToCompare="txtNewPwd" 
                                         Type="String" Operator="Equal" Display="Dynamic"
-                                        ValidationGroup="CHANGE_PWD"
+                                        ValidationGroup="CHANGE_PWD" 
                                         Text="<%$ Resources:Appleseed, PASSWORD_NOT_MATCH%>" textkey="PASSWORD_NOT_MATCH" Font-Size="11px"></asp:CompareValidator>
                                 </div>
                             </td>
@@ -305,8 +305,10 @@
         </table>
 
     </div>
+        
 
     <script type="text/javascript">
+        
         $(document).ready(function () {
             var $pwdDialog = $('#changePwdDialog').dialog({
                 autoOpen: false,
