@@ -5,13 +5,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-	<script src="/aspnet_client/js/DragNDrop.js" type="text/javascript"></script>
-	<script src="/aspnet_client/js/browser_upgrade_notification.js" type="text/javascript"></script>
 </head>
 
 <body>
     <form id="form1" runat="server">
-		<asp:ScriptManager ID="ScriptManager1" runat="server">
+		<asp:ScriptManager ID="ScriptManager1" runat="server"  ScriptMode="Release">
 			<Services>
 				<asp:ServiceReference InlineScript="false" Path="~/DesktopModules/CoreModules/Admin/PortalService.asmx" />
 			</Services>
