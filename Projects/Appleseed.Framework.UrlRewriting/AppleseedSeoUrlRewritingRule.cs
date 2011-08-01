@@ -61,15 +61,43 @@ namespace Appleseed.Framework.UrlRewriting
                 this.friendlyPageName = rewriteSettings.Attributes["friendlyPageName"];
             }
 
-            //To match the url form (atr1/atr2/.../atrn)optional/number/name.aspx(?a=x&b=y&...&c=z#xxx)optional
-            regex = new Regex("^(.*)/([0-9]*)/(.*)(\\?.*)?", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+            
 
         }
 
         public override bool IsRewrite(string requestUrl)
         {
-            bool b = this.regex.IsMatch(requestUrl);
-            return b;
+            var parts = requestUrl.Split(new char[] { '/' }, System.StringSplitOptions.RemoveEmptyEntries);
+            if(parts.Length >= 2){
+                regex = new Regex("\\d", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+                // If it hasn't the pageID -> return false
+                if (!regex.IsMatch(parts[parts.Length - 2])) {
+                    return false;
+                }
+                bool exit = false;
+
+                // chek if the parts before the number has the split
+                for(int i = 0; i < parts.Length - 2 && !exit; i ++) {
+                    var queryStringParam = parts[i];
+
+                    // Si no esta, o esta en el primer o ultimo lugar, no esta bien formado el separador
+                    if (queryStringParam.IndexOf(this.defaultSplitter) < 1 || queryStringParam.IndexOf(this.defaultSplitter) == queryStringParam.Length-2) {
+                        exit = true;
+                    }
+                }
+                if (exit) 
+                    return false;
+                
+
+                // Queda chekear que la ultima parte no tenga extension o si la tiene, que sea .aspx
+                if (parts[parts.Length - 1].Contains('.') && !parts[parts.Length - 1].Contains(".aspx")) 
+                    return false;
+
+                return true;
+           }
+
+            return false;
+
         }
 
 
@@ -114,19 +142,21 @@ namespace Appleseed.Framework.UrlRewriting
             }
 
             //Agregar los query que haya en el ultimo, y el hash
-            string last = parts[parts.Length - 1];
-            // Hay algun atributo de query
-            if(last.IndexOf('?') > 0){
-                var queryparts = last.Split(new char[] { '&' }, System.StringSplitOptions.RemoveEmptyEntries);
-                queryparts[0] = queryparts[0].Substring(1, queryparts[0].Length - 1);
-                queryString += queryparts[0];
-                // si query parts tiene mas de un &, tiene mas de un atributo
-                if (queryparts.Length > 1) {
-                    for (int i = 1; i < queryparts.Length - 1; i++) {
-                        queryString += queryparts[i];
+            if(parts.Length > 2){
+                string last = parts[parts.Length - 1];
+                // Hay algun atributo de query
+                if(last.IndexOf('?') > 0){
+                    var queryparts = last.Split(new char[] { '&' }, System.StringSplitOptions.RemoveEmptyEntries);
+                    queryparts[0] = queryparts[0].Substring(1, queryparts[0].Length - 1);
+                    queryString += queryparts[0];
+                    // si query parts tiene mas de un &, tiene mas de un atributo
+                    if (queryparts.Length > 1) {
+                        for (int i = 1; i < queryparts.Length - 1; i++) {
+                            queryString += queryparts[i];
+                        }
                     }
-                }
     
+                }
             }
             
                      

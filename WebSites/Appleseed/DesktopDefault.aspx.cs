@@ -166,7 +166,23 @@ namespace Appleseed
         /// </param>
         private void DesktopDefault_Load(object sender, EventArgs e)
         {
-                var pageId = this.PortalSettings.ActivePage.PageID;
+                // intento obtener el id de la pagina desde el query
+                string query = Request.Url.Query;
+                int pageId = 0;
+                if (query.Contains("?pageId")) {
+                    int index = query.IndexOf('?');
+                    query = query.Substring(index + 8, query.Length - index - 8);
+                    index = query.IndexOf('&');
+                    if (index > 0) // no va hasta el final el numero de pagina
+                        query = query.Substring(0, index);
+                    try {
+                        pageId = int.Parse(query);
+                    } catch (Exception) {
+                        pageId = 0;
+                    }
+                } else
+                    pageId = this.PortalSettings.ActivePage.PageID;
+
                 if (pageId == 0)
                 {
                     pageId = Convert.ToInt32(SiteMap.RootNode.ChildNodes[0].Key);
