@@ -38,7 +38,6 @@ namespace Appleseed
     using MvcContrib;
     using Appleseed.Core.ApplicationBus;
     using Appleseed.Framework.Update;
-    using AgileTravel.Code;
     using System.Configuration;
     using MvcContrib.Routing;
     using MvcContrib.PortableAreas;
