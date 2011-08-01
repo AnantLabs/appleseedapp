@@ -80,9 +80,21 @@ namespace Appleseed.Framework.UrlRewriting
                 for(int i = 0; i < parts.Length - 2 && !exit; i ++) {
                     var queryStringParam = parts[i];
 
+                    // Chequeo que el primer elemento no sea el nombre del directorio virtual
+                    bool Check = true;
+                    if (i == 0) {
+                        if (HttpContext.Current.Request.ApplicationPath.Length > 1){
+                            if(!HttpContext.Current.Request.ApplicationPath.Contains(queryStringParam))
+                                return false;
+                            else
+                                Check = false;
+                        } 
+                    }
                     // Si no esta, o esta en el primer o ultimo lugar, no esta bien formado el separador
-                    if (queryStringParam.IndexOf(this.defaultSplitter) < 1 || queryStringParam.IndexOf(this.defaultSplitter) == queryStringParam.Length-2) {
-                        exit = true;
+                    if (Check) {
+                        if (queryStringParam.IndexOf(this.defaultSplitter) < 1 || queryStringParam.IndexOf(this.defaultSplitter) == queryStringParam.Length - 2) {
+                            exit = true;
+                        }
                     }
                 }
                 if (exit) 
