@@ -81,7 +81,7 @@ namespace Appleseed.Framework.Web
             // Separate path
             // If page contains path, or it is not an aspx 
             // or handlerFlag is not set: do not use handler
-            if (targetPage.LastIndexOf('/') > 0)
+            if (!targetPage.Equals(HttpUrlBuilder.DefaultPage))
             {
                 sb.Append(targetPage);
                 // if !!targetPage.EndsWith(".aspx") it's an image. Return

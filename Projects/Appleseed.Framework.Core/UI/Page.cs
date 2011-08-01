@@ -1353,7 +1353,7 @@ namespace Appleseed.Framework.Web.UI
             // AddThis
             if (!this.Page.ClientScript.IsStartupScriptRegistered("ADD_THIS"))
             {
-                if (this.PortalSettings != null)
+                if (this.PortalSettings != null && this.PortalSettings.CustomSettings != null)
                 {
                     var addThisUsernameSetting = this.PortalSettings.CustomSettings["SITESETTINGS_ADDTHIS_USERNAME"];
                     if (addThisUsernameSetting != null)
