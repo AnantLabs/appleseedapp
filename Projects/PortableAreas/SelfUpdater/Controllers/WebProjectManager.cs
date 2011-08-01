@@ -11,7 +11,7 @@ namespace SelfUpdater.Controllers
 {
 
 
-    public  class WebProjectManager
+    public class WebProjectManager
     {
         private readonly IProjectManager _projectManager;
 
@@ -52,8 +52,7 @@ namespace SelfUpdater.Controllers
 
         internal static IQueryable<IPackage> GetPackages(IQueryable<IPackage> packages, string searchTerm)
         {
-            if (!string.IsNullOrEmpty(searchTerm))
-            {
+            if (!string.IsNullOrEmpty(searchTerm)) {
                 searchTerm = searchTerm.Trim();
                 packages = packages.Find(searchTerm.Split(new char[0]));
             }
@@ -122,12 +121,9 @@ namespace SelfUpdater.Controllers
         {
             ErrorLogger logger = new ErrorLogger();
             this._projectManager.Logger = logger;
-            try
-            {
+            try {
                 action();
-            }
-            finally
-            {
+            } finally {
                 this._projectManager.Logger = null;
             }
             return logger.Errors;
@@ -174,8 +170,7 @@ namespace SelfUpdater.Controllers
 
             public void Log(MessageLevel level, string message, params object[] args)
             {
-                if (level == MessageLevel.Warning)
-                {
+                if (level == MessageLevel.Warning) {
                     this._errors.Add(string.Format(CultureInfo.CurrentCulture, message, args));
                 }
             }
@@ -190,4 +185,3 @@ namespace SelfUpdater.Controllers
         }
     }
 }
-

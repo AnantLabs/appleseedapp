@@ -38,9 +38,14 @@ namespace Appleseed
     using MvcContrib;
     using Appleseed.Core.ApplicationBus;
     using Appleseed.Framework.Update;
+    using AgileTravel.Code;
     using System.Configuration;
     using MvcContrib.Routing;
+    using MvcContrib.PortableAreas;
     using System.Collections.Generic;
+    using SelfUpdater.Controllers;
+    using NuGet;
+    using System.Linq;
 
     /// <summary>
     /// The global.
@@ -452,6 +457,7 @@ namespace Appleseed
             try {
                 UpdateDB();
 
+				CheckForSelfUpdates();
 
                 /* MVCContrib PortableAreas*/
 
@@ -478,6 +484,41 @@ namespace Appleseed
                 ErrorHandler.Publish(LogLevel.Error, exc);
             }
 
+        }
+		
+		  private void CheckForSelfUpdates()
+        {
+            string basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin");
+            var updates = Directory.GetFiles(basePath, "*.update");
+            foreach (var updateFile in updates) {
+                FileInfo file = new FileInfo(updateFile);
+                WebProjectManager projectManager = this.GetProjectManager();
+                IPackage installedPackage = this.GetInstalledPackage(projectManager, file.Name.Replace(file.Extension, string.Empty));
+
+                IPackage update = projectManager.GetUpdate(installedPackage);
+
+                if (update != null)
+                    projectManager.UpdatePackage(update);
+                else
+                    File.Delete(updateFile);
+
+            }
+        }
+
+        private WebProjectManager GetProjectManager()
+        {
+            string remoteSource = ConfigurationManager.AppSettings["PackageSource"] ?? @"D:\";
+            return new WebProjectManager(remoteSource, AppDomain.CurrentDomain.BaseDirectory);
+        }
+
+        private IPackage GetInstalledPackage(WebProjectManager projectManager, string packageId)
+        {
+            IPackage package = projectManager.GetInstalledPackages(string.Empty).Where(d => d.Id == packageId).FirstOrDefault();
+
+            if (package == null) {
+                throw new InvalidOperationException(string.Format("The package for package ID '{0}' is not installed in this website. Copy the package into the App_Data/packages folder.", packageId));
+            }
+            return package;
         }
 
         #endregion

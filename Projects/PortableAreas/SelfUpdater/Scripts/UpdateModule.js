@@ -1,4 +1,4 @@
-﻿/// <reference path="/aspnet_client/jQuery/jquery-1.6.1-vsdoc.js" />
+﻿/// <reference path="/Scripts/jquery-1.5-vsdoc.js" />
 
 
 
@@ -18,7 +18,7 @@ function updateModule(moduleId) {
     });
 
     $.ajax({
-        url: '/SelfUpdater/Updates/Upgrade',
+        url: '/SelfUpdater/Updates/DelayedUpgrade',
         data: {
             packageId: moduleId
         },
