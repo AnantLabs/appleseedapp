@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Globalization;
 using System.Text;
 using System.Web;
+using Appleseed.Framework.Site.Configuration;
 
 namespace Appleseed.Framework.Web
 {
@@ -188,10 +189,36 @@ namespace Appleseed.Framework.Web
                 if (!string.IsNullOrEmpty(_pageName))// TODO : Need to fix page names rewrites
                     sb.Append(_pageName);
                 else
-                    if (!string.IsNullOrEmpty(_pageTitle))
-                        sb.Append(_pageTitle);
-                    else
-                        sb.Append( _friendlyPageName );
+                    if (!string.IsNullOrEmpty(_pageTitle)) {
+                        var settings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+                        int parentId = 0;
+                        string PageName = _pageTitle;
+                        bool found = false;
+                        for (int i = 0; i < settings.DesktopPages.Count && !found; i++) {
+                            if (settings.DesktopPages[i].PageID == pageID) {
+                                parentId = settings.DesktopPages[i].ParentPageID;
+                                found = true;
+                            }
+                        }
+                        if (found) {
+                            bool exit = false;
+                            while (parentId != 0 && !exit) {
+                                found = false;
+                                for (int i = 0; i < settings.DesktopPages.Count && !found; i++) {
+                                    if (settings.DesktopPages[i].PageID == parentId) {
+                                        PageName = settings.DesktopPages[i].PageName + "/" + PageName;
+                                        parentId = settings.DesktopPages[i].ParentPageID;
+                                        found = true;
+                                    }
+                                }
+                                if (!found)
+                                    exit = true;
+                            }
+                        }
+                        
+                        sb.Append(PageName);
+                    } else
+                        sb.Append(_friendlyPageName);
 
                 //Return page
                 return sb.ToString().Replace("//", "/");

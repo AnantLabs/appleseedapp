@@ -46,7 +46,7 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
             try {
                 myControl = x.LoadControl(controlStr);
             } catch (Exception exc) {
-                ErrorHandler.Publish(LogLevel.Error, exc);
+                ErrorHandler.Publish(LogLevel.Error, "The SignIn page from settings doesn't exists" ,exc);
                 myControl = x.LoadControl("~/DesktopModules/CoreModules/SignIn/Signin.ascx");
             }
             // End Modification by gman3001
