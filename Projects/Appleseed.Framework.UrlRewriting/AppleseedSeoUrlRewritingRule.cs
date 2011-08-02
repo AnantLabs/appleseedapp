@@ -68,44 +68,56 @@ namespace Appleseed.Framework.UrlRewriting
         public override bool IsRewrite(string requestUrl)
         {
             var parts = requestUrl.Split(new char[] { '/' }, System.StringSplitOptions.RemoveEmptyEntries);
-            if(parts.Length >= 2){
-                regex = new Regex("\\d", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+            if(parts.Length > 1){
+                regex = new Regex("^\\d+$", RegexOptions.IgnoreCase | RegexOptions.Compiled);
                 // If it hasn't the pageID -> return false
-                if (!regex.IsMatch(parts[parts.Length - 2])) {
-                    return false;
-                }
-                bool exit = false;
-
-                // chek if the parts before the number has the split
-                for(int i = 0; i < parts.Length - 2 && !exit; i ++) {
-                    var queryStringParam = parts[i];
-
-                    // Chequeo que el primer elemento no sea el nombre del directorio virtual
-                    bool Check = true;
-                    if (i == 0) {
-                        if (HttpContext.Current.Request.ApplicationPath.Length > 1){
-                            if(!HttpContext.Current.Request.ApplicationPath.Contains(queryStringParam))
-                                return false;
-                            else
-                                Check = false;
-                        } 
+                int indexNumber = -1;
+                for (int i = 0; i < parts.Length && indexNumber == -1; i++) {
+                    if (regex.IsMatch(parts[i])) {
+                        indexNumber = i;
                     }
-                    // Si no esta, o esta en el primer o ultimo lugar, no esta bien formado el separador
-                    if (Check) {
-                        if (queryStringParam.IndexOf(this.defaultSplitter) < 1 || queryStringParam.IndexOf(this.defaultSplitter) == queryStringParam.Length - 2) {
-                            exit = true;
+                }
+                if (indexNumber != -1) {
+                    bool exit = false;
+
+                    // chek if the parts before the number has the split
+                    for (int i = 0; i < indexNumber && !exit; i++) {
+                        var queryStringParam = parts[i];
+
+                        // Chequeo que el primer elemento no sea el nombre del directorio virtual
+                        bool Check = true;
+                        if (i == 0) {
+                            if (HttpContext.Current.Request.ApplicationPath.Length > 1) {
+                                if (!HttpContext.Current.Request.ApplicationPath.Contains(queryStringParam))
+                                    return false;
+                                else
+                                    Check = false;
+                            }
+                        }
+                        // Si no esta, o esta en el primer o ultimo lugar, no esta bien formado el separador
+                        if (Check) {
+                            if (queryStringParam.IndexOf(this.defaultSplitter) < 1 || queryStringParam.IndexOf(this.defaultSplitter) == queryStringParam.Length - 2) {
+                                exit = true;
+                            }
                         }
                     }
-                }
-                if (exit) 
-                    return false;
-                
+                    if (exit)
+                        return false;
 
-                // Queda chekear que la ultima parte no tenga extension o si la tiene, que sea .aspx
-                if (parts[parts.Length - 1].Contains('.') && !parts[parts.Length - 1].Contains(".aspx")) 
-                    return false;
 
-                return true;
+                    // Queda chekear que la ultima parte no tenga extension o si la tiene, que sea .aspx
+                    exit = false;
+                    for (int i = indexNumber + 1; i < parts.Length && !exit; i++) {
+                        if (parts[i].Contains('.') && !parts[i].Contains(".aspx"))
+                            exit = true;
+                    }
+
+                    if (exit)
+                        return false;
+                    else
+                        return true;
+                } else
+                    return false;
            }
 
             return false;
@@ -131,13 +143,21 @@ namespace Appleseed.Framework.UrlRewriting
             rewrittenUrl += string.Format("{0}", this.friendlyPageName);
 
             var pageId = "0"; //this is made in order to allow urls formed only with the handler (/site/ been the default). Those urls will be redirected to the portal home.
-            if (parts.Length >= 2) {
-                pageId = parts[parts.Length - 2];
+            regex = new Regex("^\\d+$", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+            // Need to search for the pageId in the url
+            int indexNumber = -1;
+            for (int i = 0; i < parts.Length && indexNumber == -1; i++) {
+                if (regex.IsMatch(parts[i])) {
+                    indexNumber = i;
+                }
+            }
+            if (indexNumber != -1) {
+                pageId = parts[indexNumber];
             }
             var queryString = string.Format("?pageId={0}", pageId);
 
             if (parts.Length > 2) {
-                for (var i = 0; i < parts.Length - 2; i++) {
+                for (var i = 0; i < indexNumber; i++) {
                     var queryStringParam = parts[i];
 
                     if (queryStringParam.IndexOf(this.defaultSplitter) < 0) {
@@ -154,22 +174,22 @@ namespace Appleseed.Framework.UrlRewriting
             }
 
             //Agregar los query que haya en el ultimo, y el hash
-            if(parts.Length > 2){
-                string last = parts[parts.Length - 1];
-                // Hay algun atributo de query
-                if(last.IndexOf('?') > 0){
-                    var queryparts = last.Split(new char[] { '&' }, System.StringSplitOptions.RemoveEmptyEntries);
-                    queryparts[0] = queryparts[0].Substring(1, queryparts[0].Length - 1);
-                    queryString += queryparts[0];
-                    // si query parts tiene mas de un &, tiene mas de un atributo
-                    if (queryparts.Length > 1) {
-                        for (int i = 1; i < queryparts.Length - 1; i++) {
-                            queryString += queryparts[i];
-                        }
-                    }
+            //if(parts.Length > 2){
+            //    string last = parts[parts.Length - 1];
+            //    // Hay algun atributo de query
+            //    if(last.IndexOf('?') > 0){
+            //        var queryparts = last.Split(new char[] { '&' }, System.StringSplitOptions.RemoveEmptyEntries);
+            //        queryparts[0] = queryparts[0].Substring(1, queryparts[0].Length - 1);
+            //        queryString += queryparts[0];
+            //        // si query parts tiene mas de un &, tiene mas de un atributo
+            //        if (queryparts.Length > 1) {
+            //            for (int i = 1; i < queryparts.Length - 1; i++) {
+            //                queryString += queryparts[i];
+            //            }
+            //        }
     
-                }
-            }
+            //    }
+            //}
             
                      
 
