@@ -456,7 +456,7 @@ namespace Appleseed
             try {
                 UpdateDB();
 
-				CheckForSelfUpdates();
+                CheckForSelfUpdates();
 
                 /* MVCContrib PortableAreas*/
 
@@ -484,23 +484,35 @@ namespace Appleseed
             }
 
         }
-		
-		  private void CheckForSelfUpdates()
+
+        private void CheckForSelfUpdates()
         {
             string basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin");
-            var updates = Directory.GetFiles(basePath, "*.update");
-            foreach (var updateFile in updates) {
+            string updateFile = Directory.GetFiles(basePath, "*.update").FirstOrDefault();
+            if (!String.IsNullOrWhiteSpace(updateFile)) {
+
                 FileInfo file = new FileInfo(updateFile);
                 WebProjectManager projectManager = this.GetProjectManager();
-                IPackage installedPackage = this.GetInstalledPackage(projectManager, file.Name.Replace(file.Extension, string.Empty));
+                var packageName = file.Name.Replace(file.Extension, string.Empty);
+
+                IPackage installedPackage = this.GetInstalledPackage(projectManager, packageName);
 
                 IPackage update = projectManager.GetUpdate(installedPackage);
 
-                if (update != null)
-                    projectManager.UpdatePackage(update);
-                else
+                if (update != null) {
+                    ErrorHandler.Publish(LogLevel.Info, String.Format("SelfUpdater: Updating {0} from {1} to {2}", packageName, installedPackage.Version, update.Version));
+                    try {
+                        projectManager.UpdatePackage(update);
+                    } catch (Exception exc) {
+                        ErrorHandler.Publish(LogLevel.Info, String.Format("SelfUpdater: Error updating {0} from {1} to {2}", packageName, installedPackage.Version, update.Version), exc);
+                        File.Delete(updateFile);
+                    }
+                } else {
+                    ErrorHandler.Publish(LogLevel.Info, "SelfUpdater: " + packageName + " update applied !");
                     File.Delete(updateFile);
-
+                }
+            } else {
+                ErrorHandler.Publish(LogLevel.Info, "SelfUpdater: Nothing to update");
             }
         }
 
