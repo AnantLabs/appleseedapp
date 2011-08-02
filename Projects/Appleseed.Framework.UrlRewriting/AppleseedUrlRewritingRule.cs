@@ -6,6 +6,7 @@ namespace Appleseed.Framework.UrlRewriting
 
     using UrlRewritingNet.Configuration;
     using UrlRewritingNet.Web;
+    using System.Text.RegularExpressions;
 
     /// <summary>
     /// The appleseed url rewriting rule.
@@ -108,15 +109,22 @@ namespace Appleseed.Framework.UrlRewriting
             rewrittenUrl += string.Format("/{0}", this.friendlyPageName);
 
             var pageId = "0"; //this is made in order to allow urls formed only with the handler (/site/ been the default). Those urls will be redirected to the portal home.
-            if (parts.Length >= 2)
-            {
-                pageId = parts[parts.Length - 2];
-            }              
+            Regex regex = new Regex("^\\d+$", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+            // Need to search for the pageId in the url
+            int indexNumber = -1;
+            for (int i = 0; i < parts.Length && indexNumber == -1; i++) {
+                if (regex.IsMatch(parts[i])) {
+                    indexNumber = i;
+                }
+            }
+            if (indexNumber != -1) {
+                pageId = parts[indexNumber];
+            }           
             var queryString = string.Format("?pageId={0}", pageId);
 
             if (parts.Length > 2)
             {
-                for (var i = 0; i < (parts.Length - 2); i++)
+                for (var i = 0; i < indexNumber; i++)
                 {
                     var queryStringParam = parts[i];
 
