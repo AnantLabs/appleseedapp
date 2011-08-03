@@ -206,7 +206,7 @@ namespace Appleseed.Framework.Web
                                 found = false;
                                 for (int i = 0; i < settings.DesktopPages.Count && !found; i++) {
                                     if (settings.DesktopPages[i].PageID == parentId) {
-                                        PageName = settings.DesktopPages[i].PageName + "/" + PageName;
+                                        PageName = UrlBuilderHelper.CleanNoAlphanumerics(settings.DesktopPages[i].PageName) + "/" + PageName;
                                         parentId = settings.DesktopPages[i].ParentPageID;
                                         found = true;
                                     }
@@ -215,7 +215,6 @@ namespace Appleseed.Framework.Web
                                     exit = true;
                             }
                         }
-                        
                         sb.Append(PageName);
                     } else
                         sb.Append(_friendlyPageName);

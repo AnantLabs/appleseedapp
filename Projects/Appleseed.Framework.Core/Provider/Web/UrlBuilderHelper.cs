@@ -244,7 +244,7 @@ namespace Appleseed.Framework.Web
                                 if (pageElements["PageSEOName"].ToString() != String.Empty)
 								{
                                     _pageSeoName = Convert.ToString(pageElements["PageSEOName"]);
-                                    _pageSeoName = Regex.Replace(_pageSeoName, @"[^A-Za-z0-9]", "-");
+                                    _pageSeoName = CleanNoAlphanumerics(_pageSeoName);
 
 									// insert value in cache so it doesn't always try to retrieve it
 
@@ -278,7 +278,7 @@ namespace Appleseed.Framework.Web
                                 if (!string.IsNullOrEmpty(pageElements["PageTitle"].ToString())) {
 
                                     _pageTitle = Convert.ToString(pageElements["PageTitle"]);
-                                    _pageTitle = Regex.Replace(_pageTitle, @"[^A-Za-z0-9]", "-");
+                                    _pageTitle = CleanNoAlphanumerics(_pageTitle);
 
 
                                     if (cacheDuration == 0) {
@@ -300,7 +300,7 @@ namespace Appleseed.Framework.Web
 								if (pageElements["Keywords"].ToString() != String.Empty)
 								{
 									_urlKeywords = Convert.ToString(pageElements["Keywords"]);
-									_urlKeywords = Regex.Replace(_urlKeywords, @"[^A-Za-z0-9]", "-");
+                                    _urlKeywords = CleanNoAlphanumerics(_urlKeywords);
 								}
 								// insert value in cache so it doesn't always try to retrieve it
 
@@ -415,5 +415,9 @@ namespace Appleseed.Framework.Web
 		{
 			get { return Portal.UniqueID; }
 		}
+
+        public static string CleanNoAlphanumerics(string StringToClean) {
+            return Regex.Replace(StringToClean, @"[^A-Za-z0-9]", "-");
+        }
 	}
 }
