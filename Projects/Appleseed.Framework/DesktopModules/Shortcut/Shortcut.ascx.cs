@@ -169,7 +169,8 @@ namespace Appleseed.Content.Web.Modules
                 this.PlaceHolderModule.ID = "Shortcut";
 
                 // added so AllowCollapsable -- bja@reedtek.com
-                portalModule.Settings["AllowCollapsable"] = this.Settings["AllowCollapsable"];
+                if(portalModule.Settings.ContainsKey("AllowCollapsable"))
+                    portalModule.Settings["AllowCollapsable"] = this.Settings["AllowCollapsable"];
 
                 // Add control to the page
                 this.PlaceHolderModule.Controls.Add(portalModule);
