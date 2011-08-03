@@ -115,21 +115,29 @@ namespace Appleseed
         {
             var scripts = new ArrayList();
 
-            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery-1.6.1.min.js"));
-            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery-ui-1.8.11.min.js"));
-            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.validate.min.js"));
-            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.validate.unobtrusive.min.js"));
-            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.bgiframe.min.js"));
+            string min = "min.js";
+            string js = "js";
+            string ScriptsModeDebug = System.Configuration.ConfigurationManager.AppSettings.Get("ScriptsModeDebug");
+            if (ScriptsModeDebug != null && ScriptsModeDebug.Equals("true")) {
+                min = "js";
+                js = "debug.js";
+            }
+
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery-1.6.1."+min));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery-ui-1.8.11."+min));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.validate."+min));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.validate.unobtrusive." + min));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.bgiframe." + min));
             scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery-ui-i18n.min.js"));
-            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.unobtrusive-ajax.min.js"));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.unobtrusive-ajax." + min));
             scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.jeditable.js"));
 
-            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/modernizr-1.7.min.js"));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/modernizr-1.7."+min));
             scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.cookie.js"));
 
-            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/MicrosoftAjax.js"));
-            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/MicrosoftMvcAjax.js"));
-            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/MicrosoftMvcValidation.js"));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/MicrosoftAjax.")+js);
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/MicrosoftMvcAjax.")+js);
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/MicrosoftMvcValidation.")+js);
 
             scripts.Add(page.ResolveUrl("~/aspnet_client/js/DragNDrop.js"));
             scripts.Add(page.ResolveUrl("~/aspnet_client/js/browser_upgrade_notification.js"));

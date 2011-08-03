@@ -146,6 +146,7 @@
 		<add key="ImagesRepositoryRelative" value="/Content/Uploads" />
 		<add key="PackageSource" value="http://example.com" />
 		<add key="RouteTesting" value="false" />
+		<add key="ScriptsModeDebug" value="false" />
 	</appSettings>
 	<system.net>
 		<mailSettings>
