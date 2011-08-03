@@ -22,21 +22,16 @@ namespace Appleseed
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.Browser["IsMobileDevice"] == "true")
-            {
-                Server.Transfer("MobileDefault.aspx", false);
+            
+            string user = Request.Params["u"];
+            string pass = Request.Params["p"];
+            if (!string.IsNullOrEmpty(user) && !string.IsNullOrEmpty(pass)) {
+                bool rem = (Request.Params["rem"] ?? "0").ToString().Equals("1") ? true : false;
+                PortalSecurity.SignOn(user, pass, rem, "~/DesktopDefault.aspx");
+                //PortalSecurity.SignOn(user, pass, false, "~/DesktopDefault.aspx");
             }
-            else
-            {
-                string user = Request.Params["u"];
-                string pass = Request.Params["p"];
-                if (!string.IsNullOrEmpty(user) && !string.IsNullOrEmpty(pass)) {
-                    bool rem = (Request.Params["rem"] ?? "0").ToString().Equals("1") ? true : false;
-                    PortalSecurity.SignOn(user, pass, rem, "~/DesktopDefault.aspx");
-                    //PortalSecurity.SignOn(user, pass, false, "~/DesktopDefault.aspx");
-                }
-                Server.Transfer("DesktopDefault.aspx", true);
-            }
+            Server.Transfer("DesktopDefault.aspx", true);
+            
         }
 
         #region Web Form Designer generated code
