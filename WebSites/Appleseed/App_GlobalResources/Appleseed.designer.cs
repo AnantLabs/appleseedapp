@@ -15165,7 +15165,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New Page (insert name).
+        ///   Looks up a localized string similar to New Page Name.
         /// </summary>
         internal static string TAB_NAME {
             get {
