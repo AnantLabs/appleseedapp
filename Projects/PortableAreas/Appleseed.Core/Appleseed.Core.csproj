@@ -125,7 +125,8 @@
     <Content Include="Content\style.css" />
     <Content Include="DBScripts\20110413\01. Create_DBVersion_Table.sql" />
     <Content Include="DBScripts\20110803\01.Create_GetAuthEditRolesRecycler_SPROC.sql" />
-    <Content Include="DBScripts\20110804\01.SelfUpdatingPackages_Table.sql" />
+    <Content Include="DBScripts\20110804\01.UpdateModuleTitle.sql" />
+    <Content Include="DBScripts\20110804\02.SelfUpdatingPackages_Table.sql" />
     <Content Include="DBScripts\Readme.txt" />
     <Content Include="Scripts\jquery-1.5-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.js" />
