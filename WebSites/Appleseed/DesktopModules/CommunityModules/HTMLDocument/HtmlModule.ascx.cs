@@ -382,7 +382,7 @@ namespace Appleseed.DesktopModules.CommunityModules.HTMLDocument
             // Controls.AddAt(0, ModuleTitle);
             var text = new HtmlTextDB();
             this.Content = this.Server.HtmlDecode(text.GetHtmlTextString(this.ModuleID, this.Version));
-            if(string.IsNullOrEmpty(this.Content.ToString())){
+            if(PortalSecurity.HasEditPermissions(this.ModuleID) && string.IsNullOrEmpty(this.Content.ToString())){
                 this.Content = "Add content here ...<br/><br/><br/><br/>";
             
             }
@@ -411,6 +411,7 @@ namespace Appleseed.DesktopModules.CommunityModules.HTMLDocument
                 } else {
                     height += 140;
                 }
+                string title = Resources.Appleseed.HTML_TITLE;
                 var url = HttpUrlBuilder.BuildUrl("~/DesktopModules/CommunityModules/HTMLDocument/HtmlEditModal.aspx?mID="+this.ModuleID);
                 this.HtmlModuleText.Attributes.Add("OnDblClick", "setDialog(" + ModuleID.ToString() + "," + width.ToString() + "," + (height + 10).ToString() + ");editHtml(" + ModuleID.ToString() + "," + this.PageID + ",\"" + url + "\");");
                 this.HtmlModuleText.Attributes.Add("class", "Html_Edit");
@@ -418,6 +419,7 @@ namespace Appleseed.DesktopModules.CommunityModules.HTMLDocument
                 this.HtmlMoudleIframe.Attributes.Add("class", "HtmlMoudleIframe" + ModuleID.ToString());
                 this.HtmlMoudleIframe.Attributes.Add("width", "98%");
                 this.HtmlMoudleIframe.Attributes.Add("height", "99%");
+                this.HtmlModuleText.Attributes.Add("title", title);
             }
             
             base.OnInit(e);

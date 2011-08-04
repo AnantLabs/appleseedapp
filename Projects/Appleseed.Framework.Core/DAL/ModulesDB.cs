@@ -1850,6 +1850,52 @@ namespace Appleseed.Framework.Site.Data
             ModuleSettings.UpdateModuleSetting(moduleId, key, value);
         }
 
+        /// <summary>
+        /// The UpdateModuleTitle method updates a specified Module within the Modules database table.
+        ///   If the module does not yet exist, the stored procedure adds it.<br/>
+        ///   UpdateModuleTitle Stored Procedure
+        /// </summary>
+        /// <param name="moduleId">
+        /// The module ID.
+        /// </param>
+        /// <param name="title">
+        /// The title.
+        /// </param>
+        
+        public int UpdateModuleTitle(int moduleId, string title)
+        {
+            using (var connection = Config.SqlConnectionString) {
+                using (var command = new SqlCommand("rb_UpdateModuleTitle", connection)) {
+                    // Mark the Command as a SPROC
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    // Add Parameters to SPROC
+                    var parameterModuleId = new SqlParameter(StringsModuleId, SqlDbType.Int, 4) { Value = moduleId };
+                    command.Parameters.Add(parameterModuleId);
+                    var parameterTitle = new SqlParameter(StringsModuleTitle, SqlDbType.NVarChar, 256) { Value = title };
+                    command.Parameters.Add(parameterTitle);
+                    
+                    // End Change baj@reedtek.com
+                    connection.Open();
+
+                    try {
+                        command.ExecuteNonQuery();
+                    } catch (Exception ex) {
+                        // ErrorHandler.Publish(Appleseed.Framework.LogLevel.Warn, "An Error Occurred in UpdateModule", ex);
+                        ErrorHandler.Publish(LogLevel.Warn, "An Error Occurred in UpdateModuleTitle", ex);
+                        throw new Exception("An Error Occurred in UpdateModuleTitle");
+                    }
+
+                    return (int)parameterModuleId.Value;
+                }
+            }
+        }
+
+        
+        
+        
         #endregion
+
+
     }
 }
