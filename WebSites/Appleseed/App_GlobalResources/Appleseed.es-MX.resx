@@ -3059,7 +3059,7 @@
     <value>No se ha podido borrar. Intente borrar primero todo el contenido.</value>
   </data>
   <data name="TAB_NAME" xml:space="preserve">
-    <value>Nueva página (insertar nombre)</value>
+    <value>Nueva página</value>
   </data>
   <data name="TAB_PARENT" xml:space="preserve">
     <value>Página padre</value>

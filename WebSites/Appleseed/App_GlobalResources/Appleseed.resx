@@ -4936,7 +4936,7 @@
     <value>Delete failed. There are still modules on the tab you are trying to delete or there are other tabs linked to it. Please remove all modules and linked tabs before attempting to delete again.</value>
   </data>
   <data name="TAB_NAME" xml:space="preserve">
-    <value>New Page (insert name)</value>
+    <value>New Page Name</value>
   </data>
   <data name="TAB_PARENT" xml:space="preserve">
     <value>Parent tab</value>
