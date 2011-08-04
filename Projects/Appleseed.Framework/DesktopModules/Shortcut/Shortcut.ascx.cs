@@ -120,25 +120,23 @@ namespace Appleseed.Content.Web.Modules
             }
 
             // Load control
-            PortalModuleControl portalModule;
+            PortalModuleControl portalModule = null;
             try
             {
-                if (controlPath.Length == 0)
-                {
+                if (controlPath.Length == 0) {
                     this.PlaceHolderModule.Controls.Add(
                         new LiteralControl(
                             string.Format("Module '{0}' not found!  Use Admin panel to add a linked control.", linkedModuleId)));
-                    return;
-                }
+                    portalModule = new PortalModuleControl();
+                    
+                } else {
+                    portalModule = (PortalModuleControl)this.Page.LoadControl(controlPath);
 
-                portalModule = (PortalModuleControl)this.Page.LoadControl(controlPath);
+                    // Sets portal ID
+                    portalModule.PortalID = this.PortalID;
 
-                // Sets portal ID
-                portalModule.PortalID = this.PortalID;
-
-                // Update settings
-                var m = new ModuleSettings
-                    {
+                    // Update settings
+                    var m = new ModuleSettings {
                         ModuleID = linkedModuleId,
                         PageID = this.ModuleConfiguration.PageID,
                         PaneName = this.ModuleConfiguration.PaneName,
@@ -156,24 +154,25 @@ namespace Appleseed.Content.Web.Modules
                         SupportCollapsable = this.ModuleConfiguration.SupportCollapsable
                     };
 
-                // added bja@reedtek.com
-                portalModule.ModuleConfiguration = m;
+                    // added bja@reedtek.com
+                    portalModule.ModuleConfiguration = m;
 
-                portalModule.Settings["MODULESETTINGS_APPLY_THEME"] = this.Settings["MODULESETTINGS_APPLY_THEME"];
-                portalModule.Settings["MODULESETTINGS_THEME"] = this.Settings["MODULESETTINGS_THEME"];
+                    portalModule.Settings["MODULESETTINGS_APPLY_THEME"] = this.Settings["MODULESETTINGS_APPLY_THEME"];
+                    portalModule.Settings["MODULESETTINGS_THEME"] = this.Settings["MODULESETTINGS_THEME"];
 
-                // added so ShowTitle is independent of the Linked Module
-                portalModule.Settings["MODULESETTINGS_SHOW_TITLE"] = this.Settings["MODULESETTINGS_SHOW_TITLE"];
+                    // added so ShowTitle is independent of the Linked Module
+                    portalModule.Settings["MODULESETTINGS_SHOW_TITLE"] = this.Settings["MODULESETTINGS_SHOW_TITLE"];
 
-                // added so that shortcut works for module "print this..." feature
-                this.PlaceHolderModule.ID = "Shortcut";
+                    // added so that shortcut works for module "print this..." feature
+                    this.PlaceHolderModule.ID = "Shortcut";
 
-                // added so AllowCollapsable -- bja@reedtek.com
-                if(portalModule.Settings.ContainsKey("AllowCollapsable"))
-                    portalModule.Settings["AllowCollapsable"] = this.Settings["AllowCollapsable"];
+                    // added so AllowCollapsable -- bja@reedtek.com
+                    if (portalModule.Settings.ContainsKey("AllowCollapsable"))
+                        portalModule.Settings["AllowCollapsable"] = this.Settings["AllowCollapsable"];
 
-                // Add control to the page
-                this.PlaceHolderModule.Controls.Add(portalModule);
+                    // Add control to the page
+                    this.PlaceHolderModule.Controls.Add(portalModule);
+                }
             }
             catch (Exception ex)
             {
