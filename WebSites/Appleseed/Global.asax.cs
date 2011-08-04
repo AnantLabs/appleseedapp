@@ -45,6 +45,7 @@ namespace Appleseed
     using SelfUpdater.Controllers;
     using NuGet;
     using System.Linq;
+    using Appleseed.Core.Models;
 
     /// <summary>
     /// The global.
@@ -487,30 +488,39 @@ namespace Appleseed
 
         private void CheckForSelfUpdates()
         {
-            string basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin");
-            string updateFile = Directory.GetFiles(basePath, "*.update").FirstOrDefault();
-            if (!String.IsNullOrWhiteSpace(updateFile)) {
+            /*string basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin");
+            string updateFile = Directory.GetFiles(basePath, "*.update").FirstOrDefault();*/
 
-                FileInfo file = new FileInfo(updateFile);
-                WebProjectManager projectManager = this.GetProjectManager();
-                var packageName = file.Name.Replace(file.Extension, string.Empty);
+            AppleseedDBContext context = new AppleseedDBContext();
 
-                IPackage installedPackage = this.GetInstalledPackage(projectManager, packageName);
+            var packagesToUpdate = context.SelfUpdatingPackages.AsQueryable();
 
-                IPackage update = projectManager.GetUpdate(installedPackage);
+            if (packagesToUpdate.Count() > 0) {
 
-                if (update != null) {
-                    ErrorHandler.Publish(LogLevel.Info, String.Format("SelfUpdater: Updating {0} from {1} to {2}", packageName, installedPackage.Version, update.Version));
-                    try {
-                        projectManager.UpdatePackage(update);
-                    } catch (Exception exc) {
-                        ErrorHandler.Publish(LogLevel.Info, String.Format("SelfUpdater: Error updating {0} from {1} to {2}", packageName, installedPackage.Version, update.Version), exc);
-                        File.Delete(updateFile);
+                foreach (var packageToUpdate in packagesToUpdate) {
+
+                    WebProjectManager projectManager = this.GetProjectManager();
+                    var packageName = packageToUpdate.PackageId;
+                    IPackage installedPackage = this.GetInstalledPackage(projectManager, packageName);
+
+                    IPackage update = projectManager.GetUpdate(installedPackage);
+
+                    if (update != null) {
+                        ErrorHandler.Publish(LogLevel.Info, String.Format("SelfUpdater: Updating {0} from {1} to {2}", packageName, installedPackage.Version, update.Version));
+                        try {
+                            projectManager.UpdatePackage(update);
+                        } catch (Exception exc) {
+                            ErrorHandler.Publish(LogLevel.Info, String.Format("SelfUpdater: Error updating {0} from {1} to {2}", packageName, installedPackage.Version, update.Version), exc);
+                            context.SelfUpdatingPackages.DeleteObject(packageToUpdate);
+                        }
+                    } else {
+                        ErrorHandler.Publish(LogLevel.Info, "SelfUpdater: " + packageName + " update applied !");
+                        context.SelfUpdatingPackages.DeleteObject(packageToUpdate);
                     }
-                } else {
-                    ErrorHandler.Publish(LogLevel.Info, "SelfUpdater: " + packageName + " update applied !");
-                    File.Delete(updateFile);
                 }
+
+                context.SaveChanges();
+
             } else {
                 ErrorHandler.Publish(LogLevel.Info, "SelfUpdater: Nothing to update");
             }

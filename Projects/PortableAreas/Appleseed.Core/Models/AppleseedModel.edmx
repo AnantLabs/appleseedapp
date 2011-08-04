@@ -134,6 +134,7 @@
       [rb_Versions].[ReleaseDate] AS [ReleaseDate]
       FROM [dbo].[rb_Versions] AS [rb_Versions]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="SelfUpdatingPackages" EntityType="AppleseedModel.Store.SelfUpdatingPackages" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_ComponentModule_Modules" Association="AppleseedModel.Store.FK_ComponentModule_Modules">
             <End Role="rb_Modules" EntitySet="rb_Modules" />
             <End Role="rb_ComponentModule" EntitySet="rb_ComponentModule" />
@@ -449,7 +450,7 @@
           <Property Name="TrackBackCount" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'Appleseed.dbo.rb_BlogStats' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'AppleseedGoogle.dbo.rb_BlogStats' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="rb_BlogStats">
           <Key>
@@ -687,7 +688,7 @@
           <Property Name="StartTime" Type="nvarchar" MaxLength="8" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'Appleseed.dbo.rb_FAQs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'AppleseedGoogle.dbo.rb_FAQs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="rb_FAQs">
           <Key>
@@ -754,7 +755,7 @@
           <Property Name="Status" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'Appleseed.dbo.rb_Milestones_st' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'AppleseedGoogle.dbo.rb_Milestones_st' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="rb_Milestones_st">
           <Key>
@@ -817,7 +818,7 @@
           <Property Name="SettingValue" Type="nvarchar" Nullable="false" MaxLength="1500" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'Appleseed.dbo.rb_ModuleUserSettings' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'AppleseedGoogle.dbo.rb_ModuleUserSettings' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="rb_ModuleUserSettings">
           <Key>
@@ -832,7 +833,7 @@
           <Property Name="SettingValue" Type="nvarchar" Nullable="false" MaxLength="1500" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'Appleseed.dbo.rb_Monitoring' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'AppleseedGoogle.dbo.rb_Monitoring' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="rb_Monitoring">
           <Key>
@@ -915,7 +916,7 @@
           <Property Name="SettingValue" Type="nvarchar" Nullable="false" MaxLength="1500" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'Appleseed.dbo.rb_Recycler' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'AppleseedGoogle.dbo.rb_Recycler' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="rb_Recycler">
           <Key>
@@ -1067,7 +1068,7 @@
           <Property Name="State" Type="smallint" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'Appleseed.dbo.rb_UserRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'AppleseedGoogle.dbo.rb_UserRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="rb_UserRoles">
           <Key>
@@ -1104,7 +1105,7 @@
           <Property Name="Salt" Type="varchar" MaxLength="10" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'Appleseed.dbo.rb_Versions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'AppleseedGoogle.dbo.rb_Versions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="rb_Versions">
           <Key>
@@ -1113,6 +1114,14 @@
           <Property Name="Release" Type="int" Nullable="false" />
           <Property Name="Version" Type="nvarchar" MaxLength="50" />
           <Property Name="ReleaseDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SelfUpdatingPackages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PackageId" Type="nvarchar(max)" />
+          <Property Name="PackageVersion" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK_ComponentModule_Modules">
           <End Role="rb_Modules" Type="AppleseedModel.Store.rb_Modules" Multiplicity="1">
@@ -2109,6 +2118,7 @@
             <End Role="rb_Roles" EntitySet="rb_Roles" />
             <End Role="rb_Users" EntitySet="rb_Users" />
           </AssociationSet>
+          <EntitySet Name="SelfUpdatingPackages" EntityType="AppleseedModel.SelfUpdatingPackages" />
         </EntityContainer>
         <EntityType Name="rb_Announcements">
           <Key>
@@ -3651,6 +3661,14 @@
           <End Role="rb_Roles" Type="AppleseedModel.rb_Roles" Multiplicity="*" />
           <End Role="rb_Users" Type="AppleseedModel.rb_Users" Multiplicity="*" />
         </Association>
+        <EntityType Name="SelfUpdatingPackages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="PackageId" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PackageVersion" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4209,6 +4227,15 @@
               <ScalarProperty Name="UserID" ColumnName="UserID" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="SelfUpdatingPackages">
+            <EntityTypeMapping TypeName="AppleseedModel.SelfUpdatingPackages">
+              <MappingFragment StoreEntitySet="SelfUpdatingPackages">
+                <ScalarProperty Name="PackageVersion" ColumnName="PackageVersion" />
+                <ScalarProperty Name="PackageId" ColumnName="PackageId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -4294,8 +4321,8 @@
           <ConnectorPoint PointX="6" PointY="11.345896809895834" />
           <ConnectorPoint PointX="6.860024635416667" PointY="11.345896809895834" />
           <ConnectorPoint PointX="7.026691302083333" PointY="11.345896809895834" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="11.345896809895834" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="11.345896809895834" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="11.345896809895834" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="11.345896809895834" />
           <ConnectorPoint PointX="7.5" PointY="11.345896809895834" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_rb_Announcements_st_rb_Modules" ManuallyRouted="false">
@@ -4303,8 +4330,8 @@
           <ConnectorPoint PointX="6.4062525" PointY="15.095896809895834" />
           <ConnectorPoint PointX="6.860024635416667" PointY="15.095896809895834" />
           <ConnectorPoint PointX="7.026691302083333" PointY="15.095896809895834" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="15.095896809895834" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="15.095896809895834" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="15.095896809895834" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="15.095896809895834" />
           <ConnectorPoint PointX="7.5" PointY="15.095896809895834" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_rb_Articles_rb_Modules" ManuallyRouted="false">
@@ -4316,8 +4343,8 @@
           <ConnectorPoint PointX="6.4895858333333329" PointY="19.009348958333334" />
           <ConnectorPoint PointX="6.860024635416667" PointY="19.009348958333334" />
           <ConnectorPoint PointX="7.026691302083333" PointY="19.009348958333334" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="19.009348958333334" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="19.009348958333334" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="19.009348958333334" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="19.009348958333334" />
           <ConnectorPoint PointX="7.5" PointY="19.009348958333334" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_rb_Articles_st_rb_Modules" ManuallyRouted="false">
@@ -4325,8 +4352,8 @@
           <ConnectorPoint PointX="6.6093787499999994" PointY="23.259348958333334" />
           <ConnectorPoint PointX="6.860024635416667" PointY="23.259348958333334" />
           <ConnectorPoint PointX="7.026691302083333" PointY="23.259348958333334" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="23.259348958333334" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="23.259348958333334" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="23.259348958333334" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="23.259348958333334" />
           <ConnectorPoint PointX="7.5" PointY="23.259348958333334" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_rb_BlogComments_rb_Modules" ManuallyRouted="false">
@@ -4338,8 +4365,8 @@
           <ConnectorPoint PointX="6.6927120833333325" PointY="27.249746093749998" />
           <ConnectorPoint PointX="6.860024635416667" PointY="27.249746093749998" />
           <ConnectorPoint PointX="7.026691302083333" PointY="27.249746093749998" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="27.249746093749998" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="27.249746093749998" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="27.249746093749998" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="27.249746093749998" />
           <ConnectorPoint PointX="7.5" PointY="27.249746093749998" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_rb_Blogs_rb_Modules" ManuallyRouted="false">
@@ -4355,8 +4382,8 @@
           <ConnectorPoint PointX="6.6927120833333325" PointY="31.038198242187498" />
           <ConnectorPoint PointX="6.860024635416667" PointY="31.038198242187498" />
           <ConnectorPoint PointX="7.026691302083333" PointY="31.038198242187498" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="31.038198242187498" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="31.038198242187498" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="31.038198242187498" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="31.038198242187498" />
           <ConnectorPoint PointX="7.5" PointY="31.038198242187498" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_rb_BlogStats_rb_Modules" ManuallyRouted="false">
@@ -4376,8 +4403,8 @@
           <ConnectorPoint PointX="6.6927120833333325" PointY="34.365143229166662" />
           <ConnectorPoint PointX="6.860024635416667" PointY="34.365143229166662" />
           <ConnectorPoint PointX="7.026691302083333" PointY="34.365143229166662" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="34.365143229166662" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="34.365143229166662" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="34.365143229166662" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="34.365143229166662" />
           <ConnectorPoint PointX="7.5" PointY="34.365143229166662" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_rbBookListModules" ManuallyRouted="false">
@@ -4385,8 +4412,8 @@
           <ConnectorPoint PointX="6.710941875" PointY="37.307444661458334" />
           <ConnectorPoint PointX="6.860024635416667" PointY="37.307444661458334" />
           <ConnectorPoint PointX="7.026691302083333" PointY="37.307444661458334" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="37.307444661458334" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="37.307444661458334" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="37.307444661458334" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="37.307444661458334" />
           <ConnectorPoint PointX="7.5" PointY="37.307444661458334" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_ComponentModule_Modules" ManuallyRouted="false">
@@ -4396,8 +4423,8 @@
           <ConnectorPoint PointX="6.7942752083333326" PointY="40.3362939453125" />
           <ConnectorPoint PointX="6.860024635416667" PointY="40.3362939453125" />
           <ConnectorPoint PointX="7.026691302083333" PointY="40.3362939453125" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="40.3362939453125" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="40.3362939453125" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="40.3362939453125" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="40.3362939453125" />
           <ConnectorPoint PointX="7.5" PointY="40.3362939453125" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_rb_Contacts_rb_Modules" ManuallyRouted="false">
@@ -4407,8 +4434,8 @@
           <ConnectorPoint PointX="6.7942752083333335" PointY="43.788198242187505" />
           <ConnectorPoint PointX="6.860024635416667" PointY="43.788198242187505" />
           <ConnectorPoint PointX="7.026691302083333" PointY="43.788198242187505" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="43.788198242187505" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="43.788198242187505" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="43.788198242187505" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="43.788198242187505" />
           <ConnectorPoint PointX="7.5" PointY="43.788198242187505" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_rb_Contacts_st_rb_Modules" ManuallyRouted="false">
@@ -4418,8 +4445,8 @@
           <ConnectorPoint PointX="6.7942752083333326" PointY="47.913198242187505" />
           <ConnectorPoint PointX="6.860024635416667" PointY="47.913198242187505" />
           <ConnectorPoint PointX="7.026691302083333" PointY="47.913198242187505" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="47.913198242187505" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="47.913198242187505" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="47.913198242187505" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="47.913198242187505" />
           <ConnectorPoint PointX="7.5" PointY="47.913198242187505" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_rbContentManager_SourceGenModDefs" ManuallyRouted="false">
@@ -4432,16 +4459,16 @@
           <ConnectorPoint PointX="8.25" PointY="7.8362939453125016" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_rb_States_rb_Countries" ManuallyRouted="false">
-          <ConnectorPoint PointX="7.1367209375" PointY="8.9225878906250031" />
-          <ConnectorPoint PointX="7.1367209375" PointY="125.625" />
+          <ConnectorPoint PointX="7.159178984375" PointY="8.9225878906250031" />
+          <ConnectorPoint PointX="7.159178984375" PointY="125.625" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_rb_Users_rb_Countries" ManuallyRouted="false">
           <ConnectorPoint PointX="6.94335796875" PointY="8.9225878906250031" />
           <ConnectorPoint PointX="6.94335796875" PointY="69.468038736979167" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="69.468038736979167" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="69.468038736979167" />
-          <ConnectorPoint PointX="7.2350296354166668" PointY="69.468038736979167" />
-          <ConnectorPoint PointX="7.4016963020833328" PointY="69.468038736979167" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="69.468038736979167" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="69.468038736979167" />
+          <ConnectorPoint PointX="7.2462586588541669" PointY="69.468038736979167" />
+          <ConnectorPoint PointX="7.4129253255208329" PointY="69.468038736979167" />
           <ConnectorPoint PointX="8.25" PointY="69.468038736979167" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_rb_Discussion_rb_Modules" ManuallyRouted="false">
@@ -4451,8 +4478,8 @@
           <ConnectorPoint PointX="6.7942752083333326" PointY="51.749746093750005" />
           <ConnectorPoint PointX="6.860024635416667" PointY="51.749746093750005" />
           <ConnectorPoint PointX="7.026691302083333" PointY="51.749746093750005" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="51.749746093750005" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="51.749746093750005" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="51.749746093750005" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="51.749746093750005" />
           <ConnectorPoint PointX="7.5" PointY="51.749746093750005" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_rb_Documents_rb_Modules" ManuallyRouted="false">
@@ -4462,16 +4489,16 @@
           <ConnectorPoint PointX="6.7942752083333326" PointY="55.281247499999949" />
           <ConnectorPoint PointX="6.860024635416667" PointY="55.281247499999949" />
           <ConnectorPoint PointX="7.026691302083333" PointY="55.281247499999949" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="55.281247499999949" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="55.281247499999949" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="55.281247499999949" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="55.281247499999949" />
           <ConnectorPoint PointX="7.5" PointY="55.281247499999949" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_rb_Documents_st_rb_Modules" ManuallyRouted="false">
           <ConnectorPoint PointX="6.75" PointY="59.317047526041669" />
           <ConnectorPoint PointX="6.860024635416667" PointY="59.317047526041669" />
           <ConnectorPoint PointX="7.026691302083333" PointY="59.317047526041669" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="59.317047526041669" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="59.317047526041669" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="59.317047526041669" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="59.317047526041669" />
           <ConnectorPoint PointX="7.5" PointY="59.317047526041669" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_rb_EnhancedHtml_rb_Modules" ManuallyRouted="false">
@@ -4479,10 +4506,10 @@
           <ConnectorPoint PointX="6" PointY="72.99974609375" />
           <ConnectorPoint PointX="6.0182297916666672" PointY="72.99974609375" />
           <ConnectorPoint PointX="6.7942752083333326" PointY="72.99974609375" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="72.99974609375" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="72.99974609375" />
-          <ConnectorPoint PointX="7.2350296354166668" PointY="72.99974609375" />
-          <ConnectorPoint PointX="7.4016963020833328" PointY="72.99974609375" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="72.99974609375" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="72.99974609375" />
+          <ConnectorPoint PointX="7.2462586588541669" PointY="72.99974609375" />
+          <ConnectorPoint PointX="7.4129253255208329" PointY="72.99974609375" />
           <ConnectorPoint PointX="7.5" PointY="72.99974609375" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_rb_EnhancedHtml_st_rb_Modules" ManuallyRouted="false">
@@ -4490,10 +4517,10 @@
           <ConnectorPoint PointX="6.4062525" PointY="76.49974609375" />
           <ConnectorPoint PointX="6.4244822916666662" PointY="76.49974609375" />
           <ConnectorPoint PointX="6.7942752083333326" PointY="76.49974609375" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="76.49974609375" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="76.49974609375" />
-          <ConnectorPoint PointX="7.2350296354166668" PointY="76.49974609375" />
-          <ConnectorPoint PointX="7.4016963020833328" PointY="76.49974609375" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="76.49974609375" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="76.49974609375" />
+          <ConnectorPoint PointX="7.2462586588541669" PointY="76.49974609375" />
+          <ConnectorPoint PointX="7.4129253255208329" PointY="76.49974609375" />
           <ConnectorPoint PointX="7.5" PointY="76.49974609375" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_rb_EnhancedLinks_rb_Modules" ManuallyRouted="false">
@@ -4505,10 +4532,10 @@
           <ConnectorPoint PointX="6.3880227083333336" PointY="80.384348958333334" />
           <ConnectorPoint PointX="6.4244822916666662" PointY="80.384348958333334" />
           <ConnectorPoint PointX="6.7942752083333326" PointY="80.384348958333334" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="80.384348958333334" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="80.384348958333334" />
-          <ConnectorPoint PointX="7.2350296354166668" PointY="80.384348958333334" />
-          <ConnectorPoint PointX="7.4016963020833328" PointY="80.384348958333334" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="80.384348958333334" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="80.384348958333334" />
+          <ConnectorPoint PointX="7.2462586588541669" PointY="80.384348958333334" />
+          <ConnectorPoint PointX="7.4129253255208329" PointY="80.384348958333334" />
           <ConnectorPoint PointX="7.5" PointY="80.384348958333334" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_rb_EnhancedLinks_st_rb_Modules" ManuallyRouted="false">
@@ -4516,10 +4543,10 @@
           <ConnectorPoint PointX="6.6093787499999994" PointY="84.634348958333334" />
           <ConnectorPoint PointX="6.6276085416666666" PointY="84.634348958333334" />
           <ConnectorPoint PointX="6.7942752083333326" PointY="84.634348958333334" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="84.634348958333334" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="84.634348958333334" />
-          <ConnectorPoint PointX="7.2350296354166668" PointY="84.634348958333334" />
-          <ConnectorPoint PointX="7.4016963020833328" PointY="84.634348958333334" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="84.634348958333334" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="84.634348958333334" />
+          <ConnectorPoint PointX="7.2462586588541669" PointY="84.634348958333334" />
+          <ConnectorPoint PointX="7.4129253255208329" PointY="84.634348958333334" />
           <ConnectorPoint PointX="7.5" PointY="84.634348958333334" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_rb_Events_rb_Modules" ManuallyRouted="false">
@@ -4531,10 +4558,10 @@
           <ConnectorPoint PointX="6.5911489583333323" PointY="88.788198242187491" />
           <ConnectorPoint PointX="6.6276085416666666" PointY="88.788198242187491" />
           <ConnectorPoint PointX="6.7942752083333326" PointY="88.788198242187491" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="88.788198242187491" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="88.788198242187491" />
-          <ConnectorPoint PointX="7.2350296354166668" PointY="88.788198242187491" />
-          <ConnectorPoint PointX="7.4016963020833328" PointY="88.788198242187491" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="88.788198242187491" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="88.788198242187491" />
+          <ConnectorPoint PointX="7.2462586588541669" PointY="88.788198242187491" />
+          <ConnectorPoint PointX="7.4129253255208329" PointY="88.788198242187491" />
           <ConnectorPoint PointX="7.5" PointY="88.788198242187491" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_rb_Events_st_rb_Modules" ManuallyRouted="false">
@@ -4550,10 +4577,10 @@
           <ConnectorPoint PointX="6.5911489583333323" PointY="92.913198242187491" />
           <ConnectorPoint PointX="6.6276085416666666" PointY="92.913198242187491" />
           <ConnectorPoint PointX="6.7942752083333326" PointY="92.913198242187491" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="92.913198242187491" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="92.913198242187491" />
-          <ConnectorPoint PointX="7.2350296354166668" PointY="92.913198242187491" />
-          <ConnectorPoint PointX="7.4016963020833328" PointY="92.913198242187491" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="92.913198242187491" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="92.913198242187491" />
+          <ConnectorPoint PointX="7.2462586588541669" PointY="92.913198242187491" />
+          <ConnectorPoint PointX="7.4129253255208329" PointY="92.913198242187491" />
           <ConnectorPoint PointX="7.5" PointY="92.913198242187491" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_rb_ModuleDefinitions_rb_GeneralModuleDefinitions" ManuallyRouted="false">
@@ -4569,8 +4596,8 @@
           <ConnectorPoint PointX="6.7942752083333318" PointY="56" />
           <ConnectorPoint PointX="6.860024635416667" PointY="56" />
           <ConnectorPoint PointX="7.026691302083333" PointY="56" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="56" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="56" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="56" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="56" />
           <ConnectorPoint PointX="7.375" PointY="56" />
           <ConnectorPoint PointX="7.375" PointY="57.259095052083339" />
           <ConnectorPoint PointX="9.625" PointY="57.259095052083339" />
@@ -4594,28 +4621,28 @@
           <ConnectorPoint PointX="6.5911489583333323" PointY="96.240143229166662" />
           <ConnectorPoint PointX="6.6276085416666666" PointY="96.240143229166662" />
           <ConnectorPoint PointX="6.7942752083333326" PointY="96.240143229166662" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="96.240143229166662" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="96.240143229166662" />
-          <ConnectorPoint PointX="7.2350296354166668" PointY="96.240143229166662" />
-          <ConnectorPoint PointX="7.4016963020833328" PointY="96.240143229166662" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="96.240143229166662" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="96.240143229166662" />
+          <ConnectorPoint PointX="7.2462586588541669" PointY="96.240143229166662" />
+          <ConnectorPoint PointX="7.4129253255208329" PointY="96.240143229166662" />
           <ConnectorPoint PointX="7.5" PointY="96.240143229166662" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_rb_HtmlText_st_rb_Modules" ManuallyRouted="false">
           <ConnectorPoint PointX="6.710941875" PointY="68.72996093750001" />
           <ConnectorPoint PointX="6.710941875" PointY="98.990143229166662" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="98.990143229166662" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="98.990143229166662" />
-          <ConnectorPoint PointX="7.2350296354166668" PointY="98.990143229166662" />
-          <ConnectorPoint PointX="7.4016963020833328" PointY="98.990143229166662" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="98.990143229166662" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="98.990143229166662" />
+          <ConnectorPoint PointX="7.2462586588541669" PointY="98.990143229166662" />
+          <ConnectorPoint PointX="7.4129253255208329" PointY="98.990143229166662" />
           <ConnectorPoint PointX="7.5" PointY="98.990143229166662" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_rb_Milestones_rb_Modules" ManuallyRouted="false">
           <ConnectorPoint PointX="6.5078156249999992" PointY="68.72996093750001" />
           <ConnectorPoint PointX="6.5078156249999992" PointY="102.02859537760416" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="102.02859537760416" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="102.02859537760416" />
-          <ConnectorPoint PointX="7.2350296354166668" PointY="102.02859537760416" />
-          <ConnectorPoint PointX="7.4016963020833328" PointY="102.02859537760416" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="102.02859537760416" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="102.02859537760416" />
+          <ConnectorPoint PointX="7.2462586588541669" PointY="102.02859537760416" />
+          <ConnectorPoint PointX="7.4129253255208329" PointY="102.02859537760416" />
           <ConnectorPoint PointX="7.5" PointY="102.02859537760416" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_rb_Modules_rb_ModuleDefinitions" ManuallyRouted="false">
@@ -4629,55 +4656,55 @@
         <AssociationConnector Association="AppleseedModel.FK_rb_ModuleSettings_rb_Modules" ManuallyRouted="false">
           <ConnectorPoint PointX="6.3046893750000006" PointY="68.72996093750001" />
           <ConnectorPoint PointX="6.3046893750000006" PointY="104.89399251302083" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="104.89399251302083" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="104.89399251302083" />
-          <ConnectorPoint PointX="7.2350296354166668" PointY="104.89399251302083" />
-          <ConnectorPoint PointX="7.4016963020833328" PointY="104.89399251302083" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="104.89399251302083" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="104.89399251302083" />
+          <ConnectorPoint PointX="7.2462586588541669" PointY="104.89399251302083" />
+          <ConnectorPoint PointX="7.4129253255208329" PointY="104.89399251302083" />
           <ConnectorPoint PointX="7.5" PointY="104.89399251302083" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_rb_Pictures_rb_Modules" ManuallyRouted="false">
           <ConnectorPoint PointX="6.101563125" PointY="68.72996093750001" />
           <ConnectorPoint PointX="6.101563125" PointY="107.99974609374999" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="107.99974609374999" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="107.99974609374999" />
-          <ConnectorPoint PointX="7.2350296354166668" PointY="107.99974609374999" />
-          <ConnectorPoint PointX="7.4016963020833328" PointY="107.99974609374999" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="107.99974609374999" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="107.99974609374999" />
+          <ConnectorPoint PointX="7.2462586588541669" PointY="107.99974609374999" />
+          <ConnectorPoint PointX="7.4129253255208329" PointY="107.99974609374999" />
           <ConnectorPoint PointX="7.5" PointY="107.99974609374999" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_rb_Surveys_Modules" ManuallyRouted="false">
           <ConnectorPoint PointX="5.898436875" PointY="68.72996093750001" />
           <ConnectorPoint PointX="5.898436875" PointY="112.65359537760416" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="112.65359537760416" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="112.65359537760416" />
-          <ConnectorPoint PointX="7.2350296354166668" PointY="112.65359537760416" />
-          <ConnectorPoint PointX="7.4016963020833328" PointY="112.65359537760416" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="112.65359537760416" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="112.65359537760416" />
+          <ConnectorPoint PointX="7.2462586588541669" PointY="112.65359537760416" />
+          <ConnectorPoint PointX="7.4129253255208329" PointY="112.65359537760416" />
           <ConnectorPoint PointX="7.5" PointY="112.65359537760416" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_Tasks_Modules" ManuallyRouted="false">
           <ConnectorPoint PointX="5.6953106249999994" PointY="68.72996093750001" />
           <ConnectorPoint PointX="5.6953106249999994" PointY="116.82665039062499" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="116.82665039062499" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="116.82665039062499" />
-          <ConnectorPoint PointX="7.2350296354166668" PointY="116.82665039062499" />
-          <ConnectorPoint PointX="7.4016963020833328" PointY="116.82665039062499" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="116.82665039062499" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="116.82665039062499" />
+          <ConnectorPoint PointX="7.2462586588541669" PointY="116.82665039062499" />
+          <ConnectorPoint PointX="7.4129253255208329" PointY="116.82665039062499" />
           <ConnectorPoint PointX="7.5" PointY="116.82665039062499" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_UserDefinedFields_Modules" ManuallyRouted="false">
           <ConnectorPoint PointX="5.4921843750000008" PointY="68.72996093750001" />
           <ConnectorPoint PointX="5.4921843750000008" PointY="120.90359537760416" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="120.90359537760416" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="120.90359537760416" />
-          <ConnectorPoint PointX="7.2350296354166668" PointY="120.90359537760416" />
-          <ConnectorPoint PointX="7.4016963020833328" PointY="120.90359537760416" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="120.90359537760416" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="120.90359537760416" />
+          <ConnectorPoint PointX="7.2462586588541669" PointY="120.90359537760416" />
+          <ConnectorPoint PointX="7.4129253255208329" PointY="120.90359537760416" />
           <ConnectorPoint PointX="7.5" PointY="120.90359537760416" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_UserDefinedRows_Modules" ManuallyRouted="false">
           <ConnectorPoint PointX="5.289058125" PointY="68.72996093750001" />
           <ConnectorPoint PointX="5.289058125" PointY="123.76899251302083" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="123.76899251302083" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="123.76899251302083" />
-          <ConnectorPoint PointX="7.2350296354166668" PointY="123.76899251302083" />
-          <ConnectorPoint PointX="7.4016963020833328" PointY="123.76899251302083" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="123.76899251302083" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="123.76899251302083" />
+          <ConnectorPoint PointX="7.2462586588541669" PointY="123.76899251302083" />
+          <ConnectorPoint PointX="7.4129253255208329" PointY="123.76899251302083" />
           <ConnectorPoint PointX="7.5" PointY="123.76899251302083" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_rb_Pages_rb_Pages" ManuallyRouted="false">
@@ -4715,10 +4742,10 @@
           <ConnectorPoint PointX="4.958333333333333" PointY="70.518616536458325" />
           <ConnectorPoint PointX="5.2057247916666674" PointY="70.518616536458325" />
           <ConnectorPoint PointX="6.7942752083333326" PointY="70.518616536458325" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="70.518616536458325" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="70.518616536458325" />
-          <ConnectorPoint PointX="7.2350296354166668" PointY="70.518616536458325" />
-          <ConnectorPoint PointX="7.4016963020833328" PointY="70.518616536458325" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="70.518616536458325" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="70.518616536458325" />
+          <ConnectorPoint PointX="7.2462586588541669" PointY="70.518616536458325" />
+          <ConnectorPoint PointX="7.4129253255208329" PointY="70.518616536458325" />
           <ConnectorPoint PointX="7.875" PointY="70.518616536458325" />
           <ConnectorPoint PointX="8.25" PointY="70.143616536458325" />
         </AssociationConnector>
@@ -4728,8 +4755,8 @@
           <ConnectorPoint PointX="10.75" PointY="56.75" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_rb_Users_rb_States" ManuallyRouted="false">
-          <ConnectorPoint PointX="7.31836296875" PointY="125.625" />
-          <ConnectorPoint PointX="7.31836296875" PointY="69.098997337239538" />
+          <ConnectorPoint PointX="7.3295919921875" PointY="125.625" />
+          <ConnectorPoint PointX="7.3295919921875" PointY="69.098997337239538" />
           <ConnectorPoint PointX="8.25" PointY="69.098997337239538" />
         </AssociationConnector>
         <AssociationConnector Association="AppleseedModel.FK_rb_SurveyAnswers_rb_Surveys" ManuallyRouted="false">
@@ -4763,12 +4790,13 @@
           <ConnectorPoint PointX="4.958333333333333" PointY="69.8370751367187" />
           <ConnectorPoint PointX="5.2057247916666674" PointY="69.8370751367187" />
           <ConnectorPoint PointX="6.7942752083333326" PointY="69.8370751367187" />
-          <ConnectorPoint PointX="7.0533876041666668" PointY="69.8370751367187" />
-          <ConnectorPoint PointX="7.2200542708333328" PointY="69.8370751367187" />
-          <ConnectorPoint PointX="7.2350296354166668" PointY="69.8370751367187" />
-          <ConnectorPoint PointX="7.4016963020833328" PointY="69.8370751367187" />
+          <ConnectorPoint PointX="7.075845651041667" PointY="69.8370751367187" />
+          <ConnectorPoint PointX="7.242512317708333" PointY="69.8370751367187" />
+          <ConnectorPoint PointX="7.2462586588541669" PointY="69.8370751367187" />
+          <ConnectorPoint PointX="7.4129253255208329" PointY="69.8370751367187" />
           <ConnectorPoint PointX="8.25" PointY="69.8370751367187" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="AppleseedModel.SelfUpdatingPackages" Width="1.5" PointX="9.375" PointY="0.75" Height="1.5956835937499818" />
       </Diagram>
     </Diagrams>
   </Designer>

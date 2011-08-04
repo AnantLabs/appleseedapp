@@ -1048,6 +1048,22 @@ namespace Appleseed.Core.Models
             }
         }
         private ObjectSet<rb_Versions> _rb_Versions;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<SelfUpdatingPackages> SelfUpdatingPackages
+        {
+            get
+            {
+                if ((_SelfUpdatingPackages == null))
+                {
+                    _SelfUpdatingPackages = base.CreateObjectSet<SelfUpdatingPackages>("SelfUpdatingPackages");
+                }
+                return _SelfUpdatingPackages;
+            }
+        }
+        private ObjectSet<SelfUpdatingPackages> _SelfUpdatingPackages;
 
         #endregion
         #region AddTo Methods
@@ -1514,6 +1530,14 @@ namespace Appleseed.Core.Models
         public void AddTorb_Versions(rb_Versions rb_Versions)
         {
             base.AddObject("rb_Versions", rb_Versions);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the SelfUpdatingPackages EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToSelfUpdatingPackages(SelfUpdatingPackages selfUpdatingPackages)
+        {
+            base.AddObject("SelfUpdatingPackages", selfUpdatingPackages);
         }
 
         #endregion
@@ -17199,6 +17223,109 @@ namespace Appleseed.Core.Models
         private Nullable<global::System.DateTime> _ReleaseDate;
         partial void OnReleaseDateChanging(Nullable<global::System.DateTime> value);
         partial void OnReleaseDateChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="AppleseedModel", Name="SelfUpdatingPackages")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class SelfUpdatingPackages : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new SelfUpdatingPackages object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        public static SelfUpdatingPackages CreateSelfUpdatingPackages(global::System.Int32 id)
+        {
+            SelfUpdatingPackages selfUpdatingPackages = new SelfUpdatingPackages();
+            selfUpdatingPackages.Id = id;
+            return selfUpdatingPackages;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PackageId
+        {
+            get
+            {
+                return _PackageId;
+            }
+            set
+            {
+                OnPackageIdChanging(value);
+                ReportPropertyChanging("PackageId");
+                _PackageId = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("PackageId");
+                OnPackageIdChanged();
+            }
+        }
+        private global::System.String _PackageId;
+        partial void OnPackageIdChanging(global::System.String value);
+        partial void OnPackageIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PackageVersion
+        {
+            get
+            {
+                return _PackageVersion;
+            }
+            set
+            {
+                OnPackageVersionChanging(value);
+                ReportPropertyChanging("PackageVersion");
+                _PackageVersion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("PackageVersion");
+                OnPackageVersionChanged();
+            }
+        }
+        private global::System.String _PackageVersion;
+        partial void OnPackageVersionChanging(global::System.String value);
+        partial void OnPackageVersionChanged();
 
         #endregion
     

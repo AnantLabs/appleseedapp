@@ -10,6 +10,9 @@ using System.Collections.Generic;
 using SelfUpdater.Models;
 using Appleseed.Framework;
 using System.IO;
+using Appleseed.Core.Models;
+using System.Xml;
+using System.Text;
 
 namespace SelfUpdater.Controllers
 {
@@ -96,13 +99,34 @@ namespace SelfUpdater.Controllers
 
         public ActionResult DelayedUpgrade(string packageId)
         {
-            string basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin", packageId + ".update");
+            //string basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin", packageId + ".update");
 
-            System.IO.File.Create(basePath);
+            //System.IO.File.Create(basePath);
 
+            AppleseedDBContext context = new AppleseedDBContext();
+
+            var entity = new SelfUpdatingPackages() {
+                PackageId = packageId,
+                PackageVersion = string.Empty
+            };
+
+            context.SelfUpdatingPackages.AddObject(entity);
+            context.SaveChanges();
+
+            /*Forcing site restart*/
+            var doc = new XmlDocument();
+            doc.PreserveWhitespace = true;
+            var configFile = Server.MapPath("~/web.config");
+            doc.Load(configFile);
+
+            var writer = new XmlTextWriter(configFile, Encoding.UTF8) { Formatting = Formatting.Indented };
+            doc.Save(writer);
+            writer.Flush();
+            writer.Close();
+            /*....................*/
 
             return Json(new {
-                msg = "Package " + packageId + " scheduled to update !",
+                msg = "Package " + packageId + " scheduled to update!",
                 updated = true
             }, JsonRequestBehavior.AllowGet);
         }
