@@ -1,0 +1,23 @@
+.Html_Edit{
+border-style:solid;
+border-width:1.8px;
+border-color: transparent;
+}    
+.Html_Edit:hover{
+border-style:dashed;
+border-width:1.8px;
+border-color: Black;
+
+}
+
+.editTitle{
+border-style:solid;
+border-width:1.8px;
+border-color: transparent;
+}    
+.editTitle:hover{
+border-style:dashed;
+border-width:1.8px;
+border-color: Black;
+
+}
