@@ -4380,4 +4380,7 @@
   <data name="PASSWORD_CHANGE_SUCCESSFULL" xml:space="preserve">
     <value>El password se ha guardado satisfactoriamente.</value>
   </data>
+  <data name="HTML_TITLE" xml:space="preserve">
+    <value>"Doble clic para Editar"</value>
+  </data>
 </root>
