@@ -5636,4 +5636,7 @@ function confirmDelete()
   <data name="PASSWORD_CHANGE_SUCCESSFULL" xml:space="preserve">
     <value>Your password has been successfully changed.</value>
   </data>
+  <data name="HTML_TITLE" xml:space="preserve">
+    <value>" Double Click to Edit... "</value>
+  </data>
 </root>

@@ -8766,6 +8766,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &quot; Double Click to Edit... &quot;.
+        /// </summary>
+        internal static string HTML_TITLE {
+            get {
+                return ResourceManager.GetString("HTML_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Icon File.
         /// </summary>
         internal static string ICONFILE {

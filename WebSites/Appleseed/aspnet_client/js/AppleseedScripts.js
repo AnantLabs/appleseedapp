@@ -33,7 +33,7 @@ function EditTitleInLine(url){
 			   },
 			   success : function(data){
 					
-					if(data.result = 'true'){
+					if(data.result == true){
 						succ = result;
 						
 					}

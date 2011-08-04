@@ -417,7 +417,33 @@ namespace Appleseed.Framework.Web
 		}
 
         public static string CleanNoAlphanumerics(string StringToClean) {
-            return Regex.Replace(StringToClean, @"[^A-Za-z0-9]", "-");
+
+            Regex r = new Regex("[A-Za-z0-9ÁÄÀÂáäâàÉËÈÊéëêèÍÏÎÌíïìîÓÖÒÔóöòôÚÜÛÙúüùûÇçÑñ/\\s]");
+            string aux = "";
+            for (int i = 0; i < StringToClean.Length; i++) {
+                if (r.IsMatch(StringToClean[i].ToString()))
+                    aux += StringToClean[i];
+            }
+
+            StringToClean = aux;
+            StringToClean = Regex.Replace(StringToClean, @"[ÁÄÀÂ]", "A");
+            StringToClean = Regex.Replace(StringToClean, @"[áäâà]", "a");
+            StringToClean = Regex.Replace(StringToClean, @"[ÉËÈÊ]", "E");
+            StringToClean = Regex.Replace(StringToClean, @"[éëêè]", "e");
+            StringToClean = Regex.Replace(StringToClean, @"[ÍÏÎÌ]", "I");
+            StringToClean = Regex.Replace(StringToClean, @"[íïìî]", "i");
+            StringToClean = Regex.Replace(StringToClean, @"[ÓÖÒÔ]", "O");
+            StringToClean = Regex.Replace(StringToClean, @"[óöòô]", "o");
+            StringToClean = Regex.Replace(StringToClean, @"[ÚÜÛÙ]", "U");
+            StringToClean = Regex.Replace(StringToClean, @"[úüùû]", "u");
+            StringToClean = Regex.Replace(StringToClean, @"[Ç]", "C");
+            StringToClean = Regex.Replace(StringToClean, @"[ç]", "c");
+            StringToClean = Regex.Replace(StringToClean, @"[Ñ]", "N");
+            StringToClean = Regex.Replace(StringToClean, @"[ñ]", "n");
+            StringToClean = Regex.Replace(StringToClean, @"[^A-Za-z0-9/]", "-");
+            StringToClean = Regex.Replace(StringToClean, @"-{2,}", "-");
+
+            return StringToClean;
         }
 	}
 }
