@@ -123,7 +123,7 @@ namespace SelfUpdater.Controllers
         {
             AppleseedDBContext context = new AppleseedDBContext();
 
-            var entity = context.SelfUpdatingPackages.Where(d=>d.PackageId == packageId).FirstOrDefault();
+            var entity = context.SelfUpdatingPackages.Where(d => d.PackageId == packageId).FirstOrDefault();
             if (entity != default(SelfUpdatingPackages)) {
                 context.SelfUpdatingPackages.DeleteObject(entity);
                 context.SaveChanges();
@@ -156,7 +156,7 @@ namespace SelfUpdater.Controllers
             /*....................*/
 
             return Json(new {
-                msg = "Applying updates..."                
+                msg = "Applying updates..."
             }, JsonRequestBehavior.AllowGet);
         }
 
