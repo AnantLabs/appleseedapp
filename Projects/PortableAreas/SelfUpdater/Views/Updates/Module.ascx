@@ -23,7 +23,7 @@
                 <%: m.Update.Version%>
                 <a id="schedule<%: m.Update.Id %>" href="javascript:void(0)" onclick="updateModule('<%: m.Update.Id %>', true)">
                     Schedule update</a> <a id="unschedule<%: m.Update.Id %>" href="javascript:void(0)"
-                        onclick="updateModule('<%: m.Update.Id %>', false)" style="display: none">Schedule
+                        onclick="updateModule('<%: m.Update.Id %>', false)" style="display: none">Unschedule
                         update</a></li>
         </ul>
         <%} else {%>
@@ -42,6 +42,5 @@
 </div>
 <div id="upgradingDiv" style="display: none">
     <ul id="upgradingUl">
-        <%--<li>Upgrading modules.<img src="" alt="" /></li>--%>
     </ul>
 </div>
