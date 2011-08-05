@@ -4,16 +4,16 @@
 
 
 function updateModule(moduleId, schedule) {
-   
-   var actionurl = '/SelfUpdater/Updates/DelayedUpgrade';
-   if (schedule == false) {
-       actionurl = '/SelfUpdater/Updates/RemoveDelayedUpgrade';
-       $('#schedule' + moduleId).show();
-       $('#unschedule' + moduleId).hide();
-   } else {
-       $('#schedule' + moduleId).hide();
-       $('#unschedule' + moduleId).show();
-   }
+
+    var actionurl = '/SelfUpdater/Updates/DelayedUpgrade';
+    if (schedule == false) {
+        actionurl = '/SelfUpdater/Updates/RemoveDelayedUpgrade';
+        $('#schedule' + moduleId).show();
+        $('#unschedule' + moduleId).hide();
+    } else {
+        $('#schedule' + moduleId).hide();
+        $('#unschedule' + moduleId).show();
+    }
 
     $.ajax({
         url: actionurl,
@@ -23,7 +23,7 @@ function updateModule(moduleId, schedule) {
         dataType: 'json',
         timeout: 1200000,
         success: function (data) {
-            
+
         },
         error: function (data) {
             trace(data);
@@ -36,7 +36,7 @@ function updateModule(moduleId, schedule) {
 }
 
 function applyUpdates() {
-    
+
     $('#upgradingDiv').dialog({
         modal: true,
         closeOnEscape: false,
@@ -49,19 +49,36 @@ function applyUpdates() {
 
     });
 
-    $.ajax({
-        url: '/SelfUpdater/Updates/ApplyUpdates',
-        data: {},
-        dataType: 'json',
-        timeout: 1200000,
-        success: function (data) {
-            $('<li>' + data.msg + '</li>').appendTo('#upgradingUl');
-            window.location.reload();
-        },
-        error: function (data) {
-            trace(data);
-            $('#upgradingDiv').dialog("close");
-            alert("Communication error");
-        }
+    $.post('/SelfUpdater/Updates/ApplyUpdates')
+    .success(function () {
+        $('<li>Applying updates...</li>').appendTo('#upgradingUl');
+
+        var xhr;
+        var reloading = false;
+        var fn = function () {
+            if (!reloading) {
+                if (xhr && xhr.readystate != 4) {
+                    xhr.abort();
+                }
+                xhr = $.post('/SelfUpdater/Updates/Status').success(function (data) {
+                    if (data.online) {
+                        $('<li>Reloading site...</li>').appendTo('#upgradingUl');
+                        reloading = true;
+                        window.location.reload();
+                    }
+                });
+            }
+        };
+
+        var interval = setInterval(fn, 10000);
+    })
+    .error(function () {
+        trace(data);
+        $('#upgradingDiv').dialog("close");
+        alert("Communication error");
     });
+
+
+    return false;
 }
+
