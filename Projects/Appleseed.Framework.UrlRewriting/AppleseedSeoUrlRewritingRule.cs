@@ -159,11 +159,12 @@ namespace Appleseed.Framework.UrlRewriting
             if (parts.Length > 2) {
                 for (var i = 0; i < indexNumber; i++) {
                     var queryStringParam = parts[i];
-
+                    queryStringParam = Regex.Replace(queryStringParam, @" ", "%20");
                     if (queryStringParam.IndexOf(this.defaultSplitter) < 0) {
                         continue;
                     }
 
+                    
                     queryString += string.Format(
                         "&{0}",
                         queryStringParam.Substring(0, queryStringParam.IndexOf(this.defaultSplitter)));

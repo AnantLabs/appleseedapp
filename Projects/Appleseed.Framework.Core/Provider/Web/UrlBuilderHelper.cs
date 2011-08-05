@@ -443,6 +443,10 @@ namespace Appleseed.Framework.Web
             StringToClean = Regex.Replace(StringToClean, @"[^A-Za-z0-9/]", "-");
             StringToClean = Regex.Replace(StringToClean, @"-{2,}", "-");
 
+            while (StringToClean.EndsWith("-")) {
+                StringToClean = StringToClean.Remove(StringToClean.Length - 1);
+            }
+
             return StringToClean;
         }
 	}

@@ -21,6 +21,7 @@ namespace Appleseed.Framework
     using Appleseed.Framework.Settings;
     using Appleseed.Framework.Site.Configuration;
     using Appleseed.Framework.Web;
+    using System.Text.RegularExpressions;
 
     /// <summary>
     /// HttpUrlBuilder
@@ -457,6 +458,7 @@ namespace Appleseed.Framework
         public static bool ValidateProperUrl(Uri url, int pageId)
         {
             string query = url.Query;
+            query = Regex.Replace(query, @"\+", "%20");
             int index = query.IndexOf('&');
             if (index > 0) {
                 // Removing the first element that its the pageId, to only add the other querys
@@ -469,6 +471,7 @@ namespace Appleseed.Framework
 
         public static string getProperUrl(Uri url, int pageId) {
             string query = url.Query;
+            query = Regex.Replace(query, @"\+", "%20");
             int index = query.IndexOf('&');
             if (index > 0) {
                 
