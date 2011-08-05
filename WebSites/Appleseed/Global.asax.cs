@@ -497,27 +497,30 @@ namespace Appleseed
 
             if (packagesToUpdate.Count() > 0) {
 
-                foreach (var packageToUpdate in packagesToUpdate) {
+                /*This forces a site restart for each update scheduled */
+                /*Must be improved trying to updated all at once */
 
-                    WebProjectManager projectManager = this.GetProjectManager();
-                    var packageName = packageToUpdate.PackageId;
-                    IPackage installedPackage = this.GetInstalledPackage(projectManager, packageName);
+                var packageToUpdate = packagesToUpdate.First();
 
-                    IPackage update = projectManager.GetUpdate(installedPackage);
+                WebProjectManager projectManager = this.GetProjectManager();
+                var packageName = packageToUpdate.PackageId;
+                IPackage installedPackage = this.GetInstalledPackage(projectManager, packageName);
 
-                    if (update != null) {
-                        ErrorHandler.Publish(LogLevel.Info, String.Format("SelfUpdater: Updating {0} from {1} to {2}", packageName, installedPackage.Version, update.Version));
-                        try {
-                            projectManager.UpdatePackage(update);
-                        } catch (Exception exc) {
-                            ErrorHandler.Publish(LogLevel.Info, String.Format("SelfUpdater: Error updating {0} from {1} to {2}", packageName, installedPackage.Version, update.Version), exc);
-                            context.SelfUpdatingPackages.DeleteObject(packageToUpdate);
-                        }
-                    } else {
-                        ErrorHandler.Publish(LogLevel.Info, "SelfUpdater: " + packageName + " update applied !");
+                IPackage update = projectManager.GetUpdate(installedPackage);
+
+                if (update != null) {
+                    ErrorHandler.Publish(LogLevel.Info, String.Format("SelfUpdater: Updating {0} from {1} to {2}", packageName, installedPackage.Version, update.Version));
+                    try {
+                        projectManager.UpdatePackage(update);
+                    } catch (Exception exc) {
+                        ErrorHandler.Publish(LogLevel.Info, String.Format("SelfUpdater: Error updating {0} from {1} to {2}", packageName, installedPackage.Version, update.Version), exc);
                         context.SelfUpdatingPackages.DeleteObject(packageToUpdate);
                     }
+                } else {
+                    ErrorHandler.Publish(LogLevel.Info, "SelfUpdater: " + packageName + " update applied !");
+                    context.SelfUpdatingPackages.DeleteObject(packageToUpdate);
                 }
+
 
                 context.SaveChanges();
 
