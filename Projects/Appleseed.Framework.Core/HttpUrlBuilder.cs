@@ -458,12 +458,45 @@ namespace Appleseed.Framework
         public static bool ValidateProperUrl(Uri url, int pageId)
         {
             string query = url.Query;
-            query = Regex.Replace(query, @"\+", "%20");
+            
             int index = query.IndexOf('&');
             if (index > 0) {
                 // Removing the first element that its the pageId, to only add the other querys
                 var customAttributes = query.Substring(index + 1, query.Length - index - 1);
-                return url.AbsolutePath.Equals(BuildUrl("~/" + DefaultPage, pageId, customAttributes));
+                
+                // Get the keys from web config that should stay at the end
+                string KeysfromQuery = System.Configuration.ConfigurationManager.AppSettings.Get("KeysFromQuery");
+                string customAttributesaux = "";
+                string querysfromwebconfig = "";
+                if (KeysfromQuery != null) {
+                    var customAttributesparts = customAttributes.Split('&');
+                    // for each customAttribute cheks if belong to the list in the web config
+                    for (int i = 0; i < customAttributesparts.Length; i++) {
+                        if (belongToList(KeysfromQuery, customAttributesparts[i])) {
+                            querysfromwebconfig += customAttributesparts[i] + "&";
+                        } else {
+                            customAttributesaux += customAttributesparts[i] + "&";
+                        }
+                    }
+                }
+                // If it's empty, all the attributes should be on the left
+                if (string.IsNullOrEmpty(querysfromwebconfig)) {
+                    customAttributes = Regex.Replace(customAttributes, @"\+", "%20");
+                    return url.AbsolutePath.Equals(BuildUrl("~/" + DefaultPage, pageId, customAttributes));
+                } else {
+                    if (querysfromwebconfig.EndsWith("&"))
+                        querysfromwebconfig = querysfromwebconfig.Remove(querysfromwebconfig.Length - 1);
+
+                    if (string.IsNullOrEmpty(customAttributesaux)) {
+                        // all the query string were in the list from webconfig
+                        return (url.AbsolutePath + "?" + querysfromwebconfig).Equals((BuildUrl("~/" + DefaultPage, pageId)) + "?" + querysfromwebconfig);
+                    } else {
+                        if (customAttributesaux.EndsWith("&"))
+                            customAttributesaux = customAttributesaux.Remove(customAttributesaux.Length - 1);
+                        customAttributesaux = Regex.Replace(customAttributesaux, @"\+", "%20");
+                        return (url.AbsolutePath + "?" + querysfromwebconfig).Equals((BuildUrl("~/" + DefaultPage, pageId, customAttributesaux)) + "?" + querysfromwebconfig);
+                    }
+                }
             }
             else
                 return url.AbsolutePath.Equals(BuildUrl(pageId));
@@ -471,16 +504,58 @@ namespace Appleseed.Framework
 
         public static string getProperUrl(Uri url, int pageId) {
             string query = url.Query;
-            query = Regex.Replace(query, @"\+", "%20");
+
             int index = query.IndexOf('&');
             if (index > 0) {
-                
+                // Removing the first element that its the pageId, to only add the other querys
                 var customAttributes = query.Substring(index + 1, query.Length - index - 1);
-                return BuildUrl("~/" + DefaultPage, pageId, customAttributes);
+
+                // Get the keys from web config that should stay at the end
+                string KeysfromQuery = System.Configuration.ConfigurationManager.AppSettings.Get("KeysFromQuery");
+                string customAttributesaux = "";
+                string querysfromwebconfig = "";
+                if (KeysfromQuery != null) {
+                    var customAttributesparts = customAttributes.Split('&');
+                    // for each customAttribute cheks if belong to the list in the web config
+                    for (int i = 0; i < customAttributesparts.Length; i++) {
+                        if (belongToList(KeysfromQuery, customAttributesparts[i])) {
+                            querysfromwebconfig += customAttributesparts[i] + "&";
+                        } else {
+                            customAttributesaux += customAttributesparts[i] + "&";
+                        }
+                    }
+                }
+                // If it's empty, all the attributes should be on the left
+                if (string.IsNullOrEmpty(querysfromwebconfig)) {
+                    customAttributes = Regex.Replace(customAttributes, @"\+", "%20");
+                    return BuildUrl("~/" + DefaultPage, pageId, customAttributes);
+                } else {
+                    if (querysfromwebconfig.EndsWith("&"))
+                        querysfromwebconfig = querysfromwebconfig.Remove(querysfromwebconfig.Length - 1);
+
+                    if (string.IsNullOrEmpty(customAttributesaux)) {
+                        // all the query string were in the list from webconfig
+                        return BuildUrl("~/" + DefaultPage, pageId) + "?" + querysfromwebconfig;
+                    } else {
+                        if (customAttributesaux.EndsWith("&"))
+                            customAttributesaux = customAttributesaux.Remove(customAttributesaux.Length - 1);
+                        customAttributesaux = Regex.Replace(customAttributesaux, @"\+", "%20");
+                        return BuildUrl("~/" + DefaultPage, pageId, customAttributesaux) + "?" + querysfromwebconfig;
+                    }
+                }
             } else
                 return BuildUrl(pageId);
         }
 
+        private static bool belongToList(string list, string querypart){
+            var parts = list.Split(';');
+            querypart = (querypart.Split('='))[0];
+            for (int i = 0; i < parts.Length; i++) {
+                if (parts[i] == querypart)
+                    return true;
+            }
+            return false;
+        }
 
         #endregion
     }
