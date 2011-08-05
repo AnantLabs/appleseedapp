@@ -141,7 +141,8 @@ namespace SelfUpdater.Controllers
             }
         }
 
-        public ActionResult ApplyUpdates()
+        [AcceptVerbs(HttpVerbs.Post)]
+        public void ApplyUpdates()
         {
             /*Forcing site restart*/
             var doc = new XmlDocument();
@@ -154,9 +155,12 @@ namespace SelfUpdater.Controllers
             writer.Flush();
             writer.Close();
             /*....................*/
+        }
 
+        public ActionResult Status()
+        {
             return Json(new {
-                msg = "Applying updates..."
+                online = true
             }, JsonRequestBehavior.AllowGet);
         }
 
