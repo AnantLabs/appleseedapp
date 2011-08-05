@@ -21,19 +21,27 @@
             <li>
                 <%: m.Update.Id%>
                 <%: m.Update.Version%>
-                <a id="update<%: m.Update.Id %>" href="javascript:void(0)" onclick="updateModule('<%: m.Update.Id %>')">
-                    Install update</a></li>
+                <a id="schedule<%: m.Update.Id %>" href="javascript:void(0)" onclick="updateModule('<%: m.Update.Id %>', true)">
+                    Schedule update</a> <a id="unschedule<%: m.Update.Id %>" href="javascript:void(0)"
+                        onclick="updateModule('<%: m.Update.Id %>', false)" style="display: none">Schedule
+                        update</a></li>
         </ul>
         <%} else {%>
         No Updates Available
         <%               }%>
         <hr />
+        <%if (m.Scheduled) { %>
+        <script type="text/javascript">
+            updateModule('<%: m.Installed.Id %>', true);
+        </script>
+        <%} %>
         <%}           %>
     </div>
     <%} %>
+    <a id="apply" href="javascript:void(0)" onclick="applyUpdates()">Apply updates !</a>
 </div>
 <div id="upgradingDiv" style="display: none">
     <ul id="upgradingUl">
-        <li>Upgrading module...<img src="" /></li>
+        <%--<li>Upgrading modules.<img src="" alt="" /></li>--%>
     </ul>
 </div>

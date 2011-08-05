@@ -40,6 +40,8 @@ namespace SelfUpdater.Models
                 this.Update_k__BackingField = value;
             }
         }
+
+        public bool Scheduled { get; set; }
     }
 }
 

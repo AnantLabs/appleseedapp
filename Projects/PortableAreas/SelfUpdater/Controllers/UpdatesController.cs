@@ -25,11 +25,11 @@ namespace SelfUpdater.Controllers
 
         public ActionResult Module()
         {
-            //    return View();
-            //}
+            AppleseedDBContext context = new AppleseedDBContext();
 
-            //public ActionResult Check(string packageId)
-            //{
+            var scheduledUpdates = context.SelfUpdatingPackages.ToList();
+
+
             WebProjectManager projectManager = this.GetProjectManager();
             var installedPackages = this.GetInstalledPackages(projectManager);
             List<InstallationState> state2 = new List<InstallationState>();
@@ -38,6 +38,10 @@ namespace SelfUpdater.Controllers
                 InstallationState state = new InstallationState();
                 state.Installed = installedPackage;
                 state.Update = update;
+                if (scheduledUpdates.Any(d => d.PackageId == installedPackage.Id)) {
+                    state.Scheduled = true;
+                }
+
                 state2.Add(state);
             }
 
@@ -56,11 +60,6 @@ namespace SelfUpdater.Controllers
         private List<IPackage> GetInstalledPackages(WebProjectManager projectManager)
         {
             var packages = projectManager.GetInstalledPackages(string.Empty).ToList();
-
-            //if (package == null)
-            //{
-            //    throw new InvalidOperationException(string.Format("The package for package ID '{0}' is not installed in this website. Copy the package into the App_Data/packages folder.", packageId));
-            //}
 
             return packages;
         }
@@ -99,20 +98,51 @@ namespace SelfUpdater.Controllers
 
         public ActionResult DelayedUpgrade(string packageId)
         {
-            //string basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin", packageId + ".update");
-
-            //System.IO.File.Create(basePath);
-
             AppleseedDBContext context = new AppleseedDBContext();
 
-            var entity = new SelfUpdatingPackages() {
-                PackageId = packageId,
-                PackageVersion = string.Empty
-            };
+            var entity = context.SelfUpdatingPackages.Where(d => d.PackageId == packageId).FirstOrDefault();
+            if (entity == default(SelfUpdatingPackages)) {
 
-            context.SelfUpdatingPackages.AddObject(entity);
-            context.SaveChanges();
+                entity = new SelfUpdatingPackages() {
+                    PackageId = packageId,
+                    PackageVersion = string.Empty
+                };
 
+                context.SelfUpdatingPackages.AddObject(entity);
+                context.SaveChanges();
+            }
+
+            return Json(new {
+                msg = "Package " + packageId + " scheduled to update!",
+                res = true
+            }, JsonRequestBehavior.AllowGet);
+
+        }
+
+        public ActionResult RemoveDelayedUpgrade(string packageId)
+        {
+            AppleseedDBContext context = new AppleseedDBContext();
+
+            var entity = context.SelfUpdatingPackages.Where(d=>d.PackageId == packageId).FirstOrDefault();
+            if (entity != default(SelfUpdatingPackages)) {
+                context.SelfUpdatingPackages.DeleteObject(entity);
+                context.SaveChanges();
+
+
+                return Json(new {
+                    msg = "Package " + packageId + " unscheduled!",
+                    res = true
+                }, JsonRequestBehavior.AllowGet);
+            } else {
+                return Json(new {
+                    msg = "Package " + packageId + " unscheduled!",
+                    res = false
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public ActionResult ApplyUpdates()
+        {
             /*Forcing site restart*/
             var doc = new XmlDocument();
             doc.PreserveWhitespace = true;
@@ -126,8 +156,7 @@ namespace SelfUpdater.Controllers
             /*....................*/
 
             return Json(new {
-                msg = "Package " + packageId + " scheduled to update!",
-                updated = true
+                msg = "Applying updates..."                
             }, JsonRequestBehavior.AllowGet);
         }
 

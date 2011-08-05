@@ -3,8 +3,40 @@
 
 
 
-function updateModule(moduleId) {
+function updateModule(moduleId, schedule) {
+   
+   var actionurl = '/SelfUpdater/Updates/DelayedUpgrade';
+   if (schedule == false) {
+       actionurl = '/SelfUpdater/Updates/RemoveDelayedUpgrade';
+       $('#schedule' + moduleId).show();
+       $('#unschedule' + moduleId).hide();
+   } else {
+       $('#schedule' + moduleId).hide();
+       $('#unschedule' + moduleId).show();
+   }
 
+    $.ajax({
+        url: actionurl,
+        data: {
+            packageId: moduleId
+        },
+        dataType: 'json',
+        timeout: 1200000,
+        success: function (data) {
+            
+        },
+        error: function (data) {
+            trace(data);
+            $('#upgradingDiv').dialog("close");
+            alert("Communication error");
+        }
+    });
+
+    return false;
+}
+
+function applyUpdates() {
+    
     $('#upgradingDiv').dialog({
         modal: true,
         closeOnEscape: false,
@@ -18,20 +50,13 @@ function updateModule(moduleId) {
     });
 
     $.ajax({
-        url: '/SelfUpdater/Updates/DelayedUpgrade',
-        data: {
-            packageId: moduleId
-        },
+        url: '/SelfUpdater/Updates/ApplyUpdates',
+        data: {},
         dataType: 'json',
         timeout: 1200000,
         success: function (data) {
             $('<li>' + data.msg + '</li>').appendTo('#upgradingUl');
-            if (data.updated) {
-                $('<li>Reloading site...</li>' + data.msg).appendTo('#upgradingUl');
-                window.location.reload();
-            } else {
-                $('#upgradingDiv').closest('.ui-dialog').find('.ui-dialog-titlebar-close').show();
-            }
+            window.location.reload();
         },
         error: function (data) {
             trace(data);
@@ -39,6 +64,4 @@ function updateModule(moduleId) {
             alert("Communication error");
         }
     });
-
-    return false;
 }
