@@ -4539,4 +4539,7 @@
   <data name="PASSWORD_CHANGE_SUCCESSFULL" xml:space="preserve">
     <value>El password se ha guardado satisfactoriamente.</value>
   </data>
+  <data name="LANGUAGE" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
 </root>

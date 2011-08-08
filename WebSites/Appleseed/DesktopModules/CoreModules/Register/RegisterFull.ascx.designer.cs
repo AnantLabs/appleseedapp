@@ -111,15 +111,6 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull {
     protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvEmail;
     
     /// <summary>
-    /// lnkChangePassword control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.LinkButton lnkChangePassword;
-    
-    /// <summary>
     /// trPwd control.
     /// </summary>
     /// <remarks>
@@ -334,6 +325,15 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull {
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::System.Web.UI.WebControls.CustomValidator cvCaptcha;
+    
+    /// <summary>
+    /// ChangePassword control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button ChangePassword;
     
     /// <summary>
     /// btnSave control.

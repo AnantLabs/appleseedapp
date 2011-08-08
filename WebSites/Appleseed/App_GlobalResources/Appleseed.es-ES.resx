@@ -799,7 +799,7 @@
     <value>Condiciones de Uso</value>
   </data>
   <data name="CONFIRM" xml:space="preserve">
-    <value>Confirmar Contraseña</value>
+    <value>Confirmar</value>
   </data>
   <data name="CONFIRM_DELETE" xml:space="preserve">
     <value>¿Desea borrar este elemento?</value>
@@ -5476,7 +5476,7 @@
     <value>No se permite seleccionar este padre</value>
   </data>
   <data name="CONFIRM_PASSWORD" xml:space="preserve">
-    <value>Confirm password</value>
+    <value>Confirmar Contraseña</value>
   </data>
   <data name="COULD_NOT_CHANGE_PASSWORD" xml:space="preserve">
     <value>Could not change password</value>
@@ -5591,5 +5591,20 @@
   </data>
   <data name="PASSWORD_CHANGE_SUCCESSFULL" xml:space="preserve">
     <value>El password se ha guardado satisfactoriamente.</value>
+  </data>
+  <data name="CHANGE_PWD_CURRENT_PWD" xml:space="preserve">
+    <value>Contraseña actual</value>
+  </data>
+  <data name="CHANGE_PWD_ENTER_NEW_PWD" xml:space="preserve">
+    <value>Contraseña nueva</value>
+  </data>
+  <data name="CHANGE_PWD_ENTER_NEW_PWD_AGAIN" xml:space="preserve">
+    <value>Confirmar contraseña nueva </value>
+  </data>
+  <data name="PASSWORD_AGAIN" xml:space="preserve">
+    <value>Confirmar contraseña</value>
+  </data>
+  <data name="USER_SAVING_WRONG_CAPTCHA" xml:space="preserve">
+    <value>El texto de seguridad no coincide. Por favor intente nuevamente.</value>
   </data>
 </root>
