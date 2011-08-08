@@ -261,20 +261,25 @@ namespace Appleseed.Content.Web.Modules
             bool hide = true;
             bool autocomplete = false;
 
-            if (this.PortalSettings.CustomSettings["SITESETTINGS_ALLOW_NEW_REGISTRATION"] != null)
+            if (this.PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_ALLOW_NEW_REGISTRATION") &&
+                !(string.IsNullOrEmpty(this.PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_ALLOW_NEW_REGISTRATION").ToString())))
                 if (!bool.Parse(this.PortalSettings.CustomSettings["SITESETTINGS_ALLOW_NEW_REGISTRATION"].ToString()))
                     RegisterBtn.Visible = false;
 
-            if (Settings["SIGNIN_AUTOMATICALLYHIDE"] != null)
+            if (this.PortalSettings.CustomSettings.ContainsKey("SIGNIN_AUTOMATICALLYHIDE") &&
+                !(string.IsNullOrEmpty(this.PortalSettings.CustomSettings.ContainsKey("SIGNIN_AUTOMATICALLYHIDE").ToString())))
                 hide = bool.Parse(Settings["SIGNIN_AUTOMATICALLYHIDE"].ToString());
 
-            if (Settings["SIGNIN_ALLOW_AUTOCOMPLETE"] != null)
+            if (this.PortalSettings.CustomSettings.ContainsKey("SIGNIN_ALLOW_AUTOCOMPLETE") &&
+                !(string.IsNullOrEmpty(this.PortalSettings.CustomSettings.ContainsKey("SIGNIN_ALLOW_AUTOCOMPLETE").ToString())))
                 autocomplete = bool.Parse(Settings["SIGNIN_ALLOW_AUTOCOMPLETE"].ToString());
 
-            if (Settings["SIGNIN_ALLOW_REMEMBER_LOGIN"] != null)
+            if (this.PortalSettings.CustomSettings.ContainsKey("SIGNIN_ALLOW_REMEMBER_LOGIN") &&
+                !(string.IsNullOrEmpty(this.PortalSettings.CustomSettings.ContainsKey("SIGNIN_ALLOW_REMEMBER_LOGIN").ToString())))
                 RememberCheckBox.Visible = bool.Parse(Settings["SIGNIN_ALLOW_REMEMBER_LOGIN"].ToString());
 
-            if (Settings["SIGNIN_ALLOW_SEND_PASSWORD"] != null)
+            if (this.PortalSettings.CustomSettings.ContainsKey("SIGNIN_ALLOW_SEND_PASSWORD") &&
+                !(string.IsNullOrEmpty(this.PortalSettings.CustomSettings.ContainsKey("SIGNIN_ALLOW_SEND_PASSWORD").ToString())))
                 SendPasswordBtn.Visible = bool.Parse(Settings["SIGNIN_ALLOW_SEND_PASSWORD"].ToString());
 
             if (hide && Request.IsAuthenticated)
