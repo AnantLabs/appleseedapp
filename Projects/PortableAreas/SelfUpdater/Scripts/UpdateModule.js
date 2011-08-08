@@ -8,10 +8,16 @@ function updateModule(moduleId, schedule) {
     var actionurl = '/SelfUpdater/Updates/DelayedUpgrade';
     if (schedule == false) {
         actionurl = '/SelfUpdater/Updates/RemoveDelayedUpgrade';
+
         $('#schedule' + moduleId).show();
+        $('#schedule' + moduleId).parent('li').removeClass('ui-state-highlight ui-corner-all');
+
         $('#unschedule' + moduleId).hide();
+
     } else {
         $('#schedule' + moduleId).hide();
+        $('#schedule' + moduleId).parent('li').addClass('ui-state-highlight ui-corner-all');
+
         $('#unschedule' + moduleId).show();
     }
 
