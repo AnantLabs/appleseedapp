@@ -136,6 +136,7 @@
     <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\Home\LstLanguages.aspx" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>

@@ -72,8 +72,7 @@
                                             <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ControlToValidate="tfEmail"
                                                   Display="Dynamic" ErrorMessage="MUST_ENTER_MAIL" Text="<%$ Resources:Appleseed, MUST_ENTER_MAIL%>" textkey="MUST_ENTER_MAIL" 
                                                   Font-Size="11px"
-                                                  ValidationGroup="USER" />
-                                            <asp:LinkButton runat="server" ID="lnkChangePassword" Text="<%$ Resources:Appleseed, CHANGE_PWD%>"></asp:LinkButton>    
+                                                  ValidationGroup="USER" />                 
                                         </td>
                                     </tr>
 
@@ -204,9 +203,13 @@
                                         </td>
                                     </tr>--%>
                                     <tr>
-                                        <td style="padding-top: 10px;">
-                                            <asp:Button ID="btnSave" runat="server" OnClick="btnSave_Click" Text="Confirm" textkey="CONFIRM"
-                                                ValidationGroup="USER"/>
+                                        <td style="padding-top: 10px;" valign="top">
+                                            <asp:Button runat="server" ID="ChangePassword" Text="<%$ Resources:Appleseed, CHANGE_PWD%>"></asp:Button>
+                                        </td>
+                                        <td style="padding-top: 10px" valign="top">
+                                            <asp:Button ID="btnSave"  runat="server" OnClick="btnSave_Click" 
+                                                Text="<%$ Resources:Appleseed, CONFIRM %>" textkey="CONFIRM"
+                                                ValidationGroup="USER" style="margin-left: 195px"/>
                                         </td>
                                     </tr>
                                     <tr>
@@ -293,8 +296,8 @@
                         </tr>
                         <tr>
                             <td colspan="2" style="padding-top: 10px;">
-                                <asp:Button ID="btnChangePwd" runat="server" OnClick="btnChangePwd_Click" Text="Confirm" textkey="CONFIRM" ValidationGroup="CHANGE_PWD"/>
-                                <asp:Button ID="btnChangePwdCancel" runat="server" Text="Cancel" textkey="CANCEL" CausesValidation="false" />
+                                <asp:Button ID="btnChangePwd" runat="server" OnClick="btnChangePwd_Click" Text="<%$ Resources:Appleseed, CONFIRM_PASSWORD%>" textkey="CONFIRM" ValidationGroup="CHANGE_PWD"/>
+                                <asp:Button ID="btnChangePwdCancel" runat="server" Text="<%$ Resources:Appleseed, CANCEL%>" textkey="CANCEL" CausesValidation="false" />
                             </td>
                         </tr>
                     </table>
@@ -317,7 +320,7 @@
                 open: function (type, data) { $(this).parent().appendTo('form'); }
             });
 
-            $("#<%= lnkChangePassword.ClientID %>").click(function (e) {
+            $("#<%= ChangePassword.ClientID %>").click(function (e) {
                 e.preventDefault();
                 $pwdDialog.dialog('open');
                 return false;
