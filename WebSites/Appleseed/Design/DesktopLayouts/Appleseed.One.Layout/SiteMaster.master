@@ -10,7 +10,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server" ScriptMode="Release">
         <Services>
             <asp:ServiceReference InlineScript="false" Path="~/DesktopModules/CoreModules/Admin/PortalService.asmx" />
         </Services>
