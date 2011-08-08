@@ -55,7 +55,9 @@ namespace Appleseed.AdminAll
             if (Page.IsPostBack == false) {
                 var templateServices = PortalTemplateFactory.GetPortalTemplateServices(new PortalTemplateRepository());
 
-                ddlXMLTemplates.DataSource = templateServices.GetTemplates(PortalSettings.PortalAlias, PortalSettings.PortalFullPath);
+                // Change to be on root
+                //ddlXMLTemplates.DataSource = templateServices.GetTemplates(PortalSettings.PortalAlias, PortalSettings.PortalFullPath);
+                ddlXMLTemplates.DataSource = templateServices.GetTemplates(PortalSettings.PortalAlias, "");
                 ddlXMLTemplates.DataBind();
                 if (ddlXMLTemplates.Items.Count != 0) {
                     ddlXMLTemplates.SelectedIndex = 0;
