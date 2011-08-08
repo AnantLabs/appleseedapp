@@ -17,14 +17,17 @@ namespace Appleseed.PortalTemplate
     using System.Text.RegularExpressions;
     using System.Web.UI;
     using System.Xml.Serialization;
+    using Ionic.Zip;
 
     using Appleseed.Framework;
     using Appleseed.Framework.DataTypes;
     using Appleseed.Framework.Web.UI.WebControls;
     using Appleseed.PortalTemplate.DTOs;
+    
 
     using Path = Appleseed.Framework.Settings.Path;
     using System.Configuration;
+    
 
     /// <summary>
     /// The portal template services.
@@ -97,10 +100,42 @@ namespace Appleseed.PortalTemplate
         {
             var result = true;
             try {
-                var fs = new FileStream(GetPhysicalPackageTemplatesPath(portalPath) + "\\" + file, FileMode.Open);
-                var xs = new XmlSerializer(typeof(PortalsDTO));
-                var portal = (PortalsDTO)xs.Deserialize(fs);
-                fs.Close();
+                PortalsDTO portal;
+                if (file.EndsWith("AppleSeedTemplates")) {
+                    using (var ms = new MemoryStream()) {
+                        using (ZipFile zip = ZipFile.Read(GetPhysicalPackageTemplatesPath("") + "\\" + file)) {
+                            if (zip.Count == 1) {
+                                ms.Position = 0;
+                                string name = file.Replace(".AppleSeedTemplates", ".XML");
+                                ZipEntry e = zip[name];
+                                e.Extract(ms);
+
+                                //FileStream s = new FileStream(GetPhysicalPackageTemplatesPath("") + "\\" + name, FileMode.Create);
+                                //int pos = int.Parse(ms.Position.ToString());
+                                //s.Write(ms.GetBuffer(), 0, pos);
+                                //s.Close();
+
+                                ms.Position = 0;
+
+                                var xs = new XmlSerializer(typeof(PortalsDTO));
+                                portal = (PortalsDTO)xs.Deserialize(ms);
+
+                                ms.Close();
+                                
+                            } else {
+                                portal = null;
+                            }
+                             
+                        }
+                        // the application can now access the MemoryStream here
+                    }
+
+                } else {
+                    var fs = new FileStream(GetPhysicalPackageTemplatesPath("") + "\\" + file, FileMode.Open);
+                    var xs = new XmlSerializer(typeof(PortalsDTO));
+                    portal = (PortalsDTO)xs.Deserialize(fs);
+                    fs.Close();
+                }
 
                 var db = new PortalTemplateDataContext(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
                 var desktopSources = this.iptRepository.GetDesktopSources();
@@ -194,17 +229,38 @@ namespace Appleseed.PortalTemplate
             var result = true;
             try {
                 string path = GetPhysicalPackageTemplatesPath(portalFullPath);
+                
+               
                 var portal = this.iptRepository.GetPortal(portalId);
                 var dir = new DirectoryInfo(path);
                 if (!dir.Exists) {
                     dir.Create();
                 }
 
-                var fs = new FileStream(
-                    path + "\\" + portal.PortalAlias + DateTime.Now.ToString("dd-MM-yyyy") + ".XML", FileMode.Create);
+                // Create the xmlFile
+                string filePath = path + "\\" +  Regex.Replace(portal.PortalName,@" ","_") +"-" +portal.PortalAlias +"-"+ DateTime.Now.ToString("dd-MM-yyyy") + ".XML";
+                //var fs = new FileStream(filePath
+                //    , FileMode.Create);
+                //var xs = new XmlSerializer(typeof(PortalsDTO));
+                //xs.Serialize(fs, portal);
+                //fs.Close();
+
+                Stream s = new MemoryStream();
                 var xs = new XmlSerializer(typeof(PortalsDTO));
-                xs.Serialize(fs, portal);
-                fs.Close();
+                xs.Serialize(s, portal);
+
+                using (ZipFile zip = new ZipFile()) {
+                    //zip.AddFile(filePath);
+                    s.Position = 0;
+                    string name = Regex.Replace(portal.PortalName, @" ", "_") + "-" + portal.PortalAlias + "-" + DateTime.Now.ToString("dd-MM-yyyy") + ".XML";
+                    zip.AddEntry(name, s);
+                   
+                    zip.Save(Regex.Replace(filePath,@".XML",".AppleSeedTemplates"));
+                }
+
+                s.Close();
+
+
             } catch (Exception ex) {
                 result = false;
                 ErrorHandler.Publish(LogLevel.Error, "There was an error on serialize the portal", ex);
@@ -353,6 +409,10 @@ namespace Appleseed.PortalTemplate
             if (Directory.Exists(path)) {
                 DirectoryInfo directory = new DirectoryInfo(path);
                 FileInfo[] templates = directory.GetFiles("*.xml");
+                foreach (FileInfo template in templates) {
+                    result.Add(template.Name);
+                }
+                templates = directory.GetFiles("*.AppleSeedTemplates");
                 foreach (FileInfo template in templates) {
                     result.Add(template.Name);
                 }
