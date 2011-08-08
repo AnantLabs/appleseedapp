@@ -80,7 +80,7 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
         LoadBirthDateControls();
         trPwd.Visible = false;
         trPwdAgain.Visible = false;
-        lnkChangePassword.Visible = false;
+        ChangePassword.Visible = false;
         panChangePwd.Visible = false;
         ViewState["responseWithPopup"] = null;
 
@@ -94,7 +94,7 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
         }
         else
         {
-            lnkChangePassword.Visible = true;
+            ChangePassword.Visible = true;
             panChangePwd.Visible = true;
         }
         if (!Page.IsPostBack)
@@ -176,7 +176,7 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
             if ((bool)Session["CameFromSocialNetwork"]) {
                 trPwd.Visible = false;
                 trPwdAgain.Visible = false;
-                lnkChangePassword.Visible = false;
+                ChangePassword.Visible = false;
                 panChangePwd.Visible = false;
             }
         }

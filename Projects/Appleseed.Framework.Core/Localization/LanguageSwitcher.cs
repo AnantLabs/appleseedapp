@@ -796,6 +796,13 @@ namespace Appleseed.Framework.Web.UI.WebControls
             return tableCellFlag;
         }
 
+
+        public string GetFlagImgLCI(LanguageCultureItem languageItem)
+        {
+
+            return this.GetFlagImg(languageItem);
+        }
+
         /// <summary>
         /// Gets the flag img.
         /// </summary>
@@ -877,6 +884,12 @@ namespace Appleseed.Framework.Web.UI.WebControls
             return this.ChangeLanguageAction == LanguageSwitcherAction.LinkRedirect
                        ? string.Format("{0}?lang={1}", this.ChangeLanguageUrl, language)
                        : string.Format("javascript:{0}", this.Page.ClientScript.GetPostBackEventReference(this, language));
+        }
+
+
+        public string getNameLCI(LanguageCultureItem languageItem)
+        {
+            return this.GetName(languageItem);
         }
 
         /// <summary>

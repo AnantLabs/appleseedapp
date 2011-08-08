@@ -4380,7 +4380,25 @@
   <data name="PASSWORD_CHANGE_SUCCESSFULL" xml:space="preserve">
     <value>El password se ha guardado satisfactoriamente.</value>
   </data>
+  <data name="CHANGE_PWD" xml:space="preserve">
+    <value>Cambiar Contraseña</value>
+  </data>
+  <data name="CHANGE_PWD_CURRENT_PWD" xml:space="preserve">
+    <value>Contraseña actual</value>
+  </data>
+  <data name="CHANGE_PWD_ENTER_NEW_PWD" xml:space="preserve">
+    <value>Nueva contraseña</value>
+  </data>
+  <data name="CHANGE_PWD_ENTER_NEW_PWD_AGAIN" xml:space="preserve">
+    <value>Confirmar contraseña nueva</value>
+  </data>
+  <data name="LANGUAGE" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="PASSWORD_AGAIN" xml:space="preserve">
+    <value>Repetir contraseña</value>
+  </data>
   <data name="HTML_TITLE" xml:space="preserve">
-    <value>"Doble clic para Editar"</value>
+    <value>Doble clic para Editar</value>
   </data>
 </root>
