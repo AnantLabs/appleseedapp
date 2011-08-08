@@ -55,9 +55,8 @@ namespace Appleseed.AdminAll
             if (Page.IsPostBack == false) {
                 var templateServices = PortalTemplateFactory.GetPortalTemplateServices(new PortalTemplateRepository());
 
-                // Change to be on root
-                //ddlXMLTemplates.DataSource = templateServices.GetTemplates(PortalSettings.PortalAlias, PortalSettings.PortalFullPath);
-                ddlXMLTemplates.DataSource = templateServices.GetTemplates(PortalSettings.PortalAlias, "");
+                
+                ddlXMLTemplates.DataSource = templateServices.GetTemplates(PortalSettings.PortalAlias, PortalSettings.PortalFullPath);
                 ddlXMLTemplates.DataBind();
                 if (ddlXMLTemplates.Items.Count != 0) {
                     ddlXMLTemplates.SelectedIndex = 0;
@@ -165,7 +164,7 @@ namespace Appleseed.AdminAll
             IPortalTemplateServices services = PortalTemplateFactory.GetPortalTemplateServices(repository);
             int newPortalID = 1;
 
-            createdOk = services.DeserializePortal(fileName, portalName, portalAlias, portalPath, out newPortalID);
+            createdOk = services.DeserializePortal(fileName, portalName, portalAlias, portalPath, PortalSettings.PortalFullPath, out newPortalID);
             if (createdOk && !Config.UseSingleUserBase) {
                 string AdminEmail = "admin@Appleseedportal.net";
 

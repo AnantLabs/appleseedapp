@@ -76,10 +76,7 @@ namespace Appleseed.Content.Web.Modules
 
         private void LoadTemplatesList()
         {
-            //var templateList = templateServices.GetTemplates(PortalSettings.PortalAlias, PortalSettings.PortalFullPath);
-            // Change The location to be on the root
-            var templateList = templateServices.GetTemplates(PortalSettings.PortalAlias, "");
-
+            var templateList = templateServices.GetTemplates(PortalSettings.PortalAlias, PortalSettings.PortalFullPath);
             templates = (from t in templateList select new { Name = t, ID = t }).ToList();
         }
 
@@ -186,9 +183,8 @@ namespace Appleseed.Content.Web.Modules
             if (portalList.SelectedIndex != -1) {
                 IPortalTemplateServices services = PortalTemplateFactory.GetPortalTemplateServices(new PortalTemplateRepository());
                 PortalItem p = (PortalItem)portals[portalList.SelectedIndex];
-                //bool ok = services.SerializePortal(p.ID, PortalSettings.PortalAlias, PortalSettings.PortalFullPath);
-                // Change The location to be on the root
-                bool ok = services.SerializePortal(p.ID, PortalSettings.PortalAlias, "");
+                bool ok = services.SerializePortal(p.ID, PortalSettings.PortalAlias, PortalSettings.PortalFullPath);
+                
                 if (!ok) {
 
                     DisplayMessage(ErrorMessage, "Export failed (full error logged) <br>");
@@ -226,9 +222,8 @@ namespace Appleseed.Content.Web.Modules
             if (templatesList.SelectedIndex != -1) {
                 string templateName = ((dynamic)templates[templatesList.SelectedIndex]).Name;
 
-                // Change to be on root
-                //FileInfo file = templateServices.GetTemplateInfo(templateName, PortalSettings.PortalFullPath);
-                FileInfo file = templateServices.GetTemplateInfo(templateName, "");
+                FileInfo file = templateServices.GetTemplateInfo(templateName, PortalSettings.PortalFullPath);
+                
 
                 Response.ContentType = "text/xml";
                 Response.AppendHeader("Content-Disposition", "attachment; filename=" + templateName);

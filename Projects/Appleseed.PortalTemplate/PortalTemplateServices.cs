@@ -96,14 +96,14 @@ namespace Appleseed.PortalTemplate
         /// The deserialize portal.
         /// </returns>
         public bool DeserializePortal(
-            string file, string portalName, string portalAlias, string portalPath, out int portalId)
+            string file, string portalName, string portalAlias, string portalPath, string filePath, out int portalId)
         {
             var result = true;
             try {
                 PortalsDTO portal;
                 if (file.EndsWith("AppleSeedTemplates")) {
                     using (var ms = new MemoryStream()) {
-                        using (ZipFile zip = ZipFile.Read(GetPhysicalPackageTemplatesPath("") + "\\" + file)) {
+                        using (ZipFile zip = ZipFile.Read(GetPhysicalPackageTemplatesPath(filePath) + "\\" + file)) {
                             if (zip.Count == 1) {
                                 ms.Position = 0;
                                 string name = file.Replace(".AppleSeedTemplates", ".XML");
@@ -131,7 +131,7 @@ namespace Appleseed.PortalTemplate
                     }
 
                 } else {
-                    var fs = new FileStream(GetPhysicalPackageTemplatesPath("") + "\\" + file, FileMode.Open);
+                    var fs = new FileStream(GetPhysicalPackageTemplatesPath(filePath) + "\\" + file, FileMode.Open);
                     var xs = new XmlSerializer(typeof(PortalsDTO));
                     portal = (PortalsDTO)xs.Deserialize(fs);
                     fs.Close();
@@ -238,7 +238,7 @@ namespace Appleseed.PortalTemplate
                 }
 
                 // Create the xmlFile
-                string filePath = path + "\\" +  Regex.Replace(portal.PortalName,@" ","_") +"-" +portal.PortalAlias +"-"+ DateTime.Now.ToString("dd-MM-yyyy") + ".XML";
+                string filePath = path + "\\" + portal.PortalAlias +"-"+ DateTime.Now.ToString("dd-MM-yyyy") + ".XML";
                 //var fs = new FileStream(filePath
                 //    , FileMode.Create);
                 //var xs = new XmlSerializer(typeof(PortalsDTO));
@@ -252,7 +252,7 @@ namespace Appleseed.PortalTemplate
                 using (ZipFile zip = new ZipFile()) {
                     //zip.AddFile(filePath);
                     s.Position = 0;
-                    string name = Regex.Replace(portal.PortalName, @" ", "_") + "-" + portal.PortalAlias + "-" + DateTime.Now.ToString("dd-MM-yyyy") + ".XML";
+                    string name = portal.PortalAlias + "-" + DateTime.Now.ToString("dd-MM-yyyy") + ".XML";
                     zip.AddEntry(name, s);
                    
                     zip.Save(Regex.Replace(filePath,@".XML",".AppleSeedTemplates"));

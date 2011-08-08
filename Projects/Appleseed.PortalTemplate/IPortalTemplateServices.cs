@@ -11,7 +11,7 @@ namespace Appleseed.PortalTemplate
     {
         bool SerializePortal(int portalID, string portalAlias, string portalFullPath);
 
-        bool DeserializePortal(string file, string portalName, string portalAlias, string portalPath, out int portalId);
+        bool DeserializePortal(string file, string portalName, string portalAlias, string portalPath, string filePath, out int portalId);
 
         HtmlTextDTO GetHtmlTextDTO(int moduleId);
 
