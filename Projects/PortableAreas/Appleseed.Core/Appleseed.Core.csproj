@@ -121,34 +121,21 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\img\koala.jpg" />
-    <Content Include="Content\style.css" />
-    <Content Include="DBScripts\20110413\01. Create_DBVersion_Table.sql" />
+    <Content Include="DBScripts\20110413\01.Create_DBVersion_Table.sql" />
     <Content Include="DBScripts\20110803\01.Create_GetAuthEditRolesRecycler_SPROC.sql" />
     <Content Include="DBScripts\20110804\01.UpdateModuleTitle.sql" />
     <Content Include="DBScripts\20110804\02.SelfUpdatingPackages_Table.sql" />
     <Content Include="DBScripts\20110804\03.GetModulesAllPortals.sql" />
     <Content Include="DBScripts\Readme.txt" />
-    <Content Include="Scripts\jquery-1.5-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.5.js" />
-    <Content Include="Scripts\jquery-1.5.min.js" />
-    <Content Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\MicrosoftAjax.debug.js" />
-    <Content Include="Scripts\MicrosoftAjax.js" />
-    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
-    <Content Include="Scripts\MicrosoftMvcAjax.js" />
-    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
-    <Content Include="Scripts\MicrosoftMvcValidation.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\" />
+    <Folder Include="Scripts\" />
+    <Folder Include="Views\Home\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\Index.aspx" />
-    <Content Include="Views\Home\ListResources.aspx" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
