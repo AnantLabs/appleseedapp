@@ -10,6 +10,9 @@ using Appleseed.Framework.Security;
 using Appleseed.Framework.Settings;
 using Appleseed.Framework.Site.Configuration;
 using Appleseed.Framework.Site.Data;
+using System.Globalization;
+using System.Threading;
+
 
 namespace Appleseed.Framework.Web.UI.WebControls
 {
@@ -45,7 +48,10 @@ namespace Appleseed.Framework.Web.UI.WebControls
         private bool _showWelcome = true;
         private bool _showLogOff = true;
         private bool _dataBindOnInit = true;
-        
+        private bool _showLanguage = true;
+        private bool _showLangString = true;
+        private bool _showFlags = true;
+
         // 26 October 2003 John Mandia - Finish
 
         private bool _showHelp = false; // José Viladiu, 29 Sep 2004: Add link for show help window
@@ -122,6 +128,47 @@ namespace Appleseed.Framework.Web.UI.WebControls
             set { _showRegister = value; }
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Category("Data"),
+            PersistenceMode(PersistenceMode.Attribute),
+            DefaultValue(true)
+            ]
+        public bool ShowLanguages
+        {
+            get { return _showLanguage; }
+            set { _showLanguage = value; }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Category("Data"),
+            PersistenceMode(PersistenceMode.Attribute),
+            DefaultValue(true)
+            ]
+        public bool ShowFlags
+        {
+            get { return _showFlags; }
+            set { _showFlags = value; }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Category("Data"),
+            PersistenceMode(PersistenceMode.Attribute),
+            DefaultValue(true)
+            ]
+        public bool ShowLangString
+        {
+            get { return _showLangString; }
+            set { _showLangString = value; }
+        }
+
+      
         /// <summary>
         /// 
         /// </summary>
@@ -441,6 +488,9 @@ namespace Appleseed.Framework.Web.UI.WebControls
 
                             menuLink = menuLink + " href='" + href + "'>" +
                                        General.GetString("HEADER_LOGOFF", "Logoff", null) + "</a>";
+
+                            
+
                             list.Add(menuLink);
                         }
                     }
@@ -504,6 +554,30 @@ namespace Appleseed.Framework.Web.UI.WebControls
                         list.Add(menuLink);
                     }
                 }
+
+
+                if (ShowLanguages) 
+                {
+                    var mb = new StringBuilder();
+
+                    mb.Append("<a");
+                    if (CssClass.Length != 0)
+                        mb.AppendFormat(" class=\"{0}\"", CssClass);
+
+                    mb.AppendFormat("id = \"popUpLang\" >");
+                    
+                    if ((ShowLangString) || (ShowLanguages)){
+                        string aux = General.GetString("LANGUAGE", "Language", null);
+                        mb.AppendFormat("{0}", aux);
+                    }
+                    if (ShowFlags){
+                        CultureInfo cultureInfo = Thread.CurrentThread.CurrentCulture;
+                        mb.AppendFormat("<img src=\"/aspnet_client/flags/flags_{0}.gif\" alt=\"\" style=\"left:13px;position:relative\"/>",cultureInfo.ToString());
+                    }
+                    mb.Append("</a>");
+                    list.Add(mb);
+                }
+
                 innerDataSource = list;
             }
             base.DataBind();
@@ -523,6 +597,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                 }
                 logonDialogPlaceHolder.Controls.Add(_logonControl);
             }
+
         }
 
         //we added this private attribute for store a reference to the signin control. 
@@ -579,8 +654,17 @@ namespace Appleseed.Framework.Web.UI.WebControls
                 writer.Write("<iframe id=\"iframeAppleseedLogin\" src=\""+empty+"\" onload=\"check()\" width=\""+iframewidth+"\" height=\"330px\"></iframe>");
                 writer.Write("</div>");
                 
+               
+
+          
+
+
                 //_logonControl.RenderControl(writer);
                 writer.Write("</div>");
+                // writer.Write(string.Concat("<div id=\"", this.ClientID, "_logon_dialog\" style=\"display:none\" >"));
+                writer.Write(string.Concat("<div id=\"AppleseedLang\" style=\"height: 350px\" >"));
+                writer.Write("</div>");
+               
                 writer.Write("<script type=\"text/javascript\">");
 
                 
@@ -591,7 +675,6 @@ namespace Appleseed.Framework.Web.UI.WebControls
                 //              "$('<div>').html(data).dialog();" +
                 //              "}" +
                 //              "});";
-
 
                 writer.Write(string.Concat(@"
                         $(document).ready(function () {
@@ -620,7 +703,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                         });"
                        ));
                 
-
+                
                 
                 writer.Write("\nfunction check(){\n" +
                 "$(document).ready(function () {\n" +
@@ -640,10 +723,44 @@ namespace Appleseed.Framework.Web.UI.WebControls
                             "};\n"
                        );
                 
-                
+                writer.Write(getStringPopUpLanguages());
                 writer.Write("</script>");
+                
+               
+
             }
             base.Render(writer);
+        }
+
+        private string getStringPopUpLanguages()
+        {
+
+           string txt = General.GetString("LANGUAGE", "Language", null);
+           string url = "\"http://appleseed.local/appleseed.Core/home/lstLanguages" + "\"";
+           string post = "\"Post\"";
+           return string.Concat(@"
+                $(document).ready(function () {
+                    $('#AppleseedLang').dialog({
+                        autoOpen: false,
+                        modal: true,
+                        width: 310,
+                        height: 300,
+                        resizable: false
+                    });
+                    $('#ui-dialog-title-AppleseedLang').append('",txt,@"');
+                    $('#popUpLang').click(function () {
+                        $('#AppleseedLang').dialog('open');
+                        $.ajax({
+                            type:",post,@",
+                            url:", url, @",
+                            success: function (data){
+                                $('#AppleseedLang').html(data)
+                            }
+                        });
+                        return false;    
+                    });
+                });"
+            );
         }
     }
 }
