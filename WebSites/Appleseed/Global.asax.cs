@@ -454,78 +454,78 @@ namespace Appleseed
                 WebRequest.DefaultWebProxy = PortalSettings.GetProxy();
             }
 
-            try {
-                UpdateDB();
 
-                CheckForSelfUpdates();
+            UpdateDB();
 
-                /* MVCContrib PortableAreas*/
+            CheckForSelfUpdates();
 
-                //Handlers for bus messages
-                Bus.AddMessageHandler(typeof(BusMessageHandler));
-                Bus.AddMessageHandler(typeof(DBScriptsHandler));
+            /* MVCContrib PortableAreas*/
 
-                //Register first core portable area (just in case...)
-                Appleseed.Core.PortableAreaUtils.RegisterArea<Appleseed.Core.AppleseedCoreRegistration>(RouteTable.Routes, false);
+            //Handlers for bus messages
+            Bus.AddMessageHandler(typeof(BusMessageHandler));
+            Bus.AddMessageHandler(typeof(DBScriptsHandler));
 
-                //Then, register all portable areas
-                AreaRegistration.RegisterAllAreas(true);
-                if (ConfigurationManager.AppSettings["RouteTesting"] == null ||
-                    !bool.Parse(ConfigurationManager.AppSettings["RouteTesting"])) {
-                    RegisterRoutes(RouteTable.Routes);
-                } else {
-                    RouteDebugger.RewriteRoutesForTesting(RouteTable.Routes);
-                }
-                InputBuilder.BootStrap();
-                ValueProviderFactories.Factories.Add(new Microsoft.Web.Mvc.JsonValueProviderFactory());
+            //Register first core portable area (just in case...)
+            Appleseed.Core.PortableAreaUtils.RegisterArea<Appleseed.Core.AppleseedCoreRegistration>(RouteTable.Routes, false);
 
-            } catch (Exception exc) {
-
-                ErrorHandler.Publish(LogLevel.Error, exc);
+            //Then, register all portable areas
+            AreaRegistration.RegisterAllAreas(true);
+            if (ConfigurationManager.AppSettings["RouteTesting"] == null ||
+                !bool.Parse(ConfigurationManager.AppSettings["RouteTesting"])) {
+                RegisterRoutes(RouteTable.Routes);
+            } else {
+                RouteDebugger.RewriteRoutesForTesting(RouteTable.Routes);
             }
+
+            InputBuilder.BootStrap();
+            ValueProviderFactories.Factories.Add(new Microsoft.Web.Mvc.JsonValueProviderFactory());
 
         }
 
         private void CheckForSelfUpdates()
         {
-            /*string basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin");
-            string updateFile = Directory.GetFiles(basePath, "*.update").FirstOrDefault();*/
 
-            AppleseedDBContext context = new AppleseedDBContext();
+            try {
 
-            var packagesToUpdate = context.SelfUpdatingPackages.AsQueryable();
+                AppleseedDBContext context = new AppleseedDBContext();
 
-            if (packagesToUpdate.Count() > 0) {
+                var packagesToUpdate = context.SelfUpdatingPackages.AsQueryable();
 
-                /*This forces a site restart for each update scheduled */
-                /*Must be improved trying to updated all at once */
+                if (packagesToUpdate.Count() > 0) {
 
-                var packageToUpdate = packagesToUpdate.First();
+                    /*This forces a site restart for each update scheduled */
+                    /*Must be improved trying to updated all at once */
 
-                WebProjectManager projectManager = this.GetProjectManager();
-                var packageName = packageToUpdate.PackageId;
-                IPackage installedPackage = this.GetInstalledPackage(projectManager, packageName);
+                    var packageToUpdate = packagesToUpdate.First();
 
-                IPackage update = projectManager.GetUpdate(installedPackage);
+                    WebProjectManager projectManager = this.GetProjectManager();
+                    var packageName = packageToUpdate.PackageId;
+                    IPackage installedPackage = this.GetInstalledPackage(projectManager, packageName);
 
-                if (update != null) {
-                    ErrorHandler.Publish(LogLevel.Info, String.Format("SelfUpdater: Updating {0} from {1} to {2}", packageName, installedPackage.Version, update.Version));
-                    try {
-                        projectManager.UpdatePackage(update);
-                    } catch (Exception exc) {
-                        ErrorHandler.Publish(LogLevel.Info, String.Format("SelfUpdater: Error updating {0} from {1} to {2}", packageName, installedPackage.Version, update.Version), exc);
+                    IPackage update = projectManager.GetUpdate(installedPackage);
+
+                    if (update != null) {
+                        ErrorHandler.Publish(LogLevel.Info, String.Format("SelfUpdater: Updating {0} from {1} to {2}", packageName, installedPackage.Version, update.Version));
+                        try {
+                            projectManager.UpdatePackage(update);
+                        } catch (Exception exc) {
+                            ErrorHandler.Publish(LogLevel.Info, String.Format("SelfUpdater: Error updating {0} from {1} to {2}", packageName, installedPackage.Version, update.Version), exc);
+                            context.SelfUpdatingPackages.DeleteObject(packageToUpdate);
+                        }
+                    } else {
+                        ErrorHandler.Publish(LogLevel.Info, "SelfUpdater: " + packageName + " update applied !");
                         context.SelfUpdatingPackages.DeleteObject(packageToUpdate);
                     }
+
+
+                    context.SaveChanges();
+
                 } else {
-                    ErrorHandler.Publish(LogLevel.Info, "SelfUpdater: " + packageName + " update applied !");
-                    context.SelfUpdatingPackages.DeleteObject(packageToUpdate);
+                    ErrorHandler.Publish(LogLevel.Info, "SelfUpdater: Nothing to update");
                 }
+            } catch (Exception exc) {
 
-
-                context.SaveChanges();
-
-            } else {
-                ErrorHandler.Publish(LogLevel.Info, "SelfUpdater: Nothing to update");
+                ErrorHandler.Publish(LogLevel.Error, exc);
             }
         }
 
