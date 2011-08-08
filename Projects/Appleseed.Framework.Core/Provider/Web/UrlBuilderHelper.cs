@@ -418,7 +418,7 @@ namespace Appleseed.Framework.Web
 
         public static string CleanNoAlphanumerics(string StringToClean) {
 
-            Regex r = new Regex("[A-Za-z0-9ÁÄÀÂáäâàÉËÈÊéëêèÍÏÎÌíïìîÓÖÒÔóöòôÚÜÛÙúüùûÇçÑñ/\\s]");
+            /*Regex r = new Regex("[A-Za-z0-9ÁÄÀÂáäâàÉËÈÊéëêèÍÏÎÌíïìîÓÖÒÔóöòôÚÜÛÙúüùûÇçÑñ/\\s]");
             string aux = "";
             for (int i = 0; i < StringToClean.Length; i++) {
                 if (r.IsMatch(StringToClean[i].ToString()))
@@ -439,8 +439,9 @@ namespace Appleseed.Framework.Web
             StringToClean = Regex.Replace(StringToClean, @"[Ç]", "C");
             StringToClean = Regex.Replace(StringToClean, @"[ç]", "c");
             StringToClean = Regex.Replace(StringToClean, @"[Ñ]", "N");
-            StringToClean = Regex.Replace(StringToClean, @"[ñ]", "n");
-            StringToClean = Regex.Replace(StringToClean, @"[^A-Za-z0-9/]", "-");
+            StringToClean = Regex.Replace(StringToClean, @"[ñ]", "n");*/
+
+            StringToClean = Regex.Replace(RemoveDiacritics(StringToClean), @"[^A-Za-z0-9/]", "-");
             StringToClean = Regex.Replace(StringToClean, @"-{2,}", "-");
 
             while (StringToClean.EndsWith("-")) {
@@ -449,5 +450,24 @@ namespace Appleseed.Framework.Web
 
             return StringToClean;
         }
+
+        // \p{Mn} or \p{Non_Spacing_Mark}: 
+        //   a character intended to be combined with another 
+        //   character without taking up extra space 
+        //   (e.g. accents, umlauts, etc.). 
+        private readonly static Regex nonSpacingMarkRegex =
+            new Regex(@"\p{Mn}", RegexOptions.Compiled);
+
+        private static string RemoveDiacritics(string text)
+        {
+            if (text == null)
+                return string.Empty;
+
+            var normalizedText =
+                text.Normalize(NormalizationForm.FormD);
+
+            return nonSpacingMarkRegex.Replace(normalizedText, string.Empty);
+        }
+
 	}
 }
