@@ -37,10 +37,24 @@ namespace Appleseed.Admin
         {
             get
             {
-                string _userName = string.Empty;
-                if (Request.Params["userName"] != null)
-                    _userName = Request.Params["userName"];
-                return _userName;
+                string uid = string.Empty;
+
+                if (Request.Path.Contains("/Users/") && Request.Params["userName"] == null) {
+                    return uid;
+                }
+
+                if (Request.Params["userName"] != null) {
+                    uid = Request.Params["userName"];
+                }
+
+                if (uid.Length == 0 && PortalSettings.CurrentUser != null && PortalSettings.CurrentUser.Identity != null)
+                    uid = PortalSettings.CurrentUser.Identity.UserName;
+
+                if (uid.Length == 0 && HttpContext.Current.Items["userName"] != null) {
+                    uid = HttpContext.Current.Items["userName"].ToString();
+                }
+                return uid;
+
             }
         }
 
