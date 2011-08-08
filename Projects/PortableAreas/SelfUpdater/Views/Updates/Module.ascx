@@ -37,8 +37,9 @@
         <%} %>
         <%}           %>
     </div>
-    <%} %>
     <a id="apply" href="javascript:void(0)" onclick="applyUpdates()">Apply updates !</a>
+    <%} %>
+    
 </div>
 <div id="upgradingDiv" style="display: none">
     <ul id="upgradingUl">
