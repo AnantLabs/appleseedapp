@@ -73,7 +73,11 @@
                                         TextKey="EXPORT_TEMPLATE" onclick="btnSaveTemplate_Click" />
                                 </td>
                             </tr>
-                            
+                            <tr>
+                                <td>
+                                    <rbfwebui:Button ID="Button1" TextKey="IMPORT" Text="Import" runat="server" OnClick="btnImport_click" />
+                                </td>
+                            </tr>
                         </table>
                     </td>
                 </tr>
