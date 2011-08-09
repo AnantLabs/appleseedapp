@@ -46,28 +46,51 @@ namespace Appleseed.AdminAll
         /// <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
         private void Page_Load(object sender, EventArgs e)
         {
-            // Verify that the current user has access to access this page
-            // Removed by Mario Endara <mario@softworks.com.uy> (2004/11/04)
-            //            if (PortalSecurity.IsInRoles("Admins") == false) 
-            //                PortalSecurity.AccessDeniedEdit();
+            string editPortal = Request.Params["selectedTemplate"];
 
-            // If this is the first visit to the page, populate the site data
-            if (Page.IsPostBack == false) {
-                var templateServices = PortalTemplateFactory.GetPortalTemplateServices(new PortalTemplateRepository());
-
-                
-                ddlXMLTemplates.DataSource = templateServices.GetTemplates(PortalSettings.PortalAlias, PortalSettings.PortalFullPath);
-                ddlXMLTemplates.DataBind();
-                if (ddlXMLTemplates.Items.Count != 0) {
-                    ddlXMLTemplates.SelectedIndex = 0;
-                } else {
-                    chkUseXMLTemplate.Enabled = false;
+            if (editPortal != null)
+            {
+                if (Page.IsPostBack == false)
+                {
+                    List<String> lstPortal = new List<string>();
+                    lstPortal.Add(editPortal);
+                    ddlXMLTemplates.DataSource = lstPortal;
+                    ddlXMLTemplates.DataBind();
                 }
-
             }
+            else
+            {
+                // Verify that the current user has access to access this page
+                // Removed by Mario Endara <mario@softworks.com.uy> (2004/11/04)
+                //            if (PortalSecurity.IsInRoles("Admins") == false) 
+                //                PortalSecurity.AccessDeniedEdit();
+                // If this is the first visit to the page, populate the site data
+                if (Page.IsPostBack == false)
+                {
+                    var templateServices = PortalTemplateFactory.GetPortalTemplateServices(new PortalTemplateRepository());
 
 
-            if (chkUseXMLTemplate.Checked == false) {
+                    ddlXMLTemplates.DataSource = templateServices.GetTemplates(PortalSettings.PortalAlias, PortalSettings.PortalFullPath);
+                    ddlXMLTemplates.DataBind();
+                    if (ddlXMLTemplates.Items.Count != 0)
+                    {
+                        ddlXMLTemplates.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        chkUseXMLTemplate.Enabled = false;
+                    }
+
+                }
+            }
+            var chkbox = Request.Params["chkUseXMLTemplate"];
+
+            if (chkbox != null)
+            {
+                chkUseXMLTemplate.Checked = bool.Parse(Request.Params["chkUseXMLTemplate"]);
+            }
+            if (chkUseXMLTemplate.Checked == false)
+            {
                 // Don't use a template portal, so show the EditTable
                 // Remove the cache that can be setted by the new Portal, to get a "clean" PortalBaseSetting
                 CurrentCache.Remove(Key.PortalBaseSettings());
@@ -75,18 +98,15 @@ namespace Appleseed.AdminAll
                 EditTable.DataBind();
                 EditTable.Visible = true;
                 ddlXMLTemplates.Enabled = false;
-
-            } else {
+            }
+            else
+            {
                 EditTable.Visible = false;
                 ddlXMLTemplates.Enabled = true;
             }
         }
-
-       
-
-
-
-
+        
+    
         /// <summary>
         /// Set the module guids with free access to this page
         /// </summary>
@@ -117,7 +137,6 @@ namespace Appleseed.AdminAll
                     PathField.Text = PathField.Text.Replace("/", string.Empty);
                     PathField.Text = PathField.Text.Replace("\\", string.Empty);
                     PathField.Text = PathField.Text.Replace(".", string.Empty);
-
 
                     if (!chkUseXMLTemplate.Checked) {
                         // Create portal the "old" way

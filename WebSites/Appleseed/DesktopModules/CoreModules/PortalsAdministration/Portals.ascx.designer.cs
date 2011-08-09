@@ -94,6 +94,15 @@ namespace Appleseed.Content.Web.Modules {
         protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton btnSaveTemplate;
         
         /// <summary>
+        /// Button1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Appleseed.Framework.Web.UI.WebControls.Button Button1;
+        
+        /// <summary>
         /// TemplateErrorMessage control.
         /// </summary>
         /// <remarks>

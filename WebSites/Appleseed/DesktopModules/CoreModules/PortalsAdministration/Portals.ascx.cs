@@ -234,6 +234,8 @@ namespace Appleseed.Content.Web.Modules
             }
         }
 
+
+
         private void DisplayMessage(Label lblControl, string message)
         {
             ErrorMessage.Visible = false;
@@ -243,6 +245,22 @@ namespace Appleseed.Content.Web.Modules
 
             lblControl.Visible = true;
             lblControl.Text = message;
+        }
+
+        protected void btnImport_click(object sender, EventArgs e)
+        {
+            if (templatesList.SelectedIndex != -1)
+            {
+                int idModule = this.ModuleID;
+                string selectedValue = templatesList.SelectedValue;
+
+                Response.Redirect(HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/PortalsAdministration/AddNewPortal.aspx", 0,
+                                                          "PortalID=" + idModule + "&mID=" + idModule+"&chkUseXMLTemplate=true&selectedTemplate="+selectedValue));
+            }
+            else
+            {
+                DisplayMessage(ErrorMessage, "You must select a portal <br>");
+            }
         }
     }
 }
