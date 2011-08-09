@@ -77,6 +77,8 @@ namespace Appleseed.Content.Web.Modules
         private void LoadTemplatesList()
         {
             var templateList = templateServices.GetTemplates(PortalSettings.PortalAlias, PortalSettings.PortalFullPath);
+            
+
             templates = (from t in templateList select new { Name = t, ID = t }).ToList();
         }
 
@@ -206,9 +208,8 @@ namespace Appleseed.Content.Web.Modules
             if (templatesList.SelectedIndex != -1) {
                 string templateName = ((dynamic)templates[templatesList.SelectedIndex]).Name;
 
-                //templateServices.DeleteTemplate(templateName, PortalSettings.PortalFullPath);
-                // Change to be on root
-                templateServices.DeleteTemplate(templateName, "");
+                templateServices.DeleteTemplate(templateName, PortalSettings.PortalFullPath);
+                
 
                 LoadTemplatesList();
                 templatesList.DataBind();

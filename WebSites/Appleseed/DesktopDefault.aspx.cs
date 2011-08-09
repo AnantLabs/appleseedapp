@@ -189,9 +189,11 @@ namespace Appleseed
                     this.Response.Redirect(HttpUrlBuilder.BuildUrl(pageId));
                 }
 
-                if (!HttpUrlBuilder.ValidateProperUrl(this.Request.Url, pageId)) 
+                string urlToRedirect = "";
+                bool redirect = HttpUrlBuilder.ValidateProperUrl(Request.Url, pageId, ref urlToRedirect);
+                if (!redirect)
                 {
-                    this.Response.Redirect(HttpUrlBuilder.getProperUrl(this.Request.Url, pageId));
+                    this.Response.Redirect(urlToRedirect);
                 }
             
 

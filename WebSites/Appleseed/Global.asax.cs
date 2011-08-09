@@ -454,31 +454,35 @@ namespace Appleseed
                 WebRequest.DefaultWebProxy = PortalSettings.GetProxy();
             }
 
+            try {
+                UpdateDB();
 
-            UpdateDB();
+                CheckForSelfUpdates();
 
-            CheckForSelfUpdates();
+                /* MVCContrib PortableAreas*/
 
-            /* MVCContrib PortableAreas*/
+                //Handlers for bus messages
+                Bus.AddMessageHandler(typeof(BusMessageHandler));
+                Bus.AddMessageHandler(typeof(DBScriptsHandler));
 
-            //Handlers for bus messages
-            Bus.AddMessageHandler(typeof(BusMessageHandler));
-            Bus.AddMessageHandler(typeof(DBScriptsHandler));
+                //Register first core portable area (just in case...)
+                Appleseed.Core.PortableAreaUtils.RegisterArea<Appleseed.Core.AppleseedCoreRegistration>(RouteTable.Routes, false);
 
-            //Register first core portable area (just in case...)
-            Appleseed.Core.PortableAreaUtils.RegisterArea<Appleseed.Core.AppleseedCoreRegistration>(RouteTable.Routes, false);
+                //Then, register all portable areas
+                AreaRegistration.RegisterAllAreas(true);
+                if (ConfigurationManager.AppSettings["RouteTesting"] == null ||
+                    !bool.Parse(ConfigurationManager.AppSettings["RouteTesting"])) {
+                    RegisterRoutes(RouteTable.Routes);
+                } else {
+                    RouteDebugger.RewriteRoutesForTesting(RouteTable.Routes);
+                }
 
-            //Then, register all portable areas
-            AreaRegistration.RegisterAllAreas(true);
-            if (ConfigurationManager.AppSettings["RouteTesting"] == null ||
-                !bool.Parse(ConfigurationManager.AppSettings["RouteTesting"])) {
-                RegisterRoutes(RouteTable.Routes);
-            } else {
-                RouteDebugger.RewriteRoutesForTesting(RouteTable.Routes);
+                InputBuilder.BootStrap();
+                ValueProviderFactories.Factories.Add(new Microsoft.Web.Mvc.JsonValueProviderFactory());
+            } catch (Exception exc) {
+
+                ErrorHandler.Publish(LogLevel.Error, exc);
             }
-
-            InputBuilder.BootStrap();
-            ValueProviderFactories.Factories.Add(new Microsoft.Web.Mvc.JsonValueProviderFactory());
 
         }
 

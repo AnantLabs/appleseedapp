@@ -24,6 +24,8 @@ namespace Appleseed.Framework.Web
         private double _cacheMinutes = 5;
         private bool _pageidNoSplitter = false;
         private string _friendlyPageName = "default.aspx";
+        private StringDictionary queryList = new StringDictionary();
+        
 
         /// <summary> 
         /// Takes a Tab ID and builds the url for get the desidered page (non default)
@@ -37,13 +39,14 @@ namespace Appleseed.Framework.Web
         /// <param name="currentAlias">Current Alias</param> 
         /// <param name="urlKeywords">Add some keywords to uniquely identify this tab. Usual source is UrlKeyword from TabSettings.</param> 
         public override string BuildUrl(string targetPage, int pageID, int modID, CultureInfo culture,
-                                        string customAttributes, string currentAlias, string urlKeywords)
+                                        string customAttributes, string currentAlias, string urlKeywords, ref string QueryRight)
         {
             bool _isPlaceHolder = false;
             string _tabLink = string.Empty;
             string _urlKeywords = string.Empty;
             string _pageName = string.Empty;
             string _pageTitle = string.Empty;
+            
 
             // Get Url Elements this helper method (Will either retrieve from cache or database)
             UrlBuilderHelper.GetUrlElements(pageID, _cacheMinutes, ref _isPlaceHolder, ref _tabLink, ref _urlKeywords,
@@ -172,13 +175,31 @@ namespace Appleseed.Framework.Web
                     sb.Append("/");
                 }
 
+                string queryLeft = "";
+                string queryRigth = "";
+
                 // Add custom attributes
                 if (customAttributes != null && customAttributes != string.Empty)
                 {
-                    customAttributes = customAttributes.ToString().Replace("&", "/");
-                    customAttributes = customAttributes.ToString().Replace("=", _defaultSplitter);
-                    sb.Append(customAttributes);
-                    sb.Append("/");
+
+                    var parts = customAttributes.Split('&');
+
+                    for (int i = 0; i < parts.Length; i++) {
+                        var key = parts[i].Split('=')[0];
+                        if (queryList.ContainsKey(key))
+                            queryRigth += parts[i] + "&";
+                        else
+                            queryLeft += parts[i] + "&";
+                    }
+
+                    if (!string.IsNullOrEmpty(queryLeft)) {
+                        // If its null, all the attributes should be on the rigth, else, on the left
+                        queryLeft = queryLeft.Remove(queryLeft.Length - 1);
+                        queryLeft = queryLeft.ToString().Replace("&", "/");
+                        queryLeft = queryLeft.ToString().Replace("=", _defaultSplitter);
+                        sb.Append(queryLeft);
+                        sb.Append("/");
+                    }
                 }
 
                 
@@ -219,7 +240,17 @@ namespace Appleseed.Framework.Web
                     } else
                         sb.Append(_friendlyPageName);
 
+                // Add the query at the end
+                if (!string.IsNullOrEmpty(queryRigth)) {
+                    queryRigth = queryRigth.Remove(queryRigth.Length - 1);
+                    sb.Append("?" + queryRigth);
+                
+                }
+                
                 //Return page
+
+                QueryRight = queryRigth;
+
                 return sb.ToString().Replace("//", "/");
             }
         }
@@ -305,6 +336,14 @@ namespace Appleseed.Framework.Web
                 if ( ConfigurationManager.AppSettings[ "FriendlyPageName" ] != null )
                     _friendlyPageName = ConfigurationManager.AppSettings[ "FriendlyPageName" ];
             }
+            if (configValue["QueryList"] != null) {
+                string list = configValue["QueryList"].ToString();
+                var parts = list.Split(';');
+                for (int i = 0; i < parts.Length; i++) {
+                    queryList.Add(parts[i], parts[i]);
+                }
+            }
+
         }
 
         /// <summary> 
