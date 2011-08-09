@@ -238,7 +238,7 @@ namespace Appleseed.PortalTemplate
                 }
 
                 // Create the xmlFile
-                string filePath = path + "\\" + portal.PortalAlias +"-"+ DateTime.Now.ToString("dd-MM-yyyy") + ".XML";
+                string filePath = path + "\\" + portal.PortalAlias + "-" + DateTime.Now.ToString("dd-MM-yyyy") + ".XML";
                 //var fs = new FileStream(filePath
                 //    , FileMode.Create);
                 //var xs = new XmlSerializer(typeof(PortalsDTO));

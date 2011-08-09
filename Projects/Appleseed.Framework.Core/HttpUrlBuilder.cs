@@ -231,6 +231,33 @@ namespace Appleseed.Framework
         /// <param name="pageId">
         /// ID of the page
         /// </param>
+        /// <param name="customAttributes">
+        /// Any custom attribute that can be needed
+        /// </param>
+        /// <param name="currentAlias">
+        /// Current Alias
+        /// </param>
+        /// <param name="queryRigth">
+        /// Is the attributes that should on the right
+        /// </param>
+        /// <returns>
+        /// The build url.
+        /// </returns>
+        public static string BuildUrl(string targetPage, int pageId, string customAttributes, ref string queryRigth)
+        {
+            return Provider.BuildUrl(targetPage, pageId, 0, null, customAttributes, string.Empty, string.Empty, ref queryRigth);
+        }
+
+        /// <summary>
+        /// Takes a Tab ID and builds the url for get the desidered page (non default)
+        ///     containing the application path, portal alias, tab ID, and language.
+        /// </summary>
+        /// <param name="targetPage">
+        /// Linked page
+        /// </param>
+        /// <param name="pageId">
+        /// ID of the page
+        /// </param>
         /// <param name="culture">
         /// Client culture
         /// </param>
@@ -360,9 +387,9 @@ namespace Appleseed.Framework
             }
             
             */
-            
+            string queryRigth = "";
             return Provider.BuildUrl(
-                targetPage, pageId, modId, culture, completeCustomAttributes, currentAlias, urlKeywords);
+                targetPage, pageId, modId, culture, completeCustomAttributes, currentAlias, urlKeywords, ref queryRigth);
         }
 
         /// <summary>
@@ -455,7 +482,23 @@ namespace Appleseed.Framework
             return Path.WebPathCombine(values);
         }
 
-        public static bool ValidateProperUrl(Uri url, int pageId)
+
+        /// <summary>
+        /// Checks if the url is correctly written.
+        /// </summary>
+        /// <param name="url">
+        ///  Is the url that needed to be chequed
+        /// </param>
+        /// <param name="pageId">
+        /// It's the pageId From that page
+        /// </param>
+        /// <param name="CorrectUrl">
+        /// It's the url that should be redirected if the first url is wrong
+        /// </param>
+        /// <returns>
+        /// The web path combine.
+        /// </returns>
+        public static bool ValidateProperUrl(Uri url, int pageId, ref string CorrectUrl)
         {
             string query = url.Query;
             query = Regex.Replace(query, @"\+", "%20");
@@ -463,23 +506,29 @@ namespace Appleseed.Framework
             if (index > 0) {
                 // Removing the first element that its the pageId, to only add the other querys
                 var customAttributes = query.Substring(index + 1, query.Length - index - 1);
-                return url.AbsolutePath.Equals(BuildUrl("~/" + DefaultPage, pageId, customAttributes));
+                string queryRigth = "";
+                CorrectUrl = BuildUrl("~/" + DefaultPage, pageId, customAttributes,ref queryRigth);
+                if (string.IsNullOrEmpty(queryRigth))
+                    return url.AbsolutePath.Equals(CorrectUrl);
+                else
+                    return (url.AbsolutePath + "?" + queryRigth).Equals(CorrectUrl);
+            } else {
+                CorrectUrl = BuildUrl(pageId);
+                return url.AbsolutePath.Equals(CorrectUrl);
             }
-            else
-                return url.AbsolutePath.Equals(BuildUrl(pageId));
         }
 
-        public static string getProperUrl(Uri url, int pageId) {
-            string query = url.Query;
-            query = Regex.Replace(query, @"\+", "%20");
-            int index = query.IndexOf('&');
-            if (index > 0) {
+        //public static string getProperUrl(Uri url, int pageId) {
+        //    string query = url.Query;
+        //    query = Regex.Replace(query, @"\+", "%20");
+        //    int index = query.IndexOf('&');
+        //    if (index > 0) {
                 
-                var customAttributes = query.Substring(index + 1, query.Length - index - 1);
-                return BuildUrl("~/" + DefaultPage, pageId, customAttributes);
-            } else
-                return BuildUrl(pageId);
-        }
+        //        var customAttributes = query.Substring(index + 1, query.Length - index - 1);
+        //        return BuildUrl("~/" + DefaultPage, pageId, customAttributes);
+        //    } else
+        //        return BuildUrl(pageId);
+        //}
 
 
         #endregion
