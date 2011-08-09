@@ -112,7 +112,7 @@ namespace Appleseed.Framework.Web
                     }
 
                     // Add Language to URL
-                    if (_langInUrl) {
+                    if (_langInUrl && culture != null) {
                         sb.Append("&lang="); // changed for compatibility with handler
                         sb.Append(culture.Name); // manu fix: culture.Name
                     }
@@ -162,7 +162,7 @@ namespace Appleseed.Framework.Web
                 }
 
                 // Add Language to URL
-                if (_langInUrl)
+                if (_langInUrl && culture != null)
                 {
                     sb.Append("lang");
                     sb.Append(_defaultSplitter + culture.Name);
@@ -194,7 +194,7 @@ namespace Appleseed.Framework.Web
                     }
 
                     if (!string.IsNullOrEmpty(queryLeft)) {
-                        // If its null, all the attributes should be on the rigth, else, on the left
+                        // If its null, all the attributes are at the end, else, should add the ones from the queryLeft
                         queryLeft = queryLeft.Remove(queryLeft.Length - 1);
                         queryLeft = queryLeft.ToString().Replace("&", "/");
                         queryLeft = queryLeft.ToString().Replace("=", _defaultSplitter);
@@ -219,6 +219,7 @@ namespace Appleseed.Framework.Web
                             int parentId = 0;
 
                             bool found = false;
+                            //Get the parent pageId of the actual pageId
                             for (int i = 0; i < settings.DesktopPages.Count && !found; i++) {
                                 if (settings.DesktopPages[i].PageID == pageID) {
                                     parentId = settings.DesktopPages[i].ParentPageID;
@@ -227,8 +228,10 @@ namespace Appleseed.Framework.Web
                             }
                             if (found) {
                                 bool exit = false;
+                                // while the parentId it's diferent of 0 or the parentId isn't in settings
                                 while (parentId != 0 && !exit) {
                                     found = false;
+                                    // find the parent in the setting
                                     for (int i = 0; i < settings.DesktopPages.Count && !found; i++) {
                                         if (settings.DesktopPages[i].PageID == parentId) {
                                             PageName = UrlBuilderHelper.CleanNoAlphanumerics(settings.DesktopPages[i].PageName) + "/" + PageName;
@@ -236,6 +239,7 @@ namespace Appleseed.Framework.Web
                                             found = true;
                                         }
                                     }
+                                    // If the parent isn't in settings the loop should stop
                                     if (!found)
                                         exit = true;
                                 }
@@ -251,11 +255,11 @@ namespace Appleseed.Framework.Web
                     sb.Append("?" + queryRigth);
                 
                 }
-                
-                //Return page
-
+               
+                // Sets the querys that should be at the end
                 QueryRight = queryRigth;
 
+                //Return page
                 return sb.ToString().Replace("//", "/");
             }
         }
@@ -341,8 +345,9 @@ namespace Appleseed.Framework.Web
                 if ( ConfigurationManager.AppSettings[ "FriendlyPageName" ] != null )
                     _friendlyPageName = ConfigurationManager.AppSettings[ "FriendlyPageName" ];
             }
-            if (configValue["QueryList"] != null) {
-                string list = configValue["QueryList"].ToString();
+            if (configValue["Querylist"] != null) {
+                queryList = new StringDictionary();
+                string list = configValue["Querylist"].ToString();
                 var parts = list.Split(';');
                 for (int i = 0; i < parts.Length; i++) {
                     queryList.Add(parts[i], parts[i]);

@@ -506,6 +506,7 @@ namespace Appleseed.Framework
             if (index > 0) {
                 // Removing the first element that its the pageId, to only add the other querys
                 var customAttributes = query.Substring(index + 1, query.Length - index - 1);
+                // QueryRigth are the query elements that should be at the end of the url (The ones from the list)
                 string queryRigth = "";
                 CorrectUrl = BuildUrl("~/" + DefaultPage, pageId, customAttributes,ref queryRigth);
                 if (string.IsNullOrEmpty(queryRigth))
