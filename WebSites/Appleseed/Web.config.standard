@@ -557,7 +557,7 @@
 		<urlBuilder defaultProvider="SqlUrlBuilder">
 			<providers>
 				<clear />
-				<add name="SqlUrlBuilder" type="Appleseed.Framework.Web.SqlUrlBuilderProvider, Appleseed.Framework.Core" handlerflag="site" handlersplitter="__" pageidnosplitter="true" friendlypagename="default.aspx" aliasinurl="false" langinurl="false" cacheminutes="5" ignoretargetpage="PageLayout.aspx" />
+				<add name="SqlUrlBuilder" type="Appleseed.Framework.Web.SqlUrlBuilderProvider, Appleseed.Framework.Core" handlerflag="site" handlersplitter="__" pageidnosplitter="true" friendlypagename="default.aspx" aliasinurl="false" langinurl="false" cacheminutes="5" ignoretargetpage="PageLayout.aspx" ShowHieranchy="true"/>
 			</providers>
 		</urlBuilder>
 		<geographic defaultProvider="GeographicProvider">
