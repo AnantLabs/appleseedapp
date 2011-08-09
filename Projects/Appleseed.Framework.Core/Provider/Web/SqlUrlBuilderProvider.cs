@@ -25,6 +25,7 @@ namespace Appleseed.Framework.Web
         private bool _pageidNoSplitter = false;
         private string _friendlyPageName = "default.aspx";
         private StringDictionary queryList = new StringDictionary();
+        private bool Hieranchy = false;
         
 
         /// <summary> 
@@ -211,29 +212,33 @@ namespace Appleseed.Framework.Web
                     sb.Append(_pageName);
                 else
                     if (!string.IsNullOrEmpty(_pageTitle)) {
-                        var settings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
-                        int parentId = 0;
                         string PageName = _pageTitle;
-                        bool found = false;
-                        for (int i = 0; i < settings.DesktopPages.Count && !found; i++) {
-                            if (settings.DesktopPages[i].PageID == pageID) {
-                                parentId = settings.DesktopPages[i].ParentPageID;
-                                found = true;
-                            }
-                        }
-                        if (found) {
-                            bool exit = false;
-                            while (parentId != 0 && !exit) {
-                                found = false;
-                                for (int i = 0; i < settings.DesktopPages.Count && !found; i++) {
-                                    if (settings.DesktopPages[i].PageID == parentId) {
-                                        PageName = UrlBuilderHelper.CleanNoAlphanumerics(settings.DesktopPages[i].PageName) + "/" + PageName;
-                                        parentId = settings.DesktopPages[i].ParentPageID;
-                                        found = true;
-                                    }
+                        // Write page Hieranchy
+                        if (Hieranchy) {
+                            var settings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+                            int parentId = 0;
+
+                            bool found = false;
+                            for (int i = 0; i < settings.DesktopPages.Count && !found; i++) {
+                                if (settings.DesktopPages[i].PageID == pageID) {
+                                    parentId = settings.DesktopPages[i].ParentPageID;
+                                    found = true;
                                 }
-                                if (!found)
-                                    exit = true;
+                            }
+                            if (found) {
+                                bool exit = false;
+                                while (parentId != 0 && !exit) {
+                                    found = false;
+                                    for (int i = 0; i < settings.DesktopPages.Count && !found; i++) {
+                                        if (settings.DesktopPages[i].PageID == parentId) {
+                                            PageName = UrlBuilderHelper.CleanNoAlphanumerics(settings.DesktopPages[i].PageName) + "/" + PageName;
+                                            parentId = settings.DesktopPages[i].ParentPageID;
+                                            found = true;
+                                        }
+                                    }
+                                    if (!found)
+                                        exit = true;
+                                }
                             }
                         }
                         sb.Append(PageName);
@@ -343,6 +348,16 @@ namespace Appleseed.Framework.Web
                     queryList.Add(parts[i], parts[i]);
                 }
             }
+            if (configValue["ShowHieranchy"] != null) {
+                string ShowHieranchy = configValue["ShowHieranchy"].ToString();
+                try {
+                    Hieranchy = bool.Parse(ShowHieranchy);
+
+                } catch (Exception) {
+                    Hieranchy = false;
+                }
+            }
+
 
         }
 
