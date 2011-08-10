@@ -519,19 +519,6 @@ namespace Appleseed.Framework
             }
         }
 
-        //public static string getProperUrl(Uri url, int pageId) {
-        //    string query = url.Query;
-        //    query = Regex.Replace(query, @"\+", "%20");
-        //    int index = query.IndexOf('&');
-        //    if (index > 0) {
-                
-        //        var customAttributes = query.Substring(index + 1, query.Length - index - 1);
-        //        return BuildUrl("~/" + DefaultPage, pageId, customAttributes);
-        //    } else
-        //        return BuildUrl(pageId);
-        //}
-
-
         #endregion
     }
 }
