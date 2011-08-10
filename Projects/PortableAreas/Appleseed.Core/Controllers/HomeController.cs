@@ -37,7 +37,8 @@ namespace Appleseed.Core.Controllers
                 LanguageSwitcher lswitcher = new LanguageSwitcher();
                 dato[1] = lswitcher.GetFlagImgLCI(l);
                 String path = Request.ApplicationPath;
-
+                if (!path.EndsWith("/"))
+                    path += "/";
                 dato[1] = dato[1].Replace("images", path+"aspnet_client");
                 dato[2] = lswitcher.getNameLCI(l);
                 datos.Add(dato);
