@@ -10,6 +10,7 @@ using Appleseed.Framework.Core;
 using Appleseed.Framework.Web.UI.WebControls;
 using Appleseed.Framework.Settings;
 using System.Resources;
+using Appleseed.Framework;
 
 
 namespace Appleseed.Core.Controllers
@@ -30,16 +31,17 @@ namespace Appleseed.Core.Controllers
 
             List<string[]> datos = new List<string[]>();
             
-            foreach (LanguageCultureItem l in lcc)
+            foreach (Appleseed.Framework.Web.UI.WebControls.LanguageCultureItem l in lcc)
             {
                 string[] dato = new string[3];
-                dato[0] = l.ToString();
+                dato[0] = HttpUrlBuilder.BuildUrl("~/site/1/Home?lang="+l.ToString());
+                
                 LanguageSwitcher lswitcher = new LanguageSwitcher();
                 dato[1] = lswitcher.GetFlagImgLCI(l);
-                String path = Request.ApplicationPath;
-                if (!path.EndsWith("/"))
-                    path += "/";
-                dato[1] = dato[1].Replace("images", path+"aspnet_client");
+                dato[1] = dato[1].Replace("images", "aspnet_client");
+
+                dato[1] = HttpUrlBuilder.BuildUrl(dato[1]);
+                
                 dato[2] = lswitcher.getNameLCI(l);
                 datos.Add(dato);
             }
