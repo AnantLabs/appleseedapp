@@ -10,7 +10,8 @@
     <%List<String[]> datos = (List<String[]>) ViewData["datos"]; %>
     <div id="divLeng13_1" style="position:absolute;top:20px;width:150px">
         <table id="tableLanguages">
-            <%for (int i = 0; i<13;i++)
+            <% int length = datos.Count / 2;
+             for (int i = 0; i<length;i++)
             {
                 String[] dato = datos.First<String[]>();
                 datos.Remove(dato);
@@ -26,7 +27,9 @@
     </div>
     <div id="divLeng13_2" style="position:absolute;top:20px;left:150px;width:150px">
         <table id="table1">
-            <%for (int i = 0; i<13;i++)
+            <%
+            length = datos.Count - length +1;    
+            for (int i = 0; i<length;i++)
             {
                 String[] dato = datos.First<String[]>();
                 datos.Remove(dato);
