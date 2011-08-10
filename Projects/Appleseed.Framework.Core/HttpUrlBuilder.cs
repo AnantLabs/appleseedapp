@@ -496,7 +496,7 @@ namespace Appleseed.Framework
         /// It's the url that should be redirected if the first url is wrong
         /// </param>
         /// <returns>
-        /// The web path combine.
+        /// true if the url is validate and no need to redirect.
         /// </returns>
         public static bool ValidateProperUrl(Uri url, int pageId, ref string CorrectUrl)
         {

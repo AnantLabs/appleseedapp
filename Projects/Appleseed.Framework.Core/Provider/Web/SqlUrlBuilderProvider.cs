@@ -86,7 +86,7 @@ namespace Appleseed.Framework.Web
             // Separate path
             // If page contains path, or it is not an aspx 
             // or handlerFlag is not set: do not use handler
-            if (!targetPage.Equals(HttpUrlBuilder.DefaultPage))
+            if (!targetPage.Equals(HttpUrlBuilder.DefaultPage) && !targetPage.Equals("DesktopDefault.aspx"))
             {
                 sb.Append(targetPage);
                 // if !!targetPage.EndsWith(".aspx") it's an image. Return
@@ -96,7 +96,7 @@ namespace Appleseed.Framework.Web
                 else {
                     sb.Append("?");
                     // Add pageID to URL
-                    sb.Append("pageID=");
+                    sb.Append("pageId=");
                     sb.Append(pageID.ToString());
 
                     // Add Alias to URL
