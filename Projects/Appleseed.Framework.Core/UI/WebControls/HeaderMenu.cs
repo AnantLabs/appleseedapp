@@ -555,8 +555,9 @@ namespace Appleseed.Framework.Web.UI.WebControls
                     }
                 }
 
-
-                if (ShowLanguages) 
+                LanguageSwitcher ls = new LanguageSwitcher();
+                Appleseed.Framework.Web.UI.WebControls.LanguageCultureCollection lcc = Appleseed.Framework.Localization.LanguageSwitcher.GetLanguageCultureList();
+                if ((ShowLanguages)  && (lcc.Count > 1))
                 {
                     var mb = new StringBuilder();
 
