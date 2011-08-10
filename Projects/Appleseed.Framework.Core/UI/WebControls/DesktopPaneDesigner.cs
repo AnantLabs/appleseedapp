@@ -190,6 +190,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
             {
                 designTimeHtml.Append(this.GetTextFromTemplate(this.desktopPanes.LeftPaneTemplate));
             }
+            
 
             designTimeHtml.Append("</TD>");
 
@@ -222,7 +223,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
             {
                 designTimeHtml.Append(this.GetTextFromTemplate(this.desktopPanes.RightPaneTemplate));
             }
-
+            
             designTimeHtml.Append("</TD>");
 
             designTimeHtml.Append("<TD>");
