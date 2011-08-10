@@ -302,7 +302,7 @@ namespace Appleseed
                         var container = placeHolder.FindControl(v.ID);
                         container.Controls.Clear();
                         var span = new HtmlGenericControl("div");
-                        span.Attributes.Add("id", v.ID);
+                        span.Attributes.Add("id", v.ID.ToLowerInvariant());
                         span.Attributes.Add("class", "draggable-container");
                         span.Style["display"] = "none";
                         container.Controls.Add(span);

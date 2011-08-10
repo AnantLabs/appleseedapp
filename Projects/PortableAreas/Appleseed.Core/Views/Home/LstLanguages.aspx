@@ -18,7 +18,7 @@
                 <tr>
                     <td class="rb_LangSw_tbl"> <img alt="<%=dato[2] %>" src="<%=dato[1] %>"/> </td>
                     <td class="rb_LangSw_tbl"> 
-                        <a href=" <%="/site/1/Home?lang="+dato[0] %>" > <%=dato[2] %></a>
+                        <a href=" <%=dato[0] %>" > <%=dato[2] %></a>
                     </td>
                 </tr>
             <%} %>    
@@ -34,7 +34,7 @@
             <tr>
                 <td class="rb_LangSw_tbl"> <img alt="<%=dato[2] %>" src="<%=dato[1] %>"/> </td>
                 <td class="rb_LangSw_tbl">
-                    <a href=" <%="/site/1/Home?lang="+dato[0] %>" > <%=dato[2] %></a>
+                    <a href=" <%=dato[0] %>" > <%=dato[2] %></a>
                        
                 </td>
             </tr>

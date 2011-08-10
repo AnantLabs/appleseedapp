@@ -303,6 +303,8 @@ td.LeftTD{
     max-width: 940px;
 	margin:0 auto;}
 
+
+
         /*****************************************/
         /**********  Header Classes   ************/
         /*****************************************/	
@@ -310,7 +312,7 @@ td.LeftTD{
 
 .userMenu{
 	position:relative;
-	width: 640px;
+	width: 680px;
 	height:68px;
 	z-index:400;
 	float:right;
@@ -319,7 +321,7 @@ td.LeftTD{
     
 .logo_div{
 	position: relative; 
-	width: 300px; 
+	width: 250px; 
 	height: 115px;
 	z-index:350;
 	overflow:hidden;
