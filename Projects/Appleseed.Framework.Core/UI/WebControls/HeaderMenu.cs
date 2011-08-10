@@ -48,9 +48,9 @@ namespace Appleseed.Framework.Web.UI.WebControls
         private bool _showWelcome = true;
         private bool _showLogOff = true;
         private bool _dataBindOnInit = true;
-        private bool _showLanguage = true;
-        private bool _showLangString = true;
-        private bool _showFlags = true;
+        private bool _showLanguage = false;
+        private bool _showLangString = false;
+        private bool _showFlags = false;
 
         // 26 October 2003 John Mandia - Finish
 
@@ -134,7 +134,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
         /// </summary>
         [Category("Data"),
             PersistenceMode(PersistenceMode.Attribute),
-            DefaultValue(true)
+            DefaultValue(false)
             ]
         public bool ShowLanguages
         {
@@ -147,7 +147,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
         /// </summary>
         [Category("Data"),
             PersistenceMode(PersistenceMode.Attribute),
-            DefaultValue(true)
+            DefaultValue(false)
             ]
         public bool ShowFlags
         {
@@ -160,7 +160,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
         /// </summary>
         [Category("Data"),
             PersistenceMode(PersistenceMode.Attribute),
-            DefaultValue(true)
+            DefaultValue(false)
             ]
         public bool ShowLangString
         {
@@ -734,9 +734,8 @@ namespace Appleseed.Framework.Web.UI.WebControls
 
         private string getStringPopUpLanguages()
         {
-
            string txt = General.GetString("LANGUAGE", "Language", null);
-           string url = "\"http://appleseed.local/appleseed.Core/home/lstLanguages" + "\"";
+           string url = "\"" + Path.ApplicationRoot + "/appleseed.Core/home/lstLanguages" + "\"";
            string post = "\"Post\"";
            return string.Concat(@"
                 $(document).ready(function () {
