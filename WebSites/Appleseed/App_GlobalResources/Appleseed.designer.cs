@@ -9801,7 +9801,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Edit base settings.
+        ///   Looks up a localized string similar to Security &amp; Workflow.
         /// </summary>
         internal static string MODULESETTINGS_BASE_SETTINGS {
             get {

@@ -1909,7 +1909,7 @@
     <value>Module settings</value>
   </data>
   <data name="MODULESETTINGS_BASE_SETTINGS" xml:space="preserve">
-    <value>Edit base settings</value>
+    <value>Security &amp; Workflow</value>
   </data>
   <data name="MODULESETTINGS_BUTTON_DISPLAY" xml:space="preserve">
     <value>Display Buttons as:</value>
