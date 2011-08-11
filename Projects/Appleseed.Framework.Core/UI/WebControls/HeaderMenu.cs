@@ -647,7 +647,11 @@ namespace Appleseed.Framework.Web.UI.WebControls
                             iframewidth = "435px";
                             dialogwidth = "470";
                         }
+                } else if (PortalSettings.CustomSettings["SITESETTINGS_LOGIN_TYPE"].ToString().EndsWith("cool.ascx")) {
+                    iframewidth = "290px";
+                    dialogwidth = "310";
                 }
+
                 string empty = HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/SignIn/empty.htm");
                 string div = this.ClientID + "_logon_dialog";
                 var url = HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/SignIn/SignInPage.aspx?iframe=true");
@@ -686,7 +690,8 @@ namespace Appleseed.Framework.Web.UI.WebControls
                                 modal: true,
                                 width: ",dialogwidth,@",
                                 height: 380,
-                                resizable: false
+                                resizable: false,
+                                title: 'Sign In'
                             });
 
                             $('#", this.ClientID, @"_logon_link').click(function () {
