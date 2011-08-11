@@ -298,7 +298,7 @@ td.LeftTD{
 #rightpane,
 #toppane,
 #bottompane{
-    min-height: 50px;
+    min-height: 150px;
     padding: 10px;
     max-width: 940px;
 	margin:0 auto;}
