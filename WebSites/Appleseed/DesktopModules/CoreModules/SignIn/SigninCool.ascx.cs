@@ -292,7 +292,8 @@ namespace Appleseed.Content.Web.Modules
                 password.Attributes.Add("autocomplete", "off");
             }
             // Update cool text
-            CoolTextPlaceholder.Controls.Add(new LiteralControl(Settings["CoolText"].ToString()));
+            if(Settings.ContainsKey("CoolText"))
+                CoolTextPlaceholder.Controls.Add(new LiteralControl(Settings["CoolText"].ToString()));
         }
     }
 }
