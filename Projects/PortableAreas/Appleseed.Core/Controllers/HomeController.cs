@@ -34,7 +34,12 @@ namespace Appleseed.Core.Controllers
             foreach (Appleseed.Framework.Web.UI.WebControls.LanguageCultureItem l in lcc)
             {
                 string[] dato = new string[3];
-                dato[0] = HttpUrlBuilder.BuildUrl("~/site/1/Home?lang="+l.ToString());
+                string aux = l.ToString();
+                char[] array = new char[1];
+                array[0] = '/';
+                string[] lang = aux.Split(array);
+
+                dato[0] = HttpUrlBuilder.BuildUrl("~/site/1/Home?lang="+lang[0]);
                 
                 LanguageSwitcher lswitcher = new LanguageSwitcher();
                 dato[1] = lswitcher.GetFlagImgLCI(l);
