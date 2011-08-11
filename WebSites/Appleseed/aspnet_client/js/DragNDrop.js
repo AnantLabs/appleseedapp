@@ -7,7 +7,7 @@ var dnd = false;
 function DnD() {
     if (!dnd) {
         $('.draggable-container').show();
-        $('.draggable-container').css("border", "1px solid green");
+        $('.draggable-container').css("border", "3px solid ForestGreen");
         $('.draggable-container').sortable({
             dropOnEmpty: true,
             items: '.ModuleWrap',

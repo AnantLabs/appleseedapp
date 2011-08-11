@@ -38,7 +38,7 @@ namespace Appleseed.Core.Controllers
                 
                 LanguageSwitcher lswitcher = new LanguageSwitcher();
                 dato[1] = lswitcher.GetFlagImgLCI(l);
-                dato[1] = dato[1].Replace("images", "aspnet_client");
+                dato[1] = dato[1].Replace("images", "~/aspnet_client");
 
                 dato[1] = HttpUrlBuilder.BuildUrl(dato[1]);
                 
