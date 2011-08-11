@@ -13,7 +13,8 @@
     -o-transition: 		all 0.3s ease-in-out;
     transition: 		all 0.3s ease-in-out;
     width:100%;
-	z-index: 100;}    
+	z-index: 100;
+	}    
 	
 .Html_Edit:hover{
 	opacity:0.5; 

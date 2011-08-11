@@ -722,7 +722,7 @@ select#Content_bottomPane{
     margin: 0px;
     padding: 0px;
     display: inline-block;
-    float: left;
+    float: left; 
 }
 .SiteLink_Border_Right{
 }
