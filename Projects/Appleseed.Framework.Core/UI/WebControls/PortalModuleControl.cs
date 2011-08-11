@@ -3410,11 +3410,6 @@ namespace Appleseed.Framework.Web.UI.WebControls
                 this.ButtonListAdmin.Add(this.EditButton);
             }
 
-            if (this.DeleteModuleButton != null)
-            {
-                this.ButtonListAdmin.Add(this.DeleteModuleButton);
-            }
-
             if (this.PropertiesButton != null)
             {
                 this.ButtonListAdmin.Add(this.PropertiesButton);
@@ -3423,6 +3418,10 @@ namespace Appleseed.Framework.Web.UI.WebControls
             if (this.SecurityButton != null)
             {
                 this.ButtonListAdmin.Add(this.SecurityButton);
+            }
+
+            if (this.DeleteModuleButton != null) {
+                this.ButtonListAdmin.Add(this.DeleteModuleButton);
             }
 
             if (this.VersionButton != null)
