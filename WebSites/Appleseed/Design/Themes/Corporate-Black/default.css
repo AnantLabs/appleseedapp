@@ -717,12 +717,12 @@ select#Content_bottomPane{
 .SiteLink_Border_Right,
 .SiteLink_Border_Left{
     position: relative;
-    width: 12px;
+    width: 1px;
     height: 24px;
     margin: 0px;
     padding: 0px;
     display: inline-block;
-    float: left;
+    float: left; 
 }
 .SiteLink_Border_Right{
 }
@@ -743,7 +743,7 @@ span.SiteLink {
 	text-align:center;
     vertical-align: bottom;
 	display:inline-block;
-	padding:0px 4px;
+	padding:0px 1px;
 	line-height:25px;
     height: 29px;
 
@@ -771,6 +771,7 @@ table.SiteLink{
     padding: 0px;
     height: 29px;
     float: right;
+	margin-right: 8px
 }
 
 table.SiteLink td{
