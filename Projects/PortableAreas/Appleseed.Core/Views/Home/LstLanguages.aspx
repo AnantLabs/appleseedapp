@@ -28,10 +28,7 @@
     <div id="divLeng13_2" style="position:absolute;top:20px;left:150px;width:150px">
         <table id="table1">
             <%
-                if ((datos.Count % 2) == 0)
-                    length = datos.Count;
-                else
-                    length = datos.Count + 1; 
+            length = datos.Count;
             for (int i = 0; i<length;i++)
             {
                 String[] dato = datos.First<String[]>();
