@@ -1620,7 +1620,8 @@ namespace Appleseed.Framework.Web.UI
 
             // TODO: Add tracking variables
             // Sets the script in the head
-            Header.Controls.Add(new LiteralControl(script.ToString()));
+            if(Header != null)
+                Header.Controls.Add(new LiteralControl(script.ToString()));
             
         }
 
