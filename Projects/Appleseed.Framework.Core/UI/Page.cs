@@ -1389,6 +1389,7 @@ namespace Appleseed.Framework.Web.UI
             }
 
             this.InsertGlAnalyticsScript();
+            this.InsertSnapEngageScript();
 
             if (this.PortalSettings != null &&
                 this.Request.Cookies["Appleseed_" + this.PortalSettings.PortalAlias] != null)
@@ -1636,6 +1637,30 @@ namespace Appleseed.Framework.Web.UI
         {
             this.OnUpdate(e);
         }
+
+
+        private void InsertSnapEngageScript() {
+
+            if (this.PortalSettings == null ||
+                 !this.PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_SNAPENGAGE") ||
+                  this.PortalSettings.CustomSettings["SITESETTINGS_SNAPENGAGE"].ToString().Equals(string.Empty)) {
+                return;
+            }
+
+            var script = new StringBuilder();
+
+            script.Append("<script type=\"text/javascript\">");
+            script.Append("document.write(unescape(\"%3Cscript src='\" + ((document.location.protocol==\"https:\")?\"https://snapabug.appspot.com\":\"http://www.snapengage.com\") + \"/snapabug.js' type='text/javascript'%3E%3C/script%3E\"));</script><script type=\"text/javascript\">");
+            script.AppendFormat("SnapABug.setLocale(\"{0}\");",Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.ToString());
+            script.AppendFormat("SnapABug.addButton(\"{0}\",\"1\",\"55%\");", this.PortalSettings.CustomSettings["SITESETTINGS_SNAPENGAGE"].ToString());
+            script.Append("</script>");
+
+            this.ClientScript.RegisterStartupScript(this.GetType(), "SITESETTINGS_SNAPENGAGE", script.ToString());
+
+        
+        
+        }
+
 
         #endregion
     }
