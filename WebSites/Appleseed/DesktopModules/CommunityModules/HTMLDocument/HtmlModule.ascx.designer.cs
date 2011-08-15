@@ -13,6 +13,24 @@ namespace Appleseed.DesktopModules.CommunityModules.HTMLDocument {
     public partial class HtmlModule {
         
         /// <summary>
+        /// HTMLContainer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl HTMLContainer;
+        
+        /// <summary>
+        /// HTMLEditContainer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl HTMLEditContainer;
+        
+        /// <summary>
         /// HtmlModuleText control.
         /// </summary>
         /// <remarks>
@@ -47,5 +65,14 @@ namespace Appleseed.DesktopModules.CommunityModules.HTMLDocument {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl HtmlMoudleIframe;
+        
+        /// <summary>
+        /// HtmlHolder2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder HtmlHolder2;
     }
 }

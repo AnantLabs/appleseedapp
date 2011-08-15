@@ -373,7 +373,11 @@ namespace Appleseed.DesktopModules.CommunityModules.HTMLDocument
         protected override void OnInit(EventArgs e)
         {
             
-            this.HtmlHolder.EnableViewState = false;
+            if (HasEditPermission())
+                this.HtmlHolder.EnableViewState = false;
+            else
+                this.HtmlHolder2.EnableViewState = false;
+
 
             // Add title
             // ModuleTitle = new DesktopModuleTitle();
@@ -392,7 +396,10 @@ namespace Appleseed.DesktopModules.CommunityModules.HTMLDocument
             this.HtmlLiteral = new LiteralControl(this.Content.ToString());
             this.HtmlLiteral.DataBinding += HtmlLiteralDataBinding;
             this.HtmlLiteral.DataBind();
-            this.HtmlHolder.Controls.Add(this.HtmlLiteral);
+            if (HasEditPermission())
+                this.HtmlHolder.Controls.Add(this.HtmlLiteral);
+            else
+                this.HtmlHolder2.Controls.Add(this.HtmlLiteral);
 
             if (PortalSecurity.HasEditPermissions(this.ModuleID)) {
                 var editor = Settings["Editor"].ToString();
@@ -420,6 +427,10 @@ namespace Appleseed.DesktopModules.CommunityModules.HTMLDocument
                 this.HtmlMoudleIframe.Attributes.Add("width", "98%");
                 this.HtmlMoudleIframe.Attributes.Add("height", "99%");
                 this.HtmlModuleText.Attributes.Add("title", title);
+                if ((Request.Browser.Browser.Contains("IE") || Request.Browser.Browser.Contains("ie")) && Request.Browser.MajorVersion == 7) {
+
+                    this.HTMLEditContainer.Attributes.Add("style", "position: relative;overflow: auto;");
+                }
             }
             
             base.OnInit(e);
@@ -437,7 +448,10 @@ namespace Appleseed.DesktopModules.CommunityModules.HTMLDocument
         private void CompareButtonClick(object sender, EventArgs e)
         {
             var text = new HtmlTextDB();
-            this.HtmlHolder.Controls.Clear();
+            if (HasEditPermission())
+                this.HtmlHolder.Controls.Clear();
+            else
+                this.HtmlHolder2.Controls.Clear();
 
             if (this.IsComparing == 0)
             {
@@ -445,7 +459,11 @@ namespace Appleseed.DesktopModules.CommunityModules.HTMLDocument
                 this.HtmlLiteral = new LiteralControl(this.Content.ToString());
                 this.HtmlLiteral.DataBinding += HtmlLiteralDataBinding;
                 this.HtmlLiteral.DataBind();
-                this.HtmlHolder.Controls.Add(this.HtmlLiteral);
+                if (HasEditPermission())
+                    this.HtmlHolder.Controls.Add(this.HtmlLiteral);
+                else
+                    this.HtmlHolder2.Controls.Add(this.HtmlLiteral);
+                
                 this.IsComparing = 1;
             }
             else
@@ -457,7 +475,11 @@ namespace Appleseed.DesktopModules.CommunityModules.HTMLDocument
                 this.HtmlLiteral = new LiteralControl(this.Content.ToString());
                 this.HtmlLiteral.DataBinding += HtmlLiteralDataBinding;
                 this.HtmlLiteral.DataBind();
-                this.HtmlHolder.Controls.Add(this.HtmlLiteral);
+                if (HasEditPermission())
+                    this.HtmlHolder.Controls.Add(this.HtmlLiteral);
+                else
+                    this.HtmlHolder2.Controls.Add(this.HtmlLiteral);
+                
                 this.IsComparing = 0;
             }
         }
@@ -514,6 +536,10 @@ namespace Appleseed.DesktopModules.CommunityModules.HTMLDocument
 
                 return services.SaveHtmlText(moduleId, _html);
             }
+        }
+
+        public bool HasEditPermission() {
+            return Appleseed.Framework.Security.PortalSecurity.HasEditPermissions(this.ModuleID);
         }
 
         #endregion
