@@ -36,7 +36,7 @@ body {
     line-height: 15px;
 	color: #666;
 	margin:0 auto;
-    background-color: #fff;
+    background-color: #f9f9f9;
 	background-image:url("../../DesktopLayouts/Education/images/bg-header.png");
 	background-repeat:repeat-x;
 	background-position:top left;
@@ -219,7 +219,7 @@ hr{
 	min-height:485px;
 	position:relative;
 	margin: 0 auto;
-	padding:0px 0px 20px 0px;
+	padding:0px 0px 0px 0px;
     border-bottom:1px solid #333;
 }
 
@@ -243,43 +243,45 @@ td.Main_Content_Table{
 
 
 td.RightTD{
-    min-width: 400px!important;
+    min-width: 310px!important;
     width: auto;
     overflow: hidden;
-    position: relative;}
+    position: relative;
+	padding:10px;}
 
 td.CenterTD{
-	min-width:270px!important;
+	min-width:280px!important;
 	width:auto;
 	overflow:hidden;
 	position:relative;
+	padding:10px;
 }	
-	
-
+td.LeftTD_home,
 td.LeftTD{
-    min-width: 270px!important;
-    max-width: 270px!important;
-    width: 270px;
+    width:270px!important;
+	padding:10px;
+}
+td.LeftTD_home{
+	background:#ededed;
 }
 
 .banner_div{
     width: 100%;
-	background-image:url("~/Design/DesktopLayouts/Education/images/trans.png");
+	background-image:url("../../DesktopLayouts/Education/images/trans.png");
 	background-position:top left;
-    height:auto;
+    height:300px;
 
 }
-
+#toppane,
 #leftpane,
 #contentpane,
 #rightpane,
-#toppane,
 #bottompane{
     min-height: 50px;
-    padding: 10px;
-    max-width: 940px;
+    padding:0px;
+    max-width:940px;
 	margin:0 auto;}
-
+	
         /*****************************************/
         /**********  Header Classes   ************/
         /*****************************************/	
@@ -348,6 +350,13 @@ td.LeftTD{
     color: #02ACEE;
 }
 
+.footer_box{
+	float: left;
+    height: auto;
+    margin-left: 18px;
+    width: 170px;
+	}
+
 #footer_div span{
     font-size: 18px;
     color: #ccc;
@@ -375,12 +384,6 @@ td.LeftTD{
 	text-align:center;
 	}
 
-
-   
-
-   
-   
-
         /*****************************************/
         /**********  Module Theme     ************/
         /*****************************************/
@@ -389,10 +392,10 @@ td.LeftTD{
 	margin:0 auto ;
 	width:100%;
 	max-width:940px!important;
-    position: relative;}
+    position: relative;
+	padding:10px 0px 14px 0px; }
 
 .ModuleContent{
-	padding:10px;
 	border:none;
 	max-width:940px;
 	position:relative;}
@@ -414,6 +417,7 @@ span.titulosofertas,
 	text-align:		left;
 	padding-bottom:8px;
 	margin-bottom:15px;
+	text-shadow: 1px 1px #FFFFFF;
 }
 .ModuleContent hr,
 hr{
@@ -557,7 +561,9 @@ select.NormalTextBox{
 select#Content_ContentPane_ctl01_EditTable_SITESETTINGS_LANGLIST{
     height: 125px!important;
 }
-select.SelectList{
+select#Content_ContentPane_ctl03_tabList,
+select#Content_ContentPane_ctl02_tabList,
+select#Content_ContentPane_ctl01_portalList{
 	height:250px!important;
 	max-height:250px!important;
 }
@@ -822,21 +828,26 @@ td.SubHead span
 	/******  NEWS *****/
 	/*****************/
 
-.news{
-	width:370px;}	
+#news{
+	display: block;
+    height: 100px;
+    margin: 5px 0;
+    width: 360px;}	
 	
 .news_text{
-	float:right;
-	left:100px;
-	width:272px;
-	padding-bottom:10px;
-	padding-top:10px;}	
+	float: right;
+    left: 100px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    text-align: justify;
+    width: 260px;}	
 	
 	
 .image_border_mini{
-	border:1px solid #666;
-	padding:3px;
-	margin-top:5px;}	
+	height: 60px;
+    margin: 18px 0 0 12px;
+    padding: 3px;
+    width: 60px;}	
 	
 	/**********************/
 	/*******COMENTS********/
@@ -1000,3 +1011,33 @@ td.SubHead span
 	text-align:center;
 	vertical-align:middle;
 	border:1px solid #006699;}
+
+	
+	
+	/*****************ARTICLES*********************/
+	
+.article_resume{
+	background:url(/Design/DesktopLayouts/education/images/marco.png) no-repeat;
+	display: block;
+    float: left;
+    height: 173px;
+    margin: 10px 15px 15px 20px;
+    width: 120px;
+}
+	
+.article_image{
+	left: 6px;
+	position: relative;
+	top: -170px;
+}
+	
+.datos_de_articulo{
+	position:relative;
+	font-size: 10px;
+	text-align:left;
+	top: 0px;
+	padding:5px;
+	width: 110px;
+	height: 90px;}
+	
+	

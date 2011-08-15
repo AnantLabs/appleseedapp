@@ -2,7 +2,17 @@
 @import url(TabControl.css);
 @import url(Slyder_Styles.css);
 @import url(Menu.css);
-@import url(jquery-ui-1.8.8.custom.css);
+@font-face {
+    font-family: 'QuicksandLight';
+    src: url('Font_Face/Quicksand_Light-webfont.eot');
+    src: url('Font_Face/Quicksand_Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Font_Face/Quicksand_Light-webfont.woff') format('woff'),
+         url('Font_Face/Quicksand_Light-webfont.ttf') format('truetype'),
+         url('Font_Face/Quicksand_Light-webfont.svg#QuicksandLight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
         
         /*******************************************************/
         /************* Reset styles DO NOT REMOVE **************/
@@ -67,7 +77,7 @@ blockquote, q {
 
 H1{
 	font-size:27px;
-	font-family: 'Josefin Sans', serif, Arial;
+	font-family: 'QuicksandLight', serif, Arial;
 	font-weight:normal;
 	line-height:45px;
 	padding:0px; 
@@ -75,7 +85,7 @@ H1{
 }
 
 H2{
-	font-family: 'Josefin Sans', serif, Arial;	
+	font-family: 'QuicksandLight', serif, Arial;	
 	font-size:20px;
 	line-height:30px;
 	font-weight:normal;
@@ -85,7 +95,7 @@ H2{
 }
 
 h3{
-	font-family: 'Josefin Sans', serif, Arial;	
+	font-family: 'QuicksandLight', serif, Arial;	
 	font-size:15px;
 	line-height:25px;
 	font-weight:normal;
@@ -220,7 +230,7 @@ hr{
             /*****************************************/	
 
 .DefaultLayoutDiv  {
-	background: url("../../DesktopLayouts/Clearly/images/tail-header.gif") repeat-x scroll 0 75px transparent;
+	background: url("../../DesktopLayouts/Clearly/images/tail-header.gif") repeat-x scroll 0 85px transparent;
     border: medium none;
     margin: 0 auto;
     min-height: 485px;
@@ -230,7 +240,7 @@ hr{
 }
 
 .brightnes{
-	background:url("../../DesktopLayouts/Clearly/images/splash.png")no-repeat scroll center 125px transparent;
+	background:url("../../DesktopLayouts/Clearly/images/splash.png")no-repeat scroll center 135px transparent;
 	border:none;
 	min-height:485px;
 	margin: 0 auto;
@@ -258,13 +268,13 @@ td.Main_Content_Table{
 
 
 td.RightTD{
-    min-width: 400px!important;
+    min-width: 300px!important;
     width: auto;
     overflow: hidden;
     position: relative;}
 
 td.CenterTD{
-	min-width:270px!important;
+	min-width:300px!important;
 	width:auto;
 	overflow:hidden;
 	position:relative;
@@ -272,9 +282,8 @@ td.CenterTD{
 	
 
 td.LeftTD{
-    min-width: 270px!important;
-    max-width: 270px!important;
-    width: 270px;
+    min-width: 300px!important;
+
 }
 
 .banner_div{
@@ -310,13 +319,15 @@ td.LeftTD{
     overflow: hidden;}
     
 .logo_div{
-	background:url("../../DesktopLayouts/Clearly/images/clearly_logo.png") no-repeat scroll 0 20px transparent;
-	position: relative; 
-	width: 300px; 
-	height:75px;
-	z-index:350;
-	overflow:hidden;
-	float:left;
+    float: left;
+    height: 55px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    position: relative;
+    top: 15px;
+    width: 300px;
+    z-index: 350;
+
 	}
 #Banner_PortalTitle{
 	top:200px;
@@ -356,15 +367,16 @@ td.LeftTD{
 
 .footer_box{
 	float:left;
-	margin:0px 0px 15px 55px;
+	margin:0px 25px 15px 25px;
 	position:relative;
 	display:block;
-	width:178px;
+	width:125px;
 }
 
 #footer_div li{
 	background:url("../../DesktopLayouts/Clearly/images/marker.gif")no-repeat 0 5px;
 	padding-left:13px;
+	margin-left:10px;
 }
 
 #footer_div a.no_deco:link,
@@ -385,11 +397,11 @@ td.LeftTD{
 }
 
 #footer_div span{
-	font-family: 'Josefin Sans', serif, Arial;	
+	font-family: 'QuicksandLight', serif, Arial;	
 	font-size:20px;
 	line-height:30px;
 	font-weight:normal;
-	margin-left:22px;
+	margin-left:0px;
 	padding:0px;
 	color:#666;
 }
@@ -438,11 +450,12 @@ td.LeftTD{
 span.titulosofertas,
 .ModuleTitle{       /* Title of each module */
 	font-size:27px;
-	margin-left:15px;
-	font-family: 'Josefin Sans', serif, Arial;
+	margin-left:0px;
+	font-family:'QuicksandLight';
 	font-weight:normal;
 	line-height:45px;
 	padding-bottom:5px; 
+	text-shadow:1px 0px #fff;
 }
 .ModuleContent hr,
 .line{
@@ -549,7 +562,7 @@ option
 
 input[type="text"]:focus,
 input[type="password"]:focus{
-		border:1px solid #999!important;
+		border:1px solid #999;
         
 }
 input[type="text"]:active,
@@ -586,14 +599,16 @@ select.NormalTextBox{
 select#Content_ContentPane_ctl01_EditTable_SITESETTINGS_LANGLIST{
     height: 125px!important;
 }
-select.SelectList{
+select#Content_ContentPane_ctl03_tabList,
+select#Content_ContentPane_ctl02_tabList,
+select#Content_ContentPane_ctl01_portalList{
 	height:250px!important;
 	max-height:250px!important;
 }
 select.NormalTextBox{
 	margin-right:5px!important;
 }
-select.SelectList{
+select#Content_ContentPane_ctl01_tabList{
     height:150px;
 	margin-bottom:10px;
 }
@@ -766,7 +781,7 @@ div.SiteLink_bg{
 span.SiteLink {
 	font-weight:normal;
 	font-size:11px;
-	color:#08ACEE;
+	color:#000;
 	text-align:center;
     vertical-align: bottom;
 	display:inline-block;
@@ -777,9 +792,11 @@ span.SiteLink {
 }
 
 span.SiteLink_separator{
-	margin-left:2px;
-	margin-right:2px;
-	color:#2D3134}
+    color: #2D3134;
+    margin-left: 2px;
+    margin-right: 2px;
+    position: relative;
+    top: 8px;}
 
 .SiteLink A:link,
 .SiteLink A:visited{
@@ -789,15 +806,18 @@ span.SiteLink_separator{
 	text-decoration:none;
     outline: none;
     font-size: 11px;
+	font-weight:normal;
 }
 
 .SiteLink A:hover{
 	color:#000;
 	text-decoration: underline;
+	font-weight:normal;
 }
 .SiteLink A:active{
 	color:#ccc;
 	text-decoration: underline;
+	font-weight:normal;
 }
 
 table.SiteLink{
@@ -1038,3 +1058,114 @@ td.SubHead span
 	width:207px;
 	margin-left:28px;
 	display:block;}
+
+/*============================*/
+/*=== Custom Slider Styles ===*/
+/*============================*/	
+#slider-wrapper {
+    background: none repeat scroll 0 0 transparent;
+    height: 245px;
+    margin: 0 auto 0;
+    padding-top: 0;
+    width: 940px;
+}
+
+#slider {
+	position:relative;
+    width:940px;
+    height:245px;
+    margin-left:0px;
+	background:url(/Design/DesktopLayouts/clearly/images/slider/img/loading.gif) no-repeat 50% 50%;
+}
+#slider img {
+	position:absolute;
+	top:0px;
+	left:0px;
+	display:none;
+}
+#slider a {
+	border:0;
+	display:block;
+}
+
+.nivo-controlNav {
+	position:absolute;
+	left:260px;
+	bottom:-42px;
+	display:none;
+}
+.nivo-controlNav a {
+	display:block;
+	width:22px;
+	height:22px;
+	background:url(/Design/DesktopLayouts/clearly/images/slider/img/bullets.png) no-repeat;
+	text-indent:-9999px;
+	border:0;
+	margin-right:3px;
+	float:left;
+}
+.nivo-controlNav a.active {
+	background-position:0 -22px;
+}
+
+.nivo-directionNav a {
+	display:block;
+	width:30px;
+	height:30px;
+	background:url(/Design/DesktopLayouts/clearly/images/slider/img/arrows.png) no-repeat;
+	text-indent:-9999px;
+	border:0;
+}
+a.nivo-nextNav {
+	background-position:-30px 0;
+	right:15px;
+}
+a.nivo-prevNav {
+	left:15px;
+}
+
+.nivo-caption {
+    text-shadow:none;
+    font-family: Helvetica, Arial, sans-serif;
+}
+.nivo-caption a { 
+    color:#efe9d1;
+    text-decoration:underline;
+}
+
+
+
+td input#Content_LeftPane_ctl01_email{
+	background:url(/Design/DesktopLayouts/clearly/images/login_spry.png) no-repeat;
+	border:transparent!important;
+    height: 34px;	
+	color: #738086;
+    font-style: italic;
+    height: 34px;
+    overflow: hidden;
+    padding-left: 27px;
+    padding-right: 5px;
+    width: 201px !important;
+
+	}
+td input#Content_LeftPane_ctl01_email:focus,
+td input#Content_LeftPane_ctl01_password:focus,
+td input#Content_LeftPane_ctl01_email:visited,
+td input#Content_LeftPane_ctl01_password:visited{
+	background-position:0px -72px;}
+
+td input#Content_LeftPane_ctl01_password{
+	background:url(/Design/DesktopLayouts/clearly/images/login_spry.png) no-repeat 0px -36px;
+	border:transparent!important;
+    height: 34px;	
+	color: #738086;
+    font-style: italic;
+    height: 34px;
+    overflow: hidden;
+    padding-left: 27px;
+    padding-right: 5px;
+    width: 201px !important;
+
+	}
+
+
