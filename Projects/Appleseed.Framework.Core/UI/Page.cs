@@ -1389,6 +1389,7 @@ namespace Appleseed.Framework.Web.UI
             }
 
             this.InsertGlAnalyticsScript();
+            this.InsertSnapEngageScript();
 
             if (this.PortalSettings != null &&
                 this.Request.Cookies["Appleseed_" + this.PortalSettings.PortalAlias] != null)
@@ -1586,40 +1587,42 @@ namespace Appleseed.Framework.Web.UI
 
 
             var script = new StringBuilder();
-            script.AppendFormat("<script type=\"text/javascript\">");
-            script.AppendFormat("var gaJsHost = ((\"https:\" == document.location.protocol) ? \"https://ssl.\" : \"http://www.\");");
-            script.AppendFormat("document.write(unescape(\"%3Cscript src='\" + gaJsHost + \"google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E\"));");
-            script.AppendFormat("</script>");
-
-            script.AppendFormat("<script type=\"text/javascript\">");
-            script.AppendFormat(
-                "try {{ var pageTracker = _gat._getTracker(\"{0}\");",
-                this.PortalSettings.CustomSettings["SITESETTINGS_GOOGLEANALYTICS"]);
-
-            if (Request.IsAuthenticated && useCustVars)
-            {
+            
+            script.Append("<script type=\"text/javascript\">");
+            script.Append("var _gaq = _gaq || [];");
+            script.AppendFormat("_gaq.push(['_setAccount', '{0}']);", this.PortalSettings.CustomSettings["SITESETTINGS_GOOGLEANALYTICS"].ToString());
+            script.Append("_gaq.push(['_trackPageview']);");
+            script.Append("_gaq.push(['_trackPageLoadTime']);");
+            if (Request.IsAuthenticated && useCustVars) {
                 var email = Membership.GetUser().Email;
                 var index = email.IndexOf('@');
 
                 // Slot 1, visitor-level scope.
-                script.AppendFormat("pageTracker._setCustomVar( 1, \"User Type\", \"Member\", 1);");
-
+                script.Append("_gaq.push(['_setCustomVar', 1, \"User Type\", \"Member\", 1]);");
+                
                 // Slot 2, session-level scope.
-                script.AppendFormat("pageTracker._setCustomVar( 2, \"Authenticated\", \"Yes\", 2);");
-                if (index >= 0 && index < email.Length - 1)
-                {
+                script.Append("_gaq.push(['_setCustomVar', 2, \"Authenticated\", \"Yes\", 2]);");
+                if (index >= 0 && index < email.Length - 1) {
                     // Slot 3, visitor-level scope.
-                    script.AppendFormat("pageTracker._setCustomVar( 3, \"Domain\", \"" + email.Substring(index + 1).ToLowerInvariant() + "\", 1);");
+                    script.Append("_gaq.push(['_setCustomVar', 3, \"Domain\", \"" + email.Substring(index + 1).ToLowerInvariant() + "\", 1]);");
                 }
             }
-            
-            script.AppendFormat("pageTracker._trackPageview();");
+            script.Append("(function() {");
+            script.Append("var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;");
+            script.Append("ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';");
+            script.Append("var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);");
+            script.Append("})();");
+            script.Append("</script>");
 
-            
-            script.AppendFormat("}} catch (err) {{ }}</script>");
+
+
+
 
             // TODO: Add tracking variables
-            this.ClientScript.RegisterStartupScript(this.GetType(), "SITESETTINGS_GOOGLEANALYTICS", script.ToString(), false);
+            // Sets the script in the head
+            if(Header != null)
+                Header.Controls.Add(new LiteralControl(script.ToString()));
+            
         }
 
         /// <summary>
@@ -1635,6 +1638,30 @@ namespace Appleseed.Framework.Web.UI
         {
             this.OnUpdate(e);
         }
+
+
+        private void InsertSnapEngageScript() {
+
+            if (this.PortalSettings == null ||
+                 !this.PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_SNAPENGAGE") ||
+                  this.PortalSettings.CustomSettings["SITESETTINGS_SNAPENGAGE"].ToString().Equals(string.Empty)) {
+                return;
+            }
+
+            var script = new StringBuilder();
+
+            script.Append("<script type=\"text/javascript\">");
+            script.Append("document.write(unescape(\"%3Cscript src='\" + ((document.location.protocol==\"https:\")?\"https://snapabug.appspot.com\":\"http://www.snapengage.com\") + \"/snapabug.js' type='text/javascript'%3E%3C/script%3E\"));</script><script type=\"text/javascript\">");
+            script.AppendFormat("SnapABug.setLocale(\"{0}\");",Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.ToString());
+            script.AppendFormat("SnapABug.addButton(\"{0}\",\"1\",\"55%\");", this.PortalSettings.CustomSettings["SITESETTINGS_SNAPENGAGE"].ToString());
+            script.Append("</script>");
+
+            this.ClientScript.RegisterStartupScript(this.GetType(), "SITESETTINGS_SNAPENGAGE", script.ToString());
+
+        
+        
+        }
+
 
         #endregion
     }
