@@ -57,10 +57,8 @@
 						</tr>
 					</table>
 				</div>
-				<div style="{TitleStyle}">
 					<span class="ModuleTitle">{Title}</span>
 					<hr/>
-				</div>
 				<div class="module_Body">
 					{Body}
 				</div>
