@@ -126,7 +126,6 @@
     <Content Include="DBScripts\20110804\01.UpdateModuleTitle.sql" />
     <Content Include="DBScripts\20110804\02.SelfUpdatingPackages_Table.sql" />
     <Content Include="DBScripts\20110804\03.GetModulesAllPortals.sql" />
-    <Content Include="DBScripts\20110811\01.ChangeInHtmlText_stToRemoveBlueBar.sql" />
     <Content Include="DBScripts\Readme.txt" />
   </ItemGroup>
   <ItemGroup>
