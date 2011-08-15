@@ -1762,6 +1762,16 @@ namespace Appleseed.Framework.Site.Configuration
                     };
                 baseSettings.Add("SITESETTINGS_ALTERNATIVE_URL", alternativeUrl);
 
+                var SnapEngage = new SettingItem<string, TextBox> {
+                    Order = groupOrderBase + 57,
+                    Group = group,
+                    EnglishName = "SnapEngage code",
+                    Description = "Allows you create a chat. Need an acount on SnapEngage.",
+                    Value = string.Empty
+                };
+                baseSettings.Add("SITESETTINGS_SNAPENGAGE", SnapEngage);
+
+
                 var addThisUsername = new SettingItem<string, TextBox>
                     {
                         Order = groupOrderBase + 56,
