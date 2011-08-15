@@ -1,15 +1,16 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true"   Inherits="Appleseed.AppleseedMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="Appleseed.AppleseedMaster" %>
 <%@ Register TagPrefix="head" TagName="Banner" Src="DesktopPortalBanner.ascx" %>
 <%@ Register TagPrefix="foot" TagName="Footer" Src="DesktopFooter.ascx" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-</head>
+
+	</head>
 
 <body>
     <form id="form1" runat="server">
-		<asp:ScriptManager ID="ScriptManager1" runat="server"  ScriptMode="Release">
+		<asp:ScriptManager ID="ScriptManager1" runat="server">
 			<Services>
 				<asp:ServiceReference InlineScript="false" Path="~/DesktopModules/CoreModules/Admin/PortalService.asmx" />
 			</Services>

@@ -3,8 +3,8 @@
   <Name>Travel Agency - main</Name>
   <Type>htm</Type>
   <Css>default.css</Css>
-  <Images>
-     <ThemeImage Name="Spacer" ImageUrl="icon/Spacer.gif" Width="1" Height="1" />
+   <Images>
+      <ThemeImage Name="Spacer" ImageUrl="icon/Spacer.gif" Width="1" Height="1" />
     <ThemeImage Name="Navlink" ImageUrl="icon/NavLink.gif" Width="6" Height="7" />
     <ThemeImage Name="Checked" ImageUrl="icon/Checked.gif" Width="13" Height="13" />
     <ThemeImage Name="Unchecked" ImageUrl="icon/Unchecked.gif" Width="13" Height="13" />
@@ -39,7 +39,7 @@
     <ThemeImage Name="Buttons_View" ImageUrl="icon/find.png" Width="16" Height="16" />
     <ThemeImage Name="Menu_Right" ImageUrl="icon/MenuRight.gif" Width="5" Height="10" />
     <ThemeImage Name="Menu_Left" ImageUrl="icon/MenuLeft.gif" Width="5" Height="10" />
-    <ThemeImage Name="Menu_Down" ImageUrl="icon/MenuDown.gif" Width="10" Height="5" />    
+    <ThemeImage Name="Menu_Down" ImageUrl="icon/MenuDown.gif" Width="10" Height="5" />   
   </Images>
   <Parts>
     <ThemePart Name="ModuleLayout">
