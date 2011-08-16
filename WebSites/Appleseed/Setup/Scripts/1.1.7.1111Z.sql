@@ -483,7 +483,6 @@ VALUES (5, '<style type="text/css">
     font-size:14px;
 }
 #fsn {
-    background-image:url("~/Design/DesktopLayouts/Education/images/trans.png");
     display:block;
     height:25px;
     margin:10px auto -5px;

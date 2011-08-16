@@ -1,8 +1,7 @@
 <%@ Control Language="c#" %>
 
 
-<!--	<div class="center_footer_content">
-	</div>
+<!--	<div class="center_footer_content"></div>
 	
     <br class="clear" /> 
 -->
