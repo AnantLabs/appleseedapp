@@ -8928,6 +8928,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The date is not valid.
+        /// </summary>
+        internal static string INVALID_DATE {
+            get {
+                return ResourceManager.GetString("INVALID_DATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Title (it).
         /// </summary>
         internal static string IT {

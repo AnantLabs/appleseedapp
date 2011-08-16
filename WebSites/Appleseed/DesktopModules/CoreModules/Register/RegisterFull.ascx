@@ -114,17 +114,32 @@
                                             <asp:Label ID="lblBirthDate" runat="server" CssClass="textogrisinformacion" Text="<%$ Resources:Appleseed, DATE_OF_BIRTH%>" 
                                                         textkey="DATE_OF_BIRTH"></asp:Label>
                                         </td>
-                                        <td>
-                                            <asp:PlaceHolder ID="plhBirthDate" runat="server" />
-                                            <%--<asp:DropDownList ID="ddlDay" runat="server">
-                                            </asp:DropDownList>
-                                            <asp:DropDownList ID="ddlMonth" runat="server">
-                                            </asp:DropDownList>
-                                            <asp:DropDownList ID="ddlYear" runat="server">
-                                            </asp:DropDownList>--%>
-                                        </td>
+										<td>
+												<div id="content">
+													<asp:TextBox id="startdate" class="field" runat="server"></asp:TextBox>
+												</div>
+												<asp:RangeValidator ID="cbirthday" runat="server" ControlToValidate="startdate" Type="Date"
+                                                  Display="Dynamic" ErrorMessage="INVALID_DATE" Text="<%$ Resources:Appleseed, INVALID_DATE%>" textkey="INVALID_DATE" 
+                                                  Font-Size="11px"
+                                                  ValidationGroup="USER" /> 
+											
+										</td>
                                     </tr>
-                                    <tr>
+   <script type="text/javascript">
+      <%string data = (String) ViewState["cultureInfo"];%>
+        $(document).ready(function () {
+			$.datepicker.setDefaults($.datepicker.regional['<%= data %>']); 
+			$("#<%= startdate.ClientID %>").datepicker (
+		    {
+		        yearRange: '1900:2020',
+		        maxDate: 'today',
+		        changeMonth: true,
+		        changeYear: true,
+		    });
+        });    
+</script>
+
+                                 <tr>
                                         <td>
                                             <asp:Label ID="lblCompany" runat="server" CssClass="textogrisinformacion" Text="<%$ Resources:Appleseed, COMPANY%>" textkey="COMPANY"></asp:Label>
                                         </td>
@@ -313,6 +328,8 @@
     <script type="text/javascript">
         
         $(document).ready(function () {
+
+           
             var $pwdDialog = $('#changePwdDialog').dialog({
                 autoOpen: false,
                 modal: true,
@@ -336,13 +353,17 @@
                { %>
                     $pwdDialog.dialog('open');
             <% } %>
+			
         });
 
         function hide(){
             $(".div_Password_Change").attr('style',"display: none;");
             return false;
         }
+ 
     </script>
+	
+   
 
-    
 </asp:Panel>
+

@@ -13,7 +13,7 @@
 div.Control_Panel_Table{
 	position:absolute;
 	top:0px;
-	right:0px;
+	right:0;
 	z-index:150;
     margin: 0px;
     padding: 0px;
