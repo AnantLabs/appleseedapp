@@ -13,6 +13,7 @@ using System.IO;
 using Appleseed.Core.Models;
 using System.Xml;
 using System.Text;
+using System.Dynamic;
 
 namespace SelfUpdater.Controllers
 {
@@ -29,20 +30,22 @@ namespace SelfUpdater.Controllers
 
             var scheduledUpdates = context.SelfUpdatingPackages.ToList();
 
-
-            WebProjectManager projectManager = this.GetProjectManager();
-            var installedPackages = this.GetInstalledPackages(projectManager);
+            WebProjectManager[] projectManagers = this.GetProjectManagers();
             List<InstallationState> state2 = new List<InstallationState>();
-            foreach (var installedPackage in installedPackages) {
-                IPackage update = projectManager.GetUpdate(installedPackage);
-                InstallationState state = new InstallationState();
-                state.Installed = installedPackage;
-                state.Update = update;
-                if (scheduledUpdates.Any(d => d.PackageId == installedPackage.Id)) {
-                    state.Scheduled = true;
-                }
+            foreach (var projectManager in projectManagers) {
+                var installedPackages = this.GetInstalledPackages(projectManager);
 
-                state2.Add(state);
+                foreach (var installedPackage in installedPackages) {
+                    IPackage update = projectManager.GetUpdate(installedPackage);
+                    InstallationState state = new InstallationState();
+                    state.Installed = installedPackage;
+                    state.Update = update;
+                    if (scheduledUpdates.Any(d => d.PackageId == installedPackage.Id)) {
+                        state.Scheduled = true;
+                    }
+
+                    state2.Add(state);
+                }
             }
 
             if (base.Request.IsAjaxRequest()) {
@@ -64,22 +67,33 @@ namespace SelfUpdater.Controllers
             return packages;
         }
 
-        private WebProjectManager GetProjectManager()
+        private WebProjectManager[] GetProjectManagers()
         {
-            string remoteSource = ConfigurationManager.AppSettings["PackageSource"] ?? @"D:\";
-            return new WebProjectManager(remoteSource, base.Request.MapPath("~/"));
+            string remoteSources = ConfigurationManager.AppSettings["PackageSource"] ?? @"D:\";
+            List<WebProjectManager> managers = new List<WebProjectManager>();
+            foreach (var remoteSource in remoteSources.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries)) {
+                managers.Add(new WebProjectManager(remoteSource, base.Request.MapPath("~/")));
+            }
+
+            return managers.ToArray();
         }
 
         public ActionResult Upgrade(string packageId)
         {
             try {
-                WebProjectManager projectManager = this.GetProjectManager();
-                IPackage installedPackage = this.GetInstalledPackage(projectManager, packageId);
+                WebProjectManager[] projectManagers = this.GetProjectManagers();
+
+                WebProjectManager projectManager = null;
+                IPackage installedPackage = null;
+                foreach (var pm in projectManagers) {
+                    projectManager = pm;
+                    installedPackage = this.GetInstalledPackage(pm, packageId);
+                    if (installedPackage != null) break;
+                }
 
                 IPackage update = projectManager.GetUpdate(installedPackage);
 
                 projectManager.UpdatePackage(update);
-
 
                 return Json(new {
                     msg = "Updated " + packageId + " to " + update.Version.ToString() + "!",

@@ -98,6 +98,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\InstallationController.cs" />
     <Compile Include="Controllers\UpdatesController.cs" />
     <Compile Include="Controllers\WebProjectManager.cs" />
     <Compile Include="Extensions.cs" />
@@ -108,13 +109,14 @@
     <Compile Include="WebProjectSystem.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Scripts\autoupdate.js" />
-    <Content Include="Scripts\UpdateModule.js" />
+    <Content Include="Content\SelfUpdater.css" />
+    <Content Include="Scripts\SelfUpdater.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\Installation\Module.ascx" />
     <Content Include="Views\Updates\Module.ascx" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
