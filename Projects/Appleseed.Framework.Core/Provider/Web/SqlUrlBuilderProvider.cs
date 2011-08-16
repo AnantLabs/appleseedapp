@@ -40,7 +40,7 @@ namespace Appleseed.Framework.Web
         /// <param name="currentAlias">Current Alias</param> 
         /// <param name="urlKeywords">Add some keywords to uniquely identify this tab. Usual source is UrlKeyword from TabSettings.</param> 
         public override string BuildUrl(string targetPage, int pageID, int modID, CultureInfo culture,
-                                        string customAttributes, string currentAlias, string urlKeywords, ref string QueryRight)
+                                        string customAttributes, string currentAlias, string urlKeywords)
         {
             bool _isPlaceHolder = false;
             string _tabLink = string.Empty;
@@ -187,15 +187,22 @@ namespace Appleseed.Framework.Web
 
                     for (int i = 0; i < parts.Length; i++) {
                         var key = parts[i].Split('=')[0];
-                        if (queryList.ContainsKey(key))
-                            queryRigth += parts[i] + "&";
-                        else
-                            queryLeft += parts[i] + "&";
+                        if (!(key.Equals("pageId") || key.Equals("pageID"))) {
+                            if (queryList.ContainsKey(key)) {
+                                var q = parts[i].Split('=');
+                                queryRigth += HttpUtility.UrlEncode(q[0], System.Text.Encoding.GetEncoding(28591)) + "=" + HttpUtility.UrlEncode(q[1], System.Text.Encoding.GetEncoding(28591)) + "&";
+                            } else {
+                                var q = parts[i].Split('=');
+                                queryLeft += HttpUtility.UrlEncode(q[0], System.Text.Encoding.GetEncoding(28591)) + "=" + HttpUtility.UrlEncode(q[1], System.Text.Encoding.GetEncoding(28591)) + "&";
+                            }
+                        }
+                        
                     }
 
                     if (!string.IsNullOrEmpty(queryLeft)) {
                         // If its null, all the attributes are at the end, else, should add the ones from the queryLeft
                         queryLeft = queryLeft.Remove(queryLeft.Length - 1);
+                        queryLeft = queryLeft.Replace("+", "%20");
                         queryLeft = queryLeft.ToString().Replace("&", "/");
                         queryLeft = queryLeft.ToString().Replace("=", _defaultSplitter);
                         sb.Append(queryLeft);
@@ -256,9 +263,6 @@ namespace Appleseed.Framework.Web
                 
                 }
                
-                // Sets the querys that should be at the end
-                QueryRight = queryRigth;
-
                 //Return page
                 return sb.ToString().Replace("//", "/");
             }

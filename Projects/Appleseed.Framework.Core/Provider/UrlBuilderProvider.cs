@@ -32,7 +32,7 @@ namespace Appleseed.Framework.Web
         /// <param name="currentAlias">Current Alias</param> 
         /// <param name="urlKeywords">Add some keywords to uniquely identify this tab. Usual source is UrlKeyword from TabSettings.</param> 
         public abstract string BuildUrl(string targetPage, int tabID, int modID, CultureInfo culture,
-                                        string customAttributes, string currentAlias, string urlKeywords, ref string queryRigth);
+                                        string customAttributes, string currentAlias, string urlKeywords);
 
         /// <summary>
         /// Instances this instance.

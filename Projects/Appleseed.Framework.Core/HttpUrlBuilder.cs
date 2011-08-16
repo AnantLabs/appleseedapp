@@ -231,33 +231,6 @@ namespace Appleseed.Framework
         /// <param name="pageId">
         /// ID of the page
         /// </param>
-        /// <param name="customAttributes">
-        /// Any custom attribute that can be needed
-        /// </param>
-        /// <param name="currentAlias">
-        /// Current Alias
-        /// </param>
-        /// <param name="queryRigth">
-        /// Is the attributes that should on the right
-        /// </param>
-        /// <returns>
-        /// The build url.
-        /// </returns>
-        public static string BuildUrl(string targetPage, int pageId, string customAttributes, ref string queryRigth)
-        {
-            return Provider.BuildUrl(targetPage, pageId, 0, null, customAttributes, string.Empty, string.Empty, ref queryRigth);
-        }
-
-        /// <summary>
-        /// Takes a Tab ID and builds the url for get the desidered page (non default)
-        ///     containing the application path, portal alias, tab ID, and language.
-        /// </summary>
-        /// <param name="targetPage">
-        /// Linked page
-        /// </param>
-        /// <param name="pageId">
-        /// ID of the page
-        /// </param>
         /// <param name="culture">
         /// Client culture
         /// </param>
@@ -387,9 +360,9 @@ namespace Appleseed.Framework
             }
             
             */
-            string queryRigth = "";
+            
             return Provider.BuildUrl(
-                targetPage, pageId, modId, culture, completeCustomAttributes, currentAlias, urlKeywords, ref queryRigth);
+                targetPage, pageId, modId, culture, completeCustomAttributes, currentAlias, urlKeywords);
         }
 
         /// <summary>
@@ -498,26 +471,75 @@ namespace Appleseed.Framework
         /// <returns>
         /// true if the url is validate and no need to redirect.
         /// </returns>
-        public static bool ValidateProperUrl(Uri url, int pageId, ref string CorrectUrl)
+        public static bool ValidateProperUrl(int pageId, ref string CorrectUrl)
         {
-            string query = url.Query;
-            query = Regex.Replace(query, @"\+", "%20");
-            int index = query.IndexOf('&');
-            if (index > 0) {
-                // Removing the first element that its the pageId, to only add the other querys
-                var customAttributes = query.Substring(index + 1, query.Length - index - 1);
-                // QueryRigth are the query elements that should be at the end of the url (The ones from the list)
-                string queryRigth = "";
-                CorrectUrl = BuildUrl("~/" + DefaultPage, pageId, customAttributes,ref queryRigth);
-                if (string.IsNullOrEmpty(queryRigth))
-                    return url.AbsolutePath.Equals(CorrectUrl);
-                else
-                    return (url.AbsolutePath + "?" + queryRigth).Equals(CorrectUrl);
-            } else {
-                CorrectUrl = BuildUrl(pageId);
-                return url.AbsolutePath.Equals(CorrectUrl);
+            string url = HttpContext.Current.Request.RawUrl;
+            var parts = url.Split(new char[] { '/' }, System.StringSplitOptions.RemoveEmptyEntries);
+            if (parts.Length > 2) {
+                //There are some query's on the left with the a__x format
+                Regex regex = new Regex("^\\d+$", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+                // Need to search for the pageId in the url
+                int indexNumber = -1;
+                for (int i = 0; i < parts.Length && indexNumber == -1; i++) {
+                    if (regex.IsMatch(parts[i])) {
+                        indexNumber = i;
+                    }
+                }
+                var queryString = "";
+                for (var i = 0; i < indexNumber; i++) {
+                    var queryStringParam = parts[i];
+                    if (queryStringParam.IndexOf(HttpUrlBuilder.DefaultSplitter) < 0) {
+                        continue;
+                    }
+
+
+                    queryString += string.Format(
+                        "&{0}",
+                        queryStringParam.Substring(0, queryStringParam.IndexOf(HttpUrlBuilder.DefaultSplitter)));
+                    queryString += string.Format(
+                        "={0}",
+                        queryStringParam.Substring(queryStringParam.IndexOf(HttpUrlBuilder.DefaultSplitter) + HttpUrlBuilder.DefaultSplitter.Length));
+                }
+                if (queryString.StartsWith("&")) {
+                    queryString = queryString.Substring(1);
+                }
+                int index = url.IndexOf('?');
+                if (index > 0) {
+
+                    string query = url.Substring(index + 1);
+                    query = HttpUtility.UrlDecode(query, System.Text.Encoding.GetEncoding(28591));
+                    CorrectUrl = BuildUrl("~/"+HttpUrlBuilder.DefaultPage, pageId, queryString+"&"+query);
+                    int indexCorrect = CorrectUrl.IndexOf("?");
+                    string page = url.Substring(0, index);
+                    if(indexCorrect > 0)
+                        return (page).Equals(HttpUtility.UrlDecode((CorrectUrl.Substring(0,indexCorrect)),System.Text.Encoding.GetEncoding(28591)));
+                    else
+                        return (page).Equals(HttpUtility.UrlDecode(CorrectUrl, System.Text.Encoding.GetEncoding(28591)));
+                } else {
+               
+                        CorrectUrl = BuildUrl("~/" + HttpUrlBuilder.DefaultPage, pageId, queryString);
+                        return url.Equals(HttpUtility.UrlDecode(CorrectUrl, System.Text.Encoding.GetEncoding(28591)));
+                }
+            } else {    
+                int index = url.IndexOf('?');
+                if (index > 0) {
+
+                    string query = url.Substring(index + 1);
+                    query = HttpUtility.UrlDecode(query, System.Text.Encoding.GetEncoding(28591));
+                    CorrectUrl = BuildUrl("~/"+HttpUrlBuilder.DefaultPage, pageId, query);
+                    int indexCorrect = CorrectUrl.IndexOf("?");
+                    string page = url.Substring(0, index);
+                    if(indexCorrect > 0)
+                        return (page).Equals(CorrectUrl.Substring(0,indexCorrect));
+                    else
+                        return (page).Equals(CorrectUrl);
+                } else {
+                        CorrectUrl = BuildUrl(pageId);
+                        return url.Equals(CorrectUrl);
+                    }
             }
         }
+        
 
         #endregion
     }

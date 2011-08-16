@@ -190,7 +190,7 @@ namespace Appleseed
                 }
 
                 string urlToRedirect = "";
-                bool redirect = HttpUrlBuilder.ValidateProperUrl(Request.Url, pageId, ref urlToRedirect);
+                bool redirect = HttpUrlBuilder.ValidateProperUrl(pageId, ref urlToRedirect);
                 if (!redirect)
                 {
                     this.Response.Redirect(urlToRedirect);
