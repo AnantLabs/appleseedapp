@@ -118,6 +118,10 @@
 												<div id="content">
 													<asp:TextBox id="startdate" class="field" runat="server"></asp:TextBox>
 												</div>
+												<asp:RangeValidator ID="cbirthday" runat="server" ControlToValidate="startdate" Type="Date"
+                                                  Display="Dynamic" ErrorMessage="INVALID_DATE" Text="<%$ Resources:Appleseed, INVALID_DATE%>" textkey="INVALID_DATE" 
+                                                  Font-Size="11px"
+                                                  ValidationGroup="USER" /> 
 											
 										</td>
                                     </tr>

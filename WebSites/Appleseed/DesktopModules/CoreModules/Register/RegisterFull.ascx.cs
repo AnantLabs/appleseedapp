@@ -84,6 +84,11 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
             ViewState["cultureInfo"] = lang[0];
         }
 
+        DateTime date = new DateTime(1900,1,1);
+        cbirthday.MinimumValue = date.ToShortDateString();
+        cbirthday.MaximumValue = DateTime.Today.ToShortDateString();
+
+
         //captcha will only be displayed if the user is not authenticated.
         
         trCaptcha.Visible = !Context.User.Identity.IsAuthenticated;
@@ -205,9 +210,11 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
             //i.e. If the month is June, and the day is the 31th, then we set the 30th instead.
             //int daysInMonth = DateTime.DaysInMonth(year, month);
             
-            DateTime dt = Convert.ToDateTime(startdate.Text);
-
-            return dt;
+            DateTime dt;
+            if (DateTime.TryParse(startdate.Text, out dt))
+                return dt;
+            else
+                return DateTime.Today;
         }
     }
 

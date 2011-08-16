@@ -201,6 +201,15 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull {
     protected global::System.Web.UI.WebControls.TextBox startdate;
     
     /// <summary>
+    /// cbirthday control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.RangeValidator cbirthday;
+    
+    /// <summary>
     /// lblCompany control.
     /// </summary>
     /// <remarks>
