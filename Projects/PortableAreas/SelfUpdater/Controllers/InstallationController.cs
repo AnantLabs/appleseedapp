@@ -15,16 +15,22 @@ namespace SelfUpdater.Controllers
         {
             var projectManagers = GetProjectManagers();
             var list = new List<dynamic>();
+            var installed = projectManagers.SelectMany(d=>d.GetInstalledPackages(string.Empty).ToList());
 
             foreach (var pM in projectManagers) {
                 var packages = GetAvailablePackages(pM);
                 foreach (var package in packages) {
-                    dynamic p = new ExpandoObject();
-                    p.icon = package.IconUrl;
-                    p.name = package.Id;
-                    p.version = package.Version;
+                    if (!installed.Any(d=> d.Id == package.Id)) {
+                        dynamic p = new ExpandoObject();                        
+                        p.icon = package.IconUrl;
+                        p.icon = p.icon ?? string.Empty;
+                        p.name = package.Id;
+                        p.version = package.Version;
+                        p.author = package.Authors.FirstOrDefault();
+                        p.source = pM.SourceRepository.Source;
 
-                    list.Add(p);
+                        list.Add(p);
+                    }
                 }
             }
 
@@ -47,6 +53,19 @@ namespace SelfUpdater.Controllers
             }
 
             return managers.ToArray();
+        }
+
+        public ActionResult InstallPackage(string packageId, string source)
+        {
+
+            var projectManager = GetProjectManagers().Where(p => p.SourceRepository.Source == source).First();
+
+            projectManager.InstallPackage(projectManager.GetRemotePackages(string.Empty).Where(d => d.Id == packageId).First());
+
+            return Json(new {
+                msg = "Package " + packageId + " scheduled to install!",
+                res = true
+            }, JsonRequestBehavior.AllowGet);
         }
     }
 }

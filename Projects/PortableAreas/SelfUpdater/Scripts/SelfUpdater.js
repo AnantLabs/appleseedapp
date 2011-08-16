@@ -3,28 +3,28 @@
 
 
 
-function updateModule(moduleId, schedule) {
+function updatePackage(packageId, schedule) {
 
     var actionurl = '/SelfUpdater/Updates/DelayedUpgrade';
     if (schedule == false) {
         actionurl = '/SelfUpdater/Updates/RemoveDelayedUpgrade';
 
-        $('#schedule' + moduleId).show();
-        $('#schedule' + moduleId).parents('tr').first().removeClass('ui-state-highlight ui-corner-all');
+        $('#schedule' + packageId).show();
+        $('#schedule' + packageId).parents('tr').first().removeClass('ui-state-highlight ui-corner-all');
 
-        $('#unschedule' + moduleId).hide();
+        $('#unschedule' + packageId).hide();
 
     } else {
-        $('#schedule' + moduleId).hide();
-        $('#schedule' + moduleId).parents('tr').first().addClass('ui-state-highlight ui-corner-all');
+        $('#schedule' + packageId).hide();
+        $('#schedule' + packageId).parents('tr').first().addClass('ui-state-highlight ui-corner-all');
 
-        $('#unschedule' + moduleId).show();
+        $('#unschedule' + packageId).show();
     }
 
     $.ajax({
         url: actionurl,
         data: {
-            packageId: moduleId
+            packageId: packageId
         },
         dataType: 'json',
         timeout: 1200000,
@@ -88,3 +88,50 @@ function applyUpdates() {
     return false;
 }
 
+function installPackage(packageId, source) {
+
+    $('#installingDiv').dialog({
+        modal: true,
+        closeOnEscape: false,
+        closeText: '',
+        resizable: false,
+        title: 'Install package',
+        open: function (event, ui) {
+            $(this).closest('.ui-dialog').find('.ui-dialog-titlebar-close').hide();
+        }
+
+    });
+
+    $.post('/SelfUpdater/Installation/InstallPackage', { packageId: packageId, source: source })
+    .success(function () {
+        $('<li>Installing packages...</li>').appendTo('#installingUl');
+
+        var xhr;
+        var reloading = false;
+        var fn = function () {
+            if (!reloading) {
+                if (xhr && xhr.readystate != 4) {
+                    xhr.abort();
+                }
+                xhr = $.post('/SelfUpdater/Updates/Status').success(function (data) {
+                    if (data.online) {
+                        $('<li>Reloading site...</li>').appendTo('#installingUl');
+                        reloading = true;
+                        window.location.reload();
+                    }
+                });
+            }
+        };
+
+        var interval = setInterval(fn, 10000);
+    })
+    .error(function () {
+        trace(data);
+        $('#installingDiv').dialog("close");
+        alert("Communication error");
+    });
+
+
+    return false;
+
+}
