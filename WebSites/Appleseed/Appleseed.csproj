@@ -4136,6 +4136,8 @@
     <Content Include="aspnet_client\js\jquery-ui-1.7.custom.min.js" />
     <Content Include="aspnet_client\js\jquery.anythingslider.js" />
     <Content Include="aspnet_client\js\jquery.cycle.min.js" />
+    <Content Include="aspnet_client\jQuery\jquery.datepick.css" />
+    <Content Include="aspnet_client\jQuery\jquery.datepick.js" />
     <Content Include="aspnet_client\js\jquery.easing.1.2.js" />
     <Content Include="aspnet_client\js\jquery.em.js" />
     <Content Include="aspnet_client\js\jquery.galleria.js" />

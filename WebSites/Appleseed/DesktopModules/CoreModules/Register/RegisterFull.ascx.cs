@@ -30,28 +30,7 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
     private string _redirectPage;
     private DateTime _defaultRegisterDate = new DateTime(DateTime.Today.Year, 1, 1);
 
-    /// <summary>
-    /// ddlDay control.
-    /// </summary>
-    /// <remarks>
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.DropDownList ddlDay;
-
-    /// <summary>
-    /// ddlMonth control.
-    /// </summary>
-    /// <remarks>
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.DropDownList ddlMonth;
-
-    /// <summary>
-    /// ddlYear control.
-    /// </summary>
-    /// <remarks>
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.DropDownList ddlYear;
-
-
+ 
     private bool OuterCreation
     {
         get
@@ -77,14 +56,36 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        LoadBirthDateControls();
         trPwd.Visible = false;
         trPwdAgain.Visible = false;
         ChangePassword.Visible = false;
         panChangePwd.Visible = false;
         ViewState["responseWithPopup"] = null;
+        CultureInfo cultureInfo = Thread.CurrentThread.CurrentCulture;
+        
+        string aux = cultureInfo.ToString();
+        if (aux == "en-US")
+        {
+            ViewState["cultureInfo"] = "";
+        }
+        else if (aux == "en-GB")
+        {
+            ViewState["cultureInfo"] = aux;
+        }
+        else if (aux == "pt-BR")
+        {
+            ViewState["cultureInfo"] = aux;
+        }
+        else
+        {
+            char[] array = new char[1];
+            array[0] = '-';
+            string[] lang = aux.Split(array);
+            ViewState["cultureInfo"] = lang[0];
+        }
 
         //captcha will only be displayed if the user is not authenticated.
+        
         trCaptcha.Visible = !Context.User.Identity.IsAuthenticated;
 
         if (!EditMode)
@@ -101,7 +102,6 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
         {
 
             BindCountry();
-            BindDateCombos();
             this.lblError.Text = string.Empty;
             this.lblSuceeded.Text = string.Empty;
             this.pnlSuceeded.Visible = false;
@@ -139,11 +139,11 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
                 {
                     if ((DateTime)profileCommon.GetPropertyValue("BirthDate") == DateTime.MinValue)
                     {
-                        BirthdayField = _defaultRegisterDate;
+                        startdate.Text = (_defaultRegisterDate).ToShortDateString().ToString();
                     }
                     else
                     {
-                        BirthdayField = (DateTime)profileCommon.GetPropertyValue("BirthDate");
+                        startdate.Text = ((DateTime)profileCommon.GetPropertyValue("BirthDate")).ToShortDateString().ToString();
                     }
                     this.tfCompany.Text = (string)profileCommon.GetPropertyValue("Company");
                     try
@@ -190,91 +190,26 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
         }
     }
 
-    private void LoadBirthDateControls()
-    {
-        ddlDay = new DropDownList();
-        ddlDay.ID = "ddlDay";
-        ddlMonth = new DropDownList();
-        ddlMonth.ID = "ddlMonth";
-        ddlYear = new DropDownList();
-        ddlYear.ID = "ddlYear";
-
-        var datePattern = DateTimeFormatInfo.CurrentInfo.ShortDatePattern;
-        if (datePattern.IndexOf("M") < datePattern.IndexOf("d"))
-        {
-            plhBirthDate.Controls.Add(ddlMonth);
-            plhBirthDate.Controls.Add(ddlDay);
-        }
-        else
-        {
-            plhBirthDate.Controls.Add(ddlDay);
-            plhBirthDate.Controls.Add(ddlMonth);
-        }
-        plhBirthDate.Controls.Add(ddlYear);
-    }
+   
 
     private DateTime BirthdayField
     {
         set
         {
-            if (value > DateTime.MinValue)
-            {
-                this.ddlDay.SelectedValue = value.Day.ToString();
-                this.ddlMonth.SelectedValue = value.Month.ToString();
-                this.ddlYear.SelectedValue = value.Year.ToString();
-            }
+            startdate.Text = DateTime.Today.ToShortDateString();
         }
         get
         {
-            int day = Convert.ToInt32(this.ddlDay.SelectedValue);
-            int month = Convert.ToInt32(this.ddlMonth.SelectedValue);
-            int year = Convert.ToInt32(this.ddlYear.SelectedValue);
-
+            
             //if the the day of month is greater than the quantity of days of that month, then we set the total days of that months.
             //i.e. If the month is June, and the day is the 31th, then we set the 30th instead.
-            int daysInMonth = DateTime.DaysInMonth(year, month);
-            if (day > daysInMonth)
-            {
-                day = daysInMonth;
-            }
-            return new DateTime(year, month, day);
+            //int daysInMonth = DateTime.DaysInMonth(year, month);
+            
+            DateTime dt = Convert.ToDateTime(startdate.Text);
+
+            return dt;
         }
     }
-
-    private void BindDateCombos()
-    {
-        List<int> days = new List<int>();
-        for (int i = 1; i <= 31; i++)
-        {
-            days.Insert(i - 1, i);
-        }
-
-        ddlDay.DataSource = days;
-        ddlDay.DataBind();
-
-        var months = new Dictionary<int, string>();
-        CultureInfo cultureInfo = Thread.CurrentThread.CurrentCulture;
-        TextInfo textInfo = cultureInfo.TextInfo;
-        for (int j = 1; j <= 12; j++)
-        {
-            months.Add(j, j.ToString() + " - " + textInfo.ToTitleCase(DateTimeFormatInfo.CurrentInfo.GetMonthName(j)));
-        }
-
-        ddlMonth.DataSource = months;
-        ddlMonth.DataValueField = "key";
-        ddlMonth.DataTextField = "value";
-        ddlMonth.DataBind();
-
-        List<int> years = new List<int>();
-        for (int k = 1900; k <= DateTime.Today.Year; k++)
-        {
-            years.Insert(k - 1900, k);
-        }
-
-        ddlYear.DataSource = years;
-        ddlYear.DataBind();
-    }
-
 
     protected void cvCaptcha_ServerValidate(object source, ServerValidateEventArgs args)
     {
