@@ -53,8 +53,7 @@ namespace SelfUpdater.Controllers
         internal static IQueryable<IPackage> GetPackages(IQueryable<IPackage> packages, string searchTerm)
         {
             if (!string.IsNullOrEmpty(searchTerm)) {
-                searchTerm = searchTerm.Trim();
-                packages = packages.Find(searchTerm.Split(new char[0]));
+                packages = packages.Find(searchTerm);
             }
             return packages;
         }
@@ -105,6 +104,7 @@ namespace SelfUpdater.Controllers
 
         public IEnumerable<string> InstallPackage(IPackage package)
         {
+           
             return this.PerformLoggedAction(delegate
             {
                 bool ignoreDependencies = false;
