@@ -1,5 +1,16 @@
 ﻿
-.installed_modules td
+#installed_packages, #available_packages
 {
-   padding: 2px;
+    width:100%;
+}
+
+#installed_packages td, #available_packages td
+{
+    padding: 2px 5px !important;
+    border: 1px solid gray;
+}
+
+.installed_packages_action
+{
+    margin-top:10px;
 }
