@@ -192,13 +192,13 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull {
     protected global::System.Web.UI.WebControls.Label lblBirthDate;
     
     /// <summary>
-    /// plhBirthDate control.
+    /// startdate control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.PlaceHolder plhBirthDate;
+    protected global::System.Web.UI.WebControls.TextBox startdate;
     
     /// <summary>
     /// lblCompany control.
