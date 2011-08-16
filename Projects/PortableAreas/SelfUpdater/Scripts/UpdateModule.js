@@ -10,13 +10,13 @@ function updateModule(moduleId, schedule) {
         actionurl = '/SelfUpdater/Updates/RemoveDelayedUpgrade';
 
         $('#schedule' + moduleId).show();
-        $('#schedule' + moduleId).parent('li').removeClass('ui-state-highlight ui-corner-all');
+        $('#schedule' + moduleId).parents('tr').first().removeClass('ui-state-highlight ui-corner-all');
 
         $('#unschedule' + moduleId).hide();
 
     } else {
         $('#schedule' + moduleId).hide();
-        $('#schedule' + moduleId).parent('li').addClass('ui-state-highlight ui-corner-all');
+        $('#schedule' + moduleId).parents('tr').first().addClass('ui-state-highlight ui-corner-all');
 
         $('#unschedule' + moduleId).show();
     }
