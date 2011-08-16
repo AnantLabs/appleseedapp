@@ -8,9 +8,7 @@
         PortalImage.DataBind();
     }
 </script>
-<link  href="http://fonts.googleapis.com/css?family=Josefin+Sans:100,100italic,300,300italic,400,400italic,600,600italic,700,700italic" rel="stylesheet" type="text/css" >
-
-
+<script src="/aspnet_client/js/slide_down_menu.js" type="text/javascript"></script>
 <div class="header">
 
 	<div class="logo_div">

@@ -61,9 +61,9 @@ ul.AspNet-Menu li.AspNet-Menu-WithChildren span.AspNet-Menu-NonLink
 {
     background-color:none;
     display: block;
-	font-family: 'Josefin Sans', serif;
+	font-family: 'QuicksandLight', serif;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: normal;
     height: 18px;
 	color:#000;
     line-height: 1.2em;
@@ -90,12 +90,12 @@ ul.AspNet-Menu li.AspNet-Menu-WithChildren:hover a.AspNet-Menu-Link:link,
 ul.AspNet-Menu li.AspNet-Menu-WithChildren:hover a.AspNet-Menu-Link:visited,
 ul.AspNet-Menu li.AspNet-Menu-WithChildren:hover span.AspNet-Menu-NonLink
 {
-    background-color: #454545;
+    background-color:#424242;
     color: #fdfdfd;
     display: block;
-	font-family: 'Josefin Sans', serif;
+	font-family: 'QuicksandLight', serif;
     font-size: 14px;
-	font-weight: 600;
+	font-weight: normal;
     height: 18px;
     line-height: 1.2em;
     margin-left: 12px;
@@ -135,8 +135,7 @@ ul.AspNet-Menu li.AspNet-Menu-WithChildren span.AspNet-Menu-NonLink:hover
 	/*********************************************************/
 	
 ul.AspNet-Menu li.AspNet-Menu-WithChildren ul{
-	background: url("../../DesktopLayouts/Clearly/images/bg_menu_2_nivel.png") repeat scroll 0 0 transparent;
-    display: block;
+	display: block;
     float: left;
     left: 10px;
     margin: 0;
@@ -146,15 +145,11 @@ ul.AspNet-Menu li.AspNet-Menu-WithChildren ul{
     top: 28px;
     visibility: hidden;
     width: 150px;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	
+
 }
 
 ul.AspNet-Menu li.AspNet-Menu-WithChildren ul li.AspNet-Menu-Leaf,
-ul.AspNet-Menu li.AspNet-Menu-WithChildren ul li.AspNet-Menu-WithChildren
-{
+ul.AspNet-Menu li.AspNet-Menu-WithChildren ul li.AspNet-Menu-WithChildren{
 	margin:0px 0px 0px 0px;
 	padding:0px 0px 0px 0px;
 	margin-left:0px;
@@ -167,7 +162,7 @@ ul.AspNet-Menu li.AspNet-Menu-WithChildren ul li.AspNet-Menu-Leaf span.AspNet-Me
 ul.AspNet-Menu li.AspNet-Menu-WithChildren ul li.AspNet-Menu-WithChildren a.AspNet-Menu-Link:link, 
 ul.AspNet-Menu li.AspNet-Menu-WithChildren ul li.AspNet-Menu-WithChildren a.AspNet-Menu-Link:visited,
 ul.AspNet-Menu li.AspNet-Menu-WithChildren ul li.AspNet-Menu-WithChildren span.AspNet-Menu-NonLink
-{
+{	background: url("../../DesktopLayouts/Clearly/images/bg_menu_2_nivel.png") repeat scroll 0 0 transparent;
 	width:	135px;
 	height:	30px;
 	display:	block;
@@ -176,17 +171,17 @@ ul.AspNet-Menu li.AspNet-Menu-WithChildren ul li.AspNet-Menu-WithChildren span.A
 	color:	#fff;
 	line-height:30px;
 	text-decoration: none;
-	font-weight:	bold;
+	font-weight:	normal;
 	text-align:	left;
 	padding: 0px 0px 0px 15px;
     outline: none;
     border: none;
     text-transform: none;
 	margin-left:0px;
-	-webkit-border-radius: 0px;
-	-moz-border-radius: 0px;
-	border-radius: 0px;
-	background:transparent;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+
 }
 
 
@@ -210,19 +205,19 @@ ul.AspNet-Menu li.AspNet-Menu-WithChildren ul li.AspNet-Menu-WithChildren:hover 
 	color:	#fff;
 	line-height:30px;
 	text-decoration: none;
-	font-weight:	bold;
+	font-weight:	normal;
 	font-family:Arial;
 	text-align:	left;
 	padding: 0px 0px 0px 15px;
     outline: none;
     border: none;
     text-transform: none;
-    background-color: #000;
+    background-color: #2b2b2b;
     background-image:none;
 	margin-left:0px;
-	-webkit-border-radius: 0px;
-	-moz-border-radius: 0px;
-	border-radius: 0px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }
 
 

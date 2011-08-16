@@ -5639,4 +5639,7 @@ function confirmDelete()
   <data name="HTML_TITLE" xml:space="preserve">
     <value>" Double Click to Edit... "</value>
   </data>
+  <data name="INVALID_DATE" xml:space="preserve">
+    <value>The date is not valid</value>
+  </data>
 </root>

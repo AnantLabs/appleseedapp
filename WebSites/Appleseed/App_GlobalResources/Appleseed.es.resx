@@ -4401,4 +4401,7 @@
   <data name="HTML_TITLE" xml:space="preserve">
     <value>Doble clic para Editar</value>
   </data>
+  <data name="INVALID_DATE" xml:space="preserve">
+    <value>La fecha no es válida.</value>
+  </data>
 </root>
