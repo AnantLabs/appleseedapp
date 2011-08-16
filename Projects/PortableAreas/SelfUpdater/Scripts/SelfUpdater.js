@@ -103,8 +103,7 @@ function installPackage(packageId, source) {
     });
 
     $.post('/SelfUpdater/Installation/InstallPackage', { packageId: packageId, source: source })
-    .success(function () {
-        $('<li>Installing packages...</li>').appendTo('#installingUl');
+    .success(function () {       
 
         var xhr;
         var reloading = false;
