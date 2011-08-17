@@ -191,7 +191,7 @@ namespace Appleseed.Content.Web.Modules
             // if runtime render the sitemap, else show the placeholder
             if (HttpContext.Current != null)
             {
-                var imgFolder = Path.WebPathCombine(Path.ApplicationRoot, "Design/Themes/Default/img/");
+                var imgFolder = Path.WebPathCombine(Path.ApplicationRoot, "images/img/");
 
                 // create the table renderer and set it's properties.
                 var tableRenderer = new TableSitemapRenderer();
@@ -335,8 +335,8 @@ namespace Appleseed.Content.Web.Modules
             if (PortalSecurity.IsInRoles(tab.AuthorizedRoles))
             {
                 // first add the tab, then add it's children
-                this.list.Add(new SitemapItem(tab.PageID, tab.PageName, HttpUrlBuilder.BuildUrl(tab.PageID), level));
-
+                   this.list.Add(new SitemapItem(tab.PageID, tab.PageName, HttpUrlBuilder.BuildUrl(tab.PageID), level));
+                
                 foreach (PageStripDetails t in tab.Pages)
                 {
                     this.RecurseSitemap(t, level + 1);
