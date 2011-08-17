@@ -543,7 +543,7 @@ $(document).ready(function () {
                 <img class="slider_image" src="~/Design/DesktopLayouts/Education/images/slider1.jpg" width="430" height="300"/>
                     <div class="wrap_text">
                         <h1>Grow your business.</h1>
-                            <h2>You downloaded Appleseed Portal to help you run your company online. As we work to make this easier for you in the upcoming versions. You still have to do some basic things. You should consider taking these steps as soon as you can if you haven''t.</h2>
+                            <h2>You downloaded Appleseed Portal to help you run your company online. As we work to make this easier for you in upcoming versions, you still have some basic things you can do. You should consider taking these steps as soon as you can if you haven''t.</h2>
                         <br/>
                     <a class="continue" href="">Continue Reading » </a>			
                 </div>
@@ -563,7 +563,7 @@ $(document).ready(function () {
                 <img class="slider_image" src="~/Design/DesktopLayouts/Education/images/slider3.jpg" width="430" height="300" />
                     <div class="wrap_text">				
                         <h1>Trade with the world.</h1>
-                            <h2>Once you have your business setup, and have a network of businesses to help you deliver your products and services, you are ready to trade. Start small, and go&nbsp;big. Sky is the limit, until you surpass it.</h2>
+                            <h2>Once you have your business setup, and have a network of businesses to help you deliver your products and services, you are ready to trade. Start small, and get bigger. The sky is the limit, until you surpass it.</h2>
                         <br/>
                     <a class="continue" href="">Continue Reading » </a>
                 </div>			
