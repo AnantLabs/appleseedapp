@@ -36,7 +36,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
             ButtonColumn colAdd = new ButtonColumn();
             colAdd.Text = General.GetString("LANG_SWITCH_Add", "Add");
             colAdd.CommandName = "Add";
-            Columns.Add(colAdd);
+            Columns.Add(colAdd); 
         }
 
         /// <summary>
