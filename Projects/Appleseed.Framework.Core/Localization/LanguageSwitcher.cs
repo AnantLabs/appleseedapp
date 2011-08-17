@@ -881,8 +881,13 @@ namespace Appleseed.Framework.Web.UI.WebControls
         /// </returns>
         private string GetLangUrl(string language)
         {
+
+
+            string lang = HttpUrlBuilder.BuildUrl("site/1/Home");
+                
+
             return this.ChangeLanguageAction == LanguageSwitcherAction.LinkRedirect
-                       ? string.Format("{0}?lang={1}", this.ChangeLanguageUrl, language)
+                       ? string.Format("{0}?lang={1}", lang, language)
                        : string.Format("javascript:{0}", this.Page.ClientScript.GetPostBackEventReference(this, language));
         }
 
