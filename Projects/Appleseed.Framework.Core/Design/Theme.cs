@@ -39,7 +39,7 @@ namespace Appleseed.Framework.Design
         /// <summary>
         /// The default module image path.
         /// </summary>
-        public const string DefaultModuleImagePath = "~/Design/Themes/Default/img";
+        public const string DefaultModuleImagePath = "~/images/img";
 
         /// <summary>
         /// The theme images.
