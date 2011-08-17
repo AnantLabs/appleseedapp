@@ -220,8 +220,6 @@ EXEC rb_Modules_IU 	5,	1,	'{0B113F51-FEA3-499A-98E7-7B83C192FDBB}', 1, N'TopPane
 GO
 EXEC rb_Modules_IU 	1, 1, '{A0F1F62B-FDC7-4DE5-BBAD-A5DAF31D960A}', -1, N'LeftPane', N'Login', N'Admins;', N'Unauthenticated Users;Admins;', N'Admins;', N'Admins;', N'Admins;', 0, 0, NULL, 1, 0, NULL, 0, '', NULL, '', NULL, 0, 0, N'Admins;', N'Admins;'
 GO
-EXEC rb_Modules_IU 	3,	1,	'{25E3290E-3B9A-4302-9384-9CA01243C00F}', 2, N'LeftPane', N'Language', N'Admins', N'All Users', N'Admins', N'Admins', N'Admins', 0, 0, NULL, 0, 0, NULL, NULL, '', NULL, '', NULL, 0, 0, N'Admins;', N'Admins;'
-GO
 EXEC rb_Modules_IU 	2,	1,	'{0B113F51-FEA3-499A-98E7-7B83C192FDBB}', 1, N'ContentPane', N'Appleseed Portal RC2!', N'Admins', N'All Users', N'Admins', N'Admins', N'Admins', 0, 0, NULL, 0, 0, NULL, NULL, '', NULL, '', NULL, 0, 0, N'Admins;', N'Admins;'
 GO
 EXEC rb_Modules_IU 	7,	1,	'{2502DB18-B580-4F90-8CB4-C15E6E531020}', 2, N'ContentPane', N'Appleseed Portal Blog Feed', N'Admins', N'All Users', N'Admins', N'Admins', N'Admins', 0, 0, NULL, 0, 0, NULL, NULL, '', NULL, '', NULL, 0, 0, N'Admins;', N'Admins;'
