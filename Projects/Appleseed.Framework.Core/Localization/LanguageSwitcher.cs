@@ -883,7 +883,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
         {
 
 
-            string lang = HttpUrlBuilder.BuildUrl("site/1/Home");
+            string lang = HttpUrlBuilder.BuildUrl("~/site/1/Home");
                 
 
             return this.ChangeLanguageAction == LanguageSwitcherAction.LinkRedirect
