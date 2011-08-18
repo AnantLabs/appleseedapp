@@ -75,5 +75,17 @@ function editHtml(id, pageID, dir) {
 
     }
 	
+function openInModal(dir,titulo){
+	$('#iframemodal').remove();
+	$('<div id="iframemodal">').html("<iframe src='"+dir+"&ModalChangeMaster=true' width='100%' height='99%' > </iframe>").dialog({
+		width: 860,
+		height: 600,
+		title: titulo,
+		resizable: false,
+		minWidth: 800,
+		minHeight: 600
+	});
+	return false;
+}
                
             

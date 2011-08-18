@@ -1546,6 +1546,10 @@
     <Compile Include="LocalizationAdmin\StronglyTypedGlobalResources.aspx.designer.cs">
       <DependentUpon>StronglyTypedGlobalResources.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Shared\ModalMaster.Master.cs">
+      <DependentUpon>ModalMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Shared\PanesMasterDefault.master.designer.cs">
       <DependentUpon>PanesMasterDefault.master</DependentUpon>
     </Compile>
@@ -6611,6 +6615,7 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Shared\ModalMaster.Master" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\Appleseed.vi.resx">
