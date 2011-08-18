@@ -1193,13 +1193,16 @@ namespace Appleseed.Framework.Web.UI
         /// </param>
         protected virtual void OnCancel(EventArgs e)
         {
-            if (this.Cancel != null)
-            {
-                this.Cancel(this, e); // Invokes the delegates
-            }
+            if (Request.QueryString.GetValues("ModalChangeMaster") == null) {
+                if (this.Cancel != null) {
+                    this.Cancel(this, e); // Invokes the delegates
+                }
 
-            // any other code goes here
-            this.RedirectBackToReferringPage();
+                // any other code goes here
+                this.RedirectBackToReferringPage();
+            } else {
+                Response.Write("<script type=\"text/javascript\">window.parent.$('#iframemodal').dialog(\"close\");</script>");
+            }
         }
 
         /// <summary>
@@ -1421,17 +1424,20 @@ namespace Appleseed.Framework.Web.UI
         {
             // TODO : Assign masters and themes here... :-)
             //// this.Theme = "Default";
-            if (this.PortalSettings != null)
-            {
-                var masterLayoutPath = string.Concat(this.PortalSettings.PortalLayoutPath, this.MasterpageBasePage);
-                if (HttpContext.Current != null &&
-                    (File.Exists(HttpContext.Current.Server.MapPath(masterLayoutPath)) && this.Page.Master != null))
-                {
-                    this.Page.MasterPageFile = masterLayoutPath;
-                    this.IsMasterPageLayout = true;
+            if (Request.QueryString.GetValues("ModalChangeMaster") == null) {
+                if (this.PortalSettings != null) {
+                    var masterLayoutPath = string.Concat(this.PortalSettings.PortalLayoutPath, this.MasterpageBasePage);
+                    if (HttpContext.Current != null &&
+                        (File.Exists(HttpContext.Current.Server.MapPath(masterLayoutPath)) && this.Page.Master != null)) {
+                        this.Page.MasterPageFile = masterLayoutPath;
+                        this.IsMasterPageLayout = true;
+                    }
                 }
+            } else {
+                //TO DO
+                //Find the layout master for modals, if it don't exists set the default Modal Master
+                this.Page.MasterPageFile = "~/Shared/ModalMaster.Master";
             }
-
             base.OnPreInit(e);
         }
 

@@ -2568,10 +2568,13 @@ namespace Appleseed.Framework.Web.UI.WebControls
                         {
                             this.securityButton.HRef = HttpUrlBuilder.BuildUrl(
                                 this.SecurityUrl, this.PageID, string.Format("mID={0}", this.ModuleID));
+                            
+                            
                         }
-
+                        this.securityButton.Attributes.Add("onclick", "openInModal('"+this.securityButton.HRef+"','Security & Workflow');return false;");
                         this.securityButton.Target = this.SecurityTarget;
                         this.securityButton.RenderAs = this.ButtonsRenderAs;
+                        
                     }
                 }
 
