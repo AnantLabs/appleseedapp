@@ -145,6 +145,8 @@ namespace Appleseed.Admin
                     NavigateUrl = NavigateUrlPropertyPage
                         
                 };
+            if (Request.QueryString.GetValues("ModalChangeMaster") != null)
+                moduleSettingsButton.Attributes.Add("onclick", "ChangeModalTitle('Module Settings');");
             PlaceHolderButtons.Controls.Add(moduleSettingsButton);
 
             // jminond added to top of property page so no need to scroll for save
@@ -155,6 +157,8 @@ namespace Appleseed.Admin
                     CssClass = "CommandButton",
                     NavigateUrl = NavigateUrlPropertyPage
                 };
+            if (Request.QueryString.GetValues("ModalChangeMaster") != null)
+                moduleSettingsButton2.Attributes.Add("onclick", "ChangeModalTitle('Module Settings');");
             PlaceholderButtons2.Controls.Add(moduleSettingsButton2);
 
             PlaceHolderButtons.Controls.Add(new LiteralControl("&nbsp;"));
