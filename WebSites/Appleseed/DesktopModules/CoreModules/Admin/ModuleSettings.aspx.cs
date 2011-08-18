@@ -130,14 +130,20 @@ namespace Appleseed.Admin
             PlaceHolderButtons.Controls.Add(new LiteralControl("&nbsp;"));
             PlaceholderButtons2.Controls.Add(new LiteralControl("&nbsp;"));
 
+            string NavigateUrlPropertyPage = Appleseed.Framework.HttpUrlBuilder.BuildUrl(
+                            "~/DesktopModules/CoreModules/Admin/PropertyPage.aspx", this.PageID, this.ModuleID);
+
+            if (Request.QueryString.GetValues("ModalChangeMaster") != null)
+                NavigateUrlPropertyPage += "&ModalChangeMaster=true";
+
+
             this.moduleSettingsButton = new HyperLink
                 {
                     TextKey = "MODULESETTINGS_SETTINGS",
                     Text = "Settings",
                     CssClass = "CommandButton",
-                    NavigateUrl =
-                        Appleseed.Framework.HttpUrlBuilder.BuildUrl(
-                            "~/DesktopModules/CoreModules/Admin/PropertyPage.aspx", this.PageID, this.ModuleID)
+                    NavigateUrl = NavigateUrlPropertyPage
+                        
                 };
             PlaceHolderButtons.Controls.Add(moduleSettingsButton);
 
@@ -147,9 +153,7 @@ namespace Appleseed.Admin
                     TextKey = "MODULESETTINGS_SETTINGS",
                     Text = "Settings",
                     CssClass = "CommandButton",
-                    NavigateUrl =
-                        Appleseed.Framework.HttpUrlBuilder.BuildUrl(
-                            "~/DesktopModules/CoreModules/Admin/PropertyPage.aspx", this.PageID, this.ModuleID)
+                    NavigateUrl = NavigateUrlPropertyPage
                 };
             PlaceholderButtons2.Controls.Add(moduleSettingsButton2);
 
@@ -157,10 +161,14 @@ namespace Appleseed.Admin
             PlaceholderButtons2.Controls.Add(new LiteralControl("&nbsp;"));
 
             this.CancelButton = new LinkButton { CssClass = "CommandButton" };
+            if (Request.QueryString.GetValues("ModalChangeMaster")!=null)
+                this.CancelButton.ID = "SecurityCancelButton";
             PlaceHolderButtons.Controls.Add(this.CancelButton);
 
             // jminond added to top of property page so no need to scroll for save
             var cancel2 = new LinkButton { CssClass = "CommandButton", TextKey = "Cancel", Text = "Cancel" };
+            if (Request.QueryString.GetValues("ModalChangeMaster") != null)
+                cancel2.ID = "SecurityCancelButton2";
             cancel2.Click += this.CancelButtonClick;
             PlaceholderButtons2.Controls.Add(cancel2);
 
@@ -256,6 +264,9 @@ namespace Appleseed.Admin
                 approvalRoles, 
                 this.showEveryWhere.Checked, 
                 this.allowCollapsable.Checked);
+
+            if(Request.QueryString.GetValues("ModalChangeMaster") != null)
+                Response.Write("<script type=\"text/javascript\">window.parent.location = window.parent.location.href;</script>");
         }
 
         /// <summary>
@@ -505,7 +516,7 @@ namespace Appleseed.Admin
             this.OnUpdate(e);
 
             // Navigate back to admin page
-            if (this.Page.IsValid)
+            if (Request.QueryString.GetValues("ModalChangeMaster") == null && this.Page.IsValid)
             {
                 this.RedirectBackToReferringPage();
             }

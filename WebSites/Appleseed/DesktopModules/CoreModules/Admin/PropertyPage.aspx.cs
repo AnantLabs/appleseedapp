@@ -182,7 +182,8 @@ namespace Appleseed.Content.Web.Modules
 
         protected override void OnCancel(EventArgs e)
         {
-            Response.Redirect(HttpUrlBuilder.BuildUrl("~/" + HttpUrlBuilder.DefaultPage, PageID));
+            base.OnCancel(e);
+            //Response.Redirect(HttpUrlBuilder.BuildUrl("~/" + HttpUrlBuilder.DefaultPage, PageID));
         }
 
         private void EditTable_UpdateControl(object sender,

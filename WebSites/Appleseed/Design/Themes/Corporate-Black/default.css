@@ -483,6 +483,18 @@ div.div_ev_Table table{
         min-width: 800px;
 }
 
+.div_ev_Table_modal{          /***** contenedor de tabla editar propiedades de modulo ****/
+    padding:20px 20px 10px 20px;
+	border:none;
+	margin: 0px auto 10px; 
+	color:#ffffff;
+	width:770px!important;}
+
+div.div_ev_Table_modal table{
+		max-width:770px!important;
+        min-width: 700px;
+}
+
 div.div_ev_Table table table{
         min-width: 30px;
 }     
