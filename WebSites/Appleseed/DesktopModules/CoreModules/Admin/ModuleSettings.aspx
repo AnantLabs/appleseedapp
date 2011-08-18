@@ -2,12 +2,12 @@
     Language="c#" MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="ModuleSettings.aspx.cs" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="Server">
-    <div class="div_ev_Table">
+    <% var tableclass = "div_ev_Table";
+       if (Request.QueryString.GetValues("ModalChangeMaster") != null)
+           tableclass += "_modal";%>
+    <div class="<%= tableclass %>">
         <table border="0" cellpadding="4" cellspacing="0" width="98%">
             <tr valign="top">
-                <td width="150">
-                    &nbsp;
-                </td>
                 <td width="*">
                     <table border="0" cellpadding="2" cellspacing="1">
                         <tr>
@@ -254,4 +254,6 @@
             </tr>
         </table>
     </div>
+   
 </asp:Content>
+
