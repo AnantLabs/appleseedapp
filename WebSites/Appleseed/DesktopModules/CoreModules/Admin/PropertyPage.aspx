@@ -2,7 +2,10 @@
     Language="c#" MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PropertyPage.aspx.cs" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="Server">
-    <div class="div_ev_Table">
+    <% var tableclass = "div_ev_Table";
+       if (Request.QueryString.GetValues("ModalChangeMaster") != null)
+           tableclass += "_modal";%>
+    <div class="<%= tableclass %>">
         <table align="center" border="0" cellpadding="4" cellspacing="0">
             <tr valign="top">
                 <td>

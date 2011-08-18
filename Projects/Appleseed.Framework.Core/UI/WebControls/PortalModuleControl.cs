@@ -2261,7 +2261,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                             this.propertiesButton.HRef = HttpUrlBuilder.BuildUrl(
                                 this.PropertiesUrl, this.PageID, string.Format("mID={0}", this.ModuleID));
                         }
-
+                        this.propertiesButton.Attributes.Add("onclick", "openInModal('" + this.propertiesButton.HRef + "','Module settings');return false;");
                         this.propertiesButton.Target = this.PropertiesTarget;
                         this.propertiesButton.RenderAs = this.ButtonsRenderAs;
                     }

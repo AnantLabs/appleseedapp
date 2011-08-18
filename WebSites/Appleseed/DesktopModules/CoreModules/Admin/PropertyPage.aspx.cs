@@ -75,12 +75,17 @@ namespace Appleseed.Content.Web.Modules
             // Removed by Mario Endara <mario@softworks.com.uy> (2004/11/04)
 //			if (Appleseed.Security.PortalSecurity.IsInRoles("Admins"))
 //			{
+
+            string NavigateUrlPropertyPage = Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/Admin/ModuleSettings.aspx", PageID, ModuleID);
+
+            if (Request.QueryString.GetValues("ModalChangeMaster") != null)
+                NavigateUrlPropertyPage += "&ModalChangeMaster=true";
+
             adminPropertiesButton = new HyperLink();
             adminPropertiesButton.TextKey = "MODULESETTINGS_BASE_SETTINGS";
             adminPropertiesButton.Text = "Edit base settings";
             adminPropertiesButton.CssClass = "CommandButton";
-            adminPropertiesButton.NavigateUrl =
-                HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/Admin/ModuleSettings.aspx", PageID, ModuleID);
+            adminPropertiesButton.NavigateUrl = NavigateUrlPropertyPage;
 
             PlaceHolderButtons.Controls.Add(adminPropertiesButton);
 
@@ -89,8 +94,8 @@ namespace Appleseed.Content.Web.Modules
             adminPropertiesButton2.TextKey = "MODULESETTINGS_BASE_SETTINGS";
             adminPropertiesButton2.Text = "Edit base settings";
             adminPropertiesButton2.CssClass = "CommandButton";
-            adminPropertiesButton2.NavigateUrl =
-                HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/Admin/ModuleSettings.aspx", PageID, ModuleID);
+            adminPropertiesButton2.NavigateUrl = NavigateUrlPropertyPage;
+                
 
             PlaceholderButtons2.Controls.Add(adminPropertiesButton2);
 
@@ -146,7 +151,7 @@ namespace Appleseed.Content.Web.Modules
         private void saveAndCloseButton_Click(object sender, EventArgs e)
         {
             OnUpdate(e);
-            if (Page.IsValid == true)
+            if (Page.IsValid == true && Request.QueryString.GetValues("ModalChangeMaster") == null)
                 Response.Redirect(HttpUrlBuilder.BuildUrl("~/" + HttpUrlBuilder.DefaultPage, PageID));
         }
 
@@ -163,6 +168,9 @@ namespace Appleseed.Content.Web.Modules
                 // Update settings in the database
                 EditTable.UpdateControls();
             }
+
+            if (Request.QueryString.GetValues("ModalChangeMaster") != null)
+                Response.Write("<script type=\"text/javascript\">window.parent.location = window.parent.location.href;</script>");
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)
