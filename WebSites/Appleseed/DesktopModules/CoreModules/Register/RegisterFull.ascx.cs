@@ -175,6 +175,8 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
                 var firstOptionText = General.GetString("REGISTER_SELECT_COUNTRY", "Select Country", this);
                 this.ddlCountry.Items.Insert(0, new ListItem(string.Concat("-- ", firstOptionText), string.Empty));
                 BirthdayField = _defaultRegisterDate;
+                this.tfEmail.Text = string.Empty;
+                this.tfPwd.Text = string.Empty;
             }
         }
         if (Session["CameFromSocialNetwork"] != null) {
