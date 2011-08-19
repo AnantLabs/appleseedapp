@@ -558,9 +558,9 @@ select.NormalTextBox{
     height:27px;
     padding:1px 0 0 1px !important;
 }
-select#Content_ContentPane_ctl01_EditTable_SITESETTINGS_LANGLIST{
+/*select#Content_ContentPane_ctl01_EditTable_SITESETTINGS_LANGLIST{
     height: 125px!important;
-}
+}*/
 select#Content_ContentPane_ctl03_tabList,
 select#Content_ContentPane_ctl02_tabList,
 select#Content_ContentPane_ctl01_portalList{
@@ -573,6 +573,12 @@ select.NormalTextBox{
 select#Content_ContentPane_ctl01_tabList{
     height:150px;
 	margin-bottom:10px;
+}
+
+select.multiselect{
+	height:280px!important;
+	max-height:280px!important;
+	width:470px!important;
 }
 
 select#Content_ContentPane_ctl01_DestListBox,

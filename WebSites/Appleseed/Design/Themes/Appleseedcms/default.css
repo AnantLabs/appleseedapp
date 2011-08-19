@@ -414,9 +414,16 @@ select.NormalTextBox{
     height:27px !important;
     padding:1px 0 0 5px !important;
 }
-select#Content_ContentPane_ctl01_EditTable_SITESETTINGS_LANGLIST{
+/*select#Content_ContentPane_ctl01_EditTable_SITESETTINGS_LANGLIST{
     height: 125px!important;
+}*/
+
+select.multiselect{
+	height:280px!important;
+	max-height:280px!important;
+	width:470px!important;
 }
+
 select.SelectList{
 	height:250px!important;
 	max-height:250px!important;

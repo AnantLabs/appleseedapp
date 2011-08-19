@@ -18,3 +18,9 @@ div.Control_Panel_Table{
     margin: 0px;
     padding: 0px;
 }
+
+select.multiselect{
+	height:280px!important;
+	max-height:280px!important;
+	width:470px!important;
+}
