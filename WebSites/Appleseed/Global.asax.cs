@@ -501,10 +501,18 @@ namespace Appleseed
                     /*Must be improved trying to updated all at once */
 
                     var packageToUpdate = packagesToUpdate.First();
-
-                    WebProjectManager projectManager = this.GetProjectManager();
+                    bool found = false;                    
+                    var projectManagers = this.GetProjectManagers();
                     var packageName = packageToUpdate.PackageId;
-                    IPackage installedPackage = this.GetInstalledPackage(projectManager, packageName);
+                    int i = 0;
+                    IPackage installedPackage = null;
+                    while (!found) {
+                        installedPackage = this.GetInstalledPackage(projectManagers[i], packageName);
+                        found = installedPackage != null;
+                        if (!found) i++;
+                    }
+
+                    WebProjectManager projectManager = projectManagers[i];
 
                     IPackage update = projectManager.GetUpdate(installedPackage);
 
@@ -533,19 +541,24 @@ namespace Appleseed
             }
         }
 
-        private WebProjectManager GetProjectManager()
+        private WebProjectManager[] GetProjectManagers()
         {
-            string remoteSource = ConfigurationManager.AppSettings["PackageSource"] ?? @"D:\";
-            return new WebProjectManager(remoteSource, AppDomain.CurrentDomain.BaseDirectory);
+            string remoteSources = ConfigurationManager.AppSettings["PackageSource"] ?? @"D:\";
+            List<WebProjectManager> managers = new List<WebProjectManager>();
+            foreach (var remoteSource in remoteSources.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries)) {
+                managers.Add(new WebProjectManager(remoteSource, base.Request.MapPath("~/")));
+            }
+
+            return managers.ToArray();
         }
 
         private IPackage GetInstalledPackage(WebProjectManager projectManager, string packageId)
         {
             IPackage package = projectManager.GetInstalledPackages(string.Empty).Where(d => d.Id == packageId).FirstOrDefault();
 
-            if (package == null) {
-                throw new InvalidOperationException(string.Format("The package for package ID '{0}' is not installed in this website. Copy the package into the App_Data/packages folder.", packageId));
-            }
+            //if (package == null) {
+            //    throw new InvalidOperationException(string.Format("The package for package ID '{0}' is not installed in this website. Copy the package into the App_Data/packages folder.", packageId));
+            //}
             return package;
         }
 

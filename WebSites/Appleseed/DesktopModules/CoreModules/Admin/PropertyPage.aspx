@@ -2,18 +2,17 @@
     Language="c#" MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PropertyPage.aspx.cs" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="Server">
-    <% var tableclass = "div_ev_Table";
-       if (Request.QueryString.GetValues("ModalChangeMaster") != null)
-           tableclass += "_modal";%>
-    <div class="<%= tableclass %>">
+    <div class="div_ev_Table">
         <table align="center" border="0" cellpadding="4" cellspacing="0">
             <tr valign="top">
                 <td>
                     <table cellpadding="0" cellspacing="0" width="600">
                         <tr>
-                            <td align="left" class="Head" nowrap="nowrap">
-                                <rbfwebui:Localize ID="Literal1" runat="server" Text="Module settings" TextKey="MODULESETTINGS_SETTINGS" />
-                            </td>
+                            <% if (Request.QueryString.GetValues("ModalChangeMaster") == null) {%>
+                                <td align="left" class="Head" nowrap="nowrap">
+                                    <rbfwebui:Localize ID="Literal1" runat="server" Text="Module settings" TextKey="MODULESETTINGS_SETTINGS" />
+                                </td>
+                            <% } %>
                             <td align="right">
                                 <asp:PlaceHolder ID="PlaceholderButtons2" runat="server" />
                             </td>
