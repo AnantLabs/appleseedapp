@@ -182,6 +182,15 @@ namespace Appleseed.Content.Web.Modules
             OnDelete();
         }
 
+        public string Builddir(string _email) {
+            string _userName = Membership.GetUserNameByEmail(_email);
+            string redurl = Path.ApplicationRoot + "/DesktopModules/CoreModules/Users/UsersManage.aspx?mid=" + ModuleID +
+                            "&username=" + _userName;
+
+
+            return redurl;
+        }
+
         #endregion
     }
 }

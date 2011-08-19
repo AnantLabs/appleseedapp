@@ -245,8 +245,13 @@ namespace Appleseed.Content.Web.Modules
                 // remove cache before redirect
                 Context.Cache.Remove(Key.ModuleSettings(ModuleID));
 
-                // Navigate back to admin page
-                Response.Redirect(HttpUrlBuilder.BuildUrl(PageID));
+                if (Request.QueryString.GetValues("ModalChangeMaster") != null) {
+                    // Close the dialog and reload the page.
+                    Response.Write("<script type=\"text/javascript\">window.parent.location = window.parent.location.href;</script>");
+                } else
+                    // Navigate back to admin page
+                    RedirectBackToReferringPage();
+                    //Response.Redirect(HttpUrlBuilder.BuildUrl(PageID));
             }
         }
 

@@ -6,7 +6,10 @@
     Language="c#" MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="UsersManage.aspx.cs" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="Server">
-    <div class="div_ev_Table" style="float: left; width: 100%">
+    <% var tableclass = "div_ev_Table";
+       if (Request.QueryString.GetValues("ModalChangeMaster") != null)
+           tableclass += "_modal";%>
+    <div class="<%= tableclass %>" style="float: left; width: 100%">
         <table align="left" border="0" cellpadding="4" cellspacing="0">
             <tr valign="top">
                 <td colspan="2">
