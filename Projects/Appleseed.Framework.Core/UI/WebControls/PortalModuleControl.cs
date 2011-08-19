@@ -798,7 +798,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                                 this.AddUrl, this.PageID, string.Format("mID={0}", this.ModuleID));
                         }
                         if (this.AddButton.HRef.Contains("UsersManage.aspx"))
-                            this.addButton.Attributes.Add("onclick", "openInModal('" + AddButton.HRef + "','Add new User');return false;");
+                            this.addButton.Attributes.Add("onclick", "openInModal('" + AddButton.HRef + "','" + General.GetString("ADD_NEW_USER", "Add new User") + "');return false;");
                         this.addButton.Target = this.AddTarget;
                         this.addButton.Image = this.CurrentTheme.GetImage("Buttons_Add", "Add.gif");
                         this.addButton.RenderAs = this.ButtonsRenderAs;
@@ -2262,7 +2262,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                             this.propertiesButton.HRef = HttpUrlBuilder.BuildUrl(
                                 this.PropertiesUrl, this.PageID, string.Format("mID={0}", this.ModuleID));
                         }
-                        this.propertiesButton.Attributes.Add("onclick", "openInModal('" + this.propertiesButton.HRef + "','Module settings');return false;");
+                        this.propertiesButton.Attributes.Add("onclick", "openInModal('" + this.propertiesButton.HRef + "','"+General.GetString("MODULESETTINGS_SETTINGS","Module Settings")+"');return false;");
                         this.propertiesButton.Target = this.PropertiesTarget;
                         this.propertiesButton.RenderAs = this.ButtonsRenderAs;
                     }
@@ -2572,7 +2572,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                             
                             
                         }
-                        this.securityButton.Attributes.Add("onclick", "openInModal('"+this.securityButton.HRef+"','Security & Workflow');return false;");
+                        this.securityButton.Attributes.Add("onclick", "openInModal('" + this.securityButton.HRef + "','" + General.GetString("MODULESETTINGS_BASE_SETTINGS", "Security and Workflow") + "');return false;");
                         this.securityButton.Target = this.SecurityTarget;
                         this.securityButton.RenderAs = this.ButtonsRenderAs;
                         

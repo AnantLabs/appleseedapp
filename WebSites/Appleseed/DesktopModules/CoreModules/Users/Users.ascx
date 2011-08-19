@@ -67,7 +67,7 @@
                                         <asp:TemplateField HeaderText="Commands">
                                             <ItemStyle Wrap="False" />
                                             <ItemTemplate>
-                                                <rbfwebui:LinkButton ID="EditBtn" runat="server" CommandArgument='<%# Eval("Email") %>' OnClientClick=<%# "openInModal('"+ Builddir((String)Eval("Email"))+"','Edit user');return false;" %>
+                                                <rbfwebui:LinkButton ID="EditBtn" runat="server" CommandArgument='<%# Eval("Email") %>' OnClientClick=<%# "openInModal('"+ Builddir((String)Eval("Email"))+"','"+Resources.Appleseed.EDIT_USER+"');return false;" %>
                                                     CommandName="Edit" Text="Edit" TextKey="EDIT_USER" CausesValidation="false" />&nbsp;
                                                 <rbfwebui:LinkButton ID="DeleteBtn" runat="server" CommandArgument='<%# Eval("ProviderUserKey") %>'
                                                     CommandName="Delete" Text="Delete" TextKey="DELETE_USER" CausesValidation="false" />

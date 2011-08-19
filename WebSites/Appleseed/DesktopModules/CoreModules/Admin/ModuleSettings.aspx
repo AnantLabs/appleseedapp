@@ -14,10 +14,12 @@
                             <td colspan="4" height="20">
                                 <table cellpadding="0" cellspacing="0" width="100%">
                                     <tr>
-                                        <td align="left" class="Head" nowrap="true" width="1%">
-                                            <rbfwebui:Localize ID="Literal1" runat="server" Text="Module base settings" TextKey="MODULESETTINGS_BASE_SETTINGS">
-                                            </rbfwebui:Localize>
-                                        </td>
+                                        <% if (Request.QueryString.GetValues("ModalChangeMaster") == null) {%>
+                                            <td align="left" class="Head" nowrap="true" width="1%">
+                                                <rbfwebui:Localize ID="Literal1" runat="server" Text="Module base settings" TextKey="MODULESETTINGS_BASE_SETTINGS">
+                                                </rbfwebui:Localize>
+                                            </td>
+                                        <% } %>
                                         <td align="right" nowrap="true" width="99%">
                                             <asp:PlaceHolder ID="PlaceholderButtons2" runat="server"></asp:PlaceHolder>
                                         </td>
