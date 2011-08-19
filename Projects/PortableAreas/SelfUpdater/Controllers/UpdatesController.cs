@@ -48,16 +48,7 @@ namespace SelfUpdater.Controllers
                 }
             }
 
-            if (base.Request.IsAjaxRequest()) {
-                var data = new {
-                    Version = string.Empty,
-                    UpdateAvailable = state2.Where(d => d.Update != null).Count() > 0
-                };
-
-                return base.Json(data, JsonRequestBehavior.AllowGet);
-            } else {
-                return base.View(state2);
-            }
+            return base.View(state2);
         }
 
         private List<IPackage> GetInstalledPackages(WebProjectManager projectManager)

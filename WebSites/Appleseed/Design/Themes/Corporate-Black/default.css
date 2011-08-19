@@ -491,8 +491,8 @@ div.div_ev_Table table{
 	width:770px!important;}
 
 div.div_ev_Table_modal table{
-		max-width:770px!important;
-        min-width: 700px;
+		max-width:730px!important;
+        min-width: 500px;
 }
 
 div.div_ev_Table table table{

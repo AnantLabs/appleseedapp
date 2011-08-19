@@ -29,6 +29,7 @@
                     <%--</p>--%>
                 </td>
             </tr>
+            <% if (Request.QueryString.GetValues("ModalChangeMaster") == null) {%>
             <tr id="MobileRow" runat="server">
                 <td class="SubHead">
                     &nbsp;
@@ -46,6 +47,7 @@
                             Rows="5" TextMode="multiline" Width="650"></asp:TextBox></p>
                 </td>
             </tr>
+            <% } %>
         </table>
         <p>
             <asp:PlaceHolder ID="PlaceHolderButtons" runat="server"></asp:PlaceHolder>
