@@ -11,9 +11,11 @@
                 <td>
                     <table cellpadding="0" cellspacing="0" width="600">
                         <tr>
-                            <td align="left" class="Head" nowrap="nowrap">
-                                <rbfwebui:Localize ID="Literal1" runat="server" Text="Module settings" TextKey="MODULESETTINGS_SETTINGS" />
-                            </td>
+                            <% if (Request.QueryString.GetValues("ModalChangeMaster") == null) {%>
+                                <td align="left" class="Head" nowrap="nowrap">
+                                    <rbfwebui:Localize ID="Literal1" runat="server" Text="Module settings" TextKey="MODULESETTINGS_SETTINGS" />
+                                </td>
+                            <% } %>
                             <td align="right">
                                 <asp:PlaceHolder ID="PlaceholderButtons2" runat="server" />
                             </td>
