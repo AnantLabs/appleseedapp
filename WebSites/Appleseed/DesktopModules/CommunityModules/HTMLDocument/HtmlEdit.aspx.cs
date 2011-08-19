@@ -162,7 +162,16 @@ namespace Appleseed.DesktopModules.CommunityModules.HTMLDocument
                 this.Server.HtmlEncode(this.DesktopText.Text), 
                 this.Server.HtmlEncode(this.MobileSummary.Text), 
                 this.Server.HtmlEncode(this.MobileDetails.Text));
-            this.RedirectBackToReferringPage();
+
+            if (Request.QueryString.GetValues("ModalChangeMaster") != null)
+                Response.Write("<script type=\"text/javascript\">window.parent.location = window.parent.location.href;</script>");
+            else
+                this.RedirectBackToReferringPage();
+        }
+
+        protected override void OnCancel(EventArgs e)
+        {
+            base.OnCancel(e);
         }
 
         #endregion

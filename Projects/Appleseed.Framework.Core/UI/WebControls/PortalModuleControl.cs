@@ -799,6 +799,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                         }
                         if (this.AddButton.HRef.Contains("UsersManage.aspx"))
                             this.addButton.Attributes.Add("onclick", "openInModal('" + AddButton.HRef + "','" + General.GetString("ADD_NEW_USER", "Add new User") + "');return false;");
+                        
                         this.addButton.Target = this.AddTarget;
                         this.addButton.Image = this.CurrentTheme.GetImage("Buttons_Add", "Add.gif");
                         this.addButton.RenderAs = this.ButtonsRenderAs;
@@ -1608,6 +1609,8 @@ namespace Appleseed.Framework.Web.UI.WebControls
                                 this.EditUrl, this.PageID, string.Format("mID={0}", this.ModuleID));
                         }
 
+                        if (this.editButton.HRef.Contains("HtmlEdit.aspx"))
+                            this.editButton.Attributes.Add("onclick", "openInModal('" + editButton.HRef + "','" + General.GetString("HTML_EDITOR", "Html Editor") + "');return false;");
                         this.editButton.Target = this.EditTarget;
                         this.editButton.Image = this.CurrentTheme.GetImage("Buttons_Edit", "Edit.gif");
                         this.editButton.RenderAs = this.ButtonsRenderAs;
