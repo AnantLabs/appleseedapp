@@ -1200,9 +1200,11 @@ namespace Appleseed.Framework.Web.UI
 
                 // any other code goes here
                 this.RedirectBackToReferringPage();
-            } else {
+            } else if (Request.QueryString.GetValues("camefromEditPage") != null)
+                this.RedirectBackToReferringPage();
+            else
                 Response.Write("<script type=\"text/javascript\">window.parent.$('#iframemodal').dialog(\"close\");</script>");
-            }
+            
         }
 
         /// <summary>
