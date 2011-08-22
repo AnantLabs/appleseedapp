@@ -133,9 +133,11 @@ namespace Appleseed.Admin
             string NavigateUrlPropertyPage = Appleseed.Framework.HttpUrlBuilder.BuildUrl(
                             "~/DesktopModules/CoreModules/Admin/PropertyPage.aspx", this.PageID, this.ModuleID);
 
-            if (Request.QueryString.GetValues("ModalChangeMaster") != null)
+            if (Request.QueryString.GetValues("ModalChangeMaster") != null) {
                 NavigateUrlPropertyPage += "&ModalChangeMaster=true";
-
+                if (Request.QueryString.GetValues("camefromEditPage") != null)
+                    NavigateUrlPropertyPage += "&camefromEditPage=true";
+            }
 
             this.moduleSettingsButton = new HyperLink
                 {
@@ -269,8 +271,13 @@ namespace Appleseed.Admin
                 this.showEveryWhere.Checked, 
                 this.allowCollapsable.Checked);
 
-            if(Request.QueryString.GetValues("ModalChangeMaster") != null)
-                Response.Write("<script type=\"text/javascript\">window.parent.location = window.parent.location.href;</script>");
+            if (Request.QueryString.GetValues("ModalChangeMaster") != null) {
+                if(Request.QueryString.GetValues("camefromEditPage") != null)
+                    this.RedirectBackToReferringPage();
+                else
+                    Response.Write("<script type=\"text/javascript\">window.parent.location = window.parent.location.href;</script>");
+            }
+                
         }
 
         /// <summary>

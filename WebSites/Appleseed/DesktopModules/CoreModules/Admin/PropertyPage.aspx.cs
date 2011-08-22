@@ -78,8 +78,11 @@ namespace Appleseed.Content.Web.Modules
 
             string NavigateUrlPropertyPage = Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/Admin/ModuleSettings.aspx", PageID, ModuleID);
 
-            if (Request.QueryString.GetValues("ModalChangeMaster") != null)
+            if (Request.QueryString.GetValues("ModalChangeMaster") != null) {
                 NavigateUrlPropertyPage += "&ModalChangeMaster=true";
+                if (Request.QueryString.GetValues("camefromEditPage") != null)
+                    NavigateUrlPropertyPage += "&camefromEditPage=true";
+            }
 
             adminPropertiesButton = new HyperLink();
             adminPropertiesButton.TextKey = "MODULESETTINGS_BASE_SETTINGS";
