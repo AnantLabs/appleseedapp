@@ -20,6 +20,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
     using Appleseed.Framework.Settings;
 
     using Page = Appleseed.Framework.Web.UI.Page;
+using System.Text;
 
     #region Event argument class
 
@@ -697,6 +698,24 @@ namespace Appleseed.Framework.Web.UI.WebControls
             var settingCell = new TableCell();
             settingCell.Attributes.Add("width", "80%");
             settingCell.CssClass = "st-control";
+
+            StringBuilder script = new StringBuilder();
+            script.Append("<script language=\"javascript\" type=\"text/javascript\">");
+            //script.AppendFormat("$.extend($.ui.multiselect, { locale: { addAll: '{0}', removeAll: '{1}', itemsCount: '{2}' }});", "Agregar todo", "Remover todooooo", "items seleccionados");
+            script.Append("$.extend($.ui.multiselect, { locale: { addAll: '");
+            script.AppendFormat("{0}",General.GetString("ADD_ALL", "Add all", null));
+            script.Append("',removeAll: '");
+            script.AppendFormat("{0}", General.GetString("REMOVE_ALL", "Remove all", null));
+            script.Append("',itemsCount: '");
+            script.AppendFormat("{0}", General.GetString("ITEMS_SELECTED", "items selected", null));
+            script.Append("' }});$(function(){ $.localise('ui-multiselect', {path: 'aspnet_client/jQuery/'});");
+            script.Append("$(\".multiselect\").multiselect({sortable: false, searchable: false});}); </script>");
+
+            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "jqueryMultiselect", script.ToString());
+
+
+     
+
 
             Control editControl;
             try
