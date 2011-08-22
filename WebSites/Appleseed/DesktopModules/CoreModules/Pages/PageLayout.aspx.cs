@@ -215,10 +215,12 @@ namespace Appleseed.Admin
                 // Add role control to edit module settings by Mario Endara <mario@softworks.com.uy> (2004/11/09)
                 if (PortalSecurity.IsInRoles(PortalSecurity.GetPropertiesPermissions(mid)))
                 {
+                    var url = HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/Admin/ModuleSettings.aspx", this.PageID, mid);
                     // Redirect to module settings page
-                    this.Response.Redirect(
-                        HttpUrlBuilder.BuildUrl(
-                            "~/DesktopModules/CoreModules/Admin/ModuleSettings.aspx", this.PageID, mid));
+                    if (Request.QueryString.GetValues("ModalChangeMaster") != null) {
+                        url += "&ModalChangeMaster=true&camefromEditPage=true";
+                    }
+                    this.Response.Redirect(url);
                 }
                 else
                 {
@@ -381,18 +383,22 @@ namespace Appleseed.Admin
                     var retPage = this.Request.QueryString["returnPageID"];
                     string returnPage;
 
-                    if (retPage != null)
-                    {
-                        // user is returned to the calling tab.
-                        returnPage = HttpUrlBuilder.BuildUrl(int.Parse(retPage));
-                    }
-                    else
-                    {
-                        // user is returned to updated tab
-                        returnPage = HttpUrlBuilder.BuildUrl(this.PageID);
-                    }
+                    if (Request.QueryString.GetValues("ModalChangeMaster") != null)
+                        Response.Write("<script type=\"text/javascript\">window.parent.location = window.parent.location.href;</script>");
+                    else{
+                        if (retPage != null)
+                        {
+                            // user is returned to the calling tab.
+                            returnPage = HttpUrlBuilder.BuildUrl(int.Parse(retPage));
+                        }
+                        else
+                        {
+                            // user is returned to updated tab
+                            returnPage = HttpUrlBuilder.BuildUrl(this.PageID);
+                        }
 
-                    this.Response.Redirect(returnPage);
+                        this.Response.Redirect(returnPage);
+                    }
                 }
                 catch
                 {
