@@ -62,12 +62,7 @@ namespace Appleseed
 
                 }
 
-                HtmlGenericControl src = new HtmlGenericControl("script");
-                src.Attributes.Add("type", "text/javascript");
-                src.Attributes.Add("src", "/aspnet_client/jQuery/ui.multiselect.js");
-                page.Header.Controls.AddAt(index++, src);
-
-                var multiselect = page.ResolveUrl("/aspnet_client/jQuery/ui.multiselect.css");
+                var multiselect = page.ResolveUrl("~/aspnet_client/jQuery/ui.multiselect.css");
                 
                 HtmlGenericControl add = new HtmlGenericControl("link");
                 add.Attributes.Add("type", "text/css");
@@ -159,6 +154,7 @@ namespace Appleseed
 
             scripts.Add(page.ResolveUrl("~/aspnet_client/CSSControlAdapters/AdapterUtils.js"));
             scripts.Add(page.ResolveUrl("~/aspnet_client/CSSControlAdapters/MenuAdapter.js"));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/ui.multiselect.js"));
             return scripts;
         }
     }
