@@ -417,11 +417,11 @@ namespace Appleseed.Framework.Web.UI.WebControls
                             menuLink = menuLink + " class=\"" + CssClass + "\"";
 
                         // added mID by Mario Endara <mario@softworks.com.uy> to support security check (2004/11/09)
-                        menuLink = menuLink + " href='" +
-                                   HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/Pages/PageLayout.aspx?PageID=") +
+                        var url = HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/Pages/PageLayout.aspx?PageID=") +
                                    PortalSettings.ActivePage.PageID + "&amp;mID=" + TabModuleID.ToString() +
                                    "&amp;Alias=" + PortalSettings.PortalAlias + "&amp;lang=" + PortalSettings.PortalUILanguage +
-                                   "&amp;returntabid=" + PortalSettings.ActivePage.PageID + "'>" +
+                                   "&amp;returntabid=" + PortalSettings.ActivePage.PageID;
+                        menuLink = menuLink + " href='" + url + "' onclick=\"openInModal('" + url + "','" + General.GetString("HEADER_MANAGE_TAB", "Edit This Page", null) + "');return false;\");>" +
                                    General.GetString("HEADER_MANAGE_TAB", "Edit This Page", null) + "</a>";
                         list.Add(menuLink);
                     }

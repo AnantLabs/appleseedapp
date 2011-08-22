@@ -427,6 +427,7 @@ namespace Appleseed.DesktopModules.CommunityModules.HTMLDocument
                 this.HtmlMoudleIframe.Attributes.Add("width", "98%");
                 this.HtmlMoudleIframe.Attributes.Add("height", "99%");
                 this.HtmlModuleText.Attributes.Add("title", title);
+                this.HtmlModuleDialog.Attributes.Add("title", General.GetString("HTML_EDITOR", "Html Editor"));
                 if ((Request.Browser.Browser.Contains("IE") || Request.Browser.Browser.Contains("ie")) && Request.Browser.MajorVersion == 7) {
 
                     this.HTMLEditContainer.Attributes.Add("style", "position: relative;overflow: auto;");

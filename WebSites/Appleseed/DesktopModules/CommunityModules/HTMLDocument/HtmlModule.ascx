@@ -7,7 +7,7 @@
     <div id="HTMLEditContainer" runat="server" style="position: relative;">
          <div id="HtmlModuleText" runat="server"></div>
          <asp:PlaceHolder ID="HtmlHolder" runat="server"></asp:PlaceHolder>
-         <div id="HtmlModuleDialog" runat="server" style="display: none" title="Edit Html">
+         <div id="HtmlModuleDialog" runat="server" style="display: none" >
                 <iframe id="HtmlMoudleIframe" runat="server" ></iframe>
          </div>
     </div>

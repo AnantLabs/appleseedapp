@@ -22,15 +22,6 @@ namespace Appleseed.DesktopModules.CommunityModules.HTMLDocument {
         protected global::System.Web.UI.HtmlControls.HtmlForm htmleditmodalform;
         
         /// <summary>
-        /// Literal2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.Localize Literal2;
-        
-        /// <summary>
         /// PlaceHolderHTMLEditor control.
         /// </summary>
         /// <remarks>
