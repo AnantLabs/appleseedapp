@@ -67,7 +67,7 @@ namespace Appleseed
                 src.Attributes.Add("src", "/aspnet_client/jQuery/ui.multiselect.js");
                 page.Header.Controls.AddAt(index++, src);
 
-                var multiselect = page.ResolveUrl("~/aspnet_client/jQuery/ui.multiselect.css");
+                var multiselect = page.ResolveUrl("/aspnet_client/jQuery/ui.multiselect.css");
                 
                 HtmlGenericControl add = new HtmlGenericControl("link");
                 add.Attributes.Add("type", "text/css");
