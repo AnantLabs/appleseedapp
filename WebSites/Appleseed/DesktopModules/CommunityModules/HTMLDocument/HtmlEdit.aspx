@@ -3,26 +3,30 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="Server">
     <div class="div_ev_Table">
-        <table border="0" cellpadding="4" cellspacing="0" width="98%">
-            <tr>
-                <td align="left" class="Head">
-                    <rbfwebui:Localize ID="Literal1" runat="server" Text="HTML Editor" TextKey="HTML_EDITOR">
-                    </rbfwebui:Localize>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <hr noshade="noshade" size="1" />
-                </td>
-            </tr>
-        </table>
+        <% if (Request.QueryString.GetValues("ModalChangeMaster") == null) {%>
+            <table border="0" cellpadding="4" cellspacing="0" width="98%">
+                <tr>
+                    <td align="left" class="Head">
+                        <rbfwebui:Localize ID="Literal1" runat="server" Text="HTML Editor" TextKey="HTML_EDITOR">
+                        </rbfwebui:Localize>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <hr noshade="noshade" size="1" />
+                    </td>
+                </tr>
+            </table>
+        <% } %>
         <table border="0" cellpadding="4" cellspacing="0" width="98%">
             <tr>
                 <td class="SubHead">
                     <%--<p>--%>
+                     <% if (Request.QueryString.GetValues("ModalChangeMaster") == null) {%>
                     <rbfwebui:Localize ID="Literal2" runat="server" Text="Desktop HTML Content" TextKey="HTML_DESKTOP_CONTENT">
                     </rbfwebui:Localize><font face="ËÎÌו">:</font>
                     <br />
+                    <%} %>
                     <div class="normal">
                         <asp:PlaceHolder ID="PlaceHolderHTMLEditor" runat="server"></asp:PlaceHolder>
                     </div>

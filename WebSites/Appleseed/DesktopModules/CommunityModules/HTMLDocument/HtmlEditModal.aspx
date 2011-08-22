@@ -28,9 +28,6 @@
             <tr>
                 <td class="SubHead">
                     <%--<p>--%>
-                    <rbfwebui:Localize ID="Literal2" runat="server" Text="Desktop HTML Content" TextKey="HTML_DESKTOP_CONTENT">
-                    </rbfwebui:Localize><font face="ËÎÌå">:</font>
-                    <br />
                     <div class="normal">
                         <asp:PlaceHolder ID="PlaceHolderHTMLEditor" runat="server"></asp:PlaceHolder>
                     </div>

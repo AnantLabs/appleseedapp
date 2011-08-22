@@ -121,6 +121,24 @@ namespace Appleseed.Admin {
         protected global::System.Web.UI.WebControls.TextBox mobilePageName;
         
         /// <summary>
+        /// showHidebutton1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button showHidebutton1;
+        
+        /// <summary>
+        /// showHideHidden1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField showHideHidden1;
+        
+        /// <summary>
         /// addmodule control.
         /// </summary>
         /// <remarks>
@@ -569,6 +587,24 @@ namespace Appleseed.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Appleseed.Framework.Web.UI.WebControls.Localize msgError;
+        
+        /// <summary>
+        /// showHidebutton2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button showHidebutton2;
+        
+        /// <summary>
+        /// showHideHidden2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField showHideHidden2;
         
         /// <summary>
         /// EditTable control.
