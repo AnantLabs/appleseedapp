@@ -194,12 +194,15 @@ namespace Appleseed.Framework.DataTypes
         {
             var lb = new ListBox
                 {
-                    CssClass = "NormalTextBox", 
+                    CssClass = "multiselect", 
                     SelectionMode = ListSelectionMode.Multiple, 
-                    Width = new Unit(this.ControlWidth), 
+                    //Width = new Unit(this.ControlWidth), 
+                    //Height = new Unit(400),
+                    //Style = "width "
                     DataSource = this.DataSource, 
                     DataValueField = this.DataValueField, 
-                    DataTextField = this.DataTextField
+                    DataTextField = this.DataTextField,
+                    Rows = 20
                 };
             lb.DataBind();
 

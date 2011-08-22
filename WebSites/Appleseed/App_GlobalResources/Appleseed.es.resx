@@ -4404,4 +4404,13 @@
   <data name="INVALID_DATE" xml:space="preserve">
     <value>La fecha no es válida.</value>
   </data>
+  <data name="ADD_ALL" xml:space="preserve">
+    <value>Agregar todos</value>
+  </data>
+  <data name="ITEMS_SELECTED" xml:space="preserve">
+    <value>items seleccionados</value>
+  </data>
+  <data name="REMOVE_ALL" xml:space="preserve">
+    <value>Remover todos</value>
+  </data>
 </root>

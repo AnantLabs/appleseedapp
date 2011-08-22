@@ -178,6 +178,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add all.
+        /// </summary>
+        internal static string ADD_ALL {
+            get {
+                return ResourceManager.GetString("ADD_ALL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Article.
         /// </summary>
         internal static string ADD_ARTICLE {
@@ -8955,6 +8964,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to items selected.
+        /// </summary>
+        internal static string ITEMS_SELECTED {
+            get {
+                return ResourceManager.GetString("ITEMS_SELECTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
         internal static string ITEM_FOUND {
@@ -12398,6 +12416,15 @@ namespace Resources {
         internal static string REMEMBER_LOGIN {
             get {
                 return ResourceManager.GetString("REMEMBER_LOGIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove all.
+        /// </summary>
+        internal static string REMOVE_ALL {
+            get {
+                return ResourceManager.GetString("REMOVE_ALL", resourceCulture);
             }
         }
         

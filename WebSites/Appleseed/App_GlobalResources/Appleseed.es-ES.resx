@@ -5607,4 +5607,13 @@
   <data name="USER_SAVING_WRONG_CAPTCHA" xml:space="preserve">
     <value>El texto de seguridad no coincide. Por favor intente nuevamente.</value>
   </data>
+  <data name="ADD_ALL" xml:space="preserve">
+    <value>Agregar todos</value>
+  </data>
+  <data name="ITEMS_SELECTED" xml:space="preserve">
+    <value>items seleccionados</value>
+  </data>
+  <data name="REMOVE_ALL" xml:space="preserve">
+    <value>Remover todos</value>
+  </data>
 </root>

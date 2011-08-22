@@ -3519,4 +3519,13 @@
   <data name="PASSWORD_CHANGE_SUCCESSFULL" xml:space="preserve">
     <value>Your password has been successfully changed.</value>
   </data>
+  <data name="ADD_ALL" xml:space="preserve">
+    <value>Add all</value>
+  </data>
+  <data name="ITEMS_SELECTED" xml:space="preserve">
+    <value>items selected</value>
+  </data>
+  <data name="REMOVE_ALL" xml:space="preserve">
+    <value>Remove all</value>
+  </data>
 </root>
