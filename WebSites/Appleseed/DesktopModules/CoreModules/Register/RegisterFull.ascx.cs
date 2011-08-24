@@ -203,7 +203,7 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
     {
         set
         {
-            startdate.Text = DateTime.Today.ToShortDateString();
+            startdate.Text = "";
         }
         get
         {
