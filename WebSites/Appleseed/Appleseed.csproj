@@ -4118,6 +4118,7 @@
     <Content Include="aspnet_client\jQuery\jquery.validate.min.js" />
     <Content Include="aspnet_client\jQuery\jquery.validate.unobtrusive.js" />
     <Content Include="aspnet_client\jQuery\jquery.validate.unobtrusive.min.js" />
+    <Content Include="aspnet_client\jQuery\jQueryTabs.js" />
     <Content Include="aspnet_client\jQuery\MicrosoftAjax.debug.js" />
     <Content Include="aspnet_client\jQuery\MicrosoftAjax.js" />
     <Content Include="aspnet_client\jQuery\MicrosoftMvcAjax.debug.js" />

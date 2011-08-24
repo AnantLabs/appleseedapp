@@ -358,7 +358,7 @@ using System.Text;
             // the scripts needed for using grouping tabs
             if (this.groupingTabsCreated)
             {
-                // Jonathan - tabsupport
+             /*   // Jonathan - tabsupport
                 if (((Page)this.Page).IsClientScriptRegistered("x_core") == false)
                 {
                     ((Page)this.Page).RegisterClientScript(
@@ -393,7 +393,7 @@ using System.Text;
                     var script = string.Format("<script language=\"javascript\" type=\"text/javascript\"> var tabW = {0};  var tabH = {1};  var tpg1 = new xTabPanelGroup('tpg1', tabW, tabH, 50, 'tabPanel', 'tabGroup', 'tabDefault', 'tabSelected'); </script>", this.Width.Value, this.Height.Value);
 
                     this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "tab_startup_js", script);
-                }
+                }*/
             }
         }
 
@@ -556,15 +556,19 @@ using System.Text;
             tabPanelGroup.Attributes.Add("id", "tpg1");
             tabPanelGroup.Attributes.Add("class", "tabPanelGroup");
 
-            var tabGroup = new HtmlGenericControl("div");
+            var tabGroup = new HtmlGenericControl("ul");
             tabGroup.Attributes.Add("class", "tabGroup");
             tabPanelGroup.Controls.Add(tabGroup);
 
             var tabPanel = new HtmlGenericControl("div");
             tabPanel.Attributes.Add("class", "tabPanel");
 
-            var tabDefault = new HtmlGenericControl("div");
+            var tabDefault = new HtmlGenericControl("li");
             tabDefault.Attributes.Add("class", "tabDefault");
+
+            var aDefault = new HtmlGenericControl("a");
+            aDefault.Attributes.Add("href", "#id");
+            tabDefault.Controls.Add(aDefault);
 
             var fieldset = new HtmlGenericControl("dummy");
 
@@ -577,13 +581,17 @@ using System.Text;
             {
                 var currentItem = (ISettingItem)this.settings[currentSetting];
 
-                if (tabDefault.InnerText.Length == 0)
+                if (aDefault.InnerText.Length == 0)
                 {
-                    tabDefault = new HtmlGenericControl("div");
+                    tabDefault = new HtmlGenericControl("li");
                     tabDefault.Attributes.Add("class", "tabDefault");
 
                     // App_GlobalResources
-                    tabDefault.InnerText = General.GetString(currentItem.Group.ToString());
+                    //tabDefault.InnerText = General.GetString(currentItem.Group.ToString());
+                    aDefault = new HtmlGenericControl("a");
+                    aDefault.Attributes.Add("href", "#" + currentItem.Group.ToString());
+                    aDefault.InnerText = General.GetString(currentItem.Group.ToString());
+                    tabDefault.Controls.Add(aDefault);
                 }
 
                 if (currentItem.Group != currentGroup)
@@ -603,10 +611,15 @@ using System.Text;
 
                     tabPanel = new HtmlGenericControl("div");
                     tabPanel.Attributes.Add("class", "tabPanel");
+                    tabPanel.Attributes.Add("id", currentItem.Group.ToString());
 
-                    tabDefault = new HtmlGenericControl("div");
+                    tabDefault = new HtmlGenericControl("li");
                     tabDefault.Attributes.Add("class", "tabDefault");
-                    tabDefault.InnerText = General.GetString(currentItem.Group.ToString());
+                    
+                    aDefault = new HtmlGenericControl("a");
+                    aDefault.Attributes.Add("href", "#" + currentItem.Group.ToString());
+                    aDefault.InnerText = General.GetString(currentItem.Group.ToString());
+                    tabDefault.Controls.Add(aDefault);
 
                     // start a new table
                     tbl = new Table();
@@ -712,9 +725,6 @@ using System.Text;
             script.Append("$(\".multiselect\").multiselect({sortable: false, searchable: false});}); </script>");
 
             this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "jqueryMultiselect", script.ToString());
-
-
-     
 
 
             Control editControl;

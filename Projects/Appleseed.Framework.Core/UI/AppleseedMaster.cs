@@ -155,6 +155,7 @@ namespace Appleseed
             scripts.Add(page.ResolveUrl("~/aspnet_client/CSSControlAdapters/AdapterUtils.js"));
             scripts.Add(page.ResolveUrl("~/aspnet_client/CSSControlAdapters/MenuAdapter.js"));
             scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/ui.multiselect.js"));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jQueryTabs.js"));
             return scripts;
         }
     }

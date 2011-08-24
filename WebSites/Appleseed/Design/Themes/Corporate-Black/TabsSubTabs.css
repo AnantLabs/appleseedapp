@@ -1,6 +1,6 @@
 /* CSS for 'Tabs' Navigation */
-.Tabs /* PortalTabs in Default Layout & DefaultSubTabs Layout */{
-border-right:#f3a372;
+/* .Tabs  PortalTabs in Default Layout & DefaultSubTabs Layout */{
+/*bo rder-right:#f3a372;
 padding-right:10px;
 border-top:#f3a372;
 padding-left:10px;
@@ -19,7 +19,7 @@ font-family:Verdana,Helvetica,sans-serif;
 text-align:center;
 }
 /* Important the order:link,visited,hover,focus,active. see http://www.w3.org/TR/REC-CSS2/selector.html  */
-.Tabs A:link{
+/*.Tabs A:link{
 color:#333333;
 text-decoration:none;
 }
@@ -39,7 +39,7 @@ text-decoration:none;
 color:#333333;
 text-decoration:none;
 }
-.SelectedTabs /* PortalTabs in Default Layout & DefaultSubTabs Layout */{
+.SelectedTabs /* PortalTabs in Default Layout & DefaultSubTabs Layout *//*{
 font-family:Verdana,Helvetica,sans-serif;
 font-size:12px;
 text-align:center;
@@ -59,7 +59,7 @@ line-height:normal;
 }
 
 /* Important the order:link,visited,hover,focus,active. see http://www.w3.org/TR/REC-CSS2/selector.html  */
-.SelectedTabs A:link{
+/*.SelectedTabs A:link{
 border-right:none;
 padding-right:0px;
 border-top:none;
@@ -105,7 +105,7 @@ border-bottom:none;
 text-decoration:none;
 }
 /* PortalTabs in DefaultSubTabs Layout */
-.SubTabs{
+/*.SubTabs{
 border-right:White thin;
 padding-right:10px;
 border-top:White thin;
@@ -123,7 +123,7 @@ background-color:#999999;
 text-align:center;
 }
 /* Important the order:link,visited,hover,focus,active. see http://www.w3.org/TR/REC-CSS2/selector.html  */
-.SubTabs A:link{
+/*.SubTabs A:link{
 color:White;
 text-decoration:none;
 }
@@ -143,7 +143,7 @@ text-decoration:none;
 color:White;
 text-decoration:none;
 }
-.SelectedSubTabs /* PortalTabs in DefaultSubTabs Layout */{
+.SelectedSubTabs /* PortalTabs in DefaultSubTabs Layout *//*{
 border-right:White thin;
 padding-right:10px;
 border-top:White thin;
@@ -161,7 +161,7 @@ background-color:#f9ccb0;
 text-align:center;
 }
 /* Important the order:link,visited,hover,focus,active. see http://www.w3.org/TR/REC-CSS2/selector.html  */
-.SelectedSubTabs A:link{
+/*.SelectedSubTabs A:link{
 color:#666666;
 text-decoration:none;
 }
@@ -181,3 +181,4 @@ text-decoration:none;
 color:#666666;
 text-decoration:none;
 }
+*/
