@@ -92,5 +92,9 @@ function ChangeModalTitle(modalTitle){
 	$('#iframemodal').dialog('option', 'title', modalTitle);
 
 }
-               
+
+
+$(function () {
+    $("#accordionPageLayout").accordion({ autoHeight: false });
+});                
             
