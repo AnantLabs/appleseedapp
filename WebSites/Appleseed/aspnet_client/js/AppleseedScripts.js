@@ -78,7 +78,7 @@ function editHtml(id, pageID, dir) {
 function openInModal(dir,modalTitle){
 	$('#iframemodal').remove();
 	$('<div id="iframemodal">').html("<iframe src='"+dir+"&ModalChangeMaster=true' width='100%' height='99%' > </iframe>").dialog({
-		width: 860,
+		width: 1050,
 		height: 600,
 		title: modalTitle,
 		resizable: false,
