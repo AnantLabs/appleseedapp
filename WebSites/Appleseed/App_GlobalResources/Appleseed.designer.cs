@@ -8964,7 +8964,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to items selected.
+        ///   Looks up a localized string similar to countries selected.
         /// </summary>
         internal static string ITEMS_SELECTED {
             get {
