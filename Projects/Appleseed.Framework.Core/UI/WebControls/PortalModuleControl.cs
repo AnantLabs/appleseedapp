@@ -2219,7 +2219,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                                 PopUp = true, 
                                 Target = "AppleseedPrint", 
                                 PopUpOptions =
-                                    "toolbar=1,menubar=1,resizable=1,scrollbars=1,width=600,height=400,left=15,top=15", 
+                                    "toolbar=1,menubar=1,resizable=1,scrollbars=1,width=790,height=400,left=15,top=15", 
                                 RenderAs = this.ButtonsRenderAs
                             };
                     }

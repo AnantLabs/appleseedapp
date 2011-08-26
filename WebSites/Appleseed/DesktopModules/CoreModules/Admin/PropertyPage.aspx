@@ -6,7 +6,7 @@
         <table align="center" border="0" cellpadding="4" cellspacing="0">
             <tr valign="top">
                 <td>
-                    <table cellpadding="0" cellspacing="0" width="600">
+                    <table cellpadding="0" cellspacing="0" width="1000">
                         <tr>
                             <% if (Request.QueryString.GetValues("ModalChangeMaster") == null) {%>
                                 <td align="left" class="Head" nowrap="nowrap">
