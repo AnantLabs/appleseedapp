@@ -1891,7 +1891,53 @@ namespace Appleseed.Framework.Site.Data
             }
         }
 
-        
+        public List<IModuleSettings> getModulesSettingsInPage(int PageId, string PaneName)
+        {
+
+            var modules = new List<IModuleSettings>();
+
+
+            // Create Instance of Connection and Command Object
+            using (var connection = Config.SqlConnectionString)
+            using (var command = new SqlCommand("rb_GetModulesSettingsInPage", connection) {
+                // Mark the Command as a SPROC
+                CommandType = CommandType.StoredProcedure
+            }) {
+
+                // Add Parameters to SPROC
+                var parameterPageId = new SqlParameter(StringsPageId, SqlDbType.Int, 4) { Value = PageId };
+                command.Parameters.Add(parameterPageId);
+
+                var parameterFriendlyName = new SqlParameter(StringsPaneName, SqlDbType.NVarChar, 50) { Value = PaneName };
+                command.Parameters.Add(parameterFriendlyName);
+
+                // Open the database connection and execute the command
+                connection.Open();
+                using (var reader = command.ExecuteReader()) {
+                    try {
+                        // Always call Read before accessing data.
+                        while (reader.Read()) {
+                            IModuleSettings module = new ModuleSettings();
+                            module.ModuleID = reader.GetInt32(0);
+                            module.ModuleDefID = reader.GetInt32(1);
+                            module.ModuleOrder = reader.GetInt32(2);
+                            module.ModuleTitle = reader.GetString(3);
+                            module.PageID = PageId;
+                            module.PaneName = PaneName;
+
+                            modules.Add(module);
+                        }
+                    } finally {
+                        reader.Close();
+                        connection.Close();
+                    }
+                }
+            }
+
+            return modules;
+
+
+        }
         
         
         #endregion

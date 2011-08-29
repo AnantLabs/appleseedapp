@@ -131,6 +131,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\" />
+    <Folder Include="DBScripts\20110829\" />
     <Folder Include="Scripts\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>
