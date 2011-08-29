@@ -269,11 +269,11 @@ namespace Appleseed.Admin
                     this.GetType(), "confirmDelete", PortalSettings.GetStringResource("CONFIRM_DELETE_SCRIPT", s));
             }
 
-            this.TopDeleteBtn.Attributes.Add("OnClick", "return confirmDelete()");
-            this.LeftDeleteBtn.Attributes.Add("OnClick", "return confirmDelete()");
-            this.RightDeleteBtn.Attributes.Add("OnClick", "return confirmDelete()");
-            this.ContentDeleteBtn.Attributes.Add("OnClick", "return confirmDelete()");
-            this.BottomDeleteBtn.Attributes.Add("OnClick", "return confirmDelete()");
+            //this.TopDeleteBtn.Attributes.Add("00", "return confirmDelete()");
+            //this.LeftDeleteBtn.Attributes.Add("OnClick", "return confirmDelete()");
+            //this.RightDeleteBtn.Attributes.Add("OnClick", "return confirmDelete()");
+            //this.ContentDeleteBtn.Attributes.Add("OnClick", "return confirmDelete()");
+            //this.BottomDeleteBtn.Attributes.Add("OnClick", "return confirmDelete()");
 
             // If first visit to the page, update all entries
             if (!this.Page.IsPostBack)
@@ -347,6 +347,53 @@ namespace Appleseed.Admin
             // Binds custom settings to table
             this.EditTable.DataSource = new SortedList(this.PageSettings);
             this.EditTable.DataBind();
+
+            this.ModuleIdField.Value = this.ModuleID.ToString();
+            this.PageIdField.Value = this.PageID.ToString();
+
+            // Add all the javascripts to the modules buttons
+
+            var url = HttpUrlBuilder.BuildUrl("~/Appleseed.Core/Home/AddModule");
+            AddModuleBtn.Attributes.Add("OnClick", "addModule('"+url+"');return false;");            
+
+
+            url = HttpUrlBuilder.BuildUrl("~/Appleseed.Core/Home/UpDown_Click");
+            TopUpBtn.Attributes.Add("OnClick", "mvUpDown('up', 'TopPane','Content_topPane','"+url+"');return false;");
+            LeftUpBtn.Attributes.Add("OnClick", "mvUpDown('up', 'LeftPane', 'Content_leftPane','"+url+"');return false;");
+            ContentUpBtn.Attributes.Add("OnClick","mvUpDown('up', 'ContentPane', 'Content_contentPane','"+url+"');return false;");
+            RightUpBtn.Attributes.Add("OnClick", "mvUpDown('up', 'RightPane', 'Content_rightPane','"+url+"');return false;");
+            BottomUpBtn.Attributes.Add("OnClick", "mvUpDown('up', 'BottomPane', 'Content_bottomPane','"+url+"');return false;");
+
+            TopDownBtn.Attributes.Add("OnClick", "mvUpDown('down', 'TopPane','Content_topPane','" + url + "');return false;");
+            LeftDownBtn.Attributes.Add("OnClick", "mvUpDown('down', 'LeftPane', 'Content_leftPane','" + url + "');return false;");
+            ContentDownBtn.Attributes.Add("OnClick", "mvUpDown('down', 'ContentPane', 'Content_contentPane','" + url + "');return false;");
+            RightDownBtn.Attributes.Add("OnClick", "mvUpDown('down', 'RightPane', 'Content_rightPane','" + url + "');return false;");
+            BottomDownBtn.Attributes.Add("OnClick", "mvUpDown('down', 'BottomPane', 'Content_bottomPane','" + url + "');return false;");
+
+            url = HttpUrlBuilder.BuildUrl("~/Appleseed.Core/Home/RightLeft_Click");
+            TopRightBtn.Attributes.Add("OnClick", "mvRigthLeft('TopPane', 'ContentPane', 'Content_topPane', '"+url+"');return false;");
+            LeftRightBtn.Attributes.Add("OnClick", "mvRigthLeft('LeftPane', 'ContentPane', 'Content_leftPane','"+url+"');return false;");
+            ContentTopBtn.Attributes.Add("OnClick", "mvRigthLeft('ContentPane', 'TopPane', 'Content_contentPane','"+url+"');return false;");
+            ContentLeftBtn.Attributes.Add("OnClick", "mvRigthLeft('ContentPane', 'LeftPane', 'Content_contentPane','"+url+"');return false;");
+            ContentRightBtn.Attributes.Add("OnClick", "mvRigthLeft('ContentPane', 'RightPane', 'Content_contentPane','"+url+"');return false;");
+            ContentBottomBtn.Attributes.Add("OnClick", "mvRigthLeft('ContentPane', 'BottomPane', 'Content_contentPane','"+url+"');return false;");
+            RightLeftBtn.Attributes.Add("OnClick", "mvRigthLeft('RightPane', 'ContentPane', 'Content_rightPane','"+url+"');return false;");
+            BottomLeftBtn.Attributes.Add("OnClick", "mvRigthLeft('BottomPane', 'ContentPane', 'Content_bottomPane','"+url+"');return false;");
+
+            url = HttpUrlBuilder.BuildUrl("~/Appleseed.Core/Home/EditBtn_Click");
+            TopEditBtn.Attributes.Add("OnClick", "editModule('TopPane', 'Content_topPane','"+url+"');return false;");
+            LeftEditBtn.Attributes.Add("OnClick", "editModule('LeftPane', 'Content_leftPane','"+url+"');return false;");
+            ContentEditBtn.Attributes.Add("OnClick", "editModule('ContentPane', 'Content_contentPane','"+url+"');return false;");
+            RightEditBtn.Attributes.Add("OnClick", "editModule('RightPane', 'Content_rightPane','"+url+"');return false;");
+            BottomEditBtn.Attributes.Add("OnClick", "editModule('BottomPane', 'Content_bottomPane','"+url+"');return false;");
+
+            url = HttpUrlBuilder.BuildUrl("~/Appleseed.Core/Home/DeleteBtn_Click");
+            TopDeleteBtn.Attributes.Add("OnClick", "return deleteModule('TopPane', 'Content_topPane','" + url + "');");
+            LeftDeleteBtn.Attributes.Add("OnClick", "return deleteModule('LeftPane', 'Content_leftPane','" + url + "');");
+            ContentDeleteBtn.Attributes.Add("OnClick", "return deleteModule('ContentPane', 'Content_contentPane','" + url + "');");
+            RightDeleteBtn.Attributes.Add("OnClick", "return deleteModule('RightPane', 'Content_rightPane','" + url + "');");
+            BottomDeleteBtn.Attributes.Add("OnClick", "return deleteModule('BottomPane', 'Content_bottomPane','" + url + "');");
+
         }
 
         /// <summary>
