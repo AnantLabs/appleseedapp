@@ -126,7 +126,8 @@
     <Content Include="DBScripts\20110804\01.UpdateModuleTitle.sql" />
     <Content Include="DBScripts\20110804\02.SelfUpdatingPackages_Table.sql" />
     <Content Include="DBScripts\20110804\03.GetModulesAllPortals.sql" />
-    <Content Include="DBScripts\20110829\01.UpdateHTMLContent.sql" />
+    <Content Include="DBScripts\20110829\01.GetModulesSettingsInPage.sql" />
+    <Content Include="DBScripts\20110829\02.UpdateHTMLContent.sql" />
     <Content Include="DBScripts\Readme.txt" />
   </ItemGroup>
   <ItemGroup>
