@@ -11,7 +11,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Appleseed.DesktopModules.CommunityModules.DailyDilbert
+namespace Appleseed.DesktopModules.CoreModules.DailyDilbert
 {
     using System;
     using System.Collections.Generic;

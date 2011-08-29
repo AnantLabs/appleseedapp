@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Appleseed.DesktopModules.CommunityModules.DailyDilbert {
+namespace Appleseed.DesktopModules.CoreModules.DailyDilbert {
     
     
     public partial class DailyDilbertModule {
