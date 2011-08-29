@@ -107,6 +107,18 @@ namespace Appleseed.Framework
             return 0;
         }
 
+        static public int Compare(ModuleItem x, ModuleItem y)
+        {
+            int result = 1;
+            if (x != null && x is ModuleItem &&
+                y != null && y is ModuleItem) {
+                ModuleItem itemX = (ModuleItem)x;
+                ModuleItem itemY = (ModuleItem)y;
+                result = itemX.CompareTo(itemY);
+            }
+            return result;
+        }
+
         #endregion
 
         #endregion
