@@ -144,9 +144,9 @@ namespace Appleseed
             scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/modernizr-1.7."+min));
             scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.cookie.js"));
 
-            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/MicrosoftAjax.")+js);
-            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/MicrosoftMvcAjax.")+js);
-            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/MicrosoftMvcValidation.")+js);
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/MicrosoftAjax." + js));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/MicrosoftMvcAjax." + js));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/MicrosoftMvcValidation." + js));
 
             scripts.Add(page.ResolveUrl("~/aspnet_client/js/DragNDrop.js"));
             scripts.Add(page.ResolveUrl("~/aspnet_client/js/browser_upgrade_notification.js"));
