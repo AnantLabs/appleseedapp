@@ -170,7 +170,7 @@ EXEC [rb_AddGeneralModuleDefinitions] @GeneralModDefID, @FriendlyName, @DesktopS
 GO
 
 ---------------------
--- Install script, updated HTML Document module 
+-- Install script, updated HTML Content module 
 ---------------------
 
 DECLARE @GeneralModDefID uniqueidentifier
@@ -183,9 +183,9 @@ DECLARE @Admin bit
 DECLARE @Searchable bit
 
 SET @GeneralModDefID = '{0B113F51-FEA3-499A-98E7-7B83C192FDBB}'
-SET @FriendlyName = 'HTML Content'
-SET @DesktopSrc = 'DesktopModules/CoreModules/HTMLContent/HTMLModule.ascx'
-SET @MobileSrc = ''
+SET @FriendlyName = 'HTML Document'
+SET @DesktopSrc = 'DesktopModules/HTMLDocument/HTMLModule.ascx'
+SET @MobileSrc = 'MobileModules/Text.ascx'
 SET @AssemblyName = 'Appleseed.DLL'
 SET @ClassName = 'Appleseed.Content.Web.ModulesHtmlModule'
 SET @Admin = 0
