@@ -170,7 +170,7 @@ EXEC [rb_AddGeneralModuleDefinitions] @GeneralModDefID, @FriendlyName, @DesktopS
 GO
 
 ---------------------
--- Install script, updated HTML Document module 
+-- Install script, updated HTML Content module 
 ---------------------
 
 DECLARE @GeneralModDefID uniqueidentifier
