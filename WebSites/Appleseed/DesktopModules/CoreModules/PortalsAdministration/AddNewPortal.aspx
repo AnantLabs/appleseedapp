@@ -4,7 +4,7 @@
     <div class="div_ev_Table">
         <table cellpadding="4" cellspacing="0" width="98%">
             <tr valign="top">
-                <td width="50">
+                <td width="150">
                     &nbsp;
                 </td>
                 <td width="*">

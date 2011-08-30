@@ -834,25 +834,25 @@
     <Compile Include="DesktopModules\CommunityModules\FlashModule\UploadFlash.aspx.designer.cs">
       <DependentUpon>UploadFlash.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DesktopModules\CoreModules\HTMLContent\HtmlEdit.aspx.cs">
+    <Compile Include="DesktopModules\CommunityModules\HTMLDocument\HtmlEdit.aspx.cs">
       <DependentUpon>HtmlEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="DesktopModules\CoreModules\HTMLContent\HtmlEdit.aspx.designer.cs">
+    <Compile Include="DesktopModules\CommunityModules\HTMLDocument\HtmlEdit.aspx.designer.cs">
       <DependentUpon>HtmlEdit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DesktopModules\CoreModules\HTMLContent\HtmlEditModal.aspx.cs">
+    <Compile Include="DesktopModules\CommunityModules\HTMLDocument\HtmlEditModal.aspx.cs">
       <DependentUpon>HtmlEditModal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="DesktopModules\CoreModules\HTMLContent\HtmlEditModal.aspx.designer.cs">
+    <Compile Include="DesktopModules\CommunityModules\HTMLDocument\HtmlEditModal.aspx.designer.cs">
       <DependentUpon>HtmlEditModal.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DesktopModules\CoreModules\HTMLContent\HtmlModule.ascx.cs">
+    <Compile Include="DesktopModules\CommunityModules\HTMLDocument\HtmlModule.ascx.cs">
       <DependentUpon>HtmlModule.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="DesktopModules\CoreModules\HTMLContent\HtmlModule.ascx.designer.cs">
+    <Compile Include="DesktopModules\CommunityModules\HTMLDocument\HtmlModule.ascx.designer.cs">
       <DependentUpon>HtmlModule.ascx</DependentUpon>
     </Compile>
     <Compile Include="DesktopModules\CommunityModules\IframeModule\IframeModule.ascx.cs">
@@ -5856,18 +5856,16 @@
     <Content Include="DesktopModules\CommunityModules\FlashModule\FlashModule.ascx" />
     <Content Include="DesktopModules\CommunityModules\FlashModule\install.xml" />
     <Content Include="DesktopModules\CommunityModules\FlashModule\UploadFlash.aspx" />
-    <Content Include="DesktopModules\CoreModules\HTMLContent\HtmlContent.xml">
+    <Content Include="DesktopModules\CommunityModules\HTMLDocument\HtmlDocument.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="DesktopModules\CoreModules\HTMLContent\HtmlEdit.aspx" />
-    <Content Include="DesktopModules\CoreModules\HTMLContent\HtmlEditModal.aspx" />
-    <Content Include="DesktopModules\CoreModules\HTMLContent\HtmlModule.ascx" />
-    <Content Include="DesktopModules\CoreModules\HTMLContent\install.sql" />
-    <Content Include="DesktopModules\CoreModules\HTMLContent\install.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="DesktopModules\CoreModules\HTMLContent\readme.txt" />
-    <Content Include="DesktopModules\CoreModules\HTMLContent\uninstall.sql" />
+    <Content Include="DesktopModules\CommunityModules\HTMLDocument\HtmlEdit.aspx" />
+    <Content Include="DesktopModules\CommunityModules\HTMLDocument\HtmlEditModal.aspx" />
+    <Content Include="DesktopModules\CommunityModules\HTMLDocument\HtmlModule.ascx" />
+    <Content Include="DesktopModules\CommunityModules\HTMLDocument\install.sql" />
+    <Content Include="DesktopModules\CommunityModules\HTMLDocument\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\HTMLDocument\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\HTMLDocument\uninstall.sql" />
     <Content Include="DesktopModules\CommunityModules\IframeModule\Iframe.xml" />
     <Content Include="DesktopModules\CommunityModules\IframeModule\IframeModule.ascx" />
     <Content Include="DesktopModules\CommunityModules\IframeModule\install.xml" />
