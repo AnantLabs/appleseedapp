@@ -42,6 +42,7 @@
       <Installer>DesktopModules/CoreModules/SecurityCheck/install.xml</Installer>
       <Installer>DesktopModules/CoreModules/SignIn/install.xml</Installer>
       <Installer>DesktopModules/CoreModules/SiteSettings/install.xml</Installer>
+      <Installer>DesktopModules/CoreModules/HTMLContent/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/AmazonFull/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/Announcements/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/Articles/install.xml</Installer>
@@ -58,7 +59,6 @@
       <Installer>DesktopModules/CommunityModules/FAQs/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/FileDirectoryTree/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/FlashModule/install.xml</Installer>
-      <Installer>DesktopModules/CoreModules/HTMLContent/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/IframeModule/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/Image/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/LanguageSwitcher/install.xml</Installer>
