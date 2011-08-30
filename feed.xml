@@ -23,7 +23,7 @@ Our hope is to produce software which uses existing technologies in open source,
 
     <version>1.0.0</version>
     <images>
-	<icon>http://www.anant.us/Portals/_Appleseed/images/default/appleseed_logo.png</icon>      
+      <icon>http://updates.agileworks.com.uy:81/Appleseed/beta.gif</icon>
     </images>
     <author>
       <name>Appleseed Portal</name>
