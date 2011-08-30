@@ -67,6 +67,7 @@ namespace Appleseed
             routes.IgnoreRoute("{*allasmx}", new { allasmx = @".*\.asmx(/.*)?" });
 
             routes.IgnoreRoute("{*alljs}", new { alljs = @".*\.js(/.*)?" });
+            routes.IgnoreRoute("{*alljson}", new { alljson = @".*\.json(/.*)?" });
             routes.IgnoreRoute("{*allcss}", new { allcss = @".*\.css(/.*)?" });
             routes.IgnoreRoute("{*alljpg}", new { alljpg = @".*\.jpg(/.*)?" });
             routes.IgnoreRoute("{*alljpeg}", new { alljpg = @".*\.jpeg(/.*)?" });
