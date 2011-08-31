@@ -459,6 +459,7 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
                 $.ajax({
                     url: urltarget,
                     type: "POST",
+                    timeout: 600,
                     data: {
                         title: titleM,
                         moduleType: type,
@@ -487,6 +488,7 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
                     $.ajax({
                         url: urltarget,
                         type: "POST",
+                        timeout: 600,
                         data: {
                             cmd: upordown,
                             pane: panes,
@@ -538,6 +540,7 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
                     $.ajax({
                         url: urlTarget,
                         type: "POST",
+                        timeout: 600,
                         data: {
                             sourcePane: source,
                             targetPane: target,
@@ -568,6 +571,7 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
                         $.ajax({
                             url: urlTarget,
                             type: "POST",
+                            timeout: 600,
                             data: {
                                 pane: paneLocation,
                                 pageId: page,
@@ -598,6 +602,7 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
                     $.ajax({
                         url: urlTarget,
                         type: "POST",
+                        timeout: 600,
                         data: {
                             pane: paneLocation,
                             modid: id,

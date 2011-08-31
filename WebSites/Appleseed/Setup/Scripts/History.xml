@@ -58,7 +58,7 @@
       <Installer>DesktopModules/CommunityModules/FAQs/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/FileDirectoryTree/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/FlashModule/install.xml</Installer>
-      <Installer>DesktopModules/CoreModules/HTMLContent/install.xml</Installer>
+      <Installer>DesktopModules/CommunityModules/HTMLDocument/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/IframeModule/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/Image/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/LanguageSwitcher/install.xml</Installer>
@@ -908,7 +908,7 @@
       <Installer>DesktopModules/CommunityModules/FileDirectoryTree/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/FlashModule/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/GoogleSearch/install.xml</Installer>
-      <Installer>DesktopModules/CoreModules/HTMLContent/install.xml</Installer>
+      <Installer>DesktopModules/CommunityModules/HTMLDocument/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/IframeModule/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/Image/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/LDAPUserProfile/install.xml</Installer>
@@ -1204,5 +1204,5 @@
 
   <!--DEPRECATED: Don´t add more scripts, this is only for backward compatibility -->
   <!--Please use DBScripts folder in Appleseed.Core portable area -->
-  
+
 </History>
