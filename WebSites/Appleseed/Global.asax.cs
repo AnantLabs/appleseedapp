@@ -46,6 +46,7 @@ namespace Appleseed
     using NuGet;
     using System.Linq;
     using Appleseed.Core.Models;
+    using Appleseed.Core;
 
     /// <summary>
     /// The global.
@@ -477,10 +478,10 @@ namespace Appleseed
                 Bus.AddMessageHandler(typeof(DBScriptsHandler));
 
                 //Register first core portable area (just in case...)
-                Appleseed.Core.PortableAreaUtils.RegisterArea<Appleseed.Core.AppleseedCoreRegistration>(RouteTable.Routes, false);
+                Appleseed.Core.PortableAreaUtils.RegisterArea<Appleseed.Core.AppleseedCoreRegistration>(RouteTable.Routes, PortableAreaUtils.RegistrationState.Initializing);
 
                 //Then, register all portable areas
-                AreaRegistration.RegisterAllAreas(true);
+                AreaRegistration.RegisterAllAreas(PortableAreaUtils.RegistrationState.Bootstrapping);
                 if (ConfigurationManager.AppSettings["RouteTesting"] == null ||
                     !bool.Parse(ConfigurationManager.AppSettings["RouteTesting"])) {
                     RegisterRoutes(RouteTable.Routes);
