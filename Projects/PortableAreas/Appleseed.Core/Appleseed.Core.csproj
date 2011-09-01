@@ -105,6 +105,7 @@
     <Compile Include="ApplicationBus\JSRegisterDescriptor.cs" />
     <Compile Include="ApplicationBus\JSRegisterHandler.cs" />
     <Compile Include="Authorization\AppleseedAuthorize.cs" />
+    <Compile Include="Controllers\PageLayoutController.cs" />
     <Compile Include="PortableAreaUtils.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DBScripts\ExecuteHelper.cs" />
