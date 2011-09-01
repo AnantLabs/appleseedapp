@@ -4,11 +4,11 @@
     <id>Appleseed</id>
     <version>1.0.0</version>
     <authors>Agileworks</authors>
-    <description>Appleseed CMS auto-updatable</description>
+    <description>Appleseed CMS distribution</description>
     <summary></summary>
-    <language>en-US</language>
-    <licenseUrl>http://example.com/yourapp/license</licenseUrl>
-    <projectUrl>http://example.com/yourapp</projectUrl>
+    <language>en-US</language>    
+    <projectUrl>http://appleseedapp.com/</projectUrl>
+	<iconUrl>http://www.anant.us/Portals/_Appleseed/images/default/appleseed_logo.png</iconUrl>
   </metadata>
   <files>
     <file src="**\*.aspx" target="Content" />
