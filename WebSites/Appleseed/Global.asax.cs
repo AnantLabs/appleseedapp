@@ -558,7 +558,7 @@ namespace Appleseed
             string remoteSources = ConfigurationManager.AppSettings["PackageSource"] ?? @"D:\";
             List<WebProjectManager> managers = new List<WebProjectManager>();
             foreach (var remoteSource in remoteSources.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries)) {
-                managers.Add(new WebProjectManager(remoteSource, base.Request.MapPath("~/")));
+                managers.Add(new WebProjectManager(remoteSource, HttpContext.Current.Server.MapPath("~/")));
             }
 
             return managers.ToArray();
