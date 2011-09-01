@@ -323,10 +323,18 @@ namespace Appleseed.Core.Controllers
                     // TODO add userEmail and useRecycler
                     moddb.DeleteModule(m.ID);
 
-                    //ReorderPane
+                    // reorder the modules in the pane
                     modules = this.GetModules(pane, Int32.Parse(pageId));
+                    var list = this.OrderModules(modules);
+
+                    // resave the order
+                    foreach (ModuleItem item in modules)
+                    {
+                        moddb.UpdateModuleOrder(item.ID, item.Order, pane);
+                    }
+
                     StringBuilder ls = new StringBuilder();
-                    foreach (ModuleItem md in modules) {
+                    foreach (ModuleItem md in list) {
                         ls.AppendFormat("<option value=\"{0}\">{1}</option>", md.ID, md.Title);
                     }
                     return Json(new { error = false, value = ls.ToString() });
