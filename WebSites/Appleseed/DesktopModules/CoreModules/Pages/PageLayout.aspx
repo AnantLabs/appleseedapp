@@ -167,8 +167,7 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
                                     &nbsp;
                                 </td>
                                 <td colspan="3">
-                                    <rbfwebui:LinkButton ID="AddModuleBtn" runat="server" CssClass="CommandButton" Text="Add to 'Organize Modules' Below"
-                                        TextKey="AM_ADDMODULEBELOW" />
+                                    <a id="Content_AddModuleBtn" class="CommandButton" href="#" onclick="addModule('<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/AddModule") %>');return false;">Add to "Organize Modules" Below</a>
                                     <asp:HiddenField ID="PageIdField" runat="server" />
                                     <asp:HiddenField ID="ModuleIdField" runat="server" />
                                 </td>
@@ -200,25 +199,28 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
                                                 <table border="0" cellpadding="0" cellspacing="2">
                                                     <tr valign="top">
                                                         <td rowspan="2">
-                                                            <asp:ListBox ID="topPane" runat="server" CssClass="NormalTextBox" DataSource="<%# topList %>"
-                                                                DataTextField="Title" DataValueField="ID" Rows="8" Width="690"></asp:ListBox>
+                                                            <select id="Content_topPane" class="NormalTextBox" style="width: 690px" size="8"></select>                                                            
                                                         </td>
                                                         <td nowrap="nowrap" valign="top">
-                                                            <rbfwebui:ImageButton ID="TopUpBtn" runat="server" CommandArgument="topPane"
-                                                                CommandName="up" text="Move Up" TextKey="MOVEUP" /><br />
-                                                            <rbfwebui:ImageButton ID="TopDownBtn" runat="server" CommandArgument="topPane"
-                                                                CommandName="down" text="Move Down" TextKey="MOVEDOWN" /><br />
-                                                            <rbfwebui:ImageButton ID="TopRightBtn" runat="server" CommandName="right" sourcepane="topPane"
-                                                                targetpane="contentPane" text="Move Right" TextKey="MOVERIGHT"  />&nbsp;&nbsp;
+                                                            <input id="Content_TopUpBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Up", "Up.gif").ImageUrl %>"
+                                                             alt="Move selected item up in list"  onclick="mvUpDown('up', 'TopPane','Content_topPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/UpDown_Click") %>');return false;"/>
+                                                            <br />
+                                                            <input id="Content_TopDownBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Down", "Down.gif").ImageUrl %>"
+                                                             alt="Move selected item down in list"  onclick="mvUpDown('down', 'TopPane','Content_topPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/UpDown_Click") %>');return false;"/>
+                                                            <br />
+                                                             <input id="Content_TopRightBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Bottom", "Right.gif").ImageUrl %>"
+                                                             alt="Move selected item to Content"  onclick="mvRigthLeft('TopPane', 'ContentPane', 'Content_topPane', '<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/RightLeft_Click") %>');return false;"/>&nbsp;&nbsp;
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td nowrap="nowrap" valign="Top">
-                                                            <rbfwebui:ImageButton ID="TopEditBtn" runat="server" CommandArgument="topPane"
-                                                                CommandName="edit" text="Edit" TextKey="EDIT" /><br />
+                                                            <input id="Content_TopEditBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Edit", "Edit.gif").ImageUrl %>"
+                                                             alt="Edit"  onclick="editModule('TopPane', 'Content_topPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/EditBtn_Click") %>');return false;"/>
                                                             <br />
-                                                            <rbfwebui:ImageButton ID="TopDeleteBtn" runat="server" CommandArgument="topPane"
-                                                                CommandName="delete" text="Delete" TextKey="DELETE"  />
+                                                            <br />
+                                                            <input id="Content_TopDeleteBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Delete", "Delete.gif").ImageUrl %>"
+                                                             alt="Delete"  onclick="return deleteModule('TopPane', 'Content_topPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/DeleteBtn_Click") %>');"/>
+                                                            
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -243,25 +245,28 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
                                                 <table border="0" cellpadding="0" cellspacing="2">
                                                     <tr valign="top">
                                                         <td rowspan="2">
-                                                            <asp:ListBox ID="leftPane" runat="server" CssClass="NormalTextBox" DataSource="<%# leftList %>"
-                                                                DataTextField="Title" DataValueField="ID" Rows="8" Width="110"></asp:ListBox>
+                                                            <select id="Content_leftPane" class="NormalTextBox" style="width: 110px" size="8"></select> 
                                                         </td>
                                                         <td nowrap="nowrap" valign="top">
-                                                            <rbfwebui:ImageButton ID="LeftUpBtn" runat="server" CommandArgument="leftPane" CommandName="up"
-                                                                text="Move Up" TextKey="MOVEUP" /><br />
-                                                            <rbfwebui:ImageButton ID="LeftRightBtn" runat="server" CommandName="right" sourcepane="leftPane"
-                                                                targetpane="contentPane" text="Move Right" TextKey="MOVERIGHT" /><br />
-                                                            <rbfwebui:ImageButton ID="LeftDownBtn" runat="server" CommandArgument="leftPane"
-                                                                CommandName="down" text="Move Down" TextKey="MOVEDOWN" />&nbsp;&nbsp;
+                                                            <input id="Content_LeftUpBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Up", "Up.gif").ImageUrl %>"
+                                                             alt="Move selected item up in list"  onclick="mvUpDown('up', 'LeftPane', 'Content_leftPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/UpDown_Click") %>');return false;"/>
+                                                            <br />
+                                                            <input id="Content_LeftRightBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Right", "Right.gif").ImageUrl %>"
+                                                             alt="Move selected item To Content pane"  onclick="mvRigthLeft('LeftPane', 'ContentPane', 'Content_leftPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/RightLeft_Click") %>');return false;"/>
+                                                            <br />
+                                                             <input id="Content_LeftDownBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Down", "Down.gif").ImageUrl %>"
+                                                             alt="Move selected item down in list"  onclick="mvUpDown('down', 'LeftPane', 'Content_leftPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/UpDown_Click") %>');return false;"/>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td nowrap="nowrap" valign="bottom">
-                                                            <rbfwebui:ImageButton ID="LeftEditBtn" runat="server" CommandArgument="leftPane"
-                                                                CommandName="edit" text="Edit" TextKey="EDIT"  /><br />
+                                                            <input id="Content_LeftEditBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Edit", "Edit.gif").ImageUrl %>"
+                                                             alt="Edit"  onclick="editModule('LeftPane', 'Content_leftPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/EditBtn_Click") %>');return false;" />
                                                             <br />
-                                                            <rbfwebui:ImageButton ID="LeftDeleteBtn" runat="server" CommandArgument="leftPane"
-                                                                CommandName="delete" text="Delete" TextKey="DELETE"  />
+                                                            <br />
+                                                            <input id="Content_LeftDeleteBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Delete", "Delete.gif").ImageUrl %>"
+                                                             alt="Delete"  onclick="return deleteModule('LeftPane', 'Content_leftPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/DeleteBtn_Click") %>');"/>
+                                                            
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -283,31 +288,38 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
                                                 <table border="0" cellpadding="0" cellspacing="2" width="100%">
                                                     <tr valign="top">
                                                         <td rowspan="2">
-                                                            <asp:ListBox ID="contentPane" runat="server" CssClass="NormalTextBox" DataSource="<%# contentList %>"
-                                                                DataTextField="Title" DataValueField="ID" Rows="8" Width="290"></asp:ListBox>
+                                                            <select id="Content_contentPane" class="NormalTextBox" style="width: 290px" size="8"></select> 
                                                         </td>
                                                         <td nowrap="nowrap" valign="top">
-                                                            <rbfwebui:ImageButton ID="ContentTopBtn" runat="server" sourcepane="contentPane"
-                                                                targetpane="topPane" text="Move Top" TextKey="MOVETOP"  /><br />
-                                                            <rbfwebui:ImageButton ID="ContentUpBtn" runat="server" CommandArgument="contentPane"
-                                                                CommandName="up" text="Move Up" TextKey="MOVEUP"  /><br />
-                                                            <rbfwebui:ImageButton ID="ContentLeftBtn" runat="server" sourcepane="contentPane"
-                                                                targetpane="leftPane" text="Move Left" TextKey="MOVELEFT"  /><br />
-                                                            <rbfwebui:ImageButton ID="ContentRightBtn" runat="server" sourcepane="contentPane"
-                                                                targetpane="rightPane" text="Move Right" TextKey="MOVERIGHT"  /><br />
-                                                            <rbfwebui:ImageButton ID="ContentDownBtn" runat="server" CommandArgument="contentPane"
-                                                                CommandName="down" text="Move Down" TextKey="MOVEDOWN" /><br />
-                                                            <rbfwebui:ImageButton ID="ContentBottomBtn" runat="server" sourcepane="contentPane"
-                                                                targetpane="BottomPane" text="Move Bottom" TextKey="MOVEBOTTOM"  /><br />
+                                                            <input id="Content_ContentTopBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Top", "Left.gif").ImageUrl %>"
+                                                             alt="Move selected item to the header"  onclick="mvRigthLeft('ContentPane', 'TopPane', 'Content_contentPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/RightLeft_Click") %>');return false;"/>
+                                                            <br />
+                                                            <input id="Content_ContentUpBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Up", "Up.gif").ImageUrl %>"
+                                                             alt="Move selected item up in list"  onclick="mvUpDown('up', 'ContentPane', 'Content_contentPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/UpDown_Click") %>');return false;"/>
+                                                            <br />
+                                                             <input id="Content_ContentLeftBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Left", "Left.gif").ImageUrl %>"
+                                                             alt="Move selected item to the left pane"  onclick="mvRigthLeft('ContentPane', 'LeftPane', 'Content_contentPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/RightLeft_Click") %>');return false;"/>
+                                                            <br />
+                                                            <input id="Content_ContentRightBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Right", "Right.gif").ImageUrl %>"
+                                                             alt="Move selected item To Right pane"  onclick="mvRigthLeft('ContentPane', 'RightPane', 'Content_contentPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/RightLeft_Click") %>');return false;"/>
+                                                            <br />
+                                                            <input id="Content_ContentDownBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Down", "Down.gif").ImageUrl %>"
+                                                             alt="Move selected item down in list"  onclick="mvUpDown('down', 'ContentPane', 'Content_contentPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/UpDown_Click") %>');return false;"/>
+                                                             <br />
+                                                            <input id="Content_ContentBottomBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Bottom", "Right.gif").ImageUrl %>"
+                                                             alt="Move selected item to Bottom pane"  onclick="mvRigthLeft('ContentPane', 'BottomPane', 'Content_contentPane', '<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/RightLeft_Click") %>');return false;"/>&nbsp;&nbsp;
+                                                            <br />
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td nowrap="nowrap" valign="bottom">
-                                                            <rbfwebui:ImageButton ID="ContentEditBtn" runat="server" CommandArgument="contentPane"
-                                                                CommandName="edit" text="Edit" TextKey="EDIT"  /><br />
+                                                            <input id="Content_ContentEditBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Edit", "Edit.gif").ImageUrl %>"
+                                                             alt="Edit"  onclick="editModule('ContentPane', 'Content_contentPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/EditBtn_Click") %>');return false;" />
                                                             <br />
-                                                            <rbfwebui:ImageButton ID="ContentDeleteBtn" runat="server" CommandArgument="contentPane"
-                                                                CommandName="delete" text="Delete" TextKey="DELETE"  />
+                                                            <br />
+                                                            <input id="Content_ContentDeleteBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Delete", "Delete.gif").ImageUrl %>"
+                                                             alt="Delete"  onclick="return deleteModule('ContentPane', 'Content_contentPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/DeleteBtn_Click") %>');"/>
+                                                            
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -329,25 +341,27 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
                                                 <table border="0" cellpadding="0" cellspacing="2">
                                                     <tr valign="top">
                                                         <td rowspan="2">
-                                                            <asp:ListBox ID="rightPane" runat="server" CssClass="NormalTextBox" DataSource="<%# rightList %>"
-                                                                DataTextField="Title" DataValueField="ID" Rows="8" Width="110"></asp:ListBox>
+                                                             <select id="Content_rightPane" class="NormalTextBox" style="width: 110px" size="8"></select>
                                                         </td>
                                                         <td nowrap="nowrap" valign="top">
-                                                            <rbfwebui:ImageButton ID="RightUpBtn" runat="server" CommandArgument="rightPane"
-                                                                CommandName="up" text="Move Up" TextKey="MOVEUP"  /><br />
-                                                            <rbfwebui:ImageButton ID="RightLeftBtn" runat="server" sourcepane="rightPane" targetpane="contentPane"
-                                                                text="Move Left" TextKey="MOVELEFT"  /><br />
-                                                            <rbfwebui:ImageButton ID="RightDownBtn" runat="server" CommandArgument="rightPane"
-                                                                CommandName="down" text="Move Down" TextKey="MOVEDOWN" />
+                                                            <input id="Content_RightUpBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Up", "Up.gif").ImageUrl %>"
+                                                             alt="Move selected item up in list"  onclick="mvUpDown('up', 'RightPane', 'Content_rightPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/UpDown_Click") %>');return false;"/>
+                                                            <br />
+                                                            <input id="Content_RightLeftBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Left", "Left.gif").ImageUrl %>"
+                                                             alt="Move selected item to the content pane"  onclick="mvRigthLeft('RightPane', 'ContentPane', 'Content_rightPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/RightLeft_Click") %>');return false;"/>
+                                                            <br />
+                                                            <input id="Content_RightDownBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Down", "Down.gif").ImageUrl %>"
+                                                             alt="Move selected item down in list"  onclick="mvUpDown('down', 'RightPane', 'Content_rightPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/UpDown_Click") %>');return false;"/>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td nowrap="nowrap" valign="bottom">
-                                                            <rbfwebui:ImageButton ID="RightEditBtn" runat="server" CommandArgument="rightPane"
-                                                                CommandName="edit" text="Edit" TextKey="EDIT"  /><br />
+                                                            <input id="Content_RightEditBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Edit", "Edit.gif").ImageUrl %>"
+                                                             alt="Edit"  onclick="editModule('RightPane', 'Content_rightPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/EditBtn_Click") %>');return false;" />
                                                             <br />
-                                                            <rbfwebui:ImageButton ID="RightDeleteBtn" runat="server" CommandArgument="rightPane"
-                                                                CommandName="delete" text="Delete" TextKey="DELETE"  />
+                                                            <br />
+                                                            <input id="Content_RightDeleteBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Delete", "Delete.gif").ImageUrl %>"
+                                                             alt="Delete"  onclick="return deleteModule('RightPane', 'Content_rightPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/DeleteBtn_Click") %>');"/>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -373,25 +387,27 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
                                                 <table border="0" cellpadding="0" cellspacing="2">
                                                     <tr valign="top">
                                                         <td rowspan="2">
-                                                            <asp:ListBox ID="bottomPane" runat="server" CssClass="NormalTextBox" DataSource="<%# bottomList %>"
-                                                                DataTextField="Title" DataValueField="ID" Rows="8" Width="690"></asp:ListBox>
+                                                            <select id="Content_bottomPane" class="NormalTextBox" style="width: 690px" size="8"></select>
                                                         </td>
                                                         <td nowrap="nowrap" valign="top">
-                                                            <rbfwebui:ImageButton ID="BottomLeftBtn" runat="server" sourcepane="bottomPane" targetpane="contentPane"
-                                                                text="Move Left" TextKey="MOVELEFT" /><br />
-                                                            <rbfwebui:ImageButton ID="BottomUpBtn" runat="server" CommandArgument="bottomPane"
-                                                                CommandName="up" text="Move Up" TextKey="MOVEUP"  /><br />
-                                                            <rbfwebui:ImageButton ID="BottomDownBtn" runat="server" CommandArgument="bottomPane"
-                                                                CommandName="down" text="Move Down" TextKey="MOVEDOWN" />&nbsp;&nbsp;
+                                                            <input id="Content_BottomLeftBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Top", "Left.gif").ImageUrl %>"
+                                                             alt="Move selected item to the content pane"  onclick="mvRigthLeft('BottomPane', 'ContentPane', 'Content_bottomPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/RightLeft_Click") %>');return false;"/>
+                                                            <br />
+                                                            <input id="Content_BottomUpBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Up", "Up.gif").ImageUrl %>"
+                                                             alt="Move selected item up in list"  onclick="mvUpDown('up', 'BottomPane', 'Content_bottomPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/UpDown_Click") %>');return false;"/>
+                                                            <br />
+                                                            <input id="Content_BottomDownBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Down", "Down.gif").ImageUrl %>"
+                                                             alt="Move selected item down in list"  onclick="mvUpDown('down', 'BottomPane', 'Content_bottomPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/UpDown_Click") %>');return false;"/>&nbsp;&nbsp;
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td nowrap="nowrap" valign="bottom">
-                                                            <rbfwebui:ImageButton ID="BottomEditBtn" runat="server" CommandArgument="bottomPane"
-                                                                CommandName="edit" text="Edit" TextKey="EDIT"  /><br />
+                                                            <input id="Image1" type="image" src="<%= CurrentTheme.GetImage("Buttons_Edit", "Edit.gif").ImageUrl %>"
+                                                             alt="Edit"  onclick="editModule('BottomPane', 'Content_bottomPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/EditBtn_Click") %>');return false;" />
                                                             <br />
-                                                            <rbfwebui:ImageButton ID="BottomDeleteBtn" runat="server" CommandArgument="bottomPane"
-                                                                CommandName="delete" text="Delete" TextKey="DELETE"  />
+                                                            <br />
+                                                            <input id="Image2" type="image" src="<%= CurrentTheme.GetImage("Buttons_Delete", "Delete.gif").ImageUrl %>"
+                                                             alt="Delete"  onclick="return deleteModule('BottomPane', 'Content_bottomPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/DeleteBtn_Click") %>');"/>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -447,6 +463,35 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
                     navigation: true
                 });
             });
+
+            $(document).ready(function () {
+                var page = $('#Content_PageIdField').val();
+                FillPane("TopPane", page);
+                FillPane("LeftPane", page);
+                FillPane("ContentPane", page);
+                FillPane("RightPane", page);
+                FillPane("BottomPane", page);
+
+            });
+
+            function FillPane(panes, page) {
+                
+                $.ajax({
+                    url: <%= urlToLoadModules %>,
+                    type: "POST",
+                    timeout: 600,
+                    data:{
+                        pane: panes,
+                        pageId: page
+                    },
+                    success: function (data) {
+                        if (data.error == false) {
+                            RewriteSelect(panes, data.value);
+                        }
+                    }
+                });
+
+            };
 
             function addModule(urltarget) {
                 var titleM = $('#Content_moduleTitle').val();
@@ -631,6 +676,9 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
                 }
             }
 
+
+
+            
 
 	    </script>
     
