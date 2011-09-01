@@ -62,6 +62,8 @@ namespace Appleseed.Admin
         /// </summary>
         protected ArrayList topList;
 
+        protected String urlToLoadModules;
+
         #endregion
 
         #region Methods
@@ -274,45 +276,11 @@ namespace Appleseed.Admin
             //this.RightDeleteBtn.Attributes.Add("OnClick", "return confirmDelete()");
             //this.ContentDeleteBtn.Attributes.Add("OnClick", "return confirmDelete()");
             //this.BottomDeleteBtn.Attributes.Add("OnClick", "return confirmDelete()");
-
+            urlToLoadModules = "'"+HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/LoadModule")+"'";
             // If first visit to the page, update all entries
             if (!this.Page.IsPostBack)
             {
                 this.msgError.Visible = false;
-
-                // Set images for buttons from current theme
-                this.TopUpBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Up", "Up.gif").ImageUrl;
-                this.TopRightBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Bottom", "Right.gif").ImageUrl;
-                this.TopDownBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Down", "Down.gif").ImageUrl;
-                this.TopEditBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Edit", "Edit.gif").ImageUrl;
-                this.TopDeleteBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Delete", "Delete.gif").ImageUrl;
-
-                this.LeftUpBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Up", "Up.gif").ImageUrl;
-                this.LeftRightBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Right", "Right.gif").ImageUrl;
-                this.LeftDownBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Down", "Down.gif").ImageUrl;
-                this.LeftEditBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Edit", "Edit.gif").ImageUrl;
-                this.LeftDeleteBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Delete", "Delete.gif").ImageUrl;
-
-                this.ContentUpBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Up", "Up.gif").ImageUrl;
-                this.ContentTopBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Top", "Left.gif").ImageUrl;
-                this.ContentLeftBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Left", "Left.gif").ImageUrl;
-                this.ContentRightBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Right", "Right.gif").ImageUrl;
-                this.ContentDownBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Down", "Down.gif").ImageUrl;
-                this.ContentBottomBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Bottom", "Right.gif").ImageUrl;
-                this.ContentEditBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Edit", "Edit.gif").ImageUrl;
-                this.ContentDeleteBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Delete", "Delete.gif").ImageUrl;
-
-                this.RightUpBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Up", "Up.gif").ImageUrl;
-                this.RightLeftBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Left", "Left.gif").ImageUrl;
-                this.RightDownBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Down", "Down.gif").ImageUrl;
-                this.RightEditBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Edit", "Edit.gif").ImageUrl;
-                this.RightDeleteBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Delete", "Delete.gif").ImageUrl;
-
-                this.BottomUpBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Up", "Up.gif").ImageUrl;
-                this.BottomLeftBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Top", "Left.gif").ImageUrl;
-                this.BottomDownBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Down", "Down.gif").ImageUrl;
-                this.BottomEditBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Edit", "Edit.gif").ImageUrl;
-                this.BottomDeleteBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Delete", "Delete.gif").ImageUrl;
 
                 this.BindData();
 
@@ -326,11 +294,11 @@ namespace Appleseed.Admin
                     try
                     {
                         var modIndex = Int32.Parse(this.Request.Params["selectedmodid"]);
-                        this.SelectModule(this.topPane, this.GetModules("TopPane"), modIndex);
-                        this.SelectModule(this.leftPane, this.GetModules("LeftPane"), modIndex);
-                        this.SelectModule(this.contentPane, this.GetModules("ContentPane"), modIndex);
-                        this.SelectModule(this.rightPane, this.GetModules("RightPane"), modIndex);
-                        this.SelectModule(this.bottomPane, this.GetModules("BottomPane"), modIndex);
+                        //this.SelectModule(this.topPane, this.GetModules("TopPane"), modIndex);
+                        //this.SelectModule(this.leftPane, this.GetModules("LeftPane"), modIndex);
+                        //this.SelectModule(this.contentPane, this.GetModules("ContentPane"), modIndex);
+                        //this.SelectModule(this.rightPane, this.GetModules("RightPane"), modIndex);
+                        //this.SelectModule(this.bottomPane, this.GetModules("BottomPane"), modIndex);
                     }
                     catch (Exception ex)
                     {
@@ -350,49 +318,6 @@ namespace Appleseed.Admin
 
             this.ModuleIdField.Value = this.ModuleID.ToString();
             this.PageIdField.Value = this.PageID.ToString();
-
-            // Add all the javascripts to the modules buttons
-
-            var url = HttpUrlBuilder.BuildUrl("~/Appleseed.Core/Home/AddModule");
-            AddModuleBtn.Attributes.Add("OnClick", "addModule('"+url+"');return false;");            
-
-
-            url = HttpUrlBuilder.BuildUrl("~/Appleseed.Core/Home/UpDown_Click");
-            TopUpBtn.Attributes.Add("OnClick", "mvUpDown('up', 'TopPane','Content_topPane','"+url+"');return false;");
-            LeftUpBtn.Attributes.Add("OnClick", "mvUpDown('up', 'LeftPane', 'Content_leftPane','"+url+"');return false;");
-            ContentUpBtn.Attributes.Add("OnClick","mvUpDown('up', 'ContentPane', 'Content_contentPane','"+url+"');return false;");
-            RightUpBtn.Attributes.Add("OnClick", "mvUpDown('up', 'RightPane', 'Content_rightPane','"+url+"');return false;");
-            BottomUpBtn.Attributes.Add("OnClick", "mvUpDown('up', 'BottomPane', 'Content_bottomPane','"+url+"');return false;");
-
-            TopDownBtn.Attributes.Add("OnClick", "mvUpDown('down', 'TopPane','Content_topPane','" + url + "');return false;");
-            LeftDownBtn.Attributes.Add("OnClick", "mvUpDown('down', 'LeftPane', 'Content_leftPane','" + url + "');return false;");
-            ContentDownBtn.Attributes.Add("OnClick", "mvUpDown('down', 'ContentPane', 'Content_contentPane','" + url + "');return false;");
-            RightDownBtn.Attributes.Add("OnClick", "mvUpDown('down', 'RightPane', 'Content_rightPane','" + url + "');return false;");
-            BottomDownBtn.Attributes.Add("OnClick", "mvUpDown('down', 'BottomPane', 'Content_bottomPane','" + url + "');return false;");
-
-            url = HttpUrlBuilder.BuildUrl("~/Appleseed.Core/Home/RightLeft_Click");
-            TopRightBtn.Attributes.Add("OnClick", "mvRigthLeft('TopPane', 'ContentPane', 'Content_topPane', '"+url+"');return false;");
-            LeftRightBtn.Attributes.Add("OnClick", "mvRigthLeft('LeftPane', 'ContentPane', 'Content_leftPane','"+url+"');return false;");
-            ContentTopBtn.Attributes.Add("OnClick", "mvRigthLeft('ContentPane', 'TopPane', 'Content_contentPane','"+url+"');return false;");
-            ContentLeftBtn.Attributes.Add("OnClick", "mvRigthLeft('ContentPane', 'LeftPane', 'Content_contentPane','"+url+"');return false;");
-            ContentRightBtn.Attributes.Add("OnClick", "mvRigthLeft('ContentPane', 'RightPane', 'Content_contentPane','"+url+"');return false;");
-            ContentBottomBtn.Attributes.Add("OnClick", "mvRigthLeft('ContentPane', 'BottomPane', 'Content_contentPane','"+url+"');return false;");
-            RightLeftBtn.Attributes.Add("OnClick", "mvRigthLeft('RightPane', 'ContentPane', 'Content_rightPane','"+url+"');return false;");
-            BottomLeftBtn.Attributes.Add("OnClick", "mvRigthLeft('BottomPane', 'ContentPane', 'Content_bottomPane','"+url+"');return false;");
-
-            url = HttpUrlBuilder.BuildUrl("~/Appleseed.Core/Home/EditBtn_Click");
-            TopEditBtn.Attributes.Add("OnClick", "editModule('TopPane', 'Content_topPane','"+url+"');return false;");
-            LeftEditBtn.Attributes.Add("OnClick", "editModule('LeftPane', 'Content_leftPane','"+url+"');return false;");
-            ContentEditBtn.Attributes.Add("OnClick", "editModule('ContentPane', 'Content_contentPane','"+url+"');return false;");
-            RightEditBtn.Attributes.Add("OnClick", "editModule('RightPane', 'Content_rightPane','"+url+"');return false;");
-            BottomEditBtn.Attributes.Add("OnClick", "editModule('BottomPane', 'Content_bottomPane','"+url+"');return false;");
-
-            url = HttpUrlBuilder.BuildUrl("~/Appleseed.Core/Home/DeleteBtn_Click");
-            TopDeleteBtn.Attributes.Add("OnClick", "return deleteModule('TopPane', 'Content_topPane','" + url + "');");
-            LeftDeleteBtn.Attributes.Add("OnClick", "return deleteModule('LeftPane', 'Content_leftPane','" + url + "');");
-            ContentDeleteBtn.Attributes.Add("OnClick", "return deleteModule('ContentPane', 'Content_contentPane','" + url + "');");
-            RightDeleteBtn.Attributes.Add("OnClick", "return deleteModule('RightPane', 'Content_rightPane','" + url + "');");
-            BottomDeleteBtn.Attributes.Add("OnClick", "return deleteModule('BottomPane', 'Content_bottomPane','" + url + "');");
 
         }
 
@@ -759,25 +684,26 @@ namespace Appleseed.Admin
             this.moduleType.DataSource = modules;
             this.moduleType.DataBind();
 
+            // Now it's the load is by ajax 1/september/2011
             // Populate Top Pane Module Data
-            this.topList = this.GetModules("TopPane");
-            this.topPane.DataBind();
+            //this.topList = this.GetModules("TopPane");
+            //this.topPane.DataBind();
 
-            // Populate Left Hand Pane Module Data
-            this.leftList = this.GetModules("LeftPane");
-            this.leftPane.DataBind();
+            //// Populate Left Hand Pane Module Data
+            //this.leftList = this.GetModules("LeftPane");
+            //this.leftPane.DataBind();
 
-            // Populate Content Pane Module Data
-            this.contentList = this.GetModules("ContentPane");
-            this.contentPane.DataBind();
+            //// Populate Content Pane Module Data
+            //this.contentList = this.GetModules("ContentPane");
+            //this.contentPane.DataBind();
 
-            // Populate Right Hand Module Data
-            this.rightList = this.GetModules("RightPane");
-            this.rightPane.DataBind();
+            //// Populate Right Hand Module Data
+            //this.rightList = this.GetModules("RightPane");
+            //this.rightPane.DataBind();
 
-            // Populate Bottom Module Data
-            this.bottomList = this.GetModules("BottomPane");
-            this.bottomPane.DataBind();
+            //// Populate Bottom Module Data
+            //this.bottomList = this.GetModules("BottomPane");
+            //this.bottomPane.DataBind();
         }
 
         /// <summary>
@@ -922,50 +848,50 @@ namespace Appleseed.Admin
 
             var mdb = new ModulesDB();
 
-            foreach (ListItem li in this.topPane.Items)
-            {
-                guid = mdb.GetModuleGuid(int.Parse(li.Value));
-                if (guid != Guid.Empty)
-                {
-                    guidsInUse += guid.ToString().ToUpper() + "@";
-                }
-            }
+            //foreach (ListItem li in this.topPane.Items)
+            //{
+            //    guid = mdb.GetModuleGuid(int.Parse(li.Value));
+            //    if (guid != Guid.Empty)
+            //    {
+            //        guidsInUse += guid.ToString().ToUpper() + "@";
+            //    }
+            //}
 
-            foreach (ListItem li in this.leftPane.Items)
-            {
-                guid = mdb.GetModuleGuid(int.Parse(li.Value));
-                if (guid != Guid.Empty)
-                {
-                    guidsInUse += guid.ToString().ToUpper() + "@";
-                }
-            }
+            //foreach (ListItem li in this.leftPane.Items)
+            //{
+            //    guid = mdb.GetModuleGuid(int.Parse(li.Value));
+            //    if (guid != Guid.Empty)
+            //    {
+            //        guidsInUse += guid.ToString().ToUpper() + "@";
+            //    }
+            //}
 
-            foreach (ListItem li in this.contentPane.Items)
-            {
-                guid = mdb.GetModuleGuid(int.Parse(li.Value));
-                if (guid != Guid.Empty)
-                {
-                    guidsInUse += guid.ToString().ToUpper() + "@";
-                }
-            }
+            //foreach (ListItem li in this.contentPane.Items)
+            //{
+            //    guid = mdb.GetModuleGuid(int.Parse(li.Value));
+            //    if (guid != Guid.Empty)
+            //    {
+            //        guidsInUse += guid.ToString().ToUpper() + "@";
+            //    }
+            //}
 
-            foreach (ListItem li in this.rightPane.Items)
-            {
-                guid = mdb.GetModuleGuid(int.Parse(li.Value));
-                if (guid != Guid.Empty)
-                {
-                    guidsInUse += guid.ToString().ToUpper() + "@";
-                }
-            }
+            //foreach (ListItem li in this.rightPane.Items)
+            //{
+            //    guid = mdb.GetModuleGuid(int.Parse(li.Value));
+            //    if (guid != Guid.Empty)
+            //    {
+            //        guidsInUse += guid.ToString().ToUpper() + "@";
+            //    }
+            //}
 
-            foreach (ListItem li in this.bottomPane.Items)
-            {
-                guid = mdb.GetModuleGuid(int.Parse(li.Value));
-                if (guid != Guid.Empty)
-                {
-                    guidsInUse += guid.ToString().ToUpper() + "@";
-                }
-            }
+            //foreach (ListItem li in this.bottomPane.Items)
+            //{
+            //    guid = mdb.GetModuleGuid(int.Parse(li.Value));
+            //    if (guid != Guid.Empty)
+            //    {
+            //        guidsInUse += guid.ToString().ToUpper() + "@";
+            //    }
+            //}
 
             cookie = new HttpCookie("AppleseedSecurity", guidsInUse);
             time = DateTime.Now;
