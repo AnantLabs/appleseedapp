@@ -202,15 +202,6 @@ namespace Appleseed.Admin {
         protected global::System.Web.UI.WebControls.TextBox moduleTitle;
         
         /// <summary>
-        /// AddModuleBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.LinkButton AddModuleBtn;
-        
-        /// <summary>
         /// PageIdField control.
         /// </summary>
         /// <remarks>
@@ -247,60 +238,6 @@ namespace Appleseed.Admin {
         protected global::Appleseed.Framework.Web.UI.WebControls.Localize topPanel;
         
         /// <summary>
-        /// topPane control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox topPane;
-        
-        /// <summary>
-        /// TopUpBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton TopUpBtn;
-        
-        /// <summary>
-        /// TopDownBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton TopDownBtn;
-        
-        /// <summary>
-        /// TopRightBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton TopRightBtn;
-        
-        /// <summary>
-        /// TopEditBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton TopEditBtn;
-        
-        /// <summary>
-        /// TopDeleteBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton TopDeleteBtn;
-        
-        /// <summary>
         /// LeftPanel control.
         /// </summary>
         /// <remarks>
@@ -308,60 +245,6 @@ namespace Appleseed.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Appleseed.Framework.Web.UI.WebControls.Localize LeftPanel;
-        
-        /// <summary>
-        /// leftPane control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox leftPane;
-        
-        /// <summary>
-        /// LeftUpBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton LeftUpBtn;
-        
-        /// <summary>
-        /// LeftRightBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton LeftRightBtn;
-        
-        /// <summary>
-        /// LeftDownBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton LeftDownBtn;
-        
-        /// <summary>
-        /// LeftEditBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton LeftEditBtn;
-        
-        /// <summary>
-        /// LeftDeleteBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton LeftDeleteBtn;
         
         /// <summary>
         /// contentpanel control.
@@ -373,87 +256,6 @@ namespace Appleseed.Admin {
         protected global::Appleseed.Framework.Web.UI.WebControls.Localize contentpanel;
         
         /// <summary>
-        /// contentPane control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox contentPane;
-        
-        /// <summary>
-        /// ContentTopBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton ContentTopBtn;
-        
-        /// <summary>
-        /// ContentUpBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton ContentUpBtn;
-        
-        /// <summary>
-        /// ContentLeftBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton ContentLeftBtn;
-        
-        /// <summary>
-        /// ContentRightBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton ContentRightBtn;
-        
-        /// <summary>
-        /// ContentDownBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton ContentDownBtn;
-        
-        /// <summary>
-        /// ContentBottomBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton ContentBottomBtn;
-        
-        /// <summary>
-        /// ContentEditBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton ContentEditBtn;
-        
-        /// <summary>
-        /// ContentDeleteBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton ContentDeleteBtn;
-        
-        /// <summary>
         /// rightpanel control.
         /// </summary>
         /// <remarks>
@@ -463,60 +265,6 @@ namespace Appleseed.Admin {
         protected global::Appleseed.Framework.Web.UI.WebControls.Localize rightpanel;
         
         /// <summary>
-        /// rightPane control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox rightPane;
-        
-        /// <summary>
-        /// RightUpBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton RightUpBtn;
-        
-        /// <summary>
-        /// RightLeftBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton RightLeftBtn;
-        
-        /// <summary>
-        /// RightDownBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton RightDownBtn;
-        
-        /// <summary>
-        /// RightEditBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton RightEditBtn;
-        
-        /// <summary>
-        /// RightDeleteBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton RightDeleteBtn;
-        
-        /// <summary>
         /// bottomPanel control.
         /// </summary>
         /// <remarks>
@@ -524,60 +272,6 @@ namespace Appleseed.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Appleseed.Framework.Web.UI.WebControls.Localize bottomPanel;
-        
-        /// <summary>
-        /// bottomPane control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox bottomPane;
-        
-        /// <summary>
-        /// BottomLeftBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton BottomLeftBtn;
-        
-        /// <summary>
-        /// BottomUpBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton BottomUpBtn;
-        
-        /// <summary>
-        /// BottomDownBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton BottomDownBtn;
-        
-        /// <summary>
-        /// BottomEditBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton BottomEditBtn;
-        
-        /// <summary>
-        /// BottomDeleteBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton BottomDeleteBtn;
         
         /// <summary>
         /// msgError control.
