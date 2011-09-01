@@ -64,5 +64,11 @@ namespace Appleseed.Core
             }
             registration.RegisterArea(context);
         }
+
+        public enum RegistrationState
+        {
+            Initializing = 0,
+            Bootstrapping = 1
+        }
     }
 }

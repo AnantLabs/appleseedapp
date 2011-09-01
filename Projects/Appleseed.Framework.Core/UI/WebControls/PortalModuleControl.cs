@@ -1304,7 +1304,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
         {
             get
             {
-                return this.SupportsPrint && this.Settings["MODULESETTINGS_SHOW_PRINT_BUTTION"] != null &&
+                return this.SupportsPrint && this.Settings.ContainsKey("MODULESETTINGS_SHOW_PRINT_BUTTION") &&
                        bool.Parse(this.Settings["MODULESETTINGS_SHOW_PRINT_BUTTION"].ToString());
             }
         }
@@ -1468,7 +1468,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
         {
             get
             {
-                return HttpContext.Current != null
+                return HttpContext.Current != null && this.Settings.ContainsKey("MODULESETTINGS_CULTURE")
                            ? this.Settings["MODULESETTINGS_CULTURE"].ToString()
                            : Thread.CurrentThread.CurrentUICulture.Name;
             }
@@ -4058,7 +4058,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
         {
             // changed: Jes1111 - 2004-08-05 - supports custom theme per module
             // (better to do this in OnLoad than in RenderChildren, which is too late)
-            var themeName = Int32.Parse(this.Settings["MODULESETTINGS_THEME"].ToString()) == (int)ThemeList.Alt
+            var themeName = this.Settings.ContainsKey("MODULESETTINGS_THEME") && Int32.Parse(this.Settings["MODULESETTINGS_THEME"].ToString()) == (int)ThemeList.Alt
                                 ? "Alt"
                                 : "Default";
 
