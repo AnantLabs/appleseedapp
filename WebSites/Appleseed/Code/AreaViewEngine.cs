@@ -180,8 +180,12 @@ namespace Appleseed.Code
         {
             string newMasterPath = masterPath;
 
-            newMasterPath = "~/Portals/_" + PortalAlias + "/MVCTemplates/Menu.master";
-
+            if (viewPath.ToLower().EndsWith(".aspx")) {
+                string customMasterPath = "~/Portals/_" + PortalAlias + "/MVCTemplates/Menu.master";
+                if (System.IO.File.Exists(controllerContext.HttpContext.Server.MapPath(masterPath))) {
+                    newMasterPath = customMasterPath;
+                }
+            }
 
             var view = base.CreateView(controllerContext, viewPath, newMasterPath);
 
