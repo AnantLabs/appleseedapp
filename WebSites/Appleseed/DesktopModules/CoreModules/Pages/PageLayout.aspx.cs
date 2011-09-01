@@ -900,6 +900,13 @@ namespace Appleseed.Admin
             base.Response.AppendCookie(cookie);
         }
 
+        protected string getUrlToEdit() {
+            var url = HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/Admin/ModuleSettings.aspx", this.PageID);
+            if(Request.QueryString.GetValues("ModalChangeMaster") != null){
+                url += "&ModalChangeMaster=true&camefromEditPage=true";
+            }
+            return "'"+url+"'";
+        }
         #endregion
     }
 }
