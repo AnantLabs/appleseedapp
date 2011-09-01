@@ -17,8 +17,9 @@ namespace Appleseed.Core
 
         public override void RegisterArea(AreaRegistrationContext context, IApplicationBus bus)
         {
-            if (!Convert.ToBoolean(context.State))
-            {
+            var currentState = (PortableAreaUtils.RegistrationState)Enum.Parse(typeof(PortableAreaUtils.RegistrationState), context.State.ToString());
+
+            if (currentState == PortableAreaUtils.RegistrationState.Initializing) {
                 context.MapRoute("Appleseed.Core_ResourceRoute", "Appleseed.Core/resource/{resourceName}",
                    new { controller = "EmbeddedResource", action = "Index" },
                    new string[] { "MvcContrib.PortableAreas" });
