@@ -47,6 +47,7 @@ namespace Appleseed
     using System.Linq;
     using Appleseed.Core.Models;
     using Appleseed.Core;
+    using Appleseed.Code;
 
     /// <summary>
     /// The global.
@@ -76,7 +77,7 @@ namespace Appleseed
             routes.IgnoreRoute("{*allgif}", new { allgif = @".*\.gif(/.*)?" });
             routes.IgnoreRoute("{*allhtml}", new { allhtml = @".*\.html(/.*)?" });
             routes.IgnoreRoute("{*allswf}", new { allswf = @".*\.swf(/.*)?" });
-            
+
             routes.IgnoreRoute("*/Scripts/*");
             routes.IgnoreRoute("*/Portals/*");
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
@@ -491,6 +492,10 @@ namespace Appleseed
 
                 InputBuilder.BootStrap();
                 ValueProviderFactories.Factories.Add(new Microsoft.Web.Mvc.JsonValueProviderFactory());
+
+                ViewEngines.Engines.Clear();
+                ViewEngines.Engines.Add(new AreaViewEngine());
+
             } catch (Exception exc) {
 
                 ErrorHandler.Publish(LogLevel.Error, exc);
@@ -513,7 +518,7 @@ namespace Appleseed
                     /*Must be improved trying to updated all at once */
 
                     var packageToUpdate = packagesToUpdate.First();
-                    bool found = false;                    
+                    bool found = false;
                     var projectManagers = this.GetProjectManagers();
                     var packageName = packageToUpdate.PackageId;
                     int i = 0;
