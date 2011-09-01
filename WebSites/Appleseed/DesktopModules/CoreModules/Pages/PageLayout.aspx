@@ -641,24 +641,29 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
             function editModule(paneLocation,paneId,urlTarget) {
                 var index = $('#' + paneId + ' :selected').index();
                 if (index != -1 && index > -1) {
-                    var page = $('#Content_PageIdField').val();
+
+                    
                     var id = $('#' + paneId + ' :selected').val();
-                    var modalIframe = querySt("ModalChangeMaster");
-                    $.ajax({
-                        url: urlTarget,
-                        type: "POST",
-                        timeout: 600,
-                        data: {
-                            pane: paneLocation,
-                            modid: id,
-                            pageId: page,
-                            modal: modalIframe
-                        },
-                        success: function (data) {
-                            if (data.error == false)
-                                window.location = data.value;
-                        }
-                    });
+                    var url = <%= getUrlToEdit()%>;
+                    url += '&mID=';
+                    url += id;
+                    window.location = url;
+//                    var modalIframe = querySt("ModalChangeMaster");
+//                    $.ajax({
+//                        url: urlTarget,
+//                        type: "POST",
+//                        timeout: 600,
+//                        data: {
+//                            pane: paneLocation,
+//                            modid: id,
+//                            pageId: page,
+//                            modal: modalIframe
+//                        },
+//                        success: function (data) {
+//                            if (data.error == false)
+//                                window.location = data.value;
+//                        }
+//                    });
 
                 }
             }
