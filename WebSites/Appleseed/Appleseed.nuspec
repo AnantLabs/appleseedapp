@@ -8,7 +8,7 @@
     <summary></summary>
     <language>en-US</language>    
     <projectUrl>http://appleseedapp.com/</projectUrl>
-	<iconUrl>http://www.anant.us/Portals/_Appleseed/images/default/appleseed_logo.png</iconUrl>
+	<iconUrl>http://updates.agileworks.com.uy/Content/Appleseed.ico</iconUrl>
   </metadata>
   <files>
     <file src="**\*.aspx" target="Content" />
