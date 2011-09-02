@@ -479,7 +479,7 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
                 $.ajax({
                     url: <%= urlToLoadModules %>,
                     type: "POST",
-                    timeout: 600,
+                    timeout: 1500,
                     data:{
                         pane: panes,
                         pageId: page
@@ -504,7 +504,7 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
                 $.ajax({
                     url: urltarget,
                     type: "POST",
-                    timeout: 600,
+                    timeout: 1500,
                     data: {
                         title: titleM,
                         moduleType: type,
@@ -533,7 +533,7 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
                     $.ajax({
                         url: urltarget,
                         type: "POST",
-                        timeout: 600,
+                        timeout: 1500,
                         data: {
                             cmd: upordown,
                             pane: panes,
@@ -585,7 +585,7 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
                     $.ajax({
                         url: urlTarget,
                         type: "POST",
-                        timeout: 600,
+                        timeout: 1500,
                         data: {
                             sourcePane: source,
                             targetPane: target,
@@ -616,7 +616,7 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
                         $.ajax({
                             url: urlTarget,
                             type: "POST",
-                            timeout: 600,
+                            timeout: 1500,
                             data: {
                                 pane: paneLocation,
                                 pageId: page,
@@ -648,38 +648,14 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
                     url += '&mID=';
                     url += id;
                     window.location = url;
-//                    var modalIframe = querySt("ModalChangeMaster");
-//                    $.ajax({
-//                        url: urlTarget,
-//                        type: "POST",
-//                        timeout: 600,
-//                        data: {
-//                            pane: paneLocation,
-//                            modid: id,
-//                            pageId: page,
-//                            modal: modalIframe
-//                        },
-//                        success: function (data) {
-//                            if (data.error == false)
-//                                window.location = data.value;
-//                        }
-//                    });
+
 
                 }
             }
 
             
 
-            function querySt(ji) {
-                hu = window.location.search.substring(1);
-                gy = hu.split("&");
-                for (i = 0; i < gy.length; i++) {
-                    ft = gy[i].split("=");
-                    if (ft[0] == ji) {
-                        return ft[1];
-                    }
-                }
-            }
+            
 
 
 
