@@ -31,24 +31,35 @@ namespace SelfUpdater.Controllers
             var scheduledUpdates = context.SelfUpdatingPackages.ToList();
 
             WebProjectManager[] projectManagers = this.GetProjectManagers();
-            List<InstallationState> state2 = new List<InstallationState>();
+            List<InstallationState> installed = new List<InstallationState>();
             foreach (var projectManager in projectManagers) {
                 var installedPackages = this.GetInstalledPackages(projectManager);
 
                 foreach (var installedPackage in installedPackages) {
                     IPackage update = projectManager.GetUpdate(installedPackage);
-                    InstallationState state = new InstallationState();
-                    state.Installed = installedPackage;
-                    state.Update = update;
+                    InstallationState package = new InstallationState();
+                    package.Installed = installedPackage;
+                    package.Update = update;
                     if (scheduledUpdates.Any(d => d.PackageId == installedPackage.Id)) {
-                        state.Scheduled = true;
+                        package.Scheduled = true;
                     }
 
-                    state2.Add(state);
+
+                    if (installed.Any(d => d.Installed.Id == package.Installed.Id)) {
+                        var addedPackage = installed.Where(d => d.Installed.Id == package.Installed.Id).First();
+                        if (package.Update != null) {
+                            if (addedPackage.Update == null || addedPackage.Update.Version < package.Update.Version) {
+                                installed.Remove(addedPackage);
+                                installed.Add(package);
+                            }
+                        }
+                    } else {
+                        installed.Add(package);
+                    }
                 }
             }
 
-            return base.View(state2);
+            return base.View(installed);
         }
 
         private List<IPackage> GetInstalledPackages(WebProjectManager projectManager)
