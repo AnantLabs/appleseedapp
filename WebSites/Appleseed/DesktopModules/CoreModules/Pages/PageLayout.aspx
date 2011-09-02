@@ -479,7 +479,7 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
                 $.ajax({
                     url: <%= urlToLoadModules %>,
                     type: "POST",
-                    timeout: 3000,
+                    timeout: 180000,
                     data:{
                         pane: panes,
                         pageId: page
@@ -504,7 +504,7 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
                 $.ajax({
                     url: urltarget,
                     type: "POST",
-                    timeout: 3000,
+                    timeout: 180000,
                     data: {
                         title: titleM,
                         moduleType: type,
@@ -533,7 +533,7 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
                     $.ajax({
                         url: urltarget,
                         type: "POST",
-                        timeout: 3000,
+                        timeout: 180000,
                         data: {
                             cmd: upordown,
                             pane: panes,
@@ -585,7 +585,7 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
                     $.ajax({
                         url: urlTarget,
                         type: "POST",
-                        timeout: 3000,
+                        timeout: 180000,
                         data: {
                             sourcePane: source,
                             targetPane: target,
@@ -616,7 +616,7 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
                         $.ajax({
                             url: urlTarget,
                             type: "POST",
-                            timeout: 3000,
+                            timeout: 180000,
                             data: {
                                 pane: paneLocation,
                                 pageId: page,
