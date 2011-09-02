@@ -279,7 +279,7 @@ td.LeftTD_home{
 #bottompane{
     min-height: 50px;
     padding:0px;
-    max-width:940px;
+    max-width:1000px;
 	margin:0 auto;}
 	
         /*****************************************/
@@ -391,7 +391,7 @@ td.LeftTD_home{
 .ModuleWrap{
 	margin:0 auto ;
 	width:100%;
-	max-width:940px!important;
+	max-width:1000px!important;
     position: relative;
 	padding:10px 0px 14px 0px; }
 
