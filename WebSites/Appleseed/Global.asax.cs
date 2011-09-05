@@ -63,23 +63,15 @@ namespace Appleseed
         /// The routes.
         /// </param>
         public static void RegisterRoutes(RouteCollection routes)
-        {
-            routes.IgnoreRoute("{*allaspx}", new { allaspx = @".*\.aspx(/.*)?" });
-            routes.IgnoreRoute("{*allashx}", new { allashx = @".*\.ashx(/.*)?" });
-            routes.IgnoreRoute("{*allasmx}", new { allasmx = @".*\.asmx(/.*)?" });
+        {            
+            routes.IgnoreRoute("Images/{*path}");
+            routes.IgnoreRoute("Design/{*path}");
+            routes.IgnoreRoute("Scripts/{*path}");
+            routes.IgnoreRoute("Portals/{*path}");
+            routes.IgnoreRoute("Content/{*path}");
+            routes.IgnoreRoute("aspnet_client/{*path}");
+            
 
-            routes.IgnoreRoute("{*alljs}", new { alljs = @".*\.js(/.*)?" });
-            routes.IgnoreRoute("{*alljson}", new { alljson = @".*\.json(/.*)?" });
-            routes.IgnoreRoute("{*allcss}", new { allcss = @".*\.css(/.*)?" });
-            routes.IgnoreRoute("{*alljpg}", new { alljpg = @".*\.jpg(/.*)?" });
-            routes.IgnoreRoute("{*alljpeg}", new { alljpg = @".*\.jpeg(/.*)?" });
-            routes.IgnoreRoute("{*allpng}", new { allpng = @".*\.png(/.*)?" });
-            routes.IgnoreRoute("{*allgif}", new { allgif = @".*\.gif(/.*)?" });
-            routes.IgnoreRoute("{*allhtml}", new { allhtml = @".*\.html(/.*)?" });
-            routes.IgnoreRoute("{*allswf}", new { allswf = @".*\.swf(/.*)?" });
-
-            routes.IgnoreRoute("*/Scripts/*");
-            routes.IgnoreRoute("*/Portals/*");
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.IgnoreRoute(string.Empty);
