@@ -6,7 +6,7 @@
             <rbfwebui:localize id="moduleNameLabel" runat="server" text="<%$ Resources:Appleseed, AM_MODULETYPE %>">
             </rbfwebui:localize></td>
         <td valign="top">
-            <asp:dropdownlist id="moduleType" runat="server" autopostback="True" cssclass="NormalTextBox"
+            <asp:dropdownlist id="moduleType" runat="server" autopostback="False" cssclass="NormalTextBox"
                 datatextfield="FriendlyName" datavaluefield="ModuleDefID">
             </asp:dropdownlist>&nbsp;
             <rbfwebui:HyperLink id="AddModuleHelp" runat="server"></rbfwebui:HyperLink></td>
