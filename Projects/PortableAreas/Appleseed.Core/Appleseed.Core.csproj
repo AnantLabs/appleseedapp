@@ -112,11 +112,6 @@
     <Compile Include="DBScripts\ExecuteScriptsConfiguration.cs" />
     <Compile Include="DBScripts\ExecuteScriptsConfigurationCollection.cs" />
     <Compile Include="DBScripts\ExecuteScriptsConfigurationNode.cs" />
-    <Compile Include="Models\AppleseedModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AppleseedModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="ApplicationBus\BusMessage.cs" />
     <Compile Include="PortableAreaRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -134,6 +129,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\" />
+    <Folder Include="Models\" />
     <Folder Include="Scripts\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>
@@ -145,12 +141,6 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="Models\AppleseedModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AppleseedModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Appleseed.Framework.Core\Appleseed.Framework.Core.csproj">
