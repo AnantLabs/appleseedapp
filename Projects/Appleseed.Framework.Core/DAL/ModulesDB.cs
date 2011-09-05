@@ -24,7 +24,7 @@ namespace Appleseed.Framework.Site.Data
     using Appleseed.Framework.Settings.Cache;
     using Appleseed.Framework.Site.Configuration;
     using System.Web;
-    using Appleseed.Framework.Model;
+    using Appleseed.Framework.Models;
 
     /// <summary>
     /// Class that encapsulates all data logic necessary to add/query/delete

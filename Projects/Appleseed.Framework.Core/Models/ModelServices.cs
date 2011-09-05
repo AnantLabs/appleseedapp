@@ -25,7 +25,7 @@ namespace Appleseed.Framework.Core.Model
 
     using Path = Appleseed.Framework.Settings.Path;
     using Appleseed.Framework.Settings.Cache;
-using Appleseed.Framework.Model;
+    using Appleseed.Framework.Models;
 
     /// <summary>
     /// The model services.

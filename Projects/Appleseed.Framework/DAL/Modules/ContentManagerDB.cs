@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 using Appleseed.Framework.Settings;
 using Appleseed.Framework.Data;
 using System.Linq;
-using Appleseed.Framework.Model;
+using Appleseed.Framework.Models;
 namespace Appleseed.Framework.Content.Data
 {
     /// <summary>
