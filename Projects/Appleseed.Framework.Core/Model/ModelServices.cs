@@ -128,7 +128,7 @@ namespace Appleseed.Framework.Core.Model
                             {
                                 PortalModuleControl control;
                                 var virtualPath = Path.ApplicationRoot + "/" + settings2.DesktopSrc;
-                                if (virtualPath.LastIndexOf('.') >= 0)
+                                if (virtualPath.ToLowerInvariant().Trim().EndsWith(".ascx"))
                                 {
                                     if (faultyModule != null && faultyModule.ModuleDefID == settings2.ModuleDefID)
                                     {

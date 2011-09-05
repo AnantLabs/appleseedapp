@@ -74,8 +74,8 @@ namespace Appleseed.Framework.Helpers
 
             var controlFullPath = Path.ApplicationRoot + "/" + desktopSource;
 
-            // if not MVC -> Instantiate the module
-            if (controlFullPath.LastIndexOf('.') >= 0)
+            // if ascx User Control based Module-> Instantiate the module
+            if (controlFullPath.ToLowerInvariant().Trim().EndsWith(".ascx"))
             {
                 var page = new Page();
 
