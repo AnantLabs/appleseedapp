@@ -31,15 +31,15 @@
                 <%
                if (m.Update != null) {%>
                 <%: m.Update.Id%>&nbsp;<%: m.Update.Version%>&nbsp;<a id="schedule<%: m.Update.Id %>"
-                    href="javascript:void(0)" onclick="updatePackage('<%: m.Update.Id %>', true)"> Schedule
-                    update</a> <a id="unschedule<%: m.Update.Id %>" href="javascript:void(0)" onclick="updatePackage('<%: m.Update.Id %>', false)"
+                    href="javascript:void(0)" onclick="updatePackage('<%: m.Update.Id %>', true,'<%: m.Update.ProjectUrl %>','<%: m.Update.Version.ToString() %>' )"> Schedule
+                    update</a> <a id="unschedule<%: m.Update.Id %>" href="javascript:void(0)" onclick="updatePackage('<%: m.Update.Id %>', false, '<%: m.Update.ProjectUrl %>','<%: m.Update.Version.ToString() %>')"
                         style="display: none">Unschedule update</a>
                 <%} else { %>
                 (none)
                 <%} %>
                 <%if (m.Scheduled) { %>
                 <script type="text/javascript">
-                    updatePackage('<%: m.Installed.Id %>', true);
+                    updatePackage('<%: m.Installed.Id %>', true, '<%: m.Update.ProjectUrl %>', '<%: m.Update.Version.ToString() %>');
                 </script>
                 <%}%>
                 <%}%>

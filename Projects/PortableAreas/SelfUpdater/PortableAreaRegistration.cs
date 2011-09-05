@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using MvcContrib.PortableAreas;
+using Appleseed.Core;
 
 namespace SelfUpdater
 {
@@ -33,7 +34,8 @@ namespace SelfUpdater
                 new { action = "Index", controller = "Updates", id = UrlParameter.Optional }
             );
 
-            this.RegisterAreaEmbeddedResources();
+            RegisterAreaEmbeddedResources();
+            PortableAreaUtils.RegisterScripts(this, context, bus);
         }
 
     }

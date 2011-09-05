@@ -10,7 +10,6 @@ using System.Collections.Generic;
 using SelfUpdater.Models;
 using Appleseed.Framework;
 using System.IO;
-using Appleseed.Core.Models;
 using System.Xml;
 using System.Text;
 using System.Dynamic;
@@ -26,7 +25,7 @@ namespace SelfUpdater.Controllers
 
         public ActionResult Module()
         {
-            AppleseedDBContext context = new AppleseedDBContext();
+            SelfUpdaterEntities context = new SelfUpdaterEntities();
 
             var scheduledUpdates = context.SelfUpdatingPackages.ToList();
 
@@ -112,16 +111,17 @@ namespace SelfUpdater.Controllers
         }
 
 
-        public ActionResult DelayedUpgrade(string packageId)
+        public ActionResult DelayedUpgrade(string packageId, string source, string version)
         {
-            AppleseedDBContext context = new AppleseedDBContext();
+            SelfUpdaterEntities context = new SelfUpdaterEntities();
 
             var entity = context.SelfUpdatingPackages.Where(d => d.PackageId == packageId).FirstOrDefault();
             if (entity == default(SelfUpdatingPackages)) {
 
                 entity = new SelfUpdatingPackages() {
                     PackageId = packageId,
-                    PackageVersion = string.Empty
+                    Source = source,
+                    PackageVersion = version                    
                 };
 
                 context.SelfUpdatingPackages.AddObject(entity);
@@ -137,7 +137,7 @@ namespace SelfUpdater.Controllers
 
         public ActionResult RemoveDelayedUpgrade(string packageId)
         {
-            AppleseedDBContext context = new AppleseedDBContext();
+            SelfUpdaterEntities context = new SelfUpdaterEntities();
 
             var entity = context.SelfUpdatingPackages.Where(d => d.PackageId == packageId).FirstOrDefault();
             if (entity != default(SelfUpdatingPackages)) {

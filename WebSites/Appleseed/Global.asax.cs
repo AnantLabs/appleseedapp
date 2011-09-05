@@ -48,6 +48,7 @@ namespace Appleseed
     using Appleseed.Core.Models;
     using Appleseed.Core;
     using Appleseed.Code;
+    using SelfUpdater.Models;
 
     /// <summary>
     /// The global.
@@ -500,7 +501,7 @@ namespace Appleseed
 
             try {
 
-                AppleseedDBContext context = new AppleseedDBContext();
+                SelfUpdaterEntities context = new SelfUpdaterEntities();
 
                 var packagesToUpdate = context.SelfUpdatingPackages.AsQueryable();
 
