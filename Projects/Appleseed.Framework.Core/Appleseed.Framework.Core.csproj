@@ -227,12 +227,12 @@
     <Compile Include="KickStarter\CommonClasses\DataChangeEventArgs.cs" />
     <Compile Include="KickStarter\CommonClasses\Error.cs" />
     <Compile Include="KickStarter\CommonClasses\SQLHelper.cs" />
-    <Compile Include="Model\AppleseedModel.Designer.cs">
+    <Compile Include="Models\AppleseedModel.Designer.cs">
       <DependentUpon>AppleseedModel.edmx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Model\ModelServices.cs" />
+    <Compile Include="Models\ModelServices.cs" />
     <Compile Include="Monitoring\MonitoringAction.cs" />
     <Compile Include="Monitoring\Utility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -378,7 +378,7 @@
     <Content Include="UI\WebControls\DesktopModuleTitle.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Model\AppleseedModel.edmx">
+    <EntityDeploy Include="Models\AppleseedModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AppleseedModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
