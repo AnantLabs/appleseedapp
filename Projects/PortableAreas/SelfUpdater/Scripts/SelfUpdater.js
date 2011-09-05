@@ -3,7 +3,7 @@
 
 
 
-function updatePackage(packageId, schedule) {
+function updatePackage(packageId, schedule, source, version) {
 
     var actionurl = '/SelfUpdater/Updates/DelayedUpgrade';
     if (schedule == false) {
@@ -24,7 +24,9 @@ function updatePackage(packageId, schedule) {
     $.ajax({
         url: actionurl,
         data: {
-            packageId: packageId
+            packageId: packageId,
+            source: source,
+            version: version
         },
         dataType: 'json',
         timeout: 1200000,
@@ -103,7 +105,7 @@ function installPackage(packageId, source) {
     });
 
     $.post('/SelfUpdater/Installation/InstallPackage', { packageId: packageId, source: source })
-    .success(function () {       
+    .success(function () {
 
         var xhr;
         var reloading = false;
