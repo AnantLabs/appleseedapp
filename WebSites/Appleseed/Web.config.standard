@@ -37,6 +37,7 @@
 		<add name="ConnectionString" connectionString="foo" providerName="System.Data.SqlClient" />
 		<add name="AppleseedDBContext" connectionString="foo" providerName="System.Data.EntityClient" />
 		<add name="AppleseedMembershipEntities" connectionString="foo" providerName="System.Data.EntityClient" />
+		<add name="SelfUpdaterEntities" connectionString="metadata=res://*/Models.SelfUpdater.csdl|res://*/Models.SelfUpdater.ssdl|res://*/Models.SelfUpdater.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=.;Initial Catalog=AppleseedGoogle;User ID=foo;Password=foo;MultipleActiveResultSets=True&quot;" providerName="System.Data.EntityClient" />
 	</connectionStrings>
 	<cachingConfiguration defaultCacheManager="CacheManager">
 		<cacheManagers>

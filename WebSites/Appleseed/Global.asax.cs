@@ -48,6 +48,7 @@ namespace Appleseed
     using Appleseed.Core.Models;
     using Appleseed.Core;
     using Appleseed.Code;
+    using SelfUpdater.Models;
 
     /// <summary>
     /// The global.
@@ -64,22 +65,14 @@ namespace Appleseed
         /// </param>
         public static void RegisterRoutes(RouteCollection routes)
         {
-            routes.IgnoreRoute("{*allaspx}", new { allaspx = @".*\.aspx(/.*)?" });
-            routes.IgnoreRoute("{*allashx}", new { allashx = @".*\.ashx(/.*)?" });
-            routes.IgnoreRoute("{*allasmx}", new { allasmx = @".*\.asmx(/.*)?" });
+            routes.IgnoreRoute("Images/{*path}");
+            routes.IgnoreRoute("Design/{*path}");
+            routes.IgnoreRoute("Scripts/{*path}");
+            routes.IgnoreRoute("Portals/{*path}");
+            routes.IgnoreRoute("Content/{*path}");
+            routes.IgnoreRoute("aspnet_client/{*path}");
 
-            routes.IgnoreRoute("{*alljs}", new { alljs = @".*\.js(/.*)?" });
-            routes.IgnoreRoute("{*alljson}", new { alljson = @".*\.json(/.*)?" });
-            routes.IgnoreRoute("{*allcss}", new { allcss = @".*\.css(/.*)?" });
-            routes.IgnoreRoute("{*alljpg}", new { alljpg = @".*\.jpg(/.*)?" });
-            routes.IgnoreRoute("{*alljpeg}", new { alljpg = @".*\.jpeg(/.*)?" });
-            routes.IgnoreRoute("{*allpng}", new { allpng = @".*\.png(/.*)?" });
-            routes.IgnoreRoute("{*allgif}", new { allgif = @".*\.gif(/.*)?" });
-            routes.IgnoreRoute("{*allhtml}", new { allhtml = @".*\.html(/.*)?" });
-            routes.IgnoreRoute("{*allswf}", new { allswf = @".*\.swf(/.*)?" });
 
-            routes.IgnoreRoute("*/Scripts/*");
-            routes.IgnoreRoute("*/Portals/*");
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.IgnoreRoute(string.Empty);
@@ -508,7 +501,7 @@ namespace Appleseed
 
             try {
 
-                AppleseedDBContext context = new AppleseedDBContext();
+                SelfUpdaterEntities context = new SelfUpdaterEntities();
 
                 var packagesToUpdate = context.SelfUpdatingPackages.AsQueryable();
 
@@ -518,19 +511,9 @@ namespace Appleseed
                     /*Must be improved trying to updated all at once */
 
                     var packageToUpdate = packagesToUpdate.First();
-                    bool found = false;
-                    var projectManagers = this.GetProjectManagers();
+                    var projectManager = this.GetProjectManagers().Where(d => d.SourceRepository.Source.ToLower().Trim() == packageToUpdate.Source.ToLower().Trim()).First();
                     var packageName = packageToUpdate.PackageId;
-                    int i = 0;
-                    IPackage installedPackage = null;
-                    while (!found) {
-                        installedPackage = this.GetInstalledPackage(projectManagers[i], packageName);
-                        found = installedPackage != null;
-                        if (!found) i++;
-                    }
-
-                    WebProjectManager projectManager = projectManagers[i];
-
+                    IPackage installedPackage = projectManager.GetInstalledPackages(string.Empty).Where(d => d.Id == packageName).First();
                     IPackage update = projectManager.GetUpdate(installedPackage);
 
                     if (update != null) {
@@ -545,7 +528,6 @@ namespace Appleseed
                         ErrorHandler.Publish(LogLevel.Info, "SelfUpdater: " + packageName + " update applied !");
                         context.SelfUpdatingPackages.DeleteObject(packageToUpdate);
                     }
-
 
                     context.SaveChanges();
 
@@ -567,16 +549,6 @@ namespace Appleseed
             }
 
             return managers.ToArray();
-        }
-
-        private IPackage GetInstalledPackage(WebProjectManager projectManager, string packageId)
-        {
-            IPackage package = projectManager.GetInstalledPackages(string.Empty).Where(d => d.Id == packageId).FirstOrDefault();
-
-            //if (package == null) {
-            //    throw new InvalidOperationException(string.Format("The package for package ID '{0}' is not installed in this website. Copy the package into the App_Data/packages folder.", packageId));
-            //}
-            return package;
         }
 
         #endregion
