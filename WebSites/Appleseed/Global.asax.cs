@@ -45,7 +45,6 @@ namespace Appleseed
     using SelfUpdater.Controllers;
     using NuGet;
     using System.Linq;
-    using Appleseed.Core.Models;
     using Appleseed.Core;
     using Appleseed.Code;
     using SelfUpdater.Models;
