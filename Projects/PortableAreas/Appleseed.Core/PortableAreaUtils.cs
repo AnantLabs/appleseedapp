@@ -20,15 +20,15 @@ namespace Appleseed.Core
             bus.Send(new DBScriptsMessage
             {
                 AreaName = portableArea.AreaName,
-                LastVersion = GetLastDBScriptVersion(),
-                Scripts = GetScripts()
+                LastVersion = GetLastDBScriptVersion(portableArea),
+                Scripts = GetScripts(portableArea)
 
             });
         }
 
-        private static List<DBScriptDescriptor> GetScripts()
+        private static List<DBScriptDescriptor> GetScripts(PortableAreaRegistration portableArea)
         {
-            string[] resources = Assembly.GetExecutingAssembly().GetManifestResourceNames();
+            string[] resources =  Assembly.GetAssembly(portableArea.GetType()).GetManifestResourceNames();
 
             var result = new List<DBScriptDescriptor>();
 
@@ -42,9 +42,9 @@ namespace Appleseed.Core
             return result;
         }
 
-        private static string GetLastDBScriptVersion()
+        private static string GetLastDBScriptVersion(PortableAreaRegistration portableArea)
         {
-            string[] resources = Assembly.GetExecutingAssembly().GetManifestResourceNames();
+            string[] resources = Assembly.GetAssembly(portableArea.GetType()).GetManifestResourceNames();
 
             //eg: Appleseed.Core.DBScripts._20110413.01. Create_DBVersion_Table.sql
 

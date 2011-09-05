@@ -134,7 +134,6 @@
       [rb_Versions].[ReleaseDate] AS [ReleaseDate]
       FROM [dbo].[rb_Versions] AS [rb_Versions]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="SelfUpdatingPackages" EntityType="AppleseedModel.Store.SelfUpdatingPackages" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_ComponentModule_Modules" Association="AppleseedModel.Store.FK_ComponentModule_Modules">
             <End Role="rb_Modules" EntitySet="rb_Modules" />
             <End Role="rb_ComponentModule" EntitySet="rb_ComponentModule" />
@@ -1114,14 +1113,6 @@
           <Property Name="Release" Type="int" Nullable="false" />
           <Property Name="Version" Type="nvarchar" MaxLength="50" />
           <Property Name="ReleaseDate" Type="datetime" />
-        </EntityType>
-        <EntityType Name="SelfUpdatingPackages">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="PackageId" Type="nvarchar(max)" />
-          <Property Name="PackageVersion" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK_ComponentModule_Modules">
           <End Role="rb_Modules" Type="AppleseedModel.Store.rb_Modules" Multiplicity="1">
@@ -2118,7 +2109,6 @@
             <End Role="rb_Roles" EntitySet="rb_Roles" />
             <End Role="rb_Users" EntitySet="rb_Users" />
           </AssociationSet>
-          <EntitySet Name="SelfUpdatingPackages" EntityType="AppleseedModel.SelfUpdatingPackages" />
         </EntityContainer>
         <EntityType Name="rb_Announcements">
           <Key>
@@ -3661,14 +3651,6 @@
           <End Role="rb_Roles" Type="AppleseedModel.rb_Roles" Multiplicity="*" />
           <End Role="rb_Users" Type="AppleseedModel.rb_Users" Multiplicity="*" />
         </Association>
-        <EntityType Name="SelfUpdatingPackages">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="PackageId" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="PackageVersion" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4227,15 +4209,6 @@
               <ScalarProperty Name="UserID" ColumnName="UserID" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="SelfUpdatingPackages">
-            <EntityTypeMapping TypeName="AppleseedModel.SelfUpdatingPackages">
-              <MappingFragment StoreEntitySet="SelfUpdatingPackages">
-                <ScalarProperty Name="PackageVersion" ColumnName="PackageVersion" />
-                <ScalarProperty Name="PackageId" ColumnName="PackageId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -4796,7 +4769,6 @@
           <ConnectorPoint PointX="7.4129253255208329" PointY="69.8370751367187" />
           <ConnectorPoint PointX="8.25" PointY="69.8370751367187" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="AppleseedModel.SelfUpdatingPackages" Width="1.5" PointX="9.375" PointY="0.75" Height="1.5956835937499818" />
       </Diagram>
     </Diagrams>
   </Designer>

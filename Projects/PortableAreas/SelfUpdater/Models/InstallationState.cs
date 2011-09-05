@@ -10,7 +10,7 @@ namespace SelfUpdater.Models
     {
         public IPackage Installed { get; set; }
         public IPackage Update { get; set; }
-
+        public string Source { get; set; }
         public bool Scheduled { get; set; }
     }
 }

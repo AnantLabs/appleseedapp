@@ -10,7 +10,6 @@ using System.Collections.Generic;
 using SelfUpdater.Models;
 using Appleseed.Framework;
 using System.IO;
-using Appleseed.Core.Models;
 using System.Xml;
 using System.Text;
 using System.Dynamic;
@@ -26,29 +25,42 @@ namespace SelfUpdater.Controllers
 
         public ActionResult Module()
         {
-            AppleseedDBContext context = new AppleseedDBContext();
+            SelfUpdaterEntities context = new SelfUpdaterEntities();
 
             var scheduledUpdates = context.SelfUpdatingPackages.ToList();
 
             WebProjectManager[] projectManagers = this.GetProjectManagers();
-            List<InstallationState> state2 = new List<InstallationState>();
+            List<InstallationState> installed = new List<InstallationState>();
             foreach (var projectManager in projectManagers) {
                 var installedPackages = this.GetInstalledPackages(projectManager);
 
                 foreach (var installedPackage in installedPackages) {
                     IPackage update = projectManager.GetUpdate(installedPackage);
-                    InstallationState state = new InstallationState();
-                    state.Installed = installedPackage;
-                    state.Update = update;
+                    InstallationState package = new InstallationState();
+                    package.Installed = installedPackage;
+                    package.Update = update;
+                    package.Source = projectManager.SourceRepository.Source;
+
                     if (scheduledUpdates.Any(d => d.PackageId == installedPackage.Id)) {
-                        state.Scheduled = true;
+                        package.Scheduled = true;
                     }
 
-                    state2.Add(state);
+
+                    if (installed.Any(d => d.Installed.Id == package.Installed.Id)) {
+                        var addedPackage = installed.Where(d => d.Installed.Id == package.Installed.Id).First();
+                        if (package.Update != null) {
+                            if (addedPackage.Update == null || addedPackage.Update.Version < package.Update.Version) {
+                                installed.Remove(addedPackage);
+                                installed.Add(package);
+                            }
+                        }
+                    } else {
+                        installed.Add(package);
+                    }
                 }
             }
 
-            return base.View(state2);
+            return base.View(installed);
         }
 
         private List<IPackage> GetInstalledPackages(WebProjectManager projectManager)
@@ -101,16 +113,17 @@ namespace SelfUpdater.Controllers
         }
 
 
-        public ActionResult DelayedUpgrade(string packageId)
+        public ActionResult DelayedUpgrade(string packageId, string source, string version)
         {
-            AppleseedDBContext context = new AppleseedDBContext();
+            SelfUpdaterEntities context = new SelfUpdaterEntities();
 
             var entity = context.SelfUpdatingPackages.Where(d => d.PackageId == packageId).FirstOrDefault();
             if (entity == default(SelfUpdatingPackages)) {
 
                 entity = new SelfUpdatingPackages() {
                     PackageId = packageId,
-                    PackageVersion = string.Empty
+                    Source = source,
+                    PackageVersion = version                    
                 };
 
                 context.SelfUpdatingPackages.AddObject(entity);
@@ -126,7 +139,7 @@ namespace SelfUpdater.Controllers
 
         public ActionResult RemoveDelayedUpgrade(string packageId)
         {
-            AppleseedDBContext context = new AppleseedDBContext();
+            SelfUpdaterEntities context = new SelfUpdaterEntities();
 
             var entity = context.SelfUpdatingPackages.Where(d => d.PackageId == packageId).FirstOrDefault();
             if (entity != default(SelfUpdatingPackages)) {
