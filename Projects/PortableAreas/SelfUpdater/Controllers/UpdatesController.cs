@@ -39,6 +39,8 @@ namespace SelfUpdater.Controllers
                     InstallationState package = new InstallationState();
                     package.Installed = installedPackage;
                     package.Update = update;
+                    package.Source = projectManager.SourceRepository.Source;
+
                     if (scheduledUpdates.Any(d => d.PackageId == installedPackage.Id)) {
                         package.Scheduled = true;
                     }
