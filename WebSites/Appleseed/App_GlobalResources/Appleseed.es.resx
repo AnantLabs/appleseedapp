@@ -4413,4 +4413,7 @@
   <data name="REMOVE_ALL" xml:space="preserve">
     <value>Remover todos</value>
   </data>
+  <data name="PAGESETTINGS_SITEDEFAULT" xml:space="preserve">
+    <value>(Tema del sitio)</value>
+  </data>
 </root>
