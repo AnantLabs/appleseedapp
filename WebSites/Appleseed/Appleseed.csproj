@@ -86,6 +86,10 @@
     </PublishDatabaseSettings>
     <!--<ExcludeFoldersFromDeployment>Portals</ExcludeFoldersFromDeployment>-->
     <!--<ExcludeFilesFromDeployment>Web.config</ExcludeFilesFromDeployment>-->
+    <CopyAllFilesToSingleFolderForPackageDependsOn>
+      CustomCollectFiles;
+      $(CopyAllFilesToSingleFolderForPackageDependsOn);
+    </CopyAllFilesToSingleFolderForPackageDependsOn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -101,7 +105,7 @@
     <ExcludeApp_Data>true</ExcludeApp_Data>
     <PublishDatabases>false</PublishDatabases>
     <!--<ExcludeFoldersFromDeployment>Portals</ExcludeFoldersFromDeployment>-->
-    <!--<ExcludeFilesFromDeployment>Web.config</ExcludeFilesFromDeployment>-->
+    <!--<ExcludeFilesFromDeployment>Web.config</ExcludeFilesFromDeployment>-->    
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Ajax">
@@ -4896,7 +4900,6 @@
     <Content Include="Design\DesktopLayouts\Education\SiteMaster.master" />
     <Content Include="Design\DesktopLayouts\Clearly\PanesMaster.master" />
     <Content Include="Design\DesktopLayouts\Clearly\SiteMaster.master" />
-    <None Include="Design\Themes\Appleseed.One.Theme\icon\Thumbs.db" />
     <Content Include="Design\DesktopLayouts\Appleseedcms\DesktopFooter.ascx" />
     <Content Include="Design\DesktopLayouts\Appleseedcms\DesktopPortalBanner.ascx" />
     <Content Include="Design\DesktopLayouts\Appleseedcms\images\body_bg.jpg" />
@@ -6499,11 +6502,6 @@
     <Content Include="LocalizationAdmin\LocalizeForm.css" />
     <Content Include="LocalizationAdmin\StronglyTypedGlobalResources.aspx" />
     <Content Include="LocalizationAdmin\Web.config" />
-    <None Include="Design\Themes\Appleseedcms\icon\Thumbs.db" />
-    <None Include="Design\Themes\Corporate-Black-Alt\icon\Thumbs.db" />
-    <None Include="Design\Themes\Education-Alt\icon\Thumbs.db" />
-    <None Include="Design\Themes\Education\icon\Thumbs.db" />
-    <None Include="Design\Themes\Module-No-Style\icon\Thumbs.db" />
     <None Include="DesktopModules\CommunityModules\EnhancedLinks\EnhancedLinks.doc" />
     <None Include="DesktopModules\CommunityModules\OneFileModule\CSharp Examples\ExcelReader\ApplyDBPatch.bat" />
     <None Include="DesktopModules\CommunityModules\OneFileModule\CSharp Examples\ExcelReader\ExcelDemoData.xls" />
@@ -6728,9 +6726,23 @@
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
+       Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
   <Target Name="AfterBuild">
+  </Target>-->
+  <PropertyGroup>
+    <CopyAllFilesToSingleFolderForPackageDependsOn>
+      CustomCollectFiles;
+      $(CopyAllFilesToSingleFolderForPackageDependsOn);
+    </CopyAllFilesToSingleFolderForPackageDependsOn>
+  </PropertyGroup>
+  <Target Name="CustomCollectFiles">
+    <ItemGroup>      
+      <_CustomFiles Include="packages\**\*.*" />
+      <FilesForPackagingFromProject Include="%(_CustomFiles.Identity)">
+        <DestinationRelativePath>packages\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
+      </FilesForPackagingFromProject>
+    </ItemGroup>
   </Target>
-  -->
 </Project>
