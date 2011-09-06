@@ -148,6 +148,8 @@
 		<add key="PackageSource" value="http://example.com" />
 		<add key="RouteTesting" value="false" />
 		<add key="ScriptsModeDebug" value="false" />
+		<add key="PackageSource" value="http://updates.appleseedapp.com/nuget/" />
+		 
 	</appSettings>
 	<system.net>
 		<mailSettings>
