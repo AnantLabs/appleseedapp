@@ -1657,6 +1657,7 @@
     <Folder Include="Bin\" />
     <Folder Include="DesktopModules\CommunityModules\DiscussionEnhanced\images\" />
     <Folder Include="images\default\" />
+    <Folder Include="packages\" />
     <Folder Include="Portals\_Appleseed\Album\" />
     <Folder Include="Portals\_Appleseed\SecureDocuments\" />
   </ItemGroup>
@@ -6538,7 +6539,6 @@
     <None Include="Setup\History.xsx">
       <DependentUpon>History.xsd</DependentUpon>
     </None>
-    <Content Include="packages\Readme.txt" />
     <Content Include="Portals\_Appleseed\corporate_black_logo.png" />
     <Content Include="Portals\_Appleseed\documents\Documents.txt" />
     <Content Include="Portals\_Appleseed\education_logo.png" />
