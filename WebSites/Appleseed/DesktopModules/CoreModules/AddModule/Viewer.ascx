@@ -26,7 +26,7 @@
         </td>
     </tr>
     <tr>
-        <td valign="top">
+        <td valign="top" style="width: 130px">
             <rbfwebui:localize id="moduleVisibleLabel" runat="server" text="<%$ Resources:Appleseed, AM_MODULEVISIBLETO %>">
             </rbfwebui:localize><br />
         </td>
@@ -49,9 +49,10 @@
         </td>
     </tr>
     <tr>
+        <td></td>
         <td>
             <rbfwebui:LinkButton id="AddModuleBtn" runat="server" cssclass="CommandButton" text="Add to 'Organize Modules' Below"
-                textkey="AM_ADDMODULETOTAB">Add this Module to the page</rbfwebui:LinkButton>
+                textkey="AM_ADDMODULETOTAB" >Add this Module to the page</rbfwebui:LinkButton>
         </td>
     </tr>
 </table>

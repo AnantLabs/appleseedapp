@@ -648,13 +648,13 @@ namespace Appleseed.Framework.Site.Configuration
             // get the list of available layouts
             // changed: Jes1111 - 2004-08-06
             var layoutsList = new ArrayList(new LayoutManager(this.PortalSettings.PortalPath).GetLayouts());
-            var noCustomLayout = new LayoutItem { Name = string.Empty };
+            var noCustomLayout = new LayoutItem { Name = "(Site Default)" };
             layoutsList.Insert(0, noCustomLayout);
 
             // get the list of available themes
             // changed: Jes1111 - 2004-08-06
             var themesList = new ArrayList(new ThemeManager(this.PortalSettings.PortalPath).GetThemes());
-            var noCustomTheme = new ThemeItem { Name = string.Empty };
+            var noCustomTheme = new ThemeItem { Name = "(Site Default)" };
             themesList.Insert(0, noCustomTheme);
 
             // changed: Jes1111 - 2004-08-06
