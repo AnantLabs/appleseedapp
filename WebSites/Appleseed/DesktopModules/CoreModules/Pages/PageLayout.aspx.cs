@@ -261,6 +261,17 @@ namespace Appleseed.Admin
         /// </remarks>
         protected override void OnLoad(EventArgs e)
         {
+            if (!this.Page.IsPostBack)
+            {
+
+                // Invalidate settings cache
+                if (CurrentCache.Exists(Key.TabSettings(this.PageID)))
+                {
+                    CurrentCache.Remove(Key.TabSettings(this.PageID));
+                }
+
+            }
+            
             base.OnLoad(e);
 
             // Confirm delete
@@ -280,6 +291,7 @@ namespace Appleseed.Admin
             // If first visit to the page, update all entries
             if (!this.Page.IsPostBack)
             {
+
                 this.msgError.Visible = false;
 
                 this.BindData();
