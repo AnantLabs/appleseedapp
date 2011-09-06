@@ -5571,4 +5571,7 @@
   <data name="LANGUAGE" xml:space="preserve">
     <value>Linguagem</value>
   </data>
+  <data name="PAGESETTINGS_SITEDEFAULT" xml:space="preserve">
+    <value>(Tema do site)</value>
+  </data>
 </root>
