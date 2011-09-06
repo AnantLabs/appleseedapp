@@ -7,7 +7,7 @@
             </rbfwebui:localize></td>
         <td valign="top">
             <asp:dropdownlist id="moduleType" runat="server" autopostback="False" cssclass="NormalTextBox"
-                datatextfield="FriendlyName" datavaluefield="ModuleDefID">
+                datatextfield="FriendlyName" datavaluefield="ModuleDefID" Width="430px">
             </asp:dropdownlist>&nbsp;
             <rbfwebui:HyperLink id="AddModuleHelp" runat="server"></rbfwebui:HyperLink></td>
     </tr>
@@ -16,7 +16,7 @@
             <rbfwebui:localize id="moduleLocationLabel" runat="server" text="<%$ Resources:Appleseed, AM_MODULELOCATION %>">
             </rbfwebui:localize></td>
         <td valign="top">
-            <asp:dropdownlist id="paneLocation" runat="server">
+            <asp:dropdownlist id="paneLocation" runat="server" Width="430px">
                 <asp:listitem value="TopPane">Header</asp:listitem>
                 <asp:listitem value="LeftPane">Left Column</asp:listitem>
                 <asp:listitem selected="True" value="ContentPane">Center Column</asp:listitem>
@@ -31,7 +31,7 @@
             </rbfwebui:localize><br />
         </td>
         <td valign="top">
-            <asp:dropdownlist id="viewPermissions" runat="server">
+            <asp:dropdownlist id="viewPermissions" runat="server" Width="430px">
                 <asp:listitem selected="True" value="All Users;">All Users</asp:listitem>
                 <asp:listitem value="Authenticated Users;">Authenticated Users</asp:listitem>
                 <asp:listitem value="Unauthenticated Users;">Unauthenticated Users</asp:listitem>
@@ -45,9 +45,14 @@
             </rbfwebui:localize></td>
         <td valign="top">
             <asp:textbox id="moduleTitle" runat="server" cssclass="NormalTextBox" enableviewstate="false"
-                text="New Module Name" width="150px">New Module Title</asp:textbox>
+                text="New Module Name" width="423px">New Module Title</asp:textbox>
+        </td>
+    </tr>
+    <tr>
+        <td>
             <rbfwebui:LinkButton id="AddModuleBtn" runat="server" cssclass="CommandButton" text="Add to 'Organize Modules' Below"
-                textkey="AM_ADDMODULETOTAB">Add this Module to the page</rbfwebui:LinkButton></td>
+                textkey="AM_ADDMODULETOTAB">Add this Module to the page</rbfwebui:LinkButton>
+        </td>
     </tr>
 </table>
 <div align="center" class="Error">
