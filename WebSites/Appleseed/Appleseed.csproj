@@ -4780,6 +4780,7 @@
     <Content Include="Design\DesktopLayouts\Appleseed.One.Front\PanesMaster.master" />
     <Content Include="Design\DesktopLayouts\Appleseed.One.Layout\PanesMaster.master" />
     <Content Include="Design\DesktopLayouts\Appleseed.One.Layout\SiteMaster.master" />
+    <None Include="Appleseed.nuspec" />
     <None Include="AppleseedInstallation.nuspec" />
     <None Include="aspnet_client\ckeditor\ckeditor.pack" />
     <None Include="aspnet_client\CodeMirror\css\baboon_vector.ai" />
@@ -6537,6 +6538,7 @@
     <None Include="Setup\History.xsx">
       <DependentUpon>History.xsd</DependentUpon>
     </None>
+    <Content Include="packages\Readme.txt" />
     <Content Include="Portals\_Appleseed\corporate_black_logo.png" />
     <Content Include="Portals\_Appleseed\documents\Documents.txt" />
     <Content Include="Portals\_Appleseed\education_logo.png" />
