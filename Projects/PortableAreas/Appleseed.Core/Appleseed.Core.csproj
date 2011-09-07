@@ -124,6 +124,7 @@
     <Content Include="DBScripts\20110804\03.GetModulesAllPortals.sql" />
     <Content Include="DBScripts\20110829\01.GetModulesSettingsInPage.sql" />
     <Content Include="DBScripts\20110829\02.UpdateHTMLContent.sql" />
+    <Content Include="DBScripts\20110907\01.ChageUserPageName.sql" />
     <Content Include="DBScripts\Readme.txt" />
   </ItemGroup>
   <ItemGroup>
