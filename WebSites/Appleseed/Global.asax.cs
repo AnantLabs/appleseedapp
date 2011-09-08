@@ -379,7 +379,9 @@ namespace Appleseed
         /// </param>
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
-            if (!this.Request.Path.ToLower().Contains("images.ashx")) {
+		  if (!Request.Path.ToLower().Contains("images.ashx") &&
+                !Request.Url.AbsoluteUri.ToLower().Contains("/images/") &&
+                !Request.Url.AbsoluteUri.ToLower().Contains("/i/")) {            
                 this.AppleseedApplication_BeginRequest(sender, e);
             }
         }
