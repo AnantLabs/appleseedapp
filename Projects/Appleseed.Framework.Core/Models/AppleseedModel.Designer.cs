@@ -18,62 +18,62 @@ using System.Runtime.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Announcements_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Modules), "rb_Announcements", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_Announcements), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Announcements_st_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Modules), "rb_Announcements_st", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_Announcements_st), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Articles_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Modules), "rb_Articles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_Articles), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Articles_st_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Modules), "rb_Articles_st", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_Articles_st), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_BlogComments_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Modules), "rb_BlogComments", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_BlogComments), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Blogs_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Modules), "rb_Blogs", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_Blogs), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_BlogStats_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Modules), "rb_BlogStats", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_BlogStats), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rbBookListModules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Modules), "rb_BookList", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_BookList), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_ComponentModule_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Modules), "rb_ComponentModule", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Appleseed.Core.Models.rb_ComponentModule), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Contacts_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Modules), "rb_Contacts", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_Contacts), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Contacts_st_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Modules), "rb_Contacts_st", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_Contacts_st), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rbContentManager_SourceGenModDefs", "rb_GeneralModuleDefinitions", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_GeneralModuleDefinitions), "rb_ContentManager", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_ContentManager), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Cultures_rb_Countries", "rb_Countries", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Appleseed.Core.Models.rb_Countries), "rb_Cultures", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_Cultures), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_States_rb_Countries", "rb_Countries", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Countries), "rb_States", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_States), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Users_rb_Countries", "rb_Countries", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Appleseed.Core.Models.rb_Countries), "rb_Users", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_Users), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Discussion_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Modules), "rb_Discussion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_Discussion), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Documents_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Modules), "rb_Documents", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_Documents), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Documents_st_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Modules), "rb_Documents_st", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_Documents_st), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_EnhancedHtml_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Modules), "rb_EnhancedHtml", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_EnhancedHtml), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_EnhancedHtml_st_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Modules), "rb_EnhancedHtml_st", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_EnhancedHtml_st), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_EnhancedLinks_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Modules), "rb_EnhancedLinks", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_EnhancedLinks), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_EnhancedLinks_st_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Modules), "rb_EnhancedLinks_st", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_EnhancedLinks_st), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Events_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Modules), "rb_Events", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_Events), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Events_st_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Modules), "rb_Events_st", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_Events_st), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_ModuleDefinitions_rb_GeneralModuleDefinitions", "rb_GeneralModuleDefinitions", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_GeneralModuleDefinitions), "rb_ModuleDefinitions", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_ModuleDefinitions), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_SolutionModuleDefinitions_rb_GeneralModuleDefinitions", "rb_GeneralModuleDefinitions", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_GeneralModuleDefinitions), "rb_SolutionModuleDefinitions", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_SolutionModuleDefinitions), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_HtmlText_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Modules), "rb_HtmlText", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Appleseed.Core.Models.rb_HtmlText), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_HtmlText_st_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Modules), "rb_HtmlText_st", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Appleseed.Core.Models.rb_HtmlText_st), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Milestones_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Appleseed.Core.Models.rb_Modules), "rb_Milestones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_Milestones), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Modules_rb_ModuleDefinitions", "rb_ModuleDefinitions", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_ModuleDefinitions), "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_Modules), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Modules_rb_Pages", "rb_Pages", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Pages), "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_Modules), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_ModuleSettings_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Modules), "rb_ModuleSettings", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_ModuleSettings), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Pictures_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Modules), "rb_Pictures", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_Pictures), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Surveys_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Modules), "rb_Surveys", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_Surveys), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_Tasks_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Modules), "rb_Tasks", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_Tasks), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_UserDefinedFields_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Modules), "rb_UserDefinedFields", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_UserDefinedFields), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_UserDefinedRows_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Modules), "rb_UserDefinedRows", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_UserDefinedRows), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Pages_rb_Pages", "rb_Pages", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Appleseed.Core.Models.rb_Pages), "rb_Pages1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_Pages), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Pages_rb_Portals", "rb_Portals", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Portals), "rb_Pages", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_Pages), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Tabsettings_rb_Pages", "rb_Pages", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Pages), "rb_TabSettings", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_TabSettings), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_PortalSettings_rb_Portals", "rb_Portals", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Portals), "rb_PortalSettings", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_PortalSettings), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Roles_rb_Portals", "rb_Portals", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Portals), "rb_Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_Roles), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Users_rb_Portals", "rb_Portals", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Portals), "rb_Users", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_Users), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_SolutionModuleDefintions_rb_Solutions", "rb_Solutions", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Solutions), "rb_SolutionModuleDefinitions", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_SolutionModuleDefinitions), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Users_rb_States", "rb_States", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Appleseed.Core.Models.rb_States), "rb_Users", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_Users), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_SurveyAnswers_rb_Surveys", "rb_Surveys", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Surveys), "rb_SurveyAnswers", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_SurveyAnswers), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_SurveyOptions_rb_SurveyQuestions", "rb_SurveyQuestions", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_SurveyQuestions), "rb_SurveyOptions", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_SurveyOptions), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_SurveyQuestions_rb_Surveys", "rb_Surveys", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Surveys), "rb_SurveyQuestions", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_SurveyQuestions), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_UserDefinedData_UserDefinedFields", "rb_UserDefinedFields", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_UserDefinedFields), "rb_UserDefinedData", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_UserDefinedData), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_UserDefinedData_UserDefinedRows", "rb_UserDefinedRows", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_UserDefinedRows), "rb_UserDefinedData", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_UserDefinedData), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_UserDesktop_rb_Users", "rb_Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Core.Models.rb_Users), "rb_UserDesktop", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_UserDesktop), true)]
-[assembly: EdmRelationshipAttribute("AppleseedModel", "rb_UserRoles", "rb_Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_Roles), "rb_Users", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Core.Models.rb_Users))]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Announcements_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Modules), "rb_Announcements", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_Announcements), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Announcements_st_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Modules), "rb_Announcements_st", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_Announcements_st), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Articles_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Modules), "rb_Articles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_Articles), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Articles_st_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Modules), "rb_Articles_st", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_Articles_st), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_BlogComments_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Modules), "rb_BlogComments", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_BlogComments), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Blogs_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Modules), "rb_Blogs", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_Blogs), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_BlogStats_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Modules), "rb_BlogStats", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_BlogStats), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rbBookListModules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Modules), "rb_BookList", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_BookList), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_ComponentModule_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Modules), "rb_ComponentModule", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Appleseed.Framework.Models.rb_ComponentModule), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Contacts_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Modules), "rb_Contacts", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_Contacts), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Contacts_st_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Modules), "rb_Contacts_st", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_Contacts_st), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rbContentManager_SourceGenModDefs", "rb_GeneralModuleDefinitions", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_GeneralModuleDefinitions), "rb_ContentManager", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_ContentManager), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Cultures_rb_Countries", "rb_Countries", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Appleseed.Framework.Models.rb_Countries), "rb_Cultures", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_Cultures), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_States_rb_Countries", "rb_Countries", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Countries), "rb_States", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_States), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Users_rb_Countries", "rb_Countries", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Appleseed.Framework.Models.rb_Countries), "rb_Users", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_Users), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Discussion_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Modules), "rb_Discussion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_Discussion), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Documents_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Modules), "rb_Documents", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_Documents), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Documents_st_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Modules), "rb_Documents_st", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_Documents_st), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_EnhancedHtml_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Modules), "rb_EnhancedHtml", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_EnhancedHtml), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_EnhancedHtml_st_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Modules), "rb_EnhancedHtml_st", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_EnhancedHtml_st), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_EnhancedLinks_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Modules), "rb_EnhancedLinks", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_EnhancedLinks), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_EnhancedLinks_st_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Modules), "rb_EnhancedLinks_st", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_EnhancedLinks_st), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Events_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Modules), "rb_Events", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_Events), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Events_st_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Modules), "rb_Events_st", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_Events_st), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_ModuleDefinitions_rb_GeneralModuleDefinitions", "rb_GeneralModuleDefinitions", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_GeneralModuleDefinitions), "rb_ModuleDefinitions", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_ModuleDefinitions), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_SolutionModuleDefinitions_rb_GeneralModuleDefinitions", "rb_GeneralModuleDefinitions", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_GeneralModuleDefinitions), "rb_SolutionModuleDefinitions", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_SolutionModuleDefinitions), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_HtmlText_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Modules), "rb_HtmlText", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Appleseed.Framework.Models.rb_HtmlText), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_HtmlText_st_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Modules), "rb_HtmlText_st", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Appleseed.Framework.Models.rb_HtmlText_st), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Milestones_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Appleseed.Framework.Models.rb_Modules), "rb_Milestones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_Milestones), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Modules_rb_ModuleDefinitions", "rb_ModuleDefinitions", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_ModuleDefinitions), "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_Modules), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Modules_rb_Pages", "rb_Pages", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Pages), "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_Modules), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_ModuleSettings_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Modules), "rb_ModuleSettings", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_ModuleSettings), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Pictures_rb_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Modules), "rb_Pictures", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_Pictures), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Surveys_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Modules), "rb_Surveys", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_Surveys), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_Tasks_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Modules), "rb_Tasks", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_Tasks), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_UserDefinedFields_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Modules), "rb_UserDefinedFields", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_UserDefinedFields), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_UserDefinedRows_Modules", "rb_Modules", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Modules), "rb_UserDefinedRows", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_UserDefinedRows), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Pages_rb_Pages", "rb_Pages", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Appleseed.Framework.Models.rb_Pages), "rb_Pages1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_Pages), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Pages_rb_Portals", "rb_Portals", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Portals), "rb_Pages", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_Pages), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Tabsettings_rb_Pages", "rb_Pages", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Pages), "rb_TabSettings", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_TabSettings), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_PortalSettings_rb_Portals", "rb_Portals", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Portals), "rb_PortalSettings", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_PortalSettings), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Roles_rb_Portals", "rb_Portals", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Portals), "rb_Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_Roles), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Users_rb_Portals", "rb_Portals", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Portals), "rb_Users", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_Users), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_SolutionModuleDefintions_rb_Solutions", "rb_Solutions", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Solutions), "rb_SolutionModuleDefinitions", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_SolutionModuleDefinitions), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_Users_rb_States", "rb_States", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Appleseed.Framework.Models.rb_States), "rb_Users", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_Users), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_SurveyAnswers_rb_Surveys", "rb_Surveys", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Surveys), "rb_SurveyAnswers", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_SurveyAnswers), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_SurveyOptions_rb_SurveyQuestions", "rb_SurveyQuestions", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_SurveyQuestions), "rb_SurveyOptions", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_SurveyOptions), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_SurveyQuestions_rb_Surveys", "rb_Surveys", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Surveys), "rb_SurveyQuestions", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_SurveyQuestions), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_UserDefinedData_UserDefinedFields", "rb_UserDefinedFields", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_UserDefinedFields), "rb_UserDefinedData", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_UserDefinedData), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_UserDefinedData_UserDefinedRows", "rb_UserDefinedRows", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_UserDefinedRows), "rb_UserDefinedData", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_UserDefinedData), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "FK_rb_UserDesktop_rb_Users", "rb_Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Appleseed.Framework.Models.rb_Users), "rb_UserDesktop", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_UserDesktop), true)]
+[assembly: EdmRelationshipAttribute("AppleseedModel", "rb_UserRoles", "rb_Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_Roles), "rb_Users", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Appleseed.Framework.Models.rb_Users))]
 
 #endregion
 
-namespace Appleseed.Core.Models
+namespace Appleseed.Framework.Models
 {
     #region Contexts
     
@@ -1048,22 +1048,6 @@ namespace Appleseed.Core.Models
             }
         }
         private ObjectSet<rb_Versions> _rb_Versions;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<SelfUpdatingPackages> SelfUpdatingPackages
-        {
-            get
-            {
-                if ((_SelfUpdatingPackages == null))
-                {
-                    _SelfUpdatingPackages = base.CreateObjectSet<SelfUpdatingPackages>("SelfUpdatingPackages");
-                }
-                return _SelfUpdatingPackages;
-            }
-        }
-        private ObjectSet<SelfUpdatingPackages> _SelfUpdatingPackages;
 
         #endregion
         #region AddTo Methods
@@ -1530,14 +1514,6 @@ namespace Appleseed.Core.Models
         public void AddTorb_Versions(rb_Versions rb_Versions)
         {
             base.AddObject("rb_Versions", rb_Versions);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the SelfUpdatingPackages EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToSelfUpdatingPackages(SelfUpdatingPackages selfUpdatingPackages)
-        {
-            base.AddObject("SelfUpdatingPackages", selfUpdatingPackages);
         }
 
         #endregion
@@ -17223,109 +17199,6 @@ namespace Appleseed.Core.Models
         private Nullable<global::System.DateTime> _ReleaseDate;
         partial void OnReleaseDateChanging(Nullable<global::System.DateTime> value);
         partial void OnReleaseDateChanged();
-
-        #endregion
-    
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="AppleseedModel", Name="SelfUpdatingPackages")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class SelfUpdatingPackages : EntityObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new SelfUpdatingPackages object.
-        /// </summary>
-        /// <param name="id">Initial value of the Id property.</param>
-        public static SelfUpdatingPackages CreateSelfUpdatingPackages(global::System.Int32 id)
-        {
-            SelfUpdatingPackages selfUpdatingPackages = new SelfUpdatingPackages();
-            selfUpdatingPackages.Id = id;
-            return selfUpdatingPackages;
-        }
-
-        #endregion
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 Id
-        {
-            get
-            {
-                return _Id;
-            }
-            set
-            {
-                if (_Id != value)
-                {
-                    OnIdChanging(value);
-                    ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("Id");
-                    OnIdChanged();
-                }
-            }
-        }
-        private global::System.Int32 _Id;
-        partial void OnIdChanging(global::System.Int32 value);
-        partial void OnIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String PackageId
-        {
-            get
-            {
-                return _PackageId;
-            }
-            set
-            {
-                OnPackageIdChanging(value);
-                ReportPropertyChanging("PackageId");
-                _PackageId = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("PackageId");
-                OnPackageIdChanged();
-            }
-        }
-        private global::System.String _PackageId;
-        partial void OnPackageIdChanging(global::System.String value);
-        partial void OnPackageIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String PackageVersion
-        {
-            get
-            {
-                return _PackageVersion;
-            }
-            set
-            {
-                OnPackageVersionChanging(value);
-                ReportPropertyChanging("PackageVersion");
-                _PackageVersion = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("PackageVersion");
-                OnPackageVersionChanged();
-            }
-        }
-        private global::System.String _PackageVersion;
-        partial void OnPackageVersionChanging(global::System.String value);
-        partial void OnPackageVersionChanged();
 
         #endregion
     

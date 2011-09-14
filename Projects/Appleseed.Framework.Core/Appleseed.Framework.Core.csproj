@@ -124,10 +124,13 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Design" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -224,7 +227,12 @@
     <Compile Include="KickStarter\CommonClasses\DataChangeEventArgs.cs" />
     <Compile Include="KickStarter\CommonClasses\Error.cs" />
     <Compile Include="KickStarter\CommonClasses\SQLHelper.cs" />
-    <Compile Include="Model\ModelServices.cs" />
+    <Compile Include="Models\AppleseedModel.Designer.cs">
+      <DependentUpon>AppleseedModel.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Models\ModelServices.cs" />
     <Compile Include="Monitoring\MonitoringAction.cs" />
     <Compile Include="Monitoring\Utility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -370,6 +378,11 @@
     <Content Include="UI\WebControls\DesktopModuleTitle.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="Models\AppleseedModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AppleseedModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="App.Config" />
     <None Include="Settings\Appleseed.Settings.cd" />
   </ItemGroup>
   <ItemGroup>

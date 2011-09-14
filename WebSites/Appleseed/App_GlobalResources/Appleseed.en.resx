@@ -3537,4 +3537,7 @@
   <data name="REMOVE_ALL" xml:space="preserve">
     <value>Remove all</value>
   </data>
+  <data name="PAGESETTINGS_SITEDEFAULT" xml:space="preserve">
+    <value>(Site Default)</value>
+  </data>
 </root>
