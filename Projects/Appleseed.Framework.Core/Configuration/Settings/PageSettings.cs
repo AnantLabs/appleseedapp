@@ -365,7 +365,7 @@ namespace Appleseed.Framework.Site.Configuration
                 command.Parameters.Add(parameterPageId);
                 var parameterKey = new SqlParameter("@SettingName", SqlDbType.NVarChar, 50) { Value = key };
                 command.Parameters.Add(parameterKey);
-                if ((key == "CustomLayout" || key == "CustomTheme" || key == "CustomThemeAlt") && (value == General.GetString("PAGESETTINGS_SITEDEFAULT"))) {
+                if ((key == "CustomLayout" || key == "CustomTheme" || key == "CustomThemeAlt") && (value == General.GetString("PAGESETTINGS_SITEDEFAULT"))) { 
                     value = string.Empty;
                 }
                 var parameterValue = new SqlParameter("@SettingValue", SqlDbType.NVarChar, 1500) { Value = value };
