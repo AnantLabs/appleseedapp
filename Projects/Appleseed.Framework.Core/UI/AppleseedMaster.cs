@@ -89,6 +89,20 @@ namespace Appleseed
                 page.Header.Controls.AddAt(index++, includedp);
 
 
+                HtmlGenericControl includeStyleTree = new HtmlGenericControl("link");
+                includeStyleTree.Attributes.Add("type", "text/css");
+                includeStyleTree.Attributes.Add("rel", "stylesheet");
+                includeStyleTree.Attributes.Add("href", "~/aspnet_client/jQuery/jsTree/_docs/syntax/!style.css");
+                page.Header.Controls.AddAt(index++, includeStyleTree);
+
+
+                HtmlGenericControl includeStyleTree2 = new HtmlGenericControl("link");
+                includeStyleTree2.Attributes.Add("type", "text/css");
+                includeStyleTree2.Attributes.Add("rel", "stylesheet");
+                includeStyleTree2.Attributes.Add("href", "~/aspnet_client/jQuery/jsTree/_docs/!style.css");
+                page.Header.Controls.AddAt(index++, includeStyleTree2);
+                
+
                 string extraScripts = GetExtraScripts();
                 page.ClientScript.RegisterClientScriptBlock(page.GetType(), "allscripts", extraScripts, false);
             }
@@ -156,6 +170,12 @@ namespace Appleseed
             scripts.Add(page.ResolveUrl("~/aspnet_client/CSSControlAdapters/MenuAdapter.js"));
             scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/ui.multiselect.js"));
             scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jQueryTabs.js"));
+
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jsTree/_lib/jquery.cookie.js"));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jsTree/_lib/jquery.hotkeys.js"));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jsTree/jquery.jstree.js"));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jsTree/_docs/syntax/!script.js"));
+
             return scripts;
         }
     }

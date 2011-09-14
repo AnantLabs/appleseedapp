@@ -107,6 +107,7 @@
     <Compile Include="Authorization\AppleseedAuthorize.cs" />
     <Compile Include="Controllers\PageLayoutController.cs" />
     <Compile Include="Controllers\PageManagerTreeController.cs" />
+    <Compile Include="Models\JsTreeModel.cs" />
     <Compile Include="PortableAreaUtils.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DBScripts\ExecuteHelper.cs" />
@@ -140,7 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\LstLanguages.aspx" />
-    <Content Include="Views\PageManagerTree\PageManagerTree.ascx" />
+    <Content Include="Views\PageManagerTree\Module.ascx" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
