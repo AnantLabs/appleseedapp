@@ -116,7 +116,7 @@ namespace Appleseed.Framework.Core.Model
                             try {
                                 PortalModuleControl control;
                                 var virtualPath = Path.ApplicationRoot + "/" + settings2.DesktopSrc;
-                                if (virtualPath.LastIndexOf('.') >= 0) {
+                                if (virtualPath.ToLowerInvariant().Trim().EndsWith(".ascx")) {
                                     if (faultyModule != null && faultyModule.ModuleDefID == settings2.ModuleDefID) {
                                         throw new Exception(faultyModule.Message); //if this was the module that was generating the error, we then show the error.
                                     }
