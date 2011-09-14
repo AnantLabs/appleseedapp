@@ -1,5 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="Shared_SiteMasterDefault"
-    CodeBehind="SiteMasterDefault.master.cs" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="Appleseed.AppleseedMaster" %>
 
 <%@ Register Src="~/Design/DesktopLayouts/DesktopFooter.ascx" TagName="Footer" TagPrefix="foot" %>
 <%@ Register Src="~/Design/DesktopLayouts/DesktopPortalBanner.ascx" TagName="Banner"
