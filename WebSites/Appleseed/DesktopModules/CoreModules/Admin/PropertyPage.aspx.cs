@@ -145,7 +145,7 @@ namespace Appleseed.Content.Web.Modules
             // When not using grouping tabs, width and height should be set in css 
             // class -- Hongwei Shen
             EditTable.Width = 1000;
-            EditTable.Height = Appleseed.Framework.Settings.Config.SettingsGroupingHeight;
+            //EditTable.Height = Appleseed.Framework.Settings.Config.SettingsGroupingHeight;
             EditTable.CssClass = "st_control";
             EditTable.DataSource = new SortedList(this.ModuleSettings);
             EditTable.DataBind();

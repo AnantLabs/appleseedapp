@@ -11259,6 +11259,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (Site Default).
+        /// </summary>
+        internal static string PAGESETTINGS_SITEDEFAULT {
+            get {
+                return ResourceManager.GetString("PAGESETTINGS_SITEDEFAULT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         internal static string PASSWORD {

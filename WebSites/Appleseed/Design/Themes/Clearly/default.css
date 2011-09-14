@@ -301,7 +301,7 @@ td.LeftTD{
 #bottompane{
     min-height: 50px;
     padding: 10px;
-    max-width: 940px;
+    max-width: 1200px;
 	margin:0 auto;}
 
         /*****************************************/
@@ -370,7 +370,7 @@ td.LeftTD{
 	margin:0px 25px 15px 25px;
 	position:relative;
 	display:block;
-	width:125px;
+	width:290px !important;
 }
 
 #footer_div li{
@@ -431,7 +431,7 @@ td.LeftTD{
 .ModuleWrap{
 	margin:0 auto ;
 	width:100%;
-	max-width:940px!important;
+	max-width:1200px!important;
     position: relative;}
 
 .ModuleContent{

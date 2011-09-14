@@ -31,6 +31,7 @@ namespace Appleseed.Framework.Site.Configuration
     using Appleseed.Framework.Settings.Cache;
 
     using Path = Appleseed.Framework.Settings.Path;
+    using System.Collections.Specialized;
 
     /// <summary>
     /// PageSettings Class encapsulates the detailed settings 
@@ -364,6 +365,9 @@ namespace Appleseed.Framework.Site.Configuration
                 command.Parameters.Add(parameterPageId);
                 var parameterKey = new SqlParameter("@SettingName", SqlDbType.NVarChar, 50) { Value = key };
                 command.Parameters.Add(parameterKey);
+                if ((key == "CustomLayout" || key == "CustomTheme" || key == "CustomThemeAlt") && (value == General.GetString("PAGESETTINGS_SITEDEFAULT"))) { 
+                    value = string.Empty;
+                }
                 var parameterValue = new SqlParameter("@SettingValue", SqlDbType.NVarChar, 1500) { Value = value };
                 command.Parameters.Add(parameterValue);
                 connection.Open();
@@ -648,13 +652,16 @@ namespace Appleseed.Framework.Site.Configuration
             // get the list of available layouts
             // changed: Jes1111 - 2004-08-06
             var layoutsList = new ArrayList(new LayoutManager(this.PortalSettings.PortalPath).GetLayouts());
-            var noCustomLayout = new LayoutItem { Name = string.Empty };
+
+
+            var noCustomLayout = new LayoutItem { Name = General.GetString("PAGESETTINGS_SITEDEFAULT", "(Site Default)") };
+            
             layoutsList.Insert(0, noCustomLayout);
 
             // get the list of available themes
             // changed: Jes1111 - 2004-08-06
             var themesList = new ArrayList(new ThemeManager(this.PortalSettings.PortalPath).GetThemes());
-            var noCustomTheme = new ThemeItem { Name = string.Empty };
+            var noCustomTheme = new ThemeItem { Name = General.GetString("PAGESETTINGS_SITEDEFAULT", "(Site Default)") };
             themesList.Insert(0, noCustomTheme);
 
             // changed: Jes1111 - 2004-08-06

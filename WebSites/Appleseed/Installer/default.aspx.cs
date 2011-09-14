@@ -566,13 +566,28 @@ using System.Configuration;
                                     var attrMCSTRValue = connString.Attributes["connectionString"];
                                     if (attrMCSTRValue != null)
                                     {
-                                        attrMCSTRValue.Value = this.GetMembershipModelConectionString();
+                                        attrMCSTRValue.Value = this.GetMembershipModelConnectionString();
                                         dirty = true;
                                     }
 
                                     var attrPVValue = connString.Attributes["providerName"];
                                     if (attrPVValue != null)
                                     {
+                                        attrPVValue.Value = "System.Data.EntityClient";
+                                        dirty = true;
+                                    }
+                                }
+
+                                break;
+                            case "SelfUpdaterEntities": {
+                                    var attrMCSTRValue = connString.Attributes["connectionString"];
+                                    if (attrMCSTRValue != null) {
+                                        attrMCSTRValue.Value = this.GetEntityModelConnectionString().Replace("AppleseedModel", "SelfUpdater");
+                                        dirty = true;
+                                    }
+
+                                    var attrPVValue = connString.Attributes["providerName"];
+                                    if (attrPVValue != null) {
                                         attrPVValue.Value = "System.Data.EntityClient";
                                         dirty = true;
                                     }
@@ -845,7 +860,7 @@ using System.Configuration;
         /// </returns>
         /// <remarks>
         /// </remarks>
-        private string GetMembershipModelConectionString()
+        private string GetMembershipModelConnectionString()
         {
             return
                 string.Format(
