@@ -1609,7 +1609,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                                 this.EditUrl, this.PageID, string.Format("mID={0}", this.ModuleID));
                         }
 
-                        if (this.editButton.HRef.Contains("HtmlEdit.aspx"))
+                        if (this.editButton.HRef.Contains("/HtmlEdit.aspx"))
                             this.editButton.Attributes.Add("onclick", "openInModal('" + editButton.HRef + "','" + General.GetString("HTML_EDITOR", "Html Editor") + "');return false;");
                         this.editButton.Target = this.EditTarget;
                         this.editButton.Image = this.CurrentTheme.GetImage("Buttons_Edit", "Edit.gif");
