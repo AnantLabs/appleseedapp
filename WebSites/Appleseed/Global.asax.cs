@@ -71,7 +71,7 @@ namespace Appleseed
             routes.IgnoreRoute("Content/{*path}");
             routes.IgnoreRoute("aspnet_client/{*path}");
 
-
+            routes.IgnoreRoute("UploadDialog.aspx");
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.IgnoreRoute(string.Empty);
