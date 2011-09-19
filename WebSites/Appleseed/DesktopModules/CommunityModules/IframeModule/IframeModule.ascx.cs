@@ -28,6 +28,10 @@ namespace Appleseed.Content.Web.Modules
             
             //string strURL = Settings["URL"].ToString();
             string strURL = BuildUrlSetting();
+            if (strURL.Contains("[[User.Email]]"))
+            {
+                strURL = strURL.Replace("[[User.Email]]", Appleseed.Framework.Site.Configuration.PortalSettings.CurrentUser.Identity.Email);
+            }
             string height = Settings["Height"].ToString();
             string width = Settings["Width"].ToString();
             StringBuilder sb = new StringBuilder();
