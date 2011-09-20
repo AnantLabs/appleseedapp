@@ -815,7 +815,7 @@ using System.Text;
                     }
                 }
 
-                rang.ControlToValidate = currentSetting;
+                rang.ControlToValidate = currentSetting; 
                 rang.CssClass = "Error";
                 rang.Display = ValidatorDisplay.Dynamic;
                 rang.EnableClientScript = true;
