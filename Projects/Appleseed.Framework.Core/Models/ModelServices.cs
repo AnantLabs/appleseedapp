@@ -206,7 +206,8 @@ namespace Appleseed.Framework.Core.Model
                 var files = info.GetFiles("*.ascx", SearchOption.AllDirectories);
                 foreach (var info2 in files) {
                     var key = string.Format(@"[MVC Action] {0}\{1}", info2.DirectoryName.Substring(info2.DirectoryName.LastIndexOf("MVC") + 4), info2.Name.Split(new[] { '.' })[0]);
-                    dictionary.Add(key, info2.FullName);
+                    if(!dictionary.ContainsKey(key))
+                        dictionary.Add(key, info2.FullName);
                 }
             }
 
