@@ -32,6 +32,12 @@ namespace Appleseed.Framework.Web
 		public const string UrlKeywordsID = "TabUrlKeyword";
         public const string PageTitleID = "UrlPageTitle";
 
+        private static string GetUrlElementsQuery = @"SELECT ISNULL((SELECT SettingValue FROM rb_TabSettings WHERE TabID=@PageID AND SettingName = 'UrlPageName'),'') as PageSEOName,
+                                                            ISNULL((SELECT PageName FROM rb_Pages WHERE PageID=@PageID ),'') as PageTitle, 
+                                                            ISNULL((SELECT SettingValue FROM rb_TabSettings WHERE TabID=@PageID AND SettingName = 'TabUrlKeyword'),'') as Keywords,
+                                                            ISNULL((SELECT SettingValue FROM rb_TabSettings WHERE TabID=@PageID AND SettingName = 'TabLink'),'') as ExternalLink,
+                                                            ISNULL((SELECT SettingValue FROM rb_TabSettings WHERE TabID=@PageID AND SettingName = 'TabPlaceholder'),'') as IsPlaceHolder";
+
 		/// <summary>
 		/// Builds up a cache key for Url Elements/Properties
 		/// </summary>
@@ -43,6 +49,17 @@ namespace Appleseed.Framework.Web
 			return string.Concat(SiteUniqueID.ToString(), pageID, UrlElement);
 		}
 
+        /// <summary>
+        /// Builds up a cache key for Url Elements/Properties
+        /// </summary>
+        /// <param name="pageID">The ID of the page for which you want to generate a url elements cache key for</param>
+        /// <returns>A unique key</returns>
+        private static string UrlElementsCacheKey(int pageID)
+        {
+            return string.Concat(SiteUniqueID.ToString(), pageID);
+        }
+
+
 		/// <summary>
 		/// Clears all cached url elements for a given page
 		/// </summary>
@@ -51,26 +68,10 @@ namespace Appleseed.Framework.Web
 		{
 			Cache applicationCache = HttpContext.Current.Cache;
 
-			string placeHolderCacheKey = UrlElementCacheKey(pageID, IsPlaceHolderID);
-			string tabLinkCacheKey = UrlElementCacheKey(pageID, TabLinkID);
-			string pageNameCacheKey = UrlElementCacheKey(pageID, PageNameID);
-			string urlKeywordsCacheKey = UrlElementCacheKey(pageID, UrlKeywordsID);
-            string PageTitleCacheKey = UrlElementCacheKey(pageID, PageTitleID);
+            string urlElementsCacheKey = UrlElementsCacheKey(pageID);
 
-			if (applicationCache[placeHolderCacheKey] != null)
-				applicationCache.Remove(placeHolderCacheKey);
-
-			if (applicationCache[tabLinkCacheKey] != null)
-				applicationCache.Remove(tabLinkCacheKey);
-
-			if (applicationCache[pageNameCacheKey] != null)
-				applicationCache.Remove(pageNameCacheKey);
-
-			if (applicationCache[urlKeywordsCacheKey] != null)
-				applicationCache.Remove(urlKeywordsCacheKey);
-
-            if (applicationCache[PageTitleCacheKey] != null)
-                applicationCache.Remove(PageTitleCacheKey);
+            if (applicationCache[urlElementsCacheKey] != null)
+                applicationCache.Remove(urlElementsCacheKey);
 		}
 
 		/// <summary>
@@ -192,23 +193,21 @@ namespace Appleseed.Framework.Web
 		/// <param name="_tabLink">Is this Url a link to an external site/resource</param>
 		/// <param name="_urlKeywords">Are there any keywords that should be added to this url</param>
 		/// <param name="_pageName">Does this url have a friendly page name other than the default</param>
-		public static void GetUrlElements(int pageID, double cacheDuration, ref bool _isPlaceHolder, ref string _tabLink, ref string _urlKeywords, ref string _pageSeoName, ref string _pageTitle)
+		public static UrlElements GetUrlElements(int pageID, double cacheDuration)
 		{
+            UrlElements urlElements = new UrlElements();
+
 			// pageID 0 is a default page shared across portals with no real settings
 			if (pageID == 0)
-				return;
+                return urlElements;
 
-			string isPlaceHolderKey = UrlElementCacheKey(pageID, IsPlaceHolderID);
-			string tabLinkKey = UrlElementCacheKey(pageID, TabLinkID);
-			string pageNameKey = UrlElementCacheKey(pageID, PageNameID);
-			string urlKeywordsKey = UrlElementCacheKey(pageID, UrlKeywordsID);
-            string pageTitleKey = UrlElementCacheKey(pageID, PageTitleID);
+			string urlElementsCacheKey = UrlElementsCacheKey(pageID);
 
 			// calling HttpContext.Current.Cache all the time incurs a small performance hit so get a reference to it once and reuse that for greater performance
 			Cache applicationCache = HttpContext.Current.Cache;
 
 			// if any values are null refetch
-			if (applicationCache[isPlaceHolderKey] == null || applicationCache[tabLinkKey] == null || applicationCache[pageNameKey] == null || applicationCache[urlKeywordsKey] == null || applicationCache[pageTitleKey] == null)
+            if (applicationCache[urlElementsCacheKey] == null)
 			{
 				using (SqlConnection conn = new SqlConnection(SiteConnectionString))
 				{
@@ -217,125 +216,33 @@ namespace Appleseed.Framework.Web
 						// Open the connection
 						conn.Open();
 
-                        StringBuilder sql = new StringBuilder();
-
-                        sql.AppendFormat("SELECT ISNULL((SELECT SettingValue FROM rb_TabSettings WHERE TabID={0} AND SettingName = '{1}'),'') as PageSEOName,", pageID.ToString(), PageNameID);
-                        sql.AppendFormat("ISNULL((SELECT PageName FROM rb_Pages WHERE PageID={0} ),'') as PageTitle, ", pageID.ToString());
-                        sql.AppendFormat("ISNULL((SELECT SettingValue FROM rb_TabSettings WHERE TabID={0} AND SettingName = '{1}'),'') as Keywords,", pageID.ToString(), UrlKeywordsID);
-                        sql.AppendFormat("ISNULL((SELECT SettingValue FROM rb_TabSettings WHERE TabID={0} AND SettingName = '{1}'),'') as ExternalLink,", pageID.ToString(), TabLinkID);
-                        sql.AppendFormat("ISNULL((SELECT SettingValue FROM rb_TabSettings WHERE TabID={0} AND SettingName = '{1}'),'') as IsPlaceHolder", pageID.ToString(), IsPlaceHolderID);
-
-						using (SqlCommand cmd = new SqlCommand(sql.ToString(), conn))
+						using (SqlCommand cmd = new SqlCommand(GetUrlElementsQuery, conn))
 						{
-							// 1. Instantiate a new command above
-							// 2. populate values
+                            var parameterPageId = new SqlParameter("@PageID", SqlDbType.Int, 4) { Value = pageID };
+                            cmd.Parameters.Add(parameterPageId);
+
 							SqlDataReader pageElements = cmd.ExecuteReader(CommandBehavior.CloseConnection);
 							if (pageElements.HasRows)
 							{
 								pageElements.Read();
 
-								// NOTE: Below you will see an implementation that has been commented out as it didn't seem to work well with the tabsetting cache dependency and always retrieved it again and again.
-								//       If someone can figure out why it cant see the cached value please apply the fix and switch the implementation back as it is more ideal (would allow users to see their changes straight away)
+                                urlElements.PageName = Convert.ToString(pageElements["PageSEOName"]);
+                                if (!String.IsNullOrEmpty(urlElements.PageName))
+                                    urlElements.PageName = CleanNoAlphanumerics(urlElements.PageName);
 
-								// If this changes it means that the tabsettings have changed which means the urlkeyword, tablink or placeholder status has changed
-								// String[] dependencyKey = new String[1];
-								// dependencyKey[0] = Appleseed.Framework.Settings.Cache.Key.TabSettings(pageID);
+                                urlElements.PageTitle = Convert.ToString(pageElements["PageTitle"]);
+                                if (!String.IsNullOrEmpty(urlElements.PageTitle))
+                                    urlElements.PageTitle = CleanNoAlphanumerics(urlElements.PageTitle);
 
-                                if (pageElements["PageSEOName"].ToString() != String.Empty)
-								{
-                                    _pageSeoName = Convert.ToString(pageElements["PageSEOName"]);
-                                    _pageSeoName = CleanNoAlphanumerics(_pageSeoName);
+                                urlElements.UrlKeywords = Convert.ToString(pageElements["Keywords"]);
+                                if (!String.IsNullOrEmpty(urlElements.UrlKeywords))
+                                    urlElements.UrlKeywords = CleanNoAlphanumerics(urlElements.UrlKeywords);
 
-									// insert value in cache so it doesn't always try to retrieve it
-
-									// NOTE: This is the tabsettings Cache Dependency approach see note above
-									// applicationCache.Insert(pageNameKey, _pageName, new CacheDependency(null, dependencyKey));
-									if (cacheDuration == 0)
-									{
-                                        applicationCache.Insert(pageNameKey, _pageSeoName);
-									}
-									else
-									{
-                                        applicationCache.Insert(pageNameKey, _pageSeoName, null, DateTime.Now.AddMinutes(cacheDuration), Cache.NoSlidingExpiration);
-									}
-								}
-								else
-								{
-									// insert value in cache so it doesn't always try to retrieve it add empty string so as not to use up too much resources
-
-									// NOTE: This is the tabsettings Cache Dependency approach see note above
-									// applicationCache.Insert(pageNameKey, string.Empty, new CacheDependency(null, dependencyKey));
-									if (cacheDuration == 0)
-									{
-										applicationCache.Insert(pageNameKey, string.Empty);
-									}
-									else
-									{
-										applicationCache.Insert(pageNameKey, string.Empty, null, DateTime.Now.AddMinutes(cacheDuration), Cache.NoSlidingExpiration);
-									}
-								}
-
-                                if (!string.IsNullOrEmpty(pageElements["PageTitle"].ToString())) {
-
-                                    _pageTitle = Convert.ToString(pageElements["PageTitle"]);
-                                    _pageTitle = CleanNoAlphanumerics(_pageTitle);
-
-
-                                    if (cacheDuration == 0) {
-                                        applicationCache.Insert(pageNameKey, _pageTitle);
-                                    } else {
-                                        applicationCache.Insert(pageNameKey, _pageTitle, null, DateTime.Now.AddMinutes(cacheDuration), Cache.NoSlidingExpiration);
-                                    }
-                                } else {
-                                    if (cacheDuration == 0) {
-                                        applicationCache.Insert(pageNameKey, string.Empty);
-                                    } else {
-                                        applicationCache.Insert(pageNameKey, string.Empty, null, DateTime.Now.AddMinutes(cacheDuration), Cache.NoSlidingExpiration);
-                                    }
+                                urlElements.TabLink = Convert.ToString(pageElements["ExternalLink"]);
                                 
-                                
-                                
-                                }
-
-								if (pageElements["Keywords"].ToString() != String.Empty)
-								{
-									_urlKeywords = Convert.ToString(pageElements["Keywords"]);
-                                    _urlKeywords = CleanNoAlphanumerics(_urlKeywords);
-								}
-								// insert value in cache so it doesn't always try to retrieve it
-
-								// NOTE: This is the tabsettings Cache Dependency approach see note above
-								// applicationCache.Insert(urlKeywordsKey, _urlKeywords, new CacheDependency(null, dependencyKey));								
-
-								if (cacheDuration == 0)
-								{
-									applicationCache.Insert(urlKeywordsKey, _urlKeywords);
-								}
-								else
-								{
-									applicationCache.Insert(urlKeywordsKey, _urlKeywords, null, DateTime.Now.AddMinutes(cacheDuration), Cache.NoSlidingExpiration);
-								}
-
-								if (pageElements["ExternalLink"].ToString() != String.Empty)
-								{
-									_tabLink = Convert.ToString(pageElements["ExternalLink"]);
-								}
-								// insert value in cache so it doesn't always try to retrieve it
-
-								// NOTE: This is the tabsettings Cache Dependency approach see note above
-								// applicationCache.Insert(tabLinkKey, _tabLink, new CacheDependency(null, dependencyKey));
-								if (cacheDuration == 0)
-								{
-									applicationCache.Insert(tabLinkKey, _tabLink);
-								}
-								else
-								{
-									applicationCache.Insert(tabLinkKey, _tabLink, null, DateTime.Now.AddMinutes(cacheDuration), Cache.NoSlidingExpiration);
-								}
-
 								if (pageElements["IsPlaceHolder"].ToString() != String.Empty)
 								{
-									_isPlaceHolder = bool.Parse(pageElements["IsPlaceHolder"].ToString());
+									urlElements.IsPlaceHolder = bool.Parse(pageElements["IsPlaceHolder"].ToString());
 								}
 								// insert value in cache so it doesn't always try to retrieve it
 
@@ -343,11 +250,11 @@ namespace Appleseed.Framework.Web
 								// applicationCache.Insert(isPlaceHolderKey, _isPlaceHolder.ToString(), new CacheDependency(null, dependencyKey));
 								if (cacheDuration == 0)
 								{
-									applicationCache.Insert(isPlaceHolderKey, _isPlaceHolder.ToString());
+									applicationCache.Insert(urlElementsCacheKey, urlElements);
 								}
 								else
 								{
-									applicationCache.Insert(isPlaceHolderKey, _isPlaceHolder.ToString(), null, DateTime.Now.AddMinutes(cacheDuration), Cache.NoSlidingExpiration);
+									applicationCache.Insert(urlElementsCacheKey, urlElements, null, DateTime.Now.AddMinutes(cacheDuration), Cache.NoSlidingExpiration);
 								}
 							}
 							// close the reader
@@ -371,14 +278,9 @@ namespace Appleseed.Framework.Web
 			}
 			else
 			{
-				// if cached value is empty string then leave it as default
-				if (applicationCache[pageNameKey].ToString() != String.Empty)
-					_pageSeoName = applicationCache[pageNameKey].ToString();
-                _pageTitle = applicationCache[pageTitleKey].ToString();
-				_urlKeywords = applicationCache[urlKeywordsKey].ToString();
-				_tabLink = applicationCache[tabLinkKey].ToString();
-				_isPlaceHolder = bool.Parse(applicationCache[isPlaceHolderKey].ToString());
+                urlElements = (UrlElements)applicationCache[urlElementsCacheKey];
 			}
+            return urlElements;
 		}
 
 

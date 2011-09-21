@@ -42,16 +42,9 @@ namespace Appleseed.Framework.Web
         public override string BuildUrl(string targetPage, int pageID, int modID, CultureInfo culture,
                                         string customAttributes, string currentAlias, string urlKeywords)
         {
-            bool _isPlaceHolder = false;
-            string _tabLink = string.Empty;
-            string _urlKeywords = string.Empty;
-            string _pageName = string.Empty;
-            string _pageTitle = string.Empty;
-            
 
             // Get Url Elements this helper method (Will either retrieve from cache or database)
-            UrlBuilderHelper.GetUrlElements(pageID, _cacheMinutes, ref _isPlaceHolder, ref _tabLink, ref _urlKeywords,
-                                            ref _pageName, ref _pageTitle);
+            UrlElements urlElements = UrlBuilderHelper.GetUrlElements(pageID, _cacheMinutes);
 
             //2_aug_2004 Cory Isakson
             //Begin Navigation Enhancements
@@ -59,10 +52,10 @@ namespace Appleseed.Framework.Web
                 // Do not modify URLs when working with TabLayout Administration Page
             {
                 // if it is a placeholder it is not supposed to have any url
-                if (_isPlaceHolder) return string.Empty;
+                if (urlElements.IsPlaceHolder) return string.Empty;
 
                 // if it is a tab link it means it is a link to an external resource
-                if (_tabLink.Length != 0) return _tabLink;
+                if (urlElements.TabLink.Length != 0) return urlElements.TabLink;
             }
             //End Navigation Enhancements
             StringBuilder sb = new StringBuilder();
@@ -143,7 +136,7 @@ namespace Appleseed.Framework.Web
                 }
                 else
                 {
-                    urlKeywords = _urlKeywords;
+                    urlKeywords = urlElements.UrlKeywords;
 
                     // Add custom Keywords to the Url
                     if (urlKeywords != null && urlKeywords.Length != 0)
@@ -215,11 +208,11 @@ namespace Appleseed.Framework.Web
                 sb.Append( "/" );
 
 
-                if (!string.IsNullOrEmpty(_pageName))// TODO : Need to fix page names rewrites
-                    sb.Append(_pageName);
+                if (!string.IsNullOrEmpty(urlElements.PageName))// TODO : Need to fix page names rewrites
+                    sb.Append(urlElements.PageName);
                 else
-                    if (!string.IsNullOrEmpty(_pageTitle)) {
-                        string PageName = _pageTitle;
+                    if (!string.IsNullOrEmpty(urlElements.PageTitle)) {
+                        string PageName = urlElements.PageTitle;
                         // Write page Hieranchy
                         if (Hieranchy) {
                             var settings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
