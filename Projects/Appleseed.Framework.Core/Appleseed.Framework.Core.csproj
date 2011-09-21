@@ -247,6 +247,7 @@
     <Compile Include="Provider\NotSupportedByProviderException.cs" />
     <Compile Include="Provider\Web\SqlUrlBuilderProvider.cs" />
     <Compile Include="Provider\Web\UrlBuilderHelper.cs" />
+    <Compile Include="Provider\Web\UrlElements.cs" />
     <Compile Include="Scheduler\CachedScheduler.cs" />
     <Compile Include="Scheduler\ISchedulable.cs" />
     <Compile Include="Scheduler\IScheduler.cs" />
