@@ -218,19 +218,23 @@ namespace Appleseed.Framework.Core.Model
         /// Registers the portable area module.
         /// </summary>
         /// <param name="areaName">Name of the area.</param>
+        /// <param name="controllerName">Name of the controller</param>
         /// <param name="assemblyFullName">Full name of the assembly.</param>
         /// <param name="controllerName">The module.</param>
+        /// <param name="controllerName">The action name</param>
         /// <returns></returns>
-        public static Guid RegisterPortableAreaModule(string areaName, string assemblyFullName, string controllerName)
+        public static Guid RegisterPortableAreaModule(string areaName, string assemblyFullName, string controllerName, string actionName = "Module")
         {
             Guid mId;
             var sdb = new ModulesDB();
             var friendlyName = String.Format("{0} - {1}", areaName, controllerName);
+            if (actionName != "Module") friendlyName += String.Format(" - {0}", actionName);
             try {
                 mId = sdb.GetGeneralModuleDefinitionByName(friendlyName);
-            } catch (ArgumentException) {
+            }
+            catch (ArgumentException) {
                 // No existe el módulo, entonces lo creo
-                mId = AddPortableArea(areaName, assemblyFullName, controllerName, friendlyName, sdb);
+                mId = AddPortableArea(areaName, assemblyFullName, controllerName, friendlyName, sdb, actionName);
             }
 
             return mId;
@@ -270,11 +274,9 @@ namespace Appleseed.Framework.Core.Model
         /// <param name="friendlyName">Name of the friendly.</param>
         /// <param name="sdb">The SDB.</param>
         /// <returns></returns>
-        private static Guid AddPortableArea(
-            string areaName, string assemblyFullName, string controllerName, string friendlyName, ModulesDB sdb)
-        {
+        private static Guid AddPortableArea(string areaName, string assemblyFullName, string controllerName, string friendlyName, ModulesDB sdb, string actionName) {
             var mId = Guid.NewGuid();
-            var action = string.Format("Areas/{0}/Views/{1}/Module", areaName, controllerName);
+            var action = string.Format("Areas/{0}/Views/{1}/{2}", areaName, controllerName, actionName);
             sdb.AddGeneralModuleDefinitions(
                 mId, friendlyName, action, string.Empty, assemblyFullName, areaName, false, false);
 
