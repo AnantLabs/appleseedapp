@@ -270,9 +270,10 @@ namespace Appleseed.Framework.Core.Model
         /// </summary>
         /// <param name="areaName">Name of the area.</param>
         /// <param name="assemblyFullName">Full name of the assembly.</param>
-        /// <param name="module">The module.</param>
+        /// <param name="controllerName">The module.</param>
         /// <param name="friendlyName">Name of the friendly.</param>
         /// <param name="sdb">The SDB.</param>
+        /// <param name="actionName">The actionName.</param>
         /// <returns></returns>
         private static Guid AddPortableArea(string areaName, string assemblyFullName, string controllerName, string friendlyName, ModulesDB sdb, string actionName) {
             var mId = Guid.NewGuid();
