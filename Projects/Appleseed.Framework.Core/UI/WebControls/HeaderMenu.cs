@@ -689,7 +689,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                                 autoOpen: false,
                                 modal: true,
                                 width: ",dialogwidth,@",
-                                height: 380,
+                                height: 410,
                                 resizable: false,
                                 title: 'Sign In'
                             });
