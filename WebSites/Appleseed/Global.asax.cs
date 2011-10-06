@@ -118,7 +118,7 @@ namespace Appleseed
             if (Addwww != null && Addwww.Equals("true")) {
                 if (!Request.Url.AbsoluteUri.ToLower().Contains("www")) {
                     var newUrl = Request.Url.AbsoluteUri.Replace("http://", "http://www.");
-                    Response.Redirect(newUrl, true);
+                    Response.Redirect(newUrl, true); 
                 }
             }
 
