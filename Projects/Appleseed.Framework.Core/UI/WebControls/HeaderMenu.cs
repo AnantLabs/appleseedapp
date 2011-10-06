@@ -629,8 +629,8 @@ namespace Appleseed.Framework.Web.UI.WebControls
             if (ShowLogon && DialogLogon && _logonControl != null)
             {
                 PortalSettings PortalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
-                string iframewidth = "250px";
-                string dialogwidth = "280";
+                string iframewidth = "280px";
+                string dialogwidth = "320";
                 if (PortalSettings.CustomSettings["SITESETTINGS_LOGIN_TYPE"].ToString().Contains("both.ascx")) {
                         if ((PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_TWITTER_APP_ID") &&
                             PortalSettings.CustomSettings["SITESETTINGS_TWITTER_APP_ID"].ToString().Equals(string.Empty) ||
@@ -656,8 +656,8 @@ namespace Appleseed.Framework.Web.UI.WebControls
                 string div = this.ClientID + "_logon_dialog";
                 var url = HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/SignIn/SignInPage.aspx?iframe=true");
                 writer.Write(string.Concat("<div id=\"", this.ClientID, "_logon_dialog\" style=\"display:none\" >"));
-                writer.Write(string.Concat("<div id=\"AppleseedLogin\" style=\"height: 350px !important\" >"));
-                writer.Write("<iframe id=\"iframeAppleseedLogin\" src=\""+empty+"\" onload=\"check()\" width=\""+iframewidth+"\" height=\"330px\"></iframe>");
+                writer.Write(string.Concat("<div id=\"AppleseedLogin\" style=\"height: 370px !important\" >"));
+                writer.Write("<iframe id=\"iframeAppleseedLogin\" src=\""+empty+"\" onload=\"check()\" width=\""+iframewidth+"\" height=\"360px\"></iframe>");
                 writer.Write("</div>");
                 
                
@@ -689,7 +689,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                                 autoOpen: false,
                                 modal: true,
                                 width: ",dialogwidth,@",
-                                height: 380,
+                                height: 410,
                                 resizable: false,
                                 title: 'Sign In'
                             });

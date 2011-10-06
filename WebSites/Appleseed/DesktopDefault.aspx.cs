@@ -167,27 +167,40 @@ namespace Appleseed
         private void DesktopDefault_Load(object sender, EventArgs e)
         {
                 // intento obtener el id de la pagina desde el query
-                string query = Request.Url.Query;
-                int pageId = 0;
-                if (query.Contains("?pageId")) {
-                    int index = query.IndexOf('?');
-                    query = query.Substring(index + 8, query.Length - index - 8);
+            string query = Request.Url.Query;
+            int pageId = 0;
+            if (query.Contains("?") && query.ToLower().Contains("pageid"))
+            {
+                int index = query.IndexOf('?');
+                int indexPageId = query.ToLower().IndexOf("pageid") + 5;
+                if (index < indexPageId - 5)
+                {
+                    query = query.Substring(indexPageId + 2, query.Length - indexPageId - 2);
                     index = query.IndexOf('&');
                     if (index > 0) // no va hasta el final el numero de pagina
                         query = query.Substring(0, index);
-                    try {
+                    try
+                    {
                         pageId = int.Parse(query);
-                    } catch (Exception) {
+                    }
+                    catch (Exception)
+                    {
                         pageId = 0;
                     }
-                } else
-                    pageId = this.PortalSettings.ActivePage.PageID;
-
-                if (pageId == 0)
-                {
-                    pageId = Convert.ToInt32(SiteMap.RootNode.ChildNodes[0].Key);
-                    this.Response.Redirect(HttpUrlBuilder.BuildUrl(pageId));
                 }
+                else
+                {
+                    pageId = 0;
+                }
+            }
+            else
+                pageId = this.PortalSettings.ActivePage.PageID;
+
+            if (pageId == 0)
+            {
+                pageId = Convert.ToInt32(SiteMap.RootNode.ChildNodes[0].Key);
+                this.Response.Redirect(HttpUrlBuilder.BuildUrl(pageId));
+            }
 
                 string urlToRedirect = "";
                 bool redirect = HttpUrlBuilder.ValidateProperUrl(pageId, ref urlToRedirect);

@@ -5654,4 +5654,25 @@ function confirmDelete()
   <data name="PAGESETTINGS_SITEDEFAULT" xml:space="preserve">
     <value>(Site Default)</value>
   </data>
+  <data name="FIRST_NAME" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="LAST_NAME" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="USER_CREATED_SUCCESSFULLY" xml:space="preserve">
+    <value>User created successfully</value>
+  </data>
+  <data name="SIGNIN_FACEBOOK" xml:space="preserve">
+    <value>Login with Facebook</value>
+  </data>
+  <data name="SIGNIN_FACEBOOK_MISSING_SETTINGS" xml:space="preserve">
+    <value>Facebook settings are not correct.</value>
+  </data>
+  <data name="SIGNIN_LOGIN_FAIL" xml:space="preserve">
+    <value>Your email and/or password are not correct.</value>
+  </data>
+  <data name="SIGNIN_UNKNOW_ERROR" xml:space="preserve">
+    <value>It has been an error. Please try again later.</value>
+  </data>
 </root>

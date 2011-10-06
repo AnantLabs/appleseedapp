@@ -114,6 +114,13 @@ namespace Appleseed
         /// </param>
         protected void AppleseedApplication_BeginRequest(object sender, EventArgs e)
         {
+            string Addwww = System.Configuration.ConfigurationManager.AppSettings.Get("AddWwwToRequest");
+            if (Addwww != null && Addwww.Equals("true")) {
+                if (!Request.Url.AbsoluteUri.ToLower().Contains("www")) {
+                    var newUrl = Request.Url.AbsoluteUri.Replace("http://", "http://www.");
+                    Response.Redirect(newUrl, true); 
+                }
+            }
 
             /*Send a signal to allow custom js registration (not enabled yet)*/
             Bus.Send(new JSRegisterDescriptor() { Scripts = new List<string>() });

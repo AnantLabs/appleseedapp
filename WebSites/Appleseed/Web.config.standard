@@ -149,6 +149,7 @@
 		<add key="RouteTesting" value="false" />
 		<add key="ScriptsModeDebug" value="false" />
 		<add key="PackageSource" value="http://updates.appleseedapp.com/nuget/" />
+		<add key="AddWwwToRequest" value="true" />
 		 
 	</appSettings>
 	<system.net>
