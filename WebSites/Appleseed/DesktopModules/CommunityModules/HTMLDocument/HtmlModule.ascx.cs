@@ -401,38 +401,38 @@ namespace Appleseed.DesktopModules.CommunityModules.HTMLDocument
             else
                 this.HtmlHolder2.Controls.Add(this.HtmlLiteral);
 
-            if (PortalSecurity.HasEditPermissions(this.ModuleID)) {
-                var editor = Settings["Editor"].ToString();
-                var width = int.Parse(Settings["Width"].ToString()) + 100;
-                var height = int.Parse(Settings["Height"].ToString());
-                if (editor.Equals("FreeTextBox")) {
-                    height += 220;
-                } else if (editor.Equals("FCKeditor")) {
-                    height += 120;
-                } else if (editor.Equals("TinyMCE Editor")) {
-                    height += 140;
-                } else if (editor.Equals("Code Mirror Plain Text")) {
-                    height += 140;
-                } else if (editor.Equals("Syrinx CkEditor")) {
-                    height += 300;
-                } else {
-                    height += 140;
-                }
-                string title = Resources.Appleseed.HTML_TITLE;
-                var url = HttpUrlBuilder.BuildUrl("~/DesktopModules/CommunityModules/HTMLDocument/HtmlEditModal.aspx?mID="+this.ModuleID);
-                this.HtmlModuleText.Attributes.Add("OnDblClick", "setDialog(" + ModuleID.ToString() + "," + width.ToString() + "," + (height + 10).ToString() + ");editHtml(" + ModuleID.ToString() + "," + this.PageID + ",\"" + url + "\");");
-                this.HtmlModuleText.Attributes.Add("class", "Html_Edit");
-                this.HtmlModuleDialog.Attributes.Add("class", "HtmlModuleDialog" + ModuleID.ToString());
-                this.HtmlMoudleIframe.Attributes.Add("class", "HtmlMoudleIframe" + ModuleID.ToString());
-                this.HtmlMoudleIframe.Attributes.Add("width", "98%");
-                this.HtmlMoudleIframe.Attributes.Add("height", "99%");
-                this.HtmlModuleText.Attributes.Add("title", title);
-                this.HtmlModuleDialog.Attributes.Add("title", General.GetString("HTML_EDITOR", "Html Editor"));
-                if ((Request.Browser.Browser.Contains("IE") || Request.Browser.Browser.Contains("ie")) && Request.Browser.MajorVersion == 7) {
+            //if (PortalSecurity.HasEditPermissions(this.ModuleID)) {
+            //    var editor = Settings["Editor"].ToString();
+            //    var width = int.Parse(Settings["Width"].ToString()) + 100;
+            //    var height = int.Parse(Settings["Height"].ToString());
+            //    if (editor.Equals("FreeTextBox")) {
+            //        height += 220;
+            //    } else if (editor.Equals("FCKeditor")) {
+            //        height += 120;
+            //    } else if (editor.Equals("TinyMCE Editor")) {
+            //        height += 140;
+            //    } else if (editor.Equals("Code Mirror Plain Text")) {
+            //        height += 140;
+            //    } else if (editor.Equals("Syrinx CkEditor")) {
+            //        height += 300;
+            //    } else {
+            //        height += 140;
+            //    }
+            //    string title = Resources.Appleseed.HTML_TITLE;
+            //    var url = HttpUrlBuilder.BuildUrl("~/DesktopModules/CommunityModules/HTMLDocument/HtmlEditModal.aspx?mID="+this.ModuleID);
+            //    this.HtmlModuleText.Attributes.Add("OnDblClick", "setDialog(" + ModuleID.ToString() + "," + width.ToString() + "," + (height + 10).ToString() + ");editHtml(" + ModuleID.ToString() + "," + this.PageID + ",\"" + url + "\");");
+            //    this.HtmlModuleText.Attributes.Add("class", "Html_Edit");
+            //    this.HtmlModuleDialog.Attributes.Add("class", "HtmlModuleDialog" + ModuleID.ToString());
+            //    this.HtmlMoudleIframe.Attributes.Add("class", "HtmlMoudleIframe" + ModuleID.ToString());
+            //    this.HtmlMoudleIframe.Attributes.Add("width", "98%");
+            //    this.HtmlMoudleIframe.Attributes.Add("height", "99%");
+            //    this.HtmlModuleText.Attributes.Add("title", title);
+            //    this.HtmlModuleDialog.Attributes.Add("title", General.GetString("HTML_EDITOR", "Html Editor"));
+            //    if ((Request.Browser.Browser.Contains("IE") || Request.Browser.Browser.Contains("ie")) && Request.Browser.MajorVersion == 7) {
 
-                    this.HTMLEditContainer.Attributes.Add("style", "position: relative;overflow: auto;");
-                }
-            }
+            //        this.HTMLEditContainer.Attributes.Add("style", "position: relative;overflow: auto;");
+            //    }
+            //}
             
             base.OnInit(e);
         }
