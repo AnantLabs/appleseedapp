@@ -223,7 +223,32 @@ namespace Appleseed.Framework.Core.Model
         /// <param name="controllerName">The module.</param>
         /// <param name="controllerName">The action name</param>
         /// <returns></returns>
-        public static Guid RegisterPortableAreaModule(string areaName, string assemblyFullName, string controllerName, string actionName = "Module")
+        public static Guid RegisterPortableAreaModule(string areaName, string assemblyFullName, string controllerName) {
+            Guid mId;
+            var sdb = new ModulesDB();
+            var friendlyName = String.Format("{0} - {1}", areaName, controllerName);
+            
+            try {
+                mId = sdb.GetGeneralModuleDefinitionByName(friendlyName);
+            }
+            catch (ArgumentException) {
+                // No existe el módulo, entonces lo creo
+                mId = AddPortableArea(areaName, assemblyFullName, controllerName, friendlyName, sdb, "Module");
+            }
+
+            return mId;
+        }
+
+        /// <summary>
+        /// Registers the portable area module.
+        /// </summary>
+        /// <param name="areaName">Name of the area.</param>
+        /// <param name="controllerName">Name of the controller</param>
+        /// <param name="assemblyFullName">Full name of the assembly.</param>
+        /// <param name="controllerName">The module.</param>
+        /// <param name="controllerName">The action name</param>
+        /// <returns></returns>
+        public static Guid RegisterPortableAreaModule(string areaName, string assemblyFullName, string controllerName, string actionName)
         {
             Guid mId;
             var sdb = new ModulesDB();
@@ -239,6 +264,8 @@ namespace Appleseed.Framework.Core.Model
 
             return mId;
         }
+
+
 
         /// <summary>
         /// The reorder.
