@@ -105,7 +105,7 @@
     <ExcludeApp_Data>true</ExcludeApp_Data>
     <PublishDatabases>false</PublishDatabases>
     <!--<ExcludeFoldersFromDeployment>Portals</ExcludeFoldersFromDeployment>-->
-    <!--<ExcludeFilesFromDeployment>Web.config</ExcludeFilesFromDeployment>-->    
+    <!--<ExcludeFilesFromDeployment>Web.config</ExcludeFilesFromDeployment>-->
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Ajax">
@@ -6715,7 +6715,15 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>6440</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://appleseed.local/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://appleseed.local/</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>
@@ -6738,7 +6746,7 @@
     </CopyAllFilesToSingleFolderForPackageDependsOn>
   </PropertyGroup>
   <Target Name="CustomCollectFiles">
-    <ItemGroup>      
+    <ItemGroup>
       <_CustomFiles Include="packages\**\*.*" />
       <FilesForPackagingFromProject Include="%(_CustomFiles.Identity)">
         <DestinationRelativePath>packages\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>

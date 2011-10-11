@@ -211,6 +211,13 @@ namespace Appleseed.Framework.Providers.AppleseedSiteMapProvider
                 {
                     var command = new SqlCommand(BuildSiteMapQuery(), connection) { CommandType = CommandType.Text };
 
+                    var parameterPageId = new SqlParameter("@PortalID", SqlDbType.Int, 4) { Value = PortalId };
+                    command.Parameters.Add(parameterPageId);
+                    var parameterCulture = new SqlParameter("@Culture", SqlDbType.VarChar, 5) { Value = Thread.CurrentThread.CurrentUICulture.ToString() };
+                    command.Parameters.Add(parameterCulture);
+
+                    //Thread.CurrentThread.CurrentUICulture + PortalId
+                
                     // Create a SQL cache dependency if requested
                     SqlCacheDependency dependency = null;
 
@@ -277,16 +284,17 @@ namespace Appleseed.Framework.Providers.AppleseedSiteMapProvider
                         while (reader.Read());
 
                         // Use the SQL cache dependency
-                        if (dependency != null)
-                        {
+                        if (dependency != null) {
                             HttpRuntime.Cache.Insert(
-                                CacheDependencyName + PortalId, 
-                                new object(), 
-                                dependency, 
-                                Cache.NoAbsoluteExpiration, 
-                                Cache.NoSlidingExpiration, 
-                                CacheItemPriority.NotRemovable, 
+                                CacheDependencyName + PortalId,
+                                new object(),
+                                dependency,
+                                Cache.NoAbsoluteExpiration,
+                                Cache.NoSlidingExpiration,
+                                CacheItemPriority.NotRemovable,
                                 this.OnSiteMapChanged);
+                        } else { 
+
                         }
                     }
                 }
@@ -520,14 +528,11 @@ namespace Appleseed.Framework.Providers.AppleseedSiteMapProvider
                    (SELECT SettingValue
                     FROM   rb_TabSettings
                     WHERE  TabID = rb_Pages.PageID 
-                       AND SettingName = '" +
-                Thread.CurrentThread.CurrentUICulture +
-                @"'
+                       AND SettingName = @Culture
                        AND Len(SettingValue) > 0), 
                     PageName)  AS [PageName],[AuthorizedRoles], [PageLayout], [PageDescription]
                 FROM  [dbo].[rb_Pages] 
-                WHERE [PortalID] = " +
-                PortalId + @" 
+                WHERE [PortalID] = @PortalID
                 ORDER BY [PageOrder]
             ";
             return s;

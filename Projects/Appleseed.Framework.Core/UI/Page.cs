@@ -1664,12 +1664,56 @@ namespace Appleseed.Framework.Web.UI
             script.AppendFormat("SnapABug.addButton(\"{0}\",\"1\",\"55%\");", this.PortalSettings.CustomSettings["SITESETTINGS_SNAPENGAGE"].ToString());
             script.Append("</script>");
 
-            this.ClientScript.RegisterStartupScript(this.GetType(), "SITESETTINGS_SNAPENGAGE", script.ToString());
+            //this.ClientScript.RegisterStartupScript(this.GetType(), "SITESETTINGS_SNAPENGAGE", script.ToString());
 
-        
-        
+            var literals = FindControls<LiteralControl>(Page.Controls[0]);
+            literals.Reverse();
+            LiteralControl c = null;
+
+            foreach (LiteralControl ctrl in literals) {
+
+                if (ctrl.Text.Contains("</body>")) {
+                    c = ctrl;
+                    break;
+                }
+            }
+
+            if (c != null) {
+                script.Append(c.Text);
+                c.Text = script.ToString();
+            } else {
+                // if we cant find the closing of body we add this at the end
+                var controlCollection = Page.Controls[0].Controls;
+                var insertAt = controlCollection.Count; //get last control in page
+                //if (insertAt > 2) insertAt = insertAt - 2; // try to skip closing html and body tags
+                controlCollection.AddAt(insertAt, new LiteralControl(script.ToString()));
+            }
         }
 
+        //private void InsertBeforeClosingBodyTag(string html)
+        //{ 
+
+        //}
+
+        public List<T> FindControls<T>(Control parent) where T : Control
+        {
+            List<T> foundControls = new List<T>();
+
+            FindControls<T>(parent, foundControls);
+
+            return foundControls;
+        }
+
+        void FindControls<T>(Control parent, List<T> foundControls) where T : Control
+        {
+            foreach (Control c in parent.Controls)
+            {
+                if (c is T)
+                    foundControls.Add((T)c);
+                else if (c.Controls.Count > 0)
+                    FindControls<T>(c, foundControls);                
+            }
+        }
 
         #endregion
     }
