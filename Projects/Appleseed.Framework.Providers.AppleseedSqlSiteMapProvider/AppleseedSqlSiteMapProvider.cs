@@ -446,7 +446,7 @@ namespace Appleseed.Framework.Providers.AppleseedSiteMapProvider
 
             if (node.Roles != null)
             {
-                if (context.User.Identity.IsAuthenticated)
+                if (context.User != null && context.User.Identity.IsAuthenticated)
                 {
                     if (node.Roles.Contains("All Users") || node.Roles.Contains("Authenticated Users"))
                     {

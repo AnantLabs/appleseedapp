@@ -422,10 +422,14 @@ namespace Appleseed.Framework.Site.Configuration
             }
 
             // Provide a valid tab id if it is missing
-            if (this.ActivePage.PageID == 0)
-            {
-                this.ActivePage.PageID = ((PageStripDetails)this.DesktopPages[0]).PageID;
-            }
+            
+            // 11-10-2011
+            // Changed to go to the first page that the user logged has permission to see
+            
+            //if (this.ActivePage.PageID == 0)
+            //{
+            //    this.ActivePage.PageID = ((PageStripDetails)this.DesktopPages[0]).PageID;
+            //}
 
             // Go to get custom settings
             if (!Directory.Exists(Path.ApplicationPhysicalPath + this.PortalFullPath))
