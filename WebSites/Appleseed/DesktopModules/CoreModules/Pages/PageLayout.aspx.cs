@@ -666,28 +666,25 @@ namespace Appleseed.Admin
             var m = new ModulesDB();
             var modules = new SortedList<string, string>();
             var drCurrentModuleDefinitions = m.GetCurrentModuleDefinitions(this.PortalSettings.PortalID);
-            if (PortalSecurity.IsInRoles("Admins") || !bool.Parse(drCurrentModuleDefinitions["Admin"].ToString()))
-            {
-                try
-                {
-                    while (drCurrentModuleDefinitions.Read())
-                    {
-                        if (!modules.ContainsKey(drCurrentModuleDefinitions["FriendlyName"].ToString()))
-                        {
-                            modules.Add(
-                                // moduleType.Items.Add(
-                                // new ListItem(drCurrentModuleDefinitions["FriendlyName"].ToString(),
-                                // drCurrentModuleDefinitions["ModuleDefID"].ToString()));
-                                drCurrentModuleDefinitions["FriendlyName"].ToString(), 
-                                drCurrentModuleDefinitions["ModuleDefID"].ToString());
-                        }
+            //if (PortalSecurity.IsInRoles("Admins") || !bool.Parse(drCurrentModuleDefinitions["Admin"].ToString()))
+            //{
+            try {
+                while (drCurrentModuleDefinitions.Read()) {
+                    if ((!modules.ContainsKey(drCurrentModuleDefinitions["FriendlyName"].ToString())) &&
+                        (PortalSecurity.IsInRoles("Admins") || !bool.Parse(drCurrentModuleDefinitions["Admin"].ToString()))) {
+                        modules.Add(
+                            // moduleType.Items.Add(
+                            // new ListItem(drCurrentModuleDefinitions["FriendlyName"].ToString(),
+                            // drCurrentModuleDefinitions["ModuleDefID"].ToString()));
+                            drCurrentModuleDefinitions["FriendlyName"].ToString(),
+                            drCurrentModuleDefinitions["ModuleDefID"].ToString());
                     }
                 }
-                finally
-                {
-                    drCurrentModuleDefinitions.Close();
-                }
             }
+            finally {
+                drCurrentModuleDefinitions.Close();
+            }
+            //}
 
             // Dictionary<string, string> actions = ModelServices.GetMVCActionModules();
             // foreach (string key in actions.Keys) {
