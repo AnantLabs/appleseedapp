@@ -1650,25 +1650,56 @@ namespace Appleseed.Framework.Web.UI
 
         private void InsertSnapEngageScript() {
 
-            if (this.PortalSettings == null ||
-                 !this.PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_SNAPENGAGE") ||
-                  this.PortalSettings.CustomSettings["SITESETTINGS_SNAPENGAGE"].ToString().Equals(string.Empty)) {
-                return;
+            try {
+
+                if (this.PortalSettings == null ||
+                     !this.PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_SNAPENGAGE") ||
+                      this.PortalSettings.CustomSettings["SITESETTINGS_SNAPENGAGE"].ToString().Equals(string.Empty)) {
+                    return;
+                }
+
+                var script = new StringBuilder();
+
+                script.Append("<script type=\"text/javascript\">");
+                script.Append("document.write(unescape(\"%3Cscript src='\" + ((document.location.protocol==\"https:\")?\"https://snapabug.appspot.com\":\"http://www.snapengage.com\") + \"/snapabug.js' type='text/javascript'%3E%3C/script%3E\"));</script><script type=\"text/javascript\">");
+                script.AppendFormat("SnapABug.setLocale(\"{0}\");", Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.ToString());
+                script.AppendFormat("SnapABug.addButton(\"{0}\",\"1\",\"55%\");", this.PortalSettings.CustomSettings["SITESETTINGS_SNAPENGAGE"].ToString());
+                script.Append("</script>");
+
+                //this.ClientScript.RegisterStartupScript(this.GetType(), "SITESETTINGS_SNAPENGAGE", script.ToString());
+
+                LiteralControl c = null;
+                var container = Page.Controls[0];
+                c = FindClosingBodyLiteral(container);
+
+                if (c == null) {
+                    c = FindClosingBodyLiteral(Page);
+                }
+                if (c != null) {
+                    script.Append(c.Text);
+                    c.Text = script.ToString();
+                }
+                else {
+                    // if we cant find the closing of body we add this at the end
+                    var controlCollection = Page.Controls[0].Controls;
+                    var insertAt = controlCollection.Count; //get last control in page
+                    //if (insertAt > 2) insertAt = insertAt - 2; // try to skip closing html and body tags
+                    if (insertAt == 0) {
+                        controlCollection = Page.Controls;
+                        insertAt = controlCollection.Count;
+                    }
+                    controlCollection.AddAt(insertAt, new LiteralControl(script.ToString()));
+                }
             }
+            catch (Exception e) {
+                ErrorHandler.Publish(LogLevel.Error, "Error adding SnapEngage script", e);
+            }
+        }
 
-            var script = new StringBuilder();
-
-            script.Append("<script type=\"text/javascript\">");
-            script.Append("document.write(unescape(\"%3Cscript src='\" + ((document.location.protocol==\"https:\")?\"https://snapabug.appspot.com\":\"http://www.snapengage.com\") + \"/snapabug.js' type='text/javascript'%3E%3C/script%3E\"));</script><script type=\"text/javascript\">");
-            script.AppendFormat("SnapABug.setLocale(\"{0}\");",Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.ToString());
-            script.AppendFormat("SnapABug.addButton(\"{0}\",\"1\",\"55%\");", this.PortalSettings.CustomSettings["SITESETTINGS_SNAPENGAGE"].ToString());
-            script.Append("</script>");
-
-            //this.ClientScript.RegisterStartupScript(this.GetType(), "SITESETTINGS_SNAPENGAGE", script.ToString());
-
-            var literals = FindControls<LiteralControl>(Page.Controls[0]);
-            literals.Reverse();
+        private LiteralControl FindClosingBodyLiteral(Control container) {
             LiteralControl c = null;
+            var literals = FindControls<LiteralControl>(container);
+            literals.Reverse();
 
             foreach (LiteralControl ctrl in literals) {
 
@@ -1677,23 +1708,8 @@ namespace Appleseed.Framework.Web.UI
                     break;
                 }
             }
-
-            if (c != null) {
-                script.Append(c.Text);
-                c.Text = script.ToString();
-            } else {
-                // if we cant find the closing of body we add this at the end
-                var controlCollection = Page.Controls[0].Controls;
-                var insertAt = controlCollection.Count; //get last control in page
-                //if (insertAt > 2) insertAt = insertAt - 2; // try to skip closing html and body tags
-                controlCollection.AddAt(insertAt, new LiteralControl(script.ToString()));
-            }
+            return c;
         }
-
-        //private void InsertBeforeClosingBodyTag(string html)
-        //{ 
-
-        //}
 
         public List<T> FindControls<T>(Control parent) where T : Control
         {
