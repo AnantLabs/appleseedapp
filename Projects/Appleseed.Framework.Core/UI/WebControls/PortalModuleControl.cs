@@ -4754,8 +4754,15 @@ namespace Appleseed.Framework.Web.UI.WebControls
                         var culture = Thread.CurrentThread.CurrentUICulture.Name;
                         var sb = new StringBuilder();
                         sb.Append(
-                            "<script type=\"text/javascript\">var addthis_config = {\"data_track_clickback\":true, ");
+                            "<script type=\"text/javascript\">var addthis_config = {data_track_clickback:true, ");
                         sb.AppendFormat("ui_language:\"{0}\"", culture);
+                        if (this.PortalSettings != null &&
+                            this.PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_GOOGLEANALYTICS") &&
+                            !this.PortalSettings.CustomSettings["SITESETTINGS_GOOGLEANALYTICS"].ToString().Equals(string.Empty)) {
+
+                            sb.AppendFormat(", data_ga_property:\"{0}\", ", this.PortalSettings.CustomSettings["SITESETTINGS_GOOGLEANALYTICS"].ToString());
+                            sb.AppendFormat("data_ga_social:true");
+                        } 
                         sb.Append("};</script>");
                         sb.Append("<div class=\"addthis_toolbox addthis_default_style\">");
                         sb.AppendFormat(
