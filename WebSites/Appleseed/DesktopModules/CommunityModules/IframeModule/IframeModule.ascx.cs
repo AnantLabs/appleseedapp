@@ -32,6 +32,12 @@ namespace Appleseed.Content.Web.Modules
             {
                 strURL = strURL.Replace("[[User.Email]]", Appleseed.Framework.Site.Configuration.PortalSettings.CurrentUser.Identity.Email);
             }
+            for (int i = 0; i < 10; i++) {
+                var currentParameter = String.Format("[[p{0}]]", i);
+                if (strURL.Contains(currentParameter)) {
+                    strURL = strURL.Replace(currentParameter, Request.QueryString["p" + i.ToString()]);
+                }
+            }
             string height = Settings["Height"].ToString();
             string width = Settings["Width"].ToString();
             StringBuilder sb = new StringBuilder();
