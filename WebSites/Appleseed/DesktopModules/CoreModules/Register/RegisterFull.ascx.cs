@@ -185,6 +185,18 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
                 trPwdAgain.Visible = false;
                 ChangePassword.Visible = false;
                 panChangePwd.Visible = false;
+                if (Session["CameFromGoogleLogin"] != null) {
+                    if ((bool)Session["CameFromGoogleLogin"]) {
+                        if (Session["GoogleUserEmail"] != null) {
+                            this.tfEmail.Text = (string)Session["GoogleUserEmail"];
+                            this.tfEmail.ReadOnly = true;
+                        }
+                        if (Session["GoogleUserName"] != null) {
+                            this.tfName.Text = (string)Session["GoogleUserName"];
+                        }
+                    }
+                }
+                
             }
         }
         if (Session["FacebookUserName"] != null) {
@@ -377,10 +389,11 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
                     }
 
                     return result;
-                } else if (Session["FacebookUserName"] != null) {
+                }
+                else if (Session["FacebookUserName"] != null || Session["GoogleUserEmail"] != null) {
                     // Register Facebook
-                    string userName = (string)Session["FacebookUserName"];
-                    string password = (string)Session["FacebookPassword"];
+                    string userName = tfEmail.Text;
+                    string password = GeneratePasswordHash(userName);
                     MembershipCreateStatus status = MembershipCreateStatus.Success;
                     MembershipUser user = Membership.Provider.CreateUser(userName, password, userName, "question", "answer", true, Guid.NewGuid(), out status);
                     this.lblError.Text = string.Empty;
@@ -397,7 +410,21 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
                             result = (Guid)user.ProviderUserKey;
                             //if the user is registering himself (thus, is not yet authenticated) we will sign him on and send him to the home page.
                             if (!Context.User.Identity.IsAuthenticated) {
+
+                                // Removing names from social networks of sessions
+
                                 Session.Contents.Remove("CameFromSocialNetwork");
+                                if (Session["CameFromGoogleLogin"] != null) 
+                                    Session.Contents.Remove("CameFromGoogleLogin");
+                                if (Session["GoogleUserEmail"] != null) 
+                                    Session.Contents.Remove("GoogleUserEmail");
+                                if (Session["GoogleUserName"] != null) 
+                                    Session.Contents.Remove("GoogleUserName");
+                                if (Session["FacebookUserName"] != null)
+                                    Session.Contents.Remove("FacebookUserName");
+                                if (Session["FacebookName"] != null)
+                                    Session.Contents.Remove("FacebookName");
+
                                 PortalSecurity.SignOn(userName, password, false, HttpUrlBuilder.BuildUrl());
                             }
 
@@ -407,6 +434,7 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
                             this.lblError.Text = Resources.Appleseed.USER_SAVING_ERROR;
                             break;
                     }
+
 
                     return result;
 

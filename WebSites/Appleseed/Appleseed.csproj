@@ -130,6 +130,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libs\DevSolution.Portal.dll</HintPath>
     </Reference>
+    <Reference Include="DotNetOpenAuth">
+      <HintPath>..\..\Libs\DotNetOpenAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.resources">
+      <HintPath>..\..\Libs\DotNetOpenAuth.resources.dll</HintPath>
+    </Reference>
     <Reference Include="DUEMETRI.UI.WebControls.HWMenu, Version=1.0.0.1335, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libs\DUEMETRI.UI.WebControls.HWMenu.dll</HintPath>
@@ -1461,6 +1467,20 @@
     </Compile>
     <Compile Include="DesktopModules\CoreModules\SecurityCheck\SecurityCheck.ascx.designer.cs">
       <DependentUpon>SecurityCheck.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CoreModules\SignIn\LogInGoogle.aspx.cs">
+      <DependentUpon>LogInGoogle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CoreModules\SignIn\LogInGoogle.aspx.designer.cs">
+      <DependentUpon>LogInGoogle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CoreModules\SignIn\LoginIn.aspx.cs">
+      <DependentUpon>LoginIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CoreModules\SignIn\LoginIn.aspx.designer.cs">
+      <DependentUpon>LoginIn.aspx</DependentUpon>
     </Compile>
     <Compile Include="DesktopModules\CoreModules\SignIn\LogInTweeter.aspx.cs">
       <DependentUpon>LogInTweeter.aspx</DependentUpon>
@@ -6398,6 +6418,8 @@
     <Content Include="DesktopModules\CoreModules\SignIn\install.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="DesktopModules\CoreModules\SignIn\LogInGoogle.aspx" />
+    <Content Include="DesktopModules\CoreModules\SignIn\LoginIn.aspx" />
     <Content Include="DesktopModules\CoreModules\SignIn\LogInTweeter.aspx" />
     <Content Include="DesktopModules\CoreModules\SignIn\Signin.ascx" />
     <Content Include="DesktopModules\CoreModules\SignIn\SignInBoth.ascx" />

@@ -1632,6 +1632,18 @@ namespace Appleseed.Framework.Site.Configuration
                 };
                 baseSettings.Add("SITESETTINGS_TWITTER_APP_SECRET", twitterAppSecret);
 
+                var googleLogin = new SettingItem<bool, CheckBox>() {
+                    Required = false,
+                    Value = false,
+                   
+                    EnglishName = "Google Login",
+                    Description = "Check if you want to see the google login",
+                    Order = groupOrderBase + 28,
+                    Group = group
+                };
+                baseSettings.Add("SITESETTINGS_GOOGLE_LOGIN", googleLogin);
+
+
                 groupOrderBase = (int)SettingItemGroup.META_SETTINGS;
                 group = SettingItemGroup.META_SETTINGS;
 
