@@ -153,11 +153,11 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn {
     	            catch (ProtocolException ex)
     	            {
                         ErrorHandler.Publish(LogLevel.Error,"Google Error", ex);
-                        Response.Redirect(HttpUrlBuilder.BuildUrl(""));
+                        Response.Redirect(HttpUrlBuilder.BuildUrl("~/"));
     	            }
     	        }
     	        ErrorHandler.Publish(LogLevel.Error,"OpenID Error...invalid url. url='" + openIdUrl + "'");
-                Response.Redirect(HttpUrlBuilder.BuildUrl(""));
+                Response.Redirect(HttpUrlBuilder.BuildUrl("~/"));
     	    }
     	 
     	    // OpenID Provider sending assertion response
@@ -214,17 +214,17 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn {
     	            ErrorHandler.Publish(LogLevel.Info,"OpenID: Cancelled at provider.");
                     Response.Write ("<script language=javascript>close();</script>");
                     Response.End();
-                    Response.Redirect(HttpUrlBuilder.BuildUrl(""));
+                    Response.Redirect(HttpUrlBuilder.BuildUrl("~/"));
                     break;
     	        case AuthenticationStatus.Failed:
                 
                     ErrorHandler.Publish(LogLevel.Error, "OpenID Exception...",response.Exception);
     	            Response.Write ("<script language=javascript>close();</script>");
                     Response.End();
-                    Response.Redirect(HttpUrlBuilder.BuildUrl(""));
+                    Response.Redirect(HttpUrlBuilder.BuildUrl("~/"));
                     break;
     	    }
-            Response.Redirect(HttpUrlBuilder.BuildUrl(""));
+            Response.Redirect(HttpUrlBuilder.BuildUrl("~/"));
 
 
 
