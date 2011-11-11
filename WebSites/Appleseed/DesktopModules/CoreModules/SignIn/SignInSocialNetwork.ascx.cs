@@ -29,6 +29,7 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
     {
 
         protected string TwitterLink;
+        
 
         public SignInSocialNetwork()
         {
@@ -74,16 +75,7 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
 
                 try {
                     var TwitterRequestToken = GetTwitterRequestToken();
-                    if (TwitterRequestToken != null) {
-                        Uri authenticationUri = OAuthUtility.BuildAuthorizationUri(TwitterRequestToken.Token, true);
-                        
-                        string url = authenticationUri.AbsoluteUri;
-                        LogIn.Text = "Log in Twitter";
-                        LogIn.NavigateUrl = url;
-                        
-
-                        
-                    } else {
+                    if (TwitterRequestToken != null) {   } else {
                         //TODO: ocultar boton y mostrar warning
                         logintwit_div.Visible = false;
                         ErrorHandler.Publish(LogLevel.Error, "Twitter settings are not correct");
@@ -92,6 +84,36 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
                     logintwit_div.Visible = false;
                     ErrorHandler.Publish(LogLevel.Error, Resources.Appleseed.TWITTER_ERROR, ex);
                 }
+
+                if(this.PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_GOOGLE_LOGIN") &&
+                this.PortalSettings.CustomSettings["SITESETTINGS_GOOGLE_LOGIN"].ToString().Length != 0 &&
+                !bool.Parse(this.PortalSettings.CustomSettings["SITESETTINGS_GOOGLE_LOGIN"].ToString())) {
+                    google_div.Visible = false;
+                }
+                //try {
+
+                //    // metodo viejo
+                //    //if (PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_GOOGLE_APP_ID") &&
+                //    //!PortalSettings.CustomSettings["SITESETTINGS_GOOGLE_APP_ID"].ToString().Equals(string.Empty) &&
+                //    //PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_GOOGLE_APP_SECRET") &&
+                //    //!PortalSettings.CustomSettings["SITESETTINGS_GOOGLE_APP_SECRET"].ToString().Equals(string.Empty)) {
+                //    //    string appId = PortalSettings.CustomSettings["SITESETTINGS_GOOGLE_APP_ID"].ToString();
+                //    //    var appSecret = PortalSettings.CustomSettings["SITESETTINGS_GOOGLE_APP_SECRET"].ToString();
+
+                //    //    string url = "https://accounts.google.com/o/oauth2/auth?client_id=" + appId + "&redirect_uri=" + ConvertRelativeUrlToAbsoluteUrl(HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/SignIn/LogInGoogle.aspx"));
+                //    //    url += "&scope=https://www.google.com/m8/feeds/&response_type=code";
+
+                //    //    Session["GoogleAppId"] = appId;
+                //    //    Session["GoogleAppSecret"] = appSecret;
+
+                //    //    googleLogin.NavigateUrl = url;
+                //    //}
+
+                //    googleLogin.NavigateUrl = HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/SignIn/LogInGoogle.aspx");
+
+                //}
+                //catch(Exception){
+                //}
             }
         }
 
@@ -103,6 +125,11 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
             }
             return null;
         }
+
+        protected string getGoogleLink() {
+            return HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/SignIn/LogInGoogle.aspx");
+        }
+        
 
         private void UpdateProfile()
         {
@@ -171,7 +198,7 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
                 Session["FacebookUserName"] = me.email;
                 Session["FacebookName"] = me.name;
 
-                Session["FacebookPassword"] = GeneratePasswordHash(me.email);
+                
                 string urlRegister = ConvertRelativeUrlToAbsoluteUrl(HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/Register/Register.aspx"));
                 Response.Redirect(urlRegister);
             } else

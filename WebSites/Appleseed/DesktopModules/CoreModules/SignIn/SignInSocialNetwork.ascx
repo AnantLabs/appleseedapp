@@ -20,10 +20,22 @@
             <td>
                 <div runat="server" id="logintwit_div">
                     <% if (!string.IsNullOrEmpty(Request.QueryString.Get("iframe"))) {%>
-                        <a id="twit" class="twitterlink" href="#" onclick="gotoTwitter('<%= getTwitterLink() %>');return false;"><img src="../../../images/sign-in-with-twitter-l.png" </a>
+                        <a id="twit" class="twitterlink" href="#" onclick="gotoTwitter('<%= getTwitterLink() %>');return false;"><img src="../../../images/sign-in-with-twitter-l.png" /></a>
                     <%} else { %>
-                        <asp:HyperLink runat="server" ImageUrl="~/images/sign-in-with-twitter-l.png" ID="LogIn" class="twitterlink" ></asp:HyperLink>
+                    <a id="TwitterLogin" href="#" onclick="PopUp('<%= getTwitterLink() %>');return false;"><img src="../../../images/sign-in-with-twitter-l.png" /> </a>
+                        <%--<asp:HyperLink runat="server" ImageUrl="~/images/sign-in-with-twitter-l.png" ID="LogIn" class="twitterlink" ></asp:HyperLink>--%>
                     <%} %>
+                </div>
+                <%--<asp:Label runat="server" ForeColor="Red" ID="errtwit" Visible="false">Twitter settings are not correct</asp:Label>--%>
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+                <div runat="server" id="google_div">
+                <a id="GoogleLink" href="#" onclick="PopUp('<%= getGoogleLink() %>');return false;"><img src="../../../images/sign-in-google.png" /> </a>
+                <%--    <asp:HyperLink runat="server" Text="LoginGoogle" ID="googleLogin" ImageUrl="~/images/sign-in-google.png" o></asp:HyperLink>--%>
+                   
                 </div>
                 <%--<asp:Label runat="server" ForeColor="Red" ID="errtwit" Visible="false">Twitter settings are not correct</asp:Label>--%>
             </td>
@@ -39,6 +51,7 @@
                 
             </td>
         </tr>
+
     </tbody>
 </table>
 <asp:HiddenField ID="appId" runat="server" />
@@ -56,8 +69,14 @@
     });
 
     function gotoTwitter(link) {
-        window.parent.location = link 
+        window.parent.location = link
     }
+
+    function PopUp(url) {
+        window.open(url, 'Google login', "height= 500,width= 600, location = 0, status = 1, resizable = 0, scrollbars=1, toolbar = 0");
+        return true;
+    }
+
     
  </script>
 

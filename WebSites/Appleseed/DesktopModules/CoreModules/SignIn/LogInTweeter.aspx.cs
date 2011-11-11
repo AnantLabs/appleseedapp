@@ -49,25 +49,54 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
                             Session["TwitterUserName"] = userName;
                             Session["TwitterPassword"] = password;
                             string urlRegister = ConvertRelativeUrlToAbsoluteUrl("~/DesktopModules/CoreModules/Register/Register.aspx");
-                            Response.Redirect(urlRegister);
+                            
+                            StringBuilder sb = new StringBuilder();
+                            sb.Append("<script language='javascript'>");
+                            sb.Append("window.opener.location.href = '");
+                            sb.Append(urlRegister);
+                            sb.Append("';window.opener.focus();");
+                            sb.Append("window.close();");
+                            sb.Append("</script>");
+                            Response.Write(sb.ToString());
+                            Response.End();
 
 
                         } else {
 
-                            string urlHome = ConvertRelativeUrlToAbsoluteUrl("~");
-                            PortalSecurity.SignOn(userName, password, false, urlHome);
+                            Session["CameFromSocialNetwork"] = true;
+                            Session["UserName"] = userName;
+                            var redirect = ConvertRelativeUrlToAbsoluteUrl(HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/SignIn/LoginIn.aspx"));
+                            StringBuilder sb = new StringBuilder();
+                            sb.Append("<script language='javascript'>");
+                            sb.Append("window.opener.location.href = '");
+                            sb.Append(redirect);
+                            sb.Append("';window.opener.focus();");
+                            sb.Append("window.close();");
+                            sb.Append("</script>");
+                            Response.Write(sb.ToString());
+                            Response.End();
                             
                         }
                     } else {
                         ErrorHandler.Publish(LogLevel.Error, "TwitterSettings are not correct");
-                        string _redirectUrl = Config.SmartErrorRedirect;
-                        Response.Redirect(_redirectUrl);
+                        StringBuilder sb = new StringBuilder();
+                        sb.Append("<script language='javascript'>");                       
+                        sb.Append("window.close();");
+                        sb.Append("</script>");
+                        Response.Write(sb.ToString());
+                        Response.End();
                     }
 
-                } catch (TwitterizerException ex) {
+                } catch (Exception ex) {
 
                     ErrorHandler.Publish(LogLevel.Error, ex);
                     string _redirectUrl = Config.SmartErrorRedirect;
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("<script language='javascript'>");
+                    sb.Append("window.close();");
+                    sb.Append("</script>");
+                    Response.Write(sb.ToString());
+                    Response.End();
                     Response.Redirect(_redirectUrl);
                 }
             }

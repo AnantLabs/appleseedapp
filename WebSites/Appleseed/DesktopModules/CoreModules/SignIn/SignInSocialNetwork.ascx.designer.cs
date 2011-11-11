@@ -40,13 +40,13 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl logintwit_div;
         
         /// <summary>
-        /// LogIn control.
+        /// google_div control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink LogIn;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl google_div;
         
         /// <summary>
         /// lblError control.
