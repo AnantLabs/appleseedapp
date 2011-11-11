@@ -14,7 +14,7 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn {
         protected void Page_Load(object sender, EventArgs e) {
 
             var email = Session["UserName"] as string;
-            PortalSecurity.SignOn(email, GeneratePasswordHash(email),false, HttpUrlBuilder.BuildUrl(""));
+            PortalSecurity.SignOn(email, GeneratePasswordHash(email),false, HttpUrlBuilder.BuildUrl("~/"));
 
         }
 

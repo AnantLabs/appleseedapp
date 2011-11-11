@@ -22,7 +22,7 @@
                    <%-- <% if (!string.IsNullOrEmpty(Request.QueryString.Get("iframe"))) {%>
                         <a id="twit" class="twitterlink" href="#" onclick="gotoTwitter('<%= getTwitterLink() %>');return false;"><img src="../../../images/sign-in-with-twitter-l.png" /></a>
                     <%} else { %>--%>
-                    <a id="TwitterLogin" href="#" onclick="PopUp('<%= getTwitterLink() %>');return false;"><img src="../../../images/sign-in-with-twitter-l.png" /> </a>
+                    <a id="TwitterLogin" href="#" onclick="PopUp('<%= getTwitterLink() %>');return false;"><img src="<%= Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/images/sign-in-with-twitter-l.png") %>" alt="Login with twitter"/> </a>
                         <%--<asp:HyperLink runat="server" ImageUrl="~/images/sign-in-with-twitter-l.png" ID="LogIn" class="twitterlink" ></asp:HyperLink>--%>
                     <%--%} %>--%>
                 </div>
@@ -33,7 +33,7 @@
             <td>
 
                 <div runat="server" id="google_div">
-                <a id="GoogleLink" href="#" onclick="PopUp('<%= getGoogleLink() %>');return false;"><img src="../../../images/sign-in-google.png" /> </a>
+                <a id="GoogleLink" href="#" onclick="PopUp('<%= getGoogleLink() %>');return false;"><img src="<%= Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/images/sign-in-google.png") %>" alt="Login with google"/> </a>
                 <%--    <asp:HyperLink runat="server" Text="LoginGoogle" ID="googleLogin" ImageUrl="~/images/sign-in-google.png" o></asp:HyperLink>--%>
                    
                 </div>
