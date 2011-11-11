@@ -19,12 +19,12 @@
          <tr>
             <td>
                 <div runat="server" id="logintwit_div">
-                    <% if (!string.IsNullOrEmpty(Request.QueryString.Get("iframe"))) {%>
+                   <%-- <% if (!string.IsNullOrEmpty(Request.QueryString.Get("iframe"))) {%>
                         <a id="twit" class="twitterlink" href="#" onclick="gotoTwitter('<%= getTwitterLink() %>');return false;"><img src="../../../images/sign-in-with-twitter-l.png" /></a>
-                    <%} else { %>
+                    <%} else { %>--%>
                     <a id="TwitterLogin" href="#" onclick="PopUp('<%= getTwitterLink() %>');return false;"><img src="../../../images/sign-in-with-twitter-l.png" /> </a>
                         <%--<asp:HyperLink runat="server" ImageUrl="~/images/sign-in-with-twitter-l.png" ID="LogIn" class="twitterlink" ></asp:HyperLink>--%>
-                    <%} %>
+                    <%--%} %>--%>
                 </div>
                 <%--<asp:Label runat="server" ForeColor="Red" ID="errtwit" Visible="false">Twitter settings are not correct</asp:Label>--%>
             </td>
