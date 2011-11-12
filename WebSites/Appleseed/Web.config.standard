@@ -85,7 +85,7 @@
 		<add key="UseSingleUserBase" value="false" />
 		<add key="EnableMonitoring" value="true" />
 		<add key="EnableWebCompile" value="false" />
-		<add key="AmazonPromoCode" value="minondcom-20" />
+		<add key="AmazonPromoCode" value="" />
 		<add key="AmazonDevToken" />
 		<add key="ELBScriptPath" value="aspnet_client/ELB" />
 		<add key="UseSettingsGroupingTabs" value="true" />
