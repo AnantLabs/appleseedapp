@@ -360,7 +360,7 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
                 if (Session["TwitterUserName"] != null) {
                     // Register Twitter
                     string userName = (string)Session["TwitterUserName"];
-                    string password = (string)Session["TwitterPassword"];
+                    string password = GeneratePasswordHash(userName);
                     MembershipCreateStatus status = MembershipCreateStatus.Success;
                     MembershipUser user = Membership.Provider.CreateUser(userName, password, tfEmail.Text, "question", "answer", true, Guid.NewGuid(), out status);
                     this.lblError.Text = string.Empty;
@@ -413,7 +413,7 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
 
                                 // Removing names from social networks of sessions
 
-                                Session.Contents.Remove("CameFromSocialNetwork");
+                                
                                 if (Session["CameFromGoogleLogin"] != null) 
                                     Session.Contents.Remove("CameFromGoogleLogin");
                                 if (Session["GoogleUserEmail"] != null) 

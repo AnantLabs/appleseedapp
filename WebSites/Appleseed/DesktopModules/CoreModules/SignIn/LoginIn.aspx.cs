@@ -7,14 +7,23 @@ using System.Web.UI.WebControls;
 using Appleseed.Framework.Security;
 using System.Security.Cryptography;
 using System.Text;
-using Appleseed.Framework;
+using System.Web.Security;
+using Appleseed.Framework.Settings;
+using Appleseed.Framework.Site.Configuration;
+using Appleseed.Framework.UI.WebControls;
+
 
 namespace Appleseed.DesktopModules.CoreModules.SignIn {
+
+
     public partial class LoginIn : System.Web.UI.Page {
+
+        private string StringsPortalSettings = "PortalSettings";
+
         protected void Page_Load(object sender, EventArgs e) {
 
-            var email = Session["UserName"] as string;
-            PortalSecurity.SignOn(email, GeneratePasswordHash(email),false, HttpUrlBuilder.BuildUrl("~/"));
+            var userName = Session["UserName"] as string;
+            LogIn(userName);
 
         }
 
@@ -32,5 +41,32 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn {
             }
             return sOutput.ToString();
         }
+
+        private void LogIn(string userName) {
+            var PortalSettings = (PortalSettings)HttpContext.Current.Items[StringsPortalSettings];
+            var user = Membership.GetUser(userName);
+            FormsAuthentication.SetAuthCookie(user.ToString(), false);
+            var hck = HttpContext.Current.Response.Cookies["Appleseed_" + PortalSettings.PortalAlias.ToLower()];
+            if (hck != null) {
+                hck.Value = user.ToString(); // Fill all data: name + email + id
+                hck.Path = "/";
+
+                var minuteAdd = Config.CookieExpire;
+                var time = DateTime.Now;
+                var span = new TimeSpan(0, 0, minuteAdd, 0, 0);
+
+                hck.Expires = time.Add(span);
+
+                // 					}
+
+            }
+
+
+            // Redirect browser back to originating page
+            Response.Redirect("/");
+
+        }
+
+
     }
 }
