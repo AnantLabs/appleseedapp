@@ -86,7 +86,7 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
                         Response.End();
                     }
 
-                } catch (Exception ex) {
+                } catch (TwitterizerException ex) {
 
                     ErrorHandler.Publish(LogLevel.Error, ex);
                     string _redirectUrl = Config.SmartErrorRedirect;
