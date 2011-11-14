@@ -46,8 +46,7 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
                         if (Membership.GetUser(userName) == null) {
                             //The user doesnt exists, needs to be registered
 
-                            Session["TwitterUserName"] = userName;
-                            Session["TwitterPassword"] = password;
+                            Session["TwitterUserName"] = userName;                            
                             string urlRegister = ConvertRelativeUrlToAbsoluteUrl("~/DesktopModules/CoreModules/Register/Register.aspx");
                             
                             StringBuilder sb = new StringBuilder();
