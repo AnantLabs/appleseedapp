@@ -191,8 +191,8 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
                             this.tfEmail.Text = (string)Session["GoogleUserEmail"];
                             this.tfEmail.ReadOnly = true;
                         }
-                        if (Session["GoogleUserName"] != null) {
-                            this.tfName.Text = (string)Session["GoogleUserName"];
+                        if (Session["GoogleUserFirstName"] != null && Session["GoogleUserLastName"] != null) {
+                            this.tfName.Text = (string)Session["GoogleUserFirstName"] + " " + (string)Session["GoogleUserLastName"];
                         }
                     }
                 }

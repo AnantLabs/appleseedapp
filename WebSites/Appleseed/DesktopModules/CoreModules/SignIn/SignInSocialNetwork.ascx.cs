@@ -202,7 +202,7 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
                 string urlRegister = ConvertRelativeUrlToAbsoluteUrl(HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/Register/Register.aspx"));
                 Response.Redirect(urlRegister);
             } else
-                PortalSecurity.SignOn(me.email, GeneratePasswordHash(me.email));
+                PortalSecurity.SignOn(me.email, GeneratePasswordHash(me.email as String));
             if (this.Settings["SIGNIN_AUTOMATICALLYHIDE"] != null) {
                 bool hide = bool.Parse(this.Settings["SIGNIN_AUTOMATICALLYHIDE"].ToString());
                 this.Visible = false;
