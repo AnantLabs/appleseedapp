@@ -779,7 +779,7 @@ namespace Appleseed.Framework.Security
                     HttpContext.Current.Response.Redirect(
                         HttpContext.Current.Request.UrlReferrer != null
                             ? HttpContext.Current.Request.UrlReferrer.ToString()
-                            : Path.ApplicationRoot);
+                            : (HttpContext.Current.Request.ApplicationPath != null ? HttpContext.Current.Request.ApplicationPath.ToString() : "/"));
 
                     return usr.Email;
                 }

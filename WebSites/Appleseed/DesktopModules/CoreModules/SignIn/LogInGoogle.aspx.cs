@@ -176,7 +176,8 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn {
     	            }
                     if (Membership.GetUser(email) == null) {
 
-                        Session["GoogleUserName"] = firstName + " " + lastName;
+                        Session["GoogleUserFirstName"] = firstName;
+                        Session["GoogleUserLastName"] = lastName;
                         Session["GoogleUserEmail"] = email;
 
                         Session["CameFromSocialNetwork"] = true;
