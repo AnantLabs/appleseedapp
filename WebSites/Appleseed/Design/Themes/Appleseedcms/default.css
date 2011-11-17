@@ -411,8 +411,12 @@ textarea
 
 select,
 select.NormalTextBox{
-    height:27px !important;
+    height:27px;
     padding:1px 0 0 5px !important;
+}
+
+select#Content_ContentPane_ctl01_tabList {
+    height: 150px;
 }
 /*select#Content_ContentPane_ctl01_EditTable_SITESETTINGS_LANGLIST{
     height: 125px!important;
