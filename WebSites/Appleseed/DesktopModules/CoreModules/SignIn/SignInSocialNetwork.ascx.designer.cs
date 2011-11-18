@@ -76,6 +76,24 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn {
         protected global::System.Web.UI.WebControls.Label lblPassSentErr;
         
         /// <summary>
+        /// CommonSignIn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CommonSignIn;
+        
+        /// <summary>
+        /// Signin1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Appleseed.DesktopModules.CoreModules.SignIn.Signin Signin1;
+        
+        /// <summary>
         /// appId control.
         /// </summary>
         /// <remarks>
