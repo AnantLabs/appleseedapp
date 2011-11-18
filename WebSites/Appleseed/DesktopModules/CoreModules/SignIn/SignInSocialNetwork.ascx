@@ -1,6 +1,9 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SignInSocialNetwork.ascx.cs" Inherits="Appleseed.DesktopModules.CoreModules.SignIn.SignInSocialNetwork" %>
 
 
+<%@ Register src="Signin.ascx" tagname="Signin" tagprefix="uc1" %>
+
+
 <input type="hidden" runat="server" id="appidfacebook"/>
 <div id="fb-root"></div>
  <script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
@@ -51,10 +54,17 @@
                 
             </td>
         </tr>
-
+        <tr>
+            <td>
+                <div id="CommonSignIn" runat="server">
+                    <uc1:Signin ID="Signin1" runat="server" />
+                </div>
+            </td>
+        </tr>
     </tbody>
 </table>
 <asp:HiddenField ID="appId" runat="server" />
+
 <script type="text/javascript">
     var appId = $(".signInContainer").next().val();
     FB.init({

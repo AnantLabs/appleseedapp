@@ -53,15 +53,19 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
             if (hide && this.Request.IsAuthenticated) {
                 this.Visible = false;
             } else {
+                CommonSignIn.Visible = false;
                 try {
+                    hide = true;
                     var facebookContext = GetFacebookWebContext();
                     if (facebookContext != null) {
                         appId.Value = PortalSettings.CustomSettings["SITESETTINGS_FACEBOOK_APP_ID"].ToString();
                         appidfacebook.Value = PortalSettings.CustomSettings["SITESETTINGS_FACEBOOK_APP_ID"].ToString();
+                        hide = false;
                         if (facebookContext.IsAuthenticated()) {
                             //Here is were i check if the user login via facebook
                             FacebookSignInMethod();
                         }
+                        
                     } else {
                         //TODO: ocultar boton y mostrar warning
                         loginfb_div.Visible = false;
@@ -75,7 +79,9 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
 
                 try {
                     var TwitterRequestToken = GetTwitterRequestToken();
-                    if (TwitterRequestToken != null) {   } else {
+                    if (TwitterRequestToken != null) {
+                        hide = false;
+                    } else {
                         //TODO: ocultar boton y mostrar warning
                         logintwit_div.Visible = false;
                         ErrorHandler.Publish(LogLevel.Error, "Twitter settings are not correct");
@@ -90,6 +96,8 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
                 !bool.Parse(this.PortalSettings.CustomSettings["SITESETTINGS_GOOGLE_LOGIN"].ToString())) {
                     google_div.Visible = false;
                 }
+                else
+                    hide = false;
                 //try {
 
                 //    // metodo viejo
@@ -114,6 +122,9 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
                 //}
                 //catch(Exception){
                 //}
+                if (hide) {
+                    this.CommonSignIn.Visible = true;
+                }
             }
         }
 

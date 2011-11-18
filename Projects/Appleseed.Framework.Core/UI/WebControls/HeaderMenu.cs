@@ -639,7 +639,10 @@ namespace Appleseed.Framework.Web.UI.WebControls
                             (PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_FACEBOOK_APP_ID") &&
                             PortalSettings.CustomSettings["SITESETTINGS_FACEBOOK_APP_ID"].ToString().Equals(string.Empty) ||
                             PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_FACEBOOK_APP_SECRET") &&
-                            PortalSettings.CustomSettings["SITESETTINGS_FACEBOOK_APP_SECRET"].ToString().Equals(string.Empty))
+                            PortalSettings.CustomSettings["SITESETTINGS_FACEBOOK_APP_SECRET"].ToString().Equals(string.Empty)) && 
+                            PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_GOOGLE_LOGIN") &&
+                            PortalSettings.CustomSettings["SITESETTINGS_GOOGLE_LOGIN"].ToString().Length != 0 &&
+                            !bool.Parse(PortalSettings.CustomSettings["SITESETTINGS_GOOGLE_LOGIN"].ToString())
                             ) {
                             iframewidth = "250px";
                             dialogwidth = "280";
@@ -648,15 +651,15 @@ namespace Appleseed.Framework.Web.UI.WebControls
                             dialogwidth = "470";
                         }
                 } else if (PortalSettings.CustomSettings["SITESETTINGS_LOGIN_TYPE"].ToString().EndsWith("cool.ascx")) {
-                    iframewidth = "290px";
-                    dialogwidth = "310";
+                    iframewidth = "320px";
+                    dialogwidth = "350";
                 }
 
                 string empty = HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/SignIn/empty.htm");
                 string div = this.ClientID + "_logon_dialog";
                 var url = HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/SignIn/SignInPage.aspx?iframe=true");
                 writer.Write(string.Concat("<div id=\"", this.ClientID, "_logon_dialog\" style=\"display:none\" >"));
-                writer.Write(string.Concat("<div id=\"AppleseedLogin\" style=\"height: 370px !important\" >"));
+                writer.Write(string.Concat("<div id=\"AppleseedLogin\" style=\"height: 385px !important\" >"));
                 writer.Write("<iframe id=\"iframeAppleseedLogin\" src=\""+empty+"\" onload=\"check()\" width=\""+iframewidth+"\" height=\"360px\"></iframe>");
                 writer.Write("</div>");
                 
