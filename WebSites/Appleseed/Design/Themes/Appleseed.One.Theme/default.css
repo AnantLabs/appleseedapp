@@ -634,4 +634,19 @@ td.SubHead span
 	color:			#ae2929;
 }
 
+#Content_ctl00_startdate,
+#Content_ContentPane_ctl01_parentTabDropDown,
+#Content_ContentPane_ctl01_PermissionDropDown,
+#Content_ContentPane_ctl01_tb_MobileTabName,
+#Content_ContentPane_ctl01_TabTitleTextBox,
+#Content_ctl00_tfName,
+#Content_ctl00_tfCompany,
+#Content_ctl00_tfPhone,
+#Content_ctl00_tfEmail,
+#Content_ctl00_ddlCountry,
+#Content_ContentPane_ctl02_txtNewRole,
+#Content_cacheTime,
+#Content_ctl00_tfPwd,
+#Content_ctl00_tfPwdAgain
+{width:270px!important;}
 /***********************************************************************************/

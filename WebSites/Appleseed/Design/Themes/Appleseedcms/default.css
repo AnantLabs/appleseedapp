@@ -390,8 +390,6 @@ input[type="password"]:active{
 
 input[type="text"],
 input[type="password"],
-input#Content_RightPane_ctl01_password,
-input#Content_RightPane_ctl01_email,
 input.NormalTextBox,
 option [selected],
 select,
@@ -695,7 +693,11 @@ td.SubHead span
 #Content_ctl00_tfPwd,
 #Content_ctl00_ddlCountry,
 #Content_ContentPane_ctl02_txtNewRole,
-#Content_cacheTime
+#Content_cacheTime,
+#Content_RightPane_ctl01_password,
+#Content_RightPane_ctl01_email,
+#Content_ctl00_tfPwd, #Content_ctl00_tfPwdAgain,
+#Content_ctl00_startdate,#Content_ctl00_tfEmail
 {width:270px!important;}
 
 #Content_ctl00_ddlDay,

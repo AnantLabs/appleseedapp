@@ -877,12 +877,13 @@ td.SubHead span
 #Content_ctl00_tfEmail,
 #Content_ctl00_ddlCountry,
 #Content_ContentPane_ctl02_txtNewRole,
-#Content_cacheTime
-{width:270px!important;}
-
+#Content_cacheTime,
 #Content_ctl00_tfPwd,
 #Content_ctl00_tfPwdAgain
-{width:120px!important;}
+{width:270px!important;}
+
+
+
 
 #Content_ctl00_ddlDay,
 #Content_ctl00_ddlYear
