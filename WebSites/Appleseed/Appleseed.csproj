@@ -6566,6 +6566,7 @@
     <Content Include="Portals\_Appleseed\FlashGallery\effect2-marquee.swf" />
     <Content Include="Portals\_Appleseed\History.xml" />
     <Content Include="Portals\_Appleseed\History.xsl" />
+    <Content Include="Portals\_Appleseed\IconContainer\navlink.gif" />
     <Content Include="Portals\_Appleseed\images\CorporateBlack\corporate_black_logo.png" />
     <Content Include="Portals\_Appleseed\images\CorporateBlack\glasses.jpg" />
     <Content Include="Portals\_Appleseed\images\default\beta-small.gif" />
