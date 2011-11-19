@@ -1,8 +1,9 @@
-﻿using System.Web.Mvc;
-using MvcContrib.PortableAreas;
+﻿using System.Reflection;
+using System.Web.Mvc;
 using Appleseed.Core;
-using System.Reflection;
 using Appleseed.Framework.Core.Model;
+using MvcContrib.PortableAreas;
+
 
 namespace SelfUpdater
 {
