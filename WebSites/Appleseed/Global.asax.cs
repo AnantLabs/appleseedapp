@@ -471,7 +471,7 @@ namespace Appleseed
             try {
                 UpdateDB();
 
-                //CheckForSelfUpdates();
+                CheckForSelfUpdates();
 
                 /* MVCContrib PortableAreas*/
 
