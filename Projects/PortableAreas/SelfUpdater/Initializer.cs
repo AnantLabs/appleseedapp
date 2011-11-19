@@ -15,7 +15,7 @@ namespace SelfUpdater
         public static void Initialize()
         {
             // Whatever can we do here?
-            CheckForSelfUpdates();
+            //CheckForSelfUpdates();
         }
 
         private static void CheckForSelfUpdates()

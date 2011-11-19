@@ -46,7 +46,7 @@ namespace SelfUpdater
 
             generalModuleDefId = ModelServices.RegisterPortableAreaModule(AreaName, assemblyName, "Updates");
             moduleDefId = ModelServices.AddModuleToPortal(generalModuleDefId, 0);
-            ModelServices.AddModuleToPage(moduleDefId, 180, "Packages Updates", false);
+            ModelServices.AddModuleToPage(moduleDefId, 180, "Package Updates", false);
 
 
             RegisterAreaEmbeddedResources();
