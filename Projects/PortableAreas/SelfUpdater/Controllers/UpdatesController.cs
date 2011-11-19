@@ -25,6 +25,11 @@ namespace SelfUpdater.Controllers
 
         public ActionResult Module()
         {
+            var section = HttpContext.GetSection("system.web/httpRuntime") as System.Web.Configuration.HttpRuntimeSection;
+            if (section.WaitChangeNotification < 5) {
+                return View("ConfigError");
+            }
+
             SelfUpdaterEntities context = new SelfUpdaterEntities();
 
             var scheduledUpdates = context.SelfUpdatingPackages.ToList();
