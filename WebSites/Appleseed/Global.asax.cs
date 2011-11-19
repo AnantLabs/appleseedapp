@@ -471,7 +471,7 @@ namespace Appleseed
             try {
                 UpdateDB();
 
-                CheckForSelfUpdates();
+                while (CheckForSelfUpdates());
 
                 /* MVCContrib PortableAreas*/
 
@@ -504,8 +504,9 @@ namespace Appleseed
 
         }
 
-        private void CheckForSelfUpdates()
+        private bool CheckForSelfUpdates()
         {
+            bool updateNeeded = false;
 
             try {
 
@@ -513,7 +514,9 @@ namespace Appleseed
 
                 var packagesToUpdate = context.SelfUpdatingPackages.AsQueryable();
 
-                if (packagesToUpdate.Count() > 0) {
+                updateNeeded = (packagesToUpdate.Count() > 0);
+
+                if (updateNeeded) {
 
                     /*This forces a site restart for each update scheduled */
                     /*Must be improved trying to updated all at once */
@@ -542,9 +545,12 @@ namespace Appleseed
                 } else {
                     ErrorHandler.Publish(LogLevel.Info, "SelfUpdater: Nothing to update");
                 }
+
+                return updateNeeded;
             } catch (Exception exc) {
 
                 ErrorHandler.Publish(LogLevel.Error, exc);
+                return updateNeeded;
             }
         }
 
