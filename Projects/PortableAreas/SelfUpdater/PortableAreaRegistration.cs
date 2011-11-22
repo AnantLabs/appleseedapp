@@ -1,8 +1,9 @@
-﻿using System.Web.Mvc;
-using MvcContrib.PortableAreas;
+﻿using System.Reflection;
+using System.Web.Mvc;
 using Appleseed.Core;
-using System.Reflection;
 using Appleseed.Framework.Core.Model;
+using MvcContrib.PortableAreas;
+
 
 namespace SelfUpdater
 {
@@ -45,7 +46,7 @@ namespace SelfUpdater
 
             generalModuleDefId = ModelServices.RegisterPortableAreaModule(AreaName, assemblyName, "Updates");
             moduleDefId = ModelServices.AddModuleToPortal(generalModuleDefId, 0);
-            ModelServices.AddModuleToPage(moduleDefId, 180, "Packages Updates", false);
+            ModelServices.AddModuleToPage(moduleDefId, 180, "Package Updates", false);
 
 
             RegisterAreaEmbeddedResources();
