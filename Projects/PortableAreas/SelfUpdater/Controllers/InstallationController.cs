@@ -13,6 +13,11 @@ namespace SelfUpdater.Controllers
     {
         public ActionResult Module()
         {
+            var section = HttpContext.GetSection("system.web/httpRuntime") as System.Web.Configuration.HttpRuntimeSection;
+            if (section.WaitChangeNotification < 5) {
+                return View("ConfigError");
+            }
+
             var projectManagers = GetProjectManagers();
             var list = new List<dynamic>();
             var installed = projectManagers.SelectMany(d=>d.GetInstalledPackages(string.Empty).ToList());

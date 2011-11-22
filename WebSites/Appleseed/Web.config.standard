@@ -307,9 +307,9 @@
         <add namespace="System.Web.Mvc.Ajax" />
         <add namespace="System.Web.Mvc.Html" />
         <add namespace="System.Web.Routing" />
-        <add namespace="System.Linq"/>
-        <add namespace="System.Collections.Generic"/>
-        <add namespace="Microsoft.Web.Mvc"/>
+        <add namespace="System.Linq" />
+        <add namespace="System.Collections.Generic" />
+        <add namespace="Microsoft.Web.Mvc" />
 			</namespaces>
 		</pages>
 		<!---->
@@ -318,11 +318,13 @@
 		<!-- set debugmode to false for running application -->
 		<compilation debug="true" defaultLanguage="c#" targetFramework="4.0">
       <assemblies>
-        <add assembly="System.Web.Abstractions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
-        <add assembly="System.Web.Routing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
-        <add assembly="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
-        <add assembly="System.Data.Entity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
-		 <add assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
+        <add assembly="System.Web.Abstractions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" />
+        <add assembly="System.Web.Routing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" />
+        <add assembly="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" />
+        <add assembly="System.Data.Entity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+		    <add assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+
+        <add assembly="SelfUpdater, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       </assemblies>
 
       <buildProviders>
@@ -333,10 +335,10 @@
 			<forms name=".ASPXAUTH" protection="All" timeout="525600" slidingExpiration="true" />
 		</authentication>
 		<!-- Set here max upload size -->
-		<httpRuntime useFullyQualifiedRedirectUrl="true" maxRequestLength="50000" requestPathInvalidCharacters="" requestValidationMode="2.0" />
+		<httpRuntime waitChangeNotification="10" useFullyQualifiedRedirectUrl="true" maxRequestLength="50000" requestPathInvalidCharacters="" requestValidationMode="2.0" />
 		<customErrors defaultRedirect="~/app_support/GeneralError.aspx" mode="RemoteOnly" />
 		<httpHandlers>
-      <add verb="*" path="sitemap.axd" type="Newtonsoft.Sitemaps.SitemapHandler, Newtonsoft.Sitemaps"/>
+      <add verb="*" path="sitemap.axd" type="Newtonsoft.Sitemaps.SitemapHandler, Newtonsoft.Sitemaps" />
 			<add path="ChartImg.axd" verb="GET,HEAD, POST" type="System.Web.UI.DataVisualization.Charting.ChartHttpHandler, System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" validate="false" />
 			<add verb="GET,HEAD,POST,DEBUG" path="*.jpg" type="System.Web.StaticFileHandler" />
 			<add verb="GET,HEAD,POST,DEBUG" path="*.gif" type="System.Web.StaticFileHandler" />
@@ -408,7 +410,7 @@
 			<add name="MvcHttpHandler" preCondition="integratedMode" verb="*" path="*.mvc" type="System.Web.Mvc.MvcHttpHandler, System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" />
 			<add name="UrlRoutingHandler" preCondition="integratedMode" verb="*" path="UrlRouting.axd" type="System.Web.HttpForbiddenHandler, System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
 			<add name="UploadDialog" path="UploadDialog.aspx" verb="*" type="StaticDust.Web.UploadHandler, StaticDust.Web.UI.Controls.UploadDialog" />
-      <add name="Sitemap" preCondition="integratedMode"  verb="*" path="sitemap.axd" type="Newtonsoft.Sitemaps.SitemapHandler, Newtonsoft.Sitemaps"/>
+      <add name="Sitemap" preCondition="integratedMode" verb="*" path="sitemap.axd" type="Newtonsoft.Sitemaps.SitemapHandler, Newtonsoft.Sitemaps" />
 		</handlers>
 	</system.webServer>
 	<!-- Log 4 Net -->
@@ -561,7 +563,7 @@
 		<urlBuilder defaultProvider="SqlUrlBuilder">
 			<providers>
 				<clear />
-				<add name="SqlUrlBuilder" type="Appleseed.Framework.Web.SqlUrlBuilderProvider, Appleseed.Framework.Core" handlerflag="site" handlersplitter="__" pageidnosplitter="true" friendlypagename="default.aspx" aliasinurl="false" langinurl="false" cacheminutes="5" ignoretargetpage="PageLayout.aspx" ShowHieranchy="true"/>
+				<add name="SqlUrlBuilder" type="Appleseed.Framework.Web.SqlUrlBuilderProvider, Appleseed.Framework.Core" handlerflag="site" handlersplitter="__" pageidnosplitter="true" friendlypagename="default.aspx" aliasinurl="false" langinurl="false" cacheminutes="5" ignoretargetpage="PageLayout.aspx" ShowHieranchy="true" />
 			</providers>
 		</urlBuilder>
 		<geographic defaultProvider="GeographicProvider">
