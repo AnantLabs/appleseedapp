@@ -8,7 +8,7 @@
 <div id="fb-root"></div>
  <script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
  
-<table cellpadding="0" cellspacing="0" class="signInContainer">
+<table cellpadding="0" cellspacing="0" id="signInContainer" class="signInContainer" runat="server">
     <tbody>
         <tr>
             <td>
@@ -54,6 +54,10 @@
                 
             </td>
         </tr>
+    </tbody>
+</table>
+<table cellpadding="0" cellspacing="0" id="SignInAppleseed" runat="server">
+    <tbody>
         <tr>
             <td>
                 <div id="CommonSignIn" runat="server">

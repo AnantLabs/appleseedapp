@@ -124,6 +124,10 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
                 //}
                 if (hide) {
                     this.CommonSignIn.Visible = true;
+                    this.signInContainer.Visible = false;
+                }
+                else {
+                    this.SignInAppleseed.Visible = false;
                 }
             }
         }

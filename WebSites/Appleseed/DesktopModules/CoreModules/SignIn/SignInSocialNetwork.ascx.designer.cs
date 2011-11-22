@@ -22,6 +22,15 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn {
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden appidfacebook;
         
         /// <summary>
+        /// signInContainer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTable signInContainer;
+        
+        /// <summary>
         /// loginfb_div control.
         /// </summary>
         /// <remarks>
@@ -74,6 +83,15 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPassSentErr;
+        
+        /// <summary>
+        /// SignInAppleseed control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTable SignInAppleseed;
         
         /// <summary>
         /// CommonSignIn control.

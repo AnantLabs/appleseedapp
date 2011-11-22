@@ -660,7 +660,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                 var url = HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/SignIn/SignInPage.aspx?iframe=true");
                 writer.Write(string.Concat("<div id=\"", this.ClientID, "_logon_dialog\" style=\"display:none\" >"));
                 writer.Write(string.Concat("<div id=\"AppleseedLogin\" style=\"height: 385px !important\" >"));
-                writer.Write("<iframe id=\"iframeAppleseedLogin\" src=\""+empty+"\" onload=\"check()\" width=\""+iframewidth+"\" height=\"360px\"></iframe>");
+                writer.Write("<iframe id=\"iframeAppleseedLogin\" src=\""+empty+"\" onload=\"check()\" width=\""+iframewidth+"\" height=\"380px\"></iframe>");
                 writer.Write("</div>");
                 
                
