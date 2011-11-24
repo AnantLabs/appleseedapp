@@ -27,12 +27,12 @@
             <td class="package_info">
                 <%= m.Installed.Id%>&nbsp;<%= m.Installed.Version%>
             </td>
-            <td class="package_update_info">
+<%--            <td class="package_update_info">
                 <%
                if (m.Update != null) {%>
                 <%: m.Update.Id%>&nbsp;<%: m.Update.Version%>&nbsp;<a id="schedule<%: m.Update.Id %>"
-                    href="javascript:void(0)" onclick="updatePackage('<%: m.Update.Id %>', true,'<%: m.Source %>','<%: m.Update.Version.ToString() %>' )"> Schedule
-                    update</a> <a id="unschedule<%: m.Update.Id %>" href="javascript:void(0)" onclick="updatePackage('<%: m.Update.Id %>', false, '<%: m.Source %>','<%: m.Update.Version.ToString() %>')"
+                    href="javascript:void(0)" onclick="scheduleUpdatePackage('<%: m.Update.Id %>', true,'<%: m.Source %>','<%: m.Update.Version.ToString() %>' )"> Schedule
+                    update</a> <a id="unschedule<%: m.Update.Id %>" href="javascript:void(0)" onclick="scheduleUpdatePackage('<%: m.Update.Id %>', false, '<%: m.Source %>','<%: m.Update.Version.ToString() %>')"
                         style="display: none">Unschedule update</a>
                 <%} else { %>
                 (none)
@@ -43,18 +43,30 @@
                 </script>
                 <%}%>
                 <%}%>
+            </td>--%>
+            <td class="package_update_info">
+            <%
+               if (m.Update != null) {%>
+                <%: m.Update.Id%>&nbsp;<%: m.Update.Version%>&nbsp;
+                <a id="update<%: m.Update.Id %>" href="javascript:void(0);" onclick="updatePackage('<%: m.Update.Id %>', '<%: m.Source %>');">
+                    update</a>
+                    <%} else { %>
+                (none)
+                <%} %>
             </td>
         </tr>
         <%} %>
     </table>
+        <%} %>
 </div>
-<% if (Model.Count > 0) {%>
+<%--<% if (Model.Count > 0) {%>
 <div class="installed_packages_action">
     <input type="button" id="apply" onclick="javascript:applyUpdates();" value="Apply updates!"
         class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" />
 </div>
-<%} %>
-<div id="upgradingDiv" style="display: none">
+<% } %>
+--%><div id="upgradingDiv" style="display: none">
     <ul id="upgradingUl">
+        <li>Updating package, Please wait...</li>
     </ul>
 </div>
