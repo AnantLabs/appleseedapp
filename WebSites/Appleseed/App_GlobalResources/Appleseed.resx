@@ -5675,4 +5675,22 @@ function confirmDelete()
   <data name="SIGNIN_UNKNOW_ERROR" xml:space="preserve">
     <value>It has been an error. Please try again later.</value>
   </data>
+  <data name="MUST_ENTER_ADDRESS" xml:space="preserve">
+    <value>You must enter an address</value>
+  </data>
+  <data name="MUST_ENTER_CITY" xml:space="preserve">
+    <value>You must enter a city</value>
+  </data>
+  <data name="MUST_ENTER_STATE" xml:space="preserve">
+    <value>You must select a state</value>
+  </data>
+  <data name="MUST_ENTER_ZIPCODE" xml:space="preserve">
+    <value>You must enter a zip code</value>
+  </data>
+  <data name="STATE" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="ZIPCODE" xml:space="preserve">
+    <value>Zip Code</value>
+  </data>
 </root>
