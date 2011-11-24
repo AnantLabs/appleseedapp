@@ -9,7 +9,7 @@ using System.Configuration;
 
 namespace SelfUpdater.Controllers
 {
-    public class InstallationController : Controller
+    public class InstallationController : BaseController
     {
         public ActionResult Module()
         {
@@ -40,24 +40,6 @@ namespace SelfUpdater.Controllers
             }
 
             return View(list);
-        }
-
-        private List<IPackage> GetAvailablePackages(WebProjectManager projectManager)
-        {
-            var packages = projectManager.GetRemotePackages(string.Empty).ToList();
-
-            return packages;
-        }
-
-        private WebProjectManager[] GetProjectManagers()
-        {
-            string remoteSources = ConfigurationManager.AppSettings["PackageSource"] ?? @"D:\";
-            List<WebProjectManager> managers = new List<WebProjectManager>();
-            foreach (var remoteSource in remoteSources.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries)) {
-                managers.Add(new WebProjectManager(remoteSource, base.Request.MapPath("~/")));
-            }
-
-            return managers.ToArray();
         }
 
         public ActionResult InstallPackage(string packageId, string source)

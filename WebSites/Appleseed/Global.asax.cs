@@ -471,7 +471,7 @@ namespace Appleseed
             try {
                 UpdateDB();
 
-                while (CheckForSelfUpdates());
+                //while (CheckForSelfUpdates());
 
                 /* MVCContrib PortableAreas*/
 
@@ -514,9 +514,10 @@ namespace Appleseed
 
                 var packagesToUpdate = context.SelfUpdatingPackages.AsQueryable();
 
-                updateNeeded = (packagesToUpdate.Count() > 0);
+                //updateNeeded = (packagesToUpdate.Count() > 0);
 
-                if (updateNeeded) {
+                if (packagesToUpdate.Count() > 0) {
+                    updateNeeded = true;
 
                     /*This forces a site restart for each update scheduled */
                     /*Must be improved trying to updated all at once */
