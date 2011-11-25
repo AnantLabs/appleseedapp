@@ -298,6 +298,7 @@ namespace Appleseed.Admin
 
                 this.SetSecurityAccess();
 
+               
                 // 2/27/2003 Start - Ender Malkoc
                 // After up or down button when the page is refreshed, select the previously selected
                 // tab from the list.
@@ -668,6 +669,7 @@ namespace Appleseed.Admin
             var drCurrentModuleDefinitions = m.GetCurrentModuleDefinitions(this.PortalSettings.PortalID);
             //if (PortalSecurity.IsInRoles("Admins") || !bool.Parse(drCurrentModuleDefinitions["Admin"].ToString()))
             //{
+            var htmlId = "0";
             try {
                 while (drCurrentModuleDefinitions.Read()) {
                     if ((!modules.ContainsKey(drCurrentModuleDefinitions["FriendlyName"].ToString())) &&
@@ -678,6 +680,8 @@ namespace Appleseed.Admin
                             // drCurrentModuleDefinitions["ModuleDefID"].ToString()));
                             drCurrentModuleDefinitions["FriendlyName"].ToString(),
                             drCurrentModuleDefinitions["ModuleDefID"].ToString());
+                        if (drCurrentModuleDefinitions["FriendlyName"].ToString().Equals("HTML Content"))
+                            htmlId = drCurrentModuleDefinitions["ModuleDefID"].ToString();
                     }
                 }
             }
@@ -692,6 +696,8 @@ namespace Appleseed.Admin
             // }
             this.moduleType.DataSource = modules;
             this.moduleType.DataBind();
+            this.moduleType.SelectedValue = htmlId;
+            
 
             // Now it's the load is by ajax 1/september/2011
             // Populate Top Pane Module Data
