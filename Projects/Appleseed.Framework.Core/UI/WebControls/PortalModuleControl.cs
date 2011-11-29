@@ -2824,7 +2824,8 @@ namespace Appleseed.Framework.Web.UI.WebControls
         {
             get
             {
-                if ((this.Settings["MODULESETTINGS_SHOW_HELP_BUTTON"] != null &&
+                if ((this.Settings.ContainsKey("MODULESETTINGS_SHOW_HELP_BUTTON") &&
+                        this.Settings["MODULESETTINGS_SHOW_HELP_BUTTON"] != null &&
                      !bool.Parse(this.Settings["MODULESETTINGS_SHOW_HELP_BUTTON"].ToString())) ||
                     (this.ModuleConfiguration.DesktopSrc.Length == 0))
                 {
