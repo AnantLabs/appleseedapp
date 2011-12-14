@@ -17,7 +17,7 @@ using System.Dynamic;
 namespace SelfUpdater.Controllers
 {
     [Authorize]
-    public class UpdatesController : Controller
+    public class UpdatesController : BaseController
     {
         public UpdatesController()
         {
@@ -68,36 +68,13 @@ namespace SelfUpdater.Controllers
             return base.View(installed);
         }
 
-        private List<IPackage> GetInstalledPackages(WebProjectManager projectManager)
-        {
-            var packages = projectManager.GetInstalledPackages(string.Empty).ToList();
-
-            return packages;
-        }
-
-        private WebProjectManager[] GetProjectManagers()
-        {
-            string remoteSources = ConfigurationManager.AppSettings["PackageSource"] ?? @"D:\";
-            List<WebProjectManager> managers = new List<WebProjectManager>();
-            foreach (var remoteSource in remoteSources.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries)) {
-                managers.Add(new WebProjectManager(remoteSource, base.Request.MapPath("~/")));
-            }
-
-            return managers.ToArray();
-        }
-
-        public ActionResult Upgrade(string packageId)
+        public ActionResult Upgrade(string packageId, string source)
         {
             try {
-                WebProjectManager[] projectManagers = this.GetProjectManagers();
 
-                WebProjectManager projectManager = null;
-                IPackage installedPackage = null;
-                foreach (var pm in projectManagers) {
-                    projectManager = pm;
-                    installedPackage = this.GetInstalledPackage(pm, packageId);
-                    if (installedPackage != null) break;
-                }
+                var projectManager = GetProjectManagers().Where(p => p.SourceRepository.Source == source).First();
+
+                IPackage installedPackage = GetInstalledPackage(projectManager, packageId);
 
                 IPackage update = projectManager.GetUpdate(installedPackage);
 

@@ -3,7 +3,7 @@
 
 
 
-function updatePackage(packageId, schedule, source, version) {
+function scheduleUpdatePackage(packageId, schedule, source, version) {
 
     var actionurl = '/SelfUpdater/Updates/DelayedUpgrade';
     if (schedule == false) {
@@ -129,6 +129,53 @@ function installPackage(packageId, source) {
     .error(function () {
         trace(data);
         $('#installingDiv').dialog("close");
+        alert("Communication error");
+    });
+
+
+    return false;
+
+}
+
+function updatePackage(packageId, source) {
+
+    $('#upgradingDiv').dialog({
+        modal: true,
+        closeOnEscape: false,
+        closeText: '',
+        resizable: false,
+        title: 'Update package',
+        open: function (event, ui) {
+            $(this).closest('.ui-dialog').find('.ui-dialog-titlebar-close').hide();
+        }
+
+    });
+
+    $.post('/SelfUpdater/Updates/Upgrade', { packageId: packageId, source: source })
+    .success(function () {
+
+        var xhr;
+        var reloading = false;
+        var fn = function () {
+            if (!reloading) {
+                if (xhr && xhr.readystate != 4) {
+                    xhr.abort();
+                }
+                xhr = $.post('/SelfUpdater/Updates/Status').success(function (data) {
+                    if (data.online) {
+                        $('<li>Reloading site...</li>').appendTo('#installingUl');
+                        reloading = true;
+                        window.location.reload();
+                    }
+                });
+            }
+        };
+
+        var interval = setInterval(fn, 10000);
+    })
+    .error(function () {
+        trace(data);
+        $('#upgradingDiv').dialog("close");
         alert("Communication error");
     });
 
