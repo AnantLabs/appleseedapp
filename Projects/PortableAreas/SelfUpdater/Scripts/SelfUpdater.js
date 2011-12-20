@@ -103,34 +103,74 @@ function installPackage(packageId, source) {
         }
 
     });
-
+    var status = false;
     $.post('/SelfUpdater/Installation/InstallPackage', { packageId: packageId, source: source })
     .success(function () {
 
-        var xhr;
-        var reloading = false;
-        var fn = function () {
-            if (!reloading) {
-                if (xhr && xhr.readystate != 4) {
-                    xhr.abort();
-                }
-                xhr = $.post('/SelfUpdater/Updates/Status').success(function (data) {
-                    if (data.online) {
-                        $('<li>Reloading site...</li>').appendTo('#installingUl');
-                        reloading = true;
-                        window.location.reload();
-                    }
-                });
-            }
-        };
+        //        var xhr;
+        //        var reloading = false;
+        //        var fn = function () {
+        //            if (!reloading) {
+        //                if (xhr && xhr.readystate != 4) {
+        //                    xhr.abort();
+        //                }
+        //                xhr = $.post('/SelfUpdater/Updates/Status').success(function (data) {
+        //                    if (data.online) {
+        //                        $('<li>Reloading site...</li>').appendTo('#installingUl');
+        //                        reloading = true;
+        //                        window.location.reload();
+        //                    }
+        //                });
+        //            }
+        //        };
 
-        var interval = setInterval(fn, 10000);
+        //        var interval = setInterval(fn, 10000);     
+        $('#installingUl').append('<li>The instalation has finished.</li>');
+        $('#installingUl').append('<li>Waiting to reload site..</li>');
+
+        var interval = setInterval(function () {
+
+            $.ajax({
+                url: "/SelfUpdater/Updates/Status",
+                type: "POST",
+                success: function (data) {
+
+                    if (data) {
+
+                        $('#installingUl').append('<li>Reloading site...</li>')
+                        window.location = window.location.href;
+                        clearInterval(interval);
+                    }
+                },
+                error: function () {
+                    alert('error');
+                }
+            });
+        }, 5000);
+
     })
     .error(function () {
         trace(data);
         $('#installingDiv').dialog("close");
         alert("Communication error");
     });
+
+    var myinterval = setInterval(function () {
+
+        $.ajax({
+            url: "/SelfUpdater/Updates/NugetStatus",
+            type: "POST",
+            async: false,
+            success: function (data) {
+                if (data != null && data != '') {
+                    $('#installingUl').html(data);
+                }
+            }
+        });
+        if (status) {
+            clearInterval(myinterval);
+        }
+    }, 2000);
 
 
     return false;
@@ -154,24 +194,47 @@ function updatePackage(packageId, source) {
     $.post('/SelfUpdater/Updates/Upgrade', { packageId: packageId, source: source })
     .success(function () {
 
-        var xhr;
-        var reloading = false;
-        var fn = function () {
-            if (!reloading) {
-                if (xhr && xhr.readystate != 4) {
-                    xhr.abort();
-                }
-                xhr = $.post('/SelfUpdater/Updates/Status').success(function (data) {
-                    if (data.online) {
-                        $('<li>Reloading site...</li>').appendTo('#installingUl');
-                        reloading = true;
-                        window.location.reload();
-                    }
-                });
-            }
-        };
+//        var xhr;
+//        var reloading = false;
+//        var fn = function () {
+//            if (!reloading) {
+//                if (xhr && xhr.readystate != 4) {
+//                    xhr.abort();
+//                }
+//                xhr = $.post('/SelfUpdater/Updates/Status').success(function (data) {
+//                    if (data.online) {
+//                        $('<li>Reloading site...</li>').appendTo('#installingUl');
+//                        reloading = true;
+//                        window.location.reload();
+//                    }
+//                });
+//            }
+//        };
 
-        var interval = setInterval(fn, 10000);
+        //        var interval = setInterval(fn, 10000);
+
+        $('#upgradingUl').append('<li>The instalation has finished.</li>');
+        $('#upgradingUl').append('<li>Waiting to reload site..</li>');
+        var interval = setInterval(function () {
+
+            $.ajax({
+                url: "/SelfUpdater/Updates/Status",
+                type: "POST",
+                success: function (data) {
+
+                    if (data) {
+
+                        $('#upgradingUl').append('<li>Reloading site...</li>')
+                        window.location = window.location.href;
+                        clearInterval(interval);
+                    }
+                },
+                error: function () {
+                    alert('error');
+                }
+            });
+        }, 5000);
+
     })
     .error(function () {
         trace(data);
@@ -179,6 +242,23 @@ function updatePackage(packageId, source) {
         alert("Communication error");
     });
 
+
+    var myinterval = setInterval(function () {
+
+        $.ajax({
+            url: "/SelfUpdater/Updates/NugetStatus",
+            type: "POST",
+            async: false,
+            success: function (data) {
+                if (data != null && data != '') {
+                    $('#upgradingUl').html(data);
+                }
+            }
+        });
+        if (status) {
+            clearInterval(myinterval);
+        }
+    }, 2000);
 
     return false;
 

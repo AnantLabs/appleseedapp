@@ -502,6 +502,10 @@ namespace Appleseed
                 ErrorHandler.Publish(LogLevel.Error, exc);
             }
 
+            // Delete Session logger
+            //HttpContext.Current.Session["NugetLogger"] = String.Empty;
+            HttpContext.Current.Application["NugetLogger"] = String.Empty;
+
         }
 
         private bool CheckForSelfUpdates()

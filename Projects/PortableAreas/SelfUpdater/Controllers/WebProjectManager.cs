@@ -17,6 +17,7 @@ namespace SelfUpdater.Controllers
 
         public WebProjectManager()
         {
+            _projectManager.Logger = new LoggerController();
         }
 
         public WebProjectManager(string remoteSource, string siteRoot)
@@ -26,7 +27,18 @@ namespace SelfUpdater.Controllers
             IPackagePathResolver resolver = new DefaultPackagePathResolver(webRepositoryDirectory);
             IPackageRepository repository2 = PackageRepositoryFactory.Default.CreateRepository(webRepositoryDirectory);
             IProjectSystem system = new WebProjectSystem(siteRoot);
-            this._projectManager = new ProjectManager(repository, resolver, system, repository2);
+            ((DataServicePackageRepository)repository).ProgressAvailable += new EventHandler<ProgressEventArgs>(repository_ProgressAvailable);
+            //((DataServicePackageRepository)repository).SendingRequest += new EventHandler<WebRequestEventArgs>(repository_sendingRequest);
+            this._projectManager = new ProjectManager(repository, resolver, system, repository2);            
+            _projectManager.Logger = new LoggerController();
+        }
+
+        void repository_ProgressAvailable(object sender, ProgressEventArgs e) {
+            this.addLog(e.Operation + " " + e.PercentComplete.ToString());
+        }
+
+        void repository_sendingRequest(object sender, WebRequestEventArgs e) {
+            this.addLog("Registro sending request " + e.Request.ToString() );
         }
 
         public IQueryable<IPackage> GetInstalledPackages(string searchTerms)
@@ -40,7 +52,7 @@ namespace SelfUpdater.Controllers
             IPackageRepository repository2 = sourceRepository;
             ILogger instance = NullLogger.Instance;
             bool ignoreDependencies = false;
-            InstallWalker walker = new InstallWalker(repository, repository2, instance, ignoreDependencies);
+            InstallWalker walker = new InstallWalker(repository, repository2, instance, ignoreDependencies,true);
             return walker.ResolveOperations(package).Where<PackageOperation>(delegate(PackageOperation operation)
             {
                 return (operation.Action == PackageAction.Install);
@@ -81,7 +93,7 @@ namespace SelfUpdater.Controllers
 
         public IQueryable<IPackage> GetPackagesWithUpdates(string searchTerms)
         {
-            return GetPackages(PackageRepositoryExtensions.GetUpdates(this.LocalRepository, this.SourceRepository.GetPackages()).AsQueryable<IPackage>(), searchTerms);
+            return GetPackages(PackageRepositoryExtensions.GetUpdates(this.LocalRepository, this.SourceRepository.GetPackages(), true,true).AsQueryable<IPackage>(), searchTerms);
         }
 
         public IQueryable<IPackage> GetRemotePackages(string searchTerms)
@@ -91,7 +103,7 @@ namespace SelfUpdater.Controllers
 
         public IPackage GetUpdate(IPackage package)
         {
-            return PackageRepositoryExtensions.GetUpdates(this.SourceRepository, this.LocalRepository.GetPackages()).FirstOrDefault<IPackage>(delegate(IPackage p)
+            return PackageRepositoryExtensions.GetUpdates(this.SourceRepository, this.LocalRepository.GetPackages(),true, true).FirstOrDefault<IPackage>(delegate(IPackage p)
             {
                 return (package.Id == p.Id);
             });
@@ -102,14 +114,12 @@ namespace SelfUpdater.Controllers
             return Path.Combine(siteRoot, "packages");
         }
 
-        public IEnumerable<string> InstallPackage(IPackage package)
+        public void InstallPackage(IPackage package)
         {
            
-            return this.PerformLoggedAction(delegate
-            {
-                bool ignoreDependencies = false;
-                this._projectManager.AddPackageReference(package.Id, package.Version, ignoreDependencies);
-            });
+            bool ignoreDependencies = false;
+            this._projectManager.AddPackageReference(package.Id, package.Version, ignoreDependencies,true);
+            
         }
 
         public bool IsPackageInstalled(IPackage package)
@@ -117,35 +127,20 @@ namespace SelfUpdater.Controllers
             return this.LocalRepository.Exists(package);
         }
 
-        private IEnumerable<string> PerformLoggedAction(Action action)
+    
+        public void UninstallPackage(IPackage package, bool removeDependencies)
         {
-            ErrorLogger logger = new ErrorLogger();
-            this._projectManager.Logger = logger;
-            try {
-                action();
-            } finally {
-                this._projectManager.Logger = null;
-            }
-            return logger.Errors;
-        }
-
-        public IEnumerable<string> UninstallPackage(IPackage package, bool removeDependencies)
-        {
-            return this.PerformLoggedAction(delegate
-            {
                 bool forceRemove = false;
                 bool flag1 = removeDependencies;
                 this._projectManager.RemovePackageReference(package.Id, forceRemove, flag1);
-            });
+           
         }
 
-        public IEnumerable<string> UpdatePackage(IPackage package)
+        public void UpdatePackage(IPackage package)
         {
-            return this.PerformLoggedAction(delegate
-            {
-                bool updateDependencies = true;
-                this._projectManager.UpdatePackageReference(package.Id, package.Version, updateDependencies);
-            });
+            bool updateDependencies = true;
+            this._projectManager.UpdatePackageReference(package.Id, package.Version, updateDependencies,true);
+            
         }
 
         public IPackageRepository LocalRepository
@@ -164,24 +159,18 @@ namespace SelfUpdater.Controllers
             }
         }
 
-        private class ErrorLogger : ILogger
-        {
-            private readonly IList<string> _errors = new List<string>();
+        public void addLog(string msg) {
 
-            public void Log(MessageLevel level, string message, params object[] args)
-            {
-                if (level == MessageLevel.Warning) {
-                    this._errors.Add(string.Format(CultureInfo.CurrentCulture, message, args));
-                }
-            }
-
-            public IEnumerable<string> Errors
-            {
-                get
-                {
-                    return this._errors;
-                }
-            }
+            _projectManager.Logger.Log(MessageLevel.Info, msg, null);
         }
+
+        public string getLogs() {
+
+            return ((LoggerController)_projectManager.Logger).getLogs();
+        
+        }
+
+
+
     }
 }

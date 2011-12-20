@@ -44,10 +44,15 @@ namespace SelfUpdater.Controllers
 
         public ActionResult InstallPackage(string packageId, string source)
         {
-
+            //System.Web.HttpContext.Current.Session["NugetLogger"] = "Installing packages...";
+            
             var projectManager = GetProjectManagers().Where(p => p.SourceRepository.Source == source).First();
 
+            projectManager.addLog("Starting installation...");            
+
             projectManager.InstallPackage(projectManager.GetRemotePackages(string.Empty).Where(d => d.Id == packageId).First());
+
+            //projectManager.addLog("The package finished the instalation. </li><li>Waiting to Reload Site");
 
             return Json(new {
                 msg = "Package " + packageId + " scheduled to install!",

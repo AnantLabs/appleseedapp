@@ -74,6 +74,8 @@ namespace SelfUpdater.Controllers
 
                 var projectManager = GetProjectManagers().Where(p => p.SourceRepository.Source == source).First();
 
+                projectManager.addLog("Starting update...");
+
                 IPackage installedPackage = GetInstalledPackage(projectManager, packageId);
 
                 IPackage update = projectManager.GetUpdate(installedPackage);
@@ -159,9 +161,13 @@ namespace SelfUpdater.Controllers
 
         public ActionResult Status()
         {
-            return Json(new {
-                online = true
-            }, JsonRequestBehavior.AllowGet);
+            var logger = (string)System.Web.HttpContext.Current.Application["NugetLogger"];
+            if (logger == null || logger.Equals(string.Empty)) {
+                return Json(true);
+            }
+            else {
+                return Json(false);
+            }
         }
 
         private IPackage GetInstalledPackage(WebProjectManager projectManager, string packageId)
@@ -172,6 +178,18 @@ namespace SelfUpdater.Controllers
                 throw new InvalidOperationException(string.Format("The package for package ID '{0}' is not installed in this website. Copy the package into the App_Data/packages folder.", packageId));
             }
             return package;
+        }
+
+        public JsonResult NugetStatus() {
+
+            //var projectManager = GetProjectManagers().Where(p => p.SourceRepository.Source == source).First();
+
+            var logger = (string)System.Web.HttpContext.Current.Application["NugetLogger"];
+            
+
+            //var logger = projectManager.getLogs();
+            return Json(logger, JsonRequestBehavior.AllowGet);
+
         }
     }
 }
