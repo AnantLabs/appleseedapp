@@ -1,28 +1,22 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<dynamic>" %>
-<table id="available_packages">
-    <%foreach (var package in Model) { %>
-    <tr>
-        <td>
-            <img src="<%: package.icon %>" alt="" />
-        </td>
-        <td>
-            <%: package.name %>
-        </td>
-        <td>
-            <%: package.version%>
-        </td>
-        <td>
-            <%: package.author%>
-        </td>
-        <td>
-            <a href="javascript:void(0);" onclick="installPackage('<%: package.name %>', '<%: package.source %>');">
-                install</a>
-        </td>
-    </tr>
-    <%} %>
-</table>
-<div id="installingDiv" style="display: none">
-    <ul id="installingUl">
-        <li>Starting installation...</li>
-    </ul>
+<%@ Import Namespace="MvcContrib" %>
+<script src="<%: Url.Resource("Scripts.SelfUpdater.js") %>" type="text/javascript"></script>
+<link type="text/css" rel="stylesheet" href="<%: Url.Resource("Content.SelfUpdater.css") %>" />
+
+<div id="InstalationDiv">
+    Getting the packages from the repository...
 </div>
+
+<script type="text/javascript">
+$(document).ready(function () {
+    
+    $.ajax({
+        url: "/SelfUpdater/Installation/InstallModule",
+        type: "POST",
+        success: function (data) {
+            $('#InstalationDiv').html(data);            
+        }
+    });
+    
+});
+</script>
