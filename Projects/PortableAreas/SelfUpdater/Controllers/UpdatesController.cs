@@ -25,6 +25,11 @@ namespace SelfUpdater.Controllers
 
         public ActionResult Module()
         {
+            return View();
+        }
+
+        public ActionResult UpdateModule() {
+
             var section = HttpContext.GetSection("system.web/httpRuntime") as System.Web.Configuration.HttpRuntimeSection;
             if (section.WaitChangeNotification < 5) {
                 return View("ConfigError");
@@ -59,13 +64,15 @@ namespace SelfUpdater.Controllers
                                 installed.Add(package);
                             }
                         }
-                    } else {
+                    }
+                    else {
                         installed.Add(package);
                     }
                 }
             }
 
             return base.View(installed);
+        
         }
 
         public ActionResult Upgrade(string packageId, string source)

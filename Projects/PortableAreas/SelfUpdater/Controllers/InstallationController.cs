@@ -13,6 +13,11 @@ namespace SelfUpdater.Controllers
     {
         public ActionResult Module()
         {
+            return View();
+        }
+
+        public ActionResult InstallModule() {
+
             var section = HttpContext.GetSection("system.web/httpRuntime") as System.Web.Configuration.HttpRuntimeSection;
             if (section.WaitChangeNotification < 5) {
                 return View("ConfigError");
@@ -20,13 +25,13 @@ namespace SelfUpdater.Controllers
 
             var projectManagers = GetProjectManagers();
             var list = new List<dynamic>();
-            var installed = projectManagers.SelectMany(d=>d.GetInstalledPackages(string.Empty).ToList());
+            var installed = projectManagers.SelectMany(d => d.GetInstalledPackages(string.Empty).ToList());
 
             foreach (var pM in projectManagers) {
                 var packages = GetAvailablePackages(pM);
                 foreach (var package in packages) {
-                    if (!installed.Any(d=> d.Id == package.Id)) {
-                        dynamic p = new ExpandoObject();                        
+                    if (!installed.Any(d => d.Id == package.Id)) {
+                        dynamic p = new ExpandoObject();
                         p.icon = package.IconUrl;
                         p.icon = p.icon ?? string.Empty;
                         p.name = package.Id;
@@ -40,6 +45,7 @@ namespace SelfUpdater.Controllers
             }
 
             return View(list);
+        
         }
 
         public ActionResult InstallPackage(string packageId, string source)
