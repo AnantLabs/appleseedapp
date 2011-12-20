@@ -102,6 +102,7 @@
   <ItemGroup>
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\InstallationController.cs" />
+    <Compile Include="Controllers\LoggerController.cs" />
     <Compile Include="Controllers\UpdatesController.cs" />
     <Compile Include="Controllers\WebProjectManager.cs" />
     <Compile Include="Extensions.cs" />

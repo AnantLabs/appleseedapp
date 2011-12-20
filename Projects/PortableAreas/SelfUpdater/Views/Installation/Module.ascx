@@ -23,6 +23,6 @@
 </table>
 <div id="installingDiv" style="display: none">
     <ul id="installingUl">
-        <li>Installing packages...</li>
+        <li>Starting installation...</li>
     </ul>
 </div>

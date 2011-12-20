@@ -67,6 +67,6 @@
 <% } %>
 --%><div id="upgradingDiv" style="display: none">
     <ul id="upgradingUl">
-        <li>Updating package, Please wait...</li>
+        <li>Starting update...</li>
     </ul>
 </div>
