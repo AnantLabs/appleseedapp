@@ -31,7 +31,16 @@ namespace SelfUpdater.Controllers
 
 
 
-            
+            // Lo escribo en un archivo para ver que anda
+
+            try {
+                var dir = HttpContext.Current.Request.MapPath("~/rb_logs") + "\\Nuget.txt";
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(dir, true)) {
+                    file.WriteLine(DateTime.Now.ToString());
+                    file.WriteLine(msg);
+                }
+            }
+            catch(Exception){}
 
             if (!list.ContainsKey(msg)) {
                 list.Add(msg, msg);
