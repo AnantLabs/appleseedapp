@@ -196,48 +196,55 @@ function updatePackage(packageId, source) {
     });
 
     $.post('/SelfUpdater/Updates/Upgrade', { packageId: packageId, source: source })
-    .success(function () {
+    .success(function (data) {
 
-//        var xhr;
-//        var reloading = false;
-//        var fn = function () {
-//            if (!reloading) {
-//                if (xhr && xhr.readystate != 4) {
-//                    xhr.abort();
-//                }
-//                xhr = $.post('/SelfUpdater/Updates/Status').success(function (data) {
-//                    if (data.online) {
-//                        $('<li>Reloading site...</li>').appendTo('#installingUl');
-//                        reloading = true;
-//                        window.location.reload();
-//                    }
-//                });
-//            }
-//        };
+        //        var xhr;
+        //        var reloading = false;
+        //        var fn = function () {
+        //            if (!reloading) {
+        //                if (xhr && xhr.readystate != 4) {
+        //                    xhr.abort();
+        //                }
+        //                xhr = $.post('/SelfUpdater/Updates/Status').success(function (data) {
+        //                    if (data.online) {
+        //                        $('<li>Reloading site...</li>').appendTo('#installingUl');
+        //                        reloading = true;
+        //                        window.location.reload();
+        //                    }
+        //                });
+        //            }
+        //        };
 
         //        var interval = setInterval(fn, 10000);
 
-        $('#upgradingUl').append('<li>The instalation has finished.</li>');
-        $('#upgradingUl').append('<li>Waiting to reload site..</li>');
-        var interval = setInterval(function () {
+        if (data.updated) {
+            $('#upgradingUl').append('<li>The instalation has finished.</li>');
+            $('#upgradingUl').append('<li>Waiting to reload site..</li>');
+            var interval = setInterval(function () {
 
-            $.ajax({
-                url: "/SelfUpdater/Updates/Status",
-                type: "POST",
-                success: function (data) {
+                $.ajax({
+                    url: "/SelfUpdater/Updates/Status",
+                    type: "POST",
+                    success: function (data) {
 
-                    if (data) {
+                        if (data) {
 
-                        $('#upgradingUl').append('<li>Reloading site...</li>')
-                        window.location = window.location.href;
-                        clearInterval(interval);
+                            $('#upgradingUl').append('<li>Reloading site...</li>')
+                            window.location = window.location.href;
+                            clearInterval(interval);
+                        }
+                    },
+                    error: function () {
+                        alert('error');
                     }
-                },
-                error: function () {
-                    alert('error');
-                }
-            });
-        }, 5000);
+                });
+            }, 5000);
+        }
+        else {
+            clearInterval(myinterval);
+            $('#upgradingUl').append('<li>There has been an error upgrading the package.</li>');
+            $('#upgradingUl').append('<li>Please try again later.</li>')
+        }
 
     })
     .error(function () {
