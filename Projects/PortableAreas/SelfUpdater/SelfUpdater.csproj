@@ -130,6 +130,7 @@
     <Content Include="Views\Installation\InstallModule.ascx" />
     <Content Include="Views\Installation\Module.ascx" />
     <Content Include="Views\Shared\ConfigError.ascx" />
+    <Content Include="Views\Shared\ExceptionError.ascx" />
     <Content Include="Views\Updates\Module.ascx" />
     <Content Include="Views\Updates\UpdateModule.ascx" />
     <Content Include="Views\Web.config" />

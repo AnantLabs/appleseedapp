@@ -22,6 +22,8 @@
     <%} %>
 </table>
 <div id="installingDiv" style="display: none">
+    <div style="background-color: Yellow">Warning: This may take a few minutes, please wait until this dialog closes.</div>
+    <br />
     <ul id="installingUl">
         <li>Starting installation...</li>
     </ul>

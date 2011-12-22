@@ -83,7 +83,8 @@ function openInModal(dir,modalTitle){
 		title: modalTitle,
 		resizable: false,
 		minWidth: 800,
-		minHeight: 600
+		minHeight: 600,
+        modal: true
 	});
 	return false;
 }

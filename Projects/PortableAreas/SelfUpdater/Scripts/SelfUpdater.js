@@ -98,7 +98,7 @@ function installPackage(packageId, source) {
         closeText: '',
         resizable: false,
         title: 'Install package',
-        width: 400,
+        width: 550,
         height: 200,
         open: function (event, ui) {
             $(this).closest('.ui-dialog').find('.ui-dialog-titlebar-close').hide();
@@ -145,7 +145,9 @@ function installPackage(packageId, source) {
                     }
                 },
                 error: function () {
-                    alert('error');
+                    trace(data);
+                    $('#installingDiv').dialog("close");
+                    alert("Communication error");
                 }
             });
         }, 5000);
@@ -187,7 +189,7 @@ function updatePackage(packageId, source) {
         closeText: '',
         resizable: false,
         title: 'Update package',
-        width: 400,
+        width: 550,
         height: 200,
         open: function (event, ui) {
             $(this).closest('.ui-dialog').find('.ui-dialog-titlebar-close').hide();
@@ -235,7 +237,9 @@ function updatePackage(packageId, source) {
                         }
                     },
                     error: function () {
-                        alert('error');
+                        trace(data);
+                        $('#upgradingDiv').dialog("close");
+                        alert("Communication error");
                     }
                 });
             }, 5000);
