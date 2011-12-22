@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using NuGet;
 using System.Dynamic;
 using System.Configuration;
+using Appleseed.Framework;
 
 namespace SelfUpdater.Controllers
 {
@@ -17,34 +18,39 @@ namespace SelfUpdater.Controllers
         }
 
         public ActionResult InstallModule() {
+            try {
+                var section = HttpContext.GetSection("system.web/httpRuntime") as System.Web.Configuration.HttpRuntimeSection;
+                if (section.WaitChangeNotification < 5) {
+                    return View("ConfigError");
+                }
 
-            var section = HttpContext.GetSection("system.web/httpRuntime") as System.Web.Configuration.HttpRuntimeSection;
-            if (section.WaitChangeNotification < 5) {
-                return View("ConfigError");
-            }
+                var projectManagers = GetProjectManagers();
+                var list = new List<dynamic>();
+                var installed = projectManagers.SelectMany(d => d.GetInstalledPackages(string.Empty).ToList());
 
-            var projectManagers = GetProjectManagers();
-            var list = new List<dynamic>();
-            var installed = projectManagers.SelectMany(d => d.GetInstalledPackages(string.Empty).ToList());
+                foreach (var pM in projectManagers) {
+                    var packages = GetAvailablePackages(pM);
+                    foreach (var package in packages) {
+                        if (!installed.Any(d => d.Id == package.Id)) {
+                            dynamic p = new ExpandoObject();
+                            p.icon = package.IconUrl;
+                            p.icon = p.icon ?? string.Empty;
+                            p.name = package.Id;
+                            p.version = package.Version;
+                            p.author = package.Authors.FirstOrDefault();
+                            p.source = pM.SourceRepository.Source;
 
-            foreach (var pM in projectManagers) {
-                var packages = GetAvailablePackages(pM);
-                foreach (var package in packages) {
-                    if (!installed.Any(d => d.Id == package.Id)) {
-                        dynamic p = new ExpandoObject();
-                        p.icon = package.IconUrl;
-                        p.icon = p.icon ?? string.Empty;
-                        p.name = package.Id;
-                        p.version = package.Version;
-                        p.author = package.Authors.FirstOrDefault();
-                        p.source = pM.SourceRepository.Source;
-
-                        list.Add(p);
+                            list.Add(p);
+                        }
                     }
                 }
-            }
 
-            return View(list);
+                return View(list);
+            }
+            catch (Exception e) {
+                ErrorHandler.Publish(LogLevel.Error, "Nuget Get packages from feed", e);
+                return View("ExceptionError");
+            }
         
         }
 

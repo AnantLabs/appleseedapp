@@ -44,7 +44,7 @@ namespace SelfUpdater.Controllers
 
             if (!list.ContainsKey(msg)) {
                 list.Add(msg, msg);
-            
+            }
 
 
             // Creating message
@@ -66,20 +66,25 @@ namespace SelfUpdater.Controllers
                     list.Add("percent", message.Substring(index + 2, message.Length - (index + 2)));
                 }
             }
+            if (message.Contains("Successfully added")) {
+                list.Add("Successful", message);
+            }
 
             var mensaje = String.Empty;
             if (list.ContainsKey("install"))
                 mensaje = "<li>" + list["install"] + "</li>";
             if (list.ContainsKey("download") && list.ContainsKey("percent")) {
                 mensaje += "<li>" + list["download"]  + list["percent"] + "%" + "</li>";
-                if (list["percent"].Contains("100"))
-                    mensaje += "<li> Installing package ... </li>";
+                //if (list["percent"].Contains("100"))
+                //    mensaje += "<li> Installing package ... </li>";
             }
-
+            if (list.ContainsKey("Successful")) {
+                mensaje += "<li>" + list["Successful"] + "</li>";
+            }
             
 
             HttpContext.Current.Application["NugetLogger"] = mensaje;
-            }
+            
             
             
         }

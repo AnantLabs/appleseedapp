@@ -30,48 +30,55 @@ namespace SelfUpdater.Controllers
 
         public ActionResult UpdateModule() {
 
-            var section = HttpContext.GetSection("system.web/httpRuntime") as System.Web.Configuration.HttpRuntimeSection;
-            if (section.WaitChangeNotification < 5) {
-                return View("ConfigError");
-            }
+            try {
 
-            SelfUpdaterEntities context = new SelfUpdaterEntities();
+                var section = HttpContext.GetSection("system.web/httpRuntime") as System.Web.Configuration.HttpRuntimeSection;
+                if (section.WaitChangeNotification < 5) {
+                    return View("ConfigError");
+                }
 
-            var scheduledUpdates = context.SelfUpdatingPackages.ToList();
+                SelfUpdaterEntities context = new SelfUpdaterEntities();
 
-            WebProjectManager[] projectManagers = this.GetProjectManagers();
-            List<InstallationState> installed = new List<InstallationState>();
-            foreach (var projectManager in projectManagers) {
-                var installedPackages = this.GetInstalledPackages(projectManager);
+                var scheduledUpdates = context.SelfUpdatingPackages.ToList();
 
-                foreach (var installedPackage in installedPackages) {
-                    IPackage update = projectManager.GetUpdate(installedPackage);
-                    InstallationState package = new InstallationState();
-                    package.Installed = installedPackage;
-                    package.Update = update;
-                    package.Source = projectManager.SourceRepository.Source;
+                WebProjectManager[] projectManagers = this.GetProjectManagers();
+                List<InstallationState> installed = new List<InstallationState>();
+                foreach (var projectManager in projectManagers) {
+                    var installedPackages = this.GetInstalledPackages(projectManager);
 
-                    if (scheduledUpdates.Any(d => d.PackageId == installedPackage.Id)) {
-                        package.Scheduled = true;
-                    }
+                    foreach (var installedPackage in installedPackages) {
+                        IPackage update = projectManager.GetUpdate(installedPackage);
+                        InstallationState package = new InstallationState();
+                        package.Installed = installedPackage;
+                        package.Update = update;
+                        package.Source = projectManager.SourceRepository.Source;
+
+                        if (scheduledUpdates.Any(d => d.PackageId == installedPackage.Id)) {
+                            package.Scheduled = true;
+                        }
 
 
-                    if (installed.Any(d => d.Installed.Id == package.Installed.Id)) {
-                        var addedPackage = installed.Where(d => d.Installed.Id == package.Installed.Id).First();
-                        if (package.Update != null) {
-                            if (addedPackage.Update == null || addedPackage.Update.Version < package.Update.Version) {
-                                installed.Remove(addedPackage);
-                                installed.Add(package);
+                        if (installed.Any(d => d.Installed.Id == package.Installed.Id)) {
+                            var addedPackage = installed.Where(d => d.Installed.Id == package.Installed.Id).First();
+                            if (package.Update != null) {
+                                if (addedPackage.Update == null || addedPackage.Update.Version < package.Update.Version) {
+                                    installed.Remove(addedPackage);
+                                    installed.Add(package);
+                                }
                             }
                         }
-                    }
-                    else {
-                        installed.Add(package);
+                        else {
+                            installed.Add(package);
+                        }
                     }
                 }
-            }
 
-            return base.View(installed);
+                return base.View(installed);
+            }
+            catch (Exception e) {
+                ErrorHandler.Publish(LogLevel.Error, "Nuget Get packages from feed", e);
+                return View("ExceptionError");
+            }
         
         }
 
