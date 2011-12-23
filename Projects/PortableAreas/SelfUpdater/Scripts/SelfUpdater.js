@@ -132,7 +132,7 @@ function installPackage(packageId, source) {
             //        var interval = setInterval(fn, 10000);     
 
             if (data.NugetLog != null && data.NugetLog != '') {
-                $('#upgradingUl').html(data.NugetLog);
+                $('#installingUl').html(data.NugetLog);
             }
 
             $.ajax({
@@ -147,13 +147,13 @@ function installPackage(packageId, source) {
             });
 
             var timeOutStatus = false;
-
+            var cant = 0;
             var interval = setInterval(function () {
 
                 $.ajax({
                     url: "/SelfUpdater/Updates/Status",
                     type: "POST",
-                    timeout: 200,
+                    timeout: 1000,
                     success: function (data) {
 
                         if (data) {
@@ -166,11 +166,26 @@ function installPackage(packageId, source) {
                     error: function () {
                         if (!timeOutStatus) {
                             timeOutStatus = true;
-                            $('#installingUl').append('<li>Reloading site...</li>')
+                            $('#installingUl').append('<li>Reloading site<span id="TimeOutPointsInstall">...</span></li>')
                         }
+                        cant = cant + 1;
+                        if (cant == 4) {
+                            cant = 1;
+                        }
+                        var puntos = "";
+                        if (cant == 1) {
+                            puntos = '.';
+                        }
+                        if (cant == 2) {
+                            puntos = '..';
+                        }
+                        if (cant == 3) {
+                            puntos = '...';
+                        }
+                        $('#TimeOutPointsInstall').html(puntos);
                     }
                 });
-            }, 5000);
+            }, 2000);
         },
         error: function () {
             trace(data);
@@ -263,13 +278,14 @@ function updatePackage(packageId, source) {
                 });
 
                 var timeOutStatus = false;
+                var cant = 0;
 
                 var interval = setInterval(function () {
 
                     $.ajax({
                         url: "/SelfUpdater/Updates/Status",
                         type: "POST",
-                        timeout: 200,
+                        timeout: 1000,
                         success: function (data) {
 
                             if (data) {
@@ -282,13 +298,27 @@ function updatePackage(packageId, source) {
                         error: function () {
                             if (!timeOutStatus) {
                                 timeOutStatus = true;
-                                $('#upgradingUl').append('<li>Reloading site...</li>');
+                                $('#upgradingUl').append('<li>Reloading site<span id="TimeOutPointsUpgrade">...</span></li>');
                             }
-
+                            cant = cant + 1;
+                            if (cant == 4) {
+                                cant = 1;
+                            }
+                            var puntos = "";
+                            if (cant == 1) {
+                                puntos = '.';
+                            }
+                            if (cant == 2) {
+                                puntos = '..';
+                            }
+                            if (cant == 3) {
+                                puntos = '...';
+                            }
+                            $('#TimeOutPointsUpgrade').html(puntos);
 
                         }
                     });
-                }, 5000);
+                }, 2000);
             }
             else {
                 clearInterval(myinterval);
