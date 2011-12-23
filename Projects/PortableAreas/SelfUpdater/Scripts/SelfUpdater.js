@@ -106,75 +106,78 @@ function installPackage(packageId, source) {
 
     });
     var status = false;
-    $.post('/SelfUpdater/Installation/InstallPackage', { packageId: packageId, source: source })
-    .success(function (data) {
+    $.ajax({
+        url: "/SelfUpdater/Installation/InstallPackage",
+        type: "POST",
+        data: { packageId: packageId, source: source },
+        timeout: 1200000,
+        success: function (data) {
+            //        var xhr;
+            //        var reloading = false;
+            //        var fn = function () {
+            //            if (!reloading) {
+            //                if (xhr && xhr.readystate != 4) {
+            //                    xhr.abort();
+            //                }
+            //                xhr = $.post('/SelfUpdater/Updates/Status').success(function (data) {
+            //                    if (data.online) {
+            //                        $('<li>Reloading site...</li>').appendTo('#installingUl');
+            //                        reloading = true;
+            //                        window.location.reload();
+            //                    }
+            //                });
+            //            }
+            //        };
 
-        //        var xhr;
-        //        var reloading = false;
-        //        var fn = function () {
-        //            if (!reloading) {
-        //                if (xhr && xhr.readystate != 4) {
-        //                    xhr.abort();
-        //                }
-        //                xhr = $.post('/SelfUpdater/Updates/Status').success(function (data) {
-        //                    if (data.online) {
-        //                        $('<li>Reloading site...</li>').appendTo('#installingUl');
-        //                        reloading = true;
-        //                        window.location.reload();
-        //                    }
-        //                });
-        //            }
-        //        };
+            //        var interval = setInterval(fn, 10000);     
 
-        //        var interval = setInterval(fn, 10000);     
-
-        if (data.NugetLog != null && data.NugetLog != '') {
-            $('#upgradingUl').html(data.NugetLog);
-        }
-
-        $.ajax({
-            url: "/SelfUpdater/Updates/RestartSite",
-            type: "POST",
-            success: function (data) {
-                clearInterval(myinterval);
-            },
-            error: function () {
-
+            if (data.NugetLog != null && data.NugetLog != '') {
+                $('#upgradingUl').html(data.NugetLog);
             }
-        });
-
-        var timeOutStatus = false;
-
-        var interval = setInterval(function () {
 
             $.ajax({
-                url: "/SelfUpdater/Updates/Status",
+                url: "/SelfUpdater/Updates/RestartSite",
                 type: "POST",
-                timeout: 200,
                 success: function (data) {
-
-                    if (data) {
-
-
-                        window.location = window.location.href;
-                        clearInterval(interval);
-                    }
+                    clearInterval(myinterval);
                 },
                 error: function () {
-                    if (!timeOutStatus) {
-                        timeOutStatus = true;
-                        $('#installingUl').append('<li>Reloading site...</li>')
-                    }
+
                 }
             });
-        }, 5000);
 
-    })
-    .error(function () {
-        trace(data);
-        $('#installingDiv').dialog("close");
-        alert("Communication error");
-        clearInterval(myinterval);
+            var timeOutStatus = false;
+
+            var interval = setInterval(function () {
+
+                $.ajax({
+                    url: "/SelfUpdater/Updates/Status",
+                    type: "POST",
+                    timeout: 200,
+                    success: function (data) {
+
+                        if (data) {
+
+
+                            window.location = window.location.href;
+                            clearInterval(interval);
+                        }
+                    },
+                    error: function () {
+                        if (!timeOutStatus) {
+                            timeOutStatus = true;
+                            $('#installingUl').append('<li>Reloading site...</li>')
+                        }
+                    }
+                });
+            }, 5000);
+        },
+        error: function () {
+            trace(data);
+            $('#installingDiv').dialog("close");
+            alert("Communication error");
+            clearInterval(myinterval);
+        }
     });
 
     var myinterval = setInterval(function () {
@@ -215,85 +218,89 @@ function updatePackage(packageId, source) {
 
     });
 
-    $.post('/SelfUpdater/Updates/Upgrade', { packageId: packageId, source: source })
-    .success(function (data) {
 
-        //        var xhr;
-        //        var reloading = false;
-        //        var fn = function () {
-        //            if (!reloading) {
-        //                if (xhr && xhr.readystate != 4) {
-        //                    xhr.abort();
-        //                }
-        //                xhr = $.post('/SelfUpdater/Updates/Status').success(function (data) {
-        //                    if (data.online) {
-        //                        $('<li>Reloading site...</li>').appendTo('#installingUl');
-        //                        reloading = true;
-        //                        window.location.reload();
-        //                    }
-        //                });
-        //            }
-        //        };
+    $.ajax({
+        url: '/SelfUpdater/Updates/Upgrade',
+        type: "POST",
+        data: { packageId: packageId, source: source },
+        timeout: 1200000,
+        success: function (data) {
+            //        var xhr;
+            //        var reloading = false;
+            //        var fn = function () {
+            //            if (!reloading) {
+            //                if (xhr && xhr.readystate != 4) {
+            //                    xhr.abort();
+            //                }
+            //                xhr = $.post('/SelfUpdater/Updates/Status').success(function (data) {
+            //                    if (data.online) {
+            //                        $('<li>Reloading site...</li>').appendTo('#installingUl');
+            //                        reloading = true;
+            //                        window.location.reload();
+            //                    }
+            //                });
+            //            }
+            //        };
 
-        //        var interval = setInterval(fn, 10000);
+            //        var interval = setInterval(fn, 10000);
 
-        if (data.updated) {
+            if (data.updated) {
 
-            if (data.NugetLog != null && data.NugetLog != '') {
-                $('#upgradingUl').html(data.NugetLog);
-            }
-
-
-            $.ajax({
-                url: "/SelfUpdater/Updates/RestartSite",
-                type: "POST",
-                success: function (data) {
-                    clearInterval(myinterval);
-                },
-                error: function () {
-
+                if (data.NugetLog != null && data.NugetLog != '') {
+                    $('#upgradingUl').html(data.NugetLog);
                 }
-            });
 
-            var timeOutStatus = false;
-
-            var interval = setInterval(function () {
 
                 $.ajax({
-                    url: "/SelfUpdater/Updates/Status",
+                    url: "/SelfUpdater/Updates/RestartSite",
                     type: "POST",
-                    timeout: 200,
                     success: function (data) {
-
-                        if (data) {
-
-
-                            window.location = window.location.href;
-                            clearInterval(interval);
-                        }
+                        clearInterval(myinterval);
                     },
                     error: function () {
-                        if (!timeOutStatus) {
-                            timeOutStatus = true;
-                            $('#upgradingUl').append('<li>Reloading site...</li>');
-                        }
-
 
                     }
                 });
-            }, 5000);
-        }
-        else {
-            clearInterval(myinterval);
-            $('#upgradingUl').append('<li>There has been an error upgrading the package.</li>');
-            $('#upgradingUl').append('<li>Please try again later.</li>')
-        }
 
-    })
-    .error(function () {
-        trace(data);
-        $('#upgradingDiv').dialog("close");
-        alert("Communication error");
+                var timeOutStatus = false;
+
+                var interval = setInterval(function () {
+
+                    $.ajax({
+                        url: "/SelfUpdater/Updates/Status",
+                        type: "POST",
+                        timeout: 200,
+                        success: function (data) {
+
+                            if (data) {
+
+
+                                window.location = window.location.href;
+                                clearInterval(interval);
+                            }
+                        },
+                        error: function () {
+                            if (!timeOutStatus) {
+                                timeOutStatus = true;
+                                $('#upgradingUl').append('<li>Reloading site...</li>');
+                            }
+
+
+                        }
+                    });
+                }, 5000);
+            }
+            else {
+                clearInterval(myinterval);
+                $('#upgradingUl').append('<li>There has been an error upgrading the package.</li>');
+                $('#upgradingUl').append('<li>Please try again later.</li>')
+            }
+        },
+        error: function () {
+            trace(data);
+            $('#upgradingDiv').dialog("close");
+            alert("Communication error");
+        }
     });
 
 
