@@ -107,7 +107,7 @@ function installPackage(packageId, source) {
     });
     var status = false;
     $.post('/SelfUpdater/Installation/InstallPackage', { packageId: packageId, source: source })
-    .success(function () {
+    .success(function (data) {
 
         //        var xhr;
         //        var reloading = false;
@@ -127,27 +127,44 @@ function installPackage(packageId, source) {
         //        };
 
         //        var interval = setInterval(fn, 10000);     
-        $('#installingUl').append('<li>The instalation has finished.</li>');
-        $('#installingUl').append('<li>Waiting to reload site..</li>');
+
+        if (data.NugetLog != null && data.NugetLog != '') {
+            $('#upgradingUl').html(data.NugetLog);
+        }
+
+        $.ajax({
+            url: "/SelfUpdater/Updates/RestartSite",
+            type: "POST",
+            success: function (data) {
+                clearInterval(myinterval);
+            },
+            error: function () {
+
+            }
+        });
+
+        var timeOutStatus = false;
 
         var interval = setInterval(function () {
 
             $.ajax({
                 url: "/SelfUpdater/Updates/Status",
                 type: "POST",
+                timeout: 200,
                 success: function (data) {
 
                     if (data) {
 
-                        $('#installingUl').append('<li>Reloading site...</li>')
+
                         window.location = window.location.href;
                         clearInterval(interval);
                     }
                 },
                 error: function () {
-                    trace(data);
-                    $('#installingDiv').dialog("close");
-                    alert("Communication error");
+                    if (!timeOutStatus) {
+                        timeOutStatus = true;
+                        $('#installingUl').append('<li>Reloading site...</li>')
+                    }
                 }
             });
         }, 5000);
@@ -157,6 +174,7 @@ function installPackage(packageId, source) {
         trace(data);
         $('#installingDiv').dialog("close");
         alert("Communication error");
+        clearInterval(myinterval);
     });
 
     var myinterval = setInterval(function () {
@@ -220,26 +238,47 @@ function updatePackage(packageId, source) {
         //        var interval = setInterval(fn, 10000);
 
         if (data.updated) {
-            $('#upgradingUl').append('<li>The instalation has finished.</li>');
-            $('#upgradingUl').append('<li>Waiting to reload site..</li>');
+
+            if (data.NugetLog != null && data.NugetLog != '') {
+                $('#upgradingUl').html(data.NugetLog);
+            }
+
+
+            $.ajax({
+                url: "/SelfUpdater/Updates/RestartSite",
+                type: "POST",
+                success: function (data) {
+                    clearInterval(myinterval);
+                },
+                error: function () {
+
+                }
+            });
+
+            var timeOutStatus = false;
+
             var interval = setInterval(function () {
 
                 $.ajax({
                     url: "/SelfUpdater/Updates/Status",
                     type: "POST",
+                    timeout: 200,
                     success: function (data) {
 
                         if (data) {
 
-                            $('#upgradingUl').append('<li>Reloading site...</li>')
+
                             window.location = window.location.href;
                             clearInterval(interval);
                         }
                     },
                     error: function () {
-                        trace(data);
-                        $('#upgradingDiv').dialog("close");
-                        alert("Communication error");
+                        if (!timeOutStatus) {
+                            timeOutStatus = true;
+                            $('#upgradingUl').append('<li>Reloading site...</li>');
+                        }
+
+
                     }
                 });
             }, 5000);

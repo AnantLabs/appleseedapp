@@ -335,7 +335,7 @@
 			<forms name=".ASPXAUTH" protection="All" timeout="525600" slidingExpiration="true" />
 		</authentication>
 		<!-- Set here max upload size -->
-		<httpRuntime waitChangeNotification="10" useFullyQualifiedRedirectUrl="true" maxRequestLength="50000" requestPathInvalidCharacters="" requestValidationMode="2.0" />
+		<httpRuntime waitChangeNotification="123456789" maxWaitChangeNotification="123456789" useFullyQualifiedRedirectUrl="true" maxRequestLength="50000" requestPathInvalidCharacters="" requestValidationMode="2.0" />
 		<customErrors defaultRedirect="~/app_support/GeneralError.aspx" mode="RemoteOnly" />
 		<httpHandlers>
       <add verb="*" path="sitemap.axd" type="Newtonsoft.Sitemaps.SitemapHandler, Newtonsoft.Sitemaps" />

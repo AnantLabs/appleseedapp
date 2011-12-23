@@ -69,7 +69,9 @@ namespace SelfUpdater.Controllers
             if (message.Contains("Successfully added")) {
                 list.Add("Successful", message);
             }
-
+            if (message.Contains("Waiting to Reload Site")) {
+                list.Add("Waiting", message);
+            }
             var mensaje = String.Empty;
             if (list.ContainsKey("install"))
                 mensaje = "<li>" + list["install"] + "</li>";
@@ -81,7 +83,9 @@ namespace SelfUpdater.Controllers
             if (list.ContainsKey("Successful")) {
                 mensaje += "<li>" + list["Successful"] + "</li>";
             }
-            
+            if (list.ContainsKey("Waiting")) {
+                mensaje += "<li>" + list["Waiting"] + "</li>";
+            }
 
             HttpContext.Current.Application["NugetLogger"] = mensaje;
             

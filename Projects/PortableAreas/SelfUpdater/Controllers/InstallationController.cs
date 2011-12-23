@@ -64,12 +64,16 @@ namespace SelfUpdater.Controllers
 
             projectManager.InstallPackage(projectManager.GetRemotePackages(string.Empty).Where(d => d.Id == packageId).First());
 
-            //projectManager.addLog("The package finished the instalation. </li><li>Waiting to Reload Site");
+            projectManager.addLog("Waiting to Reload Site");
+
+            var logger = (string)System.Web.HttpContext.Current.Application["NugetLogger"];
 
             return Json(new {
                 msg = "Package " + packageId + " scheduled to install!",
-                res = true
+                res = true,
+                NugetLog = logger
             }, JsonRequestBehavior.AllowGet);
         }
+        
     }
 }
