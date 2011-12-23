@@ -110,7 +110,7 @@ function installPackage(packageId, source) {
         url: "/SelfUpdater/Installation/InstallPackage",
         type: "POST",
         data: { packageId: packageId, source: source },
-        timeout: 1200000,
+        timeout: 3600000,
         success: function (data) {
             //        var xhr;
             //        var reloading = false;
@@ -223,7 +223,7 @@ function updatePackage(packageId, source) {
         url: '/SelfUpdater/Updates/Upgrade',
         type: "POST",
         data: { packageId: packageId, source: source },
-        timeout: 1200000,
+        timeout: 3600000,
         success: function (data) {
             //        var xhr;
             //        var reloading = false;
