@@ -10,8 +10,12 @@ $(document).ready(function () {
     $.ajax({
         url: "/SelfUpdater/Updates/UpdateModule",
         type: "POST",
+        timeout:90000,
         success: function (data) {
             $('#UpdateDiv').html(data);
+        },
+        error: function () {
+            $('#UpdateDiv').html('Unable to get The installed packages. Please try again Later.');
         }
     });
 });
