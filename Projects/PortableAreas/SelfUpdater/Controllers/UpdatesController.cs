@@ -13,6 +13,7 @@ using System.IO;
 using System.Xml;
 using System.Text;
 using System.Dynamic;
+using Appleseed.Framework.Security;
 
 namespace SelfUpdater.Controllers
 {
@@ -96,9 +97,13 @@ namespace SelfUpdater.Controllers
 
                 projectManager.UpdatePackage(update);
 
+                projectManager.addLog("Waiting to Reload Site");
+
+                var logger = (string)System.Web.HttpContext.Current.Application["NugetLogger"];
+
                 return Json(new {
                     msg = "Updated " + packageId + " to " + update.Version.ToString() + "!",
-                    updated = true
+                    updated = true, NugetLog = logger
                 }, JsonRequestBehavior.AllowGet);
             } catch (Exception exc) {
                 ErrorHandler.Publish(LogLevel.Error, exc);
@@ -158,19 +163,21 @@ namespace SelfUpdater.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public void ApplyUpdates()
+        public void RestartSite()
         {
-            /*Forcing site restart*/
-            var doc = new XmlDocument();
-            doc.PreserveWhitespace = true;
-            var configFile = Server.MapPath("~/web.config");
-            doc.Load(configFile);
+            if (PortalSecurity.IsInRole("Admins")) {
+                /*Forcing site restart*/
+                var doc = new XmlDocument();
+                doc.PreserveWhitespace = true;
+                var configFile = Server.MapPath("~/web.config");
+                doc.Load(configFile);
 
-            var writer = new XmlTextWriter(configFile, Encoding.UTF8) { Formatting = Formatting.Indented };
-            doc.Save(writer);
-            writer.Flush();
-            writer.Close();
-            /*....................*/
+                var writer = new XmlTextWriter(configFile, Encoding.UTF8) { Formatting = Formatting.Indented };
+                doc.Save(writer);
+                writer.Flush();
+                writer.Close();
+                /*....................*/
+            }
         }
 
         public ActionResult Status()
