@@ -12,9 +12,13 @@ $(document).ready(function () {
     
     $.ajax({
         url: "/SelfUpdater/Installation/InstallModule",
+        timeout: 90000,
         type: "POST",
         success: function (data) {
-            $('#InstalationDiv').html(data);            
+            $('#InstalationDiv').html(data);
+        },
+        error: function () {
+            $('#InstalationDiv').html('Unable to get packages to Install. Please try again Later.');
         }
     });
     
