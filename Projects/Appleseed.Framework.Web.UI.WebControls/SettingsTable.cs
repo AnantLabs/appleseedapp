@@ -21,6 +21,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
 
     using Page = Appleseed.Framework.Web.UI.Page;
 using System.Text;
+    using System.Collections.Generic;
 
     #region Event argument class
 
@@ -574,6 +575,8 @@ using System.Text;
 
             var tbl = new Table();
 
+            Dictionary<string, string> dicc = new Dictionary<string, string>();
+
             // Initialize controls
             var currentGroup = SettingItemGroup.NONE;
 
@@ -603,7 +606,20 @@ using System.Text;
 
                         tabPanel.Controls.Add(fieldset);
                         tabPanelGroup.Controls.Add(tabPanel);
-                        tabGroup.Controls.Add(tabDefault);
+
+                        if(tabDefault.Controls.Count == 1){
+                            var TabName = string.Empty;
+                            foreach (var t in tabDefault.Controls) {
+                                TabName = ((HtmlGenericControl)t).InnerText;
+                            }
+                            if (!dicc.ContainsKey(TabName)) {
+                                dicc.Add(TabName, TabName);
+                                tabGroup.Controls.Add(tabDefault);
+                            }
+                        }
+                        else{
+                            tabGroup.Controls.Add(tabDefault);
+                        }
                     }
 
                     // start a new fieldset
@@ -631,7 +647,19 @@ using System.Text;
                 tbl.Rows.Add(this.CreateOneSettingRow(currentSetting, currentItem));
             }
 
-            tabGroup.Controls.Add(tabDefault);
+            if (tabDefault.Controls.Count == 1) {
+                var TabName = string.Empty;
+                foreach (var t in tabDefault.Controls) {
+                    TabName = ((HtmlGenericControl)t).InnerText;
+                }
+                if (!dicc.ContainsKey(TabName)) {
+                    dicc.Add(TabName, TabName);
+                    tabGroup.Controls.Add(tabDefault);
+                }
+            }
+            else {
+                tabGroup.Controls.Add(tabDefault);
+            }
 
             fieldset.Controls.Add(tbl);
 
