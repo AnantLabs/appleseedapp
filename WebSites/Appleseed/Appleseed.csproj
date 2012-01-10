@@ -158,7 +158,7 @@
     <Reference Include="Evolve.MailTemplates">
       <HintPath>..\..\Libs\Evolve.MailTemplates.dll</HintPath>
     </Reference>
-    <Reference Include="Facebook, Version=5.0.40.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+    <Reference Include="Facebook, Version=5.4.1.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libs\Facebook.dll</HintPath>
     </Reference>
@@ -1538,12 +1538,26 @@
     <Compile Include="DesktopModules\CoreModules\SignIn\SignInSocialNetwork.ascx.designer.cs">
       <DependentUpon>SignInSocialNetwork.ascx</DependentUpon>
     </Compile>
+    <Compile Include="DesktopModules\CoreModules\SignIn\SignInWithSocialNetwork.ascx.cs">
+      <DependentUpon>SignInWithSocialNetwork.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CoreModules\SignIn\SignInWithSocialNetwork.ascx.designer.cs">
+      <DependentUpon>SignInWithSocialNetwork.ascx</DependentUpon>
+    </Compile>
     <Compile Include="DesktopModules\CoreModules\SiteSettings\SiteSettings.ascx.cs">
       <DependentUpon>SiteSettings.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="DesktopModules\CoreModules\SiteSettings\SiteSettings.ascx.designer.cs">
       <DependentUpon>SiteSettings.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CoreModules\SocialNetworksButtons\SocialNetworkButtons.ascx.cs">
+      <DependentUpon>SocialNetworkButtons.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CoreModules\SocialNetworksButtons\SocialNetworkButtons.ascx.designer.cs">
+      <DependentUpon>SocialNetworkButtons.ascx</DependentUpon>
     </Compile>
     <Compile Include="DesktopModules\CoreModules\Users\Users.ascx.cs">
       <DependentUpon>Users.ascx</DependentUpon>
@@ -6430,9 +6444,11 @@
     <Content Include="DesktopModules\CoreModules\SignIn\SignInLoginView.ascx" />
     <Content Include="DesktopModules\CoreModules\SignIn\SignInPage.aspx" />
     <Content Include="DesktopModules\CoreModules\SignIn\SignInSocialNetwork.ascx" />
+    <Content Include="DesktopModules\CoreModules\SignIn\SignInWithSocialNetwork.ascx" />
     <Content Include="DesktopModules\CoreModules\SignIn\SignIn_readme.txt" />
     <Content Include="DesktopModules\CoreModules\SiteSettings\install.xml" />
     <Content Include="DesktopModules\CoreModules\SiteSettings\SiteSettings.ascx" />
+    <Content Include="DesktopModules\CoreModules\SocialNetworksButtons\SocialNetworkButtons.ascx" />
     <Content Include="DesktopModules\CoreModules\Users\install.xml" />
     <Content Include="DesktopModules\CoreModules\Users\Users.ascx" />
     <Content Include="DesktopModules\CoreModules\Users\UsersManage.aspx" />
