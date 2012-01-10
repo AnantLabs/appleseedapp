@@ -20,6 +20,11 @@
 		<DesktopSource>DesktopModules/CoreModules/SignIn/SignInSocialNetwork.ascx</DesktopSource>
 		<MobileSource></MobileSource>
 	</Module>
+    <Module>
+        <FriendlyName>SignInWithSocialNetwork</FriendlyName>
+        <DesktopSource>DesktopModules/CoreModules/SignIn/SignInWithSocialNetwork.ascx</DesktopSource>
+        <MobileSource></MobileSource>
+    </Module>
   <Module>
     <FriendlyName>SignInBoth</FriendlyName>
     <DesktopSource>DesktopModules/CoreModules/SignIn/SignInBoth.ascx</DesktopSource>

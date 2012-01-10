@@ -13,94 +13,22 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn {
     public partial class SignInSocialNetwork {
         
         /// <summary>
-        /// appidfacebook control.
+        /// SignInSocialNetworkButtons control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden appidfacebook;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SignInSocialNetworkButtons;
         
         /// <summary>
-        /// signInContainer control.
+        /// SignInCommon control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTable signInContainer;
-        
-        /// <summary>
-        /// loginfb_div control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl loginfb_div;
-        
-        /// <summary>
-        /// logintwit_div control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl logintwit_div;
-        
-        /// <summary>
-        /// google_div control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl google_div;
-        
-        /// <summary>
-        /// lblError control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblError;
-        
-        /// <summary>
-        /// lblPassSent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPassSent;
-        
-        /// <summary>
-        /// lblPassSentErr control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPassSentErr;
-        
-        /// <summary>
-        /// SignInAppleseed control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTable SignInAppleseed;
-        
-        /// <summary>
-        /// CommonSignIn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CommonSignIn;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SignInCommon;
         
         /// <summary>
         /// Signin1 control.
@@ -110,14 +38,5 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Appleseed.DesktopModules.CoreModules.SignIn.Signin Signin1;
-        
-        /// <summary>
-        /// appId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField appId;
     }
 }
