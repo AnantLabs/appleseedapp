@@ -124,14 +124,18 @@ namespace Appleseed.Framework.Core.Model
                                 } else {
                                     var strArray = virtualPath.Split(
                                         new[] { '/', '\\' }, StringSplitOptions.RemoveEmptyEntries);
-                                    var areaName = (strArray[1].ToLower() == "views") ? string.Empty : strArray[1];
+                                    int index = 1;
+                                    if (!Path.ApplicationRoot.Equals(string.Empty)) {
+                                        index++;
+                                    }
+                                    var areaName = (strArray[index].ToLower() == "views") ? string.Empty : strArray[index];
                                     var controllerName = strArray[strArray.Length - 2];
                                     var actionName = strArray[strArray.Length - 1];
 
                                     // var ns = strArray[2];
                                     control =
                                         (PortalModuleControl)
-                                        page.LoadControl("/DesktopModules/CoreModules/MVC/MVCModule.ascx");
+                                        page.LoadControl("~/DesktopModules/CoreModules/MVC/MVCModule.ascx");
 
                                     ((MVCModuleControl)control).ControllerName = controllerName;
                                     ((MVCModuleControl)control).ActionName = actionName;

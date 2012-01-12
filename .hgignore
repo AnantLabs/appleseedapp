@@ -44,3 +44,4 @@ syntax: regexp
 WebSites/Appleseed/Areas/*
 WebSites/Appleseed/Content/*
 WebSites/Appleseed/Scripts/*
+packages/*

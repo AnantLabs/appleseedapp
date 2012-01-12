@@ -107,7 +107,7 @@ function installPackage(packageId, source) {
     });
     var status = false;
     $.ajax({
-        url: "/SelfUpdater/Installation/InstallPackage",
+        url: '<%= Url.Action("InstallPackage","Installation")%>',
         type: "POST",
         data: { packageId: packageId, source: source },
         timeout: 3600000,
@@ -136,7 +136,7 @@ function installPackage(packageId, source) {
             }
 
             $.ajax({
-                url: "/SelfUpdater/Updates/RestartSite",
+                url: '<%= Url.Action("RestartSite","Updates")%>',
                 type: "POST",
                 success: function (data) {
                     clearInterval(myinterval);
@@ -151,7 +151,7 @@ function installPackage(packageId, source) {
             var interval = setInterval(function () {
 
                 $.ajax({
-                    url: "/SelfUpdater/Updates/Status",
+                    url: '<%= Url.Action("Status","Updates")%>',
                     type: "POST",
                     timeout: 1000,
                     success: function (data) {
@@ -198,7 +198,7 @@ function installPackage(packageId, source) {
     var myinterval = setInterval(function () {
 
         $.ajax({
-            url: "/SelfUpdater/Updates/NugetStatus",
+            url: '<%= Url.Action("NugetStatus","Updates")%>',
             type: "POST",
             async: false,
             success: function (data) {
@@ -235,7 +235,7 @@ function updatePackage(packageId, source) {
 
 
     $.ajax({
-        url: '/SelfUpdater/Updates/Upgrade',
+        url: '<%= Url.Action("Upgrade","Updates")%>',
         type: "POST",
         data: { packageId: packageId, source: source },
         timeout: 3600000,
@@ -267,7 +267,7 @@ function updatePackage(packageId, source) {
 
 
                 $.ajax({
-                    url: "/SelfUpdater/Updates/RestartSite",
+                    url: '<%= Url.Action("RestartSite","Updates")%>',
                     type: "POST",
                     success: function (data) {
                         clearInterval(myinterval);
@@ -283,7 +283,7 @@ function updatePackage(packageId, source) {
                 var interval = setInterval(function () {
 
                     $.ajax({
-                        url: "/SelfUpdater/Updates/Status",
+                        url: '<%= Url.Action("Status","Updates")%>',
                         type: "POST",
                         timeout: 1000,
                         success: function (data) {
@@ -337,7 +337,7 @@ function updatePackage(packageId, source) {
     var myinterval = setInterval(function () {
 
         $.ajax({
-            url: "/SelfUpdater/Updates/NugetStatus",
+            url: '<%= Url.Action("NugetStatus","Updates")%>',
             type: "POST",
             async: false,
             success: function (data) {
