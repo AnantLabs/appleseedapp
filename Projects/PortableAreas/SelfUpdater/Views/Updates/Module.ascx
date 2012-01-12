@@ -8,7 +8,7 @@ $(document).ready(function () {
     
 
     $.ajax({
-        url: "/SelfUpdater/Updates/UpdateModule",
+        url: '<%= Url.Action("UpdateModule","Updates")%>', 
         type: "POST",
         timeout:90000,
         success: function (data) {

@@ -183,10 +183,7 @@ namespace Appleseed.Admin
             //     string themePath = Path.WebPathCombine(this.CurrentTheme.WebPath, "/tabControl.css");
             //     ((Page) this.Page).RegisterCssFile("tabsControl", themePath);
             // }
-            if (!((Appleseed.Framework.Web.UI.Page)this.Page).IsCssFileRegistered("TabControl"))
-            {
-                ((Appleseed.Framework.Web.UI.Page)this.Page).RegisterCssFile("TabControl");
-            }
+           
 
             this.enableWorkflowSupport.CheckedChanged += this.EnableWorkflowSupportCheckedChanged;
             base.OnInit(e);
