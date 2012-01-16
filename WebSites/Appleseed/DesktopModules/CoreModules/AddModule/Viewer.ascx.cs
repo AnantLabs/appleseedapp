@@ -225,7 +225,7 @@ namespace Appleseed.Content.Web.Modules.AddModule
 
                 try
                 {
-                    var m = new ModuleItem { Title = this.moduleTitle.Text, ModuleDefID = moduleID, Order = 999 };
+                    var m = new ModuleItem { Title = this.TitleTextBox.Value, ModuleDefID = moduleID, Order = 999 };
 
                     // save to database
                     var mod = new ModulesDB();
@@ -405,7 +405,7 @@ namespace Appleseed.Content.Web.Modules.AddModule
             // by Manu, set title like module name
             if (this.moduleType.SelectedItem != null)
             {
-                this.moduleTitle.Text = this.moduleType.SelectedItem.Text;
+                //this.moduleTitle.Text = this.moduleType.SelectedItem.Text;
             }
         }
 

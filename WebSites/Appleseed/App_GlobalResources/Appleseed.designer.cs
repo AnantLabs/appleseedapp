@@ -457,7 +457,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Module Name:.
+        ///   Looks up a localized string similar to Module Title:.
         /// </summary>
         internal static string AM_MODULENAME {
             get {
