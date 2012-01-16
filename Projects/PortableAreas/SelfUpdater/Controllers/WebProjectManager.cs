@@ -93,7 +93,7 @@ namespace SelfUpdater.Controllers
 
         public IQueryable<IPackage> GetPackagesWithUpdates(string searchTerms)
         {
-            return GetPackages(PackageRepositoryExtensions.GetUpdates(this.LocalRepository, this.SourceRepository.GetPackages(), true).AsQueryable<IPackage>(), searchTerms);
+            return GetPackages(PackageRepositoryExtensions.GetUpdates(this.LocalRepository, this.SourceRepository.GetPackages(), true,true).AsQueryable<IPackage>(), searchTerms);
         }
 
         public IQueryable<IPackage> GetRemotePackages(string searchTerms)
@@ -103,7 +103,7 @@ namespace SelfUpdater.Controllers
 
         public IPackage GetUpdate(IPackage package)
         {
-            return PackageRepositoryExtensions.GetUpdates(this.SourceRepository, this.LocalRepository.GetPackages(),true).FirstOrDefault<IPackage>(delegate(IPackage p)
+            return PackageRepositoryExtensions.GetUpdates(this.SourceRepository, this.LocalRepository.GetPackages(),true,true).FirstOrDefault<IPackage>(delegate(IPackage p)
             {
                 return (package.Id == p.Id);
             });
