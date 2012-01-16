@@ -631,6 +631,9 @@ namespace Appleseed.Framework.Web.UI.WebControls
                 PortalSettings PortalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
                 string iframewidth = "280px";
                 string dialogwidth = "320";
+                string iframeheight = "380px";
+                string dialogheightdiv = "385";
+                string dialogheight = "410";
                 if (PortalSettings.CustomSettings["SITESETTINGS_LOGIN_TYPE"].ToString().Contains("both.ascx")) {
                         if ((PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_TWITTER_APP_ID") &&
                             PortalSettings.CustomSettings["SITESETTINGS_TWITTER_APP_ID"].ToString().Equals(string.Empty) ||
@@ -654,13 +657,18 @@ namespace Appleseed.Framework.Web.UI.WebControls
                     iframewidth = "320px";
                     dialogwidth = "350";
                 }
+                else if (PortalSettings.CustomSettings["SITESETTINGS_LOGIN_TYPE"].ToString().EndsWith("signinwithsocialnetwork.ascx")) {
+                    iframeheight = "440px";
+                    dialogheightdiv = "445";
+                    dialogheight = "500";
+                }
 
                 string empty = HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/SignIn/empty.htm");
                 string div = this.ClientID + "_logon_dialog";
                 var url = HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/SignIn/SignInPage.aspx?iframe=true");
                 writer.Write(string.Concat("<div id=\"", this.ClientID, "_logon_dialog\" style=\"display:none\" >"));
-                writer.Write(string.Concat("<div id=\"AppleseedLogin\" style=\"height: 385px !important\" >"));
-                writer.Write("<iframe id=\"iframeAppleseedLogin\" src=\""+empty+"\" onload=\"check()\" width=\""+iframewidth+"\" height=\"380px\"></iframe>");
+                writer.Write(string.Concat("<div id=\"AppleseedLogin\" style=\"height: "+dialogheightdiv+"px !important\" >"));
+                writer.Write("<iframe id=\"iframeAppleseedLogin\" src=\""+empty+"\" onload=\"check()\" width=\""+iframewidth+"\" height=\""+iframeheight+"\"></iframe>");
                 writer.Write("</div>");
                 
                
@@ -692,7 +700,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                                 autoOpen: false,
                                 modal: true,
                                 width: ",dialogwidth,@",
-                                height: 410,
+                                height: ", dialogheight, @",
                                 resizable: false,
                                 title: 'Sign In'
                             });

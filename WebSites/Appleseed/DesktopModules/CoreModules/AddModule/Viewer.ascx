@@ -44,8 +44,9 @@
             <rbfwebui:localize id="moduleTitleLabel" runat="server" text="<%$ Resources:Appleseed, AM_MODULENAME %>">
             </rbfwebui:localize></td>
         <td valign="top">
-            <asp:textbox id="moduleTitle" runat="server" cssclass="NormalTextBox" enableviewstate="false"
-                text="New Module Name" width="423px">New Module Title</asp:textbox>
+            <%--<asp:textbox id="moduleTitle" runat="server" cssclass="NormalTextBox"
+                text="New Module Name" width="423px">New Module Title</asp:textbox>--%>
+            <input runat="server" type="text" style="width: 423px" id="TitleTextBox" class="NormalTextBox" value="(Set Module Title)"/>
         </td>
     </tr>
     <tr>

@@ -85,13 +85,13 @@ namespace Appleseed.Content.Web.Modules.AddModule {
         protected global::Appleseed.Framework.Web.UI.WebControls.Localize moduleTitleLabel;
         
         /// <summary>
-        /// moduleTitle control.
+        /// TitleTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox moduleTitle;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText TitleTextBox;
         
         /// <summary>
         /// AddModuleBtn control.

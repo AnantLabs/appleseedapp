@@ -301,7 +301,7 @@
     <value>Module Location:</value>
   </data>
   <data name="AM_MODULENAME" xml:space="preserve">
-    <value>Module Name:</value>
+    <value>Module Title:</value>
   </data>
   <data name="AM_MODULETYPE" xml:space="preserve">
     <value>Module Type</value>
