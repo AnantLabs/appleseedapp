@@ -180,7 +180,7 @@ namespace PageManagerTree.Controllers
         public JsonResult edit(int id)
         {
             string dir = HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/Pages/PageLayout.aspx?PageID="+ id.ToString() +
-                    "&mID=" + this.PortalSettings.ActiveModule+ "&Alias=" + this.PortalSettings.PortalAlias + "&returntabid=" +
+                    "&mID=" + 110+ "&Alias=" + this.PortalSettings.PortalAlias + "&returntabid=" +
                     this.PortalSettings.ActiveModule);
             return Json(new { url = dir});
         }
