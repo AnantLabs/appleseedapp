@@ -92,15 +92,13 @@ namespace Appleseed
                 //HtmlGenericControl includeStyleTree = new HtmlGenericControl("link");
                 //includeStyleTree.Attributes.Add("type", "text/css");
                 //includeStyleTree.Attributes.Add("rel", "stylesheet");
-                //includeStyleTree.Attributes.Add("href", "~/aspnet_client/jQuery/jsTree/_docs/syntax/!style.css");
+                //includeStyleTree.Attributes.Add("href", HttpUrlBuilder.BuildUrl("~/aspnet_client/jQuery/jsTree/themes/default/style.css"));
                 //page.Header.Controls.AddAt(index++, includeStyleTree);
 
 
-                //HtmlGenericControl includeStyleTree2 = new HtmlGenericControl("link");
-                //includeStyleTree2.Attributes.Add("type", "text/css");
-                //includeStyleTree2.Attributes.Add("rel", "stylesheet");
-                //includeStyleTree2.Attributes.Add("href", "~/aspnet_client/jQuery/jsTree/_docs/!style.css");
-                //page.Header.Controls.AddAt(index++, includeStyleTree2);
+                
+
+                
                 
 
                 string extraScripts = GetExtraScripts();

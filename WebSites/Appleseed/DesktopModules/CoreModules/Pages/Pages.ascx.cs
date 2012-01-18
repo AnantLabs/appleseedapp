@@ -202,37 +202,37 @@ namespace Appleseed.DesktopModules.CoreModules.Pages
         /// </param>
         /// <remarks>
         /// </remarks>
-        protected void DeleteBtnClick(object sender, ImageClickEventArgs e)
-        {
-            if (this.tabList.SelectedIndex > -1)
-            {
-                try
-                {
-                    // must delete from database too
-                    var t = this.PortalPages[this.tabList.SelectedIndex];
-                    var tabs = new PagesDB();
-                    tabs.DeletePage(t.ID);
+        //protected void DeleteBtnClick(object sender, ImageClickEventArgs e)
+        //{
+        //    if (this.tabList.SelectedIndex > -1)
+        //    {
+        //        try
+        //        {
+        //            // must delete from database too
+        //            var t = this.PortalPages[this.tabList.SelectedIndex];
+        //            var tabs = new PagesDB();
+        //            tabs.DeletePage(t.ID);
 
-                    this.PortalPages.RemoveAt(this.tabList.SelectedIndex);
+        //            this.PortalPages.RemoveAt(this.tabList.SelectedIndex);
 
-                    if (this.tabList.SelectedIndex > 0)
-                    {
-                        t = this.PortalPages[this.tabList.SelectedIndex - 1];
-                    }
+        //            if (this.tabList.SelectedIndex > 0)
+        //            {
+        //                t = this.PortalPages[this.tabList.SelectedIndex - 1];
+        //            }
 
-                    this.OrderPages();
-                    this.Response.Redirect(
-                        HttpUrlBuilder.BuildUrl("~/" + HttpUrlBuilder.DefaultPage, this.PageID, "SelectedPageID=" + t.ID));
-                }
-                catch (SqlException)
-                {
-                    this.Controls.Add(
-                        new LiteralControl(
-                            "<br><span class='Error'>" +
-                            General.GetString("TAB_DELETE_FAILED", "Failed to delete Page", this) + "<br>"));
-                }
-            }
-        }
+        //            this.OrderPages();
+        //            this.Response.Redirect(
+        //                HttpUrlBuilder.BuildUrl("~/" + HttpUrlBuilder.DefaultPage, this.PageID, "SelectedPageID=" + t.ID));
+        //        }
+        //        catch (SqlException)
+        //        {
+        //            this.Controls.Add(
+        //                new LiteralControl(
+        //                    "<br><span class='Error'>" +
+        //                    General.GetString("TAB_DELETE_FAILED", "Failed to delete Page", this) + "<br>"));
+        //        }
+        //    }
+        //}
 
         /// <summary>
         /// Handles the Click event of the EditBtn control.
@@ -245,27 +245,27 @@ namespace Appleseed.DesktopModules.CoreModules.Pages
         /// </param>
         /// <remarks>
         /// </remarks>
-        protected void EditBtnClick(object sender, ImageClickEventArgs e)
-        {
-            // Redirect to edit page of currently selected tab
-            if (this.tabList.SelectedIndex > -1)
-            {
-                // Redirect to module settings page
-                var t = this.PortalPages[this.tabList.SelectedIndex];
+        //protected void EditBtnClick(object sender, ImageClickEventArgs e)
+        //{
+        //    // Redirect to edit page of currently selected tab
+        //    if (this.tabList.SelectedIndex > -1)
+        //    {
+        //        // Redirect to module settings page
+        //        var t = this.PortalPages[this.tabList.SelectedIndex];
 
-                // added mID by Mario Endara <mario@softworks.com.uy> to support security check (2004/11/09)
-                this.Response.Redirect(
-                    string.Concat(
-                        "~/DesktopModules/CoreModules/Pages/PageLayout.aspx?PageID=",
-                        t.ID,
-                        "&mID=",
-                        this.ModuleID.ToString(),
-                        "&Alias=",
-                        this.PortalSettings.PortalAlias,
-                        "&returntabid=",
-                        this.Page.PageID));
-            }
-        }
+        //        // added mID by Mario Endara <mario@softworks.com.uy> to support security check (2004/11/09)
+        //        this.Response.Redirect(
+        //            string.Concat(
+        //                "~/DesktopModules/CoreModules/Pages/PageLayout.aspx?PageID=",
+        //                t.ID,
+        //                "&mID=",
+        //                this.ModuleID.ToString(),
+        //                "&Alias=",
+        //                this.PortalSettings.PortalAlias,
+        //                "&returntabid=",
+        //                this.Page.PageID));
+        //    }
+        //}
 
         /// <summary>
         /// Raises the <see cref="E:System.Web.UI.Control.Load"/> event.
@@ -279,33 +279,36 @@ namespace Appleseed.DesktopModules.CoreModules.Pages
         {
             base.OnLoad(e);
 
-            // Set the ImageUrl for controls from current Theme
-            this.upBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Up", "Up.gif").ImageUrl;
-            this.downBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Down", "Down.gif").ImageUrl;
-            this.DeleteBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Delete", "Delete.gif").ImageUrl;
-            this.EditBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Edit", "Edit.gif").ImageUrl;
+        //    // Set the ImageUrl for controls from current Theme
+        //    this.upBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Up", "Up.gif").ImageUrl;
+        //    this.downBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Down", "Down.gif").ImageUrl;
+        //    this.DeleteBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Delete", "Delete.gif").ImageUrl;
+        //    this.EditBtn.ImageUrl = this.CurrentTheme.GetImage("Buttons_Edit", "Edit.gif").ImageUrl;
 
-            // If this is the first visit to the page, bind the tab data to the page listbox
-            this.PortalPages = new PagesDB().GetPagesFlat(this.PortalSettings.PortalID);
-            if (!this.Page.IsPostBack)
-            {
-                this.tabList.DataSource = this.PortalPages;
-                this.tabList.DataBind();
+        //    // If this is the first visit to the page, bind the tab data to the page listbox
+        //    this.PortalPages = new PagesDB().GetPagesFlat(this.PortalSettings.PortalID);
+        //    if (!this.Page.IsPostBack)
+        //    {
+        //        this.tabList.DataSource = this.PortalPages;
+        //        this.tabList.DataBind();
 
-                // 2/27/2003 Start - Ender Malkoc
-                // After up or down button when the page is refreshed, 
-                // select the previously selected tab from the list.
-                if (this.Request.Params["selectedtabID"] != null)
-                {
-                    int tabIndex;
-                    if (Int32.TryParse(this.Request.Params["selectedtabID"], out tabIndex))
-                    {
-                        this.SelectPage(tabIndex);
-                    }
-                }
+        //        // 2/27/2003 Start - Ender Malkoc
+        //        // After up or down button when the page is refreshed, 
+        //        // select the previously selected tab from the list.
+        //        if (this.Request.Params["selectedtabID"] != null)
+        //        {
+        //            int tabIndex;
+        //            if (Int32.TryParse(this.Request.Params["selectedtabID"], out tabIndex))
+        //            {
+        //                this.SelectPage(tabIndex);
+        //            }
+        //        }
 
-                // 2/27/2003 End - Ender Malkoc
-            }
+        //        // 2/27/2003 End - Ender Malkoc
+        //    }
+            TreeRoute.Value = this.getTreeRoute();
+            //TreeRoute.Text = this.getTreeRoute();
+
         }
 
         /// <summary>
@@ -320,32 +323,32 @@ namespace Appleseed.DesktopModules.CoreModules.Pages
         /// </param>
         /// <remarks>
         /// </remarks>
-        protected void UpDownClick(object sender, ImageClickEventArgs e)
-        {
-            var cmd = ((ImageButton)sender).CommandName;
+        //protected void UpDownClick(object sender, ImageClickEventArgs e)
+        //{
+        //    var cmd = ((ImageButton)sender).CommandName;
 
-            if (this.tabList.SelectedIndex > -1)
-            {
-                int delta;
+        //    if (this.tabList.SelectedIndex > -1)
+        //    {
+        //        int delta;
 
-                // Determine the delta to apply in the order number for the module
-                // within the list.  +3 moves down one item; -3 moves up one item
-                if (cmd == "down")
-                {
-                    delta = 3;
-                }
-                else
-                {
-                    delta = -3;
-                }
+        //        // Determine the delta to apply in the order number for the module
+        //        // within the list.  +3 moves down one item; -3 moves up one item
+        //        if (cmd == "down")
+        //        {
+        //            delta = 3;
+        //        }
+        //        else
+        //        {
+        //            delta = -3;
+        //        }
 
-                var t = this.PortalPages[this.tabList.SelectedIndex];
-                t.Order += delta;
-                this.OrderPages();
-                this.Response.Redirect(
-                    HttpUrlBuilder.BuildUrl("~/" + HttpUrlBuilder.DefaultPage, this.PageID, "selectedtabID=" + t.ID));
-            }
-        }
+        //        var t = this.PortalPages[this.tabList.SelectedIndex];
+        //        t.Order += delta;
+        //        this.OrderPages();
+        //        this.Response.Redirect(
+        //            HttpUrlBuilder.BuildUrl("~/" + HttpUrlBuilder.DefaultPage, this.PageID, "selectedtabID=" + t.ID));
+        //    }
+        //}
 
         /// <summary>
         /// The OrderPages helper method is used to reset
@@ -387,25 +390,31 @@ namespace Appleseed.DesktopModules.CoreModules.Pages
         /// </param>
         /// <remarks>
         /// </remarks>
-        private void SelectPage(int tabID)
-        {
-            for (var i = 0; i < this.tabList.Items.Count; i++)
-            {
-                if (this.PortalPages[i].ID == tabID)
-                {
-                    if (this.tabList.SelectedItem != null)
-                    {
-                        this.tabList.SelectedItem.Selected = false;
-                    }
+        //private void SelectPage(int tabID)
+        //{
+        //    for (var i = 0; i < this.tabList.Items.Count; i++)
+        //    {
+        //        if (this.PortalPages[i].ID == tabID)
+        //        {
+        //            if (this.tabList.SelectedItem != null)
+        //            {
+        //                this.tabList.SelectedItem.Selected = false;
+        //            }
 
-                    this.tabList.Items[i].Selected = true;
-                    return;
-                }
-            }
+        //            this.tabList.Items[i].Selected = true;
+        //            return;
+        //        }
+        //    }
 
-            return;
-        }
+        //    return;
+        //}
 
         #endregion
+
+        public string getTreeRoute() {
+
+            return HttpUrlBuilder.BuildUrl("~/PageManagerTree/PageManagerTree/Module");
+
+        }
     }
 }

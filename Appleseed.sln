@@ -43,6 +43,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PortableAreas", "PortableAr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{36955345-FB7B-414A-8878-2B76DCF982D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PageManagerTree", "Projects\PortableAreas\PageManagerTree\PageManagerTree.csproj", "{36310014-77B3-4DB6-B391-B4036D1BDDD3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +119,10 @@ Global
 		{DBAED848-FEE6-45D4-9086-E519E0A077A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBAED848-FEE6-45D4-9086-E519E0A077A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBAED848-FEE6-45D4-9086-E519E0A077A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36310014-77B3-4DB6-B391-B4036D1BDDD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36310014-77B3-4DB6-B391-B4036D1BDDD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36310014-77B3-4DB6-B391-B4036D1BDDD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36310014-77B3-4DB6-B391-B4036D1BDDD3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -136,6 +142,7 @@ Global
 		{6BC1E6D4-1DD7-4CDB-B362-F390D40DDFFC} = {B5258F28-F3D0-4E44-85DA-FB9545800BAF}
 		{B1021322-5BD0-454F-9C38-F9565C71C2CF} = {36955345-FB7B-414A-8878-2B76DCF982D8}
 		{DBAED848-FEE6-45D4-9086-E519E0A077A2} = {E7F52803-87CE-4F80-8507-CF1C6EA1A46F}
+		{36310014-77B3-4DB6-B391-B4036D1BDDD3} = {E7F52803-87CE-4F80-8507-CF1C6EA1A46F}
 	EndGlobalSection
 	GlobalSection(NDepend) = preSolution
 		Project = ".\Appleseed.ndproj"

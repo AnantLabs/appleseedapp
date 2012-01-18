@@ -1,6 +1,37 @@
 <%@ Control AutoEventWireup="true" Inherits="Appleseed.DesktopModules.CoreModules.Pages.Pages"
     Language="c#" CodeBehind="Pages.ascx.cs" %>
-<table cellpadding="5" cellspacing="0">
+
+    <link rel="Stylesheet" href="../../../aspnet_client/jQuery/jsTree/themes/default/style.css" />
+
+<div id="PageTree">
+    <img src="../../../images/img/throbber.gif" alt="Loading ... "/>
+    <input runat="server" type="text" id="TreeRoute" class="TreeRoute" style="visibility: hidden"/>
+</div>
+
+<script type="text/javascript">
+
+
+
+    $(document).ready(function () {
+        getTree($('.TreeRoute').val());
+    });
+
+    function getTree(url) {
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            timeout: "100000",
+            success: function (data) {
+                $("#PageTree").html(data);
+            }
+        });
+    }
+</script>
+
+
+
+<%--<table cellpadding="5" cellspacing="0">
     <tr>
         <td class="SubHead" colspan="3">
             <rbfwebui:Label ID="lblHead" runat="server" Text="Pages" TextKey="AM_TABS" />
@@ -50,3 +81,4 @@
         </td>
     </tr>
 </table>
+--%>

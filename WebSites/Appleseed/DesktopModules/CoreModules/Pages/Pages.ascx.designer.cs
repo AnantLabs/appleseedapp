@@ -13,48 +13,12 @@ namespace Appleseed.DesktopModules.CoreModules.Pages {
     public partial class Pages {
         
         /// <summary>
-        /// lblHead control.
+        /// TreeRoute control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.Label lblHead;
-        
-        /// <summary>
-        /// tabList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox tabList;
-        
-        /// <summary>
-        /// upBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton upBtn;
-        
-        /// <summary>
-        /// downBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.ImageButton downBtn;
-        
-        /// <summary>
-        /// addBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Appleseed.Framework.Web.UI.WebControls.LinkButton addBtn;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText TreeRoute;
     }
 }
