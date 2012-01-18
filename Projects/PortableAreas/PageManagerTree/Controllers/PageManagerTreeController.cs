@@ -10,10 +10,11 @@ using System.Web.UI;
 using System.Data.SqlClient;
 using Appleseed.Framework.Settings.Cache;
 using Appleseed.Framework.Security;
-using Appleseed.Core.Models;
 using System.Web.UI.WebControls;
+using PageManagerTree.Models;
+using PageManagerTree.Massive;
 
-namespace Appleseed.Core.Controllers
+namespace PageManagerTree.Controllers
 {
     public class PageManagerTreeController : Controller
     {
@@ -239,6 +240,28 @@ namespace Appleseed.Core.Controllers
             this.OrderPages();
 
 
+        }
+
+        public JsonResult Rename(int id, string name) {
+
+            try {
+                var db = new rb_Pages();
+                var page = db.Single(id);
+                page.PageName = name;
+                db.Update(page, page.PageID);
+
+
+                //string sql = @"UPDATE rb_Pages SET [] = @0 WHERE PageID = @1";
+
+                //object[] queryargs = { name, id };
+
+                //var t = new .Query(sql, queryargs);
+            }
+            catch (Exception ) {
+                return Json(new { error = true });
+            }
+
+            return Json(new { error = false }); 
         }
     
     

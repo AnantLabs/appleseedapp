@@ -5742,6 +5742,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create.
+        /// </summary>
+        internal static string CREATE {
+            get {
+                return ResourceManager.GetString("CREATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Created by.
         /// </summary>
         internal static string CREATEDBY {
@@ -12492,6 +12501,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rename.
+        /// </summary>
+        internal static string RENAME {
+            get {
+                return ResourceManager.GetString("RENAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
         internal static string REPEATCOLUMNS {
@@ -12533,6 +12551,15 @@ namespace Resources {
         internal static string REQUEST_MODULE_CONTENTAPPROVAL {
             get {
                 return ResourceManager.GetString("REQUEST_MODULE_CONTENTAPPROVAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reload to view changes.
+        /// </summary>
+        internal static string RESET_SEE_CHANGES {
+            get {
+                return ResourceManager.GetString("RESET_SEE_CHANGES", resourceCulture);
             }
         }
         

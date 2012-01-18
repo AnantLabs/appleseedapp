@@ -4416,4 +4416,13 @@
   <data name="PAGESETTINGS_SITEDEFAULT" xml:space="preserve">
     <value>(Tema del sitio)</value>
   </data>
+  <data name="RESET_SEE_CHANGES" xml:space="preserve">
+    <value>Recarga para ver los cambios</value>
+  </data>
+  <data name="CREATE" xml:space="preserve">
+    <value>Crear</value>
+  </data>
+  <data name="RENAME" xml:space="preserve">
+    <value>Cambiar Nombre</value>
+  </data>
 </root>

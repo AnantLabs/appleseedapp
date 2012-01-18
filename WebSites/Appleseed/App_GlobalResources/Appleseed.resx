@@ -5693,4 +5693,13 @@ function confirmDelete()
   <data name="ZIPCODE" xml:space="preserve">
     <value>Zip Code</value>
   </data>
+  <data name="RESET_SEE_CHANGES" xml:space="preserve">
+    <value>Reload to view changes</value>
+  </data>
+  <data name="CREATE" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="RENAME" xml:space="preserve">
+    <value>Rename</value>
+  </data>
 </root>

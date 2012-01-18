@@ -14,6 +14,7 @@
     <AssemblyName>Appleseed</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
@@ -4160,6 +4161,10 @@
     <Content Include="aspnet_client\jQuery\jquery.validate.unobtrusive.js" />
     <Content Include="aspnet_client\jQuery\jquery.validate.unobtrusive.min.js" />
     <Content Include="aspnet_client\jQuery\jQueryTabs.js" />
+    <Content Include="aspnet_client\jQuery\jsTree\themes\default\d.gif" />
+    <Content Include="aspnet_client\jQuery\jsTree\themes\default\d.png" />
+    <Content Include="aspnet_client\jQuery\jsTree\themes\default\style.css" />
+    <Content Include="aspnet_client\jQuery\jsTree\themes\default\throbber.gif" />
     <Content Include="aspnet_client\jQuery\MicrosoftAjax.debug.js" />
     <Content Include="aspnet_client\jQuery\MicrosoftAjax.js" />
     <Content Include="aspnet_client\jQuery\MicrosoftMvcAjax.debug.js" />
@@ -6522,6 +6527,7 @@
     <Content Include="images\img\theme_middle.gif" />
     <Content Include="images\img\Thread.png" />
     <Content Include="images\img\ThreadOpen.png" />
+    <Content Include="images\img\throbber.gif" />
     <Content Include="images\img\tri.gif" />
     <Content Include="images\img\tridown.gif" />
     <Content Include="images\img\trileft.gif" />
