@@ -1295,7 +1295,7 @@ namespace Appleseed.Framework.Web.UI
         protected override void OnInit(EventArgs e)
         {
 
-            if (!string.IsNullOrEmpty(PageSettings["FB_LikeGate_Page"].ToString())) {
+            if (PageSettings.ContainsKey("FB_LikeGate_Page") &&  !string.IsNullOrEmpty(PageSettings["FB_LikeGate_Page"].ToString())) {
                 if (Request.QueryString["signed_request"] != null) {
 
                     // Decode signed_request value and saved it in session
