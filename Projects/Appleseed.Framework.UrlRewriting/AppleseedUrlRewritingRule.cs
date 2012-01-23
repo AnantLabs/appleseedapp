@@ -134,12 +134,16 @@ namespace Appleseed.Framework.UrlRewriting
                     }
 
                     queryString += string.Format(
-                        "&{0}",
-                        queryStringParam.Substring(0, queryStringParam.IndexOf(this.defaultSplitter)));
-                    queryString += string.Format(
-                        "={0}",
+                        "&{0}={1}",
+                        queryStringParam.Substring(0, queryStringParam.IndexOf(this.defaultSplitter)),
                         queryStringParam.Substring(queryStringParam.IndexOf(this.defaultSplitter) + this.defaultSplitter.Length));
                 }
+            }
+            if (HttpContext.Current.Request.Form["signed_request"] != null) 
+            {
+                queryString += string.Format(
+                    "&signed_request={0}",
+                    HttpContext.Current.Request.Params["signed_request"] ) ;
             }
 
             HttpContext.Current.RewritePath(rewrittenUrl, string.Empty, queryString);
