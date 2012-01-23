@@ -475,16 +475,12 @@ namespace Appleseed.Framework
         public static bool ValidateProperUrl(int pageId, ref string CorrectUrl)
         {
             string url = HttpContext.Current.Request.RawUrl;
-            int cant = HttpContext.Current.Request.Form.Count;
-            if (cant > 0) {
+            if (HttpContext.Current.Request.Form["signed_request"] != null) {
                 StringBuilder sb = new StringBuilder();
-                int it = 0; 
-                foreach (var key in HttpContext.Current.Request.Form.AllKeys) {
-                    sb.AppendFormat("{0}={1}", key, HttpContext.Current.Request.Form[key]);
-                    it++;
-                    if (it != cant)
-                        sb.Append("&");
-                }
+
+                // Added for the facebook signed_request
+                sb.AppendFormat("{0}={1}", "signed_request", HttpContext.Current.Request.Form["signed_request"]);  
+
                 if (url.IndexOf('?') > 0) {
                     url += sb.ToString();
                 }
