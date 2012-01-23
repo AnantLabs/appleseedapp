@@ -191,7 +191,11 @@ namespace Appleseed.Framework.UrlRewriting
     
             //    }
             //}
-            
+            if (HttpContext.Current.Request.Form["signed_request"] != null) {
+                queryString += string.Format(
+                    "&signed_request={0}",
+                    HttpContext.Current.Request.Params["signed_request"]);
+            }
                      
 
 

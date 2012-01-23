@@ -40,6 +40,7 @@ namespace Appleseed.Framework.Web.UI
 
     using Path = Appleseed.Framework.Settings.Path;
 	using System.Web.Security;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// TODO: this class needs a better write-up ;-)
@@ -1293,6 +1294,45 @@ namespace Appleseed.Framework.Web.UI
         /// </param>
         protected override void OnInit(EventArgs e)
         {
+
+            if (!string.IsNullOrEmpty(PageSettings["FB_LikeGate_Page"].ToString())) {
+                if (Request.QueryString["signed_request"] != null) {
+
+                    // Decode signed_request value and saved it in session
+                    userLikedPage();
+
+                }
+
+                if (Session["FacebookLikeGate"] != null) {
+                    bool liked = false;
+                    try {
+                        liked = (bool)Session["FacebookLikeGate"];
+                    }
+                    catch (Exception) {
+                        liked = false;
+                    }
+                    if (!liked) {
+                        //if (Session["FBLikeGateRedirect"] != null)
+                        //    Session.Remove("FBLikeGateRedirect");
+                        //else {
+                        //    Session.Add("FBLikeGateRedirect", true);
+                        string url = PageSettings["FB_LikeGate_Page"].ToString();
+                        if (url.StartsWith("www.")) {
+                            var http = "http";
+                            if (Request.IsSecureConnection) {
+                                http += "s://";
+                            }
+                            else
+                                http += "://";
+                            url = http + url;
+                            
+                        }
+                        Response.Redirect(url);
+                        //}
+                    }
+                }
+            }
+            
             this.LoadSettings();
 
             Control control = null;
@@ -1387,6 +1427,7 @@ namespace Appleseed.Framework.Web.UI
         /// </param>
         protected override void OnLoad(EventArgs e)
         {
+
             // add CurrentTheme CSS
             if (this.CurrentTheme != null)
             {
@@ -1729,6 +1770,39 @@ namespace Appleseed.Framework.Web.UI
                 else if (c.Controls.Count > 0)
                     FindControls<T>(c, foundControls);                
             }
+        }
+
+        #endregion
+
+        #region Facebook_LikeGate
+
+        private void userLikedPage() {
+
+
+            try {
+                
+                string payload = Request.QueryString["signed_request"].Split('.')[1];
+                var encoding = new UTF8Encoding();
+                var decodedJson = payload.Replace("=", string.Empty).Replace('-', '+').Replace('_', '/');
+                var base64JsonArray = Convert.FromBase64String(decodedJson.PadRight(decodedJson.Length + (4 - decodedJson.Length % 4) % 4, '='));
+                var json = encoding.GetString(base64JsonArray);
+                var o = JObject.Parse(json);
+
+                //var lPid = Convert.ToString(o.SelectToken("page.id")).Replace("\"", "");
+                var lLiked = Convert.ToString(o.SelectToken("page.liked")).Replace("\"", "");
+                //var lUserId = Convert.ToString(o.SelectToken("user.id")).Replace("\"", "");
+                bool like = bool.Parse(lLiked.ToString());
+
+                Session.Add("FacebookLikeGate", like);
+
+                
+                
+            }
+            catch (Exception ex) {
+                ErrorHandler.Publish(LogLevel.Error, ex);
+                
+            }
+            
         }
 
         #endregion

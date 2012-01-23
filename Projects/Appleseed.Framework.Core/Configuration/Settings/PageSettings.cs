@@ -593,6 +593,15 @@ namespace Appleseed.Framework.Site.Configuration
                 };
             baseSettings.Add("UrlPageName", urlPageName);
 
+            var FB_LikeGate_Page = new SettingItem<string, TextBox>(new BaseDataType<string, TextBox>()) {
+                Group = group,
+                Order = groupOrderBase + 4,
+                EnglishName = "FB Like Gate Page",
+                Description =
+                    "This setting allows you to specify an url to redirect if the user doesn't like your page"
+            };
+            baseSettings.Add("FB_LikeGate_Page", FB_LikeGate_Page);
+
             // groupOrderBase = (int)SettingItemGroup.META_SETTINGS;
             group = SettingItemGroup.META_SETTINGS;
             var tabTitle = new SettingItem<string, TextBox>(new BaseDataType<string, TextBox>())

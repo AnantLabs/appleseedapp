@@ -22,6 +22,7 @@ namespace Appleseed.Framework
     using Appleseed.Framework.Site.Configuration;
     using Appleseed.Framework.Web;
     using System.Text.RegularExpressions;
+    using System.Text;
 
     /// <summary>
     /// HttpUrlBuilder
@@ -474,6 +475,26 @@ namespace Appleseed.Framework
         public static bool ValidateProperUrl(int pageId, ref string CorrectUrl)
         {
             string url = HttpContext.Current.Request.RawUrl;
+            int cant = HttpContext.Current.Request.Form.Count;
+            if (cant > 0) {
+                StringBuilder sb = new StringBuilder();
+                int it = 0; 
+                foreach (var key in HttpContext.Current.Request.Form.AllKeys) {
+                    sb.AppendFormat("{0}={1}", key, HttpContext.Current.Request.Form[key]);
+                    it++;
+                    if (it != cant)
+                        sb.Append("&");
+                }
+                if (url.IndexOf('?') > 0) {
+                    url += sb.ToString();
+                }
+                else {
+                    if (url.EndsWith("/")) {
+                        url = url.Substring(0, url.Length - 1);
+                    }
+                    url += "?" + sb.ToString() + "/";
+                }            
+            }
             var parts = url.Split(new char[] { '/' }, System.StringSplitOptions.RemoveEmptyEntries);
             if (parts.Length > 2) {
                 //There are some query's on the left with the a__x format
