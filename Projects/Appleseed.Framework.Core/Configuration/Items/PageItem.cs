@@ -62,6 +62,14 @@ namespace Appleseed.Framework
         /// </remarks>
         public int Order { get; set; }
 
+        /// <summary>
+        ///   Gets or sets the Url of that page.
+        /// </summary>
+        /// <value>The Url.</value>
+        /// <remarks>
+        /// </remarks>
+        public string Url { get; set; }
+
         #endregion
 
         #region Implemented Interfaces

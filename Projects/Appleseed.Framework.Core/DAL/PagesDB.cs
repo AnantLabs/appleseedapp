@@ -444,7 +444,8 @@ namespace Appleseed.Framework.Site.Data
                                 ID = (int)result["PageID"],
                                 Name = (string)result["PageName"],
                                 Order = (int)result["PageOrder"],
-                                NestLevel = (int)result["NestLevel"]
+                                NestLevel = (int)result["NestLevel"],
+                                Url = "/" + ((int)result["PageID"]).ToString() + "/" + (string)result["PageName"] + "/"
                             };
                         desktopPages.Add(tabItem);
                     }
