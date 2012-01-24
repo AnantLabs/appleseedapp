@@ -60,15 +60,7 @@ namespace Appleseed.Framework
         /// <value>The order.</value>
         /// <remarks>
         /// </remarks>
-        public int Order { get; set; }
-
-        /// <summary>
-        ///   Gets or sets the Url of that page.
-        /// </summary>
-        /// <value>The Url.</value>
-        /// <remarks>
-        /// </remarks>
-        public string Url { get; set; }
+        public int Order { get; set; }        
 
         #endregion
 
