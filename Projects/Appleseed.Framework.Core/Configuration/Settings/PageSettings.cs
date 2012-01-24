@@ -32,6 +32,7 @@ namespace Appleseed.Framework.Site.Configuration
 
     using Path = Appleseed.Framework.Settings.Path;
     using System.Collections.Specialized;
+    using Appleseed.Framework.Site.Data;
 
     /// <summary>
     /// PageSettings Class encapsulates the detailed settings 
@@ -593,7 +594,12 @@ namespace Appleseed.Framework.Site.Configuration
                 };
             baseSettings.Add("UrlPageName", urlPageName);
 
-            var FB_LikeGate_Page = new SettingItem<string, TextBox>(new BaseDataType<string, TextBox>()) {
+            var PageList = new ArrayList(new PagesDB().GetPagesFlat(this.PortalSettings.PortalID));
+            var noSelectedPage = new PageItem { Name = General.GetString("NONE") , Url = ""};
+            PageList.Insert(0, noSelectedPage);
+            
+
+            var FB_LikeGate_Page = new SettingItem<string, ListControl>(new CustomListDataType(PageList, "Name", "Url")){
                 Group = group,
                 Order = groupOrderBase + 4,
                 EnglishName = "FB Like Gate Page",
