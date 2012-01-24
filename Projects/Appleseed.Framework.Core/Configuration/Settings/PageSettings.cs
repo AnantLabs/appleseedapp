@@ -595,11 +595,11 @@ namespace Appleseed.Framework.Site.Configuration
             baseSettings.Add("UrlPageName", urlPageName);
 
             var PageList = new ArrayList(new PagesDB().GetPagesFlat(this.PortalSettings.PortalID));
-            var noSelectedPage = new PageItem { Name = General.GetString("NONE") , Url = ""};
+            var noSelectedPage = new PageItem { Name = General.GetString("NONE") , ID = -1};
             PageList.Insert(0, noSelectedPage);
             
 
-            var FB_LikeGate_Page = new SettingItem<string, ListControl>(new CustomListDataType(PageList, "Name", "Url")){
+            var FB_LikeGate_Page = new SettingItem<string, ListControl>(new CustomListDataType(PageList, "Name", "ID")){
                 Group = group,
                 Order = groupOrderBase + 4,
                 EnglishName = "FB Like Gate Page",

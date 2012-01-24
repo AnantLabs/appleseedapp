@@ -1303,9 +1303,19 @@ namespace Appleseed.Framework.Web.UI
         /// </param>
         protected override void OnInit(EventArgs e)
         {
+            bool FacebookSetting = false;
+            try{
+                if (PageSettings.ContainsKey("FB_LikeGate_Page") &&
+                   !string.IsNullOrEmpty(PageSettings["FB_LikeGate_Page"].ToString()) &&
+                    int.Parse(PageSettings["FB_LikeGate_Page"].ToString()) != -1
+                    )
+                    FacebookSetting = true;
+            }
+            catch(Exception){
+                FacebookSetting = false;
+            }            
             
-            
-            if (PageSettings.ContainsKey("FB_LikeGate_Page") && !string.IsNullOrEmpty(PageSettings["FB_LikeGate_Page"].ToString())) {
+            if (FacebookSetting) {
                 if (Request.QueryString["signed_request"] != null) {
 
                     // Decode signed_request value and saved it in session
@@ -1324,17 +1334,8 @@ namespace Appleseed.Framework.Web.UI
                     }
                     if (!liked) {
 
-                        string url = PageSettings["FB_LikeGate_Page"].ToString();
-                        if (url.StartsWith("www.")) {
-                            var http = "http";
-                            if (Request.IsSecureConnection) {
-                                http += "s://";
-                            }
-                            else
-                                http += "://";
-                            url = http + url;
-
-                        }
+                        int id = int.Parse(PageSettings["FB_LikeGate_Page"].ToString());
+                        string url = HttpUrlBuilder.BuildUrl(id);
 
                         Response.Redirect(url);
                         //}
