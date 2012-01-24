@@ -1284,6 +1284,15 @@ namespace Appleseed.Framework.Web.UI
             // any other code goes here
         }
 
+        protected override void OnPreRender(EventArgs e) {
+
+            if(Request.Browser.Browser.ToString().ToLower().Contains("ie"))
+                HttpContext.Current.Response.AddHeader("p3p", "CP=\"IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT\""); 
+                //Response.AppendHeader("P3P", "CP=\"CAO PSA OUR\"");
+            
+            base.OnPreRender(e);
+        }
+
         /// <summary>
         /// Handles the OnInit event at Page level<br/>
         ///   Performs OnInit events that are common to all Pages<br/>
@@ -1294,8 +1303,9 @@ namespace Appleseed.Framework.Web.UI
         /// </param>
         protected override void OnInit(EventArgs e)
         {
-
-            if (PageSettings.ContainsKey("FB_LikeGate_Page") &&  !string.IsNullOrEmpty(PageSettings["FB_LikeGate_Page"].ToString())) {
+            
+            
+            if (PageSettings.ContainsKey("FB_LikeGate_Page") && !string.IsNullOrEmpty(PageSettings["FB_LikeGate_Page"].ToString())) {
                 if (Request.QueryString["signed_request"] != null) {
 
                     // Decode signed_request value and saved it in session
@@ -1304,6 +1314,7 @@ namespace Appleseed.Framework.Web.UI
                 }
 
                 if (Session["FacebookLikeGate"] != null) {
+
                     bool liked = false;
                     try {
                         liked = (bool)Session["FacebookLikeGate"];
@@ -1312,10 +1323,7 @@ namespace Appleseed.Framework.Web.UI
                         liked = false;
                     }
                     if (!liked) {
-                        //if (Session["FBLikeGateRedirect"] != null)
-                        //    Session.Remove("FBLikeGateRedirect");
-                        //else {
-                        //    Session.Add("FBLikeGateRedirect", true);
+
                         string url = PageSettings["FB_LikeGate_Page"].ToString();
                         if (url.StartsWith("www.")) {
                             var http = "http";
@@ -1325,14 +1333,19 @@ namespace Appleseed.Framework.Web.UI
                             else
                                 http += "://";
                             url = http + url;
-                            
+
                         }
+
                         Response.Redirect(url);
                         //}
                     }
+                    
                 }
+                
             }
             
+
+
             this.LoadSettings();
 
             Control control = null;
