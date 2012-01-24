@@ -179,8 +179,19 @@ namespace PageManagerTree.Controllers
 
         public JsonResult edit(int id)
         {
+            ModulesDB modules = new ModulesDB();
+            Guid TabGuid = new Guid("{1C575D94-70FC-4A83-80C3-2087F726CBB3}");
+            int TabModuleID = 0;
+            foreach (ModuleItem m in modules.FindModuleItemsByGuid(PortalSettings.PortalID, TabGuid)) {
+                bool HasEditPermissionsOnTabs = PortalSecurity.HasEditPermissions(m.ID);
+                if (HasEditPermissionsOnTabs) {
+                    TabModuleID = m.ID;
+                    break;
+                }
+            }
+
             string dir = HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/Pages/PageLayout.aspx?PageID="+ id.ToString() +
-                    "&mID=" + 110+ "&Alias=" + this.PortalSettings.PortalAlias + "&returntabid=" +
+                    "&mID=" + TabModuleID + "&Alias=" + this.PortalSettings.PortalAlias + "&returntabid=" +
                     this.PortalSettings.ActiveModule);
             return Json(new { url = dir});
         }
