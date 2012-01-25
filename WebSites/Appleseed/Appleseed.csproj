@@ -1378,6 +1378,13 @@
     <Compile Include="DesktopModules\CoreModules\Pages\PageLayout.aspx.designer.cs">
       <DependentUpon>PageLayout.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DesktopModules\CoreModules\Pages\Pages.ascx.cs">
+      <DependentUpon>Pages.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CoreModules\Pages\Pages.ascx.designer.cs">
+      <DependentUpon>Pages.ascx</DependentUpon>
+    </Compile>
     <Compile Include="DesktopModules\CoreModules\PortalsAdministration\AddNewPortal.aspx.cs">
       <DependentUpon>AddNewPortal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -6408,6 +6415,7 @@
     <Content Include="DesktopModules\CoreModules\Pages\install.sql" />
     <Content Include="DesktopModules\CoreModules\Pages\install.xml" />
     <Content Include="DesktopModules\CoreModules\Pages\PageLayout.aspx" />
+    <Content Include="DesktopModules\CoreModules\Pages\Pages.ascx" />
     <Content Include="DesktopModules\CoreModules\PortalsAdministration\AddNewPortal.aspx" />
     <Content Include="DesktopModules\CoreModules\PortalsAdministration\EditPortal.aspx" />
     <Content Include="DesktopModules\CoreModules\PortalsAdministration\install.xml" />
