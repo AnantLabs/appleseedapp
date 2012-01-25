@@ -1,7 +1,8 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<dynamic>" %>
 <%@ Import Namespace="PageManagerTree" %>
 <script type="text/javascript" src="<%= Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/PageManagerTree/Scripts/jquery.jstree.js") %>"></script>
-<%--<link type="text/css" rel="stylesheet" href="<%: Url.PageManagerTreeResource("PageManagerTree.Content.themes.default.style.css") %>" /> --%>
+<link type="text/css" rel="stylesheet" href="<%: Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/aspnet_client/jQuery/jsTree/themes/default/style.css") %>" /> 
+
 
 <form id="form1" runat="server">
     <div id="jsTree" class="demo">
@@ -18,7 +19,11 @@
 <script type="text/javascript">
     var nodeID;
     $(function () {
-        $("#jsTree").jstree({
+        $("#jsTree")
+//        .bind("loaded.jstree", function (e, data) {
+//            data.inst.open_all('#pjson_0'); // -1 opens all nodes in the container
+//        })
+        .jstree({
             "json_data": {
                 "ajax": {
                     "type": "POST",
@@ -104,7 +109,9 @@
                 "drop_target": false,
                 "drag_target": false
             },
-            "plugins": ["themes", "contextmenu", "json_data", "ui", "crrm", "dnd"]
+            "core": { "initially_open" : ["pjson_0"]} ,
+
+            "plugins": ["themes", "contextmenu", "json_data", "ui", "crrm", "dnd","core"]
         })
         .bind("move_node.jstree", function (e, data) {
             var result;
@@ -189,5 +196,8 @@
                 });
             }
     }
+
+    
+
 </script>
 
