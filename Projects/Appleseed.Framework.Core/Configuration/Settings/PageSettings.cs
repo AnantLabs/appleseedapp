@@ -501,7 +501,7 @@ namespace Appleseed.Framework.Site.Configuration
 
             if (!CurrentCache.Exists(Key.ImageMenuList(this.PortalSettings.CurrentLayout)))
             {
-                imageMenuFiles = new Hashtable { { "-Default-", string.Empty } };
+                imageMenuFiles = new Hashtable { { General.GetString("PAGESETTINGS_SITEDEFAULT", "(Site Default)"), string.Empty } };
                 var layoutManager = new LayoutManager(this.PortalPath);
 
                 var menuDirectory = Path.WebPathCombine(
