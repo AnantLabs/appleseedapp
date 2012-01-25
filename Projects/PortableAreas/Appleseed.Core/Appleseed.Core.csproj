@@ -126,7 +126,7 @@
     <Content Include="DBScripts\20110829\01.GetModulesSettingsInPage.sql" />
     <Content Include="DBScripts\20110829\02.UpdateHTMLContent.sql" />
     <Content Include="DBScripts\20110907\01.ChageUserPageName.sql" />
-    <Content Include="DBScripts\20120125\01.ChangePageManagerInstallationScript.sql" />
+    <Content Include="DBScripts\20120125\01.InstalingNewPageManager.sql" />
     <Content Include="DBScripts\Readme.txt" />
   </ItemGroup>
   <ItemGroup>
