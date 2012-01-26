@@ -470,11 +470,11 @@ div.Control_Panel_Table{
         /************************************************/	
  
 .div_ev_Table{          /***** contenedor de tabla editar propiedades de modulo ****/
-    padding:20px 20px 10px 20px;
+    padding:20px 10px 10px 10px;
 	border:none;
 	margin: 0px auto 10px; 
 	color:#ffffff;
-	width:1000px!important;}
+	min-width: 960px;}
 
 div.div_ev_Table table{
 		max-width:730px!important;
