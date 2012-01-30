@@ -2,12 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Web.Mvc;
 using System.Linq;
 using StructureMap;
 using Appleseed.Framework.Settings;
 using Appleseed.Framework.Site.Configuration;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Appleseed.Code
 {
@@ -20,10 +20,14 @@ namespace Appleseed.Code
             {               
                 "~/{0}.aspx",
                 "~/{0}.ascx",
+                "~/{0}.cshtml",
                 "~/Views/{1}/{0}.aspx",
                 "~/Views/{1}/{0}.ascx",
+                "~/Views/{1}/{0}.cshtml",
                 "~/Views/Shared/{0}.aspx",
                 "~/Views/Shared/{0}.ascx",
+                "~/Views/Shared/{0}.cshtml",
+
             };
 
             var MasterLocationFormatsList = new List<string>
@@ -36,7 +40,7 @@ namespace Appleseed.Code
 
 
             ViewLocationFormatsList.Insert(0, @"~/Portals/_$$/MVCTemplates/{0}.ascx");
-
+            ViewLocationFormatsList.Insert(1, @"~/Portals/_$$/MVCTemplates/{0}.cshtml");
             ViewLocationFormats = ViewLocationFormatsList.ToArray();
             PartialViewLocationFormats = ViewLocationFormats;
 
@@ -56,6 +60,8 @@ namespace Appleseed.Code
         {
             ViewLocationFormats[0] = ViewLocationFormats[0].Replace("$$", PortalAlias);
             PartialViewLocationFormats[0] = PartialViewLocationFormats[0].Replace("$$", PortalAlias);
+            ViewLocationFormats[1] = ViewLocationFormats[1].Replace("$$", PortalAlias);
+            PartialViewLocationFormats[1] = PartialViewLocationFormats[1].Replace("$$", PortalAlias);
 
             ViewEngineResult result = null;
 
@@ -63,7 +69,11 @@ namespace Appleseed.Code
             var formattedView = FormatViewName(controllerContext, partialViewName);
             string str2 = formattedView.path;
             if (formattedView.custom) {
-                return new ViewEngineResult(new WebFormView(str2), this);
+                
+                if(str2.EndsWith(".cshtml"))
+                    return new ViewEngineResult(new RazorView(controllerContext,str2,null,false,null),this);
+                else
+                    return new ViewEngineResult(new WebFormView(controllerContext,str2), this);
             }
 
             result = base.FindPartialView(controllerContext, str2, useCache);
@@ -76,7 +86,10 @@ namespace Appleseed.Code
             formattedView = FormatSharedViewName(controllerContext, partialViewName);
             string str3 = formattedView.path;
             if (formattedView.custom) {
-                return new ViewEngineResult(new WebFormView(str3), this);
+                if (str3.EndsWith(".cshtml"))
+                    return new ViewEngineResult(new RazorView(controllerContext, str3, null, false, null), this);
+                else
+                    new ViewEngineResult(new WebFormView(controllerContext, str3), this);
             }
 
             result = base.FindPartialView(controllerContext, str3, useCache);
@@ -85,7 +98,17 @@ namespace Appleseed.Code
             }
 
             /*else return original partialview*/
-            return base.FindPartialView(controllerContext, partialViewName, useCache);
+
+
+            var originalviewMVC2 = base.FindPartialView(controllerContext, partialViewName, useCache);
+
+            if (originalviewMVC2.View != null) {
+
+                return originalviewMVC2;
+            }
+            else {
+                return new RazorViewEngine().FindPartialView(controllerContext, partialViewName, useCache);
+            }
 
         }
 
@@ -93,6 +116,8 @@ namespace Appleseed.Code
         {
             ViewLocationFormats[0] = ViewLocationFormats[0].Replace("$$", PortalAlias);
             PartialViewLocationFormats[0] = PartialViewLocationFormats[0].Replace("$$", PortalAlias);
+            ViewLocationFormats[1] = ViewLocationFormats[1].Replace("$$", PortalAlias);
+            PartialViewLocationFormats[1] = PartialViewLocationFormats[1].Replace("$$", PortalAlias);
 
             ViewEngineResult result = null;
 
@@ -100,7 +125,11 @@ namespace Appleseed.Code
             var formattedView = FormatViewName(controllerContext, viewName);
             string str2 = formattedView.path;
             if (formattedView.custom) {
-                return new ViewEngineResult(new WebFormView(str2), this);
+
+                if (str2.EndsWith(".cshtml"))
+                    return new ViewEngineResult(new RazorView(controllerContext, str2, null, false, null), this);
+                else
+                    return new ViewEngineResult(new WebFormView(controllerContext, str2), this);
             }
 
             result = base.FindPartialView(controllerContext, str2, useCache);
@@ -113,7 +142,13 @@ namespace Appleseed.Code
             formattedView = FormatSharedViewName(controllerContext, viewName);
             string str3 = formattedView.path;
             if (formattedView.custom) {
-                return new ViewEngineResult(new WebFormView(str3), this);
+
+                if (str3.EndsWith(".cshtml"))
+                    return new ViewEngineResult(new RazorView(controllerContext, str3, null, false, null), this);
+                else
+                    new ViewEngineResult(new WebFormView(controllerContext, str3), this);
+
+                 
             }
 
             result = base.FindPartialView(controllerContext, str3, useCache);
@@ -122,7 +157,15 @@ namespace Appleseed.Code
             }
 
             /*else return original partialview*/
-            return base.FindView(controllerContext, viewName, masterName, useCache);
+            var originalviewMVC2 = base.FindView(controllerContext, viewName, masterName, useCache);
+
+            if (originalviewMVC2.View != null) {
+
+                return originalviewMVC2;
+            }
+            else {
+                return new RazorViewEngine().FindView(controllerContext, viewName, masterName, useCache);
+            }
         }
 
         private dynamic FormatViewName(ControllerContext controllerContext, string viewName)
@@ -144,6 +187,9 @@ namespace Appleseed.Code
                 }
                 if (System.IO.File.Exists(absoluteFilePath + ".aspx")) {
                     return new { path = relativeFilePath + ".aspx", custom = true };
+                }
+                if (System.IO.File.Exists(absoluteFilePath + ".cshtml")) {
+                    return new { path = relativeFilePath + ".cshtml", custom = true };
                 }
             }
 
@@ -169,6 +215,9 @@ namespace Appleseed.Code
                 }
                 if (System.IO.File.Exists(absoluteFilePath + ".aspx")) {
                     return new { path = relativeFilePath + ".aspx", custom = true };
+                }
+                if (System.IO.File.Exists(absoluteFilePath + ".cshtml")) {
+                    return new { path = relativeFilePath + ".cshtml", custom = true };
                 }
             }
 

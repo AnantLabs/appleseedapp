@@ -73,7 +73,7 @@ namespace SelfUpdater.Controllers
                 res = true,
                 NugetLog = logger
             }, JsonRequestBehavior.AllowGet);
-        }
-        
+        }        
+
     }
 }

@@ -215,10 +215,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libs\Microsoft.VisualBasic.Activities.Compiler.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Web.Mvc, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Libs\Microsoft.Web.Mvc.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Web.Mvc.Build">
       <HintPath>..\..\Libs\Microsoft.Web.Mvc.Build.dll</HintPath>
     </Reference>
@@ -288,12 +284,10 @@
     <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DataVisualization.Design" />
     <Reference Include="System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" />
-    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Libs\System.Web.Mvc.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Routing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
