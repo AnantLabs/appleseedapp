@@ -1,5 +1,7 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<dynamic>" %>
 <%@ Import Namespace="PageManagerTree" %>
+
+<div id="jqtreePageManagement">
 <script type="text/javascript" src="<%= Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/PageManagerTree/Scripts/jquery.jstree.js") %>"></script>
 <link type="text/css" rel="stylesheet" href="<%: Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/aspnet_client/jQuery/jsTree/themes/default/style.css") %>" /> 
 
@@ -197,7 +199,21 @@
             }
     }
 
-    
+    $(function() {
+         var c;
+        $('#jqtreePageManagement').children().each(function (i) {
+            var vs = this;
+            if($(vs).has('input').length > 0){
+                c = $(vs).children(0); 
+                if($(c).attr('id') == '__VIEWSTATE')  {        
+                    $(c).remove();
+                    $(vs).remove();
+                } 
+            }      
+        });
+    });
+   
 
 </script>
 
+</div>
