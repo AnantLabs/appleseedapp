@@ -116,9 +116,11 @@ namespace Appleseed
         {
             string Addwww = System.Configuration.ConfigurationManager.AppSettings.Get("AddWwwToRequest");
             if (Addwww != null && Addwww.Equals("true")) {
-                if (!Request.Url.AbsoluteUri.ToLower().Contains("www")) {
-                    var newUrl = Request.Url.AbsoluteUri.Replace("http://", "http://www.");
-                    Response.Redirect(newUrl, true); 
+                if (!Request.IsSecureConnection) {
+                    if (!Request.Url.AbsoluteUri.ToLower().Contains("www")) {
+                        var newUrl = Request.Url.AbsoluteUri.Replace("http://", "http://www.");
+                        Response.Redirect(newUrl, true);
+                    }
                 }
             }
 
