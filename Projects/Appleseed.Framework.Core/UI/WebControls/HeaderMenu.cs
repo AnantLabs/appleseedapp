@@ -653,6 +653,9 @@ namespace Appleseed.Framework.Web.UI.WebControls
                             iframewidth = "435px";
                             dialogwidth = "470";
                         }
+                }
+                else if (PortalSettings.CustomSettings["SITESETTINGS_LOGIN_TYPE"].ToString().EndsWith("signinsocialnetwork.ascx")) {
+                    iframeheight = "300px";
                 } else if (PortalSettings.CustomSettings["SITESETTINGS_LOGIN_TYPE"].ToString().EndsWith("cool.ascx")) {
                     iframewidth = "320px";
                     dialogwidth = "350";
