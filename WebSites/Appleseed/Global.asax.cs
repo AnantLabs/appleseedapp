@@ -48,6 +48,7 @@ namespace Appleseed
     using Appleseed.Core;
     using Appleseed.Code;
     using SelfUpdater.Models;
+    using StructureMap;
 
     /// <summary>
     /// The global.
@@ -494,7 +495,7 @@ namespace Appleseed
                 }
 
                 InputBuilder.BootStrap();
-                ValueProviderFactories.Factories.Add(new System.Web.Mvc.JsonValueProviderFactory());
+                ValueProviderFactories.Factories.Add(new JsonValueProviderFactory());
 
                 ViewEngines.Engines.Clear();
                 ViewEngines.Engines.Add(new AreaViewEngine());
