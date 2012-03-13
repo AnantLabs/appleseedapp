@@ -143,6 +143,7 @@ namespace Appleseed.Content.Web.Modules
 
         void allUsers_PageIndexChanging( object sender, GridViewPageEventArgs e ) {
             allUsers.PageIndex = e.NewPageIndex;
+            BindData();
         }
 
         /// <summary>
