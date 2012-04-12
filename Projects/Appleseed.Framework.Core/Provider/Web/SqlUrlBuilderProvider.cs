@@ -179,16 +179,20 @@ namespace Appleseed.Framework.Web
                     var parts = customAttributes.Split(new char[] { '&' }, StringSplitOptions.RemoveEmptyEntries);
 
                     for (int i = 0; i < parts.Length; i++) {
-                        var key = parts[i].Split('=')[0];
-                        if (!(key.Equals("pageId") || key.Equals("pageID"))) {
-                            if (queryList.ContainsKey(key)) {
-                                var q = parts[i].Split(new char[] {'='},StringSplitOptions.RemoveEmptyEntries);
-                                queryRigth += HttpUtility.UrlEncode(q[0], System.Text.Encoding.GetEncoding(28591)) + "=" + HttpUtility.UrlEncode(q[1], System.Text.Encoding.GetEncoding(28591)) + "&";
-                            } else {
-                                var q = parts[i].Split('=');
-                                queryLeft += HttpUtility.UrlEncode(q[0], System.Text.Encoding.GetEncoding(28591)) + "=" + HttpUtility.UrlEncode(q[1], System.Text.Encoding.GetEncoding(28591)) + "&";
+                        try {
+                            var key = parts[i].Split('=')[0];
+                            if (!(key.Equals("pageId") || key.Equals("pageID"))) {
+                                if (queryList.ContainsKey(key)) {
+                                    var q = parts[i].Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
+                                    queryRigth += HttpUtility.UrlEncode(q[0], System.Text.Encoding.GetEncoding(28591)) + "=" + HttpUtility.UrlEncode(q[1], System.Text.Encoding.GetEncoding(28591)) + "&";
+                                }
+                                else {
+                                    var q = parts[i].Split('=');
+                                    queryLeft += HttpUtility.UrlEncode(q[0], System.Text.Encoding.GetEncoding(28591)) + "=" + HttpUtility.UrlEncode(q[1], System.Text.Encoding.GetEncoding(28591)) + "&";
+                                }
                             }
                         }
+                        catch (Exception) { }
                         
                     }
 
