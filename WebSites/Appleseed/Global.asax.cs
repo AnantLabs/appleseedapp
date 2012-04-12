@@ -48,6 +48,7 @@ namespace Appleseed
     using Appleseed.Core;
     using Appleseed.Code;
     using SelfUpdater.Models;
+    using StructureMap;
 
     /// <summary>
     /// The global.
@@ -490,11 +491,11 @@ namespace Appleseed
                     !bool.Parse(ConfigurationManager.AppSettings["RouteTesting"])) {
                     RegisterRoutes(RouteTable.Routes);
                 } else {
-                    RouteDebugger.RewriteRoutesForTesting(RouteTable.Routes);
+                    //RouteDebugger.RewriteRoutesForTesting(RouteTable.Routes);
                 }
 
                 InputBuilder.BootStrap();
-                ValueProviderFactories.Factories.Add(new Microsoft.Web.Mvc.JsonValueProviderFactory());
+                ValueProviderFactories.Factories.Add(new JsonValueProviderFactory());
 
                 ViewEngines.Engines.Clear();
                 ViewEngines.Engines.Add(new AreaViewEngine());
