@@ -1065,7 +1065,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                 if (HttpContext.Current != null)
                 {
                     // if it is not design time
-                    if (this.Settings["MODULESETTINGS_BUTTON_DISPLAY"] != null &&
+                    if (this.Settings.ContainsKey("MODULESETTINGS_BUTTON_DISPLAY") && this.Settings["MODULESETTINGS_BUTTON_DISPLAY"] != null &&
                         this.Settings["MODULESETTINGS_BUTTON_DISPLAY"].ToString().Length != 0)
                     {
                         this.buttonsRenderAs =
