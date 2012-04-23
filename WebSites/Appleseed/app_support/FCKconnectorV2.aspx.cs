@@ -34,9 +34,47 @@ namespace Appleseed.FCKeditorV2
 		/// </summary>
 		protected override void LoadSettings()
 		{
-			if (PortalSecurity.HasEditPermissions(this.PortalSettings.ActiveModule) == false)
-				PortalSecurity.AccessDeniedEdit();
+            int modId = this.PortalSettings.ActiveModule;
+            if (modId < 1) {
+
+                modId = getModId();
+
+            }
+
+            if (PortalSecurity.HasEditPermissions(modId) == false)
+                PortalSecurity.AccessDeniedEdit();
 		}
+
+        private int getModId() {
+
+            try {
+
+                var query = HttpContext.Current.Request.UrlReferrer.Query;
+                // Trying to get the ModId from the querystring of the urlReferedPage
+                var midIndex = query.IndexOf("mid");
+                if (midIndex > -1) {
+                    query = query.Substring(midIndex);
+                    // Could be mid=x&a=b&c=d or mid=x 
+
+                    var index = query.IndexOf("&");
+                    if (index > -1) {
+                        query = query.Substring(0, index);
+                    }
+                    // query = mid=x
+                    index = query.IndexOf("=");
+                    query = query.Substring(index + 1);
+                    //query = x = mid as string
+                    return int.Parse(query);
+                }
+                return 0;
+
+
+            }
+            catch (Exception) {
+                return 0;
+            }
+        
+        }
 
 		/// <summary>
 		/// Handles OnLoad event at Page level<br/>
@@ -339,13 +377,16 @@ namespace Appleseed.FCKeditorV2
 				{
 					PortalSettings portalSettings = (PortalSettings) HttpContext.Current.Items["PortalSettings"];
 					if (portalSettings == null) return null;
-					var ms = Framework.Site.Configuration.ModuleSettings.GetModuleSettings(portalSettings.ActiveModule);
+                    int modId = portalSettings.ActiveModule;
+                    if (modId < 1)
+                        modId = getModId();
+					var ms = Framework.Site.Configuration.ModuleSettings.GetModuleSettings(modId);
 					string DefaultImageFolder = "default";
-					if (ms["MODULE_IMAGE_FOLDER"] != null) 
+					if (ms.ContainsKey("MODULE_IMAGE_FOLDER") && ms["MODULE_IMAGE_FOLDER"] != null) 
 					{
 						DefaultImageFolder = ms["MODULE_IMAGE_FOLDER"].ToString();
 					}
-					else if (portalSettings.CustomSettings["SITESETTINGS_DEFAULT_IMAGE_FOLDER"] != null) 
+                    else if (portalSettings.CustomSettings.ContainsKey("SITESETTINGS_DEFAULT_IMAGE_FOLDER") && portalSettings.CustomSettings["SITESETTINGS_DEFAULT_IMAGE_FOLDER"] != null) 
 					{
 						DefaultImageFolder = portalSettings.CustomSettings["SITESETTINGS_DEFAULT_IMAGE_FOLDER"].ToString();
 					}
