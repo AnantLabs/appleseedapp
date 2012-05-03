@@ -8,6 +8,7 @@ using StructureMap;
 using Appleseed.Framework.Settings;
 using Appleseed.Framework.Site.Configuration;
 using System.Web;
+using Appleseed.Framework;
 
 namespace Appleseed.Code
 {
@@ -184,6 +185,19 @@ namespace Appleseed.Code
                 string customMasterPath = "~/Portals/_" + PortalAlias + "/MVCTemplates/Menu.master";
                 if (System.IO.File.Exists(controllerContext.HttpContext.Server.MapPath(customMasterPath))) {
                     newMasterPath = customMasterPath;
+                }
+                else {
+                    try{
+                        var layout = ((PortalSettings)HttpContext.Current.Items["PortalSettings"]).CurrentLayout;
+                        customMasterPath = "~/Design/DesktopLayouts/" + layout + "/Menu.master";
+                        if (System.IO.File.Exists(controllerContext.HttpContext.Server.MapPath(customMasterPath))) {
+                            newMasterPath = customMasterPath;
+                        }  
+                    }
+                    catch(Exception e) {
+                        ErrorHandler.Publish(LogLevel.Error,e);
+                    }
+                
                 }
             }
 
