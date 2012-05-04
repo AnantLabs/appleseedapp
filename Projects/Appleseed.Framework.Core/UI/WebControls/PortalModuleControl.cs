@@ -2705,7 +2705,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
         {
             get
             {
-                return HttpContext.Current != null &&
+                return HttpContext.Current != null && this.Settings.ContainsKey("MODULESETTINGS_SHOW_TITLE") &&
                        this.Settings["MODULESETTINGS_SHOW_TITLE"].ToBoolean(CultureInfo.InvariantCulture);
             }
 
