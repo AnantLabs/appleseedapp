@@ -2705,7 +2705,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
         {
             get
             {
-                return HttpContext.Current != null &&
+                return HttpContext.Current != null && this.Settings.ContainsKey("MODULESETTINGS_SHOW_TITLE") &&
                        this.Settings["MODULESETTINGS_SHOW_TITLE"].ToBoolean(CultureInfo.InvariantCulture);
             }
 
@@ -2779,14 +2779,14 @@ namespace Appleseed.Framework.Web.UI.WebControls
             {
                 var returnValue = this.supportsArrows;
 
-                if (this.PortalSettings.CustomSettings["SITESETTINGS_SHOW_MODULE_ARROWS"] != null)
+                if (this.PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_SHOW_MODULE_ARROWS") && this.PortalSettings.CustomSettings["SITESETTINGS_SHOW_MODULE_ARROWS"] != null)
                 {
                     returnValue = returnValue &&
                                   bool.Parse(
                                       this.PortalSettings.CustomSettings["SITESETTINGS_SHOW_MODULE_ARROWS"].ToString());
                 }
 
-                if (this.Settings["MODULESETTINGS_SHOW_ARROW_BUTTONS"] != null)
+                if (this.PortalSettings.CustomSettings.ContainsKey("MODULESETTINGS_SHOW_ARROW_BUTTONS") && this.Settings["MODULESETTINGS_SHOW_ARROW_BUTTONS"] != null)
                 {
                     returnValue = returnValue &&
                                   bool.Parse(this.Settings["MODULESETTINGS_SHOW_ARROW_BUTTONS"].ToString());
