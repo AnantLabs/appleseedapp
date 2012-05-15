@@ -50,6 +50,11 @@ namespace Appleseed.FCKeditorV2
             try {
 
                 var query = HttpContext.Current.Request.UrlReferrer.Query;
+                if (string.IsNullOrEmpty(query)) {
+                    PortalSettings portalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+                    if (portalSettings != null)
+                        return portalSettings.ActiveModule;
+                }
                 // Trying to get the ModId from the querystring of the urlReferedPage
                 var midIndex = query.IndexOf("mid");
                 if (midIndex > -1) {
@@ -64,7 +69,13 @@ namespace Appleseed.FCKeditorV2
                     index = query.IndexOf("=");
                     query = query.Substring(index + 1);
                     //query = x = mid as string
-                    return int.Parse(query);
+                    var modid = int.Parse(query);
+                    PortalSettings portalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+                    if (portalSettings != null) {
+                        portalSettings.ActiveModule = modid;
+                        HttpContext.Current.Items["PortalSettings"] = portalSettings;
+                    }
+                    return modid;
                 }
                 return 0;
 
