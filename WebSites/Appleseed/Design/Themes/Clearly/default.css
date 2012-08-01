@@ -1,3 +1,5 @@
+@import url(TabsSubTabs.css);
+@import url(TabControl.css);
 @import url(Slyder_Styles.css);
 @import url(Menu.css);
 @font-face {
@@ -508,11 +510,11 @@ div.Control_Panel_Table{
         /************************************************/	
  
 .div_ev_Table{          /***** contenedor de tabla editar propiedades de modulo ****/
-    padding:20px 10px 10px 10px;
+    padding:20px 20px 10px 20px;
 	border:none;
 	margin: 0px auto 10px; 
 	color:#ffffff;
-	min-width: 960px;}
+	width:1000px!important;}
 
 div.div_ev_Table table{
 		max-width:730px!important;
@@ -1016,8 +1018,7 @@ td.SubHead span
 #Content_ctl00_tfPwd,
 #Content_ctl00_ddlCountry,
 #Content_ContentPane_ctl02_txtNewRole,
-#Content_cacheTime,#Content_ctl00_tfPwd, #Content_ctl00_tfPwdAgain,
-#Content_ctl00_startdate,#Content_ctl00_tfEmail, #Content_ctl00_ddlCountry
+#Content_cacheTime
 {width:270px!important;}
 
 #Content_ctl00_ddlDay,
