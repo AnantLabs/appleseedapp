@@ -1,5 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
+
+
+
+
+
 <configuration xmlns="http://schemas.microsoft.com/.NetConfiguration/v2.0">
 	<configSections>
 		<section name="dataConfiguration" type="Microsoft.Practices.EnterpriseLibrary.Data.Configuration.DatabaseSettings, Microsoft.Practices.EnterpriseLibrary.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -19,7 +24,22 @@
 			<sectionGroup name="scripting" type="System.Web.Configuration.ScriptingSectionGroup, System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35">
 			</sectionGroup>
 		</sectionGroup>
+		<sectionGroup name="system.web.webPages.razor" type="System.Web.WebPages.Razor.Configuration.RazorWebSectionGroup, System.Web.WebPages.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35">
+		  <section name="host" type="System.Web.WebPages.Razor.Configuration.HostSection, System.Web.WebPages.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" requirePermission="false" />
+		  <section name="pages" type="System.Web.WebPages.Razor.Configuration.RazorPagesSection, System.Web.WebPages.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" requirePermission="false" />
+		</sectionGroup>
 	</configSections>
+	 <system.web.webPages.razor>
+    <host factoryType="System.Web.Mvc.MvcWebRazorHostFactory, System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" />
+    <pages pageBaseType="System.Web.Mvc.WebViewPage">
+      <namespaces>
+        <add namespace="System.Web.Mvc" />
+        <add namespace="System.Web.Mvc.Ajax" />
+        <add namespace="System.Web.Mvc.Html" />
+        <add namespace="System.Web.Routing" />
+      </namespaces>
+    </pages>
+  </system.web.webPages.razor>
 	<blowery.web>
 		<httpCompress preferredAlgorithm="deflate" compressionLevel="normal">
 			<excludedMimeTypes>
@@ -601,6 +621,7 @@
 			   <assemblyIdentity name="System.Web.Mvc" publicKeyToken="31bf3856ad364e35"/>
 			   <bindingRedirect oldVersion="1.0.0.0-2.0.0.0" newVersion="3.0.0.0"/>
 			 </dependentAssembly>
+
       <dependentAssembly>
         <assemblyIdentity name="System.Web.Routing" publicKeyToken="31bf3856ad364e35" />
         <bindingRedirect oldVersion="3.5.0.0" newVersion="4.0.0.0" />
