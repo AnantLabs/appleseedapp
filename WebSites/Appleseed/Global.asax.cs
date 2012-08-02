@@ -498,7 +498,10 @@ namespace Appleseed
                 ValueProviderFactories.Factories.Add(new JsonValueProviderFactory());
 
                 ViewEngines.Engines.Clear();
-                ViewEngines.Engines.Add(new AreaViewEngine());
+                ViewEngines.Engines.Add(new AppleseedWebFormViewEngine());
+                ViewEngines.Engines.Add(new AppleseedRazorViewEngine());
+               
+
 
             } catch (Exception exc) {
 
