@@ -144,7 +144,7 @@ namespace Appleseed
                 js = "debug.js";
             }
 
-            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery-1.6.1."+min));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery-1.7.2."+min));
             scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery-ui-1.8.11."+min));
             scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.validate."+min));
             scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.validate.unobtrusive." + min));
