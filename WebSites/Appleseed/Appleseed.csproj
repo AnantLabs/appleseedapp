@@ -1695,7 +1695,6 @@
     <Folder Include="app_support\App_LocalResources\" />
     <Folder Include="App_Themes\Default\" />
     <Folder Include="App_Themes\Theme1\" />
-    <Folder Include="Areas\" />
     <Folder Include="Bin\" />
     <Folder Include="DesktopModules\CommunityModules\DiscussionEnhanced\images\" />
     <Folder Include="images\default\" />
@@ -1772,6 +1771,7 @@
     </Content>
     <Content Include="App_Browsers\safari.browser" />
     <Content Include="App_Browsers\w3cvalidator.browser" />
+    <Content Include="Areas\Web.config" />
     <None Include="_bin_deployableAssemblies\Microsoft.Web.Infrastructure.dll" />
     <None Include="_bin_deployableAssemblies\System.Web.WebPages.Razor.dll" />
     <None Include="_bin_deployableAssemblies\System.Web.WebPages.dll" />
