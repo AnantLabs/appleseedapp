@@ -6,7 +6,7 @@
 <head runat="server" style="visibility: hidden">
     <title></title>
     <script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
-    <script type="text/javascript" src="../../../aspnet_client/jQuery/jquery-1.6.1.min.js"></script>
+    <script type="text/javascript" src="../../../aspnet_client/jQuery/jquery-1.7.2.min.js"></script>
     
 
     
