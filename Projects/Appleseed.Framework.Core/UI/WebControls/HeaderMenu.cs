@@ -655,7 +655,11 @@ namespace Appleseed.Framework.Web.UI.WebControls
                         }
                 }
                 else if (PortalSettings.CustomSettings["SITESETTINGS_LOGIN_TYPE"].ToString().EndsWith("signinsocialnetwork.ascx")) {
-                    iframeheight = "300px";
+                    dialogwidth = "370";
+                    iframewidth = "320px";
+                    iframeheight = "200px";
+                    dialogheightdiv = "240";
+                    dialogheight = "260";
                 } else if (PortalSettings.CustomSettings["SITESETTINGS_LOGIN_TYPE"].ToString().EndsWith("cool.ascx")) {
                     iframewidth = "320px";
                     dialogwidth = "350";
@@ -664,6 +668,8 @@ namespace Appleseed.Framework.Web.UI.WebControls
                     iframeheight = "440px";
                     dialogheightdiv = "445";
                     dialogheight = "500";
+                    dialogwidth = "370";
+                    iframewidth = "320px";
                 }
 
                 string empty = HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/SignIn/empty.htm");
