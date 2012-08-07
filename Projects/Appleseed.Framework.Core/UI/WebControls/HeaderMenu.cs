@@ -631,10 +631,19 @@ namespace Appleseed.Framework.Web.UI.WebControls
                 PortalSettings PortalSettings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
                 string iframewidth = "280px";
                 string dialogwidth = "320";
-                string iframeheight = "380px";
-                string dialogheightdiv = "385";
-                string dialogheight = "410";
-                if (PortalSettings.CustomSettings["SITESETTINGS_LOGIN_TYPE"].ToString().Contains("both.ascx")) {
+                string iframeheight = "385px";
+                string dialogheightdiv = "390";
+                string dialogheight = "420";
+                if (PortalSettings.CustomSettings["SITESETTINGS_LOGIN_TYPE"].ToString().Contains("signinloginview.ascx")) {
+                    iframeheight = "250px";
+                    dialogheightdiv = "260";
+                    dialogheight = "300";
+                }
+                else if (PortalSettings.CustomSettings["SITESETTINGS_LOGIN_TYPE"].ToString().Contains("/signin.ascx")) {
+                    iframeheight = "280px";
+                    dialogheightdiv = "290";
+                    dialogheight = "330";
+                } else if (PortalSettings.CustomSettings["SITESETTINGS_LOGIN_TYPE"].ToString().Contains("both.ascx")) {
                         if ((PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_TWITTER_APP_ID") &&
                             PortalSettings.CustomSettings["SITESETTINGS_TWITTER_APP_ID"].ToString().Equals(string.Empty) ||
                             PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_TWITTER_APP_SECRET") &&
@@ -649,9 +658,15 @@ namespace Appleseed.Framework.Web.UI.WebControls
                             ) {
                             iframewidth = "250px";
                             dialogwidth = "280";
+                            iframeheight = "280px";
+                            dialogheightdiv = "290";
+                            dialogheight = "330";
                         } else {
-                            iframewidth = "435px";
-                            dialogwidth = "470";
+                            iframewidth = "550px";
+                            dialogwidth = "580";
+                            iframeheight = "345px";
+                            dialogheightdiv = "370";
+                            dialogheight = "400";
                         }
                 }
                 else if (PortalSettings.CustomSettings["SITESETTINGS_LOGIN_TYPE"].ToString().EndsWith("signinsocialnetwork.ascx")) {
@@ -663,6 +678,9 @@ namespace Appleseed.Framework.Web.UI.WebControls
                 } else if (PortalSettings.CustomSettings["SITESETTINGS_LOGIN_TYPE"].ToString().EndsWith("cool.ascx")) {
                     iframewidth = "320px";
                     dialogwidth = "350";
+                    iframeheight = "250px";
+                    dialogheightdiv = "260";
+                    dialogheight = "300";
                 }
                 else if (PortalSettings.CustomSettings["SITESETTINGS_LOGIN_TYPE"].ToString().EndsWith("signinwithsocialnetwork.ascx")) {
                     iframeheight = "440px";
@@ -670,6 +688,11 @@ namespace Appleseed.Framework.Web.UI.WebControls
                     dialogheight = "500";
                     dialogwidth = "370";
                     iframewidth = "320px";
+                }
+                else if (PortalSettings.CustomSettings["SITESETTINGS_LOGIN_TYPE"].ToString().EndsWith("signinlink.ascx")) {
+                    iframeheight = "150px";
+                    dialogheightdiv = "165";
+                    dialogheight = "200";
                 }
 
                 string empty = HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/SignIn/empty.htm");
