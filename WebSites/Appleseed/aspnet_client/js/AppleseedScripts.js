@@ -1,23 +1,18 @@
 function EditTitleInLine(url){
+	
+	$(".editTitle").editable(submitEdit, { 
+				
+				indicator : "Saving...",
+				tooltip   : "Click to edit...",
+				name : "Editable.FieldName",
+				event     : "dblclick",
+				id   : "elementid",
+				cancel : 'Cancel',
+         		submit : 'OK',
+				type : "text",
+				cssclass : 'CommandButton'
 
-    $(".editTitle").editable(function (value, settings) {
-        console.log(this);
-        console.log(value);
-        console.log(settings);
-        return (value);
-    }, {
-
-        indicator: "Saving...",
-        tooltip: "Click to edit...",
-        name: "Editable.FieldName",
-        event: "dblclick",
-        id: "elementid",
-        cancel: 'Cancel',
-        submit: 'OK',
-        type: "text",
-        cssclass: 'CommandButton'
-
-    });
+	});
 	
 	function submitEdit(value, settings)
 	{ 
