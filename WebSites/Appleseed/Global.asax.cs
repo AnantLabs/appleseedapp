@@ -487,12 +487,16 @@ namespace Appleseed
 
                 //Then, register all portable areas
                 AreaRegistration.RegisterAllAreas(PortableAreaUtils.RegistrationState.Bootstrapping);
-                if (ConfigurationManager.AppSettings["RouteTesting"] == null ||
-                    !bool.Parse(ConfigurationManager.AppSettings["RouteTesting"])) {
-                    RegisterRoutes(RouteTable.Routes);
-                } else {
+                RegisterRoutes(RouteTable.Routes);
+
+                if (ConfigurationManager.AppSettings["RouteTesting"] != null &&
+                    bool.Parse(ConfigurationManager.AppSettings["RouteTesting"]) ) {                    
                     //RouteDebugger.RewriteRoutesForTesting(RouteTable.Routes);
+                    
                 }
+
+                ErrorHandler.Publish(LogLevel.Info, "Registing Routes");
+
 
                 InputBuilder.BootStrap();
                 ValueProviderFactories.Factories.Add(new JsonValueProviderFactory());
