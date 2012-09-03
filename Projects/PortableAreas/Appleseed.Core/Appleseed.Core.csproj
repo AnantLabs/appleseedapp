@@ -135,6 +135,7 @@
     <Content Include="DBScripts\20110829\02.UpdateHTMLContent.sql" />
     <Content Include="DBScripts\20110907\01.ChageUserPageName.sql" />
     <Content Include="DBScripts\20120125\01.InstalingNewPageManager.sql" />
+    <Content Include="DBScripts\20120903\01.Changing Store Procedure rb_FindModulesByGuid.sql" />
     <Content Include="DBScripts\Readme.txt" />
   </ItemGroup>
   <ItemGroup>
