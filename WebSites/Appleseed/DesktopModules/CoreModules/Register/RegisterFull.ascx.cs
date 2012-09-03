@@ -207,6 +207,15 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
         if (Session["FacebookName"] != null) {
             this.tfName.Text = (string)Session["FacebookName"];
         }
+
+        // If is admin, don't show the current password
+
+        if (PortalSettings.CurrentUser.IsInRole("Admins")) {
+
+            this.trPwdMessage.Visible = false;
+        
+        }
+
     }
 
    
@@ -260,6 +269,7 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
         {
             try
             {
+                
                 Membership.Provider.ChangePassword(UserName, txtCurrentPwd.Text, txtNewPwd.Text);
                 messageS_lbl.Text = (string)Resources.Appleseed.PASSWORD_CHANGE_SUCCESSFULL;
                 NotifySaveContainer.Visible = true;
