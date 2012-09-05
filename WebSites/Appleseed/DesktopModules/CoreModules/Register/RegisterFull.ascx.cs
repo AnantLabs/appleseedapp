@@ -267,19 +267,39 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
     {
         if (Page.IsValid)
         {
-            try
-            {
-                
-                Membership.Provider.ChangePassword(UserName, txtCurrentPwd.Text, txtNewPwd.Text);
-                messageS_lbl.Text = (string)Resources.Appleseed.PASSWORD_CHANGE_SUCCESSFULL;
-                NotifySaveContainer.Visible = true;
-            }
-            catch (Exception ex)
-            {
-                lblError.Text = ex.Message;
-                messageS_lbl.Text = (string)Resources.Appleseed.PASSWORD_CHANGE_ERROR;
-                NotifySaveContainer.Visible = true;
+            if (txtNewPwd.Text == txtNewPwdAgain.Text) {
+                if (PortalSettings.CurrentUser.IsInRole("Admins")) {
+                    try {
+                        ((Appleseed.Framework.Providers.AppleseedMembershipProvider.AppleseedMembershipProvider)Membership.Provider).AdminChangePassword(UserName, txtNewPwd.Text);
+                        messageS_lbl.Text = (string)Resources.Appleseed.ADMIN_PASSWORD_CHANGE_SUCCESSFULL;
+                        NotifySaveContainer.Visible = true;
+                    }
+                    catch (Exception ex) {
+                        lblError.Text = ex.Message;
+                        messageS_lbl.Text = (string)Resources.Appleseed.ADMIN_PASSWORD_CHANGE_ERROR;
+                        NotifySaveContainer.Visible = true;
+                    }
 
+
+                }
+                else {
+                    try {
+
+                        Membership.Provider.ChangePassword(UserName, txtCurrentPwd.Text, txtNewPwd.Text);
+                        messageS_lbl.Text = (string)Resources.Appleseed.PASSWORD_CHANGE_SUCCESSFULL;
+                        NotifySaveContainer.Visible = true;
+                    }
+                    catch (Exception ex) {
+                        lblError.Text = ex.Message;
+                        messageS_lbl.Text = (string)Resources.Appleseed.PASSWORD_CHANGE_ERROR;
+                        NotifySaveContainer.Visible = true;
+
+                    }
+                }
+            }
+            else {
+                messageS_lbl.Text = (string)Resources.Appleseed.PASSWORD_DO_NOT_MATCH;
+                NotifySaveContainer.Visible = true;    
             }
         }
         else
