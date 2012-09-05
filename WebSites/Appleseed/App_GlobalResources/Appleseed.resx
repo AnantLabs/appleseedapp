@@ -5702,4 +5702,10 @@ function confirmDelete()
   <data name="RENAME" xml:space="preserve">
     <value>Rename</value>
   </data>
+  <data name="ADMIN_PASSWORD_CHANGE_ERROR" xml:space="preserve">
+    <value>There's been an error saving the password.</value>
+  </data>
+  <data name="ADMIN_PASSWORD_CHANGE_SUCCESSFULL" xml:space="preserve">
+    <value>The password has been successfully changed</value>
+  </data>
 </root>
