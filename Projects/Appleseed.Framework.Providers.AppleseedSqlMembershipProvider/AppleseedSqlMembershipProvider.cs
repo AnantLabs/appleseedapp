@@ -345,6 +345,30 @@ namespace Appleseed.Framework.Providers.AppleseedMembershipProvider
                    this.ChangeUserPassword(portalAlias, username, newPassword);
         }
 
+
+        /// <summary>
+        /// If its and admin, he can change the password of a user
+        /// </summary>
+        /// <param name="portalAlias">
+        /// Appleseed's portal alias
+        /// </param>
+        /// <param name="username">
+        /// The user's name
+        /// </param>       
+        /// <param name="Password">
+        /// The user's new password
+        /// </param>
+        /// <returns>
+        /// ChangePassword returns true if the password was updated successfully.
+        ///     Otherwise, it returns false.
+        /// </returns>
+        public override bool AdminChangePassword(string username, string Password) {
+            if(Appleseed.Framework.Security.PortalSecurity.IsInRole("Admins")) 
+                return this.ChangeUserPassword(this.ApplicationName, username, Password);
+            else
+                return false;
+        }
+
         /// <summary>
         /// Changes the user password.
         /// </summary>

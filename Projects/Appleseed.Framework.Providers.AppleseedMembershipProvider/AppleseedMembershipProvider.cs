@@ -41,6 +41,24 @@ using System.Collections.Generic;
         public abstract bool ChangePassword(string portalAlias, string username, string oldPassword, string newPassword);
 
         /// <summary>
+        /// If its and admin, he can change the password of a user
+        /// </summary>
+        /// <param name="portalAlias">
+        /// Appleseed's portal alias
+        /// </param>
+        /// <param name="username">
+        /// The user's name
+        /// </param>       
+        /// <param name="Password">
+        /// The user's new password
+        /// </param>
+        /// <returns>
+        /// ChangePassword returns true if the password was updated successfully.
+        ///     Otherwise, it returns false.
+        /// </returns>
+        public abstract bool AdminChangePassword(string username, string Password);
+
+        /// <summary>
         /// Takes, as input, a user name, password, password question, and password answer and updates the password question and answer
         ///     in the data source if the user name and password are valid.
         /// </summary>

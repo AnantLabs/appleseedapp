@@ -1049,5 +1049,17 @@ namespace Appleseed.Framework.Security
         }
 
         #endregion
+
+        #region MembershipExtension
+
+        public static bool AdminChangeUsersPassword(string username, string Password) {
+
+            var provider = (Appleseed.Framework.Providers.AppleseedMembershipProvider.AppleseedMembershipProvider)Membership.Provider;
+            return provider.AdminChangePassword(username, Password);
+        
+        
+        }
+
+        #endregion
     }
 }
