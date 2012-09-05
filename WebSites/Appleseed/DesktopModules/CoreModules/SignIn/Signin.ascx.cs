@@ -163,9 +163,10 @@ using System.Net.Mail;
             // if (Request.IsAuthenticated)
             //     this.Visible = false;
             this.LoginBtn.Click += this.LoginBtnClick;
-            this.SendPasswordBtn.Click += this.SendPasswordBtnClick;
+            //this.SendPasswordBtn.Click += this.SendPasswordBtnClick;
             this.RegisterBtn.Click += this.RegisterBtnClick;
             this.Load += this.SigninLoad;
+            this.SendPasswordBtn.Click += SendPasswordBtnClickLink;
 
             base.OnInit(e);
         }
@@ -195,6 +196,16 @@ using System.Net.Mail;
         private void RegisterBtnClick(object sender, EventArgs e)
         {
             this.Response.Redirect(HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/Register/Register.aspx"));
+        }
+
+        private void SendPasswordBtnClickLink(object sender, EventArgs e) {
+            var url = HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/Password/ForgotPassword.aspx");
+
+            if (!string.IsNullOrEmpty(this.email.Text)) {
+                url += "&email=" + this.email.Text;
+            }
+
+            this.Response.Redirect(url);
         }
 
         /// <summary>
