@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Reflection;
 
-namespace ForgotPassword.Controllers {
+namespace Password.Controllers {
     public class ResourceController : Controller {
         public ActionResult Index(string resourceName) {
             var contentType = GetContentType(resourceName);

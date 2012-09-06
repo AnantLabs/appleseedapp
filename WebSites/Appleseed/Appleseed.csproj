@@ -1785,13 +1785,13 @@
       <Project>{22C4BA46-65C9-49E2-8A23-86DD2F44B744}</Project>
       <Name>Appleseed.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Projects\PortableAreas\ForgotPassword\ForgotPassword.csproj">
-      <Project>{0EECE44D-009E-4B91-A67D-26268F2ED0E0}</Project>
-      <Name>ForgotPassword</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Projects\PortableAreas\PageManagerTree\PageManagerTree.csproj">
       <Project>{36310014-77B3-4DB6-B391-B4036D1BDDD3}</Project>
       <Name>PageManagerTree</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Projects\PortableAreas\Password\Password.csproj">
+      <Project>{188D29A3-C2A9-4214-8C0C-8201529E1568}</Project>
+      <Name>Password</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Projects\PortableAreas\SelfUpdater\SelfUpdater.csproj">
       <Project>{DBAED848-FEE6-45D4-9086-E519E0A077A2}</Project>

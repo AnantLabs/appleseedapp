@@ -5708,4 +5708,10 @@ function confirmDelete()
   <data name="ADMIN_PASSWORD_CHANGE_SUCCESSFULL" xml:space="preserve">
     <value>The password has been successfully changed</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Email Address</value>
+  </data>
+  <data name="SendEmail" xml:space="preserve">
+    <value>Send Mail</value>
+  </data>
 </root>

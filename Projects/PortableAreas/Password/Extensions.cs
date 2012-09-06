@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ForgotPassword {
+namespace Password {
     public static class Extensions {
-        public static string ForgotPasswordResource(this UrlHelper urlHelper, string resourceName) {
+        public static string PasswordResource(this UrlHelper urlHelper, string resourceName) {
             var areaName = (string)urlHelper.RequestContext.RouteData.DataTokens["area"];
             return urlHelper.Action("Index", "Resource", new { resourceName = resourceName, area = areaName });
         }
