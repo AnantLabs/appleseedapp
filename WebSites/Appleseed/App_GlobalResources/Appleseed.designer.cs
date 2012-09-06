@@ -6957,6 +6957,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email Address.
+        /// </summary>
+        internal static string EmailAddress {
+            get {
+                return ResourceManager.GetString("EmailAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email (or Windows domain name).
         /// </summary>
         internal static string EMAILORWINDOW {
@@ -13001,6 +13010,15 @@ namespace Resources {
         internal static string SELECT_NONE {
             get {
                 return ResourceManager.GetString("SELECT_NONE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send Mail.
+        /// </summary>
+        internal static string SendEmail {
+            get {
+                return ResourceManager.GetString("SendEmail", resourceCulture);
             }
         }
         
