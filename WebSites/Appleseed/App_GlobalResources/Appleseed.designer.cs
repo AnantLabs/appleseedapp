@@ -1564,6 +1564,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The token is no longer valid..
+        /// </summary>
+        internal static string CHANGE_PWD_INVALID_TOKEN_ERROR {
+            get {
+                return ResourceManager.GetString("CHANGE_PWD_INVALID_TOKEN_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You are not allowed to use this functionality witout the correct parameters..
         /// </summary>
         internal static string CHANGE_PWD_INVALID_URL_ERROR {

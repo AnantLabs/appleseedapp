@@ -8,6 +8,8 @@ namespace Password.Models {
 
         public bool error;
         public string message;
+        public Guid UserId;
+        public Guid token;
 
     }
 }

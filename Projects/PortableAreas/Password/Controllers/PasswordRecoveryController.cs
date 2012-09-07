@@ -8,6 +8,7 @@ using Password.Models;
 using System.Web.Security;
 using Appleseed.Framework.Providers.AppleseedMembershipProvider;
 using Appleseed.Framework.Site.Configuration;
+using Appleseed.Framework.Helpers;
 
 namespace Password.Controllers
 {
@@ -28,12 +29,17 @@ namespace Password.Controllers
             if (Request.IsAuthenticated) {
                 Response.Redirect("/");
             }
-            
+
+            return View();
+        }
+
+        public ActionResult PasswordRecoveryIndex() {
+
             var model = new RecoveryModel();
             if (Request.QueryString["usr"] == null || Request.QueryString["tok"] == null) {
                 model.message = General.GetString("CHANGE_PWD_INVALID_URL_ERROR", "You are not allowed to use this functionality witout the correct parameters.");
                 model.error = true;
-                return View(model);
+                return View("ErrorPasswordRecoveryIndex", model);
             }
 
             Guid userId;
@@ -43,24 +49,63 @@ namespace Password.Controllers
                 !Guid.TryParse(Request.QueryString["tok"].ToString(), out token)) {
                 model.message = General.GetString("CHANGE_PWD_INVALID_URL_ERROR", "You are not allowed to use this functionality witout the correct parameters.");
                 model.error = true;
-                return View(model);
+                return View("ErrorPasswordRecoveryIndex", model);
             }
 
-           
+
             Membership.ApplicationName = this.PortalSettings.PortalAlias;
             var membership = (AppleseedMembershipProvider)Membership.Provider;
             if (!membership.VerifyTokenForUser(userId, token)) {
-                model.message = General.GetString("CHANGE_PWD_INVALID_URL_ERROR", "You are not allowed to use this functionality witout the correct parameters.");
+                model.message = General.GetString("CHANGE_PWD_INVALID_TOKEN_ERROR", "The token is no longer valid.");
                 model.error = true;
-                return View(model);
+                return View("ErrorPasswordRecoveryIndex", model);
             }
 
             model.message = General.GetString("CHANGE_PWD_USR_EXPLANATION", "Insert your new password for your account. Once you save the changes you would be able to logon with it.");
-            
+            model.UserId = userId;
+            model.token = token;
 
             return View(model);
+        
         }
 
+        public JsonResult savePassword(string pwd1, string pwd2, Guid userId, Guid token) {
+            string message = "";
+            if (pwd1 != pwd2 || string.IsNullOrEmpty(pwd1) || string.IsNullOrEmpty(pwd2)) {
+                message = General.GetString("CHANGE_PWD_NOT_SAME_TWICE_ERROR", "The second password entered is not the same as the first one. Please write them again.");
+                Response.StatusCode = 500;
+                Response.Write(message);
+                return Json(null);
+            
+            }       
+
+            try {
+                Membership.ApplicationName = this.PortalSettings.PortalAlias;
+                var membership = (AppleseedMembershipProvider)Membership.Provider;
+                var user = membership.GetUser(userId, false);
+                if (!membership.ChangePassword(user.UserName, token, pwd1)) {
+                    throw new ApplicationException("Error while trying to change the user password");
+                }
+
+                message = General.GetString("CHANGE_PWD_NEW_PWD_SET_MSG", "Your new password has been set. You can logon with it now.");                
+
+                return Json(new { ok = true, Message = message });
+            }
+            catch (Exception ex) {
+                //ShowError("CHANGE_PWD_UNEXPECTED_ERROR", "An error ocurred while trying to update your password.");
+                LogHelper.Logger.Log(
+                    LogLevel.Error,
+                    string.Format(@"Error while trying to update the password for user with id '{0}'. Token used: '{1}'.", userId, token)
+                    , ex);
+
+                message = General.GetString("CHANGE_PWD_NEW_PWD_SET_MSG", "Your new password has been set. You can logon with it now.");
+                Response.StatusCode = 500;
+                Response.Write(message);
+                return Json(null);
+
+
+            }
+        }
         
     }
 }
