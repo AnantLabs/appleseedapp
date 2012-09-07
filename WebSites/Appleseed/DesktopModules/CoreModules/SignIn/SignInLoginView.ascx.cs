@@ -44,6 +44,7 @@ public partial class SignInLoginView : PortalModuleControl {
             loginControl.PasswordLabelText = General.GetString( "PASSWORD", "Password" );
             loginControl.LoginButtonText = General.GetString( "SIGNIN", "Sign in" );
             loginControl.PasswordRecoveryText = General.GetString( "SIGNIN_SEND_PWD", "Forgotten Password?" );
+            loginControl.PasswordRecoveryUrl = HttpUrlBuilder.BuildUrl("~/Password/ForgotPassword");
             loginControl.RememberMeText = General.GetString( "REMEMBER_LOGIN", "Remember Login" );
             loginControl.TextLayout = LoginTextLayout.TextOnTop;
             loginControl.TitleText = string.Empty;

@@ -22,7 +22,7 @@ namespace Password.Controllers
         public ActionResult Index() {
             if (Request.IsAuthenticated) {
                 Response.Redirect("/");
-            }
+            }          
 
             return View();
 
@@ -58,9 +58,10 @@ namespace Password.Controllers
             // generate Token for user
             var token = membership.CreateResetPasswordToken(userId);
 
-            var changePasswordUrl = string.Concat(
-                Request.Url.Host,
-                "/Password/PasswordRecovery?usr=",
+            String uri = HttpUrlBuilder.BuildUrl("~/Password/PasswordRecovery");
+
+            var changePasswordUrl = string.Concat(Request.Url.Host, uri,
+                "?usr=",
                 userId.ToString("N"),
                 "&tok=",
                 token.ToString("N"));
