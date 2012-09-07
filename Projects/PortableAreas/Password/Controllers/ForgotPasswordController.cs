@@ -21,7 +21,7 @@ namespace Password.Controllers
 
         public ActionResult Index() {
             if (Request.IsAuthenticated) {
-                Response.Redirect("/");
+                Response.Redirect(HttpUrlBuilder.BuildUrl("~/"));
             }          
 
             return View();
