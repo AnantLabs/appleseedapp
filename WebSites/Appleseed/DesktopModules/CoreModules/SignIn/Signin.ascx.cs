@@ -199,10 +199,10 @@ using System.Net.Mail;
         }
 
         private void SendPasswordBtnClickLink(object sender, EventArgs e) {
-            var url = HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/Password/ForgotPassword.aspx");
+            var url = HttpUrlBuilder.BuildUrl("~/Password/ForgotPassword");
 
             if (!string.IsNullOrEmpty(this.email.Text)) {
-                url += "&email=" + this.email.Text;
+                url += "?email=" + this.email.Text;
             }
 
             this.Response.Redirect(url);

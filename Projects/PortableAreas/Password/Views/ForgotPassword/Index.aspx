@@ -6,7 +6,11 @@
     <label id="Message" class="Error"></label>
     <br />
     <div id="Fields">
-        <label id="EmailLabel"><%= Appleseed.Framework.General.GetString("EmailAddress", "Email Address") %>: </label><input type="text" id="UsersEmail" class="NormalTextBox" />
+        <%  string email = string.Empty;
+            if (Request.QueryString["email"] != null) {
+                email = Request.QueryString["email"];
+           } %>
+        <label id="EmailLabel"><%= Appleseed.Framework.General.GetString("EmailAddress", "Email Address") %>: </label><input type="text" id="UsersEmail" class="NormalTextBox" value="<%= email %>"/>
         <br />
         <input type="button" id="SendPasswordBtn" class="CommandButton" value="<%= Appleseed.Framework.General.GetString("SendEmail", "Send Email") %>" onclick="sendPasswordToken()" />
     </div>

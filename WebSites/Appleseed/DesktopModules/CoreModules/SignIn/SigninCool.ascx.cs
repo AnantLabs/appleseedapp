@@ -71,6 +71,15 @@ namespace Appleseed.Content.Web.Modules
             Response.Redirect(HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/Register/Register.aspx"));
         }
 
+        private void SendPasswordBtnClickLink(object sender, EventArgs e) {
+            var url = HttpUrlBuilder.BuildUrl("~/Password/ForgotPassword");
+
+            if (!string.IsNullOrEmpty(this.email.Text)) {
+                url += "?email=" + this.email.Text;
+            }
+
+            this.Response.Redirect(url);
+        }
 
         /// <summary>
         /// Handles the Click event of the SendPasswordBtn control.
@@ -243,7 +252,7 @@ namespace Appleseed.Content.Web.Modules
         protected override void OnInit(EventArgs e)
         {
             this.LoginBtn.Click += new EventHandler(this.LoginBtn_Click);
-            this.SendPasswordBtn.Click += new EventHandler(this.SendPasswordBtn_Click);
+            this.SendPasswordBtn.Click += new EventHandler(this.SendPasswordBtnClickLink);
             this.RegisterBtn.Click += new EventHandler(this.RegisterBtn_Click);
             this.Load += new EventHandler(this.Signin_Load);
             base.OnInit(e);
