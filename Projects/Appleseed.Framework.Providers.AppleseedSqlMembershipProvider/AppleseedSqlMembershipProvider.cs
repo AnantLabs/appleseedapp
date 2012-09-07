@@ -2282,11 +2282,35 @@ namespace Appleseed.Framework.Providers.AppleseedMembershipProvider
         {
             using (var entities = new AppleseedMembershipEntities(ConfigurationManager.ConnectionStrings["AppleseedMembershipEntities"].ConnectionString))
             {
-                return
-                    entities.aspnet_ResetPasswordTokens.Include("aspnet_Membership").Any(
-                        t =>
-                        t.TokenId == tokenId && t.UserId == userId &&
-                        t.aspnet_Membership.aspnet_Applications.LoweredApplicationName == this.ApplicationName.ToLower());
+                var maxDays = 7;
+
+                try{
+                    maxDays = int.Parse(ConfigurationManager.AppSettings["MaxTokenDays"]);
+                }
+                catch(Exception){
+                    maxDays = 7;
+                }
+                try {
+                    var token = entities.aspnet_ResetPasswordTokens.Include("aspnet_Membership").Single(t => t.UserId == userId && t.TokenId == tokenId 
+                        && t.aspnet_Membership.aspnet_Applications.ApplicationName.ToLower() == this.ApplicationName.ToLower());
+
+                    if (token.CreationDate >= DateTime.Now.AddDays(-maxDays)) {
+                        return true;
+
+                    }
+                    else {
+                        // The token is old
+
+                        entities.aspnet_ResetPasswordTokens.DeleteObject(token);
+                        entities.SaveChanges();
+                        return false;
+                    }                    
+                }
+                catch (Exception e) {
+
+                    ErrorHandler.Publish(LogLevel.Error, e);
+                    return false;
+                }
             }
         }
 

@@ -60,7 +60,7 @@ namespace Password.Controllers
 
             var changePasswordUrl = string.Concat(
                 Request.Url.Host,
-                "/DesktopModules/CoreModules/Admin/ChangePassword.aspx?usr=",
+                "/Password/PasswordRecovery?usr=",
                 userId.ToString("N"),
                 "&tok=",
                 token.ToString("N"));
