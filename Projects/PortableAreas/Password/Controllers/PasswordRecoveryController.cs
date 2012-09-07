@@ -23,11 +23,15 @@ namespace Password.Controllers
             }
         }
 
+        public void GoHome() {
+            Response.Redirect(HttpUrlBuilder.BuildUrl("~/"));
+        }
+
         public ActionResult Index()
         {
 
             if (Request.IsAuthenticated) {
-                Response.Redirect("/");
+                Response.Redirect(HttpUrlBuilder.BuildUrl("~/"));
             }
 
             return View();
