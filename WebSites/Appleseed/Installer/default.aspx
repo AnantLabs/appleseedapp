@@ -7,6 +7,7 @@
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.min.js" type="text/javascript"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"
         type="text/javascript"></script>
+   
 </head>
 <body>
     <form runat="server">
@@ -318,10 +319,10 @@
                         </tr>
                         <tr>
                             <td colspan="2" align="right" bgcolor="#cecece" height="45">
-                                <div style="padding-right: 30px;">
+                                <div style="padding-right: 30px;">                                    
                                     <asp:Button ID="Previous" OnClick="PreviousPanel" runat="server" Text="< Previous"
                                         CssClass="buttons"></asp:Button>&nbsp;<asp:Button ID="Next" OnClick="NextPanel" runat="server"
-                                            Text="Next >" CssClass="buttons"></asp:Button>
+                                            Text="Next >" CssClass="buttons" OnClientClick="this.disabled = true;" UseSubmitBehavior="false"></asp:Button>
                                 </div>
                             </td>
                         </tr>
