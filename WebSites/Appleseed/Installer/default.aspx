@@ -322,7 +322,7 @@
                                 <div style="padding-right: 30px;">                                    
                                     <asp:Button ID="Previous" OnClick="PreviousPanel" runat="server" Text="< Previous"
                                         CssClass="buttons"></asp:Button>&nbsp;<asp:Button ID="Next" OnClick="NextPanel" runat="server"
-                                            Text="Next >" CssClass="buttons" OnClientClick="this.disabled = true;" UseSubmitBehavior="false"></asp:Button>
+                                            Text="Next >" CssClass="buttons"></asp:Button>
                                 </div>
                             </td>
                         </tr>
