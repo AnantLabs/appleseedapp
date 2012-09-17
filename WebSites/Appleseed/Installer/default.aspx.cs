@@ -453,6 +453,8 @@ using System.Configuration;
                 this.Response.Flush();
                 this.Response.End();
             }
+
+            Next.Attributes.Add("onclick", " this.disabled = true; " + ClientScript.GetPostBackEventReference(Next, null) + ";");
         }
 
         /// <summary>
