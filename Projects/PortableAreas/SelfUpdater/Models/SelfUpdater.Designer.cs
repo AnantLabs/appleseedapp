@@ -8,15 +8,15 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
-
 namespace SelfUpdater.Models
 {
     #region Contexts
@@ -82,6 +82,7 @@ namespace SelfUpdater.Models
         private ObjectSet<SelfUpdatingPackages> _SelfUpdatingPackages;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
@@ -93,11 +94,11 @@ namespace SelfUpdater.Models
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
     
     /// <summary>
@@ -128,6 +129,7 @@ namespace SelfUpdater.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -230,9 +232,11 @@ namespace SelfUpdater.Models
         partial void OnSourceChanged();
 
         #endregion
+
     
     }
 
     #endregion
+
     
 }
