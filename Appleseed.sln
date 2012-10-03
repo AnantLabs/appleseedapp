@@ -47,6 +47,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PageManagerTree", "Projects
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Password", "Projects\PortableAreas\Password\Password.csproj", "{188D29A3-C2A9-4214-8C0C-8201529E1568}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileManager", "Projects\PortableAreas\FileManager\FileManager.csproj", "{8D606CC2-CA1B-4320-B4A1-811430123396}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -129,6 +131,10 @@ Global
 		{188D29A3-C2A9-4214-8C0C-8201529E1568}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{188D29A3-C2A9-4214-8C0C-8201529E1568}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{188D29A3-C2A9-4214-8C0C-8201529E1568}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D606CC2-CA1B-4320-B4A1-811430123396}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D606CC2-CA1B-4320-B4A1-811430123396}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D606CC2-CA1B-4320-B4A1-811430123396}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D606CC2-CA1B-4320-B4A1-811430123396}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -149,6 +155,7 @@ Global
 		{DBAED848-FEE6-45D4-9086-E519E0A077A2} = {E7F52803-87CE-4F80-8507-CF1C6EA1A46F}
 		{36310014-77B3-4DB6-B391-B4036D1BDDD3} = {E7F52803-87CE-4F80-8507-CF1C6EA1A46F}
 		{188D29A3-C2A9-4214-8C0C-8201529E1568} = {E7F52803-87CE-4F80-8507-CF1C6EA1A46F}
+		{8D606CC2-CA1B-4320-B4A1-811430123396} = {E7F52803-87CE-4F80-8507-CF1C6EA1A46F}
 		{B1021322-5BD0-454F-9C38-F9565C71C2CF} = {36955345-FB7B-414A-8878-2B76DCF982D8}
 	EndGlobalSection
 	GlobalSection(NDepend) = preSolution

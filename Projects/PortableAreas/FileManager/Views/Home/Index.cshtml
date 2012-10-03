@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<style type="text/css">
+    .FileManagerDirectoryTree {
+
+        width: 200px;        
+
+    }
+</style>
+
+<script type="text/javascript" src="@Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/aspnet_client/jQuery/jquery-1.7.2.min.js")"></script>
+    
+
+
+
+<h2>Index</h2>
+
+La hora es : @DateTime.Now 
+
+<div id="DirectoryTree" class="FileManagerDirectoryTree">
+    @Html.Partial("Module")
+</div>
+<div id="FilesTreeFiles">
+    
+
+</div>

@@ -1,0 +1,105 @@
+﻿
+@using MvcContrib;
+
+<script type="text/javascript" src="@Url.Resource("Scripts.jquery.jstree.js")"></script>
+<link type="text/css" rel="stylesheet" href="@Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/aspnet_client/jQuery/jsTree/themes/default/style.css")" /> 
+
+@*<link type="text/css" rel="stylesheet" href="@Url.Resource("Content.default.style.css")" /> *@
+
+
+
+    <div id="MainTree" class="demo">
+        
+
+    </div>
+
+<script type= "text/javascript">
+
+    $(function () {
+        $("#MainTree")
+//        .bind("loaded.jstree", function (e, data) {
+//            data.inst.open_all('#pjson_0'); // -1 opens all nodes in the container
+//        })
+        .jstree({
+            "json_data": {
+                "ajax": {
+                    "type": "POST",
+                    "url": 
+                    function (node) {
+                        var nodeId = "";
+                        var url = "";
+                        if (node == -1) {
+                            url = '@Url.Action("GetTreeData")';
+                        }
+                        else {
+                            nodeId = node.attr('id');
+                            url = '@Url.Action("GetChildreenTree")?dir=' + nodeId;
+                        }
+
+                        return url;
+                    },
+                    "data": function (n) {
+                        return { ID: n.Attr ? n.Attr("ID") : 0 };
+                    }
+                }
+            },
+            "dnd": {
+                "drop_target": false,
+                "drag_target": false
+            },
+            
+            "core": { "initially_open": ["FileManager0"] },
+
+            "plugins": ["themes", "contextmenu", "json_data", "ui", "crrm", "dnd", "core"]
+        }).bind("select_node.jstree", function (event, data) {
+
+            //var folder = data.rslt.obj.attr("id");
+            //$.ajax({
+            //    type: 'POST',
+            //    url: "/Home/MoveData",
+            //    data: {
+            //        "path": $(this).attr("id"),
+            //        "destination": data.rslt.np.attr("id")
+            //    },
+            //    success: function (r) {
+            //        Refresh();
+            //    }
+            //});
+        });
+        
+
+    });
+
+    //$('#MainTree').bind("move_node.jstree", function (e, data) {
+    //    data.rslt.o.each(function (i) {
+    //        $.ajax({
+    //            async: false,
+    //            type: 'POST',
+    //            url: "/Home/MoveData",
+    //            data: {
+    //                "path": $(this).attr("id"),
+    //                "destination": data.rslt.np.attr("id")
+    //            },
+    //            success: function (r) {
+    //               Refresh();
+    //            }
+    //        });
+    //    });
+    //});
+
+    //$('#MainTree').bind("create.jstree", function (e, data) {
+    //    $.post(
+	//			"/Home/CreateFolder",
+	//			{
+	//			    "path": data.rslt.parent.attr("id"),
+	//			    "newname": data.rslt.name
+	//			},
+	//			function (r) {
+	//			    Refresh();
+	//			}
+	//		);
+    //});
+
+
+   
+</script>

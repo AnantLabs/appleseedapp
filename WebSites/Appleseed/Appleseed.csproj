@@ -1803,6 +1803,10 @@
       <Project>{22C4BA46-65C9-49E2-8A23-86DD2F44B744}</Project>
       <Name>Appleseed.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Projects\PortableAreas\FileManager\FileManager.csproj">
+      <Project>{8d606cc2-ca1b-4320-b4a1-811430123396}</Project>
+      <Name>FileManager</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Projects\PortableAreas\PageManagerTree\PageManagerTree.csproj">
       <Project>{36310014-77B3-4DB6-B391-B4036D1BDDD3}</Project>
       <Name>PageManagerTree</Name>
