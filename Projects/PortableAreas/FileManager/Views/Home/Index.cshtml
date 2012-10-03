@@ -4,9 +4,41 @@
 <style type="text/css">
     .FileManagerDirectoryTree {
 
-        width: 200px;        
+        width: 200px;
+        float: left;
+    }
+
+    .FolderView {
+        
+        width: 700px;
+        float: left;
 
     }
+
+    .FoldersIcons {
+        
+        width: 100px;
+        float: left;
+
+    }
+
+    .FolderIcon {
+
+        text-align: center;
+        font-size: small;     
+
+    }
+
+    .jstree-default.jstree-focused {
+        background: #FFFFFF !important; 
+    }
+
+    #MainTree {
+
+        height: 100px;        
+
+    }
+    
 </style>
 
 <script type="text/javascript" src="@Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/aspnet_client/jQuery/jquery-1.7.2.min.js")"></script>
@@ -17,11 +49,12 @@
 <h2>Index</h2>
 
 La hora es : @DateTime.Now 
+<br/><br/>
 
 <div id="DirectoryTree" class="FileManagerDirectoryTree">
     @Html.Partial("Module")
 </div>
-<div id="FilesTreeFiles">
+<div id="FilesTreeFiles" class="FolderView">
     
 
 </div>

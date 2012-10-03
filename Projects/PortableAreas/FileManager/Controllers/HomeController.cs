@@ -131,12 +131,12 @@ namespace FileManager.Controllers {
 
             foreach (var f in directory.GetFiles()) {
 
-                folderContent.Files.Add(f.Name);
+                folderContent.Files.Add(new Files{ fullName = string.Format("{0}/{1}", folder, f.Name), name = f.Name}); 
             }
 
             foreach (var f in directory.GetDirectories()) {
 
-                folderContent.Folders.Add(f.Name);
+                folderContent.Folders.Add(new Files { fullName = string.Format("{0}/{1}", folder, f.Name), name = f.Name }); 
             }
 
 

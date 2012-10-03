@@ -127,8 +127,15 @@
     <Content Include="Content\default\d.png" />
     <Content Include="Content\default\style.css" />
     <Content Include="Content\default\throbber.gif" />
+    <None Include="Scripts\jquery-1.7.2-vsdoc.js" />
+    <Content Include="Content\file.jpg" />
+    <Content Include="Content\Folder.jpg" />
+    <Content Include="Scripts\jquery-1.7.2.min.js" />
     <Content Include="Scripts\jquery.jstree.js" />
+    <Content Include="Scripts\_references.js" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Home\FolderIcon.cshtml" />
+    <Content Include="Views\Home\FileIcon.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />

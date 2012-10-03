@@ -5,15 +5,22 @@ namespace FileManager.Models {
     public class FolderContent
     {
 
-        public List<String> Files;
-        public List<String> Folders;
+        public List<Files> Files;
+        public List<Files> Folders;
 
         public FolderContent()
         {
 
-            Files = new List<string>();
-            Folders = new List<string>();
+            Files = new List<Files>();
+            Folders = new List<Files>();
 
         }
     }
+
+    public class Files
+    {
+        public string name;
+        public string fullName;
+
+    } 
 }
