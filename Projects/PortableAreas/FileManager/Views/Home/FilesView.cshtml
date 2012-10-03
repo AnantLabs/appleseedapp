@@ -1,7 +1,37 @@
-﻿@model FileManager.Models.FolderContent;
+﻿@using FileManager.Models;
+@model FolderContent
 
-<div>  
-    La cantidad de archivos es @Model.Files.Count()
-    La cantidad de carpetas es @Model.Folders.Count
+<div>
+    @{
+        var totalCount = @Model.Files.Count + @Model.Folders.Count;
+        const int line = 7;
+        var i = 0;
+    }  
+
+    @while(i < totalCount) 
+    {
+        foreach (var folder in Model.Folders)
+        {
+            <div class="FoldersIcons" onclick="OpenFolder('@folder.fullName')">@Html.Partial("FolderIcon",folder.name)</div>
+            i++;
+            if(i % line == 0)
+            {
+                <br/>
+            }
+
+        }
+
+        foreach (var file in Model.Files)
+        {
+            <div class="FoldersIcons">@Html.Partial("FileIcon",file.name)</div>
+            i++;
+            if(i % line == 0)
+            {
+                <br/>
+            }
+
+        }
+
+    }
     
 </div>

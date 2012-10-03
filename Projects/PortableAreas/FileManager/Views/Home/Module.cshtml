@@ -48,23 +48,17 @@
                 "drag_target": false
             },
             
-            "core": { "initially_open": ["FileManager0"] },
+            "core": { "initially_open": ["/Portals"] },
 
             "plugins": ["themes", "contextmenu", "json_data", "ui", "crrm", "dnd", "core"]
         }).bind("select_node.jstree", function (event, data) {
 
-            //var folder = data.rslt.obj.attr("id");
-            //$.ajax({
-            //    type: 'POST',
-            //    url: "/Home/MoveData",
-            //    data: {
-            //        "path": $(this).attr("id"),
-            //        "destination": data.rslt.np.attr("id")
-            //    },
-            //    success: function (r) {
-            //        Refresh();
-            //    }
-            //});
+            var folder = data.rslt.obj.attr("id");
+            var folderReplace = folder.replace(/\//g, "\\/");
+            $("#MainTree").jstree("open_node", $('#' + folderReplace));
+
+            LoadFoldersContent(folder);
+            
         });
         
 
@@ -101,5 +95,37 @@
     //});
 
 
-   
+    //$("#MainTree").bind("open_node.jstree close_node.jstree", function (e) {
+
+    //    var heigth = $('#MainTree').children(":first").height();
+    //    alert(heigth);
+    //    $("#MainTree").height(heigth);
+        
+    //});
+
+    function LoadFoldersContent(dir) {
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("ViewFilesFromFolder")',
+            data: {
+                "folder": dir
+            },
+            success: function (folderView) {
+                $('#FilesTreeFiles').html(folderView);
+            }
+        });
+
+
+    }
+
+
+    function OpenFolder(folder) {
+
+        var folderReplace = folder.replace(/\//g, "\\/");
+        $("#MainTree").jstree("open_node", $('#' + folderReplace));
+        LoadFoldersContent(folder);
+
+    }
+
 </script>
