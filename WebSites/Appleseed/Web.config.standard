@@ -171,6 +171,8 @@
 		<add key="PackageSource" value="http://updates.appleseedapp.com/nuget/" />
 		<add key="AddWwwToRequest" value="false" />
 		<add key="MaxTokenDays" value="7" /> <!-- In days -->
+		<add key="ViewEngineCacheTime" value="10" />
+		
 		 
 	</appSettings>
 	<system.net>
