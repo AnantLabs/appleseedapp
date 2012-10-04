@@ -44,7 +44,7 @@ namespace FileManager.Controllers {
         [HttpPost]
         public JsonResult GetTreeData()
         {
-            const string rootPath = "/Portals";
+            const string rootPath = "/Portals2";
             var rootNode = new FilesTree { attr = new FilesTreeAttribute { id = rootPath }, data = "Portals" };
             rootNode.attr.id = rootPath;
             PopulateTree(rootPath, rootNode);
@@ -66,11 +66,15 @@ namespace FileManager.Controllers {
 
 
         [HttpPost]
-        public ActionResult MoveData(string path, string destination) {
+        public ActionResult MoveData(string path, string destination)
+        {
+
+            path = Request.MapPath(path);
+            destination = Request.MapPath(destination);
             // get the file attributes for file or directory
             var attPath = System.IO.File.GetAttributes(path);
 
-            var attDestination = System.IO.File.GetAttributes(path);
+            var attDestination = System.IO.File.GetAttributes(destination);
 
             var fi = new FileInfo(path);
 

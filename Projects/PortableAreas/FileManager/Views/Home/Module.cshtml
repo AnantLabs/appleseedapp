@@ -64,22 +64,22 @@
 
     });
 
-    //$('#MainTree').bind("move_node.jstree", function (e, data) {
-    //    data.rslt.o.each(function (i) {
-    //        $.ajax({
-    //            async: false,
-    //            type: 'POST',
-    //            url: "/Home/MoveData",
-    //            data: {
-    //                "path": $(this).attr("id"),
-    //                "destination": data.rslt.np.attr("id")
-    //            },
-    //            success: function (r) {
-    //               Refresh();
-    //            }
-    //        });
-    //    });
-    //});
+    $('#MainTree').bind("move_node.jstree", function (e, data) {
+        data.rslt.o.each(function (i) {
+            $.ajax({
+                async: false,
+                type: 'POST',
+                url: '@Url.Action("MoveData")',
+                data: {
+                    "path": $(this).attr("id"),
+                    "destination": data.rslt.np.attr("id")
+                //},
+                //success: function (r) {
+                //   Refresh();
+                }
+            });
+        });
+    });
 
     //$('#MainTree').bind("create.jstree", function (e, data) {
     //    $.post(
