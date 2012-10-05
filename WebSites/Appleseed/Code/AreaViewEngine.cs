@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Web.Caching;
 using System.Web.Mvc;
-using System.Linq;
-using StructureMap;
 using Appleseed.Framework.Settings;
 using Appleseed.Framework.Site.Configuration;
 using System.Web;
@@ -13,8 +11,8 @@ using Appleseed.Framework;
 namespace Appleseed.Code {
     public class AppleseedWebFormViewEngine : WebFormViewEngine {
         public AppleseedWebFormViewEngine()
-            : base() {
-            var ViewLocationFormatsList = new List<string>
+        {
+            var viewLocationFormatsList = new List<string>
             {               
                 "~/{0}.aspx",
                 "~/{0}.ascx",
@@ -24,7 +22,7 @@ namespace Appleseed.Code {
                 "~/Views/Shared/{0}.ascx",
             };
 
-            var MasterLocationFormatsList = new List<string>
+            var masterLocationFormatsList = new List<string>
             {
                 "~/{0}.master",
                 "~/Shared/{0}.master",
@@ -33,36 +31,66 @@ namespace Appleseed.Code {
             };
 
 
-            ViewLocationFormatsList.Insert(0, @"~/Portals/_$$/MVCTemplates/{0}.ascx");
+            viewLocationFormatsList.Insert(0, @"~/Portals/_$$/MVCTemplates/{0}.ascx");
 
-            ViewLocationFormats = ViewLocationFormatsList.ToArray();
+            ViewLocationFormats = viewLocationFormatsList.ToArray();
             PartialViewLocationFormats = ViewLocationFormats;
 
-            MasterLocationFormats = MasterLocationFormatsList.ToArray();
+            MasterLocationFormats = masterLocationFormatsList.ToArray();
             AreaMasterLocationFormats = MasterLocationFormats;
         }
 
-        private string PortalAlias {
+        private static string PortalAlias {
             get {
                 return (string)HttpContext.Current.Items["PortalAlias"];
             }
         }
 
+        private static string CacheKey(string action, ControllerContext controllerContext, string viewName, string masterName) {
+            var controllerName = controllerContext.RouteData.GetRequiredString("controller");
+            var area = Convert.ToString(controllerContext.RouteData.Values["area"] ?? string.Empty);
+            return string.Format("WebForm_PortalAlias{0}_{1}_{2}_{3}_{4}_{5}", PortalAlias, action, area, controllerName, viewName, masterName);
+
+        }
+
+        private static void AddToCache(string key, ViewEngineResult result) {
+            var cache = HttpRuntime.Cache;
+            int time;
+            try {
+                time = int.Parse(ConfigurationManager.AppSettings["ViewEngineCacheTime"]);
+            }
+            catch (Exception) {
+                time = 10;
+            }
+            if (cache.Get(key) == null && result.View != null) {
+                cache.Add(key, result, null, DateTime.Now.AddMinutes(time), TimeSpan.Zero, CacheItemPriority.Normal, null);
+            }
+        }
+
         public override ViewEngineResult FindPartialView(ControllerContext controllerContext, string partialViewName, bool useCache) {
+
+            var cache = HttpRuntime.Cache;
+            var key = CacheKey("FindPartialView", controllerContext, partialViewName, string.Empty);
+            if (cache.Get(key) != null)
+                return (ViewEngineResult)cache.Get(key);
+
             ViewLocationFormats[0] = ViewLocationFormats[0].Replace("$$", PortalAlias);
             PartialViewLocationFormats[0] = PartialViewLocationFormats[0].Replace("$$", PortalAlias);
-
-            ViewEngineResult result = null;
 
             /*custom partialview exists ?*/
             var formattedView = FormatViewName(controllerContext, partialViewName);
             string str2 = formattedView.path;
+            ViewEngineResult result;
             if (formattedView.custom) {
-                return new ViewEngineResult(new WebFormView(controllerContext, str2), this);
+
+                result = new ViewEngineResult(new WebFormView(controllerContext, str2), this);
+                AddToCache(key, result);
+                return result;
             }
 
             result = base.FindPartialView(controllerContext, str2, useCache);
             if ((result != null) && (result.View != null)) {
+                AddToCache(key, result);
                 return result;
             }
             /**/
@@ -71,34 +99,47 @@ namespace Appleseed.Code {
             formattedView = FormatSharedViewName(controllerContext, partialViewName);
             string str3 = formattedView.path;
             if (formattedView.custom) {
-                return new ViewEngineResult(new WebFormView(controllerContext, str3), this);
+                result = new ViewEngineResult(new WebFormView(controllerContext, str3), this);
+                AddToCache(key, result);
+                return result;
             }
 
             result = base.FindPartialView(controllerContext, str3, useCache);
             if ((result != null) && (result.View != null)) {
+                AddToCache(key, result);
                 return result;
             }
 
             /*else return original partialview*/
-            return base.FindPartialView(controllerContext, partialViewName, useCache);
+            result =  base.FindPartialView(controllerContext, partialViewName, useCache);
+            AddToCache(key, result);
+            return result;
 
         }
 
         public override ViewEngineResult FindView(ControllerContext controllerContext, string viewName, string masterName, bool useCache) {
+
+            var cache = HttpRuntime.Cache;
+            var key = CacheKey("FindView", controllerContext, viewName, masterName);
+            if (cache.Get(key) != null)
+                return (ViewEngineResult)cache.Get(key);
+
             ViewLocationFormats[0] = ViewLocationFormats[0].Replace("$$", PortalAlias);
             PartialViewLocationFormats[0] = PartialViewLocationFormats[0].Replace("$$", PortalAlias);
-
-            ViewEngineResult result = null;
 
             /*custom partialview exists ?*/
             var formattedView = FormatViewName(controllerContext, viewName);
             string str2 = formattedView.path;
+            ViewEngineResult result;
             if (formattedView.custom) {
-                return new ViewEngineResult(new WebFormView(controllerContext, str2), this);
+                result = new ViewEngineResult(new WebFormView(controllerContext, str2), this);
+                AddToCache(key, result);
+                return result;
             }
 
             result = base.FindPartialView(controllerContext, str2, useCache);
             if ((result != null) && (result.View != null)) {
+                AddToCache(key, result);
                 return result;
             }
             /**/
@@ -107,21 +148,26 @@ namespace Appleseed.Code {
             formattedView = FormatSharedViewName(controllerContext, viewName);
             string str3 = formattedView.path;
             if (formattedView.custom) {
-                return new ViewEngineResult(new WebFormView(controllerContext, str3), this);
+                result =  new ViewEngineResult(new WebFormView(controllerContext, str3), this);
+                AddToCache(key, result);
+                return result;
             }
 
             result = base.FindPartialView(controllerContext, str3, useCache);
             if ((result != null) && (result.View != null)) {
+                AddToCache(key, result);
                 return result;
             }
 
             /*else return original partialview*/
-            return base.FindView(controllerContext, viewName, masterName, useCache);
+            result = base.FindView(controllerContext, viewName, masterName, useCache);
+            AddToCache(key, result);
+            return result;
         }
 
         private dynamic FormatViewName(ControllerContext controllerContext, string viewName) {
-            string requiredString = controllerContext.RouteData.GetRequiredString("controller");
-            string str2 = Convert.ToString(controllerContext.RouteData.Values["area"] ?? string.Empty);
+            var requiredString = controllerContext.RouteData.GetRequiredString("controller");
+            var str2 = Convert.ToString(controllerContext.RouteData.Values["area"] ?? string.Empty);
 
             var basePath = "Areas";
 
@@ -145,8 +191,8 @@ namespace Appleseed.Code {
         }
 
         private dynamic FormatSharedViewName(ControllerContext controllerContext, string viewName) {
-            string requiredString = controllerContext.RouteData.GetRequiredString("controller");
-            string str = Convert.ToString(controllerContext.RouteData.Values["area"] ?? string.Empty);
+            //string requiredString = controllerContext.RouteData.GetRequiredString("controller");
+            var str = Convert.ToString(controllerContext.RouteData.Values["area"] ?? string.Empty);
 
             var basePath = "Areas";
 
@@ -171,17 +217,26 @@ namespace Appleseed.Code {
         }
 
         protected override IView CreateView(ControllerContext controllerContext, string viewPath, string masterPath) {
-            string newMasterPath = masterPath;
+
+            var cache = HttpRuntime.Cache;
+            var controllerName = controllerContext.RouteData.GetRequiredString("controller");
+            var area = Convert.ToString(controllerContext.RouteData.Values["area"] ?? string.Empty);
+            var key = string.Format("_CreateView_{0}_{1}_{2}_{3}_{4}", PortalAlias, controllerName, area, viewPath, masterPath);
+            if (cache.Get(key) != null)
+                return (IView)cache.Get(key);
+
+
+            var newMasterPath = masterPath;
 
             if (viewPath.ToLower().EndsWith(".aspx")) {
-                string customMasterPath = "~/Portals/_" + PortalAlias + "/MVCTemplates/Menu.master";
+                var customMasterPath = string.Format("~/Portals/_{0}/MVCTemplates/Menu.master", PortalAlias);
                 if (System.IO.File.Exists(controllerContext.HttpContext.Server.MapPath(customMasterPath))) {
                     newMasterPath = customMasterPath;
                 }
                 else {
                     try {
                         var layout = ((PortalSettings)HttpContext.Current.Items["PortalSettings"]).CurrentLayout;
-                        customMasterPath = "~/Design/DesktopLayouts/" + layout + "/Menu.master";
+                        customMasterPath = string.Format("~/Design/DesktopLayouts/{0}/Menu.master", layout);
                         if (System.IO.File.Exists(controllerContext.HttpContext.Server.MapPath(customMasterPath))) {
                             newMasterPath = customMasterPath;
                         }
@@ -195,15 +250,26 @@ namespace Appleseed.Code {
 
             var view = base.CreateView(controllerContext, viewPath, newMasterPath);
 
+            int time;
+            try {
+                time = int.Parse(ConfigurationManager.AppSettings["ViewEngineCacheTime"]);
+            }
+            catch (Exception) {
+                time = 10;
+            }
+
+            cache.Add(key, view, null, DateTime.Now.AddMinutes(time), TimeSpan.Zero, CacheItemPriority.Normal, null);
+            
+
             return view;
         }
     }
 
     public class AppleseedRazorViewEngine : RazorViewEngine {
         public AppleseedRazorViewEngine()
-            : base() {
+        {
 
-            var ViewLocationFormatsList = new List<string>
+            var viewLocationFormatsList = new List<string>
             {               
                 "~/{0}.cshtml",
                 "~/{0}.vbhtml",
@@ -213,7 +279,7 @@ namespace Appleseed.Code {
                 "~/Views/Shared/{0}.vbhtml",
             };
 
-            var MasterLocationFormatsList = new List<string>
+            var masterLocationFormatsList = new List<string>
             {
                 "~/{0}.master",
                 "~/Shared/{0}.master",
@@ -222,39 +288,68 @@ namespace Appleseed.Code {
             };
 
 
-            ViewLocationFormatsList.Insert(0, @"~/Portals/_$$/MVCTemplates/{0}.cshtml");
-            ViewLocationFormatsList.Insert(1, @"~/Portals/_$$/MVCTemplates/{0}.vbhtml");
+            viewLocationFormatsList.Insert(0, @"~/Portals/_$$/MVCTemplates/{0}.cshtml");
+            viewLocationFormatsList.Insert(1, @"~/Portals/_$$/MVCTemplates/{0}.vbhtml");
 
-            ViewLocationFormats = ViewLocationFormatsList.ToArray();
+            ViewLocationFormats = viewLocationFormatsList.ToArray();
             PartialViewLocationFormats = ViewLocationFormats;
 
-            MasterLocationFormats = MasterLocationFormatsList.ToArray();
+            MasterLocationFormats = masterLocationFormatsList.ToArray();
             AreaMasterLocationFormats = MasterLocationFormats;
         }
 
-        private string PortalAlias {
+        private static string PortalAlias {
             get {
                 return (string)HttpContext.Current.Items["PortalAlias"];
             }
         }
 
+        private static string CacheKey(string action, ControllerContext controllerContext, string viewName, string masterName) {
+            var controllerName = controllerContext.RouteData.GetRequiredString("controller");
+            var area = Convert.ToString(controllerContext.RouteData.Values["area"] ?? string.Empty);
+            return string.Format("WebForm_PortalAlias{0}_{1}_{2}_{3}_{4}_{5}", PortalAlias, action, area, controllerName, viewName, masterName);
+
+        }
+
+        private static void AddToCache(string key, ViewEngineResult result) {
+            var cache = HttpRuntime.Cache;
+            int time;
+            try {
+                time = int.Parse(ConfigurationManager.AppSettings["ViewEngineCacheTime"]);
+            }
+            catch (Exception) {
+                time = 10;
+            }
+            if (cache.Get(key) == null && result.View != null) {
+                cache.Add(key, result, null, DateTime.Now.AddMinutes(time), TimeSpan.Zero, CacheItemPriority.Normal, null);
+            }
+        }
+
         public override ViewEngineResult FindPartialView(ControllerContext controllerContext, string partialViewName, bool useCache) {
+
+            var cache = HttpRuntime.Cache;
+            var key = CacheKey("FindPartialView", controllerContext, partialViewName, string.Empty);
+            if (cache.Get(key) != null)
+                return (ViewEngineResult)cache.Get(key);
+
             ViewLocationFormats[0] = ViewLocationFormats[0].Replace("$$", PortalAlias);
             PartialViewLocationFormats[0] = PartialViewLocationFormats[0].Replace("$$", PortalAlias);
             ViewLocationFormats[1] = ViewLocationFormats[1].Replace("$$", PortalAlias);
             PartialViewLocationFormats[1] = PartialViewLocationFormats[1].Replace("$$", PortalAlias);
 
-            ViewEngineResult result = null;
-
             /*custom partialview exists ?*/
             var formattedView = FormatViewName(controllerContext, partialViewName);
             string str2 = formattedView.path;
+            ViewEngineResult result;
             if (formattedView.custom) {
-                return new ViewEngineResult(new RazorView(controllerContext, str2, null, false, null), this);
+                result = new ViewEngineResult(new RazorView(controllerContext, str2, null, false, null), this);
+                AddToCache(key,result);
+                return result;
             }
 
             result = base.FindPartialView(controllerContext, str2, useCache);
             if ((result != null) && (result.View != null)) {
+                AddToCache(key, result);
                 return result;
             }
             /**/
@@ -263,36 +358,49 @@ namespace Appleseed.Code {
             formattedView = FormatSharedViewName(controllerContext, partialViewName);
             string str3 = formattedView.path;
             if (formattedView.custom) {
-                return new ViewEngineResult(new RazorView(controllerContext, str3, null, false, null), this);
+                result =  new ViewEngineResult(new RazorView(controllerContext, str3, null, false, null), this);
+                AddToCache(key, result);
+                return result;
             }
 
             result = base.FindPartialView(controllerContext, str3, useCache);
             if ((result != null) && (result.View != null)) {
+                AddToCache(key, result);
                 return result;
             }
 
             /*else return original partialview*/
-            return base.FindPartialView(controllerContext, partialViewName, useCache);
+            result =  base.FindPartialView(controllerContext, partialViewName, useCache);
+            AddToCache(key, result);
+            return result;
 
         }
 
         public override ViewEngineResult FindView(ControllerContext controllerContext, string viewName, string masterName, bool useCache) {
+
+            var cache = HttpRuntime.Cache;
+            var key = CacheKey("FindView", controllerContext, viewName, masterName);
+            if (cache.Get(key) != null)
+                return (ViewEngineResult)cache.Get(key);
+
             ViewLocationFormats[0] = ViewLocationFormats[0].Replace("$$", PortalAlias);
             PartialViewLocationFormats[0] = PartialViewLocationFormats[0].Replace("$$", PortalAlias);
             ViewLocationFormats[1] = ViewLocationFormats[1].Replace("$$", PortalAlias);
             PartialViewLocationFormats[1] = PartialViewLocationFormats[1].Replace("$$", PortalAlias);
 
-            ViewEngineResult result = null;
-
             /*custom partialview exists ?*/
             var formattedView = FormatViewName(controllerContext, viewName);
             string str2 = formattedView.path;
+            ViewEngineResult result;
             if (formattedView.custom) {
-                return new ViewEngineResult(new RazorView(controllerContext, str2, null, false, null), this);
+                result = new ViewEngineResult(new RazorView(controllerContext, str2, null, false, null), this);
+                AddToCache(key,result);
+                return result;
             }
 
             result = base.FindPartialView(controllerContext, str2, useCache);
             if ((result != null) && (result.View != null)) {
+                AddToCache(key, result);
                 return result;
             }
             /**/
@@ -301,21 +409,26 @@ namespace Appleseed.Code {
             formattedView = FormatSharedViewName(controllerContext, viewName);
             string str3 = formattedView.path;
             if (formattedView.custom) {
-                return new ViewEngineResult(new RazorView(controllerContext, str3, null, false, null), this);
+                result = new ViewEngineResult(new RazorView(controllerContext, str3, null, false, null), this);
+                AddToCache(key, result);
+                return result;
             }
 
             result = base.FindPartialView(controllerContext, str3, useCache);
             if ((result != null) && (result.View != null)) {
+                AddToCache(key, result);
                 return result;
             }
 
             /*else return original partialview*/
-            return base.FindView(controllerContext, viewName, masterName, useCache);
+            result = base.FindView(controllerContext, viewName, masterName, useCache);
+            AddToCache(key, result);
+            return result;
         }
 
         private dynamic FormatViewName(ControllerContext controllerContext, string viewName) {
-            string requiredString = controllerContext.RouteData.GetRequiredString("controller");
-            string str2 = Convert.ToString(controllerContext.RouteData.Values["area"] ?? string.Empty);
+            var requiredString = controllerContext.RouteData.GetRequiredString("controller");
+            var str2 = Convert.ToString(controllerContext.RouteData.Values["area"] ?? string.Empty);
 
             var basePath = "Areas";
 
@@ -339,8 +452,8 @@ namespace Appleseed.Code {
         }
 
         private dynamic FormatSharedViewName(ControllerContext controllerContext, string viewName) {
-            string requiredString = controllerContext.RouteData.GetRequiredString("controller");
-            string str = Convert.ToString(controllerContext.RouteData.Values["area"] ?? string.Empty);
+            //string requiredString = controllerContext.RouteData.GetRequiredString("controller");
+            var str = Convert.ToString(controllerContext.RouteData.Values["area"] ?? string.Empty);
 
             var basePath = "Areas";
 
@@ -365,10 +478,10 @@ namespace Appleseed.Code {
         }
 
         protected override IView CreateView(ControllerContext controllerContext, string viewPath, string masterPath) {
-            string newMasterPath = masterPath;
+            var newMasterPath = masterPath;
 
             if (viewPath.ToLower().EndsWith(".aspx")) {
-                string customMasterPath = "~/Portals/_" + PortalAlias + "/MVCTemplates/Menu.master";
+                var customMasterPath = "~/Portals/_" + PortalAlias + "/MVCTemplates/Menu.master";
                 if (System.IO.File.Exists(controllerContext.HttpContext.Server.MapPath(customMasterPath))) {
                     newMasterPath = customMasterPath;
                 }
