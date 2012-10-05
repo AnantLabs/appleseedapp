@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using FileManager.Models;
 
@@ -91,9 +92,15 @@ namespace FileManager.Controllers {
         }
 
         [HttpPost]
-        public ActionResult CreateFolder(string path, string newname) {
-            Directory.CreateDirectory(path + "\\" + newname);
+        public ActionResult CreateFolder(string path, string newname)
+        {
+            CreateFolderInPath(path, newname);
             return null;
+        }
+
+        private static void CreateFolderInPath(string path, string newname)
+        {
+            Directory.CreateDirectory(path + "\\" + newname);
         }
 
 
@@ -104,15 +111,22 @@ namespace FileManager.Controllers {
 
             while (stack.Count > 0) {
                 var folders = stack.Pop();
-                Directory.CreateDirectory(folders.Target);
+                //Directory.CreateDirectory(folders.Target);
+
+                // Create Directory
+                var sourceFolderName =
+                    folders.Source.Substring(folders.Source.LastIndexOf("\\", System.StringComparison.Ordinal) + 1);
+                CreateFolderInPath(folders.Target,sourceFolderName );
+
+
                 foreach (var file in Directory.GetFiles(folders.Source, "*.*")) {
-                    string targetFile = Path.Combine(folders.Target, Path.GetFileName(file));
+                    var targetFile = Path.Combine(string.Format("{0}\\{1}", folders.Target, sourceFolderName), Path.GetFileName(file));
                     if (System.IO.File.Exists(targetFile)) System.IO.File.Delete(targetFile);
                     System.IO.File.Move(file, targetFile);
                 }
 
                 foreach (var folder in Directory.GetDirectories(folders.Source)) {
-                    stack.Push(new Folders(folder, Path.Combine(folders.Target, Path.GetFileName(folder))));
+                    stack.Push(new Folders(folder, Path.Combine(string.Format("{0}\\{1}", folders.Target, sourceFolderName))));
                 }
             }
             Directory.Delete(source, true);
@@ -147,6 +161,10 @@ namespace FileManager.Controllers {
             return View("FilesView", folderContent);
         }
 
+        public ActionResult UploadFile(HttpPostedFileBase fileData, string folderName)
+        {
+            return Json("");
+        }
 
-    }
+   }
 }
