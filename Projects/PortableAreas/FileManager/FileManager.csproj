@@ -130,8 +130,13 @@
     <None Include="Scripts\jquery-1.7.2-vsdoc.js" />
     <Content Include="Content\file.jpg" />
     <Content Include="Content\Folder.jpg" />
+    <Content Include="Content\UploadFile.png" />
     <Content Include="Scripts\jquery-1.7.2.min.js" />
     <Content Include="Scripts\jquery.jstree.js" />
+    <Content Include="Scripts\Uploadify\jquery.uploadify-3.1.min.js" />
+    <Content Include="Scripts\Uploadify\uploadify-cancel.png" />
+    <Content Include="Scripts\Uploadify\uploadify.css" />
+    <Content Include="Scripts\Uploadify\uploadify.swf" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\FolderIcon.cshtml" />

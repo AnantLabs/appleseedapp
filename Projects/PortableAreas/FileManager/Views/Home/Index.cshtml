@@ -38,6 +38,30 @@
         height: 100px;        
 
     }
+
+    #dirName {
+
+        width: 650px;        
+
+    }
+
+    #FileUpload {
+        display: inline-block;
+        margin-left: 5px;
+    }
+
+    .ArrowButtons {
+        display: inline-block;
+        float: left;
+
+    }
+
+    #FileManagerbuttons {
+
+        display: inline-block;        
+
+    }
+    
     
 </style>
 
@@ -53,6 +77,15 @@ La hora es : @DateTime.Now
 
 <div id="DirectoryTree" class="FileManagerDirectoryTree">
     @Html.Partial("Module")
+</div>
+<div id="FileManagerbuttons">
+    
+    <input type="button" onclick="goBack()" value="back" class="ArrowButtons"/>
+    <input type="button" onclick="goNext()" value="next" class="ArrowButtons" />
+    <input type="file" value="Upload file" id="FileUpload" />
+    <input type="text" readonly="readonly" id="dirName"/>
+    <input type="hidden" id="dirNameHidden" />
+
 </div>
 <div id="FilesTreeFiles" class="FolderView">
     

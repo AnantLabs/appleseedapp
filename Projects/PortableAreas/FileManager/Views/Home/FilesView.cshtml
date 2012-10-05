@@ -8,30 +8,21 @@
         var i = 0;
     }  
 
-    @while(i < totalCount) 
-    {
-        foreach (var folder in Model.Folders)
+   
+        @foreach (var folder in Model.Folders)
         {
-            <div class="FoldersIcons" onclick="OpenFolder('@folder.fullName')">@Html.Partial("FolderIcon",folder.name)</div>
-            i++;
-            if(i % line == 0)
-            {
-                <br/>
-            }
+            <div class="FoldersIcons" ondblclick="OpenFolder('@folder.fullName')">@Html.Partial("FolderIcon",folder.name)</div>
+            
 
         }
 
-        foreach (var file in Model.Files)
+        @foreach (var file in Model.Files)
         {
             <div class="FoldersIcons">@Html.Partial("FileIcon",file.name)</div>
-            i++;
-            if(i % line == 0)
-            {
-                <br/>
-            }
+           
 
         }
 
-    }
+    
     
 </div>

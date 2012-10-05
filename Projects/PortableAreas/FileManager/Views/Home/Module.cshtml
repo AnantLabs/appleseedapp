@@ -2,6 +2,8 @@
 @using MvcContrib;
 
 <script type="text/javascript" src="@Url.Resource("Scripts.jquery.jstree.js")"></script>
+<script type="text/javascript" src="@Url.Resource("Scripts.Uploadify.jquery.uploadify-3.1.min.js")"></script>
+<link type="text/css" rel="stylesheet" href="@Url.Resource("Scripts.Uploadify.uploadify.css")" />
 <link type="text/css" rel="stylesheet" href="@Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/aspnet_client/jQuery/jsTree/themes/default/style.css")" /> 
 
 @*<link type="text/css" rel="stylesheet" href="@Url.Resource("Content.default.style.css")" /> *@
@@ -26,13 +28,12 @@
                     "type": "POST",
                     "url": 
                     function (node) {
-                        var nodeId = "";
-                        var url = "";
+                        var url = '';
                         if (node == -1) {
                             url = '@Url.Action("GetTreeData")';
                         }
                         else {
-                            nodeId = node.attr('id');
+                            var nodeId = node.attr('id');
                             url = '@Url.Action("GetChildreenTree")?dir=' + nodeId;
                         }
 
@@ -57,7 +58,7 @@
             var folderReplace = folder.replace(/\//g, "\\/");
             $("#MainTree").jstree("open_node", $('#' + folderReplace));
 
-            LoadFoldersContent(folder);
+            LoadFoldersContent(folder, true);
             
         });
         
@@ -65,7 +66,7 @@
     });
 
     $('#MainTree').bind("move_node.jstree", function (e, data) {
-        data.rslt.o.each(function (i) {
+        data.rslt.o.each(function () {
             $.ajax({
                 async: false,
                 type: 'POST',
@@ -103,7 +104,7 @@
         
     //});
 
-    function LoadFoldersContent(dir) {
+    function LoadFoldersContent(dir, addToPush) {
 
         $.ajax({
             type: 'POST',
@@ -113,9 +114,19 @@
             },
             success: function (folderView) {
                 $('#FilesTreeFiles').html(folderView);
+                if (addToPush) {
+                    BackNode++;
+                    Backstack[BackNode] = dir;
+                    
+                    //Backstack.splice(BackNode, Backstack.length - BackNode);
+                    
+                }
+                LastNode = dir;
+                $('#dirNameHidden').val(dir);
             }
         });
 
+        $('#dirName').val(dir);
 
     }
 
@@ -124,8 +135,61 @@
 
         var folderReplace = folder.replace(/\//g, "\\/");
         $("#MainTree").jstree("open_node", $('#' + folderReplace));
-        LoadFoldersContent(folder);
+        LoadFoldersContent(folder, true);
 
     }
+
+
+    var Backstack = new Array();
+    //var AheadStack = new Array();
+    var LastNode;
+    var BackNode = -1;
+
+    function goBack() {
+
+        if (Backstack.length > 0 && BackNode > 0) {
+            
+            // Backnode apunta a la posicion acutal
+            BackNode--;
+            var dir = Backstack[BackNode];
+            LoadFoldersContent(dir, false);
+        }
+  
+    }
+    
+    function goNext() {
+
+        if (Backstack.length > 0 && BackNode > -1 && BackNode < Backstack.length -1) {
+
+            // Backnode apunta a la posicion acutal
+            BackNode++;
+            var dir = Backstack[BackNode];
+            LoadFoldersContent(dir, false);
+        }
+
+    }
+
+    $(function() {
+
+        $('#FileUpload').uploadify({
+            'swf': '@Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/aspnet_client/Uploadify/uploadify.swf")',
+            'buttonImage': '@Url.Resource("Content.UploadFile.png")',
+            //'buttonText': 'Buscar...',
+            'uploader': '@Url.Action("UploadFile")',
+            'width': 40,
+            //'folder': '/uploads',
+            'formData': { 'folderName': ''},
+            //'auto': true,
+            //'multi': false,
+            'onUploadStart': function (file) {
+                $("#FileUpload").uploadify("settings", "formData", { 'folderName': LastNode });
+            }
+            //'onUploadSuccess': function (file, data, response) {
+            //    alert('success');
+            //}
+        });
+
+    });
+    
 
 </script>
