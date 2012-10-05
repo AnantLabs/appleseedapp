@@ -23,7 +23,7 @@ namespace Password {
             context.MapRoute(
                 "Password_default",
                 "Password/{controller}/{action}/{id}",
-                new { action = "Index", controller = "Home", id = UrlParameter.Optional, area = AreaName }
+                new { action = "Index", controller = "ForgotPassword", id = UrlParameter.Optional, area = AreaName }
             );
 
             this.RegisterAreaEmbeddedResources();
