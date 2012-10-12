@@ -2,23 +2,17 @@
 @model FolderContent
 
 <div>
-    @{
-        var totalCount = @Model.Files.Count + @Model.Folders.Count;
-        const int line = 7;
-        var i = 0;
-    }  
-
    
         @foreach (var folder in Model.Folders)
         {
-            <div class="FoldersIcons" ondblclick="OpenFolder('@folder.fullName')">@Html.Partial("FolderIcon",folder.name)</div>
+            <div class="FoldersIcons" ondblclick="OpenFolder('@folder.fullName')">@Html.Partial("FolderIcon",folder)</div>
             
 
         }
 
         @foreach (var file in Model.Files)
         {
-            <div class="FoldersIcons">@Html.Partial("FileIcon",file.name)</div>
+            <div class="FoldersIcons">@Html.Partial("FileIcon",file)</div>
            
 
         }

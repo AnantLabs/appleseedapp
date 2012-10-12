@@ -130,6 +130,7 @@
     <None Include="Scripts\jquery-1.7.2-vsdoc.js" />
     <Content Include="Content\file.jpg" />
     <Content Include="Content\Folder.jpg" />
+    <Content Include="Content\image.jpg" />
     <Content Include="Content\UploadFile.png" />
     <Content Include="Scripts\jquery-1.7.2.min.js" />
     <Content Include="Scripts\jquery.jstree.js" />

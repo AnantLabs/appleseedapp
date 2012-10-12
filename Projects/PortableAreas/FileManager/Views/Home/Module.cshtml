@@ -4,7 +4,16 @@
 <script type="text/javascript" src="@Url.Resource("Scripts.jquery.jstree.js")"></script>
 <script type="text/javascript" src="@Url.Resource("Scripts.Uploadify.jquery.uploadify-3.1.min.js")"></script>
 <link type="text/css" rel="stylesheet" href="@Url.Resource("Scripts.Uploadify.uploadify.css")" />
+<link type="text/css" rel="stylesheet" href="@Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/aspnet_client/ContextMenu/jquery.contextMenu.css")" /> 
 <link type="text/css" rel="stylesheet" href="@Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/aspnet_client/jQuery/jsTree/themes/default/style.css")" /> 
+
+<script type="text/javascript" src="@Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/aspnet_client/ContextMenu/jquery.contextMenu.js")"></script>
+<script type="text/javascript" src="@Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/aspnet_client/ContextMenu/jquery.ui.position.js")"></script>
+
+
+
+
+
 
 @*<link type="text/css" rel="stylesheet" href="@Url.Resource("Content.default.style.css")" /> *@
 
@@ -17,11 +26,14 @@
 
 <script type= "text/javascript">
 
-    $(function () {
+    $(function() {
+        Refresh();
+    });
+    
+
+
+    function Refresh(){
         $("#MainTree")
-//        .bind("loaded.jstree", function (e, data) {
-//            data.inst.open_all('#pjson_0'); // -1 opens all nodes in the container
-//        })
         .jstree({
             "json_data": {
                 "ajax": {
@@ -63,7 +75,7 @@
         });
         
 
-    });
+    };
 
     $('#MainTree').bind("move_node.jstree", function (e, data) {
         data.rslt.o.each(function () {
@@ -74,9 +86,9 @@
                 data: {
                     "path": $(this).attr("id"),
                     "destination": data.rslt.np.attr("id")
-                //},
-                //success: function (r) {
-                //   Refresh();
+                },
+                success: function (r) {
+                   Refresh();
                 }
             });
         });
@@ -142,8 +154,9 @@
 
     var Backstack = new Array();
     //var AheadStack = new Array();
-    var LastNode;
+    var LastNode = "/Portals2";
     var BackNode = -1;
+    var CopiedFile = '';
 
     function goBack() {
 
@@ -181,14 +194,90 @@
             'formData': { 'folderName': ''},
             //'auto': true,
             //'multi': false,
-            'onUploadStart': function (file) {
+            'onUploadStart': function () {
                 $("#FileUpload").uploadify("settings", "formData", { 'folderName': LastNode });
+            },
+            'onUploadComplete' : function() {
+                LoadFoldersContent(LastNode);
             }
-            //'onUploadSuccess': function (file, data, response) {
-            //    alert('success');
-            //}
         });
 
+        OpenFolder(LastNode);
+        
+
+    });
+    
+
+    $(function () {
+        
+       
+            
+            $.contextMenu({
+                selector: '#FilesTreeFiles',
+                callback: function (key, options) {
+                    var m = "clicked: " + key;
+                    window.console && console.log(m) || alert(m);
+                },
+                items: {
+                    "upload": {
+                        name: "Upload", icon: "add",
+                        callback: function (key, options) {
+                            //var m = "upload was clicked";
+                            //window.console && console.log(m) || alert(m);
+                            $("#uploadifyDialog").dialog("open");
+                        }
+                    },                
+
+                    "paste": {
+                        name: "Paste", icon: "paste", disabled: function (key, opt) {
+                            // this references the trigger element
+                            return CopiedFile == '';
+                        }
+                    }
+                }
+            });
+
+        
+       
+    });
+
+    var SelectedFile = '';
+    $(function () {
+
+        $.contextMenu({
+            selector: '.FolderIcon',
+            
+            build: function($trigger, e) {
+                // this callback is executed every time the menu is to be shown
+                // its results are destroyed every time the menu is hidden
+                // e is the original contextmenu event, containing e.pageX and e.pageY (amongst other data)
+                SelectedFile = $(e.currentTarget).find(".name").html();
+                window.console && console.log($(e.currentTarget).find(".name").html());
+                window.console && console.log($(e.currentTarget).find("#ParentFolder").val());
+                
+               
+
+                return {
+                    className: 'data-title',
+                    callback: function (key, options) {
+                        var m = "clicked: " + key;
+                        window.console && console.log(m) || alert(m);
+                    },
+                    items: {
+                        "cut": { name: "Cut", icon: "cut" },
+                        "copy": { name: "Copy", icon: "copy" },
+                        "Rename": { name: "Rename", },
+                        "sep1": "---------",
+                        "delete": { name: "Delete", icon: "delete" }
+
+
+                    }
+                };
+                $('.data-title').attr('data-menutitle', SelectedFile);
+            }
+            
+        });
+       
     });
     
 

@@ -1,7 +1,10 @@
-﻿@model string
+﻿@model FileManager.Models.Files
 
 @using MvcContrib
 <div class="FolderIcon" >
     <img src="@Url.Resource("Content.Folder.jpg")" alt="" />
-    <div>@Model</div>
+    <div class="name">@Model.name</div>
+    @Html.Hidden("ParentFolder",Model.folder)
 </div>
+
+
