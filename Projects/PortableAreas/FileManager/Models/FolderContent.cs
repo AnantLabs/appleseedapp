@@ -21,6 +21,7 @@ namespace FileManager.Models {
     {
         public string name;
         public string fullName;
+        public string folder;
 
     } 
 }

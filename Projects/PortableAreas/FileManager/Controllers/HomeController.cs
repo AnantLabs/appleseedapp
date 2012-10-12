@@ -131,6 +131,7 @@ namespace FileManager.Controllers {
             }
             Directory.Delete(source, true);
         }
+
         public class Folders {
             public string Source { get; private set; }
             public string Target { get; private set; }
@@ -149,12 +150,12 @@ namespace FileManager.Controllers {
 
             foreach (var f in directory.GetFiles()) {
 
-                folderContent.Files.Add(new Files{ fullName = string.Format("{0}/{1}", folder, f.Name), name = f.Name}); 
+                folderContent.Files.Add(new Files{ fullName = string.Format("{0}/{1}", folder, f.Name), name = f.Name, folder = folder}); 
             }
 
             foreach (var f in directory.GetDirectories()) {
 
-                folderContent.Folders.Add(new Files { fullName = string.Format("{0}/{1}", folder, f.Name), name = f.Name }); 
+                folderContent.Folders.Add(new Files { fullName = string.Format("{0}/{1}", folder, f.Name), name = f.Name, folder = folder }); 
             }
 
 
@@ -163,7 +164,25 @@ namespace FileManager.Controllers {
 
         public ActionResult UploadFile(HttpPostedFileBase fileData, string folderName)
         {
-            return Json("");
+
+            if (fileData == null) {
+                return new EmptyResult();
+            }
+
+            if (fileData.ContentLength == 0) {
+                return Json("Nothing to upload");
+            }
+
+            var path = Request.MapPath(folderName);
+
+            if (!Directory.Exists(path)) {
+                return Json("wrong directory");
+            }
+
+            var fullName = string.Format(@"{0}\{1}", path, fileData.FileName);
+            fileData.SaveAs(fullName);
+            
+            return Json("Llego todo bien");
         }
 
    }

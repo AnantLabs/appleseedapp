@@ -1,7 +1,16 @@
-﻿@model string
+﻿@model FileManager.Models.Files
 
 @using MvcContrib
+
+@{ var iconName = Url.Resource("Content.file.jpg");
+    if(Model.name.EndsWith("jpg") || Model.name.EndsWith("jpeg") || Model.name.EndsWith("png"))
+    {
+        iconName = Url.Resource("Content.image.jpg");
+    }
+}
+
 <div class="FolderIcon" >
-    <img src="@Url.Resource("Content.file.jpg")" alt="" />
-    <div>@Model</div>
+    <img src="@iconName" alt="" />
+    <div class="name">@Model.name</div>
+    @Html.Hidden("ParentFolder",Model.folder)
 </div>
