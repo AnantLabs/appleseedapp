@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -132,7 +133,7 @@ namespace FileManager.Controllers {
             Directory.Delete(source, true);
         }
 
-        public class Folders {
+        private class Folders {
             public string Source { get; private set; }
             public string Target { get; private set; }
 
@@ -182,8 +183,22 @@ namespace FileManager.Controllers {
             var fullName = string.Format(@"{0}\{1}", path, fileData.FileName);
             fileData.SaveAs(fullName);
             
-            return Json("Llego todo bien");
+            return Json("OK");
         }
 
-   }
+        public JsonResult DeleteFile(string File, string Folder )
+        {
+            try {
+                var fullName = string.Format(@"{0}\{1}", Folder, File);
+                System.IO.File.Delete(fullName);
+                return Json("ok");
+            }
+            catch (Exception)
+            {
+                HttpContext.Response.StatusCode = 500;
+                return Json("");
+            }
+        }
+
+    }
 }
