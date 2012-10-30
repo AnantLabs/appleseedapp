@@ -242,9 +242,10 @@
     });
 
     var SelectedFile = '';
+    var SelectedFileParentFolder = '';
     $(function () {
 
-        $.contextMenu({
+        /*$.contextMenu({
             selector: '.FolderIcon',
             
             build: function($trigger, e) {
@@ -254,11 +255,12 @@
                 SelectedFile = $(e.currentTarget).find(".name").html();
                 window.console && console.log($(e.currentTarget).find(".name").html());
                 window.console && console.log($(e.currentTarget).find("#ParentFolder").val());
-                
+                //$('.data-title').attr('data-menutitle', 'Peñarol');
+                $(e.currentTarget).addClass("selectedFile");
                
 
                 return {
-                    className: 'data-title',
+                    //className: 'data-title',
                     callback: function (key, options) {
                         var m = "clicked: " + key;
                         window.console && console.log(m) || alert(m);
@@ -271,14 +273,60 @@
                         "delete": { name: "Delete", icon: "delete" }
 
 
-                    }
+                    },
+                        show: function(opt) {
+                            alert("Selector: " + opt.selector);
+                        }
                 };
-                $('.data-title').attr('data-menutitle', SelectedFile);
+                //$('.data-title').attr('data-menutitle', SelectedFile);
             }
             
+        });*/
+        
+        $.contextMenu({
+            selector: '.FileIcon',
+            callback: function (key, options) {
+                var m = "clicked: " + key;
+                window.console && console.log(m) || alert(m);
+            },
+            items: {
+                "cut": { name: "Cut", icon: "cut" },
+                "copy": { name: "Copy", icon: "copy" },
+                "Rename": { name: "Rename", },
+                "sep1": "---------",
+                "delete": {
+                    name: "Delete", 
+                    icon: "delete", 
+                    // superseeds "global" callback
+                        callback: function(key, options) {
+                            var m = "edit was clicked";
+                            window.console && console.log(m) || alert(m); 
+                        }
+                }
+
+
+            },
+            events: {
+                show: function (opt) {
+                    opt.$trigger.addClass("selectedFile");
+                    SelectedFile = opt.$trigger.find(".name").html();
+                    SelectedFileParentFolder = opt.$trigger.find("#ParentFolder").val();
+                    window.console && console.log("El file es : " + SelectedFile);
+                    window.console && console.log("El parentfile es : " + SelectedFileParentFolder);
+                },
+                hide: function (opt) {
+                    opt.$trigger.removeClass("selectedFile");
+                }
+            }
         });
        
+        //$('.data-title').attr('data-menutitle', 'Peñarol');
     });
     
+
+    function DeleteFile() {
+
+
+    }
 
 </script>
