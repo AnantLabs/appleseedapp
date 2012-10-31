@@ -137,6 +137,33 @@ namespace FileManager.Controllers {
             }
         }
 
+        private static void CopyDirectories(string sourceDirName, string destDirName)
+        {
+            var dir = new DirectoryInfo(sourceDirName);
+            var dirs = dir.GetDirectories();
+
+            if (!dir.Exists) {
+                throw new DirectoryNotFoundException(
+                    "Source directory does not exist or could not be found: "
+                    + sourceDirName);
+            }
+
+            if (!Directory.Exists(destDirName)) {
+                Directory.CreateDirectory(destDirName);
+            }
+
+            var files = dir.GetFiles();
+            foreach (var file in files) {
+                var temppath = Path.Combine(destDirName, file.Name);
+                file.CopyTo(temppath, false);
+            }
+
+            foreach (var subdir in dirs) {
+                var temppath = Path.Combine(destDirName, subdir.Name);
+                CopyDirectories(subdir.FullName, temppath);
+                
+            }
+        }
 
         public void MoveDirectory(string source, string target) {
             var stack = new Stack<Folders>();
@@ -225,10 +252,9 @@ namespace FileManager.Controllers {
                 System.IO.File.Delete(fullName);
                 return Json("ok");
             }
-            catch (Exception)
-            {
+            catch (Exception e) {
                 HttpContext.Response.StatusCode = 500;
-                return Json("");
+                return Json(e.Message);
             }
         }
 
@@ -240,9 +266,9 @@ namespace FileManager.Controllers {
 
                 return Json("ok");
             }
-            catch (Exception) {
+            catch (Exception e) {
                 HttpContext.Response.StatusCode = 500;
-                return Json("");
+                return Json(e.Message);
             }
         }
 
@@ -259,9 +285,9 @@ namespace FileManager.Controllers {
 
                 return Json("ok");
             }
-            catch (Exception) {
+            catch (Exception e) {
                 HttpContext.Response.StatusCode = 500;
-                return Json("");
+                return Json(e.Message);
             }
         }
 
@@ -276,31 +302,44 @@ namespace FileManager.Controllers {
                }
                 return Json("ok");
            }
-           catch (Exception) {
+           catch (Exception e) {
                HttpContext.Response.StatusCode = 500;
-               return Json("");
+               return Json(e.Message); 
            }
        }
 
 
-       public JsonResult PasteFile(string file, string folder, string newFolder, bool isCopy) {
+       public JsonResult PasteFile(string file, string folder, string newFolder, bool isCopy, bool isFolder) {
            try {
-               
-               var fullOldName = string.Format(@"{0}\{1}", Request.MapPath(folder), file);
-               var fullNewName = string.Format(@"{0}\{1}", Request.MapPath(newFolder), file);
-               System.IO.File.Copy(fullOldName, fullNewName);
-
-               if(!isCopy)
+               if(isFolder)
                {
-                   System.IO.File.Delete(fullOldName);  
+                   var fullOldName = string.Format(@"{0}\{1}", Request.MapPath(folder), file);
+                   var fullNewName = string.Format(@"{0}\{1}", Request.MapPath(newFolder), file);
+                   CopyDirectories(fullOldName, fullNewName);
+
+                   if (!isCopy) {
+                       DeleteDirectory(fullOldName);
+                   }    
+
                }
+               else
+               {
+                   var fullOldName = string.Format(@"{0}\{1}", Request.MapPath(folder), file);
+                   var fullNewName = string.Format(@"{0}\{1}", Request.MapPath(newFolder), file);
+                   System.IO.File.Copy(fullOldName, fullNewName);
+
+                   if (!isCopy) {
+                       System.IO.File.Delete(fullOldName);
+                   }    
+               }
+               
                //
 
                return Json("ok");
            }
-           catch (Exception) {
+           catch (Exception e) {
                HttpContext.Response.StatusCode = 500;
-               return Json("");
+               return Json(e.Message);
            }
        }
 
@@ -308,13 +347,19 @@ namespace FileManager.Controllers {
        {
            try {
                var fullName = string.Format(@"{0}\{1}", Request.MapPath(parentfolder), folder);
-               Directory.Delete(fullName);
+               DeleteDirectory(fullName);
                return Json("ok");
            }
-           catch (Exception) {
+           catch (Exception e) {
                HttpContext.Response.StatusCode = 500;
-               return Json("");
+               return Json(e.Message);
            }
+       }
+
+       private static void DeleteDirectory(string sourceDirName) {
+           var dir = new DirectoryInfo(sourceDirName);
+           dir.Delete(true);
+           
        }
 
     }

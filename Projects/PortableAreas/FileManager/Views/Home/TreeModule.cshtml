@@ -158,6 +158,7 @@
     var CopiedFile = '';
     var CopiedFileFolder = '';
     var isCopy = true;
+    var isFolder = false;
 
     function goBack() {
 
@@ -198,6 +199,9 @@
                 LoadFoldersContent(LastNode);
                 CloseNewFolderDialog();
                 $('#NewFolderInputId').val('');
+            },
+            error: function (result) {
+                AppendError(result.responseText);
             }
         });
 
@@ -300,6 +304,7 @@
                         CopiedFile = SelectedFile;
                         CopiedFileFolder = SelectedFileParentFolder;
                         isCopy = false;
+                        isFolder = false;
                     }
                 },
                 "copy": {
@@ -309,6 +314,7 @@
                         CopiedFile = SelectedFile;
                         CopiedFileFolder = SelectedFileParentFolder;
                         isCopy = true;
+                        isFolder = false;
                     }
                 },
                 "Rename": {
@@ -334,8 +340,7 @@
                     opt.$trigger.addClass("selectedFile");
                     SelectedFile = opt.$trigger.find(".name").html();
                     SelectedFileParentFolder = opt.$trigger.find("#ParentFolder").val();
-                    window.console && console.log("El file es : " + SelectedFile);
-                    window.console && console.log("El parentfile es : " + SelectedFileParentFolder);
+                    
                 },
                 hide: function (opt) {
                     opt.$trigger.removeClass("selectedFile");
@@ -354,18 +359,20 @@
                     name: "Cut",
                     icon: "cut",
                     callback: function (key, options) {
-                        CopiedFile = SelectedFile;
-                        CopiedFileFolder = SelectedFileParentFolder;
+                        CopiedFile = SelectedFolder;
+                        CopiedFileFolder = SelectedFolderParentFolder;
                         isCopy = false;
+                        isFolder = true;
                     }
                 },
                 "copy": {
                     name: "Copy",
                     icon: "copy",
                     callback: function (key, options) {
-                        CopiedFile = SelectedFile;
-                        CopiedFileFolder = SelectedFileParentFolder;
+                        CopiedFile = SelectedFolder;
+                        CopiedFileFolder = SelectedFolderParentFolder;
                         isCopy = true;
+                        isFolder = true;
                     }
                 },
                 "Rename": {
@@ -404,21 +411,34 @@
     
     function DeleteFolder() {
 
-        $.ajax({
-            type: 'POST',
-            url: '@Url.Action("DeleteFolder")',
-            data: {
-                "folder": SelectedFolder,
-                "parentfolder": SelectedFolderParentFolder
-            },
-            success: function (folderView) {
-                LoadFoldersContent(LastNode);
-                Refresh();
-            }
-        });
+        if (confirm('Are you sure you want to delete "' + SelectedFolder + '"?')) {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("DeleteFolder")',
+                data: {
+                    "folder": SelectedFolder,
+                    "parentfolder": SelectedFolderParentFolder
+                },
+                success: function(folderView) {
+                    LoadFoldersContent(LastNode);
+                    Refresh();
+                },
+                error: function (result) {
+                    AppendError(result.responseText);
+                }
+            });
+        }
 
     }
     
+    function AppendError(msg) {
+       
+        var errorDiv = '<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">' +
+            '<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>' +
+            '<strong>Alert:</strong>' + msg + '</p><span onclick="$(this).parent().remove()">cerrar</span></div>';
+        $('#FileManagerErrors').append(errorDiv);
+    }
+
     function RenameFolder() {
 
         var newFolderName = $('#RenameFolderInputId').val();
@@ -447,18 +467,22 @@
     
 
     function DeleteFile() {
-
-        $.ajax({
-            type: 'POST',
-            url: '@Url.Action("DeleteFile")',
-            data: {
-                "file": SelectedFile,
-                "folder": SelectedFileParentFolder
-            },
-            success: function (folderView) {
-                LoadFoldersContent(LastNode); 
-            }
-        });
+        if (confirm('Are you sure you want to delete "' + SelectedFile + '"?')) {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("DeleteFile")',
+                data: {
+                    "file": SelectedFile,
+                    "folder": SelectedFileParentFolder
+                },
+                success: function(folderView) {
+                    LoadFoldersContent(LastNode);
+                },
+                error: function(result) {
+                    AppendError(result.responseText);
+                }
+            });
+        }
 
     }
     
@@ -479,6 +503,9 @@
                     LoadFoldersContent(LastNode);
                     CloseRenameFileDialog();
                     $('#RenameFileInputId').val('');
+                },
+                error: function(result) {
+                    AppendError(result.responseText);
                 }
             });
         } else {
@@ -495,10 +522,15 @@
                 "file": CopiedFile,
                 "folder": CopiedFileFolder,
                 "newFolder": LastNode,
-                "isCopy": isCopy
+                "isCopy": isCopy,
+                "isFolder": isFolder 
             },
             success: function (folderView) {
                 LoadFoldersContent(LastNode);
+                CopiedFile = '';
+            },
+            error: function (result) {
+                AppendError(result.responseText);
             }
         });
 
