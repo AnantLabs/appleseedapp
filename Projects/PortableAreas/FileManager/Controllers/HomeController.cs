@@ -186,10 +186,10 @@ namespace FileManager.Controllers {
             return Json("OK");
         }
 
-        public JsonResult DeleteFile(string File, string Folder )
+        public JsonResult DeleteFile(string file, string folder )
         {
             try {
-                var fullName = string.Format(@"{0}\{1}", Folder, File);
+                var fullName = string.Format(@"{0}\{1}", Request.MapPath(folder), file);
                 System.IO.File.Delete(fullName);
                 return Json("ok");
             }
@@ -199,6 +199,22 @@ namespace FileManager.Controllers {
                 return Json("");
             }
         }
+
+        public JsonResult CreateNewFolder(string folder)
+        {
+            try {
+
+                CreateFolderInPath(Request.MapPath(folder), "New folder");
+
+                return Json("ok");
+            }
+            catch (Exception) {
+                HttpContext.Response.StatusCode = 500;
+                return Json("");
+            }
+        }
+
+        
 
     }
 }

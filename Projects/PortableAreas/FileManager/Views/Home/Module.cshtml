@@ -181,6 +181,25 @@
         }
 
     }
+    
+    function CreateFolder() {
+        //var folderReplace = LastNode.replace(/\//g, "\\/");
+        
+        
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("CreateNewFolder")',
+            data: {
+                folder: LastNode
+            },
+            success: function (folderView) {
+                console.log("ok");
+            }
+        });
+
+
+
+    }
 
     $(function() {
 
@@ -219,8 +238,15 @@
                     window.console && console.log(m) || alert(m);
                 },
                 items: {
+                    "createFolder": {
+                        name: "Create Folder",
+                        callback: function (key, options) {
+                            CreateFolder();
+                            //$("#uploadifyDialog").dialog("open");
+                        }
+                    },
                     "upload": {
-                        name: "Upload", icon: "add",
+                        name: "Upload File", icon: "add",
                         callback: function (key, options) {
                             //var m = "upload was clicked";
                             //window.console && console.log(m) || alert(m);
@@ -234,12 +260,15 @@
                             return CopiedFile == '';
                         }
                     }
+                    
                 }
             });
 
         
        
     });
+    
+
 
     var SelectedFile = '';
     var SelectedFileParentFolder = '';
@@ -299,8 +328,7 @@
                     icon: "delete", 
                     // superseeds "global" callback
                         callback: function(key, options) {
-                            var m = "edit was clicked";
-                            window.console && console.log(m) || alert(m); 
+                            DeleteFile();
                         }
                 }
 
@@ -326,6 +354,17 @@
 
     function DeleteFile() {
 
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("DeleteFile")',
+            data: {
+                "file": SelectedFile,
+                "folder": SelectedFileParentFolder
+            },
+            success: function (folderView) {
+                LoadFoldersContent(LastNode); 
+            }
+        });
 
     }
 
