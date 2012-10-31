@@ -227,8 +227,7 @@ namespace FileManager.Controllers {
                 }
                 var fullOldName = string.Format(@"{0}\{1}", Request.MapPath(folder), file);
                 var fullNewName = string.Format(@"{0}\{1}", Request.MapPath(folder), name);
-                System.IO.File.Copy(fullOldName, fullNewName);
-                System.IO.File.Delete(fullOldName);
+                System.IO.File.Move(fullOldName,fullNewName);
 
                 return Json("ok");
             }
