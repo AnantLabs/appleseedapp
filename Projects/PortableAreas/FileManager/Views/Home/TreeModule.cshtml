@@ -371,7 +371,7 @@
                 "Rename": {
                     name: "Rename",
                     callback: function (key, options) {
-                        OpenRenameFileDialog();
+                        OpenRenameFolderDialog();
                     }
                 },
                 "sep1": "---------",
@@ -421,21 +421,22 @@
     
     function RenameFolder() {
 
-        var newFileName = $('#RenameFileInputId').val();
-        if (newFileName != '') {
+        var newFolderName = $('#RenameFolderInputId').val();
+        if (newFolderName != '') {
 
             $.ajax({
                 type: 'POST',
-                url: '@Url.Action("RenameFile")',
+                url: '@Url.Action("RenameFolder")',
                 data: {
-                    "file": SelectedFile,
-                    "folder": SelectedFileParentFolder,
-                    "name": newFileName
+                    "folder": SelectedFolder,
+                    "parentFolder": SelectedFolderParentFolder,
+                    "newName": newFolderName
                 },
                 success: function (folderView) {
                     LoadFoldersContent(LastNode);
-                    CloseRenameFileDialog();
-                    $('#RenameFileInputId').val('');
+                    CloseRenameFolderDialog();
+                    Refresh();
+                    
                 }
             });
         } else {

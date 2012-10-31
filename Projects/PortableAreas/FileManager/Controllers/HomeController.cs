@@ -265,6 +265,24 @@ namespace FileManager.Controllers {
             }
         }
 
+       public JsonResult RenameFolder(string folder, string parentFolder, string newName) {
+           try
+           {
+               if (folder != newName)
+               {
+                   var fullOldName = string.Format(@"{0}\{1}", Request.MapPath(parentFolder), folder);
+                   var fullNewName = string.Format(@"{0}\{1}", Request.MapPath(parentFolder), newName);
+                   Directory.Move(fullOldName, fullNewName);
+               }
+                return Json("ok");
+           }
+           catch (Exception) {
+               HttpContext.Response.StatusCode = 500;
+               return Json("");
+           }
+       }
+
+
        public JsonResult PasteFile(string file, string folder, string newFolder, bool isCopy) {
            try {
                
