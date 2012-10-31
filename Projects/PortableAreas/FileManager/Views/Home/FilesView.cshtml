@@ -12,8 +12,15 @@
 
         @foreach (var file in Model.Files)
         {
-            <div class="FoldersIcons">@Html.Partial("FileIcon",file)</div>
-           
+            if(file.name.EndsWith(".txt"))
+             {
+                 <div class="FoldersIcons" ondblclick="OpenFile('@file.name', '@file.folder')">@Html.Partial("FileIcon", file)</div>
+             }
+             else
+             {
+                <div class="FoldersIcons">@Html.Partial("FileIcon", file)</div>
+             }
+
 
         }
 
