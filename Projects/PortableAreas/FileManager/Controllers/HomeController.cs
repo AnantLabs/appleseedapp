@@ -74,26 +74,36 @@ namespace FileManager.Controllers {
         [HttpPost]
         public ActionResult MoveData(string path, string destination)
         {
+            try
+            {
+                path = Request.MapPath(path);
+                destination = Request.MapPath(destination);
+                // get the file attributes for file or directory
+                var attPath = System.IO.File.GetAttributes(path);
 
-            path = Request.MapPath(path);
-            destination = Request.MapPath(destination);
-            // get the file attributes for file or directory
-            var attPath = System.IO.File.GetAttributes(path);
+                var attDestination = System.IO.File.GetAttributes(destination);
 
-            var attDestination = System.IO.File.GetAttributes(destination);
+                var fi = new FileInfo(path);
 
-            var fi = new FileInfo(path);
-
-            //detect whether its a directory or file
-            if ((attPath & FileAttributes.Directory) == FileAttributes.Directory) {
-                if ((attDestination & FileAttributes.Directory) == FileAttributes.Directory) {
-                    MoveDirectory(path, destination);
+                //detect whether its a directory or file
+                if ((attPath & FileAttributes.Directory) == FileAttributes.Directory)
+                {
+                    if ((attDestination & FileAttributes.Directory) == FileAttributes.Directory)
+                    {
+                        MoveDirectory(path, destination);
+                    }
                 }
+                else
+                {
+                    System.IO.File.Move(path, destination + "\\" + fi.Name);
+                }
+                return null;
             }
-            else {
-                System.IO.File.Move(path, destination + "\\" + fi.Name);
+            catch(Exception)
+            {
+                Response.StatusCode = 500;
+                return null;
             }
-            return null;
         }
 
         [HttpPost]
@@ -108,6 +118,24 @@ namespace FileManager.Controllers {
             Directory.CreateDirectory(path + "\\" + newname);
         }
 
+        public JsonResult RenameFolderTree(string name, string newName)
+        {
+            try
+            {
+                var index = name.LastIndexOf('/');
+
+                var directory = name.Substring(0, index + 1);
+                newName = directory + newName;
+                Directory.Move(Request.MapPath(name), Request.MapPath(newName));
+
+                return Json("ok");
+            }
+            catch(Exception)
+            {
+                Response.StatusCode = 500;
+                return Json("");
+            }
+        }
 
 
         public void MoveDirectory(string source, string target) {
@@ -120,7 +148,7 @@ namespace FileManager.Controllers {
 
                 // Create Directory
                 var sourceFolderName =
-                    folders.Source.Substring(folders.Source.LastIndexOf("\\", System.StringComparison.Ordinal) + 1);
+                    folders.Source.Substring(folders.Source.LastIndexOf("\\", StringComparison.Ordinal) + 1);
                 CreateFolderInPath(folders.Target,sourceFolderName );
 
 
@@ -257,7 +285,19 @@ namespace FileManager.Controllers {
                return Json("");
            }
        }
-        
+
+       public JsonResult DeleteFolder(string folder, string parentfolder)
+       {
+           try {
+               var fullName = string.Format(@"{0}\{1}", Request.MapPath(parentfolder), folder);
+               Directory.Delete(fullName);
+               return Json("ok");
+           }
+           catch (Exception) {
+               HttpContext.Response.StatusCode = 500;
+               return Json("");
+           }
+       }
 
     }
 }
