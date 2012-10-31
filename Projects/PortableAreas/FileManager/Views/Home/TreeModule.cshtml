@@ -89,32 +89,31 @@
                 },
                 success: function (r) {
                    Refresh();
+                },
+                error: function (r) {
+                    $.jstree.rollback(data.rlbk);
                 }
             });
         });
     });
 
-    //$('#MainTree').bind("create.jstree", function (e, data) {
-    //    $.post(
-	//			"/Home/CreateFolder",
-	//			{
-	//			    "path": data.rslt.parent.attr("id"),
-	//			    "newname": data.rslt.name
-	//			},
-	//			function (r) {
-	//			    Refresh();
-	//			}
-	//		);
-    //});
 
-
-    //$("#MainTree").bind("open_node.jstree close_node.jstree", function (e) {
-
-    //    var heigth = $('#MainTree').children(":first").height();
-    //    alert(heigth);
-    //    $("#MainTree").height(heigth);
-        
-    //});
+    $('#MainTree').bind("rename.jstree", function(e, data) {
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("RenameFolderTree")',
+            data: {
+                "name": data.rslt.obj.attr("id"),
+                "newName": data.rslt.new_name
+            },
+            success: function(r) {
+                Refresh();
+            },
+            error: function(r) {
+                $.jstree.rollback(data.rlbk);
+            }
+        });
+    });
 
     function LoadFoldersContent(dir, addToPush) {
 
@@ -282,6 +281,8 @@
 
     var SelectedFile = '';
     var SelectedFileParentFolder = '';
+    var SelectedFolder = '';
+    var SelectedFolderParentFolder = '';
     $(function () {
 
         
@@ -341,9 +342,107 @@
                 }
             }
         });
+        
+        $.contextMenu({
+            selector: '.FolderIcon',
+            callback: function (key, options) {
+                var m = "clicked: " + key;
+                window.console && console.log(m) || alert(m);
+            },
+            items: {
+                "cut": {
+                    name: "Cut",
+                    icon: "cut",
+                    callback: function (key, options) {
+                        CopiedFile = SelectedFile;
+                        CopiedFileFolder = SelectedFileParentFolder;
+                        isCopy = false;
+                    }
+                },
+                "copy": {
+                    name: "Copy",
+                    icon: "copy",
+                    callback: function (key, options) {
+                        CopiedFile = SelectedFile;
+                        CopiedFileFolder = SelectedFileParentFolder;
+                        isCopy = true;
+                    }
+                },
+                "Rename": {
+                    name: "Rename",
+                    callback: function (key, options) {
+                        OpenRenameFileDialog();
+                    }
+                },
+                "sep1": "---------",
+                "delete": {
+                    name: "Delete",
+                    icon: "delete",
+                    // superseeds "global" callback
+                    callback: function (key, options) {
+                        DeleteFolder();
+                    }
+                }
+
+
+            },
+            events: {
+                show: function (opt) {
+                    opt.$trigger.addClass("selectedFile");
+                    SelectedFolder = opt.$trigger.find(".name").html();
+                    SelectedFolderParentFolder = opt.$trigger.find("#ParentFolder").val();
+                    
+                },
+                hide: function (opt) {
+                    opt.$trigger.removeClass("selectedFile");
+                }
+            }
+        });
        
         //$('.data-title').attr('data-menutitle', 'Peñarol');
     });
+    
+    function DeleteFolder() {
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("DeleteFolder")',
+            data: {
+                "folder": SelectedFolder,
+                "parentfolder": SelectedFolderParentFolder
+            },
+            success: function (folderView) {
+                LoadFoldersContent(LastNode);
+                Refresh();
+            }
+        });
+
+    }
+    
+    function RenameFolder() {
+
+        var newFileName = $('#RenameFileInputId').val();
+        if (newFileName != '') {
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("RenameFile")',
+                data: {
+                    "file": SelectedFile,
+                    "folder": SelectedFileParentFolder,
+                    "name": newFileName
+                },
+                success: function (folderView) {
+                    LoadFoldersContent(LastNode);
+                    CloseRenameFileDialog();
+                    $('#RenameFileInputId').val('');
+                }
+            });
+        } else {
+
+        }
+
+    }
     
 
     function DeleteFile() {
