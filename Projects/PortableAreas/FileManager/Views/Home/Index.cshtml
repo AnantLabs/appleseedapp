@@ -2,102 +2,14 @@
     ViewBag.Title = "Index";
 }
 <style type="text/css">
-    .FileManagerDirectoryTree {
-
-        width: 200px;
-        float: left;
-    }
-
-    .FolderView {
-        
-        width: 700px;
-        float: left;
-
-    }
-
-    .FoldersIcons {
-        
-        width: 100px;
-        float: left;
-
-    }
-
-    .FolderIcon
-    {
-        font-size: small;
-        text-align: center;
-    }
-
-    .FileIcon
-    {
-        font-size: small;
-        text-align: center;
-    }
-
-    .jstree-default.jstree-focused {
-        background: #FFFFFF !important; 
-    }
-
-    #MainTree {
-
-        height: 100px;        
-
-    }
-
-    #dirName {
-
-        width: 650px;        
-
-    }
-
-    #FileUpload {
-        display: inline-block;
-        margin-left: 5px;
-    }
-
-    .ArrowButtons {
-        display: inline-block;
-        float: left;
-
-    }
-
-    #FileManagerbuttons {
-
-        display: inline-block;        
-
-    }
     
-    .data-title:before {
-        content: attr(data-menutitle);
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        left: 0;
-        background: #DDD;
-        padding: 2px;
-
-        font-family: Verdana, Arial, Helvetica, sans-serif;
-        font-size: 11px;
-        font-weight: bold;
-    }
-    .data-title :first-child {
-        margin-top: 20px;
-    }
-    
-    .swfupload {
-        z-index: 100000 !important;
-    }
-
-    .selectedFile {
-        background-color: lightblue;
-    }
 
 </style>
 
 <script type="text/javascript" src="@Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/aspnet_client/jQuery/jquery-1.7.2.min.js")"></script>
 <script type="text/javascript" src="@Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/aspnet_client/jQuery/jquery-ui-1.8.11.min.js")"></script>
 <link type="text/css" rel="stylesheet" href="@Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/Design/jqueryUI/appleseed/jquery-ui.custom.css")" /> 
+<link type="text/css" rel="stylesheet" href="@Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/Design/FileManager.css")" /> 
 
     
 
@@ -108,44 +20,4 @@
 La hora es : @DateTime.Now 
 <br/><br/>
 
-<div id="DirectoryTree" class="FileManagerDirectoryTree">
-    @Html.Partial("Module")
-</div>
-<div id="FileManagerbuttons">
-    
-    <input type="button" onclick="goBack()" value="back" class="ArrowButtons"/>
-    <input type="button" onclick="goNext()" value="next" class="ArrowButtons" />
-    <input type="button" onclick="OpenUploadifyDialog()" value="Upload" class="ArrowButtons" />
-    <input type="text" readonly="readonly" id="dirName"/>
-    <input type="hidden" id="dirNameHidden" />
-
-</div>
-<div id="FilesTreeFiles" class="FolderView">
-    
-
-</div>
-
-<div id="uploadifyDialog" title="Upload Files">
-    <input type="file" value="Upload file" id="FileUpload" />
-</div>
-
-<div id="NewFolderDialog">
-    <input type="text" id="NewFolderInputId"/>
-    <input type="button" value="ok"/>    
-
-</div>
-
-<script>
-    
-    $(function () {
-        $("#uploadifyDialog").dialog({
-            autoOpen: false,
-            modal: true
-        });
-    });
-
-    function OpenUploadifyDialog() {
-        $("#uploadifyDialog").dialog("open");
-    }
-
-</script>
+@Html.Action("Module") 

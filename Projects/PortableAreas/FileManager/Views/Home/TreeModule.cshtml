@@ -1,0 +1,408 @@
+﻿
+@using MvcContrib;
+
+<script type="text/javascript" src="@Url.Resource("Scripts.jquery.jstree.js")"></script>
+<script type="text/javascript" src="@Url.Resource("Scripts.Uploadify.jquery.uploadify-3.1.min.js")"></script>
+<link type="text/css" rel="stylesheet" href="@Url.Resource("Scripts.Uploadify.uploadify.css")" />
+<link type="text/css" rel="stylesheet" href="@Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/aspnet_client/ContextMenu/jquery.contextMenu.css")" /> 
+<link type="text/css" rel="stylesheet" href="@Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/aspnet_client/jQuery/jsTree/themes/default/style.css")" /> 
+
+<script type="text/javascript" src="@Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/aspnet_client/ContextMenu/jquery.contextMenu.js")"></script>
+<script type="text/javascript" src="@Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/aspnet_client/ContextMenu/jquery.ui.position.js")"></script>
+
+
+
+
+
+
+@*<link type="text/css" rel="stylesheet" href="@Url.Resource("Content.default.style.css")" /> *@
+
+
+
+    <div id="MainTree" class="demo">
+        
+
+    </div>
+
+<script type= "text/javascript">
+
+    $(function() {
+        Refresh();
+    });
+    
+
+
+    function Refresh(){
+        $("#MainTree")
+        .jstree({
+            "json_data": {
+                "ajax": {
+                    "type": "POST",
+                    "url": 
+                    function (node) {
+                        var url = '';
+                        if (node == -1) {
+                            url = '@Url.Action("GetTreeData")';
+                        }
+                        else {
+                            var nodeId = node.attr('id');
+                            url = '@Url.Action("GetChildreenTree")?dir=' + nodeId;
+                        }
+
+                        return url;
+                    },
+                    "data": function (n) {
+                        return { ID: n.Attr ? n.Attr("ID") : 0 };
+                    }
+                }
+            },
+            "dnd": {
+                "drop_target": false,
+                "drag_target": false
+            },
+            
+            "core": { "initially_open": ["/Portals"] },
+
+            "plugins": ["themes", "contextmenu", "json_data", "ui", "crrm", "dnd", "core"]
+        }).bind("select_node.jstree", function (event, data) {
+
+            var folder = data.rslt.obj.attr("id");
+            var folderReplace = folder.replace(/\//g, "\\/");
+            $("#MainTree").jstree("open_node", $('#' + folderReplace));
+
+            LoadFoldersContent(folder, true);
+            
+        });
+        
+
+    };
+
+    $('#MainTree').bind("move_node.jstree", function (e, data) {
+        data.rslt.o.each(function () {
+            $.ajax({
+                async: false,
+                type: 'POST',
+                url: '@Url.Action("MoveData")',
+                data: {
+                    "path": $(this).attr("id"),
+                    "destination": data.rslt.np.attr("id")
+                },
+                success: function (r) {
+                   Refresh();
+                }
+            });
+        });
+    });
+
+    //$('#MainTree').bind("create.jstree", function (e, data) {
+    //    $.post(
+	//			"/Home/CreateFolder",
+	//			{
+	//			    "path": data.rslt.parent.attr("id"),
+	//			    "newname": data.rslt.name
+	//			},
+	//			function (r) {
+	//			    Refresh();
+	//			}
+	//		);
+    //});
+
+
+    //$("#MainTree").bind("open_node.jstree close_node.jstree", function (e) {
+
+    //    var heigth = $('#MainTree').children(":first").height();
+    //    alert(heigth);
+    //    $("#MainTree").height(heigth);
+        
+    //});
+
+    function LoadFoldersContent(dir, addToPush) {
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("ViewFilesFromFolder")',
+            data: {
+                "folder": dir
+            },
+            success: function (folderView) {
+                $('#FilesTreeFiles').html(folderView);
+                if (addToPush) {
+                    BackNode++;
+                    Backstack[BackNode] = dir;
+                    
+                    //Backstack.splice(BackNode, Backstack.length - BackNode);
+                    
+                }
+                LastNode = dir;
+                $('#dirNameHidden').val(dir);
+            }
+        });
+
+        $('#dirName').val(dir);
+
+    }
+
+
+    function OpenFolder(folder) {
+
+        var folderReplace = folder.replace(/\//g, "\\/");
+        $("#MainTree").jstree("open_node", $('#' + folderReplace));
+        LoadFoldersContent(folder, true);
+
+    }
+
+
+    var Backstack = new Array();
+    //var AheadStack = new Array();
+    var LastNode = "/Portals2";
+    var BackNode = -1;
+    var CopiedFile = '';
+    var CopiedFileFolder = '';
+    var isCopy = true;
+
+    function goBack() {
+
+        if (Backstack.length > 0 && BackNode > 0) {
+            
+            // Backnode apunta a la posicion acutal
+            BackNode--;
+            var dir = Backstack[BackNode];
+            LoadFoldersContent(dir, false);
+        }
+  
+    }
+    
+    function goNext() {
+
+        if (Backstack.length > 0 && BackNode > -1 && BackNode < Backstack.length -1) {
+
+            // Backnode apunta a la posicion acutal
+            BackNode++;
+            var dir = Backstack[BackNode];
+            LoadFoldersContent(dir, false);
+        }
+
+    }
+    
+    function CreateFolder(Name) {
+        //var folderReplace = LastNode.replace(/\//g, "\\/");
+        
+        
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("CreateNewFolder")',
+            data: {
+                folder: LastNode,
+                name: Name
+            },
+            success: function (folderView) {
+                LoadFoldersContent(LastNode);
+                CloseNewFolderDialog();
+                $('#NewFolderInputId').val('');
+            }
+        });
+
+
+
+    }
+
+    $(function() {
+
+        $('#FileUpload').uploadify({
+            'swf': '@Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/aspnet_client/Uploadify/uploadify.swf")',
+            'buttonImage': '@Url.Resource("Content.UploadFile.png")',
+            //'buttonText': 'Buscar...',
+            'uploader': '@Url.Action("UploadFile")',
+            'width': 40,
+            //'folder': '/uploads',
+            'formData': { 'folderName': ''},
+            //'auto': true,
+            //'multi': false,
+            'onUploadStart': function () {
+                $("#FileUpload").uploadify("settings", "formData", { 'folderName': LastNode });
+            },
+            'onUploadComplete' : function() {
+                LoadFoldersContent(LastNode);
+            }
+        });
+
+        OpenFolder(LastNode);
+        
+
+    });
+    
+
+    $(function () {
+        
+       
+            
+            $.contextMenu({
+                selector: '#FilesTreeFiles',
+                callback: function (key, options) {
+                    var m = "clicked: " + key;
+                    window.console && console.log(m) || alert(m);
+                },
+                items: {
+                    "createFolder": {
+                        name: "Create Folder",
+                        callback: function (key, options) {
+                            OpenNewFolderDialog();
+                            //$("#uploadifyDialog").dialog("open");
+                        }
+                    },
+                    "upload": {
+                        name: "Upload File", icon: "add",
+                        callback: function (key, options) {
+                            //var m = "upload was clicked";
+                            //window.console && console.log(m) || alert(m);
+                            $("#uploadifyDialog").dialog("open");
+                        }
+                    },                
+
+                    "paste": {
+                        name: "Paste",
+                        icon: "paste",
+                        disabled: function (key, opt) {
+                            // this references the trigger element
+                            return CopiedFile == '';
+                        },
+                        callback: function (key, options) {
+                            PasteFile();
+                        }
+                    }
+                    
+                }
+            });
+
+        
+       
+    });
+    
+
+
+    var SelectedFile = '';
+    var SelectedFileParentFolder = '';
+    $(function () {
+
+        
+        $.contextMenu({
+            selector: '.FileIcon',
+            callback: function (key, options) {
+                var m = "clicked: " + key;
+                window.console && console.log(m) || alert(m);
+            },
+            items: {
+                "cut": {
+                    name: "Cut",
+                    icon: "cut",
+                    callback: function (key, options) {
+                        CopiedFile = SelectedFile;
+                        CopiedFileFolder = SelectedFileParentFolder;
+                        isCopy = false;
+                    }
+                },
+                "copy": {
+                    name: "Copy",
+                    icon: "copy",
+                    callback: function (key, options) {
+                        CopiedFile = SelectedFile;
+                        CopiedFileFolder = SelectedFileParentFolder;
+                        isCopy = true;
+                    }
+                },
+                "Rename": {
+                    name: "Rename",
+                    callback: function (key, options) {
+                        OpenRenameFileDialog();
+                    }
+                },
+                "sep1": "---------",
+                "delete": {
+                    name: "Delete", 
+                    icon: "delete", 
+                    // superseeds "global" callback
+                        callback: function(key, options) {
+                            DeleteFile();
+                        }
+                }
+
+
+            },
+            events: {
+                show: function (opt) {
+                    opt.$trigger.addClass("selectedFile");
+                    SelectedFile = opt.$trigger.find(".name").html();
+                    SelectedFileParentFolder = opt.$trigger.find("#ParentFolder").val();
+                    window.console && console.log("El file es : " + SelectedFile);
+                    window.console && console.log("El parentfile es : " + SelectedFileParentFolder);
+                },
+                hide: function (opt) {
+                    opt.$trigger.removeClass("selectedFile");
+                }
+            }
+        });
+       
+        //$('.data-title').attr('data-menutitle', 'Peñarol');
+    });
+    
+
+    function DeleteFile() {
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("DeleteFile")',
+            data: {
+                "file": SelectedFile,
+                "folder": SelectedFileParentFolder
+            },
+            success: function (folderView) {
+                LoadFoldersContent(LastNode); 
+            }
+        });
+
+    }
+    
+    function RenameFile() {
+        
+        var newFileName = $('#RenameFileInputId').val();
+        if (newFileName != '') {
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("RenameFile")',
+                data: {
+                    "file": SelectedFile,
+                    "folder": SelectedFileParentFolder,
+                    "name": newFileName
+                },
+                success: function(folderView) {
+                    LoadFoldersContent(LastNode);
+                    CloseRenameFileDialog();
+                    $('#RenameFileInputId').val('');
+                }
+            });
+        } else {
+  
+        }
+
+    }
+    
+    function PasteFile() {
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("PasteFile")',
+            data: {
+                "file": CopiedFile,
+                "folder": CopiedFileFolder,
+                "newFolder": LastNode,
+                "isCopy": isCopy
+            },
+            success: function (folderView) {
+                LoadFoldersContent(LastNode);
+            }
+        });
+
+    }
+    
+
+</script>

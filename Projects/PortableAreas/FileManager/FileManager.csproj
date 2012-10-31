@@ -143,6 +143,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\FolderIcon.cshtml" />
     <Content Include="Views\Home\FileIcon.cshtml" />
+    <Content Include="Views\Home\Module.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
@@ -183,7 +184,7 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\Module.cshtml" />
+    <Content Include="Views\Home\TreeModule.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\FilesView.cshtml" />

@@ -14,6 +14,10 @@ namespace FileManager.Controllers {
             return View();
         }
 
+        public ActionResult Module() {
+            return View();
+        }
+
         /// <summary>
         /// A method to populate a TreeView with directories, subdirectories, etc
         /// </summary>
@@ -200,11 +204,11 @@ namespace FileManager.Controllers {
             }
         }
 
-        public JsonResult CreateNewFolder(string folder)
+        public JsonResult CreateNewFolder(string folder, string name)
         {
             try {
 
-                CreateFolderInPath(Request.MapPath(folder), "New folder");
+                CreateFolderInPath(Request.MapPath(folder), name);
 
                 return Json("ok");
             }
@@ -214,6 +218,46 @@ namespace FileManager.Controllers {
             }
         }
 
+       public JsonResult RenameFile(string file, string folder, string name ) {
+            try {
+                if(file.LastIndexOf('.') > 0)
+                {
+                    var extension = file.Substring(file.LastIndexOf('.'));
+                    name += extension;
+                }
+                var fullOldName = string.Format(@"{0}\{1}", Request.MapPath(folder), file);
+                var fullNewName = string.Format(@"{0}\{1}", Request.MapPath(folder), name);
+                System.IO.File.Copy(fullOldName, fullNewName);
+                System.IO.File.Delete(fullOldName);
+
+                return Json("ok");
+            }
+            catch (Exception) {
+                HttpContext.Response.StatusCode = 500;
+                return Json("");
+            }
+        }
+
+       public JsonResult PasteFile(string file, string folder, string newFolder, bool isCopy) {
+           try {
+               
+               var fullOldName = string.Format(@"{0}\{1}", Request.MapPath(folder), file);
+               var fullNewName = string.Format(@"{0}\{1}", Request.MapPath(newFolder), file);
+               System.IO.File.Copy(fullOldName, fullNewName);
+
+               if(!isCopy)
+               {
+                   System.IO.File.Delete(fullOldName);  
+               }
+               //
+
+               return Json("ok");
+           }
+           catch (Exception) {
+               HttpContext.Response.StatusCode = 500;
+               return Json("");
+           }
+       }
         
 
     }
