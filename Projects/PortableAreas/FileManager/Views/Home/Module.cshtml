@@ -20,18 +20,26 @@
 </div>
 
 <div id="NewFolderDialog">
-    Folder Name:   
+    <span>Folder Name: </span>   
     <input type="text" id="NewFolderInputId"/>
     <input type="button" value="create" onclick="CreateNewFolder()"/>    
 
 </div>
 
 <div id="RenameFileDialog">
-    File Name:   
+    <span>File Name: </span>
     <input type="text" id="RenameFileInputId"/>
     <input type="button" value="Rename" onclick="RenameFile()"/>    
 
 </div>
+
+<div id="RenameFolderDialog">
+     <span>Folder Name: </span> 
+    <input type="text" id="RenameFolderInputId"/>
+    <input type="button" value="Rename" onclick="RenameFolder()"/>    
+
+</div>
+
 
 <script>
     
@@ -57,9 +65,18 @@
             modal: true
         });
     });
+    
+    $(function () {
+        $("#RenameFolderDialog").dialog({
+            autoOpen: false,
+            title: 'Rename Directory',
+            modal: true
+        });
+    });
 
     function OpenNewFolderDialog() {
         $("#NewFolderDialog").dialog("open");
+        $("#NewFolderInputId").val('');
     }
     
     function CloseNewFolderDialog() {
@@ -68,10 +85,20 @@
     
     function OpenRenameFileDialog() {
         $("#RenameFileDialog").dialog("open");
+        $("#RenameFileInputId").val('');
     }
 
     function CloseRenameFileDialog() {
         $("#RenameFileDialog").dialog("close");
+    }
+    
+    function OpenRenameFolderDialog() {
+        $("#RenameFolderDialog").dialog("open");
+        $("#RenameFolderInputId").val('');
+    }
+
+    function CloseRenameFolderDialog() {
+        $("#RenameFolderDialog").dialog("close");
     }
     
     function OpenUploadifyDialog() {
