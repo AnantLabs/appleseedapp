@@ -1,5 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using System.Reflection;
+using System.Web.Mvc;
 using Appleseed.Core;
+using Appleseed.Framework.Core.Model;
 using MvcContrib.PortableAreas;
 
 namespace FileManager {
@@ -25,8 +27,16 @@ namespace FileManager {
                 new { action = "Index", controller = "Home", id = UrlParameter.Optional }
             );
 
+            var assemblyName = Assembly.GetAssembly(this.GetType()).FullName;
+
+
+            var generalModuleDefId = ModelServices.RegisterPortableAreaModule(AreaName, assemblyName, "Home");
+            ModelServices.AddModuleToPortal(generalModuleDefId, 0);
+
             this.RegisterAreaEmbeddedResources();
             PortableAreaUtils.RegisterScripts(this, context, bus);
+
+
         }
 
     }
