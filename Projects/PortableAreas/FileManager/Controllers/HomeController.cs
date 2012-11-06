@@ -4,18 +4,34 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Appleseed.Framework.Security;
+using Appleseed.Framework.Site.Configuration;
 using FileManager.Models;
 
 namespace FileManager.Controllers {
-    public class HomeController : Controller {
+    public class HomeController : BaseController {
 
+        
 
         public ActionResult Index() {
             return View();
         }
 
-        public ActionResult Module() {
-            return View();
+        public ActionResult Module()
+        {
+            SetModuleId();
+            if (PortalSecurity.HasViewPermissions(ModuleId))
+            {
+                var model = new FileManagerModel();
+                model.PortalName = PortalSettings.PortalFullPath;
+                model.ModuleId = ModuleId;
+                return View(model);
+            }
+            else
+            {
+                PortalSecurity.AccessDenied();
+                return null;
+            }
         }
 
         /// <summary>
@@ -48,10 +64,12 @@ namespace FileManager.Controllers {
 
 
         [HttpPost]
-        public JsonResult GetTreeData()
+        [FileManagerViewFilter]
+        public JsonResult GetTreeData(int mID)
         {
-            const string rootPath = "/Portals2";
-            var rootNode = new FilesTree { attr = new FilesTreeAttribute { id = rootPath }, data = "Portals" };
+            SetModuleId(mID);
+            var rootPath =  PortalSettings.PortalFullPath;
+            var rootNode = new FilesTree { attr = new FilesTreeAttribute { id = rootPath }, data = rootPath };
             rootNode.attr.id = rootPath;
             PopulateTree(rootPath, rootNode);
             return Json(rootNode);
@@ -60,8 +78,10 @@ namespace FileManager.Controllers {
         
 
         [HttpPost]
-        public JsonResult GetChildreenTree(string dir)
+        [FileManagerViewFilter]
+        public JsonResult GetChildreenTree(string dir, int mID)
         {
+            SetModuleId(mID);
             var rootNode = new FilesTree { attr = new FilesTreeAttribute { id = dir }, data = dir.Substring(1) };
             var rootPath = dir;
             rootNode.attr.id = rootPath;
@@ -69,8 +89,7 @@ namespace FileManager.Controllers {
             
             return Json(rootNode.children);
         }
-
-
+        
         [HttpPost]
         public ActionResult MoveData(string path, string destination)
         {
@@ -361,6 +380,8 @@ namespace FileManager.Controllers {
            dir.Delete(true);
            
        }
+
+      
 
     }
 }

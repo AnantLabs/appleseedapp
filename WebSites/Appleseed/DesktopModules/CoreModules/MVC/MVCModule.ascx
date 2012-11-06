@@ -17,8 +17,11 @@
         }
         catch (Exception exc)
         {
+            
             ErrorHandler.Publish(LogLevel.Error, exc);
+
     %>
+        <%= exc.Message %><br/><%= exc.InnerException %>
     Couldn´t load module
     <%} %>
 </span>
