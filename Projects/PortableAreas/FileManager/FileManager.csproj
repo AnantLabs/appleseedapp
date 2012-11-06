@@ -95,9 +95,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\FileManagerFilter.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ResourceController.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="Models\AreaContext.cs" />
+    <Compile Include="Models\FileManagerModel.cs" />
     <Compile Include="Models\FilesTree.cs" />
     <Compile Include="Models\FolderContent.cs" />
     <Compile Include="Models\TextModel.cs" />

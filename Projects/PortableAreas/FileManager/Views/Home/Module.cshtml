@@ -1,20 +1,27 @@
 ﻿@using MvcContrib
+@model FileManager.Models.FileManagerModel
+
+
+
 <div id="FileManagerErrors"></div>
-<div id="DirectoryTree" class="FileManagerDirectoryTree">
-    @Html.Partial("TreeModule")
-</div>
-<div id="FileManagerbuttons">
-    
-    <input type="button" onclick="goBack()" value="back" class="ArrowButtons"/>
-    <input type="button" onclick="goNext()" value="next" class="ArrowButtons" />
-    <input type="button" onclick="OpenUploadifyDialog()" value="Upload" class="ArrowButtons" />
-    <input type="text" readonly="readonly" id="dirName"/>
-    <input type="hidden" id="dirNameHidden" />
 
-</div>
-<div id="FilesTreeFiles" class="FolderView">
+<div id="FileManagerContainter">
+    <div id="DirectoryTree" class="FileManagerDirectoryTree">
+        @Html.Partial("TreeModule")
+    </div>
+    <div id="FileManagerbuttons">
+    
+        <input type="button" onclick="goBack()" value="back" class="ArrowButtons"/>
+        <input type="button" onclick="goNext()" value="next" class="ArrowButtons" />
+        <input type="button" onclick="OpenUploadifyDialog()" value="Upload" class="ArrowButtons" />
+        <input type="text" readonly="readonly" id="dirName"/>
+        <input type="hidden" id="dirNameHidden" />
+
+    </div>
+    <div id="FilesTreeFiles" class="FolderView">
     
 
+    </div>
 </div>
 
 <div id="uploadifyDialog" title="Upload Files">
@@ -43,7 +50,6 @@
 </div>
 
 <div id="FileEditor"></div>
-
 
 <script>
 
@@ -149,11 +155,11 @@
                     function (node) {
                         var url = '';
                         if (node == -1) {
-                            url = '@Url.Action("GetTreeData")';
+                            url = '@Url.Action("GetTreeData",new {mID = Model.ModuleId})';
                         }
                         else {
                             var nodeId = node.attr('id');
-                            url = '@Url.Action("GetChildreenTree")?dir=' + nodeId;
+                            url = '@Url.Action("GetChildreenTree")?dir=' + nodeId +'&mID=' + @Model.ModuleId;
                         }
 
                         return url;
@@ -260,7 +266,7 @@
 
     var Backstack = new Array();
     //var AheadStack = new Array();
-    var LastNode = "/Portals2";
+    var LastNode = "@Model.PortalName";
     var BackNode = -1;
     var CopiedFile = '';
     var CopiedFileFolder = '';
