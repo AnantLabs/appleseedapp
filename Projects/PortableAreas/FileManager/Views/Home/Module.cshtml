@@ -198,7 +198,8 @@
                 url: '@Url.Action("MoveData")',
                 data: {
                     "path": $(this).attr("id"),
-                    "destination": data.rslt.np.attr("id")
+                    "destination": data.rslt.np.attr("id"),
+                    "mID": @Model.ModuleId
                 },
                 success: function (r) {
                     Refresh();

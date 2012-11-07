@@ -16,9 +16,11 @@ namespace FileManager.Controllers {
             if(!PortalSecurity.HasViewPermissions(mID))
             {
                 PortalSecurity.AccessDenied();
+                filterContext.Result = new EmptyResult();
             }
-
-            base.OnActionExecuting(filterContext);
+                
+            else
+                base.OnActionExecuting(filterContext);
         }
         
     }
@@ -30,11 +32,13 @@ namespace FileManager.Controllers {
             // and here you have access to the route data:
             var mID = (int)filterContext.ActionParameters["mID"];
 
-            if (!PortalSecurity.HasEditPermissions(mID)) {
+            if (!PortalSecurity.HasEditPermissions(mID))
+            {
                 PortalSecurity.AccessDenied();
+                filterContext.Result = new EmptyResult();
             }
-
-            base.OnActionExecuting(filterContext);
+            else
+                base.OnActionExecuting(filterContext);
         }
 
     }

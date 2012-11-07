@@ -91,7 +91,8 @@ namespace FileManager.Controllers {
         }
         
         [HttpPost]
-        public ActionResult MoveData(string path, string destination)
+        [FileManagerEditFilter]
+        public ActionResult MoveData(string path, string destination, int mID)
         {
             try
             {
