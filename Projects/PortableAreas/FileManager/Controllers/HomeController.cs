@@ -25,6 +25,8 @@ namespace FileManager.Controllers {
                 var model = new FileManagerModel();
                 model.PortalName = PortalSettings.PortalFullPath;
                 model.ModuleId = ModuleId;
+                model.ViewPermission = PortalSecurity.HasViewPermissions(ModuleId);
+                model.EditPermission = PortalSecurity.HasEditPermissions(ModuleId);
                 return View(model);
             }
             else
