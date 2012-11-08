@@ -151,26 +151,41 @@
 
     }
 
-    .FolderIcon, .FileIcon
+    .FolderIcon, .FileIcon, .ImageIcon, .TextIcon
     {
         font-size: small;
-        text-align: center;
-		background-image: url('FolderImage.png');
+        text-align: center;		
 		background-repeat: no-repeat;
-		background-position: 26px 0;
+		background-position: 18px 0;
 		margin: 4px;
 		box-shadow: 1px 1px 0px rgba(255,255,255,0) inset;
     }
 	
+	.FolderIcon{
+		background-image: url('FolderImage.png');
+	}
 	
-.FolderIcon:hover, .FileIcon:hover {
+	.FileIcon{
+		background-image: url('blankFile.png');
+	}
+	
+	.TextIcon{
+		background-image: url('txt.png');
+	}
+	
+	.ImageIcon{
+		background-image: url('png.png');
+	}
+	
+	
+.FolderIcon:hover, .FileIcon:hover, .ImageIcon:hover, .TextIcon:hover {
     border-radius: 8px 8px 8px 8px;
     box-shadow: 1px 1px 3px #626262 inset;
     cursor: pointer;
 
 }
 	
-	.FolderIcon img, .FileIcon img {
+	.FolderIcon img, .FileIcon img,.ImageIcon img, .TextIcon img {
     visibility: hidden !important;
 }
 
