@@ -87,9 +87,26 @@
         });
     });
 
+
+    function NoPermission() {
+        alert("You don't have permissions to perform this action");
+    
+    }
+
     function OpenNewFolderDialog() {
-        $("#NewFolderDialog").dialog("open");
-        $("#NewFolderInputId").val('');
+        @if(Model.EditPermission)
+        {
+            <text>
+           $("#NewFolderDialog").dialog("open");
+            $("#NewFolderInputId").val('');
+            </text>
+        }
+        else
+        {
+        <text>
+            NoPermission();
+            </text>
+        }
     }
 
     function CloseNewFolderDialog() {
@@ -97,8 +114,20 @@
     }
 
     function OpenRenameFileDialog() {
-        $("#RenameFileDialog").dialog("open");
-        $("#RenameFileInputId").val('');
+        @if(Model.EditPermission)
+        {
+            <text>
+                $("#RenameFileDialog").dialog("open");
+                $("#RenameFileInputId").val('');
+            </text>
+        }
+        else
+        {
+            <text>
+                NoPermission();
+            </text>
+        }
+        
     }
 
     function CloseRenameFileDialog() {
@@ -106,8 +135,20 @@
     }
 
     function OpenRenameFolderDialog() {
-        $("#RenameFolderDialog").dialog("open");
-        $("#RenameFolderInputId").val('');
+        @if(Model.EditPermission)
+        {
+            <text>
+                $("#RenameFolderDialog").dialog("open");
+                $("#RenameFolderInputId").val('');
+            </text>
+        }
+        else
+        {
+            <text>
+                NoPermission();
+            </text>
+        }
+        
     }
 
     function CloseRenameFolderDialog() {
@@ -115,7 +156,19 @@
     }
 
     function OpenUploadifyDialog() {
-        $("#uploadifyDialog").dialog("open");
+        @if(Model.EditPermission)
+        {
+            <text>
+                 $("#uploadifyDialog").dialog("open");
+            </text>
+        }
+        else
+        {
+            <text>
+                NoPermission();
+            </text>
+        }
+       
     }
 
     //function OpenFile(folder, file) {
@@ -129,13 +182,25 @@
 
 
     function CreateNewFolder() {
-        var name = $('#NewFolderInputId').val();
-        if (name != '') {
-            CreateFolder(name);
-        }
-        else {
+        @if(Model.EditPermission)
+        {
+            <text>
+                var name = $('#NewFolderInputId').val();
+                if (name != '') {
+                    CreateFolder(name);
+                }
+                else {
 
+                }
+            </text>
         }
+        else
+        {
+            <text>
+                NoPermission();
+            </text>
+        }
+        
     }
 
 </script>
@@ -221,7 +286,8 @@
             url: '@Url.Action("RenameFolderTree")',
             data: {
                 "name": data.rslt.obj.attr("id"),
-                "newName": data.rslt.new_name
+                "newName": data.rslt.new_name,
+                "mID": @Model.ModuleId
             },
             success: function (r) {
                 Refresh();
@@ -238,7 +304,8 @@
             type: 'POST',
             url: '@Url.Action("ViewFilesFromFolder")',
             data: {
-                "folder": dir
+                "folder": dir,
+                "mID": @Model.ModuleId
             },
             success: function (folderView) {
                 $('#FilesTreeFiles').html(folderView);
@@ -310,7 +377,8 @@
             url: '@Url.Action("CreateNewFolder")',
             data: {
                 folder: LastNode,
-                name: Name
+                name: Name,
+                "mID": @Model.ModuleId
             },
             success: function (folderView) {
                 LoadFoldersContent(LastNode);
@@ -325,31 +393,38 @@
 
 
     }
+    
+    @if(Model.EditPermission)
+    {
+        <text>
+            $(function () {
 
-    $(function () {
+                $('#FileUpload').uploadify({
+                    'swf': '@Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/aspnet_client/Uploadify/uploadify.swf")',
+                    'buttonImage': '@Url.Resource("Content.UploadFile.png")',
+                    //'buttonText': 'Buscar...',
+                    'uploader': '@Url.Action("UploadFile")',
+                    'width': 40,
+                    //'folder': '/uploads',
+                    'formData': { 'folderName': '' },
+                    //'auto': true,
+                    //'multi': false,
+                    'onUploadStart': function () {
+                        $("#FileUpload").uploadify("settings", "formData", { 'folderName': LastNode });
+                    },
+                    'onUploadComplete': function () {
+                        LoadFoldersContent(LastNode);
+                    }
+                });
 
-        $('#FileUpload').uploadify({
-            'swf': '@Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/aspnet_client/Uploadify/uploadify.swf")',
-            'buttonImage': '@Url.Resource("Content.UploadFile.png")',
-            //'buttonText': 'Buscar...',
-            'uploader': '@Url.Action("UploadFile")',
-            'width': 40,
-            //'folder': '/uploads',
-            'formData': { 'folderName': '' },
-            //'auto': true,
-            //'multi': false,
-            'onUploadStart': function () {
-                $("#FileUpload").uploadify("settings", "formData", { 'folderName': LastNode });
-            },
-            'onUploadComplete': function () {
-                LoadFoldersContent(LastNode);
-            }
-        });
-
-        OpenFolder(LastNode);
+                OpenFolder(LastNode);
 
 
-    });
+            });
+        </text>
+    }
+
+    
 
 
     $(function () {
@@ -534,7 +609,8 @@
                 url: '@Url.Action("DeleteFolder")',
                 data: {
                     "folder": SelectedFolder,
-                    "parentfolder": SelectedFolderParentFolder
+                    "parentfolder": SelectedFolderParentFolder,
+                    "mID": @Model.ModuleId
                 },
                 success: function (folderView) {
                     LoadFoldersContent(LastNode);
@@ -567,7 +643,8 @@
                 data: {
                     "folder": SelectedFolder,
                     "parentFolder": SelectedFolderParentFolder,
-                    "newName": newFolderName
+                    "newName": newFolderName,
+                    "mID": @Model.ModuleId
                 },
                 success: function (folderView) {
                     LoadFoldersContent(LastNode);
@@ -590,7 +667,8 @@
                 url: '@Url.Action("DeleteFile")',
                 data: {
                     "file": SelectedFile,
-                    "folder": SelectedFileParentFolder
+                    "folder": SelectedFileParentFolder,
+                    "mID": @Model.ModuleId
                 },
                 success: function (folderView) {
                     LoadFoldersContent(LastNode);
@@ -614,7 +692,8 @@
                 data: {
                     "file": SelectedFile,
                     "folder": SelectedFileParentFolder,
-                    "name": newFileName
+                    "name": newFileName,
+                    "mID": @Model.ModuleId
                 },
                 success: function (folderView) {
                     LoadFoldersContent(LastNode);
@@ -640,7 +719,8 @@
                 "folder": CopiedFileFolder,
                 "newFolder": LastNode,
                 "isCopy": isCopy,
-                "isFolder": isFolder
+                "isFolder": isFolder, 
+                "mID": @Model.ModuleId
             },
             success: function (folderView) {
                 LoadFoldersContent(LastNode);

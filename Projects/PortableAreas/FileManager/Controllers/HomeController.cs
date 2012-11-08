@@ -98,6 +98,7 @@ namespace FileManager.Controllers {
         {
             try
             {
+                SetModuleId(mID);
                 path = Request.MapPath(path);
                 destination = Request.MapPath(destination);
                 // get the file attributes for file or directory
@@ -140,10 +141,12 @@ namespace FileManager.Controllers {
             Directory.CreateDirectory(path + "\\" + newname);
         }
 
-        public JsonResult RenameFolderTree(string name, string newName)
+        [FileManagerEditFilter]
+        public JsonResult RenameFolderTree(string name, string newName, int mID)
         {
             try
             {
+                SetModuleId(mID);
                 var index = name.LastIndexOf('/');
 
                 var directory = name.Substring(0, index + 1);
@@ -224,9 +227,10 @@ namespace FileManager.Controllers {
             }
         }
 
-        public ActionResult ViewFilesFromFolder(string folder)
+        [FileManagerViewFilter]
+        public ActionResult ViewFilesFromFolder(string folder, int mID)
         {
-
+            SetModuleId(mID);
             var directory = new DirectoryInfo(Request.MapPath(folder));
             var folderContent = new FolderContent();
 
@@ -267,9 +271,11 @@ namespace FileManager.Controllers {
             return Json("OK");
         }
 
-        public JsonResult DeleteFile(string file, string folder )
+        [FileManagerEditFilter]
+        public JsonResult DeleteFile(string file, string folder, int mID)
         {
             try {
+                SetModuleId(mID);
                 var fullName = string.Format(@"{0}\{1}", Request.MapPath(folder), file);
                 System.IO.File.Delete(fullName);
                 return Json("ok");
@@ -280,10 +286,11 @@ namespace FileManager.Controllers {
             }
         }
 
-        public JsonResult CreateNewFolder(string folder, string name)
+        [FileManagerEditFilter]
+        public JsonResult CreateNewFolder(string folder, string name, int mID)
         {
             try {
-
+                SetModuleId(mID);
                 CreateFolderInPath(Request.MapPath(folder), name);
 
                 return Json("ok");
@@ -294,8 +301,10 @@ namespace FileManager.Controllers {
             }
         }
 
-       public JsonResult RenameFile(string file, string folder, string name ) {
+        [FileManagerEditFilter]
+        public JsonResult RenameFile(string file, string folder, string name, int mID) {
             try {
+                SetModuleId(mID);
                 if(file.LastIndexOf('.') > 0)
                 {
                     var extension = file.Substring(file.LastIndexOf('.'));
@@ -313,9 +322,11 @@ namespace FileManager.Controllers {
             }
         }
 
-       public JsonResult RenameFolder(string folder, string parentFolder, string newName) {
+        [FileManagerEditFilter]
+       public JsonResult RenameFolder(string folder, string parentFolder, string newName, int mID) {
            try
            {
+               SetModuleId(mID);
                if (folder != newName)
                {
                    var fullOldName = string.Format(@"{0}\{1}", Request.MapPath(parentFolder), folder);
@@ -330,9 +341,10 @@ namespace FileManager.Controllers {
            }
        }
 
-
-       public JsonResult PasteFile(string file, string folder, string newFolder, bool isCopy, bool isFolder) {
+        [FileManagerEditFilter]
+        public JsonResult PasteFile(string file, string folder, string newFolder, bool isCopy, bool isFolder, int mID) {
            try {
+               SetModuleId(mID);
                if(isFolder)
                {
                    var fullOldName = string.Format(@"{0}\{1}", Request.MapPath(folder), file);
@@ -365,9 +377,11 @@ namespace FileManager.Controllers {
            }
        }
 
-       public JsonResult DeleteFolder(string folder, string parentfolder)
+        [FileManagerEditFilter]
+       public JsonResult DeleteFolder(string folder, string parentfolder, int mID)
        {
            try {
+               SetModuleId(mID);
                var fullName = string.Format(@"{0}\{1}", Request.MapPath(parentfolder), folder);
                DeleteDirectory(fullName);
                return Json("ok");
