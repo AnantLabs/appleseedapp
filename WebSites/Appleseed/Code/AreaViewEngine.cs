@@ -10,8 +10,7 @@ using Appleseed.Framework;
 
 namespace Appleseed.Code {
     public class AppleseedWebFormViewEngine : WebFormViewEngine {
-        public AppleseedWebFormViewEngine()
-        {
+        public AppleseedWebFormViewEngine() {
             var viewLocationFormatsList = new List<string>
             {               
                 "~/{0}.aspx",
@@ -48,7 +47,7 @@ namespace Appleseed.Code {
 
         private static string CacheKey(string action, ControllerContext controllerContext, string viewName, string masterName) {
             var controllerName = controllerContext.RouteData.GetRequiredString("controller");
-            var area = Convert.ToString(controllerContext.RouteData.Values["area"] ?? string.Empty);
+            var area = controllerContext.RouteData.DataTokens["area"] ?? string.Empty;
             return string.Format("WebForm_PortalAlias{0}_{1}_{2}_{3}_{4}_{5}", PortalAlias, action, area, controllerName, viewName, masterName);
 
         }
@@ -111,7 +110,7 @@ namespace Appleseed.Code {
             }
 
             /*else return original partialview*/
-            result =  base.FindPartialView(controllerContext, partialViewName, useCache);
+            result = base.FindPartialView(controllerContext, partialViewName, useCache);
             AddToCache(key, result);
             return result;
 
@@ -148,7 +147,7 @@ namespace Appleseed.Code {
             formattedView = FormatSharedViewName(controllerContext, viewName);
             string str3 = formattedView.path;
             if (formattedView.custom) {
-                result =  new ViewEngineResult(new WebFormView(controllerContext, str3), this);
+                result = new ViewEngineResult(new WebFormView(controllerContext, str3), this);
                 AddToCache(key, result);
                 return result;
             }
@@ -259,15 +258,14 @@ namespace Appleseed.Code {
             }
 
             cache.Add(key, view, null, DateTime.Now.AddMinutes(time), TimeSpan.Zero, CacheItemPriority.Normal, null);
-            
+
 
             return view;
         }
     }
 
     public class AppleseedRazorViewEngine : RazorViewEngine {
-        public AppleseedRazorViewEngine()
-        {
+        public AppleseedRazorViewEngine() {
 
             var viewLocationFormatsList = new List<string>
             {               
@@ -306,7 +304,7 @@ namespace Appleseed.Code {
 
         private static string CacheKey(string action, ControllerContext controllerContext, string viewName, string masterName) {
             var controllerName = controllerContext.RouteData.GetRequiredString("controller");
-            var area = Convert.ToString(controllerContext.RouteData.Values["area"] ?? string.Empty);
+            var area = controllerContext.RouteData.DataTokens["area"] ?? string.Empty;
             return string.Format("WebForm_PortalAlias{0}_{1}_{2}_{3}_{4}_{5}", PortalAlias, action, area, controllerName, viewName, masterName);
 
         }
@@ -343,7 +341,7 @@ namespace Appleseed.Code {
             ViewEngineResult result;
             if (formattedView.custom) {
                 result = new ViewEngineResult(new RazorView(controllerContext, str2, null, false, null), this);
-                AddToCache(key,result);
+                AddToCache(key, result);
                 return result;
             }
 
@@ -358,7 +356,7 @@ namespace Appleseed.Code {
             formattedView = FormatSharedViewName(controllerContext, partialViewName);
             string str3 = formattedView.path;
             if (formattedView.custom) {
-                result =  new ViewEngineResult(new RazorView(controllerContext, str3, null, false, null), this);
+                result = new ViewEngineResult(new RazorView(controllerContext, str3, null, false, null), this);
                 AddToCache(key, result);
                 return result;
             }
@@ -370,7 +368,7 @@ namespace Appleseed.Code {
             }
 
             /*else return original partialview*/
-            result =  base.FindPartialView(controllerContext, partialViewName, useCache);
+            result = base.FindPartialView(controllerContext, partialViewName, useCache);
             AddToCache(key, result);
             return result;
 
@@ -394,7 +392,7 @@ namespace Appleseed.Code {
             ViewEngineResult result;
             if (formattedView.custom) {
                 result = new ViewEngineResult(new RazorView(controllerContext, str2, null, false, null), this);
-                AddToCache(key,result);
+                AddToCache(key, result);
                 return result;
             }
 
