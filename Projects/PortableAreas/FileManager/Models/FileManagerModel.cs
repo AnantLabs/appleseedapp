@@ -10,5 +10,7 @@ namespace FileManager.Models {
             get; set; }
 
         public int ModuleId { get; set; }
+        public bool ViewPermission { get; set; }
+        public bool EditPermission { get; set; }
     }
 }
