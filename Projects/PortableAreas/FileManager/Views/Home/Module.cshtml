@@ -725,6 +725,9 @@
             success: function (folderView) {
                 LoadFoldersContent(LastNode);
                 CopiedFile = '';
+                if(isFolder) {
+                    Refresh();
+                }
             },
             error: function (result) {
                 AppendError(result.responseText);
