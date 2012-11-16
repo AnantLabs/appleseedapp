@@ -130,7 +130,36 @@ namespace Appleseed.Content.Web.Modules
                     portalModule = new PortalModuleControl();
                     
                 } else {
-                    portalModule = (PortalModuleControl)this.Page.LoadControl(controlPath);
+                    if (controlPath.ToLowerInvariant().Trim().EndsWith(".ascx"))
+                    {
+                        portalModule = (PortalModuleControl)this.Page.LoadControl(controlPath);
+                    }
+                    else // MVC
+                    {
+                        var strArray = controlPath.Split(
+                            new[] { '/', '\\' }, StringSplitOptions.RemoveEmptyEntries);
+                        int index = 1;
+                        if (!Path.ApplicationRoot.Equals(string.Empty))
+                        {
+                            index++;
+                        }
+                        var areaName = (strArray[index].ToLower() == "views") ? string.Empty : strArray[index];
+                        var controllerName = strArray[strArray.Length - 2];
+                        var actionName = strArray[strArray.Length - 1];
+
+                        // var ns = strArray[2];
+                        portalModule =
+                            
+                            (PortalModuleControl)this.Page.LoadControl("~/DesktopModules/CoreModules/MVC/MVCModule.ascx");
+
+                        ((MVCModuleControl)portalModule).ControllerName = controllerName;
+                        ((MVCModuleControl)portalModule).ActionName = actionName;
+                        ((MVCModuleControl)portalModule).AreaName = areaName;
+                        ((MVCModuleControl)portalModule).ModID = linkedModuleId;
+
+                        ((MVCModuleControl)portalModule).Initialize();
+                    }
+                   
 
                     // Sets portal ID
                     portalModule.PortalID = this.PortalID;
