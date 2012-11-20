@@ -94,6 +94,7 @@
     <Compile Include="Controllers\PageManagerTreeController.cs" />
     <Compile Include="Controllers\ResourceController.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="Massive\rb_ModuleDefinitions.cs" />
     <Compile Include="Massive\rb_Modules.cs" />
     <Compile Include="Massive\rb_ModuleSettings.cs" />
     <Compile Include="Massive\rb_Pages.cs" />

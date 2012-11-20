@@ -156,14 +156,31 @@ namespace PageManagerTree.Controllers
         {
             try
             {
-                var sb = new StringBuilder();
-                sb.Append("SELECT rd.ModuleDefID ");
-                sb.Append(" FROM rb_ModuleDefinitions rd inner join rb_GeneralModuleDefinitions gbd ");
-                sb.Append(" on rd.GeneralModDefID = gbd.GeneralModDefID ");
-                sb.AppendFormat("  where FriendlyName = '{0}' ", "Shortcut");
-                sb.AppendFormat(" and rd.PortalID = {0} ", PortalSettings.PortalID);
+                var generalModuleDef = Guid.Parse("F9F9C3A4-6E16-43B4-B540-984DDB5F1CD2");
+                object[] queryargs = { generalModuleDef, PortalSettings.PortalID };
 
-                var moduleDefinition = new rb_Modules().Query(sb.ToString()).Single();
+                int moduleDefinition;
+
+                try
+                {
+                    moduleDefinition =
+                        new rb_ModuleDefinitions().All(where: "GeneralModDefID = @0 and PortalID = @1", args: queryargs).Single().ModuleDefID;
+                }
+                catch(Exception e)
+                {
+                    // Shortcut module doesn't exist in current Portal
+                    
+                    var modules = new ModulesDB();
+                    
+                    modules.UpdateModuleDefinitions(
+                            generalModuleDef,
+                            PortalSettings.PortalID,
+                            true);
+
+                    moduleDefinition =
+                        new rb_ModuleSettings().All(where: "GeneralModDefID = @0 and PortalID = @1", args: queryargs).Single().ModuleDefID;
+
+                }
 
                 var db = new PagesDB();
 
@@ -195,7 +212,7 @@ namespace PageManagerTree.Controllers
                 {
                     var m = new ModuleItem();
                     m.Title = module.ModuleTitle;
-                    m.ModuleDefID = moduleDefinition.ModuleDefID;
+                    m.ModuleDefID = moduleDefinition;
                     m.Order = module.ModuleOrder;
 
                     // save to database
