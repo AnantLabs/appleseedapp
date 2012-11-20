@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using Appleseed.Framework.Site.Data;
@@ -151,6 +152,92 @@ namespace PageManagerTree.Controllers
             }
         }
 
+        public JsonResult Clone(int id, int parentId)
+        {
+            try
+            {
+                var sb = new StringBuilder();
+                sb.Append("SELECT rd.ModuleDefID ");
+                sb.Append(" FROM rb_ModuleDefinitions rd inner join rb_GeneralModuleDefinitions gbd ");
+                sb.Append(" on rd.GeneralModDefID = gbd.GeneralModDefID ");
+                sb.AppendFormat("  where FriendlyName = '{0}' ", "Shortcut");
+                sb.AppendFormat(" and rd.PortalID = {0} ", PortalSettings.PortalID);
+
+                var moduleDefinition = new rb_Modules().Query(sb.ToString()).Single();
+
+                var db = new PagesDB();
+
+                PortalPages = db.GetPagesFlat(PortalSettings.PortalID);
+                var t = new PageItem
+                            {
+                                Name = General.GetString("TAB_NAME", "New Page Name"),
+                                ID = -1,
+                                Order = 990000
+                            };
+
+                PortalPages.Add(t);
+
+                var tabs = new PagesDB();
+                t.ID = tabs.AddPage(PortalSettings.PortalID, t.Name, t.Order);
+
+                db.UpdatePageParent(t.ID, parentId, PortalSettings.PortalID);
+
+                OrderPages();
+                //JsonResult treeData = GetTreeData();
+
+                // Coping Modules
+
+                
+
+                var pagesModules = new rb_Modules().All(where: "TabID = @0", args: id);
+
+                foreach (var module in pagesModules)
+                {
+                    var m = new ModuleItem();
+                    m.Title = module.ModuleTitle;
+                    m.ModuleDefID = moduleDefinition.ModuleDefID;
+                    m.Order = module.ModuleOrder;
+
+                    // save to database
+                    var mod = new ModulesDB();
+
+                    m.ID = mod.AddModule(
+                        t.ID,
+                        m.Order,
+                        module.PaneName,
+                        module.ModuleTitle,
+                        m.ModuleDefID,
+                        0,
+                        module.AuthorizedEditRoles,
+                        module.AuthorizedViewRoles,
+                        module.AuthorizedAddRoles,
+                        module.AuthorizedDeleteRoles,
+                        module.AuthorizedPropertiesRoles,
+                        module.AuthorizedMoveModuleRoles,
+                        module.AuthorizedDeleteModuleRoles,
+                        false,
+                        PortalSecurity.GetDeleteModulePermissions(module.ModuleID),
+                        false,
+                        false,
+                        false);
+
+                    var settings = new rb_ModuleSettings();
+                    settings.Insert(new { ModuleID = m.ID, SettingName = "LinkedModule", SettingValue = module.ModuleID });
+
+                }
+
+               
+
+                return Json(new {pageId = t.ID});
+            }
+            catch(Exception e)
+            {
+                ErrorHandler.Publish(LogLevel.Error, e);
+                Response.StatusCode = 500;
+                return Json("");
+            }
+        }
+
 
         public JsonResult create(int id)
         {
@@ -172,8 +259,8 @@ namespace PageManagerTree.Controllers
             db.UpdatePageParent(t.ID, id, this.PortalSettings.PortalID);
 
             this.OrderPages();
-            JsonResult treeData = GetTreeData();
-            return treeData;
+            //JsonResult treeData = GetTreeData();
+            return Json("");
         }
 
 

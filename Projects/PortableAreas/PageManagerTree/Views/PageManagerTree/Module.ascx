@@ -64,6 +64,32 @@
                                                     
                          },
                     },
+                    cloneItem: {
+                        label: '<%: Appleseed.Framework.General.GetString("Clone","Clone") %>',
+                        action: function (obj) {
+                            var currentId = this._get_node(obj).attr("id");
+                            var parentId = this._get_node(obj)[0].firstChild.parentElement.parentNode.parentElement.id;
+                            $.ajax({
+                                url: '<%= Url.Action("Clone")%>',
+                                type: 'POST',
+                                timeout: "100000",
+                                data: {
+                                    "id": currentId.replace("pjson_", ""),
+                                    "parentId": parentId.replace("pjson_", "")
+                                },
+                                success: function (data) {
+                                    var name = $("#jsTree").jstree("get_text", '#' + currentId) + ' - Copy';
+                                    $("#jsTree").jstree("create", "#" + parentId, "last", { 'attr': { 'id': 'pjson_' + data.pageId }, 'title': name }, false, true);
+                                    $("#jsTree").jstree("set_text", '#pjson_' + data.pageId, name);
+                                    $("#jsTree").jstree("rename", "#pjson_" + data.pageId);
+                                },
+                                error: function (data) {
+                                    $.jstree.rollback(obj.rlbk);
+                                }                                    
+                            });
+                            
+                        },
+                    },
                     "delete": {
                         "label": '<%: Appleseed.Framework.General.GetString("DELETE") %>',
                         "action":
@@ -77,7 +103,8 @@
 
                                 
                                 
-                            }
+                            },
+                        "separator_before": true
                     },
                     "create": {
                             "label": '<%: Appleseed.Framework.General.GetString("CREATE") %>',
@@ -212,7 +239,11 @@
             }      
         });
     });
-   
+
+    function logNop() {
+        console.log('');
+  
+    }
 
 </script>
 
