@@ -9,7 +9,7 @@ namespace PageManagerTree.Massive
         public rb_ModuleSettings()
             : base("ConnectionString", "rb_ModuleSettings")
         {
-                
+            PrimaryKeyField = "ModuleDefID";       
         }
     }
 }
