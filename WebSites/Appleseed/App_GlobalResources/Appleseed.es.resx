@@ -4425,4 +4425,43 @@
   <data name="RENAME" xml:space="preserve">
     <value>Cambiar Nombre</value>
   </data>
+  <data name="CHANGE_PWD_GO_TO_HOME_PAGE" xml:space="preserve">
+    <value>Ir a la pagina de inicio</value>
+  </data>
+  <data name="CHANGE_PWD_HEADER" xml:space="preserve">
+    <value>Cambia su contraseña</value>
+  </data>
+  <data name="CHANGE_PWD_INVALID_TOKEN_ERROR" xml:space="preserve">
+    <value>El token ya no es valido.</value>
+  </data>
+  <data name="CHANGE_PWD_INVALID_URL_ERROR" xml:space="preserve">
+    <value>Los parametros no son los correctos.</value>
+  </data>
+  <data name="CHANGE_PWD_NEW_PWD_SET_MSG" xml:space="preserve">
+    <value>Su nuevo password ha sido actualizado. Puedes entrar al portal.</value>
+  </data>
+  <data name="CHANGE_PWD_NOT_SAME_TWICE_ERROR" xml:space="preserve">
+    <value>El segundo password es distinto del primero. Por favor ingreselo nuevamente.</value>
+  </data>
+  <data name="CHANGE_PWD_USR_EXPLANATION" xml:space="preserve">
+    <value>Ingresa tu nueva contraseña. Una vez que guardes los cambios podras entrar al portal nuevamente.</value>
+  </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Direccion de Email</value>
+  </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>El email no es valido.</value>
+  </data>
+  <data name="SendEmail" xml:space="preserve">
+    <value>Enviar Mail</value>
+  </data>
+  <data name="SIGNIN_PWD_LOST" xml:space="preserve">
+    <value>Recuperar contraseña</value>
+  </data>
+  <data name="SIGNIN_PWD_LOST_REQUEST_RECEIVED" xml:space="preserve">
+    <value>Hemos recibido una notificacion de que has perdido tu contraseña.</value>
+  </data>
+  <data name="SIGNIN_SET_NEW_PWD_MSG" xml:space="preserve">
+    <value>Puedes setiar la nueva contraseña en el siguiente link:</value>
+  </data>
 </root>
