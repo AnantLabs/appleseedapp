@@ -96,7 +96,7 @@ namespace Appleseed
                 //page.Header.Controls.AddAt(index++, includeStyleTree);
 
 
-                HtmlGenericControl includeprofiler = new HtmlGenericControl("div")
+                var includeprofiler = new HtmlGenericControl("div")
                                                          {
                                                              ID = "profiler",
                                                              InnerHtml =
@@ -104,7 +104,7 @@ namespace Appleseed
                                                                  ToString()
                                                          };
 
-                page.Controls.AddAt(0,includeprofiler);
+                //page.Form.Controls.AddAt(0,includeprofiler);
                 
                 
 
