@@ -47,9 +47,7 @@ namespace Password.Controllers
             if (memberUser == null) {
                 message = General.GetString(
                     "SIGNIN_PWD_MISSING_IN_DB", "The email you specified does not exists on our database", this);
-                Response.StatusCode = 500;
-                Response.Write(message);
-                return Json(null);
+                return Json(new { ok = false, Message = message });
                 //throw new Exception(message);
             }
 
@@ -129,9 +127,8 @@ Is not well formed. Check the setting SITESETTINGS_ON_REGISTER_SEND_FROM of port
                             "Error while trying to send the password to '{0}'. Perhaps you should check your SMTP server configuration in the web.config.",
                             email),
                         exception);
-                    Response.StatusCode = 500;
-                    Response.Write(message);
-                    return Json(null);
+                    return Json(new { ok = false, Message = message });
+                    
                 }
             }
         }

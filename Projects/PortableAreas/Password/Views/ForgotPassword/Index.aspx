@@ -23,7 +23,7 @@
 
              var email = $('#UsersEmail').val();
 
-             if (email != '') {
+             if (email != '' && validateEmail(email)) {
 
                  $.ajax({
                      url: '<%= Url.Action("sendPasswordToken")%>',
@@ -33,18 +33,33 @@
                      },
                      success: function (data) {
                          $('#Message').text(data.Message);
-                         $('#Fields').hide();
+                         if (data.ok) {
+                             $('#Fields').hide();
+                         }
                      },
                      error: function (data) {
-                         $('#Message').text(data.responseText);
+                         $('#Message').text(data.Message);
 
                      }
                  });
              }
              else {
-                 $('#Message').text('You must enter an email');
+                 $('#Message').text('<%= Appleseed.Framework.General.GetString("InvalidEmail", "The email is invalid") %>');
              }
          }
+         
+         function validateEmail(email) { 
+             var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+             if (re.test(email)) {
+                 console.log('Email true');
+                 return true;
+             }
+             else {
+                 console.log('Email false');
+                 return false;
+             }
+
+         } 
      
      </script>
     

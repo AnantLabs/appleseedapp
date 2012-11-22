@@ -77,9 +77,7 @@ namespace Password.Controllers
             string message = "";
             if (pwd1 != pwd2 || string.IsNullOrEmpty(pwd1) || string.IsNullOrEmpty(pwd2)) {
                 message = General.GetString("CHANGE_PWD_NOT_SAME_TWICE_ERROR", "The second password entered is not the same as the first one. Please write them again.");
-                Response.StatusCode = 500;
-                Response.Write(message);
-                return Json(null);
+                return Json(new { ok = true, Message = message });
             
             }       
 
@@ -103,9 +101,7 @@ namespace Password.Controllers
                     , ex);
 
                 message = General.GetString("CHANGE_PWD_NEW_PWD_SET_MSG", "Your new password has been set. You can logon with it now.");
-                Response.StatusCode = 500;
-                Response.Write(message);
-                return Json(null);
+                return Json(new { ok = true, Message = message });
 
 
             }
