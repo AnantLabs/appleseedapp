@@ -5717,4 +5717,7 @@ function confirmDelete()
   <data name="CHANGE_PWD_INVALID_TOKEN_ERROR" xml:space="preserve">
     <value>The token is no longer valid.</value>
   </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>The email is invalid</value>
+  </data>
 </root>
