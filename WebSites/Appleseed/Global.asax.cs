@@ -7,6 +7,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using StackExchange.Profiling;
+
 namespace Appleseed
 {
     using System;
@@ -389,6 +391,11 @@ namespace Appleseed
         /// </param>
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
+            if (Request.IsLocal)
+            {
+                MiniProfiler.Start();
+            } 
+
 		  if (!Request.Path.ToLower().Contains("images.ashx") &&
                 !Request.Url.AbsoluteUri.ToLower().Contains("/images/") &&
                 !Request.Url.AbsoluteUri.ToLower().Contains("/i/")) {            
@@ -581,5 +588,10 @@ namespace Appleseed
         }
 
         #endregion
+
+        protected void Application_EndRequest(object sender, EventArgs e)
+        {
+            MiniProfiler.Stop();
+        }
     }
 }

@@ -102,6 +102,9 @@
       <HintPath>..\..\Libs\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MiniProfiler">
+      <HintPath>..\..\Libs\Miniprofiler\MiniProfiler.dll</HintPath>
+    </Reference>
     <Reference Include="Mono.Security, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libs\Mono.Security.dll</HintPath>
