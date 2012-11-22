@@ -96,8 +96,15 @@ namespace Appleseed
                 //page.Header.Controls.AddAt(index++, includeStyleTree);
 
 
-                
+                HtmlGenericControl includeprofiler = new HtmlGenericControl("div")
+                                                         {
+                                                             ID = "profiler",
+                                                             InnerHtml =
+                                                                 StackExchange.Profiling.MiniProfiler.RenderIncludes().
+                                                                 ToString()
+                                                         };
 
+                page.Controls.AddAt(0,includeprofiler);
                 
                 
 
