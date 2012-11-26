@@ -123,7 +123,7 @@ namespace Appleseed.Admin
             // End Change Geert.Audenaert@Syntegra.Com
 
             // reload the portalSettings from the database
-            this.Context.Items["PortalSettings"] = new PortalSettings(this.PageID, this.PortalSettings.PortalAlias);
+            this.Context.Items["PortalSettings"] = PortalSettings.GetPortalSettings(this.PageID, this.PortalSettings.PortalAlias);
             this.PortalSettings = (PortalSettings)this.Context.Items["PortalSettings"];
 
             // reorder the modules in the content pane
@@ -461,7 +461,7 @@ namespace Appleseed.Admin
                     sourceList.RemoveAt(sourceBox.SelectedIndex);
 
                     // reload the portalSettings from the database
-                    HttpContext.Current.Items["PortalSettings"] = new PortalSettings(
+                    HttpContext.Current.Items["PortalSettings"] = PortalSettings.GetPortalSettings(
                         this.PageID, this.PortalSettings.PortalAlias);
                     this.PortalSettings = (PortalSettings)this.Context.Items["PortalSettings"];
 

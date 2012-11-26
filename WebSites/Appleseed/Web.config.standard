@@ -172,6 +172,7 @@
 		<add key="AddWwwToRequest" value="false" />
 		<add key="MaxTokenDays" value="7" /> <!-- In days -->
 		<add key="ViewEngineCacheTime" value="10" />
+		<add key="PortalSettingsCacheTime" value="0" />
 		
 		 
 	</appSettings>
