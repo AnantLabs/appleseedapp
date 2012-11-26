@@ -9,6 +9,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Configuration;
+
 namespace Appleseed.Framework.Site.Configuration
 {
     using System;
@@ -128,6 +130,10 @@ namespace Appleseed.Framework.Site.Configuration
 
         #region Constructors and Destructors
 
+         private PortalSettings()
+         {
+         }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="PortalSettings"/> class.
         ///   The PortalSettings Constructor encapsulates all of the logic
@@ -146,7 +152,7 @@ namespace Appleseed.Framework.Site.Configuration
         /// </param>
         /// <remarks>
         /// </remarks>
-        public PortalSettings(int pageId, string portalAlias)
+        private PortalSettings(int pageId, string portalAlias)
         {
             this.ActivePage = new PageSettings();
             this.DesktopPages = new List<PageStripDetails>();
@@ -483,7 +489,7 @@ namespace Appleseed.Framework.Site.Configuration
         /// </param>
         /// <remarks>
         /// </remarks>
-        public PortalSettings(int portalId)
+        private PortalSettings(int portalId)
         {
             this.ActivePage = new PageSettings();
             this.DesktopPages = new List<PageStripDetails>();
@@ -550,6 +556,57 @@ namespace Appleseed.Framework.Site.Configuration
             // Alternate
             themeManager.Load(this.CustomSettings["SITESETTINGS_ALT_THEME"].ToString());
             this.CurrentThemeAlt = themeManager.CurrentTheme;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PortalSettings"/> class.
+        ///   The PortalSettings Constructor encapsulates all of the logic
+        ///   necessary to obtain configuration settings necessary to get
+        ///   custom setting for a different portal than current (EditPortal.aspx.cs)<br/>
+        ///   These Portal Settings are stored within a SQL database, and are
+        ///   fetched below by calling the "GetPortalSettings" stored procedure.<br/>
+        ///   This overload it is used
+        /// </summary>
+        /// <param name="portalId">
+        /// The portal id.
+        /// </param>
+        /// <remarks>
+        /// </remarks>
+        public static PortalSettings GetPortalSettings(int portalId)
+        {
+            return new PortalSettings(portalId);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PortalSettings"/> class.
+        ///   The PortalSettings Constructor encapsulates all of the logic
+        ///   necessary to obtain configuration settings necessary to render
+        ///   a Portal Page view for a given request.<br/>
+        ///   These Portal Settings are stored within a SQL database, and are
+        ///   fetched below by calling the "GetPortalSettings" stored procedure.<br/>
+        ///   This stored procedure returns values as SPROC output parameters,
+        ///   and using three result sets.
+        /// </summary>
+        /// <param name="pageId">
+        /// The page id.
+        /// </param>
+        /// <param name="portalAlias">
+        /// The portal alias.
+        /// </param>
+        /// <remarks>
+        /// </remarks>
+        public static PortalSettings GetPortalSettings(int pageId, string portalAlias)
+        {
+            var key = GetPortalSettingsCacheKey(pageId, portalAlias);
+            var cache = HttpRuntime.Cache;
+            if(cache.Get(key) != null)
+            {
+                return (PortalSettings) cache.Get(key);
+            }
+            var portalSettings = new PortalSettings(pageId, portalAlias);
+            AddToCache(key, portalSettings);
+
+            return portalSettings;
         }
 
         #endregion
@@ -2567,6 +2624,29 @@ namespace Appleseed.Framework.Site.Configuration
             if (groupElementWritten)
             {
                 writer.WriteEndElement(); // end MenuGroup element
+            }
+        }
+
+        private static string GetPortalSettingsCacheKey(int pageId, string portalAlias)
+        {
+            return String.Format("PortalSettingsCacheKey_{0}_{1}", pageId, portalAlias);
+        }
+
+        private static void AddToCache(string key, PortalSettings portalSettings)
+        {
+            var cache = HttpRuntime.Cache;
+            var time = 0;
+            try
+            {
+                time = int.Parse(ConfigurationManager.AppSettings["PortalSettingsCacheTime"]);
+            }
+            catch (Exception)
+            {
+                time = 0;
+            }
+            if (time > 0 && cache.Get(key) == null )
+            {
+                cache.Add(key, portalSettings, null, DateTime.Now.AddMinutes(time), TimeSpan.Zero, CacheItemPriority.Normal, null);
             }
         }
 

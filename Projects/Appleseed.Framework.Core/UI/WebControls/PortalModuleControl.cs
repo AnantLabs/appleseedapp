@@ -4944,8 +4944,8 @@ namespace Appleseed.Framework.Web.UI.WebControls
             admin.UpdateModuleOrder(this.OriginalModuleID, 99, targetPane);
 
             // reload the PortalSettings from the database
-            HttpContext.Current.Items["PortalSettings"] = new PortalSettings(
-                this.PageID, this.PortalSettings.PortalAlias);
+            HttpContext.Current.Items["PortalSettings"] = PortalSettings.GetPortalSettings(
+                PageID, PortalSettings.PortalAlias);
             this.Page.PortalSettings = (PortalSettings)this.Context.Items["PortalSettings"];
 
             // get source array list
