@@ -159,18 +159,6 @@ namespace Appleseed.Framework.Site.Configuration
             this.ShowPages = true;
             this.MobilePages = new ArrayList();
 
-            // Changes culture/language according to settings
-            try
-            {
-                // Moved here for support db call
-                LanguageSwitcher.ProcessCultures(GetLanguageList(portalAlias), portalAlias);
-            }
-            catch (Exception ex)
-            {
-                ErrorHandler.Publish(LogLevel.Warn, "Failed to load languages, loading defaults.", ex); // Jes1111
-                LanguageSwitcher.ProcessCultures(Localization.LanguageSwitcher.LANGUAGE_DEFAULT, portalAlias);
-            }
-
             // Create Instance of Connection and Command Object
             using (var connection = Config.SqlConnectionString)
             using (var command = new SqlCommand("rb_GetPortalSettings", connection))
@@ -574,7 +562,9 @@ namespace Appleseed.Framework.Site.Configuration
         /// </remarks>
         public static PortalSettings GetPortalSettings(int portalId)
         {
+
             return new PortalSettings(portalId);
+
         }
 
         /// <summary>
@@ -597,7 +587,8 @@ namespace Appleseed.Framework.Site.Configuration
         /// </remarks>
         public static PortalSettings GetPortalSettings(int pageId, string portalAlias)
         {
-            var key = GetPortalSettingsCacheKey(pageId, portalAlias);
+            ProcessCurrentLanguage(portalAlias);
+            var key = GetPortalSettingsCacheKey(pageId, portalAlias, Thread.CurrentThread.CurrentUICulture.Name);
             var cache = HttpRuntime.Cache;
             if(cache.Get(key) != null)
             {
@@ -1371,6 +1362,7 @@ namespace Appleseed.Framework.Site.Configuration
         {
             CurrentCache.Remove(Key.PortalBaseSettings());
             CurrentCache.Remove(Key.LanguageList());
+            RemovePortalSettingsCache();
         }
 
         /// <summary>
@@ -2627,15 +2619,45 @@ namespace Appleseed.Framework.Site.Configuration
             }
         }
 
+        private static string GetPortalSettingsCacheKeyPrefix()
+        {
+            return "PortalSettingsCacheKey";
+        }
+
+        private static string GetPortalSettingsCacheKey(int pageId, string portalAlias, string currentLanguage)
+        {
+            return string.Format("{0}_{1}", GetPortalSettingsCacheKey(pageId, portalAlias), currentLanguage);
+        }
+
         private static string GetPortalSettingsCacheKey(int pageId, string portalAlias)
         {
-            return String.Format("PortalSettingsCacheKey_{0}_{1}", pageId, portalAlias);
+            return String.Format("{0}_{1}_{2}", GetPortalSettingsCacheKeyPrefix(), portalAlias.ToLower(), pageId);
+        }
+
+        private static void ProcessCurrentLanguage(string portalAlias)
+        {
+// Changes culture/language according to settings
+            try
+            {
+                // Moved here for support db call
+                LanguageSwitcher.ProcessCultures(GetLanguageList(portalAlias), portalAlias);
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.Publish(LogLevel.Warn, "Failed to load languages, loading defaults.", ex); // Jes1111
+                LanguageSwitcher.ProcessCultures(Localization.LanguageSwitcher.LANGUAGE_DEFAULT, portalAlias);
+            }
+        }
+
+        private static string GetPortalSettingsCacheKey(int portalId)
+        {
+            return String.Format("{0}PortalId_{1}", GetPortalSettingsCacheKeyPrefix(),portalId);
         }
 
         private static void AddToCache(string key, PortalSettings portalSettings)
         {
             var cache = HttpRuntime.Cache;
-            var time = 0;
+            int time;
             try
             {
                 time = int.Parse(ConfigurationManager.AppSettings["PortalSettingsCacheTime"]);
@@ -2647,6 +2669,39 @@ namespace Appleseed.Framework.Site.Configuration
             if (time > 0 && cache.Get(key) == null )
             {
                 cache.Add(key, portalSettings, null, DateTime.Now.AddMinutes(time), TimeSpan.Zero, CacheItemPriority.Normal, null);
+            }
+        }
+
+        public static void RemovePortalSettingsCache(int pageId, string portalAlias)
+        {
+            RemoveCahedItems(GetPortalSettingsCacheKey(pageId, portalAlias));
+        }
+
+        private static void RemovePortalSettingsCache()
+        {
+            RemoveCahedItems(GetPortalSettingsCacheKeyPrefix());
+        }
+
+        private static void RemoveCahedItems(string keyPart)
+        {
+            int time;
+            try
+            {
+                time = int.Parse(ConfigurationManager.AppSettings["PortalSettingsCacheTime"]);
+            }
+            catch (Exception)
+            {
+                time = 0;
+            }
+            if (time <= 0) return;
+            var cache = HttpRuntime.Cache;
+            var en = cache.GetEnumerator();
+            while (en.MoveNext())
+            {
+                if (en.Key.ToString().StartsWith(keyPart))
+                {
+                    cache.Remove(en.Key.ToString());
+                }
             }
         }
 
