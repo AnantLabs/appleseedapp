@@ -269,6 +269,7 @@ namespace Appleseed.Admin
                 {
                     CurrentCache.Remove(Key.TabSettings(this.PageID));
                 }
+                
 
             }
             
@@ -357,6 +358,7 @@ namespace Appleseed.Admin
                     // made in all languages and not get a error if user change the tab parent.
                     // jviladiu@portalServices.net (05/10/2004)
                     CurrentCache.RemoveAll("_PageNavigationSettings_");
+                    PortalSettings.RemovePortalSettingsCache(PageID, PortalSettings.PortalAlias);
 
                     // Clear AppleseedSiteMapCache
                     AppleseedSiteMapProvider.ClearAllAppleseedSiteMapCaches();
