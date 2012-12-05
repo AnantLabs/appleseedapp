@@ -248,6 +248,9 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
                                                             <select id="Content_leftPane" class="NormalTextBox" style="width: 110px" size="8"></select> 
                                                         </td>
                                                         <td nowrap="nowrap" valign="top">
+                                                            <input id="Content_LeftTopBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Top", "Left.gif").ImageUrl %>"
+                                                             alt="Move selected item to the header"  onclick="mvRigthLeft('LeftPane', 'TopPane', 'Content_leftPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/RightLeft_Click") %>    ');return false;"/>
+                                                            <br/>
                                                             <input id="Content_LeftUpBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Up", "Up.gif").ImageUrl %>"
                                                              alt="Move selected item up in list"  onclick="mvUpDown('up', 'LeftPane', 'Content_leftPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/UpDown_Click") %>');return false;"/>
                                                             <br />
@@ -256,6 +259,9 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
                                                             <br />
                                                              <input id="Content_LeftDownBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Down", "Down.gif").ImageUrl %>"
                                                              alt="Move selected item down in list"  onclick="mvUpDown('down', 'LeftPane', 'Content_leftPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/UpDown_Click") %>');return false;"/>
+                                                            <br/>
+                                                            <input id="Content_LeftBottomBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Bottom", "Right.gif").ImageUrl %>"
+                                                             alt="Move selected item to Bottom pane"  onclick="mvRigthLeft('LeftPane', 'BottomPane', 'Content_leftPane', '<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/RightLeft_Click") %>    ');return false;"/>&nbsp;&nbsp;
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -344,6 +350,9 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
                                                              <select id="Content_rightPane" class="NormalTextBox" style="width: 110px" size="8"></select>
                                                         </td>
                                                         <td nowrap="nowrap" valign="top">
+                                                            <input id="Content_RightTopBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Top", "Left.gif").ImageUrl %>"
+                                                             alt="Move selected item to the header"  onclick="mvRigthLeft('RightPane', 'TopPane', 'Content_rightPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/RightLeft_Click") %>    ');return false;"/>
+                                                            <br />
                                                             <input id="Content_RightUpBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Up", "Up.gif").ImageUrl %>"
                                                              alt="Move selected item up in list"  onclick="mvUpDown('up', 'RightPane', 'Content_rightPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/UpDown_Click") %>');return false;"/>
                                                             <br />
@@ -352,6 +361,10 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
                                                             <br />
                                                             <input id="Content_RightDownBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Down", "Down.gif").ImageUrl %>"
                                                              alt="Move selected item down in list"  onclick="mvUpDown('down', 'RightPane', 'Content_rightPane','<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/UpDown_Click") %>');return false;"/>
+                                                            <br />
+                                                            <input id="Content_RightBottomBtn" type="image" src="<%= CurrentTheme.GetImage("Buttons_Bottom", "Right.gif").ImageUrl %>"
+                                                             alt="Move selected item to Bottom pane"  onclick="mvRigthLeft('RightPane', 'BottomPane', 'Content_rightPane', '<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/RightLeft_Click") %>    ');return false;"/>&nbsp;&nbsp;
+                                                            
                                                         </td>
                                                     </tr>
                                                     <tr>
