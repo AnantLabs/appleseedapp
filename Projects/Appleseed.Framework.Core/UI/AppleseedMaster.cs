@@ -153,7 +153,7 @@ namespace Appleseed
             scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.unobtrusive-ajax." + min));
             scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.jeditable.js"));
 
-            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/modernizr-1.7."+min));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/modernizr-2.6.2."+min));
             scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.cookie.js"));
 
             scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/MicrosoftAjax." + js));
