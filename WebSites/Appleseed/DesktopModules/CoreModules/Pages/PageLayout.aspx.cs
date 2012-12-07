@@ -123,7 +123,7 @@ namespace Appleseed.Admin
             // End Change Geert.Audenaert@Syntegra.Com
 
             // reload the portalSettings from the database
-            this.Context.Items["PortalSettings"] = new PortalSettings(this.PageID, this.PortalSettings.PortalAlias);
+            this.Context.Items["PortalSettings"] = PortalSettings.GetPortalSettings(this.PageID, this.PortalSettings.PortalAlias);
             this.PortalSettings = (PortalSettings)this.Context.Items["PortalSettings"];
 
             // reorder the modules in the content pane
@@ -269,6 +269,7 @@ namespace Appleseed.Admin
                 {
                     CurrentCache.Remove(Key.TabSettings(this.PageID));
                 }
+                
 
             }
             
@@ -357,6 +358,7 @@ namespace Appleseed.Admin
                     // made in all languages and not get a error if user change the tab parent.
                     // jviladiu@portalServices.net (05/10/2004)
                     CurrentCache.RemoveAll("_PageNavigationSettings_");
+                    PortalSettings.RemovePortalSettingsCache(PageID, PortalSettings.PortalAlias);
 
                     // Clear AppleseedSiteMapCache
                     AppleseedSiteMapProvider.ClearAllAppleseedSiteMapCaches();
@@ -461,7 +463,7 @@ namespace Appleseed.Admin
                     sourceList.RemoveAt(sourceBox.SelectedIndex);
 
                     // reload the portalSettings from the database
-                    HttpContext.Current.Items["PortalSettings"] = new PortalSettings(
+                    HttpContext.Current.Items["PortalSettings"] = PortalSettings.GetPortalSettings(
                         this.PageID, this.PortalSettings.PortalAlias);
                     this.PortalSettings = (PortalSettings)this.Context.Items["PortalSettings"];
 

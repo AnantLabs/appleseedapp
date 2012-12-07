@@ -9,6 +9,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Configuration;
+
 namespace Appleseed.Framework.Site.Configuration
 {
     using System;
@@ -128,6 +130,10 @@ namespace Appleseed.Framework.Site.Configuration
 
         #region Constructors and Destructors
 
+         private PortalSettings()
+         {
+         }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="PortalSettings"/> class.
         ///   The PortalSettings Constructor encapsulates all of the logic
@@ -146,24 +152,12 @@ namespace Appleseed.Framework.Site.Configuration
         /// </param>
         /// <remarks>
         /// </remarks>
-        public PortalSettings(int pageId, string portalAlias)
+        private PortalSettings(int pageId, string portalAlias)
         {
             this.ActivePage = new PageSettings();
             this.DesktopPages = new List<PageStripDetails>();
             this.ShowPages = true;
             this.MobilePages = new ArrayList();
-
-            // Changes culture/language according to settings
-            try
-            {
-                // Moved here for support db call
-                LanguageSwitcher.ProcessCultures(GetLanguageList(portalAlias), portalAlias);
-            }
-            catch (Exception ex)
-            {
-                ErrorHandler.Publish(LogLevel.Warn, "Failed to load languages, loading defaults.", ex); // Jes1111
-                LanguageSwitcher.ProcessCultures(Localization.LanguageSwitcher.LANGUAGE_DEFAULT, portalAlias);
-            }
 
             // Create Instance of Connection and Command Object
             using (var connection = Config.SqlConnectionString)
@@ -483,7 +477,7 @@ namespace Appleseed.Framework.Site.Configuration
         /// </param>
         /// <remarks>
         /// </remarks>
-        public PortalSettings(int portalId)
+        private PortalSettings(int portalId)
         {
             this.ActivePage = new PageSettings();
             this.DesktopPages = new List<PageStripDetails>();
@@ -550,6 +544,60 @@ namespace Appleseed.Framework.Site.Configuration
             // Alternate
             themeManager.Load(this.CustomSettings["SITESETTINGS_ALT_THEME"].ToString());
             this.CurrentThemeAlt = themeManager.CurrentTheme;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PortalSettings"/> class.
+        ///   The PortalSettings Constructor encapsulates all of the logic
+        ///   necessary to obtain configuration settings necessary to get
+        ///   custom setting for a different portal than current (EditPortal.aspx.cs)<br/>
+        ///   These Portal Settings are stored within a SQL database, and are
+        ///   fetched below by calling the "GetPortalSettings" stored procedure.<br/>
+        ///   This overload it is used
+        /// </summary>
+        /// <param name="portalId">
+        /// The portal id.
+        /// </param>
+        /// <remarks>
+        /// </remarks>
+        public static PortalSettings GetPortalSettings(int portalId)
+        {
+
+            return new PortalSettings(portalId);
+
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PortalSettings"/> class.
+        ///   The PortalSettings Constructor encapsulates all of the logic
+        ///   necessary to obtain configuration settings necessary to render
+        ///   a Portal Page view for a given request.<br/>
+        ///   These Portal Settings are stored within a SQL database, and are
+        ///   fetched below by calling the "GetPortalSettings" stored procedure.<br/>
+        ///   This stored procedure returns values as SPROC output parameters,
+        ///   and using three result sets.
+        /// </summary>
+        /// <param name="pageId">
+        /// The page id.
+        /// </param>
+        /// <param name="portalAlias">
+        /// The portal alias.
+        /// </param>
+        /// <remarks>
+        /// </remarks>
+        public static PortalSettings GetPortalSettings(int pageId, string portalAlias)
+        {
+            ProcessCurrentLanguage(portalAlias);
+            var key = GetPortalSettingsCacheKey(pageId, portalAlias, Thread.CurrentThread.CurrentUICulture.Name);
+            var cache = HttpRuntime.Cache;
+            if(cache.Get(key) != null)
+            {
+                return (PortalSettings) cache.Get(key);
+            }
+            var portalSettings = new PortalSettings(pageId, portalAlias);
+            AddToCache(key, portalSettings);
+
+            return portalSettings;
         }
 
         #endregion
@@ -1314,6 +1362,7 @@ namespace Appleseed.Framework.Site.Configuration
         {
             CurrentCache.Remove(Key.PortalBaseSettings());
             CurrentCache.Remove(Key.LanguageList());
+            RemovePortalSettingsCache();
         }
 
         /// <summary>
@@ -2567,6 +2616,92 @@ namespace Appleseed.Framework.Site.Configuration
             if (groupElementWritten)
             {
                 writer.WriteEndElement(); // end MenuGroup element
+            }
+        }
+
+        private static string GetPortalSettingsCacheKeyPrefix()
+        {
+            return "PortalSettingsCacheKey";
+        }
+
+        private static string GetPortalSettingsCacheKey(int pageId, string portalAlias, string currentLanguage)
+        {
+            return string.Format("{0}_{1}", GetPortalSettingsCacheKey(pageId, portalAlias), currentLanguage);
+        }
+
+        private static string GetPortalSettingsCacheKey(int pageId, string portalAlias)
+        {
+            return String.Format("{0}_{1}_{2}", GetPortalSettingsCacheKeyPrefix(), portalAlias.ToLower(), pageId);
+        }
+
+        private static void ProcessCurrentLanguage(string portalAlias)
+        {
+// Changes culture/language according to settings
+            try
+            {
+                // Moved here for support db call
+                LanguageSwitcher.ProcessCultures(GetLanguageList(portalAlias), portalAlias);
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.Publish(LogLevel.Warn, "Failed to load languages, loading defaults.", ex); // Jes1111
+                LanguageSwitcher.ProcessCultures(Localization.LanguageSwitcher.LANGUAGE_DEFAULT, portalAlias);
+            }
+        }
+
+        private static string GetPortalSettingsCacheKey(int portalId)
+        {
+            return String.Format("{0}PortalId_{1}", GetPortalSettingsCacheKeyPrefix(),portalId);
+        }
+
+        private static void AddToCache(string key, PortalSettings portalSettings)
+        {
+            var cache = HttpRuntime.Cache;
+            int time;
+            try
+            {
+                time = int.Parse(ConfigurationManager.AppSettings["PortalSettingsCacheTime"]);
+            }
+            catch (Exception)
+            {
+                time = 0;
+            }
+            if (time > 0 && cache.Get(key) == null )
+            {
+                cache.Add(key, portalSettings, null, DateTime.Now.AddMinutes(time), TimeSpan.Zero, CacheItemPriority.Normal, null);
+            }
+        }
+
+        public static void RemovePortalSettingsCache(int pageId, string portalAlias)
+        {
+            RemoveCahedItems(GetPortalSettingsCacheKey(pageId, portalAlias));
+        }
+
+        private static void RemovePortalSettingsCache()
+        {
+            RemoveCahedItems(GetPortalSettingsCacheKeyPrefix());
+        }
+
+        private static void RemoveCahedItems(string keyPart)
+        {
+            int time;
+            try
+            {
+                time = int.Parse(ConfigurationManager.AppSettings["PortalSettingsCacheTime"]);
+            }
+            catch (Exception)
+            {
+                time = 0;
+            }
+            if (time <= 0) return;
+            var cache = HttpRuntime.Cache;
+            var en = cache.GetEnumerator();
+            while (en.MoveNext())
+            {
+                if (en.Key.ToString().StartsWith(keyPart))
+                {
+                    cache.Remove(en.Key.ToString());
+                }
             }
         }
 

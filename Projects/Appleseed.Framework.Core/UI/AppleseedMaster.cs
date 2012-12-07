@@ -144,8 +144,8 @@ namespace Appleseed
                 js = "debug.js";
             }
 
-            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery-1.7.2."+min));
-            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery-ui-1.8.11."+min));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery-1.8.3." + min));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery-ui-1.9.2."+min));
             scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.validate."+min));
             scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.validate.unobtrusive." + min));
             scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.bgiframe." + min));
@@ -153,7 +153,7 @@ namespace Appleseed
             scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.unobtrusive-ajax." + min));
             scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.jeditable.js"));
 
-            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/modernizr-1.7."+min));
+            scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/modernizr-2.6.2."+min));
             scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/jquery.cookie.js"));
 
             scripts.Add(page.ResolveUrl("~/aspnet_client/jQuery/MicrosoftAjax." + js));
