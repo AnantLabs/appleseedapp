@@ -39,7 +39,7 @@ namespace Appleseed.AdminAll
                     CurrentCache.Remove(Key.PortalSettings());
 
                 // Obtain PortalSettings of this Portal
-                PortalSettings currentPortalSettings = new PortalSettings(currentPortalID);
+                PortalSettings currentPortalSettings = PortalSettings.GetPortalSettings(currentPortalID);
 
                 // If this is the first visit to the page, populate the site data
                 if (!Page.IsPostBack)

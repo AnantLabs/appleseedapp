@@ -217,7 +217,7 @@ namespace Appleseed
             var defaultAlias = Config.DefaultPortal; // get default portal from config
 
             try {
-                portalSettings = new PortalSettings(pageId, portalAlias);
+                portalSettings = PortalSettings.GetPortalSettings(pageId, portalAlias);
             } catch (DatabaseUnreachableException dexc) {
                 // If no database, must update
                 ErrorHandler.Publish(LogLevel.Error, dexc);
@@ -225,11 +225,11 @@ namespace Appleseed
                     s.RunDBUpdate(Config.ConnectionString);
                 }
 
-                portalSettings = new PortalSettings(pageId, portalAlias);
+                portalSettings = PortalSettings.GetPortalSettings(pageId, portalAlias);
             }
 
             if (portalSettings == null || (portalSettings != null && portalSettings.PortalAlias == null)) {
-                portalSettings = new PortalSettings(pageId, defaultAlias);
+                portalSettings = PortalSettings.GetPortalSettings(pageId, defaultAlias);
             }
             //if (portalSettings.PortalAlias == null) {
             //    // critical error - neither requested alias nor default alias could be found in DB
