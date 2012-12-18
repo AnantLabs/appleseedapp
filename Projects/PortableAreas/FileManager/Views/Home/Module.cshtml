@@ -215,88 +215,80 @@
 
     function Refresh() {
         $("#MainTree")
-        .jstree({
-            "json_data": {
-                "ajax": {
-                    "type": "POST",
-                    "url":
-                    function (node) {
-                        var url = '';
-                        if (node == -1) {
-                            url = '@Url.Action("GetTreeData",new {mID = Model.ModuleId})';
-                        }
-                        else {
-                            var nodeId = node.attr('id');
-                            url = '@Url.Action("GetChildreenTree")?dir=' + nodeId +'&mID=' + @Model.ModuleId;
-                        }
+            .jstree({
+                "json_data": {
+                    "ajax": {
+                        "type": "POST",
+                        "url":
+                            function(node) {
+                                var url = '';
+                                if (node == -1) {
+                                    url = '@Url.Action("GetTreeData",new {mID = Model.ModuleId})';
+                                } else {
+                                    var nodeId = node.attr('id');
+                                    url = '@Url.Action("GetChildreenTree")?dir=' + nodeId + '&mID=' + @Model.ModuleId;
+                                }
 
-                        return url;
-                    },
-                    "data": function (n) {
-                        return { ID: n.Attr ? n.Attr("ID") : 0 };
+                                return url;
+                            },
+                        "data": function(n) {
+                            return { ID: n.Attr ? n.Attr("ID") : 0 };
+                        }
                     }
-                }
-            },
-            "dnd": {
-                "drop_target": false,
-                "drag_target": false
-            },
-
-            "core": { "initially_open": ["/Portals"] },
-
-            "plugins": ["themes", "contextmenu", "json_data", "ui", "crrm", "dnd", "core"]
-        }).bind("select_node.jstree", function (event, data) {
-
-            var folder = data.rslt.obj.attr("id");
-            var folderReplace = folder.replace(/\//g, "\\/");
-            $("#MainTree").jstree("open_node", $('#' + folderReplace));
-
-            LoadFoldersContent(folder, true);
-
-        });
-
-
-    };
-
-    $('#MainTree').bind("move_node.jstree", function (e, data) {
-        data.rslt.o.each(function () {
-            $.ajax({
-                async: false,
-                type: 'POST',
-                url: '@Url.Action("MoveData")',
-                data: {
-                    "path": $(this).attr("id"),
-                    "destination": data.rslt.np.attr("id"),
-                    "mID": @Model.ModuleId
                 },
-                success: function (r) {
-                    Refresh();
+                "dnd": {
+                    "drop_target": false,
+                    "drag_target": false
                 },
-                error: function (r) {
-                    $.jstree.rollback(data.rlbk);
-                }
+
+                "core": { "initially_open": ["/Portals"] },
+
+                "plugins": ["themes", "contextmenu", "json_data", "ui", "crrm", "dnd", "core"]
+            }).bind("select_node.jstree", function(event, data) {
+
+                var folder = data.rslt.obj.attr("id");
+                var folderReplace = folder.replace(/\//g, "\\/");
+                $("#MainTree").jstree("open_node", $('#' + folderReplace));
+
+                LoadFoldersContent(folder, true);
+
+            }).bind("move_node.jstree", function(e, data) {
+                data.rslt.o.each(function() {
+                    $.ajax({
+                        async: false,
+                        type: 'POST',
+                        url: '@Url.Action("MoveData")',
+                        data: {
+                            "path": $(this).attr("id"),
+                            "destination": data.rslt.np.attr("id"),
+                            "mID": @Model.ModuleId
+                        },
+                        success: function(r) {
+                            Refresh();
+                        },
+                        error: function(r) {
+                            $.jstree.rollback(data.rlbk);
+                        }
+                    });
+                });
+            }).bind("rename.jstree", function(e, data) {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("RenameFolderTree")',
+                    data: {
+                        "name": data.rslt.obj.attr("id"),
+                        "newName": data.rslt.new_name,
+                        "mID": @Model.ModuleId
+                    },
+                    success: function(r) {
+                        Refresh();
+                    },
+                    error: function(r) {
+                        $.jstree.rollback(data.rlbk);
+                    }
+                });
             });
-        });
-    });
-
-
-    $('#MainTree').bind("rename.jstree", function (e, data) {
-        $.ajax({
-            type: 'POST',
-            url: '@Url.Action("RenameFolderTree")',
-            data: {
-                "name": data.rslt.obj.attr("id"),
-                "newName": data.rslt.new_name,
-                "mID": @Model.ModuleId
-            },
-            success: function (r) {
-                Refresh();
-            },
-            error: function (r) {
-                $.jstree.rollback(data.rlbk);
-            }
-        });
-    });
+    }
 
     function LoadFoldersContent(dir, addToPush) {
 

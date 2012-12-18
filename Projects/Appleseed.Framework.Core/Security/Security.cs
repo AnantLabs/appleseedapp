@@ -997,7 +997,18 @@ namespace Appleseed.Framework.Security
 
             // Obtain PortalSettings from Current Context
             var PortalSettings = (PortalSettings)HttpContext.Current.Items[StringsPortalSettings];
-            var portalID = PortalSettings.PortalID;
+            int portalID;
+            if (PortalSettings != null)
+                portalID = PortalSettings.PortalID;
+            else
+            {
+                var alias = HttpContext.Current.Items["PortalAlias"];
+                var db = new Massive.DynamicModel("ConnectionString", "rb_Portals");
+                var elemenents = db.All("PortalAlias = @0", columns: "PortalID", args: alias);
+                if (elemenents.Count() != 1)
+                    return false;
+                portalID = ((dynamic)((System.Dynamic.ExpandoObject)(elemenents.First()))).PortalID;
+            }
 
             // jviladiu@portalServices.net: Get users & roles from true portal (2004/09/23)
             if (Config.UseSingleUserBase)
