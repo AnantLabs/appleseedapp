@@ -156,6 +156,7 @@
     <Compile Include="ApplicationBus\JSRegisterHandler.cs" />
     <Compile Include="Authorization\AppleseedAuthorize.cs" />
     <Compile Include="Controllers\PageLayoutController.cs" />
+    <Content Include="DBScripts\20121218\01.RemoveOldFileManager.sql" />
     <Compile Include="PortableAreaUtils.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DBScripts\ExecuteHelper.cs" />

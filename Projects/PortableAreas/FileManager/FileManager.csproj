@@ -176,6 +176,7 @@
     <Content Include="Views\Home\FolderIcon.cshtml" />
     <Content Include="Views\Home\FileIcon.cshtml" />
     <Content Include="Views\Home\Module.cshtml" />
+    <Content Include="Views\Home\FolderDoesntExist.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
