@@ -4221,12 +4221,10 @@
     <Content Include="aspnet_client\ie7\0_9\test-trans.png" />
     <Content Include="aspnet_client\ie7\0_9\test.html" />
     <Content Include="aspnet_client\jQuery\jquery-1.6.1-vsdoc.js" />
-    <Content Include="aspnet_client\jQuery\jquery-1.6.1.js" />
-    <Content Include="aspnet_client\jQuery\jquery-1.6.1.min.js" />
-    <Content Include="aspnet_client\jQuery\jquery-1.7.2.js" />
-    <Content Include="aspnet_client\jQuery\jquery-1.7.2.min.js" />
-    <Content Include="aspnet_client\jQuery\jquery-ui-1.8.11.js" />
-    <Content Include="aspnet_client\jQuery\jquery-ui-1.8.11.min.js" />
+    <Content Include="aspnet_client\jQuery\jquery-1.8.3.js" />
+    <Content Include="aspnet_client\jQuery\jquery-1.8.3.min.js" />
+    <Content Include="aspnet_client\jQuery\jquery-ui-1.9.2.js" />
+    <Content Include="aspnet_client\jQuery\jquery-ui-1.9.2.min.js" />
     <Content Include="aspnet_client\jQuery\jquery-ui-i18n.min.js" />
     <Content Include="aspnet_client\jQuery\jquery.bgiframe.js" />
     <Content Include="aspnet_client\jQuery\jquery.bgiframe.min.js" />
@@ -4251,8 +4249,8 @@
     <Content Include="aspnet_client\jQuery\MicrosoftMvcJQueryValidation.js" />
     <Content Include="aspnet_client\jQuery\MicrosoftMvcValidation.debug.js" />
     <Content Include="aspnet_client\jQuery\MicrosoftMvcValidation.js" />
-    <Content Include="aspnet_client\jQuery\modernizr-1.7.js" />
-    <Content Include="aspnet_client\jQuery\modernizr-1.7.min.js" />
+    <Content Include="aspnet_client\jQuery\modernizr-2.6.2.js" />
+    <Content Include="aspnet_client\jQuery\modernizr-2.6.2.min.js" />
     <Content Include="aspnet_client\jQuery\ui.multiselect.css" />
     <Content Include="aspnet_client\jQuery\ui.multiselect.js" />
     <Content Include="aspnet_client\js\AppleseedScripts.js" />
