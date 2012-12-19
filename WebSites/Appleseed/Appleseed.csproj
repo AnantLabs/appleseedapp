@@ -5261,7 +5261,7 @@
     <Content Include="Design\Themes\Appleseedcms\images\ui-icons_004276_256x240.png" />
     <Content Include="Design\Themes\Appleseedcms\images\ui-icons_cc0000_256x240.png" />
     <Content Include="Design\Themes\Appleseedcms\images\ui-icons_ffffff_256x240.png" />
-    <Content Include="Design\Themes\Appleseedcms\jquery-ui-1.8.9.custom.css" />
+    <Content Include="Design\Themes\Appleseedcms\jquery-ui-1.9.2.custom.css" />
     <Content Include="Design\Themes\Appleseedcms\menu.css" />
     <Content Include="Design\Themes\Appleseedcms\TabControl.css" />
     <Content Include="Design\Themes\Appleseedcms\TabsSubTabs.css" />
@@ -5365,7 +5365,7 @@
     <Content Include="Design\Themes\Clearly\images\ui-icons_f5e175_256x240.png" />
     <Content Include="Design\Themes\Clearly\images\ui-icons_f7a50d_256x240.png" />
     <Content Include="Design\Themes\Clearly\images\ui-icons_fcd113_256x240.png" />
-    <Content Include="Design\Themes\Clearly\jquery-ui-1.8.8.custom.css" />
+    <Content Include="Design\Themes\Clearly\jquery-ui-1.9.2.custom.css" />
     <Content Include="Design\Themes\Clearly\menu.css" />
     <Content Include="Design\Themes\Clearly\Slyder_Styles.css" />
     <Content Include="Design\Themes\Clearly\TabControl.css" />
@@ -5552,7 +5552,7 @@
     <Content Include="Design\Themes\Corporate-Black\images\ui-icons_f5e175_256x240.png" />
     <Content Include="Design\Themes\Corporate-Black\images\ui-icons_f7a50d_256x240.png" />
     <Content Include="Design\Themes\Corporate-Black\images\ui-icons_fcd113_256x240.png" />
-    <Content Include="Design\Themes\Corporate-Black\jquery-ui-1.8.8.custom.css" />
+    <Content Include="Design\Themes\Corporate-Black\jquery-ui-1.9.2.custom.css" />
     <Content Include="Design\Themes\Corporate-Black\menu.css" />
     <Content Include="Design\Themes\Corporate-Black\Slyder_Styles.css" />
     <Content Include="Design\Themes\Corporate-Black\TabControl.css" />
@@ -5738,7 +5738,7 @@
     <Content Include="Design\Themes\Education\images\ui-icons_f5e175_256x240.png" />
     <Content Include="Design\Themes\Education\images\ui-icons_f7a50d_256x240.png" />
     <Content Include="Design\Themes\Education\images\ui-icons_fcd113_256x240.png" />
-    <Content Include="Design\Themes\Education\jquery-ui-1.8.8.custom.css" />
+    <Content Include="Design\Themes\Education\jquery-ui-1.9.2.custom.css" />
     <Content Include="Design\Themes\Education\menu.css" />
     <Content Include="Design\Themes\Education\Slyder_Styles.css" />
     <Content Include="Design\Themes\Education\TabControl.css" />
