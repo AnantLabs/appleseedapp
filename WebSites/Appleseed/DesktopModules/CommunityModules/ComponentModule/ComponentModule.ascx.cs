@@ -1,11 +1,17 @@
 using System;
 using System.Collections;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.IO;
+using System.Web;
 using System.Web.UI;
+using System.Web.UI.WebControls;
+using Appleseed.Framework;
 using Appleseed.Framework.Content.Data;
 using Appleseed.Framework.Data;
+using Appleseed.Framework.DataTypes;
 using Appleseed.Framework.Helpers;
+using Appleseed.Framework.Site.Configuration;
 using Appleseed.Framework.Web.UI.WebControls;
 using History=Appleseed.Framework.History;
 
@@ -21,6 +27,125 @@ namespace Appleseed.Content.Web.Modules
     public partial class ComponentModule : PortalModuleControl
     {
         // protected PlaceHolder ComponentHolder;
+
+        public ComponentModule()
+        {
+            var group = SettingItemGroup.MODULE_SPECIAL_SETTINGS;
+            var groupOrderBase = (int)SettingItemGroup.MODULE_SPECIAL_SETTINGS;
+
+            //HtmlEditorDataType.HtmlEditorSettings(this.BaseSettings, group);
+
+            var pS = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+
+            var editor = new SettingItem<string, DropDownList>(new HtmlEditorDataType())
+            {
+                // Order = 1; modified by Hongwei Shen(hongwei.shen@gmail.com) 11/9/2005
+                Order = (int)group + 1,
+                Group = group,
+                EnglishName = "Editor",
+                Description = "Select the Html Editor for Module"
+            };
+
+            var controlWidth = new SettingItem<int, TextBox>(new BaseDataType<int, TextBox>())
+            {
+                Value = 700,
+                Order = (int)group + 2,
+                Group = group,
+                EnglishName = "Editor Width",
+                Description = "The width of editor control"
+            };
+
+            var controlHeight = new SettingItem<int, TextBox>(new BaseDataType<int, TextBox>())
+            {
+                Value = 400,
+                Order = (int)group + 3,
+                Group = group,
+                EnglishName = "Editor Height",
+                Description = "The height of editor control"
+            };
+
+            var showUpload = new SettingItem<bool, CheckBox>(new BaseDataType<bool, CheckBox>())
+            {
+                Value = true,
+                Order = (int)group + 4,
+                Group = group,
+                EnglishName = "Upload?",
+                Description = "Only used if Editor is ActiveUp HtmlTextBox"
+            };
+
+            SettingItem<string, Panel> moduleImageFolder = null;
+            if (pS != null)
+            {
+                if (pS.PortalFullPath != null)
+                {
+                    moduleImageFolder =
+                        new SettingItem<string, Panel>(
+                            new FolderDataType(
+                                HttpContext.Current.Server.MapPath(string.Format("{0}/images", pS.PortalFullPath)),
+                                "default"))
+                        {
+                            Value = "default",
+                            Order = (int)group + 5,
+                            Group = group,
+                            EnglishName = "Default Image Folder",
+                            Description = "This folder is used for editor in this module to take and upload images"
+                        };
+                }
+
+                // Set the portal default values
+                if (pS.CustomSettings != null)
+                {
+                    if (pS.CustomSettings["SITESETTINGS_DEFAULT_EDITOR"] != null)
+                    {
+                        editor.Value = pS.CustomSettings["SITESETTINGS_DEFAULT_EDITOR"].ToString();
+                    }
+
+                    if (pS.CustomSettings["SITESETTINGS_EDITOR_WIDTH"] != null)
+                    {
+                        controlWidth.Value =
+                            pS.CustomSettings["SITESETTINGS_EDITOR_WIDTH"].ToInt32(CultureInfo.InvariantCulture);
+                    }
+
+                    if (pS.CustomSettings["SITESETTINGS_EDITOR_HEIGHT"] != null)
+                    {
+                        controlHeight.Value =
+                            pS.CustomSettings["SITESETTINGS_EDITOR_HEIGHT"].ToInt32(CultureInfo.InvariantCulture);
+                    }
+
+                    if (pS.CustomSettings["SITESETTINGS_EDITOR_HEIGHT"] != null)
+                    {
+                        controlHeight.Value =
+                            pS.CustomSettings["SITESETTINGS_EDITOR_HEIGHT"].ToInt32(CultureInfo.InvariantCulture);
+                    }
+
+                    if (pS.CustomSettings["SITESETTINGS_SHOWUPLOAD"] != null)
+                    {
+                        showUpload.Value =
+                            pS.CustomSettings["SITESETTINGS_SHOWUPLOAD"].ToBoolean(CultureInfo.InvariantCulture);
+                    }
+
+                    if (pS.CustomSettings["SITESETTINGS_DEFAULT_IMAGE_FOLDER"] != null)
+                    {
+                        if (moduleImageFolder != null)
+                        {
+                            moduleImageFolder.Value = pS.CustomSettings["SITESETTINGS_DEFAULT_IMAGE_FOLDER"].ToString();
+                        }
+                    }
+                }
+            }
+
+            this.BaseSettings.Add("Editor", editor);
+            this.BaseSettings.Add("Width", controlWidth);
+            this.BaseSettings.Add("Height", controlHeight);
+            this.BaseSettings.Add("ShowUpload", showUpload);
+            if (moduleImageFolder != null)
+            {
+                this.BaseSettings.Add("MODULE_IMAGE_FOLDER", moduleImageFolder);
+            }
+
+            
+        }
+
 
         /// <summary>
         /// The Page_Load event handler on this User Control is

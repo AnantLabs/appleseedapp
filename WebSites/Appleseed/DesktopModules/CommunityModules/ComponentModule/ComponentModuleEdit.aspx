@@ -26,6 +26,7 @@
                         </td>
                     </tr>
                 </table>
+                
                 <table cellpadding="0" cellspacing="0" width="750">
                     <tr valign="top">
                         <td class="SubHead" width="100">
@@ -48,10 +49,15 @@
                             </asp:requiredfieldvalidator>
                         </td>
                     </tr>
-                    <tr valign="top">
-                        <td class="SubHead">
-                            Component
-                        </td>
+                </table>
+                    <%--<tr valign="top">
+                        <td></td>
+                        <td >--%>
+                            <br/>
+                           <div class="normal">
+                                <asp:PlaceHolder ID="PlaceHolderComponentEditor" runat="server"></asp:PlaceHolder>
+                         </div>
+                        <%--</td>
                         <td>
                             <asp:textbox id="ComponentField" runat="server" columns="44" rows="10" textmode="Multiline"
                                 width="490">
@@ -61,9 +67,9 @@
                             <asp:requiredfieldvalidator id="RequiredComponent" runat="server" controltovalidate="ComponentField"
                                 display="Dynamic">
                             </asp:requiredfieldvalidator>
-                        </td>
-                    </tr>
-                </table>
+                        </td>--%>
+                    <%--</tr>
+                </table>--%>
                 <p>
                     <rbfwebui:linkbutton id="UpdateButton" runat="server" class="CommandButton" text="UPDATE">
                     </rbfwebui:linkbutton>
