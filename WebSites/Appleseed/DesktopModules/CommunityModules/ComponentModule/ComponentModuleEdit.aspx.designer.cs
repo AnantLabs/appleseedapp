@@ -67,22 +67,13 @@ namespace Appleseed.Content.Web.Modules {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredTitle;
         
         /// <summary>
-        /// ComponentField control.
+        /// PlaceHolderComponentEditor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ComponentField;
-        
-        /// <summary>
-        /// RequiredComponent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredComponent;
+        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolderComponentEditor;
         
         /// <summary>
         /// CreatedLabel control.

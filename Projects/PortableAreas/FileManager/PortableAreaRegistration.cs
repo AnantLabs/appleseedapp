@@ -30,9 +30,9 @@ namespace FileManager {
             var assemblyName = Assembly.GetAssembly(this.GetType()).FullName;
 
 
-            var generalModuleDefId = ModelServices.RegisterPortableAreaModule(AreaName, assemblyName, "Home");
-            var modDef =  ModelServices.AddModuleToPortal(generalModuleDefId, 0);
-            ModelServices.AddModuleToPage(modDef, 155, "FileManager", false);
+            //var generalModuleDefId = ModelServices.RegisterPortableAreaModule(AreaName, assemblyName, "Home");
+            //var modDef =  ModelServices.AddModuleToPortal(generalModuleDefId, 0);
+            //ModelServices.AddModuleToPage(modDef, 155, "FileManager", false);
 
             this.RegisterAreaEmbeddedResources();
             PortableAreaUtils.RegisterScripts(this, context, bus);
