@@ -4590,4 +4590,7 @@
   <data name="SIGNIN_SET_NEW_PWD_MSG" xml:space="preserve">
     <value>Puedes setiar la nueva contraseña en el siguiente link:</value>
   </data>
+  <data name="EDIT_COMPONENTMODULE" xml:space="preserve">
+    <value>Editar componente</value>
+  </data>
 </root>

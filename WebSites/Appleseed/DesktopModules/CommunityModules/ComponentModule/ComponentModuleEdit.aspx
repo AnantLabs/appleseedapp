@@ -1,18 +1,10 @@
 <%@ page autoeventwireup="false" inherits="Appleseed.Content.Web.Modules.ComponentModuleEdit"
-    language="c#" Codebehind="ComponentModuleEdit.aspx.cs" %>
+    language="c#" MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="ComponentModuleEdit.aspx.cs" %>
 
-<%@ register src="~/Design/DesktopLayouts/DesktopPortalBanner.ascx" tagname="Banner"
-    tagprefix="portal" %>
-<%@ register src="~/Design/DesktopLayouts/DesktopFooter.ascx" tagname="Footer" tagprefix="foot" %>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head id="Head1" runat="server"><title></title>
-</head>
-<body id="Body1" runat="server">
-    <form id="Form1" runat="server">
-        <div id="zenpanes" class="zen-main">
-            <div class="rb_DefaultPortalHeader">
-                <portal:banner id="SiteHeader" runat="server" />
-            </div>
+<asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="Server">
+
+
+
             <div class="div_ev_Table">
                 <table cellpadding="0" cellspacing="0" width="100%">
                     <tr>
@@ -87,11 +79,7 @@
                     </rbfwebui:localize>&nbsp;
                     <rbfwebui:label id="CreatedDate" runat="server"></rbfwebui:label>
                 </span>
-                <div class="rb_AlternatePortalFooter">
-                    <foot:footer id="Footer" runat="server" />
+                
                 </div>
-            </div>
-        </div>
-    </form>
-</body>
-</html>
+
+</asp:Content>

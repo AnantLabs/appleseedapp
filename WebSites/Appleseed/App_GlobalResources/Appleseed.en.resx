@@ -3540,4 +3540,7 @@
   <data name="PAGESETTINGS_SITEDEFAULT" xml:space="preserve">
     <value>(Site Default)</value>
   </data>
+  <data name="EDIT_COMPONENTMODULE" xml:space="preserve">
+    <value>Edit Component</value>
+  </data>
 </root>
