@@ -6903,6 +6903,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Component.
+        /// </summary>
+        internal static string EDIT_COMPONENTMODULE {
+            get {
+                return ResourceManager.GetString("EDIT_COMPONENTMODULE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Portal.
         /// </summary>
         internal static string EDIT_PORTAL {

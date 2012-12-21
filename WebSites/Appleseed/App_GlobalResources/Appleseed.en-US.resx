@@ -3528,4 +3528,7 @@
   <data name="REMOVE_ALL" xml:space="preserve">
     <value>Remove all</value>
   </data>
+  <data name="EDIT_COMPONENTMODULE" xml:space="preserve">
+    <value>Edit Component</value>
+  </data>
 </root>

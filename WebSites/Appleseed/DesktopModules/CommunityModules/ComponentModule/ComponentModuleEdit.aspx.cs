@@ -87,16 +87,18 @@ namespace Appleseed.Content.Web.Modules
             base.OnUpdate(e);
 
             // Only Update if the Entered Data is Valid
-            if (Page.IsValid == true)
+            if (Page.IsValid)
             {
                 // Create an instance of the Event DB component
-                ComponentModuleDB comp = new ComponentModuleDB();
+                var comp = new ComponentModuleDB();
 
                 comp.UpdateComponentModule(ModuleID, PortalSettings.CurrentUser.Identity.UserName, TitleField.Text,
                                            DesktopText.Text);
 
-                // Redirect back to the portal home page
-                RedirectBackToReferringPage();
+                if (Request.QueryString.GetValues("ModalChangeMaster") != null)
+                    Response.Write("<script type=\"text/javascript\">window.parent.location = window.parent.location.href;</script>");
+                else
+                    RedirectBackToReferringPage();
             }
         }
 
