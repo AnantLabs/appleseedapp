@@ -379,6 +379,11 @@ namespace PageManagerTree.Controllers
             return Json(new { error = false }); 
         }
     
-    
+        public JsonResult ViewPage(int pageId)
+        {
+            var url = HttpUrlBuilder.BuildUrl(pageId);
+            return Json(url);
+        }
+
     }
 }
