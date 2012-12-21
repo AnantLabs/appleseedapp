@@ -1951,6 +1951,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clone.
+        /// </summary>
+        internal static string Clone {
+            get {
+                return ResourceManager.GetString("Clone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
         internal static string CL_ABOS {
@@ -16619,6 +16628,15 @@ namespace Resources {
         internal static string VERTICAL {
             get {
                 return ResourceManager.GetString("VERTICAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View.
+        /// </summary>
+        internal static string View {
+            get {
+                return ResourceManager.GetString("View", resourceCulture);
             }
         }
         

@@ -37,6 +37,32 @@
             },
             "contextmenu": {
                 "items": {
+                    ViewItem: {
+                        label: '<%: Appleseed.Framework.General.GetString("View","View") %>',
+                        action: function (obj) {
+                            var currentId = this._get_node(obj).attr("id");
+                            $.ajax({
+                                url: '<%= Url.Action("ViewPage")%>',
+                                type: 'POST',
+                                timeout: "100000",
+                                data: {
+                                    "pageId": currentId.replace("pjson_", "")
+                                },
+                                success: function (data) {
+                                    window.location.href = data;
+                                }
+                                
+                            });
+
+                        },
+                    },
+                    renameItem: {
+                        "label": '<%: Appleseed.Framework.General.GetString("RENAME") %>',
+                        "action": function (obj) {
+                            this.rename(obj);
+
+                        },
+                    },
                     "edit": {
                         "label": '<%: Appleseed.Framework.General.GetString("EDIT") %>',
                             "action":
@@ -58,12 +84,10 @@
                     },
                     "ccp": false,
                     "remove": false,
-                    "rename": {
-                        "label": '<%: Appleseed.Framework.General.GetString("RENAME") %>',
-                        "action": function (obj) { this.rename(obj);
-                                                    
-                         },
-                    },
+                    "rename": false,
+                    
+
+                    
                     cloneItem: {
                         label: '<%: Appleseed.Framework.General.GetString("Clone","Clone") %>',
                         action: function (obj) {

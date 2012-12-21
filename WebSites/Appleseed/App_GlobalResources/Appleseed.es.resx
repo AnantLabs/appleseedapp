@@ -4467,4 +4467,10 @@
   <data name="EDIT_COMPONENTMODULE" xml:space="preserve">
     <value>Editar Componente</value>
   </data>
+  <data name="Clone" xml:space="preserve">
+    <value>Clonar</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>Ver</value>
+  </data>
 </root>
