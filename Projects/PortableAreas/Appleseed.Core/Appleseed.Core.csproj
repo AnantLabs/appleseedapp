@@ -158,7 +158,7 @@
     <Compile Include="Controllers\PageLayoutController.cs" />
     <Content Include="DBScripts\20121221\01.ComponentModuleSize.sql" />
     <Content Include="DBScripts\20121220\01.AddingFileManagerGeneralModuleDefinition.sql" />
-    <Content Include="DBScripts\20121221\02.Change ComponentModuleSProc.sql" />
+    <Content Include="DBScripts\20121221\02.ChangeComponentModuleSProc.sql" />
     <Content Include="DBScripts\20121220\02.ChangeOldFileManager.sql" />
     <Compile Include="PortableAreaUtils.cs" />
     <Compile Include="Controllers\HomeController.cs" />
