@@ -287,7 +287,34 @@
                         $.jstree.rollback(data.rlbk);
                     }
                 });
-            });
+            }).bind("remove.jstree", function(e, data) {
+                var selected = data.rslt.obj.text().replace(/\s{2}/,""); 
+                var children = data.rslt.obj.children().children().text().replace(/\s/,"");
+                var folder = selected.replace(children, "");
+                var parentfolder = data.rslt.parent.attr("id");
+                if (confirm('Are you sure you want to delete "' + folder + '"?')) {
+                    $.ajax({
+                        async : false,
+                        type: 'POST',
+                        url: '@Url.Action("DeleteFolder")',
+                        data: {
+                            "folder": folder,
+                            "parentfolder": parentfolder,
+                            "mID": @Model.ModuleId
+                        },
+                        success: function (folderView) {
+                            LoadFoldersContent(parentfolder);
+                            Refresh();
+                        },
+                        error: function (result) {
+                            AppendError(result.responseText);
+                            $.jstree.rollback(data.rlbk);
+                        }
+                    });
+                }
+            })//.bind("create.jstree", function (e, data) {
+    
+                ;
     }
 
     function LoadFoldersContent(dir, addToPush) {
