@@ -211,7 +211,9 @@
         Refresh();
     });
 
-
+    function refresh(){
+        $('#MainTree').jstree('refresh', -1);
+    }
 
     function Refresh() {
         $("#MainTree")
@@ -264,7 +266,8 @@
                             "mID": @Model.ModuleId
                         },
                         success: function(r) {
-                            Refresh();
+                            //Refresh();
+                            refresh();
                         },
                         error: function(r) {
                             $.jstree.rollback(data.rlbk);
@@ -281,7 +284,8 @@
                         "mID": @Model.ModuleId
                     },
                     success: function(r) {
-                        Refresh();
+                        //Refresh();
+                        refresh();
                     },
                     error: function(r) {
                         $.jstree.rollback(data.rlbk);
@@ -304,7 +308,8 @@
                         },
                         success: function (folderView) {
                             LoadFoldersContent(parentfolder);
-                            Refresh();
+                            //Refresh();
+                            refresh();
                         },
                         error: function (result) {
                             AppendError(result.responseText);
@@ -328,13 +333,12 @@
                     },
                     success: function (folderView) {
                         LoadFoldersContent(lastNode);
-                        //CloseNewFolderDialog();
-                        Refresh();
-                        //$('#NewFolderInputId').val('');
+                        //Refresh();
+                        //$('#MainTree').jstree('refresh',-1);
+                        refresh();
                     },
                     error: function (result) {
                         AppendError(result.responseText);
-                        //$.jstree.rollback(data.rlbk); //?
                     }
                 });
             });
@@ -371,7 +375,7 @@
     function OpenFolder(folder) {
 
         var folderReplace = folder.replace(/\//g, "\\/");
-        $("#MainTree").jstree("open_node", $('#' + folderReplace));
+        $("#MainTree").jstree("open_node", document.getElementById(folder));
         LoadFoldersContent(folder, true);
 
     }
@@ -413,6 +417,7 @@
     function CreateFolder(Name) {
         //var folderReplace = LastNode.replace(/\//g, "\\/");
 
+                       
 
         $.ajax({
             type: 'POST',
@@ -426,7 +431,9 @@
                 LoadFoldersContent(LastNode);
                 CloseNewFolderDialog();
                 $('#NewFolderInputId').val('');
-                Refresh();
+                //Refresh();
+                //$('#MainTree').jstree('refresh');
+                refresh();
             },
             error: function (result) {
                 AppendError(result.responseText);
@@ -657,7 +664,8 @@
                 },
                 success: function (folderView) {
                     LoadFoldersContent(LastNode);
-                    Refresh();
+                    //Refresh();
+                    refresh();
                 },
                 error: function (result) {
                     AppendError(result.responseText);
@@ -692,7 +700,8 @@
                 success: function (folderView) {
                     LoadFoldersContent(LastNode);
                     CloseRenameFolderDialog();
-                    Refresh();
+                    //Refresh();
+                    refresh();
 
                 }
             });
@@ -769,7 +778,8 @@
                 LoadFoldersContent(LastNode);
                 CopiedFile = '';
                 if(isFolder) {
-                    Refresh();
+                    //Refresh();
+                    refresh();
                 }
             },
             error: function (result) {
