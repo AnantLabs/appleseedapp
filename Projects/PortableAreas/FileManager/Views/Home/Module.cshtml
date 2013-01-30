@@ -311,10 +311,33 @@
                             $.jstree.rollback(data.rlbk);
                         }
                     });
+                }else{
+                    $.jstree.rollback(data.rlbk);
                 }
-            })//.bind("create.jstree", function (e, data) {
-    
-                ;
+
+            }).bind("create.jstree", function (e, data) {
+                var lastNode = data.rslt.parent.attr("id");
+                var name = data.rslt.name;
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("CreateNewFolder")',
+                    data: {
+                        folder: lastNode,
+                        name: name,
+                        "mID": @Model.ModuleId
+                    },
+                    success: function (folderView) {
+                        LoadFoldersContent(lastNode);
+                        //CloseNewFolderDialog();
+                        Refresh();
+                        //$('#NewFolderInputId').val('');
+                    },
+                    error: function (result) {
+                        AppendError(result.responseText);
+                        //$.jstree.rollback(data.rlbk); //?
+                    }
+                });
+            });
     }
 
     function LoadFoldersContent(dir, addToPush) {
@@ -403,6 +426,7 @@
                 LoadFoldersContent(LastNode);
                 CloseNewFolderDialog();
                 $('#NewFolderInputId').val('');
+                Refresh();
             },
             error: function (result) {
                 AppendError(result.responseText);
