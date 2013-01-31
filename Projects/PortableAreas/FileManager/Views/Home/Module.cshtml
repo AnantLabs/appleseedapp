@@ -9,6 +9,9 @@
 <div id="FileManagerErrors"></div>
 
 <div id="FileManagerContainter">
+<div id="FileManagerButtonsR" > 
+<input class="ArrowButtons" type="button" onclick="$('#MainTree').jstree('refresh', -1);" value="Refresh"> 
+</div>
     <div id="DirectoryTree" class="FileManagerDirectoryTree">
         @Html.Partial("TreeModule")
     </div>
@@ -207,15 +210,12 @@
 
 <script type= "text/javascript">
 
-    $(function () {
-        Refresh();
-    });
-
     function refresh(){
         $('#MainTree').jstree('refresh', -1);
     }
 
-    function Refresh() {
+    $(function () {
+
         $("#MainTree")
             .jstree({
                 "json_data": {
@@ -249,10 +249,7 @@
             }).bind("select_node.jstree", function(event, data) {
 
                 var folder = data.rslt.obj.attr("id");
-                var folderReplace = folder.replace(/\//g, "\\/");
-                $("#MainTree").jstree("open_node", $('#' + folderReplace));
-
-                LoadFoldersContent(folder, true);
+                OpenFolder(folder);
 
             }).bind("move_node.jstree", function(e, data) {
                 data.rslt.o.each(function() {
@@ -342,7 +339,7 @@
                     }
                 });
             });
-    }
+    });
 
     function LoadFoldersContent(dir, addToPush) {
 
@@ -374,7 +371,7 @@
 
     function OpenFolder(folder) {
 
-        var folderReplace = folder.replace(/\//g, "\\/");
+        //var folderReplace = folder.replace(/\//g, "\\/");
         $("#MainTree").jstree("open_node", document.getElementById(folder));
         LoadFoldersContent(folder, true);
 
@@ -706,7 +703,7 @@
                 }
             });
         } else {
-
+            alert('The name can not be empty.');
         }
 
     }
