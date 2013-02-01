@@ -252,6 +252,10 @@
                 OpenFolder(folder);
 
             }).bind("move_node.jstree", function(e, data) {
+                var bool_copy = (data.rslt.cy != undefined) ? true : false ; 
+                var selected = data.rslt.o.text().replace(/\s{2}/,""); 
+                var children = data.rslt.o.children().children().text().replace(/\s/,"");
+                var folder = selected.replace(children, "");
                 data.rslt.o.each(function() {
                     $.ajax({
                         async: false,
@@ -260,7 +264,9 @@
                         data: {
                             "path": $(this).attr("id"),
                             "destination": data.rslt.np.attr("id"),
-                            "mID": @Model.ModuleId
+                            "mID": @Model.ModuleId, 
+                            "isCopy": bool_copy,
+                            "folder": folder,
                         },
                         success: function(r) {
                             //Refresh();
@@ -310,11 +316,12 @@
                         },
                         error: function (result) {
                             AppendError(result.responseText);
-                            $.jstree.rollback(data.rlbk);
+                            $.jstree.rollback();
                         }
                     });
                 }else{
                     $.jstree.rollback(data.rlbk);
+                    $('#MainTree').jstree("deselect_all");
                 }
 
             }).bind("create.jstree", function (e, data) {
@@ -331,7 +338,6 @@
                     success: function (folderView) {
                         LoadFoldersContent(lastNode);
                         //Refresh();
-                        //$('#MainTree').jstree('refresh',-1);
                         refresh();
                     },
                     error: function (result) {
@@ -429,7 +435,6 @@
                 CloseNewFolderDialog();
                 $('#NewFolderInputId').val('');
                 //Refresh();
-                //$('#MainTree').jstree('refresh');
                 refresh();
             },
             error: function (result) {

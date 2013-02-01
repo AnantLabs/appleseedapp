@@ -92,7 +92,7 @@ namespace FileManager.Controllers {
         
         [HttpPost]
         [FileManagerEditFilter]
-        public ActionResult MoveData(string path, string destination, int mID)
+        public ActionResult MoveData(string path, string destination, int mID, bool isCopy, string folder)
         {
             try
             {
@@ -111,7 +111,16 @@ namespace FileManager.Controllers {
                 {
                     if ((attDestination & FileAttributes.Directory) == FileAttributes.Directory)
                     {
-                        MoveDirectory(path, destination);
+                        if (!isCopy)
+                        {
+                            MoveDirectory(path, destination);
+                        }
+                        else
+                        {
+                            var fullNewName = string.Format(@"{0}\{1}", destination, folder);
+                            CopyDirectories(path, fullNewName);
+                        }
+                            
                     }
                 }
                 else
