@@ -6626,6 +6626,7 @@
     <Content Include="images\img\trileft.gif" />
     <Content Include="images\img\_reply.gif" />
     <Content Include="images\sign-in-google.png" />
+    <Content Include="images\sign-in-with-linkedin.jpg" />
     <Content Include="images\sign-in-with-twitter-l.png" />
     <Content Include="Installer\default.aspx" />
     <Content Include="Installer\images\installer_top_bg.png" />

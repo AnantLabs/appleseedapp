@@ -63,7 +63,7 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn {
 
 
             // Redirect browser back to originating page
-            Response.Redirect("/");
+            Response.Redirect("~/");
 
         }
 

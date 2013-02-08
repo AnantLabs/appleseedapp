@@ -109,7 +109,7 @@ namespace Appleseed.DesktopModules.CoreModules.SignIn
                     Session["CameFromSocialNetwork"] = true;
                     Session["UserName"] = userName;
                     var redirect = ConvertRelativeUrlToAbsoluteUrl(HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/SignIn/LoginIn.aspx"));
-
+                    
                     sb.Append("<script language='javascript'>");
                     sb.Append("window.opener.location.href = '");
                     sb.Append(redirect);
