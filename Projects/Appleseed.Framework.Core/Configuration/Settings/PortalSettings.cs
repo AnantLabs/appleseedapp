@@ -1680,7 +1680,7 @@ namespace Appleseed.Framework.Site.Configuration
                     Group = group
                 };
                 baseSettings.Add("SITESETTINGS_TWITTER_APP_SECRET", twitterAppSecret);
-
+                
                 var googleLogin = new SettingItem<bool, CheckBox>() {
                     Required = false,
                     Value = false,
@@ -1691,6 +1691,29 @@ namespace Appleseed.Framework.Site.Configuration
                     Group = group
                 };
                 baseSettings.Add("SITESETTINGS_GOOGLE_LOGIN", googleLogin);
+
+                // LinkedIn keys
+                var linkedInAppId = new SettingItem<string, TextBox>()
+                {
+                    Required = false,
+                    Value = "",
+                    EnglishName = "LinkedIn Application ID",
+                    Description = "Insert here linkedIn's Application ID for your portal.",
+                    Order = groupOrderBase + 29,
+                    Group = group
+                };
+                baseSettings.Add("SITESETTINGS_LINKEDIN_APP_ID", linkedInAppId);
+
+                var linkedInAppSecret = new SettingItem<string, TextBox>()
+                {
+                    Required = false,
+                    Value = "",
+                    EnglishName = "LinkedIn Application Secret",
+                    Description = "Insert here linkedIn's Application Secret for your portal.",
+                    Order = groupOrderBase + 30,
+                    Group = group
+                };
+                baseSettings.Add("SITESETTINGS_LINKEDIN_APP_SECRET", linkedInAppSecret);
 
 
                 groupOrderBase = (int)SettingItemGroup.META_SETTINGS;

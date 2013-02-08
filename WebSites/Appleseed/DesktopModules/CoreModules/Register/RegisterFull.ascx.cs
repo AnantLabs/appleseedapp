@@ -387,10 +387,12 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
                 return result;
             } else {
 
-                if (Session["TwitterUserName"] != null) {
-                    // Register Twitter
-                    string userName = (string)Session["TwitterUserName"];
+                if ((Session["TwitterUserName"] != null) || (Session["LinkedInUserName"] != null))
+                {
+                    // Register Twitter or LinkedIn
+                    string userName = (Session["TwitterUserName"] != null) ? Session["TwitterUserName"].ToString() : Session["LinkedInUserName"].ToString();
                     string password = GeneratePasswordHash(userName);
+
                     MembershipCreateStatus status = MembershipCreateStatus.Success;
                     MembershipUser user = Membership.Provider.CreateUser(userName, password, tfEmail.Text, "question", "answer", true, Guid.NewGuid(), out status);
                     this.lblError.Text = string.Empty;
@@ -481,6 +483,7 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
                 // The user Came from twitter
                 Session["CameFromSocialNetwork"] = true;
                 Session["TwitterUserName"] = UserName;
+                Session["LinkedInUserName"] = UserName;
                 Session["deleteCookies"] = true;
             }
             UpdateProfile();
@@ -527,7 +530,11 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
             string username = null;
             if(Session["TwitterUserName"] != null)
                 username = (string)Session["TwitterUserName"];
-            else 
+            else if (Session["LinkedInUserName"] != null)
+            {
+                username = (string)Session["LinkedInUserName"];
+            }
+            else
                 username = tfEmail.Text;
             var profile = ProfileBase.Create(username);
             profile.SetPropertyValue("BirthDate", BirthdayField);
@@ -547,6 +554,7 @@ public partial class DesktopModules_CoreModules_Register_RegisterFull : PortalMo
             if (Session["deleteCookies"] != null) {
                 Session.Remove("CameFromSocialNetwork");
                 Session.Remove("TwitterUserName");
+                Session.Remove("LinkedInUserName");
                 Session.Remove("deleteCookies");
             }
         }
