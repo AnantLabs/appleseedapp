@@ -213,6 +213,9 @@
     <Reference Include="FreeTextBox">
       <HintPath>..\..\Libs\FreeTextBox.dll</HintPath>
     </Reference>
+    <Reference Include="Hammock">
+      <HintPath>..\..\Libs\Hammock\Hammock.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\..\Libs\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
@@ -1529,6 +1532,13 @@
     </Compile>
     <Compile Include="DesktopModules\CoreModules\SignIn\LoginIn.aspx.designer.cs">
       <DependentUpon>LoginIn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CoreModules\SignIn\LogInLinkedIn.aspx.cs">
+      <DependentUpon>LogInLinkedIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CoreModules\SignIn\LogInLinkedIn.aspx.designer.cs">
+      <DependentUpon>LogInLinkedIn.aspx</DependentUpon>
     </Compile>
     <Compile Include="DesktopModules\CoreModules\SignIn\LogInTweeter.aspx.cs">
       <DependentUpon>LogInTweeter.aspx</DependentUpon>
@@ -6521,6 +6531,7 @@
     </Content>
     <Content Include="DesktopModules\CoreModules\SignIn\LogInGoogle.aspx" />
     <Content Include="DesktopModules\CoreModules\SignIn\LoginIn.aspx" />
+    <Content Include="DesktopModules\CoreModules\SignIn\LogInLinkedIn.aspx" />
     <Content Include="DesktopModules\CoreModules\SignIn\LogInTweeter.aspx" />
     <Content Include="DesktopModules\CoreModules\SignIn\Signin.ascx" />
     <Content Include="DesktopModules\CoreModules\SignIn\SignInBoth.ascx" />
