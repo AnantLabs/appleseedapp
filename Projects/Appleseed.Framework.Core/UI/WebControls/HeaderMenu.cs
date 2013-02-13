@@ -711,7 +711,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                 //_logonControl.RenderControl(writer);
                 writer.Write("</div>");
                 // writer.Write(string.Concat("<div id=\"", this.ClientID, "_logon_dialog\" style=\"display:none\" >"));
-                writer.Write(string.Concat("<div id=\"AppleseedLang\" style=\"height: 350px\" >"));
+                writer.Write(string.Concat("<div id=\"AppleseedLang\" style=\"display:none\" class=\"appleseedlangclass\" >"));
                 writer.Write("</div>");
                
                 writer.Write("<script type=\"text/javascript\">");
