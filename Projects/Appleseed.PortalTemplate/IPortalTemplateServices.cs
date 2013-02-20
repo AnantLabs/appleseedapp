@@ -24,5 +24,7 @@ namespace Appleseed.PortalTemplate
         byte[] GetTemplate(string templateName, string portalFullPath);
 
         FileInfo GetTemplateInfo(string templateName, string p);
+
+        int CopyPage(int id, string name);
     }
 }

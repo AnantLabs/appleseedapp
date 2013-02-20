@@ -4593,4 +4593,7 @@
   <data name="EDIT_COMPONENTMODULE" xml:space="preserve">
     <value>Editar componente</value>
   </data>
+  <data name="COPY" xml:space="preserve">
+    <value>Copiar</value>
+  </data>
 </root>

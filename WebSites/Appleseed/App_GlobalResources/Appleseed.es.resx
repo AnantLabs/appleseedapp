@@ -4473,4 +4473,7 @@
   <data name="View" xml:space="preserve">
     <value>Ver</value>
   </data>
+  <data name="COPY" xml:space="preserve">
+    <value>Copiar</value>
+  </data>
 </root>

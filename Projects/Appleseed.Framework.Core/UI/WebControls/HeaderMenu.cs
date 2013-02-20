@@ -797,7 +797,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
                         height: 300,
                         resizable: false
                     });
-                    $('#ui-dialog-title-AppleseedLang').append('",txt,@"');
+                    $('#ui-dialog-title-AppleseedLang').append('", txt,@"');
                     $('#popUpLang').click(function () {
                         $('#AppleseedLang').dialog('open');
                         $.ajax({
