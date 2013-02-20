@@ -102,7 +102,7 @@
                                     "parentId": parentId.replace("pjson_", "")
                                 },
                                 success: function (data) {
-                                    var name = $("#jsTree").jstree("get_text", '#' + currentId) + ' - Copy';
+                                    var name = $("#jsTree").jstree("get_text", '#' + currentId) + ' - Clone';
                                     $("#jsTree").jstree("create", "#" + parentId, "last", { 'attr': { 'id': 'pjson_' + data.pageId }, 'title': name }, false, true);
                                     $("#jsTree").jstree("set_text", '#pjson_' + data.pageId, name);
                                     $("#jsTree").jstree("rename", "#pjson_" + data.pageId);
@@ -112,6 +112,35 @@
                                 }                                    
                             });
                             
+                        },
+                    },
+                    copyItem: {
+                        label: '<%: Appleseed.Framework.General.GetString("COPY", "Copy") %>',
+                        action: function (obj) {
+                            var currentId = this._get_node(obj).attr("id");
+                            var currentName = this._get_node(obj).text().replace(/\s{2}/, "");
+                            var children = this._get_node(obj).children().children().text().replace(/\s/, "");
+                            var folder = currentName.replace(children, "");
+                            var parentId = this._get_node(obj)[0].firstChild.parentElement.parentNode.parentElement.id;
+                            $.ajax({
+                                url: '<%= Url.Action("CopyPage")%>',
+                                type: 'POST',
+                                timeout: "100000",
+                                data: {
+                                    "pageId": currentId.replace("pjson_", ""),
+                                    "name": folder,
+                                },
+                                success: function (data) {
+                                    var name = $("#jsTree").jstree("get_text", '#' + currentId) + ' - Copy';
+                                    $("#jsTree").jstree("create", "#" + parentId, "last", { 'attr': { 'id': 'pjson_' + data.pageId }, 'title': name }, false, true);
+                                    $("#jsTree").jstree("set_text", '#pjson_' + data.pageId, name);
+                                    $("#jsTree").jstree("rename", "#pjson_" + data.pageId);
+                                },
+                                error: function (data) {
+                                    $.jstree.rollback(obj.rlbk);
+                                }
+                            });
+
                         },
                     },
                     "delete": {

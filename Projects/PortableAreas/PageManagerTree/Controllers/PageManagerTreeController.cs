@@ -12,8 +12,12 @@ using System.Data.SqlClient;
 using Appleseed.Framework.Settings.Cache;
 using Appleseed.Framework.Security;
 using System.Web.UI.WebControls;
+using Appleseed.PortalTemplate;
 using PageManagerTree.Models;
 using PageManagerTree.Massive;
+using rb_ModuleSettings = PageManagerTree.Massive.rb_ModuleSettings;
+using rb_Modules = PageManagerTree.Massive.rb_Modules;
+using rb_Pages = PageManagerTree.Massive.rb_Pages;
 
 namespace PageManagerTree.Controllers
 {
@@ -383,6 +387,13 @@ namespace PageManagerTree.Controllers
         {
             var url = HttpUrlBuilder.BuildUrl(pageId);
             return Json(url);
+        }
+
+        public JsonResult CopyPage(int pageId, string name)
+        {
+            IPortalTemplateServices services = PortalTemplateFactory.GetPortalTemplateServices(new PortalTemplateRepository());
+            int newpageid = services.CopyPage(pageId, name + "- Copy");
+            return Json(new { pageId = newpageid });
         }
 
     }

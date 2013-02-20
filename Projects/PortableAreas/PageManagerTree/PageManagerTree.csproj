@@ -162,6 +162,10 @@
       <Project>{552CCD6F-0A37-4366-9E3E-22B2A0221584}</Project>
       <Name>Appleseed.Framework.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Appleseed.PortalTemplate\Appleseed.PortalTemplate.csproj">
+      <Project>{2A0BD0AC-3734-476A-B039-E7C2215E9487}</Project>
+      <Name>Appleseed.PortalTemplate</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Appleseed.Core\Appleseed.Core.csproj">
       <Project>{22C4BA46-65C9-49E2-8A23-86DD2F44B744}</Project>
       <Name>Appleseed.Core</Name>
