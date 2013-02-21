@@ -303,10 +303,7 @@ namespace Appleseed.PortalTemplate
                 foreach (ModuleSettingsDTO m in module.ModuleSettings) {
                     _module.rb_ModuleSettings.Add(TranslateModuleSettingsDTOIntoRb_ModuleSettings(m));
                 }
-                if (this.ModuleDefinitionsDeserialized == null)
-                {
-                    this.ModuleDefinitionsDeserialized = new Dictionary<Guid, rb_ModuleDefinition>();
-                }
+
                 if (this.ModuleDefinitionsDeserialized.ContainsKey(module.ModuleDefinitions.GeneralModDefID)) {
                     rb_ModuleDefinition def = this.ModuleDefinitionsDeserialized[module.ModuleDefinitions.GeneralModDefID];
                     _module.rb_ModuleDefinition = def;
@@ -321,10 +318,6 @@ namespace Appleseed.PortalTemplate
                     PortalModuleControl portalModule = (PortalModuleControl)p.LoadControl(portalModuleName);
 
                     if (portalModule is IModuleExportable) {
-                        if (this.ContentModules == null)
-                        {
-                            this.ContentModules = new Dictionary<int, string>();
-                        }
                         this.ContentModules.Add(moduleIndex, module.Content);
                         //((IModuleExportable)portalModule).SetContentData(modules.ModuleID, modules.Content, this.PTDataContext);
                     }
