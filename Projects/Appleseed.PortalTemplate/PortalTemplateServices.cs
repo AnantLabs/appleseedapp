@@ -510,6 +510,7 @@ namespace Appleseed.PortalTemplate
                 translate.ContentModules = new Dictionary<int, string>();
                 translate.ModuleDefinitionsDeserialized = new Dictionary<Guid, rb_ModuleDefinition>();
                 
+                page.Modules.RemoveAll(m=> m.ShowEveryWhere == true);
                 var newpage = translate.TranslatePagesDTOIntoRb_Pages(page);
                 newpage.PageName = name;
 
