@@ -42,7 +42,7 @@ namespace Appleseed.Core.Controllers
                 array[0] = '/';
                 string[] lang = aux.Split(array);
 
-                dato[0] = HttpUrlBuilder.BuildUrl("~/site/1/Home?lang="+lang[0]);
+                dato[0] = HttpUrlBuilder.BuildUrl("~/site/0/Home?lang="+lang[0]);
                 
                 LanguageSwitcher lswitcher = new LanguageSwitcher();
                 dato[1] = lswitcher.GetFlagImgLCI(l);
