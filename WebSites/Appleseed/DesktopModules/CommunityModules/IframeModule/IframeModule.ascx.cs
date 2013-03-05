@@ -1,5 +1,9 @@
 using System;
+using System.Net;
 using System.Text;
+using System.Web;
+using System.Web.Caching;
+using System.Web.Mvc;
 using Appleseed.Framework;
 using Appleseed.Framework.DataTypes;
 using Appleseed.Framework.Web.UI.WebControls;
@@ -62,7 +66,60 @@ namespace Appleseed.Content.Web.Modules
 
         private string BuildUrlSetting()
         {
-            string url = Settings["URL"].ToString();
+
+            // Checks if current url it's responding, if not, load the alternative url
+
+            var cache = HttpRuntime.Cache;
+            var correctStatusCode = "iframeUrlCacheResponseCorrectStatusCode";
+            var errorStatusCode = "iframeUrlCacheResponseErrorStatusCode";
+            if (cache.Get(correctStatusCode) != null)
+            {
+                return Settings["URL"].ToString();
+            }
+            if (cache.Get(errorStatusCode) != null)
+            {
+                return Settings["alternativeURL"].ToString();
+            }
+
+            // Check if the url it's responding
+
+            var url = Settings["URL"].ToString();
+            int timeout = 60000;
+            try
+            {
+                timeout = int.Parse(Settings["timeToWaitForTimeOut"].ToString())*1000;
+            }
+            catch(Exception)
+            {
+                timeout = 60000;
+            }
+
+            try
+            {
+
+                var webRequest = WebRequest.Create(url) as HttpWebRequest;
+                webRequest.UserAgent = HttpContext.Current.Request.UserAgent;
+                webRequest.Method = WebRequestMethods.Http.Get;
+                webRequest.Timeout = timeout;
+
+                var responseData = webRequest.GetResponse();
+                var statusCode = (int) ((HttpWebResponse) responseData).StatusCode;
+
+                return addToCacheAndReturnUrl(statusCode < 400);
+
+               
+            }
+            catch(Exception)
+            {
+                return addToCacheAndReturnUrl(false);
+            }
+
+            return Settings["URL"].ToString();
+
+
+
+
+            //string url = Settings["URL"].ToString();
 
             //Dictionary<string, string> parameters = new Dictionary<string, string>();
             //List<MailParametersDTO> customParameters = new List<MailParametersDTO>();
@@ -85,9 +142,48 @@ namespace Appleseed.Content.Web.Modules
             //        url = url.Replace("[[" + kvp.Key + "]]", kvp.Value);
             //    }
             //}
-            return url;
+            //return url;
         }
 
+        public string addToCacheAndReturnUrl(bool correctRequest)
+        {
+            int time;
+            var cache = HttpRuntime.Cache;
+            string key;
+            if(correctRequest)
+            {
+                key = "iframeUrlCacheResponseCorrectStatusCode";
+                try
+                {
+                    time = int.Parse(Settings["timeToCacheCorrectAnswer"].ToString());
+                }
+                catch (Exception)
+                {
+                    time = 5;
+                }
+                cache.Add(key, true, null, DateTime.Now.AddMinutes(time), TimeSpan.Zero, CacheItemPriority.Normal, null);
+
+
+
+                return Settings["URL"].ToString();
+            }
+            else
+            {
+                key = "iframeUrlCacheResponseErrorStatusCode";
+                try
+                {
+                    time = int.Parse(Settings["timeToCacheAlternativeAnswer"].ToString());
+                }
+                catch (Exception)
+                {
+                    time = 5;
+                }
+                cache.Add(key, false, null, DateTime.Now.AddMinutes(time), TimeSpan.Zero, CacheItemPriority.Normal, null);
+
+                return Settings["alternativeURL"].ToString();
+            }
+
+        }
 
         /// <summary>
         /// General module GUID
@@ -117,11 +213,43 @@ namespace Appleseed.Content.Web.Modules
             url.Value = "http://www.Appleseedportal.net";
             this.BaseSettings.Add("URL", url);
 
+            var alternativeurl = new SettingItem<string, TextBox>();
+            alternativeurl.Required = false;
+            alternativeurl.Group = group;
+            alternativeurl.Order = groupBase + 21; //2;
+            alternativeurl.Value = string.Empty;
+            alternativeurl.EnglishName = "Alternative URL";
+            this.BaseSettings.Add("alternativeURL", alternativeurl);
+
+            var timeToCacheCorrectAnswer = new SettingItem<string, TextBox>();
+            timeToCacheCorrectAnswer.Required = true;
+            timeToCacheCorrectAnswer.Group = group;
+            timeToCacheCorrectAnswer.Order = groupBase + 22; //3;
+            timeToCacheCorrectAnswer.Value = "5";
+            timeToCacheCorrectAnswer.EnglishName = "Time to cache url in minutes";
+            this.BaseSettings.Add("timeToCacheCorrectAnswer", timeToCacheCorrectAnswer);
+
+            var timeToCacheAlternativeAnswer = new SettingItem<string, TextBox>();
+            timeToCacheAlternativeAnswer.Required = true;
+            timeToCacheAlternativeAnswer.Group = group;
+            timeToCacheAlternativeAnswer.Order = groupBase + 23; //3;
+            timeToCacheAlternativeAnswer.Value = "5";
+            timeToCacheAlternativeAnswer.EnglishName = "Time to cache alternative url in minutes";
+            this.BaseSettings.Add("timeToCacheAlternativeAnswer", timeToCacheAlternativeAnswer);
+
+            var timeToWaitForTimeOut = new SettingItem<string, TextBox>();
+            timeToWaitForTimeOut.Required = true;
+            timeToWaitForTimeOut.Group = group;
+            timeToWaitForTimeOut.Order = groupBase + 24; //3;
+            timeToWaitForTimeOut.Value = "60";
+            timeToWaitForTimeOut.EnglishName = "Time to Wait for TimeOut in Seconds";
+            this.BaseSettings.Add("timeToWaitForTimeOut", timeToWaitForTimeOut);
+
             //MH: added to support width values
             var width = new SettingItem<string, TextBox>();
             width.Required = true;
             width.Group = group;
-            width.Order = groupBase + 25; //2;
+            width.Order = groupBase + 25; //3;
             width.Value = "250";
             //width.MinValue = 1;
             //width.MaxValue = 2000;
@@ -132,11 +260,14 @@ namespace Appleseed.Content.Web.Modules
             var height = new SettingItem<string, TextBox>();
             height.Required = true;
             height.Group = group;
-            height.Order = groupBase + 30; //3;
+            height.Order = groupBase + 30; //4;
             height.Value = "250";
             //height.MinValue = 1;
             //height.MaxValue = 2000;
             this.BaseSettings.Add("Height", height);
+
+            
+
         }
 
         #region Web Form Designer generated code
