@@ -67,6 +67,11 @@ namespace Appleseed.Content.Web.Modules
         private string BuildUrlSetting()
         {
 
+            if(String.IsNullOrEmpty(Settings["alternativeURL"].ToString()))
+            {
+                return Settings["URL"].ToString();
+            }
+
             // Checks if current url it's responding, if not, load the alternative url
 
             var cache = HttpRuntime.Cache;
