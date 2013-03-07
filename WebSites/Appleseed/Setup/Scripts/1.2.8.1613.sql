@@ -194,52 +194,52 @@ SELECT
 	@ItemID = @@IDENTITY
 GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_GetAnnouncements]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [rb_GetAnnouncements]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_GetAnnouncements]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--DROP PROCEDURE [rb_GetAnnouncements]
+--GO
 
-CREATE   PROCEDURE rb_GetAnnouncements
-(
-    @ModuleID int,
-    @WorkflowVersion int
-)
-AS
+--CREATE   PROCEDURE rb_GetAnnouncements
+--(
+--    @ModuleID int,
+--    @WorkflowVersion int
+--)
+--AS
 
-IF ( @WorkflowVersion = 1 )
-	SELECT
-	    ItemID,
-	    CreatedByUser,
-	    CreatedDate,
-	    Title,
-	    MoreLink,
-	    MobileMoreLink,
-	    ExpireDate,
-	    Description
-	FROM 
-	    rb_Announcements
-	WHERE
-	    ModuleID = @ModuleID
-	  AND
-	    ExpireDate > GetDate()
-	ORDER by CreatedDate DESC
-ELSE
-	SELECT
-	    ItemID,
-	    CreatedByUser,
-	    CreatedDate,
-	    Title,
-	    MoreLink,
-	    MobileMoreLink,
-	    ExpireDate,
-	    Description
-	FROM 
-	    rb_Announcements_st
-	WHERE
-	    ModuleID = @ModuleID
-	  AND
-	    ExpireDate > GetDate()
-	ORDER by CreatedDate DESC
-GO
+--IF ( @WorkflowVersion = 1 )
+--	SELECT
+--	    ItemID,
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Title,
+--	    MoreLink,
+--	    MobileMoreLink,
+--	    ExpireDate,
+--	    Description
+--	FROM 
+--	    rb_Announcements
+--	WHERE
+--	    ModuleID = @ModuleID
+--	  AND
+--	    ExpireDate > GetDate()
+--	ORDER by CreatedDate DESC
+--ELSE
+--	SELECT
+--	    ItemID,
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Title,
+--	    MoreLink,
+--	    MobileMoreLink,
+--	    ExpireDate,
+--	    Description
+--	FROM 
+--	    rb_Announcements_st
+--	WHERE
+--	    ModuleID = @ModuleID
+--	  AND
+--	    ExpireDate > GetDate()
+--	ORDER by CreatedDate DESC
+--GO
 
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_AddGeneralModuleDefinitions]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
 DROP PROCEDURE [rb_AddGeneralModuleDefinitions]
@@ -362,46 +362,46 @@ END
 -- Insert the trigger for the workflow
 GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_ContactsModified_st]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
-drop trigger [rb_ContactsModified_st]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_ContactsModified_st]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
+--drop trigger [rb_ContactsModified_st]
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_ContactsModified_st]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
-drop trigger [rb_Contacts_stModified]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_ContactsModified_st]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
+--drop trigger [rb_Contacts_stModified]
+--GO
 
-CREATE  TRIGGER [rb_Contacts_stModified]
-ON [rb_Contacts_st]
-FOR DELETE, INSERT, UPDATE 
-AS 
-BEGIN
-	DECLARE ChangedModules CURSOR FOR
-		SELECT ModuleID
-		FROM inserted
-		UNION
-		SELECT ModuleID
-		FROM deleted
+--CREATE  TRIGGER [rb_Contacts_stModified]
+--ON [rb_Contacts_st]
+--FOR DELETE, INSERT, UPDATE 
+--AS 
+--BEGIN
+--	DECLARE ChangedModules CURSOR FOR
+--		SELECT ModuleID
+--		FROM inserted
+--		UNION
+--		SELECT ModuleID
+--		FROM deleted
 
-	DECLARE @ModID	int
+--	DECLARE @ModID	int
 
-	OPEN ChangedModules	
+--	OPEN ChangedModules	
 
-	FETCH NEXT FROM ChangedModules
-	INTO @ModID
+--	FETCH NEXT FROM ChangedModules
+--	INTO @ModID
 
-	WHILE @@FETCH_STATUS = 0
-	BEGIN
-		EXEC rb_ModuleEdited @ModID
+--	WHILE @@FETCH_STATUS = 0
+--	BEGIN
+--		EXEC rb_ModuleEdited @ModID
 
-		FETCH NEXT FROM ChangedModules
-		INTO @ModID
-	END
+--		FETCH NEXT FROM ChangedModules
+--		INTO @ModID
+--	END
 
-	CLOSE ChangedModules
-	DEALLOCATE ChangedModules
+--	CLOSE ChangedModules
+--	DEALLOCATE ChangedModules
 
-END
-GO
+--END
+--GO
 
 /* add version info */
 INSERT INTO [rb_Versions] ([Release],[Version],[ReleaseDate]) VALUES('1613','1.2.8.1613', CONVERT(datetime, '04/13/2003', 101))

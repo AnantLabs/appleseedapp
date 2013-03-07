@@ -3,7 +3,7 @@
 ---------------------
 
 
--- Add new module: FileDirectoryTree
+--Add new module: FileDirectoryTree
 DECLARE @GeneralModDefID uniqueidentifier
 DECLARE @FriendlyName nvarchar(128)
 DECLARE @DesktopSrc nvarchar(256)
@@ -30,6 +30,6 @@ EXEC [rb_UpdateModuleDefinitions] @GeneralModDefID, 0, 1
 GO
 
 
-/* add version info */
+--/* add version info */
 INSERT INTO [rb_Versions] ([Release],[Version],[ReleaseDate]) VALUES('1729','1.2.8.1729', CONVERT(datetime, '07/24/2003', 101))
 GO

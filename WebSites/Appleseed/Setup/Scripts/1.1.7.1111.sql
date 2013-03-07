@@ -1210,37 +1210,37 @@ FROM      rb_Cultures
 WHERE     (CountryID = @CountryID)
 GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = OBJECT_ID(N'[rb_GetDocumentContent]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [rb_GetDocumentContent]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = OBJECT_ID(N'[rb_GetDocumentContent]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--DROP PROCEDURE [rb_GetDocumentContent]
+--GO
 
-CREATE   PROCEDURE rb_GetDocumentContent
-(
-    @ItemID int,
-    @WorkflowVersion int
-)
-AS
-IF ( @WorkflowVersion = 1 )
-    SELECT
-        Content,
-        ContentType,
-        ContentSize,
-        FileFriendlyName
-    FROM
-        rb_Documents
-    WHERE
-        ItemID = @ItemID
-ELSE
-    SELECT
-        Content,
-        ContentType,
-        ContentSize,
-        FileFriendlyName
-    FROM
-        rb_Documents_st
-    WHERE
-        ItemID = @ItemID
-GO
+--CREATE   PROCEDURE rb_GetDocumentContent
+--(
+--    @ItemID int,
+--    @WorkflowVersion int
+--)
+--AS
+--IF ( @WorkflowVersion = 1 )
+--    SELECT
+--        Content,
+--        ContentType,
+--        ContentSize,
+--        FileFriendlyName
+--    FROM
+--        rb_Documents
+--    WHERE
+--        ItemID = @ItemID
+--ELSE
+--    SELECT
+--        Content,
+--        ContentType,
+--        ContentSize,
+--        FileFriendlyName
+--    FROM
+--        rb_Documents_st
+--    WHERE
+--        ItemID = @ItemID
+--GO
 
 IF EXISTS (SELECT * FROM sysobjects WHERE id = OBJECT_ID(N'[rb_GetGeneralModuleDefinitionByName]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
 DROP PROCEDURE [rb_GetGeneralModuleDefinitionByName]

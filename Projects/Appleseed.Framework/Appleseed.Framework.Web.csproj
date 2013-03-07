@@ -139,23 +139,13 @@
     <Compile Include="ZenEngine\ZenTemplate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DAL\Modules\BooksDB.cs" />
-    <Compile Include="DAL\Modules\AnnouncementsDB.cs" />
-    <Compile Include="DesktopModules\Articles\Articles.ascx.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DAL\Modules\ArticlesDB.cs" />
-    <Compile Include="DAL\Modules\BlogDB.cs" />
     <Compile Include="DAL\Modules\ComponentModuleDB.cs" />
-    <Compile Include="DAL\Modules\ContactsDB.cs" />
     <Compile Include="DAL\Modules\ContentManagerDB.cs" />
     <Compile Include="DAL\Modules\DiscussionEnhancedDB.cs" />
-    <Compile Include="DAL\Modules\DiscussionDB.cs" />
     <Compile Include="Content\Security\DiscussionPermissions.cs" />
-    <Compile Include="DAL\Modules\DocumentDB.cs" />
     <Compile Include="DAL\Modules\EnhancedHtmlDB.cs" />
     <Compile Include="DAL\Modules\EnhancedLinksDB.cs" />
     <Compile Include="DAL\Modules\EventsDB.cs" />
-    <Compile Include="DAL\Modules\FAQsDB.cs" />
     <Compile Include="DAL\Modules\HtmlTextDB.cs" />
     <Compile Include="DAL\Modules\LinksDB.cs" />
     <Compile Include="DAL\Modules\MilestonesDB.cs" />
@@ -246,6 +236,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="DesktopModules\Articles\" />
     <Folder Include="UI\WebControls\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

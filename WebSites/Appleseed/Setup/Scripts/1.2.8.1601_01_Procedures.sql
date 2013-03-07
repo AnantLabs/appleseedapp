@@ -70,21 +70,21 @@ IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[Approve]') AND OBJEC
 DROP PROCEDURE [Approve]
 GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[DeleteAnnouncement]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [DeleteAnnouncement]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[DeleteAnnouncement]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--DROP PROCEDURE [DeleteAnnouncement]
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[DeleteArticle]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [DeleteArticle]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[DeleteArticle]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--DROP PROCEDURE [DeleteArticle]
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[DeleteContact]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [DeleteContact]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[DeleteContact]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--DROP PROCEDURE [DeleteContact]
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[DeleteDocument]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [DeleteDocument]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[DeleteDocument]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--DROP PROCEDURE [DeleteDocument]
+--GO
 
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[DeleteEvent]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
 DROP PROCEDURE [DeleteEvent]
@@ -134,13 +134,13 @@ IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[DeleteUserRole]') AN
 DROP PROCEDURE [DeleteUserRole]
 GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetAnnouncements]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [GetAnnouncements]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetAnnouncements]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--DROP PROCEDURE [GetAnnouncements]
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetArticles]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [GetArticles]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetArticles]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--DROP PROCEDURE [GetArticles]
+--GO
 
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetAuthAddRoles]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
 DROP PROCEDURE [GetAuthAddRoles]
@@ -174,9 +174,9 @@ IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetAuthViewRoles]') 
 DROP PROCEDURE [GetAuthViewRoles]
 GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetContacts]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [GetContacts]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetContacts]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--DROP PROCEDURE [GetContacts]
+--GO
 
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetCountries]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
 DROP PROCEDURE [GetCountries]
@@ -198,13 +198,13 @@ IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetDefaultCulture]')
 DROP PROCEDURE [GetDefaultCulture]
 GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetDocumentContent]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [GetDocumentContent]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetDocumentContent]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--DROP PROCEDURE [GetDocumentContent]
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetDocuments]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [GetDocuments]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetDocuments]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--DROP PROCEDURE [GetDocuments]
+--GO
 
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetEvents]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
 DROP PROCEDURE [GetEvents]
@@ -318,29 +318,29 @@ IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSearchableModules
 DROP PROCEDURE [GetSearchableModules]
 GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleAnnouncement]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [GetSingleAnnouncement]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleAnnouncement]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--DROP PROCEDURE [GetSingleAnnouncement]
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleArticle]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [GetSingleArticle]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleArticle]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--DROP PROCEDURE [GetSingleArticle]
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleArticleWithImages]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [GetSingleArticleWithImages]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleArticleWithImages]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--DROP PROCEDURE [GetSingleArticleWithImages]
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleContact]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [GetSingleContact]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleContact]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--DROP PROCEDURE [GetSingleContact]
+--GO
 
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleCountry]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
 DROP PROCEDURE [GetSingleCountry]
 GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleDocument]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [GetSingleDocument]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleDocument]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--DROP PROCEDURE [GetSingleDocument]
+--GO
 
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleEvent]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
 DROP PROCEDURE [GetSingleEvent]
@@ -462,21 +462,21 @@ IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[SetLastModified]') A
 DROP PROCEDURE [SetLastModified]
 GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[UpdateAnnouncement]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [UpdateAnnouncement]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[UpdateAnnouncement]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--DROP PROCEDURE [UpdateAnnouncement]
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[UpdateArticle]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [UpdateArticle]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[UpdateArticle]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--DROP PROCEDURE [UpdateArticle]
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[UpdateContact]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [UpdateContact]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[UpdateContact]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--DROP PROCEDURE [UpdateContact]
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[UpdateDocument]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [UpdateDocument]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[UpdateDocument]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--DROP PROCEDURE [UpdateDocument]
+--GO
 
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[UpdateEvent]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
 DROP PROCEDURE [UpdateEvent]
@@ -569,158 +569,158 @@ GO
 -- =============================================================
 -- ALTER  the stored procs
 -- =============================================================
-CREATE  PROCEDURE rb_AddAnnouncement
-(
-    @ModuleID       int,
-    @UserName       nvarchar(100),
-    @Title          nvarchar(150),
-    @MoreLink       nvarchar(150),
-    @MobileMoreLink nvarchar(150),
-    @ExpireDate     DateTime,
-    @Description    nvarchar(2000),
-    @ItemID         int OUTPUT
-)
-AS
+--CREATE  PROCEDURE rb_AddAnnouncement
+--(
+--    @ModuleID       int,
+--    @UserName       nvarchar(100),
+--    @Title          nvarchar(150),
+--    @MoreLink       nvarchar(150),
+--    @MobileMoreLink nvarchar(150),
+--    @ExpireDate     DateTime,
+--    @Description    nvarchar(2000),
+--    @ItemID         int OUTPUT
+--)
+--AS
 
-INSERT INTO rb_st_Announcements
-(
-    ModuleID,
-    CreatedByUser,
-    CreatedDate,
-    Title,
-    MoreLink,
-    MobileMoreLink,
-    ExpireDate,
-    Description
-)
+--INSERT INTO rb_st_Announcements
+--(
+--    ModuleID,
+--    CreatedByUser,
+--    CreatedDate,
+--    Title,
+--    MoreLink,
+--    MobileMoreLink,
+--    ExpireDate,
+--    Description
+--)
 
-VALUES
-(
-    @ModuleID,
-    @UserName,
-    GetDate(),
-    @Title,
-    @MoreLink,
-    @MobileMoreLink,
-    @ExpireDate,
-    @Description
-)
+--VALUES
+--(
+--    @ModuleID,
+--    @UserName,
+--    GetDate(),
+--    @Title,
+--    @MoreLink,
+--    @MobileMoreLink,
+--    @ExpireDate,
+--    @Description
+--)
 
-SELECT
-    @ItemID = @@IDENTITY
-
-
+--SELECT
+--    @ItemID = @@IDENTITY
 
 
 
 
 
 
-GO
 
 
-CREATE PROCEDURE rb_AddArticle
-(
-    @ModuleID       int,
-    @UserName       nvarchar(100),
-    @Title          nvarchar(100),
-    @Subtitle       nvarchar(200),
-    @Abstract	    nvarchar(512),
-    @Description    text,
-    @StartDate      datetime,
-    @ExpireDate     datetime,
-    @IsInNewsletter bit,
-    @MoreLink       nvarchar(150),
-    @ItemID         int OUTPUT
-)
-AS
+--GO
 
-INSERT INTO rb_Articles
-(
-    ModuleID,
-    CreatedByUser,
-    CreatedDate,
-    Title,
-	Subtitle,
-    Abstract,
-	Description,
-	StartDate,
-	ExpireDate,
-	IsInNewsletter,
-	MoreLink
-)
-VALUES
-(
-    @ModuleID,
-    @UserName,
-    GetDate(),
-    @Title,
-    @Subtitle,
-    @Abstract,
-    @Description,
-    @StartDate,
-    @ExpireDate,
-    @IsInNewsletter,
-    @MoreLink
-)
 
-SELECT
-    @ItemID = @@IDENTITY
+--CREATE PROCEDURE rb_AddArticle
+--(
+--    @ModuleID       int,
+--    @UserName       nvarchar(100),
+--    @Title          nvarchar(100),
+--    @Subtitle       nvarchar(200),
+--    @Abstract	    nvarchar(512),
+--    @Description    text,
+--    @StartDate      datetime,
+--    @ExpireDate     datetime,
+--    @IsInNewsletter bit,
+--    @MoreLink       nvarchar(150),
+--    @ItemID         int OUTPUT
+--)
+--AS
 
-GO
+--INSERT INTO rb_Articles
+--(
+--    ModuleID,
+--    CreatedByUser,
+--    CreatedDate,
+--    Title,
+--	Subtitle,
+--    Abstract,
+--	Description,
+--	StartDate,
+--	ExpireDate,
+--	IsInNewsletter,
+--	MoreLink
+--)
+--VALUES
+--(
+--    @ModuleID,
+--    @UserName,
+--    GetDate(),
+--    @Title,
+--    @Subtitle,
+--    @Abstract,
+--    @Description,
+--    @StartDate,
+--    @ExpireDate,
+--    @IsInNewsletter,
+--    @MoreLink
+--)
+
+--SELECT
+--    @ItemID = @@IDENTITY
+
+--GO
 
 
 
 /****** Oggetto: stored procedure AddContact    Data dello script: 07/11/2002 22.28.12 ******/
 
-CREATE  PROCEDURE rb_AddContact
-(
-    @ModuleID int,
-    @UserName nvarchar(100),
-    @Name     nvarchar(50),
-    @Role     nvarchar(100),
-    @Email    nvarchar(100),
-    @Contact1 nvarchar(250),
-    @Contact2 nvarchar(250),
-    @ItemID   int OUTPUT
-)
-AS
+--CREATE  PROCEDURE rb_AddContact
+--(
+--    @ModuleID int,
+--    @UserName nvarchar(100),
+--    @Name     nvarchar(50),
+--    @Role     nvarchar(100),
+--    @Email    nvarchar(100),
+--    @Contact1 nvarchar(250),
+--    @Contact2 nvarchar(250),
+--    @ItemID   int OUTPUT
+--)
+--AS
 
-INSERT INTO rb_st_Contacts
-(
-    CreatedByUser,
-    CreatedDate,
-    ModuleID,
-    Name,
-    Role,
-    Email,
-    Contact1,
-    Contact2
-)
+--INSERT INTO rb_st_Contacts
+--(
+--    CreatedByUser,
+--    CreatedDate,
+--    ModuleID,
+--    Name,
+--    Role,
+--    Email,
+--    Contact1,
+--    Contact2
+--)
 
-VALUES
-(
-    @UserName,
-    GetDate(),
-    @ModuleID,
-    @Name,
-    @Role,
-    @Email,
-    @Contact1,
-    @Contact2
-)
+--VALUES
+--(
+--    @UserName,
+--    GetDate(),
+--    @ModuleID,
+--    @Name,
+--    @Role,
+--    @Email,
+--    @Contact1,
+--    @Contact2
+--)
 
-SELECT
-    @ItemID = @@IDENTITY
-
-
+--SELECT
+--    @ItemID = @@IDENTITY
 
 
 
 
 
 
-GO
+
+
+--GO
 
 
 
@@ -856,54 +856,54 @@ GO
 
 
 
-CREATE     PROCEDURE rb_AddMessage
-(
-    @ItemID int OUTPUT,
-    @Title nvarchar(100),
-    @Body nvarchar(3000),
-    @ParentID int,
-    @UserName nvarchar(100),
-    @ModuleID int
-)   
+--CREATE     PROCEDURE rb_AddMessage
+--(
+--    @ItemID int OUTPUT,
+--    @Title nvarchar(100),
+--    @Body nvarchar(3000),
+--    @ParentID int,
+--    @UserName nvarchar(100),
+--    @ModuleID int
+--)   
 
-AS 
+--AS 
 
-/* Find DisplayOrder of parent item */
-DECLARE @ParentDisplayOrder as nvarchar(750)
+--/* Find DisplayOrder of parent item */
+--DECLARE @ParentDisplayOrder as nvarchar(750)
 
-SET @ParentDisplayOrder = ''
+--SET @ParentDisplayOrder = ''
 
-SELECT 
-    @ParentDisplayOrder = DisplayOrder
-FROM 
-    rb_Discussion 
-WHERE 
-    ItemID = @ParentID
+--SELECT 
+--    @ParentDisplayOrder = DisplayOrder
+--FROM 
+--    rb_Discussion 
+--WHERE 
+--    ItemID = @ParentID
 
-INSERT INTO rb_Discussion
-(
-    Title,
-    Body,
-    DisplayOrder,
-    CreatedDate, 
-    CreatedByUser,
-    ModuleID
-)
+--INSERT INTO rb_Discussion
+--(
+--    Title,
+--    Body,
+--    DisplayOrder,
+--    CreatedDate, 
+--    CreatedByUser,
+--    ModuleID
+--)
 
-VALUES
-(
-    @Title,
-    @Body,
-    @ParentDisplayOrder + CONVERT( nvarchar(24), GetDate(), 21 ),
-    GetDate(),
-    @UserName,
-    @ModuleID
-)
+--VALUES
+--(
+--    @Title,
+--    @Body,
+--    @ParentDisplayOrder + CONVERT( nvarchar(24), GetDate(), 21 ),
+--    GetDate(),
+--    @UserName,
+--    @ModuleID
+--)
 
-SELECT 
-    @ItemID = @@IDENTITY
+--SELECT 
+--    @ItemID = @@IDENTITY
 
-GO
+--GO
 
 
 
@@ -1312,57 +1312,57 @@ GO
 
 
 
-CREATE  PROCEDURE rb_DeleteAnnouncement
-(
-    @ItemID int
-)
-AS
+--CREATE  PROCEDURE rb_DeleteAnnouncement
+--(
+--    @ItemID int
+--)
+--AS
 
-DELETE FROM
-    rb_st_Announcements
+--DELETE FROM
+--    rb_st_Announcements
 
-WHERE
-    ItemID = @ItemID
+--WHERE
+--    ItemID = @ItemID
 
-GO
-
-
-
-CREATE PROCEDURE rb_DeleteArticle
-(
-    @ItemID int
-)
-AS
-
-DELETE FROM
-    rb_Articles
-
-WHERE
-    ItemID = @ItemID
-
-GO
+--GO
 
 
 
-CREATE  PROCEDURE rb_DeleteContact
-(
-    @ItemID int
-)
-AS
+--CREATE PROCEDURE rb_DeleteArticle
+--(
+--    @ItemID int
+--)
+--AS
 
-DELETE FROM
-    rb_st_Contacts
+--DELETE FROM
+--    rb_Articles
 
-WHERE
-    ItemID = @ItemID
+--WHERE
+--    ItemID = @ItemID
+
+--GO
 
 
+
+--CREATE  PROCEDURE rb_DeleteContact
+--(
+--    @ItemID int
+--)
+--AS
+
+--DELETE FROM
+--    rb_st_Contacts
+
+--WHERE
+--    ItemID = @ItemID
 
 
 
 
 
-GO
+
+
+--GO
 
 
 
@@ -1372,25 +1372,25 @@ GO
 /****** Oggetto: stored procedure DeleteDocument    Data dello script: 07/11/2002 22.28.13 ******/
 
 
-CREATE  PROCEDURE rb_DeleteDocument
-(
-    @ItemID int
-)
-AS
+--CREATE  PROCEDURE rb_DeleteDocument
+--(
+--    @ItemID int
+--)
+--AS
 
-DELETE FROM
-    rb_st_Documents
+--DELETE FROM
+--    rb_st_Documents
 
-WHERE
-    ItemID = @ItemID
-
-
+--WHERE
+--    ItemID = @ItemID
 
 
 
 
 
-GO
+
+
+--GO
  
 
 
@@ -1616,46 +1616,46 @@ GO
 /****** Oggetto: stored procedure GetAnnouncements    Data dello script: 07/11/2002 22.28.08 ******/
 
 
-CREATE  PROCEDURE rb_GetAnnouncements
-(
-    @ModuleID int,
-    @WorkflowVersion int
-)
-AS
+--CREATE  PROCEDURE rb_GetAnnouncements
+--(
+--    @ModuleID int,
+--    @WorkflowVersion int
+--)
+--AS
 
-IF ( @WorkflowVersion = 1 )
-	SELECT
-	    ItemID,
-	    CreatedByUser,
-	    CreatedDate,
-	    Title,
-	    MoreLink,
-	    MobileMoreLink,
-	    ExpireDate,
-	    Description
-	FROM 
-	    rb_Announcements
-	WHERE
-	    ModuleID = @ModuleID
-	  AND
-	    ExpireDate > GetDate()
-ELSE
-	SELECT
-	    ItemID,
-	    CreatedByUser,
-	    CreatedDate,
-	    Title,
-	    MoreLink,
-	    MobileMoreLink,
-	    ExpireDate,
-	    Description
-	FROM 
-	    rb_st_Announcements
-	WHERE
-	    ModuleID = @ModuleID
-	  AND
-	    ExpireDate > GetDate()
-GO
+--IF ( @WorkflowVersion = 1 )
+--	SELECT
+--	    ItemID,
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Title,
+--	    MoreLink,
+--	    MobileMoreLink,
+--	    ExpireDate,
+--	    Description
+--	FROM 
+--	    rb_Announcements
+--	WHERE
+--	    ModuleID = @ModuleID
+--	  AND
+--	    ExpireDate > GetDate()
+--ELSE
+--	SELECT
+--	    ItemID,
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Title,
+--	    MoreLink,
+--	    MobileMoreLink,
+--	    ExpireDate,
+--	    Description
+--	FROM 
+--	    rb_st_Announcements
+--	WHERE
+--	    ModuleID = @ModuleID
+--	  AND
+--	    ExpireDate > GetDate()
+--GO
 
 CREATE PROCEDURE rb_GetArticles
 (
@@ -1916,49 +1916,49 @@ GO
 /****** Oggetto: stored procedure GetContacts    Data dello script: 07/11/2002 22.28.13 ******/
 
 
-CREATE  PROCEDURE rb_GetContacts
-(
-    @ModuleID int,
-    @WorkflowVersion int
-)
-AS
+--CREATE  PROCEDURE rb_GetContacts
+--(
+--    @ModuleID int,
+--    @WorkflowVersion int
+--)
+--AS
 
-IF (@WorkflowVersion = 1)
-	SELECT
-	    ItemID,
-	    CreatedDate,
-	    CreatedByUser,
-	    Name,
-	    Role,
-	    Email,
-	    Contact1,
-	    Contact2
-	FROM
-	    rb_Contacts
-	WHERE
-	    ModuleID = @ModuleID
-ELSE
-	SELECT
-	    ItemID,
-	    CreatedDate,
-	    CreatedByUser,
-	    Name,
-	    Role,
-	    Email,
-	    Contact1,
-	    Contact2
-	FROM
-	    rb_st_Contacts
-	WHERE
-	    ModuleID = @ModuleID
-
-
+--IF (@WorkflowVersion = 1)
+--	SELECT
+--	    ItemID,
+--	    CreatedDate,
+--	    CreatedByUser,
+--	    Name,
+--	    Role,
+--	    Email,
+--	    Contact1,
+--	    Contact2
+--	FROM
+--	    rb_Contacts
+--	WHERE
+--	    ModuleID = @ModuleID
+--ELSE
+--	SELECT
+--	    ItemID,
+--	    CreatedDate,
+--	    CreatedByUser,
+--	    Name,
+--	    Role,
+--	    Email,
+--	    Contact1,
+--	    Contact2
+--	FROM
+--	    rb_st_Contacts
+--	WHERE
+--	    ModuleID = @ModuleID
 
 
 
 
 
-GO
+
+
+--GO
  
 
 
@@ -2091,33 +2091,33 @@ GO
 /****** Oggetto: stored procedure GetDocumentContent    Data dello script: 07/11/2002 22.28.13 ******/
 
 
-CREATE  PROCEDURE rb_GetDocumentContent
-(
-    @ItemID int,
-    @WorkflowVersion int
-)
-AS
+--CREATE  PROCEDURE rb_GetDocumentContent
+--(
+--    @ItemID int,
+--    @WorkflowVersion int
+--)
+--AS
 
-IF ( @WorkflowVersion = 1 )
-	SELECT
-	    Content,
-	    ContentType,
-	    ContentSize,
-	    FileFriendlyName
-	FROM
-	    rb_Documents
-	WHERE
-	    ItemID = @ItemID
-ELSE
-	SELECT
-	    Content,
-	    ContentType,
-	    ContentSize,
-	    FileFriendlyName
-	FROM
-	    rb_st_Documents
-	WHERE
-	    ItemID = @ItemID
+--IF ( @WorkflowVersion = 1 )
+--	SELECT
+--	    Content,
+--	    ContentType,
+--	    ContentSize,
+--	    FileFriendlyName
+--	FROM
+--	    rb_Documents
+--	WHERE
+--	    ItemID = @ItemID
+--ELSE
+--	SELECT
+--	    Content,
+--	    ContentType,
+--	    ContentSize,
+--	    FileFriendlyName
+--	FROM
+--	    rb_st_Documents
+--	WHERE
+--	    ItemID = @ItemID
 	
 
 
@@ -2125,7 +2125,7 @@ ELSE
 
 
 
-GO
+--GO
  
 
 
@@ -2136,45 +2136,45 @@ GO
 /****** Oggetto: stored procedure GetDocuments    Data dello script: 07/11/2002 22.28.13 ******/
 
 
-CREATE  PROCEDURE rb_GetDocuments
-(
-    @ModuleID int,
-    @WorkflowVersion int
-)
-AS
+--CREATE  PROCEDURE rb_GetDocuments
+--(
+--    @ModuleID int,
+--    @WorkflowVersion int
+--)
+--AS
 
-IF ( @WorkflowVersion = 1 )
-	SELECT
-	    ItemID,
-	    FileFriendlyName,
-	    FileNameUrl,
-	    CreatedByUser,
-	    CreatedDate,
-	    Category,
-	    ContentSize
-	FROM
-	    rb_Documents
-	WHERE
-	    ModuleID = @ModuleID
-ELSE
-	SELECT
-	    ItemID,
-	    FileFriendlyName,
-	    FileNameUrl,
-	    CreatedByUser,
-	    CreatedDate,
-	    Category,
-	    ContentSize
-	FROM
-	    rb_st_Documents
-	WHERE
-	    ModuleID = @ModuleID
-
-
+--IF ( @WorkflowVersion = 1 )
+--	SELECT
+--	    ItemID,
+--	    FileFriendlyName,
+--	    FileNameUrl,
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Category,
+--	    ContentSize
+--	FROM
+--	    rb_Documents
+--	WHERE
+--	    ModuleID = @ModuleID
+--ELSE
+--	SELECT
+--	    ItemID,
+--	    FileFriendlyName,
+--	    FileNameUrl,
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Category,
+--	    ContentSize
+--	FROM
+--	    rb_st_Documents
+--	WHERE
+--	    ModuleID = @ModuleID
 
 
 
-GO
+
+
+--GO
  
 
 
@@ -2578,45 +2578,45 @@ GO
 
 
 
-CREATE PROCEDURE rb_GetNextMessageID
-(
-    @ItemID int,
-    @NextID int OUTPUT
-)
-AS
+--CREATE PROCEDURE rb_GetNextMessageID
+--(
+--    @ItemID int,
+--    @NextID int OUTPUT
+--)
+--AS
 
-DECLARE @CurrentDisplayOrder as nvarchar(750)
-DECLARE @CurrentModule as int
+--DECLARE @CurrentDisplayOrder as nvarchar(750)
+--DECLARE @CurrentModule as int
 
-/* Find DisplayOrder of current item */
-SELECT
-    @CurrentDisplayOrder = DisplayOrder,
-    @CurrentModule = ModuleID
-FROM
-    rb_Discussion
-WHERE
-    ItemID = @ItemID
+--/* Find DisplayOrder of current item */
+--SELECT
+--    @CurrentDisplayOrder = DisplayOrder,
+--    @CurrentModule = ModuleID
+--FROM
+--    rb_Discussion
+--WHERE
+--    ItemID = @ItemID
 
-/* Get the next message in the same module */
-SELECT Top 1
-    @NextID = ItemID
+--/* Get the next message in the same module */
+--SELECT Top 1
+--    @NextID = ItemID
 
-FROM
-    rb_Discussion
+--FROM
+--    rb_Discussion
 
-WHERE
-    DisplayOrder > @CurrentDisplayOrder
-    AND
-    ModuleID = @CurrentModule
+--WHERE
+--    DisplayOrder > @CurrentDisplayOrder
+--    AND
+--    ModuleID = @CurrentModule
 
-ORDER BY
-    DisplayOrder ASC
+--ORDER BY
+--    DisplayOrder ASC
 
-/* end of this thread? */
-IF @@Rowcount < 1
-    SET @NextID = null
+--/* end of this thread? */
+--IF @@Rowcount < 1
+--    SET @NextID = null
 
-GO
+--GO
  
 
 
@@ -2891,45 +2891,45 @@ GO
 
 
 
-CREATE PROCEDURE rb_GetPrevMessageID
-(
-    @ItemID int,
-    @PrevID int OUTPUT
-)
-AS
+--CREATE PROCEDURE rb_GetPrevMessageID
+--(
+--    @ItemID int,
+--    @PrevID int OUTPUT
+--)
+--AS
 
-DECLARE @CurrentDisplayOrder as nvarchar(750)
-DECLARE @CurrentModule as int
+--DECLARE @CurrentDisplayOrder as nvarchar(750)
+--DECLARE @CurrentModule as int
 
-/* Find DisplayOrder of current item */
-SELECT
-    @CurrentDisplayOrder = DisplayOrder,
-    @CurrentModule = ModuleID
-FROM
-    rb_Discussion
-WHERE
-    ItemID = @ItemID
+--/* Find DisplayOrder of current item */
+--SELECT
+--    @CurrentDisplayOrder = DisplayOrder,
+--    @CurrentModule = ModuleID
+--FROM
+--    rb_Discussion
+--WHERE
+--    ItemID = @ItemID
 
-/* Get the previous message in the same module */
-SELECT Top 1
-    @PrevID = ItemID
+--/* Get the previous message in the same module */
+--SELECT Top 1
+--    @PrevID = ItemID
 
-FROM
-    rb_Discussion
+--FROM
+--    rb_Discussion
 
-WHERE
-    DisplayOrder < @CurrentDisplayOrder
-    AND
-    ModuleID = @CurrentModule
+--WHERE
+--    DisplayOrder < @CurrentDisplayOrder
+--    AND
+--    ModuleID = @CurrentModule
 
-ORDER BY
-    DisplayOrder DESC
+--ORDER BY
+--    DisplayOrder DESC
 
-/* already at the beginning of this module? */
-IF @@Rowcount < 1
-    SET @PrevID = null
+--/* already at the beginning of this module? */
+--IF @@Rowcount < 1
+--    SET @PrevID = null
 
-GO
+--GO
  
 
 
@@ -3070,101 +3070,101 @@ GO
 
 
 
-CREATE  PROCEDURE rb_GetSingleAnnouncement
-(
-    @ItemID int,
-    @WorkflowVersion int
-)
-AS
+--CREATE  PROCEDURE rb_GetSingleAnnouncement
+--(
+--    @ItemID int,
+--    @WorkflowVersion int
+--)
+--AS
 
-IF ( @WorkflowVersion = 1 )
-	SELECT
-	    CreatedByUser,
-	    CreatedDate,
-	    Title,
-	    MoreLink,
-	    MobileMoreLink,
-	    ExpireDate,
-	    Description
-	FROM
-	    rb_Announcements
-	WHERE
-	    ItemID = @ItemID
-ELSE
-	SELECT
-	    CreatedByUser,
-	    CreatedDate,
-	    Title,
-	    MoreLink,
-	    MobileMoreLink,
-	    ExpireDate,
-	    Description
-	FROM
-	    rb_st_Announcements
-	WHERE
-	    ItemID = @ItemID
-
-
+--IF ( @WorkflowVersion = 1 )
+--	SELECT
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Title,
+--	    MoreLink,
+--	    MobileMoreLink,
+--	    ExpireDate,
+--	    Description
+--	FROM
+--	    rb_Announcements
+--	WHERE
+--	    ItemID = @ItemID
+--ELSE
+--	SELECT
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Title,
+--	    MoreLink,
+--	    MobileMoreLink,
+--	    ExpireDate,
+--	    Description
+--	FROM
+--	    rb_st_Announcements
+--	WHERE
+--	    ItemID = @ItemID
 
 
 
 
 
-GO
+
+
+--GO
  
 
 
 
-CREATE PROCEDURE rb_GetSingleArticle
-(
-    @ItemID int
-)
-AS
+--CREATE PROCEDURE rb_GetSingleArticle
+--(
+--    @ItemID int
+--)
+--AS
 
-SELECT		ItemID,
-			ModuleID,
-			CreatedByUser,
-			CreatedDate,
-			Title, 
-			Subtitle, 
-			Abstract, 
-			Description, 
-			StartDate, 
-			ExpireDate, 
-			IsInNewsletter, 
-			MoreLink
-FROM	rb_Articles
-WHERE   (ItemID = @ItemID)
+--SELECT		ItemID,
+--			ModuleID,
+--			CreatedByUser,
+--			CreatedDate,
+--			Title, 
+--			Subtitle, 
+--			Abstract, 
+--			Description, 
+--			StartDate, 
+--			ExpireDate, 
+--			IsInNewsletter, 
+--			MoreLink
+--FROM	rb_Articles
+--WHERE   (ItemID = @ItemID)
 
-GO
+--GO
  
 
 
 
-CREATE PROCEDURE rb_GetSingleArticleWithImages
-(
-    @ItemID int,
-    @Variation varchar(50)
-)
-AS
+--CREATE PROCEDURE rb_GetSingleArticleWithImages
+--(
+--    @ItemID int,
+--    @Variation varchar(50)
+--)
+--AS
 
-SELECT		rb_Articles.ItemID, 
-			rb_Articles.ModuleID, 
-			rb_Articles.CreatedByUser, 
-			rb_Articles.CreatedDate, 
-			rb_Articles.Title, 
-			rb_Articles.Subtitle, 
-			rb_Articles.Abstract, 
-			rb_Articles.Description, 
-            rb_Articles.StartDate, 
-            rb_Articles.ExpireDate, 
-            rb_Articles.IsInNewsletter, 
-            rb_Articles.MoreLink
+--SELECT		rb_Articles.ItemID, 
+--			rb_Articles.ModuleID, 
+--			rb_Articles.CreatedByUser, 
+--			rb_Articles.CreatedDate, 
+--			rb_Articles.Title, 
+--			rb_Articles.Subtitle, 
+--			rb_Articles.Abstract, 
+--			rb_Articles.Description, 
+--            rb_Articles.StartDate, 
+--            rb_Articles.ExpireDate, 
+--            rb_Articles.IsInNewsletter, 
+--            rb_Articles.MoreLink
             
-FROM        rb_Articles
-WHERE     (ItemID = @ItemID)
+--FROM        rb_Articles
+--WHERE     (ItemID = @ItemID)
 
-GO
+--GO
  
 
 
@@ -3176,47 +3176,47 @@ GO
 
 
 
-CREATE  PROCEDURE rb_GetSingleContact
-(
-    @ItemID int,
-    @WorkflowVersion int
-)
-AS
+--CREATE  PROCEDURE rb_GetSingleContact
+--(
+--    @ItemID int,
+--    @WorkflowVersion int
+--)
+--AS
 
-IF (@WorkflowVersion = 1)
-	SELECT
-	    CreatedByUser,
-	    CreatedDate,
-	    Name,
-	    Role,
-	    Email,
-	    Contact1,
-	    Contact2
-	FROM
-	    rb_Contacts
-	WHERE
-	    ItemID = @ItemID
-ELSE
-	SELECT
-	    CreatedByUser,
-	    CreatedDate,
-	    Name,
-	    Role,
-	    Email,
-	    Contact1,
-	    Contact2
-	FROM
-	    rb_st_Contacts
-	WHERE
-	    ItemID = @ItemID
-
-
+--IF (@WorkflowVersion = 1)
+--	SELECT
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Name,
+--	    Role,
+--	    Email,
+--	    Contact1,
+--	    Contact2
+--	FROM
+--	    rb_Contacts
+--	WHERE
+--	    ItemID = @ItemID
+--ELSE
+--	SELECT
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Name,
+--	    Role,
+--	    Email,
+--	    Contact1,
+--	    Contact2
+--	FROM
+--	    rb_st_Contacts
+--	WHERE
+--	    ItemID = @ItemID
 
 
 
 
 
-GO
+
+
+--GO
  
 
 
@@ -3248,46 +3248,46 @@ GO
 /****** Oggetto: stored procedure rb_GetSingleDocument    Data dello script: 07/11/2002 22.28.14 ******/
 
 
-CREATE  PROCEDURE rb_GetSingleDocument
-(
-    @ItemID int,
-    @WorkflowVersion int
-)
-AS
+--CREATE  PROCEDURE rb_GetSingleDocument
+--(
+--    @ItemID int,
+--    @WorkflowVersion int
+--)
+--AS
 
-IF ( @WorkflowVersion = 1 )
-	SELECT
-	    FileFriendlyName,
-	    FileNameUrl,
-	    CreatedByUser,
-	    CreatedDate,
-	    Category,
-	    ContentSize
-	FROM
-	    rb_Documents
-	WHERE
-	    ItemID = @ItemID
-ELSE
-	SELECT
-	    FileFriendlyName,
-	    FileNameUrl,
-	    CreatedByUser,
-	    CreatedDate,
-	    Category,
-	    ContentSize
-	FROM
-	    rb_st_Documents
-	WHERE
-	    ItemID = @ItemID
-
-
+--IF ( @WorkflowVersion = 1 )
+--	SELECT
+--	    FileFriendlyName,
+--	    FileNameUrl,
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Category,
+--	    ContentSize
+--	FROM
+--	    rb_Documents
+--	WHERE
+--	    ItemID = @ItemID
+--ELSE
+--	SELECT
+--	    FileFriendlyName,
+--	    FileNameUrl,
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Category,
+--	    ContentSize
+--	FROM
+--	    rb_st_Documents
+--	WHERE
+--	    ItemID = @ItemID
 
 
 
 
 
 
-GO
+
+
+--GO
  
 
 
@@ -3393,34 +3393,34 @@ GO
 
 
 
-CREATE PROCEDURE rb_GetSingleMessage
-(
-    @ItemID int
-)
-AS
+--CREATE PROCEDURE rb_GetSingleMessage
+--(
+--    @ItemID int
+--)
+--AS
 
-DECLARE @nextMessageID int
-EXECUTE rb_GetNextMessageID @ItemID, @nextMessageID OUTPUT
-DECLARE @prevMessageID int
-EXECUTE rb_GetPrevMessageID @ItemID, @prevMessageID OUTPUT
+--DECLARE @nextMessageID int
+--EXECUTE rb_GetNextMessageID @ItemID, @nextMessageID OUTPUT
+--DECLARE @prevMessageID int
+--EXECUTE rb_GetPrevMessageID @ItemID, @prevMessageID OUTPUT
 
-SELECT
-    ItemID,
-    Title,
-    CreatedByUser,
-    CreatedDate,
-    Body,
-    DisplayOrder,
-    NextMessageID = @nextMessageID,
-    PrevMessageID = @prevMessageID
+--SELECT
+--    ItemID,
+--    Title,
+--    CreatedByUser,
+--    CreatedDate,
+--    Body,
+--    DisplayOrder,
+--    NextMessageID = @nextMessageID,
+--    PrevMessageID = @prevMessageID
 
-FROM
-    rb_Discussion
+--FROM
+--    rb_Discussion
 
-WHERE
-    ItemID = @ItemID
+--WHERE
+--    ItemID = @ItemID
 
-GO
+--GO
  
 
 
@@ -3906,64 +3906,64 @@ GO
 
 
 
-CREATE PROCEDURE rb_GetThreadMessages
-(
-    @Parent nvarchar(750)
-)
-AS
+--CREATE PROCEDURE rb_GetThreadMessages
+--(
+--    @Parent nvarchar(750)
+--)
+--AS
 
-SELECT
-    ItemID,
-    DisplayOrder,
-    REPLICATE( '&#160;', ( ( LEN( DisplayOrder ) / 23 ) - 1 ) * 5 ) AS Indent,
-    Title,  
-    CreatedByUser,
-    CreatedDate,
-    Body
+--SELECT
+--    ItemID,
+--    DisplayOrder,
+--    REPLICATE( '&#160;', ( ( LEN( DisplayOrder ) / 23 ) - 1 ) * 5 ) AS Indent,
+--    Title,  
+--    CreatedByUser,
+--    CreatedDate,
+--    Body
 
-FROM 
-    rb_Discussion
+--FROM 
+--    rb_Discussion
 
-WHERE
-    LEFT(DisplayOrder, 23) = @Parent
-  AND
-    (LEN( DisplayOrder ) / 23 ) > 1
+--WHERE
+--    LEFT(DisplayOrder, 23) = @Parent
+--  AND
+--    (LEN( DisplayOrder ) / 23 ) > 1
 
-ORDER BY
-    DisplayOrder
+--ORDER BY
+--    DisplayOrder
 
-GO
+--GO
  
 
 
 
-CREATE PROCEDURE rb_GetTopLevelMessages
-(
-    @ModuleID int
-)
-AS
+--CREATE PROCEDURE rb_GetTopLevelMessages
+--(
+--    @ModuleID int
+--)
+--AS
 
-SELECT
-    ItemID,
-    DisplayOrder,
-    LEFT(DisplayOrder, 23) AS Parent,    
-    (SELECT COUNT(*) -1  FROM rb_Discussion Disc2 WHERE LEFT(Disc2.DisplayOrder,LEN(RTRIM(Disc.DisplayOrder))) = Disc.DisplayOrder) AS ChildCount,
-    Title,  
-    CreatedByUser,
-    CreatedDate
+--SELECT
+--    ItemID,
+--    DisplayOrder,
+--    LEFT(DisplayOrder, 23) AS Parent,    
+--    (SELECT COUNT(*) -1  FROM rb_Discussion Disc2 WHERE LEFT(Disc2.DisplayOrder,LEN(RTRIM(Disc.DisplayOrder))) = Disc.DisplayOrder) AS ChildCount,
+--    Title,  
+--    CreatedByUser,
+--    CreatedDate
 
-FROM 
-    rb_Discussion Disc
+--FROM 
+--    rb_Discussion Disc
 
-WHERE 
-    ModuleID=@ModuleID
-  AND
-    (LEN( DisplayOrder ) / 23 ) = 1
+--WHERE 
+--    ModuleID=@ModuleID
+--  AND
+--    (LEN( DisplayOrder ) / 23 ) = 1
 
-ORDER BY
-    DisplayOrder
+--ORDER BY
+--    DisplayOrder
 
-GO
+--GO
  
 
 
@@ -4385,78 +4385,78 @@ GO
 
 
 
-CREATE  PROCEDURE rb_UpdateAnnouncement
-(
-    @ItemID         int,
-    @UserName       nvarchar(100),
-    @Title          nvarchar(150),
-    @MoreLink       nvarchar(150),
-    @MobileMoreLink nvarchar(150),
-    @ExpireDate     datetime,
-    @Description    nvarchar(2000)
-)
-AS
+--CREATE  PROCEDURE rb_UpdateAnnouncement
+--(
+--    @ItemID         int,
+--    @UserName       nvarchar(100),
+--    @Title          nvarchar(150),
+--    @MoreLink       nvarchar(150),
+--    @MobileMoreLink nvarchar(150),
+--    @ExpireDate     datetime,
+--    @Description    nvarchar(2000)
+--)
+--AS
 
-UPDATE
-    rb_st_Announcements
+--UPDATE
+--    rb_st_Announcements
 
-SET
-    CreatedByUser   = @UserName,
-    CreatedDate     = GetDate(),
-    Title           = @Title,
-    MoreLink        = @MoreLink,
-    MobileMoreLink  = @MobileMoreLink,
-    ExpireDate      = @ExpireDate,
-    Description     = @Description
+--SET
+--    CreatedByUser   = @UserName,
+--    CreatedDate     = GetDate(),
+--    Title           = @Title,
+--    MoreLink        = @MoreLink,
+--    MobileMoreLink  = @MobileMoreLink,
+--    ExpireDate      = @ExpireDate,
+--    Description     = @Description
 
-WHERE
-    ItemID = @ItemID
-
-
+--WHERE
+--    ItemID = @ItemID
 
 
 
 
 
-GO
+
+
+--GO
  
 
 
 
-CREATE PROCEDURE rb_UpdateArticle
-(
-    @ItemID         int,
-    @ModuleID       int,
-    @UserName       nvarchar(100),
-    @Title          nvarchar(100),
-    @Subtitle       nvarchar(200),
-    @Abstract       nvarchar(512),
-    @Description    text,
-    @StartDate      datetime,
-    @ExpireDate     datetime,
-    @IsInNewsletter bit,
-    @MoreLink       nvarchar(150)
-)
-AS
+--CREATE PROCEDURE rb_UpdateArticle
+--(
+--    @ItemID         int,
+--    @ModuleID       int,
+--    @UserName       nvarchar(100),
+--    @Title          nvarchar(100),
+--    @Subtitle       nvarchar(200),
+--    @Abstract       nvarchar(512),
+--    @Description    text,
+--    @StartDate      datetime,
+--    @ExpireDate     datetime,
+--    @IsInNewsletter bit,
+--    @MoreLink       nvarchar(150)
+--)
+--AS
 
-UPDATE rb_Articles
+--UPDATE rb_Articles
 
-SET 
-ModuleID = @ModuleID,
-CreatedByUser = @UserName,
-CreatedDate = GetDate(),
-Title =@Title ,
-Subtitle =  @Subtitle,
-Abstract =@Abstract,
-Description =@Description,
-StartDate = @StartDate,
-ExpireDate =@ExpireDate,
-IsInNewsletter = @IsInNewsletter,
-MoreLink =@MoreLink
-WHERE 
-ItemID = @ItemID
+--SET 
+--ModuleID = @ModuleID,
+--CreatedByUser = @UserName,
+--CreatedDate = GetDate(),
+--Title =@Title ,
+--Subtitle =  @Subtitle,
+--Abstract =@Abstract,
+--Description =@Description,
+--StartDate = @StartDate,
+--ExpireDate =@ExpireDate,
+--IsInNewsletter = @IsInNewsletter,
+--MoreLink =@MoreLink
+--WHERE 
+--ItemID = @ItemID
 
-GO
+--GO
  
 
 
@@ -4467,125 +4467,125 @@ GO
 /****** Oggetto: stored procedure rb_UpdateContact    Data dello script: 07/11/2002 22.28.14 ******/
 
 
-CREATE  PROCEDURE rb_UpdateContact
-(
-    @ItemID   int,
-    @UserName nvarchar(100),
-    @Name     nvarchar(50),
-    @Role     nvarchar(100),
-    @Email    nvarchar(100),
-    @Contact1 nvarchar(250),
-    @Contact2 nvarchar(250)
-)
-AS
+--CREATE  PROCEDURE rb_UpdateContact
+--(
+--    @ItemID   int,
+--    @UserName nvarchar(100),
+--    @Name     nvarchar(50),
+--    @Role     nvarchar(100),
+--    @Email    nvarchar(100),
+--    @Contact1 nvarchar(250),
+--    @Contact2 nvarchar(250)
+--)
+--AS
 
-UPDATE
-    rb_st_Contacts
+--UPDATE
+--    rb_st_Contacts
 
-SET
-    CreatedByUser = @UserName,
-    CreatedDate   = GetDate(),
-    Name          = @Name,
-    Role          = @Role,
-    Email         = @Email,
-    Contact1      = @Contact1,
-    Contact2      = @Contact2
+--SET
+--    CreatedByUser = @UserName,
+--    CreatedDate   = GetDate(),
+--    Name          = @Name,
+--    Role          = @Role,
+--    Email         = @Email,
+--    Contact1      = @Contact1,
+--    Contact2      = @Contact2
 
-WHERE
-    ItemID = @ItemID
-GO
+--WHERE
+--    ItemID = @ItemID
+--GO
 
-CREATE   PROCEDURE rb_UpdateDocument
-(
-    @ItemID           int,
-    @ModuleID         int,
-    @FileFriendlyName nvarchar(150),
-    @FileNameUrl      nvarchar(250),
-    @UserName         nvarchar(100),
-    @Category         nvarchar(50),
-    @Content          image,
-    @ContentType      nvarchar(50),
-    @ContentSize      int
-)
-AS
-IF (@ItemID=0) OR NOT EXISTS (
-    SELECT 
-        * 
-    FROM 
-        rb_st_Documents 
-    WHERE 
-        ItemID = @ItemID
-)
-INSERT INTO rb_st_Documents
-(
-    ModuleID,
-    FileFriendlyName,
-    FileNameUrl,
-    CreatedByUser,
-    CreatedDate,
-    Category,
-    Content,
-    ContentType,
-    ContentSize
-)
+--CREATE   PROCEDURE rb_UpdateDocument
+--(
+--    @ItemID           int,
+--    @ModuleID         int,
+--    @FileFriendlyName nvarchar(150),
+--    @FileNameUrl      nvarchar(250),
+--    @UserName         nvarchar(100),
+--    @Category         nvarchar(50),
+--    @Content          image,
+--    @ContentType      nvarchar(50),
+--    @ContentSize      int
+--)
+--AS
+--IF (@ItemID=0) OR NOT EXISTS (
+--    SELECT 
+--        * 
+--    FROM 
+--        rb_st_Documents 
+--    WHERE 
+--        ItemID = @ItemID
+--)
+--INSERT INTO rb_st_Documents
+--(
+--    ModuleID,
+--    FileFriendlyName,
+--    FileNameUrl,
+--    CreatedByUser,
+--    CreatedDate,
+--    Category,
+--    Content,
+--    ContentType,
+--    ContentSize
+--)
 
-VALUES
-(
-    @ModuleID,
-    @FileFriendlyName,
-    @FileNameUrl,
-    @UserName,
-    GetDate(),
-    @Category,
-    @Content,
-    @ContentType,
-    @ContentSize
-)
-ELSE
+--VALUES
+--(
+--    @ModuleID,
+--    @FileFriendlyName,
+--    @FileNameUrl,
+--    @UserName,
+--    GetDate(),
+--    @Category,
+--    @Content,
+--    @ContentType,
+--    @ContentSize
+--)
+--ELSE
 
-BEGIN
+--BEGIN
 
-IF (@ContentSize=0)
+--IF (@ContentSize=0)
 
-UPDATE 
-    rb_st_Documents
+--UPDATE 
+--    rb_st_Documents
 
-SET 
-    CreatedByUser    = @UserName,
-    CreatedDate      = GetDate(),
-    Category         = @Category,
-    FileFriendlyName = @FileFriendlyName,
-    FileNameUrl      = @FileNameUrl
+--SET 
+--    CreatedByUser    = @UserName,
+--    CreatedDate      = GetDate(),
+--    Category         = @Category,
+--    FileFriendlyName = @FileFriendlyName,
+--    FileNameUrl      = @FileNameUrl
 
-WHERE
-    ItemID = @ItemID
-ELSE
+--WHERE
+--    ItemID = @ItemID
+--ELSE
 
-UPDATE
-    rb_st_Documents
+--UPDATE
+--    rb_st_Documents
 
-SET
-    CreatedByUser     = @UserName,
-    CreatedDate       = GetDate(),
-    Category          = @Category,
-    FileFriendlyName  = @FileFriendlyName,
-    FileNameUrl       = @FileNameUrl,
-    Content           = @Content,
-    ContentType       = @ContentType,
-    ContentSize       = @ContentSize
+--SET
+--    CreatedByUser     = @UserName,
+--    CreatedDate       = GetDate(),
+--    Category          = @Category,
+--    FileFriendlyName  = @FileFriendlyName,
+--    FileNameUrl       = @FileNameUrl,
+--    Content           = @Content,
+--    ContentType       = @ContentType,
+--    ContentSize       = @ContentSize
 
-WHERE
-    ItemID = @ItemID
+--WHERE
+--    ItemID = @ItemID
 
-END
-
-
+--END
 
 
 
 
 
-GO
+
+
+--GO
  
 
 

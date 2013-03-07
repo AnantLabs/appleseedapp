@@ -7,19 +7,19 @@
 -- marcb_empco@hotmail.com  18/04/2003
 
 -- rb_Announcements table
-Alter table rb_Announcements ALTER COLUMN CreatedByUser NVARCHAR(100)
-Alter table rb_Announcements ALTER COLUMN Title NVARCHAR(150)
-Alter table rb_Announcements ALTER COLUMN MoreLink NVARCHAR(150)
-Alter table rb_Announcements ALTER COLUMN MobileMoreLink NVARCHAR(150)
-Alter table rb_Announcements ALTER COLUMN Description NVARCHAR(2000)
-GO
+--Alter table rb_Announcements ALTER COLUMN CreatedByUser NVARCHAR(100)
+--Alter table rb_Announcements ALTER COLUMN Title NVARCHAR(150)
+--Alter table rb_Announcements ALTER COLUMN MoreLink NVARCHAR(150)
+--Alter table rb_Announcements ALTER COLUMN MobileMoreLink NVARCHAR(150)
+--Alter table rb_Announcements ALTER COLUMN Description NVARCHAR(2000)
+--GO
 
-Alter table rb_Announcements_st ALTER COLUMN CreatedByUser NVARCHAR(100)
-Alter table rb_Announcements_st ALTER COLUMN Title NVARCHAR(150)
-Alter table rb_Announcements_st ALTER COLUMN MoreLink NVARCHAR(150)
-Alter table rb_Announcements_st ALTER COLUMN MobileMoreLink NVARCHAR(150)
-Alter table rb_Announcements_st ALTER COLUMN Description NVARCHAR(2000)
-GO
+--Alter table rb_Announcements_st ALTER COLUMN CreatedByUser NVARCHAR(100)
+--Alter table rb_Announcements_st ALTER COLUMN Title NVARCHAR(150)
+--Alter table rb_Announcements_st ALTER COLUMN MoreLink NVARCHAR(150)
+--Alter table rb_Announcements_st ALTER COLUMN MobileMoreLink NVARCHAR(150)
+--Alter table rb_Announcements_st ALTER COLUMN Description NVARCHAR(2000)
+--GO
 
 -- rb_Articles table
 alter table rb_Articles add Description1 ntext
@@ -37,454 +37,454 @@ GO
 
 -- Proc rb_AddArticles
 -- change Description data type to ntext
-IF EXISTS (SELECT * FROM sysobjects WHERE (name = 'rb_AddArticle') AND (xtype = 'P')) 
-DROP PROCEDURE [rb_AddArticle]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE (name = 'rb_AddArticle') AND (xtype = 'P')) 
+--DROP PROCEDURE [rb_AddArticle]
+--GO
 
-CREATE PROCEDURE rb_AddArticle
-(
+--CREATE PROCEDURE rb_AddArticle
+--(
 
-    @ModuleID       int,
+--    @ModuleID       int,
 
-    @UserName       nvarchar(100),
+--    @UserName       nvarchar(100),
 
-    @Title          nvarchar(100),
+--    @Title          nvarchar(100),
 
-    @Subtitle       nvarchar(200),
+--    @Subtitle       nvarchar(200),
 
-    @Abstract	    nvarchar(512),
+--    @Abstract	    nvarchar(512),
 
-    @Description    ntext,
+--    @Description    ntext,
 
-    @StartDate      datetime,
+--    @StartDate      datetime,
 
-    @ExpireDate     datetime,
+--    @ExpireDate     datetime,
 
-    @IsInNewsletter bit,
+--    @IsInNewsletter bit,
 
-    @MoreLink       nvarchar(150),
+--    @MoreLink       nvarchar(150),
 
-    @ItemID         int OUTPUT
+--    @ItemID         int OUTPUT
 
-)
+--)
 
-AS
+--AS
 
 
 
-INSERT INTO rb_Articles
+--INSERT INTO rb_Articles
 
-(
+--(
 
-    ModuleID,
+--    ModuleID,
 
-    CreatedByUser,
+--    CreatedByUser,
 
-    CreatedDate,
+--    CreatedDate,
 
-    Title,
+--    Title,
 
-	Subtitle,
+--	Subtitle,
 
-    Abstract,
+--    Abstract,
 
-	Description,
+--	Description,
 
-	StartDate,
+--	StartDate,
 
-	ExpireDate,
+--	ExpireDate,
 
-	IsInNewsletter,
+--	IsInNewsletter,
 
-	MoreLink
+--	MoreLink
 
-)
+--)
 
-VALUES
+--VALUES
 
-(
+--(
 
-    @ModuleID,
+--    @ModuleID,
 
-    @UserName,
+--    @UserName,
 
-    GetDate(),
+--    GetDate(),
 
-    @Title,
+--    @Title,
 
-    @Subtitle,
+--    @Subtitle,
 
-    @Abstract,
+--    @Abstract,
 
-    @Description,
+--    @Description,
 
-    @StartDate,
+--    @StartDate,
 
-    @ExpireDate,
+--    @ExpireDate,
 
-    @IsInNewsletter,
+--    @IsInNewsletter,
 
-    @MoreLink
+--    @MoreLink
 
-)
+--)
 
 
 
-SELECT
+--SELECT
 
-    @ItemID = @@IDENTITY
--- End proc rb_Addarticles
-GO
+--    @ItemID = @@IDENTITY
+---- End proc rb_Addarticles
+--GO
 
--- Proc rb_UpdateArticle
--- change Description data type to ntext
-IF EXISTS (SELECT * FROM sysobjects WHERE (name = 'rb_UpdateArticle') AND (xtype = 'P')) 
-DROP PROCEDURE [rb_UpdateArticle]
+---- Proc rb_UpdateArticle
+---- change Description data type to ntext
+--IF EXISTS (SELECT * FROM sysobjects WHERE (name = 'rb_UpdateArticle') AND (xtype = 'P')) 
+--DROP PROCEDURE [rb_UpdateArticle]
 
-GO
-CREATE PROCEDURE rb_UpdateArticle
+--GO
+--CREATE PROCEDURE rb_UpdateArticle
 
-(
+--(
 
-    @ItemID         int,
+--    @ItemID         int,
 
-    @ModuleID       int,
+--    @ModuleID       int,
 
-    @UserName       nvarchar(100),
+--    @UserName       nvarchar(100),
 
-    @Title          nvarchar(100),
+--    @Title          nvarchar(100),
 
-    @Subtitle       nvarchar(200),
+--    @Subtitle       nvarchar(200),
 
-    @Abstract       nvarchar(512),
+--    @Abstract       nvarchar(512),
 
-    @Description    ntext,
+--    @Description    ntext,
 
-    @StartDate      datetime,
+--    @StartDate      datetime,
 
-    @ExpireDate     datetime,
+--    @ExpireDate     datetime,
 
-    @IsInNewsletter bit,
+--    @IsInNewsletter bit,
 
-    @MoreLink       nvarchar(150)
+--    @MoreLink       nvarchar(150)
 
-)
+--)
 
-AS
+--AS
 
 
 
-UPDATE rb_Articles
+--UPDATE rb_Articles
 
 
 
-SET 
+--SET 
 
-ModuleID = @ModuleID,
+--ModuleID = @ModuleID,
 
-CreatedByUser = @UserName,
+--CreatedByUser = @UserName,
 
-CreatedDate = GetDate(),
+--CreatedDate = GetDate(),
 
-Title =@Title ,
+--Title =@Title ,
 
-Subtitle =  @Subtitle,
+--Subtitle =  @Subtitle,
 
-Abstract =@Abstract,
+--Abstract =@Abstract,
 
-Description =@Description,
+--Description =@Description,
 
-StartDate = @StartDate,
+--StartDate = @StartDate,
 
-ExpireDate =@ExpireDate,
+--ExpireDate =@ExpireDate,
 
-IsInNewsletter = @IsInNewsletter,
+--IsInNewsletter = @IsInNewsletter,
 
-MoreLink =@MoreLink
+--MoreLink =@MoreLink
 
-WHERE 
+--WHERE 
 
-ItemID = @ItemID
-GO
+--ItemID = @ItemID
+--GO
 
 
--- End
+---- End
 
 
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_AddArticle]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [rb_AddArticle]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_AddArticle]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--DROP PROCEDURE [rb_AddArticle]
+--GO
 
 
-CREATE PROCEDURE rb_AddArticle
-(
+--CREATE PROCEDURE rb_AddArticle
+--(
 
-    @ModuleID       int,
+--    @ModuleID       int,
 
-    @UserName       nvarchar(100),
+--    @UserName       nvarchar(100),
 
-    @Title          nvarchar(100),
+--    @Title          nvarchar(100),
 
-    @Subtitle       nvarchar(200),
+--    @Subtitle       nvarchar(200),
 
-    @Abstract	    nvarchar(512),
+--    @Abstract	    nvarchar(512),
 
-    @Description    ntext,
+--    @Description    ntext,
 
-    @StartDate      datetime,
+--    @StartDate      datetime,
 
-    @ExpireDate     datetime,
+--    @ExpireDate     datetime,
 
-    @IsInNewsletter bit,
+--    @IsInNewsletter bit,
 
-    @MoreLink       nvarchar(150),
+--    @MoreLink       nvarchar(150),
 
-    @ItemID         int OUTPUT
+--    @ItemID         int OUTPUT
 
-)
+--)
 
-AS
+--AS
 
 
 
-INSERT INTO rb_Articles
+--INSERT INTO rb_Articles
 
-(
+--(
 
-    ModuleID,
+--    ModuleID,
 
-    CreatedByUser,
+--    CreatedByUser,
 
-    CreatedDate,
+--    CreatedDate,
 
-    Title,
+--    Title,
 
-	Subtitle,
+--	Subtitle,
 
-    Abstract,
+--    Abstract,
 
-	Description,
+--	Description,
 
-	StartDate,
+--	StartDate,
 
-	ExpireDate,
+--	ExpireDate,
 
-	IsInNewsletter,
+--	IsInNewsletter,
 
-	MoreLink
+--	MoreLink
 
-)
+--)
 
-VALUES
+--VALUES
 
-(
+--(
 
-    @ModuleID,
+--    @ModuleID,
 
-    @UserName,
+--    @UserName,
 
-    GetDate(),
+--    GetDate(),
 
-    @Title,
+--    @Title,
 
-    @Subtitle,
+--    @Subtitle,
 
-    @Abstract,
+--    @Abstract,
 
-    @Description,
+--    @Description,
 
-    @StartDate,
+--    @StartDate,
 
-    @ExpireDate,
+--    @ExpireDate,
 
-    @IsInNewsletter,
+--    @IsInNewsletter,
 
-    @MoreLink
+--    @MoreLink
 
-)
+--)
 
 
 
-SELECT
+--SELECT
 
-    @ItemID = @@IDENTITY
--- End proc rb_Addarticles
+--    @ItemID = @@IDENTITY
+---- End proc rb_Addarticles
 
-GO
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_DeleteArticle]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [rb_DeleteArticle]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_DeleteArticle]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--DROP PROCEDURE [rb_DeleteArticle]
+--GO
 
-CREATE PROCEDURE rb_DeleteArticle
-(
-    @ItemID int
-)
-AS
+--CREATE PROCEDURE rb_DeleteArticle
+--(
+--    @ItemID int
+--)
+--AS
 
-DELETE FROM
-    rb_Articles
+--DELETE FROM
+--    rb_Articles
 
-WHERE
-    ItemID = @ItemID
-GO
+--WHERE
+--    ItemID = @ItemID
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_GetArticles]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [rb_GetArticles]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_GetArticles]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--DROP PROCEDURE [rb_GetArticles]
+--GO
 
-CREATE PROCEDURE rb_GetArticles
-(
-    @ModuleID int
-)
-AS
+--CREATE PROCEDURE rb_GetArticles
+--(
+--    @ModuleID int
+--)
+--AS
 
-SELECT		ItemID, 
-			ModuleID, 
-			CreatedByUser, 
-			CreatedDate, 
-			Title, 
-			Subtitle, 
-			Abstract, 
-			Description, 
-			StartDate, 
-			ExpireDate, 
-			IsInNewsletter, 
-			MoreLink
+--SELECT		ItemID, 
+--			ModuleID, 
+--			CreatedByUser, 
+--			CreatedDate, 
+--			Title, 
+--			Subtitle, 
+--			Abstract, 
+--			Description, 
+--			StartDate, 
+--			ExpireDate, 
+--			IsInNewsletter, 
+--			MoreLink
 
-FROM        rb_Articles
+--FROM        rb_Articles
 
-WHERE
-    (ModuleID = @ModuleID) AND (GetDate() <= ExpireDate) AND (GetDate() >= StartDate)
+--WHERE
+--    (ModuleID = @ModuleID) AND (GetDate() <= ExpireDate) AND (GetDate() >= StartDate)
 
-ORDER BY
-    StartDate DESC
-GO
+--ORDER BY
+--    StartDate DESC
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_GetSingleArticle]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [rb_GetSingleArticle]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_GetSingleArticle]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--DROP PROCEDURE [rb_GetSingleArticle]
+--GO
 
-CREATE PROCEDURE rb_GetSingleArticle
-(
-    @ItemID int
-)
-AS
+--CREATE PROCEDURE rb_GetSingleArticle
+--(
+--    @ItemID int
+--)
+--AS
 
-SELECT		ItemID,
-			ModuleID,
-			CreatedByUser,
-			CreatedDate,
-			Title, 
-			Subtitle, 
-			Abstract, 
-			Description, 
-			StartDate, 
-			ExpireDate, 
-			IsInNewsletter, 
-			MoreLink
-FROM	rb_Articles
-WHERE   (ItemID = @ItemID)
-GO
+--SELECT		ItemID,
+--			ModuleID,
+--			CreatedByUser,
+--			CreatedDate,
+--			Title, 
+--			Subtitle, 
+--			Abstract, 
+--			Description, 
+--			StartDate, 
+--			ExpireDate, 
+--			IsInNewsletter, 
+--			MoreLink
+--FROM	rb_Articles
+--WHERE   (ItemID = @ItemID)
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_GetSingleArticleWithImages]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [rb_GetSingleArticleWithImages]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_GetSingleArticleWithImages]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--DROP PROCEDURE [rb_GetSingleArticleWithImages]
+--GO
 
-CREATE PROCEDURE rb_GetSingleArticleWithImages
-(
-    @ItemID int,
-    @Variation varchar(50)
-)
-AS
+--CREATE PROCEDURE rb_GetSingleArticleWithImages
+--(
+--    @ItemID int,
+--    @Variation varchar(50)
+--)
+--AS
 
-SELECT		rb_Articles.ItemID, 
-			rb_Articles.ModuleID, 
-			rb_Articles.CreatedByUser, 
-			rb_Articles.CreatedDate, 
-			rb_Articles.Title, 
-			rb_Articles.Subtitle, 
-			rb_Articles.Abstract, 
-			rb_Articles.Description, 
-            rb_Articles.StartDate, 
-            rb_Articles.ExpireDate, 
-            rb_Articles.IsInNewsletter, 
-            rb_Articles.MoreLink
+--SELECT		rb_Articles.ItemID, 
+--			rb_Articles.ModuleID, 
+--			rb_Articles.CreatedByUser, 
+--			rb_Articles.CreatedDate, 
+--			rb_Articles.Title, 
+--			rb_Articles.Subtitle, 
+--			rb_Articles.Abstract, 
+--			rb_Articles.Description, 
+--            rb_Articles.StartDate, 
+--            rb_Articles.ExpireDate, 
+--            rb_Articles.IsInNewsletter, 
+--            rb_Articles.MoreLink
             
-FROM        rb_Articles
-WHERE     (ItemID = @ItemID)
-GO
+--FROM        rb_Articles
+--WHERE     (ItemID = @ItemID)
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_UpdateArticle]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [rb_UpdateArticle]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_UpdateArticle]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--DROP PROCEDURE [rb_UpdateArticle]
+--GO
 
-CREATE PROCEDURE rb_UpdateArticle
+--CREATE PROCEDURE rb_UpdateArticle
 
-(
+--(
 
-    @ItemID         int,
+--    @ItemID         int,
 
-    @ModuleID       int,
+--    @ModuleID       int,
 
-    @UserName       nvarchar(100),
+--    @UserName       nvarchar(100),
 
-    @Title          nvarchar(100),
+--    @Title          nvarchar(100),
 
-    @Subtitle       nvarchar(200),
+--    @Subtitle       nvarchar(200),
 
-    @Abstract       nvarchar(512),
+--    @Abstract       nvarchar(512),
 
-    @Description    ntext,
+--    @Description    ntext,
 
-    @StartDate      datetime,
+--    @StartDate      datetime,
 
-    @ExpireDate     datetime,
+--    @ExpireDate     datetime,
 
-    @IsInNewsletter bit,
+--    @IsInNewsletter bit,
 
-    @MoreLink       nvarchar(150)
+--    @MoreLink       nvarchar(150)
 
-)
+--)
 
-AS
-
-
-
-UPDATE rb_Articles
+--AS
 
 
 
-SET 
+--UPDATE rb_Articles
 
-ModuleID = @ModuleID,
 
-CreatedByUser = @UserName,
 
-CreatedDate = GetDate(),
+--SET 
 
-Title =@Title ,
+--ModuleID = @ModuleID,
 
-Subtitle =  @Subtitle,
+--CreatedByUser = @UserName,
 
-Abstract =@Abstract,
+--CreatedDate = GetDate(),
 
-Description =@Description,
+--Title =@Title ,
 
-StartDate = @StartDate,
+--Subtitle =  @Subtitle,
 
-ExpireDate =@ExpireDate,
+--Abstract =@Abstract,
 
-IsInNewsletter = @IsInNewsletter,
+--Description =@Description,
 
-MoreLink =@MoreLink
+--StartDate = @StartDate,
 
-WHERE 
+--ExpireDate =@ExpireDate,
 
-ItemID = @ItemID
+--IsInNewsletter = @IsInNewsletter,
 
-GO
+--MoreLink =@MoreLink
+
+--WHERE 
+
+--ItemID = @ItemID
+
+--GO
 
 
 /* add version info */

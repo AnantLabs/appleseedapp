@@ -7,19 +7,19 @@ GO
 
 
 /****** Object:  Table [rb_st_Announcements]    Script Date: 4/4/2003 14:18:51 ******/
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_st_Announcements]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
-EXEC sp_rename 'rb_st_Announcements', 'st_rb_Announcements'
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_st_Announcements]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+--EXEC sp_rename 'rb_st_Announcements', 'st_rb_Announcements'
+--GO
 
 /****** Object:  Table [rb_st_Contacts]    Script Date: 4/4/2003 14:18:51 ******/
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_st_Contacts]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
-EXEC sp_rename 'rb_st_Contacts', 'st_rb_Contacts'
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_st_Contacts]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+--EXEC sp_rename 'rb_st_Contacts', 'st_rb_Contacts'
+--GO
 
 /****** Object:  Table [rb_st_Documents]    Script Date: 4/4/2003 14:18:51 ******/
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_st_Documents]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
-EXEC sp_rename 'rb_st_Documents', 'st_rb_Documents'
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_st_Documents]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+--EXEC sp_rename 'rb_st_Documents', 'st_rb_Documents'
+--GO
 
 /****** Object:  Table [rb_st_Events]    Script Date: 4/4/2003 14:18:51 ******/
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_st_Events]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
@@ -327,326 +327,326 @@ END
 
 GO
 
-ALTER   PROCEDURE rb_AddAnnouncement
-(
-    @ModuleID       int,
-    @UserName       nvarchar(100),
-    @Title          nvarchar(150),
-    @MoreLink       nvarchar(150),
-    @MobileMoreLink nvarchar(150),
-    @ExpireDate     DateTime,
-    @Description    nvarchar(2000),
-    @ItemID         int OUTPUT
-)
-AS
+--ALTER   PROCEDURE rb_AddAnnouncement
+--(
+--    @ModuleID       int,
+--    @UserName       nvarchar(100),
+--    @Title          nvarchar(150),
+--    @MoreLink       nvarchar(150),
+--    @MobileMoreLink nvarchar(150),
+--    @ExpireDate     DateTime,
+--    @Description    nvarchar(2000),
+--    @ItemID         int OUTPUT
+--)
+--AS
 
-INSERT INTO st_rb_Announcements
-(
-    ModuleID,
-    CreatedByUser,
-    CreatedDate,
-    Title,
-    MoreLink,
-    MobileMoreLink,
-    ExpireDate,
-    Description
-)
+--INSERT INTO st_rb_Announcements
+--(
+--    ModuleID,
+--    CreatedByUser,
+--    CreatedDate,
+--    Title,
+--    MoreLink,
+--    MobileMoreLink,
+--    ExpireDate,
+--    Description
+--)
 
-VALUES
-(
-    @ModuleID,
-    @UserName,
-    GetDate(),
-    @Title,
-    @MoreLink,
-    @MobileMoreLink,
-    @ExpireDate,
-    @Description
-)
+--VALUES
+--(
+--    @ModuleID,
+--    @UserName,
+--    GetDate(),
+--    @Title,
+--    @MoreLink,
+--    @MobileMoreLink,
+--    @ExpireDate,
+--    @Description
+--)
 
-SELECT
-    @ItemID = @@IDENTITY
-GO
+--SELECT
+--    @ItemID = @@IDENTITY
+--GO
 
-ALTER   PROCEDURE rb_DeleteAnnouncement
-(
-    @ItemID int
-)
-AS
+--ALTER   PROCEDURE rb_DeleteAnnouncement
+--(
+--    @ItemID int
+--)
+--AS
 
-DELETE FROM
-    st_rb_Announcements
+--DELETE FROM
+--    st_rb_Announcements
 
-WHERE
-    ItemID = @ItemID
-GO
+--WHERE
+--    ItemID = @ItemID
+--GO
 
 
-ALTER   PROCEDURE rb_UpdateAnnouncement
-(
-    @ItemID         int,
-    @UserName       nvarchar(100),
-    @Title          nvarchar(150),
-    @MoreLink       nvarchar(150),
-    @MobileMoreLink nvarchar(150),
-    @ExpireDate     datetime,
-    @Description    nvarchar(2000)
-)
-AS
+--ALTER   PROCEDURE rb_UpdateAnnouncement
+--(
+--    @ItemID         int,
+--    @UserName       nvarchar(100),
+--    @Title          nvarchar(150),
+--    @MoreLink       nvarchar(150),
+--    @MobileMoreLink nvarchar(150),
+--    @ExpireDate     datetime,
+--    @Description    nvarchar(2000)
+--)
+--AS
 
-UPDATE
-    st_rb_Announcements
+--UPDATE
+--    st_rb_Announcements
 
-SET
-    CreatedByUser   = @UserName,
-    CreatedDate     = GetDate(),
-    Title           = @Title,
-    MoreLink        = @MoreLink,
-    MobileMoreLink  = @MobileMoreLink,
-    ExpireDate      = @ExpireDate,
-    Description     = @Description
+--SET
+--    CreatedByUser   = @UserName,
+--    CreatedDate     = GetDate(),
+--    Title           = @Title,
+--    MoreLink        = @MoreLink,
+--    MobileMoreLink  = @MobileMoreLink,
+--    ExpireDate      = @ExpireDate,
+--    Description     = @Description
 
-WHERE
-    ItemID = @ItemID
-GO
+--WHERE
+--    ItemID = @ItemID
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_st_AnnouncementsModified]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
-drop trigger [rb_st_AnnouncementsModified]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_st_AnnouncementsModified]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
+--drop trigger [rb_st_AnnouncementsModified]
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_rb_AnnouncementsModified]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
-drop trigger [st_rb_AnnouncementsModified]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_rb_AnnouncementsModified]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
+--drop trigger [st_rb_AnnouncementsModified]
+--GO
 
-CREATE TRIGGER [st_rb_AnnouncementsModified]
-ON [st_rb_Announcements]
-FOR DELETE, INSERT, UPDATE 
-AS 
-BEGIN
-	DECLARE ChangedModules CURSOR FOR
-		SELECT ModuleID
-		FROM inserted
-		UNION
-		SELECT ModuleID
-		FROM deleted
+--CREATE TRIGGER [st_rb_AnnouncementsModified]
+--ON [st_rb_Announcements]
+--FOR DELETE, INSERT, UPDATE 
+--AS 
+--BEGIN
+--	DECLARE ChangedModules CURSOR FOR
+--		SELECT ModuleID
+--		FROM inserted
+--		UNION
+--		SELECT ModuleID
+--		FROM deleted
 
-	DECLARE @ModID	int
+--	DECLARE @ModID	int
 
-	OPEN ChangedModules	
+--	OPEN ChangedModules	
 
-	FETCH NEXT FROM ChangedModules
-	INTO @ModID
+--	FETCH NEXT FROM ChangedModules
+--	INTO @ModID
 
-	WHILE @@FETCH_STATUS = 0
-	BEGIN
-		EXEC rb_ModuleEdited @ModID
+--	WHILE @@FETCH_STATUS = 0
+--	BEGIN
+--		EXEC rb_ModuleEdited @ModID
 
-		FETCH NEXT FROM ChangedModules
-		INTO @ModID
-	END
+--		FETCH NEXT FROM ChangedModules
+--		INTO @ModID
+--	END
 
-	CLOSE ChangedModules
-	DEALLOCATE ChangedModules
+--	CLOSE ChangedModules
+--	DEALLOCATE ChangedModules
 
-END
-GO
+--END
+--GO
 
-ALTER   PROCEDURE rb_GetAnnouncements
-(
-    @ModuleID int,
-    @WorkflowVersion int
-)
-AS
+--ALTER   PROCEDURE rb_GetAnnouncements
+--(
+--    @ModuleID int,
+--    @WorkflowVersion int
+--)
+--AS
 
-IF ( @WorkflowVersion = 1 )
-	SELECT
-	    ItemID,
-	    CreatedByUser,
-	    CreatedDate,
-	    Title,
-	    MoreLink,
-	    MobileMoreLink,
-	    ExpireDate,
-	    Description
-	FROM 
-	    rb_Announcements
-	WHERE
-	    ModuleID = @ModuleID
-	  AND
-	    ExpireDate > GetDate()
-ELSE
-	SELECT
-	    ItemID,
-	    CreatedByUser,
-	    CreatedDate,
-	    Title,
-	    MoreLink,
-	    MobileMoreLink,
-	    ExpireDate,
-	    Description
-	FROM 
-	    st_rb_Announcements
-	WHERE
-	    ModuleID = @ModuleID
-	  AND
-	    ExpireDate > GetDate()
-GO
+--IF ( @WorkflowVersion = 1 )
+--	SELECT
+--	    ItemID,
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Title,
+--	    MoreLink,
+--	    MobileMoreLink,
+--	    ExpireDate,
+--	    Description
+--	FROM 
+--	    rb_Announcements
+--	WHERE
+--	    ModuleID = @ModuleID
+--	  AND
+--	    ExpireDate > GetDate()
+--ELSE
+--	SELECT
+--	    ItemID,
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Title,
+--	    MoreLink,
+--	    MobileMoreLink,
+--	    ExpireDate,
+--	    Description
+--	FROM 
+--	    st_rb_Announcements
+--	WHERE
+--	    ModuleID = @ModuleID
+--	  AND
+--	    ExpireDate > GetDate()
+--GO
 
-ALTER   PROCEDURE rb_AddContact
-(
-    @ModuleID int,
-    @UserName nvarchar(100),
-    @Name     nvarchar(50),
-    @Role     nvarchar(100),
-    @Email    nvarchar(100),
-    @Contact1 nvarchar(250),
-    @Contact2 nvarchar(250),
-    @ItemID   int OUTPUT
-)
-AS
+--ALTER   PROCEDURE rb_AddContact
+--(
+--    @ModuleID int,
+--    @UserName nvarchar(100),
+--    @Name     nvarchar(50),
+--    @Role     nvarchar(100),
+--    @Email    nvarchar(100),
+--    @Contact1 nvarchar(250),
+--    @Contact2 nvarchar(250),
+--    @ItemID   int OUTPUT
+--)
+--AS
 
-INSERT INTO st_rb_Contacts
-(
-    CreatedByUser,
-    CreatedDate,
-    ModuleID,
-    Name,
-    Role,
-    Email,
-    Contact1,
-    Contact2
-)
+--INSERT INTO st_rb_Contacts
+--(
+--    CreatedByUser,
+--    CreatedDate,
+--    ModuleID,
+--    Name,
+--    Role,
+--    Email,
+--    Contact1,
+--    Contact2
+--)
 
-VALUES
-(
-    @UserName,
-    GetDate(),
-    @ModuleID,
-    @Name,
-    @Role,
-    @Email,
-    @Contact1,
-    @Contact2
-)
+--VALUES
+--(
+--    @UserName,
+--    GetDate(),
+--    @ModuleID,
+--    @Name,
+--    @Role,
+--    @Email,
+--    @Contact1,
+--    @Contact2
+--)
 
-SELECT
-    @ItemID = @@IDENTITY
-GO
+--SELECT
+--    @ItemID = @@IDENTITY
+--GO
 
-ALTER   PROCEDURE rb_DeleteContact
-(
-    @ItemID int
-)
-AS
+--ALTER   PROCEDURE rb_DeleteContact
+--(
+--    @ItemID int
+--)
+--AS
 
-DELETE FROM
-    st_rb_Contacts
+--DELETE FROM
+--    st_rb_Contacts
 
-WHERE
-    ItemID = @ItemID
-GO
-SET QUOTED_IDENTIFIER OFF 
-GO
-SET ANSI_NULLS ON 
-GO
+--WHERE
+--    ItemID = @ItemID
+--GO
+--SET QUOTED_IDENTIFIER OFF 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
-SET QUOTED_IDENTIFIER ON 
-GO
-SET ANSI_NULLS ON 
-GO
+--SET QUOTED_IDENTIFIER ON 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
 /****** Oggetto: stored procedure GetContacts    Data dello script: 07/11/2002 22.28.13 ******/
 
 
-ALTER   PROCEDURE rb_GetContacts
-(
-    @ModuleID int,
-    @WorkflowVersion int
-)
-AS
+--ALTER   PROCEDURE rb_GetContacts
+--(
+--    @ModuleID int,
+--    @WorkflowVersion int
+--)
+--AS
 
-IF (@WorkflowVersion = 1)
-	SELECT
-	    ItemID,
-	    CreatedDate,
-	    CreatedByUser,
-	    Name,
-	    Role,
-	    Email,
-	    Contact1,
-	    Contact2
-	FROM
-	    rb_Contacts
-	WHERE
-	    ModuleID = @ModuleID
-ELSE
-	SELECT
-	    ItemID,
-	    CreatedDate,
-	    CreatedByUser,
-	    Name,
-	    Role,
-	    Email,
-	    Contact1,
-	    Contact2
-	FROM
-	    st_rb_Contacts
-	WHERE
-	    ModuleID = @ModuleID
-GO
-SET QUOTED_IDENTIFIER OFF 
-GO
-SET ANSI_NULLS ON 
-GO
+--IF (@WorkflowVersion = 1)
+--	SELECT
+--	    ItemID,
+--	    CreatedDate,
+--	    CreatedByUser,
+--	    Name,
+--	    Role,
+--	    Email,
+--	    Contact1,
+--	    Contact2
+--	FROM
+--	    rb_Contacts
+--	WHERE
+--	    ModuleID = @ModuleID
+--ELSE
+--	SELECT
+--	    ItemID,
+--	    CreatedDate,
+--	    CreatedByUser,
+--	    Name,
+--	    Role,
+--	    Email,
+--	    Contact1,
+--	    Contact2
+--	FROM
+--	    st_rb_Contacts
+--	WHERE
+--	    ModuleID = @ModuleID
+--GO
+--SET QUOTED_IDENTIFIER OFF 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
-SET QUOTED_IDENTIFIER ON 
-GO
-SET ANSI_NULLS ON 
-GO
+--SET QUOTED_IDENTIFIER ON 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
 /****** Oggetto: stored procedure rb_UpdateContact    Data dello script: 07/11/2002 22.28.14 ******/
 
 
-ALTER   PROCEDURE rb_UpdateContact
-(
-    @ItemID   int,
-    @UserName nvarchar(100),
-    @Name     nvarchar(50),
-    @Role     nvarchar(100),
-    @Email    nvarchar(100),
-    @Contact1 nvarchar(250),
-    @Contact2 nvarchar(250)
-)
-AS
+--ALTER   PROCEDURE rb_UpdateContact
+--(
+--    @ItemID   int,
+--    @UserName nvarchar(100),
+--    @Name     nvarchar(50),
+--    @Role     nvarchar(100),
+--    @Email    nvarchar(100),
+--    @Contact1 nvarchar(250),
+--    @Contact2 nvarchar(250)
+--)
+--AS
 
-UPDATE
-    st_rb_Contacts
+--UPDATE
+--    st_rb_Contacts
 
-SET
-    CreatedByUser = @UserName,
-    CreatedDate   = GetDate(),
-    Name          = @Name,
-    Role          = @Role,
-    Email         = @Email,
-    Contact1      = @Contact1,
-    Contact2      = @Contact2
+--SET
+--    CreatedByUser = @UserName,
+--    CreatedDate   = GetDate(),
+--    Name          = @Name,
+--    Role          = @Role,
+--    Email         = @Email,
+--    Contact1      = @Contact1,
+--    Contact2      = @Contact2
 
-WHERE
-    ItemID = @ItemID
-GO
-SET QUOTED_IDENTIFIER OFF 
-GO
-SET ANSI_NULLS ON 
-GO
+--WHERE
+--    ItemID = @ItemID
+--GO
+--SET QUOTED_IDENTIFIER OFF 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_Revert]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [rb_Revert]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_Revert]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--DROP PROCEDURE [rb_Revert]
+--GO
 
-SET QUOTED_IDENTIFIER ON 
-GO
-SET ANSI_NULLS ON 
-GO
+--SET QUOTED_IDENTIFIER ON 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
 
 -- Alter Publish stored procedure
@@ -845,345 +845,345 @@ GO
 /****** Oggetto: stored procedure rb_UpdateContact    Data dello script: 07/11/2002 22.28.14 ******/
 
 
-ALTER   PROCEDURE rb_UpdateContact
-(
-    @ItemID   int,
-    @UserName nvarchar(100),
-    @Name     nvarchar(50),
-    @Role     nvarchar(100),
-    @Email    nvarchar(100),
-    @Contact1 nvarchar(250),
-    @Contact2 nvarchar(250)
-)
-AS
+--ALTER   PROCEDURE rb_UpdateContact
+--(
+--    @ItemID   int,
+--    @UserName nvarchar(100),
+--    @Name     nvarchar(50),
+--    @Role     nvarchar(100),
+--    @Email    nvarchar(100),
+--    @Contact1 nvarchar(250),
+--    @Contact2 nvarchar(250)
+--)
+--AS
 
-UPDATE
-    st_rb_Contacts
+--UPDATE
+--    st_rb_Contacts
 
-SET
-    CreatedByUser = @UserName,
-    CreatedDate   = GetDate(),
-    Name          = @Name,
-    Role          = @Role,
-    Email         = @Email,
-    Contact1      = @Contact1,
-    Contact2      = @Contact2
+--SET
+--    CreatedByUser = @UserName,
+--    CreatedDate   = GetDate(),
+--    Name          = @Name,
+--    Role          = @Role,
+--    Email         = @Email,
+--    Contact1      = @Contact1,
+--    Contact2      = @Contact2
 
-WHERE
-    ItemID = @ItemID
-GO
-SET QUOTED_IDENTIFIER OFF 
-GO
-SET ANSI_NULLS ON 
-GO
+--WHERE
+--    ItemID = @ItemID
+--GO
+--SET QUOTED_IDENTIFIER OFF 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_st_DocumentsModified]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
-drop trigger [rb_st_DocumentsModified]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_st_DocumentsModified]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
+--drop trigger [rb_st_DocumentsModified]
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_rb_DocumentsModified]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
-drop trigger [st_rb_DocumentsModified]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_rb_DocumentsModified]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
+--drop trigger [st_rb_DocumentsModified]
+--GO
 
-SET QUOTED_IDENTIFIER ON 
-GO
-SET ANSI_NULLS ON 
-GO
+--SET QUOTED_IDENTIFIER ON 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
-CREATE  TRIGGER [st_rb_DocumentsModified]
-ON [st_rb_Documents]
-FOR DELETE, INSERT, UPDATE 
-AS 
-BEGIN
-	DECLARE ChangedModules CURSOR FOR
-		SELECT ModuleID
-		FROM inserted
-		UNION
-		SELECT ModuleID
-		FROM deleted
+--CREATE  TRIGGER [st_rb_DocumentsModified]
+--ON [st_rb_Documents]
+--FOR DELETE, INSERT, UPDATE 
+--AS 
+--BEGIN
+--	DECLARE ChangedModules CURSOR FOR
+--		SELECT ModuleID
+--		FROM inserted
+--		UNION
+--		SELECT ModuleID
+--		FROM deleted
 
-	DECLARE @ModID	int
+--	DECLARE @ModID	int
 
-	OPEN ChangedModules	
+--	OPEN ChangedModules	
 
-	FETCH NEXT FROM ChangedModules
-	INTO @ModID
+--	FETCH NEXT FROM ChangedModules
+--	INTO @ModID
 
-	WHILE @@FETCH_STATUS = 0
-	BEGIN
-		EXEC rb_ModuleEdited @ModID
+--	WHILE @@FETCH_STATUS = 0
+--	BEGIN
+--		EXEC rb_ModuleEdited @ModID
 
-		FETCH NEXT FROM ChangedModules
-		INTO @ModID
-	END
+--		FETCH NEXT FROM ChangedModules
+--		INTO @ModID
+--	END
 
-	CLOSE ChangedModules
-	DEALLOCATE ChangedModules
-END
-GO
-SET QUOTED_IDENTIFIER OFF 
-GO
-SET ANSI_NULLS ON 
-GO
+--	CLOSE ChangedModules
+--	DEALLOCATE ChangedModules
+--END
+--GO
+--SET QUOTED_IDENTIFIER OFF 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
-SET QUOTED_IDENTIFIER ON 
-GO
-SET ANSI_NULLS ON 
-GO
+--SET QUOTED_IDENTIFIER ON 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
 /****** Oggetto: stored procedure DeleteDocument    Data dello script: 07/11/2002 22.28.13 ******/
 
 
-ALTER   PROCEDURE rb_DeleteDocument
-(
-    @ItemID int
-)
-AS
+--ALTER   PROCEDURE rb_DeleteDocument
+--(
+--    @ItemID int
+--)
+--AS
 
-DELETE FROM
-    st_rb_Documents
+--DELETE FROM
+--    st_rb_Documents
 
-WHERE
-    ItemID = @ItemID
-GO
-SET QUOTED_IDENTIFIER OFF 
-GO
-SET ANSI_NULLS ON 
-GO
+--WHERE
+--    ItemID = @ItemID
+--GO
+--SET QUOTED_IDENTIFIER OFF 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
-SET QUOTED_IDENTIFIER ON 
-GO
-SET ANSI_NULLS ON 
-GO
+--SET QUOTED_IDENTIFIER ON 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
 /****** Oggetto: stored procedure GetDocumentContent    Data dello script: 07/11/2002 22.28.13 ******/
 
 
-ALTER   PROCEDURE rb_GetDocumentContent
-(
-    @ItemID int,
-    @WorkflowVersion int
-)
-AS
+--ALTER   PROCEDURE rb_GetDocumentContent
+--(
+--    @ItemID int,
+--    @WorkflowVersion int
+--)
+--AS
 
-IF ( @WorkflowVersion = 1 )
-	SELECT
-	    Content,
-	    ContentType,
-	    ContentSize,
-	    FileFriendlyName
-	FROM
-	    rb_Documents
-	WHERE
-	    ItemID = @ItemID
-ELSE
-	SELECT
-	    Content,
-	    ContentType,
-	    ContentSize,
-	    FileFriendlyName
-	FROM
-	    st_rb_Documents
-	WHERE
-	    ItemID = @ItemID
-GO
-SET QUOTED_IDENTIFIER OFF 
-GO
-SET ANSI_NULLS ON 
-GO
+--IF ( @WorkflowVersion = 1 )
+--	SELECT
+--	    Content,
+--	    ContentType,
+--	    ContentSize,
+--	    FileFriendlyName
+--	FROM
+--	    rb_Documents
+--	WHERE
+--	    ItemID = @ItemID
+--ELSE
+--	SELECT
+--	    Content,
+--	    ContentType,
+--	    ContentSize,
+--	    FileFriendlyName
+--	FROM
+--	    st_rb_Documents
+--	WHERE
+--	    ItemID = @ItemID
+--GO
+--SET QUOTED_IDENTIFIER OFF 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
-SET QUOTED_IDENTIFIER ON 
-GO
-SET ANSI_NULLS ON 
-GO
+--SET QUOTED_IDENTIFIER ON 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
 /****** Oggetto: stored procedure GetDocuments    Data dello script: 07/11/2002 22.28.13 ******/
 
 
-ALTER   PROCEDURE rb_GetDocuments
-(
-    @ModuleID int,
-    @WorkflowVersion int
-)
-AS
+--ALTER   PROCEDURE rb_GetDocuments
+--(
+--    @ModuleID int,
+--    @WorkflowVersion int
+--)
+--AS
 
-IF ( @WorkflowVersion = 1 )
-	SELECT
-	    ItemID,
-	    FileFriendlyName,
-	    FileNameUrl,
-	    CreatedByUser,
-	    CreatedDate,
-	    Category,
-	    ContentSize
-	FROM
-	    rb_Documents
-	WHERE
-	    ModuleID = @ModuleID
-ELSE
-	SELECT
-	    ItemID,
-	    FileFriendlyName,
-	    FileNameUrl,
-	    CreatedByUser,
-	    CreatedDate,
-	    Category,
-	    ContentSize
-	FROM
-	    st_rb_Documents
-	WHERE
-	    ModuleID = @ModuleID
-GO
-SET QUOTED_IDENTIFIER OFF 
-GO
-SET ANSI_NULLS ON 
-GO
+--IF ( @WorkflowVersion = 1 )
+--	SELECT
+--	    ItemID,
+--	    FileFriendlyName,
+--	    FileNameUrl,
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Category,
+--	    ContentSize
+--	FROM
+--	    rb_Documents
+--	WHERE
+--	    ModuleID = @ModuleID
+--ELSE
+--	SELECT
+--	    ItemID,
+--	    FileFriendlyName,
+--	    FileNameUrl,
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Category,
+--	    ContentSize
+--	FROM
+--	    st_rb_Documents
+--	WHERE
+--	    ModuleID = @ModuleID
+--GO
+--SET QUOTED_IDENTIFIER OFF 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
-SET QUOTED_IDENTIFIER ON 
-GO
-SET ANSI_NULLS ON 
-GO
+--SET QUOTED_IDENTIFIER ON 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
 /****** Oggetto: stored procedure rb_GetSingleContact    Data dello script: 07/11/2002 22.28.14 ******/
 
 
 
-ALTER   PROCEDURE rb_GetSingleContact
-(
-    @ItemID int,
-    @WorkflowVersion int
-)
-AS
+--ALTER   PROCEDURE rb_GetSingleContact
+--(
+--    @ItemID int,
+--    @WorkflowVersion int
+--)
+--AS
 
-IF (@WorkflowVersion = 1)
-	SELECT
-	    CreatedByUser,
-	    CreatedDate,
-	    Name,
-	    Role,
-	    Email,
-	    Contact1,
-	    Contact2
-	FROM
-	    rb_Contacts
-	WHERE
-	    ItemID = @ItemID
-ELSE
-	SELECT
-	    CreatedByUser,
-	    CreatedDate,
-	    Name,
-	    Role,
-	    Email,
-	    Contact1,
-	    Contact2
-	FROM
-	    st_rb_Contacts
-	WHERE
-	    ItemID = @ItemID
-GO
-SET QUOTED_IDENTIFIER OFF 
-GO
-SET ANSI_NULLS ON 
-GO
+--IF (@WorkflowVersion = 1)
+--	SELECT
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Name,
+--	    Role,
+--	    Email,
+--	    Contact1,
+--	    Contact2
+--	FROM
+--	    rb_Contacts
+--	WHERE
+--	    ItemID = @ItemID
+--ELSE
+--	SELECT
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Name,
+--	    Role,
+--	    Email,
+--	    Contact1,
+--	    Contact2
+--	FROM
+--	    st_rb_Contacts
+--	WHERE
+--	    ItemID = @ItemID
+--GO
+--SET QUOTED_IDENTIFIER OFF 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
-SET QUOTED_IDENTIFIER ON 
-GO
-SET ANSI_NULLS ON 
-GO
+--SET QUOTED_IDENTIFIER ON 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
 /****** Oggetto: stored procedure rb_GetSingleDocument    Data dello script: 07/11/2002 22.28.14 ******/
 
 
-ALTER   PROCEDURE rb_GetSingleDocument
-(
-    @ItemID int,
-    @WorkflowVersion int
-)
-AS
+--ALTER   PROCEDURE rb_GetSingleDocument
+--(
+--    @ItemID int,
+--    @WorkflowVersion int
+--)
+--AS
 
-IF ( @WorkflowVersion = 1 )
-	SELECT
-	    FileFriendlyName,
-	    FileNameUrl,
-	    CreatedByUser,
-	    CreatedDate,
-	    Category,
-	    ContentSize
-	FROM
-	    rb_Documents
-	WHERE
-	    ItemID = @ItemID
-ELSE
-	SELECT
-	    FileFriendlyName,
-	    FileNameUrl,
-	    CreatedByUser,
-	    CreatedDate,
-	    Category,
-	    ContentSize
-	FROM
-	    st_rb_Documents
-	WHERE
-	    ItemID = @ItemID
-GO
-SET QUOTED_IDENTIFIER OFF 
-GO
-SET ANSI_NULLS ON 
-GO
+--IF ( @WorkflowVersion = 1 )
+--	SELECT
+--	    FileFriendlyName,
+--	    FileNameUrl,
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Category,
+--	    ContentSize
+--	FROM
+--	    rb_Documents
+--	WHERE
+--	    ItemID = @ItemID
+--ELSE
+--	SELECT
+--	    FileFriendlyName,
+--	    FileNameUrl,
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Category,
+--	    ContentSize
+--	FROM
+--	    st_rb_Documents
+--	WHERE
+--	    ItemID = @ItemID
+--GO
+--SET QUOTED_IDENTIFIER OFF 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
-SET QUOTED_IDENTIFIER ON 
-GO
-SET ANSI_NULLS ON 
-GO
+--SET QUOTED_IDENTIFIER ON 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
 /****** Oggetto: stored procedure rb_GetSingleAnnouncement    Data dello script: 07/11/2002 22.28.09 ******/
 
 
 
-ALTER   PROCEDURE rb_GetSingleAnnouncement
-(
-    @ItemID int,
-    @WorkflowVersion int
-)
-AS
+--ALTER   PROCEDURE rb_GetSingleAnnouncement
+--(
+--    @ItemID int,
+--    @WorkflowVersion int
+--)
+--AS
 
-IF ( @WorkflowVersion = 1 )
-	SELECT
-	    CreatedByUser,
-	    CreatedDate,
-	    Title,
-	    MoreLink,
-	    MobileMoreLink,
-	    ExpireDate,
-	    Description
-	FROM
-	    rb_Announcements
-	WHERE
-	    ItemID = @ItemID
-ELSE
-	SELECT
-	    CreatedByUser,
-	    CreatedDate,
-	    Title,
-	    MoreLink,
-	    MobileMoreLink,
-	    ExpireDate,
-	    Description
-	FROM
-	    st_rb_Announcements
-	WHERE
-	    ItemID = @ItemID
-GO
-SET QUOTED_IDENTIFIER OFF 
-GO
-SET ANSI_NULLS ON 
-GO
+--IF ( @WorkflowVersion = 1 )
+--	SELECT
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Title,
+--	    MoreLink,
+--	    MobileMoreLink,
+--	    ExpireDate,
+--	    Description
+--	FROM
+--	    rb_Announcements
+--	WHERE
+--	    ItemID = @ItemID
+--ELSE
+--	SELECT
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Title,
+--	    MoreLink,
+--	    MobileMoreLink,
+--	    ExpireDate,
+--	    Description
+--	FROM
+--	    st_rb_Announcements
+--	WHERE
+--	    ItemID = @ItemID
+--GO
+--SET QUOTED_IDENTIFIER OFF 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
-SET QUOTED_IDENTIFIER ON 
-GO
-SET ANSI_NULLS ON 
-GO
+--SET QUOTED_IDENTIFIER ON 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
 /****** Oggetto: stored procedure AddEvent    Data dello script: 07/11/2002 22.28.12 ******/
 

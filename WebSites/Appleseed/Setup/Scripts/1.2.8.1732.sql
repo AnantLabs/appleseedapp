@@ -271,80 +271,80 @@ GO
 /* Install script, WhosLoggedOn module, [paul@paulyarrow.com], 16/07/2003 */
 
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_GetLoggedOnUsers]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [rb_GetLoggedOnUsers]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_GetLoggedOnUsers]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--DROP PROCEDURE [rb_GetLoggedOnUsers]
+--GO
 
-CREATE PROCEDURE rb_GetLoggedOnUsers
-(
-    @PortalID    int,
-    @MinutesToCheck int
-)
-AS
+--CREATE PROCEDURE rb_GetLoggedOnUsers
+--(
+--    @PortalID    int,
+--    @MinutesToCheck int
+--)
+--AS
 
-	select distinct rbm.UserHostAddress, rbu.[Name], (select top 1 ActivityType
-		from rb_Monitoring
-		WHERE (ActivityType = 'Logon' or ActivityType = 'Logoff')
-		AND ActivityTime >= DATEADD(n, -@MinutesToCheck, GetDate())
-		AND UserHostAddress = rbm.UserHostAddress
-		AND UserID = rbm.UserID
-		AND rbm.PortalID = @PortalID
-		order by ActivityTime desc) as LastAction
-		from rb_Monitoring rbm
-		inner join rb_Users rbu ON rbm.UserID = rbu.UserID
-		WHERE (rbm.ActivityType = 'Logon' or rbm.ActivityType = 'Logoff') 
-		AND rbm.ActivityTime >= DATEADD(n, -@MinutesToCheck, GetDate())
-		AND rbm.PortalID = @PortalID
-GO
+--	select distinct rbm.UserHostAddress, rbu.[Name], (select top 1 ActivityType
+--		from rb_Monitoring
+--		WHERE (ActivityType = 'Logon' or ActivityType = 'Logoff')
+--		AND ActivityTime >= DATEADD(n, -@MinutesToCheck, GetDate())
+--		AND UserHostAddress = rbm.UserHostAddress
+--		AND UserID = rbm.UserID
+--		AND rbm.PortalID = @PortalID
+--		order by ActivityTime desc) as LastAction
+--		from rb_Monitoring rbm
+--		inner join rb_Users rbu ON rbm.UserID = rbu.UserID
+--		WHERE (rbm.ActivityType = 'Logon' or rbm.ActivityType = 'Logoff') 
+--		AND rbm.ActivityTime >= DATEADD(n, -@MinutesToCheck, GetDate())
+--		AND rbm.PortalID = @PortalID
+--GO
 
 
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_GetNumberOfActiveUsers]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [rb_GetNumberOfActiveUsers]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_GetNumberOfActiveUsers]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--DROP PROCEDURE [rb_GetNumberOfActiveUsers]
+--GO
 
-CREATE PROCEDURE rb_GetNumberOfActiveUsers
-(
-    @PortalID    int,
-    @MinutesToCheck int,
-    @NoOfUsers int output
-)
-AS
+--CREATE PROCEDURE rb_GetNumberOfActiveUsers
+--(
+--    @PortalID    int,
+--    @MinutesToCheck int,
+--    @NoOfUsers int output
+--)
+--AS
 
-	select @NoOfUsers =  Count(distinct UserHostAddress)
-	from rb_Monitoring
-	WHERE ActivityTime >= DATEADD(n, -@MinutesToCheck, GetDate())
-	AND PortalID = @PortalID
-GO
+--	select @NoOfUsers =  Count(distinct UserHostAddress)
+--	from rb_Monitoring
+--	WHERE ActivityTime >= DATEADD(n, -@MinutesToCheck, GetDate())
+--	AND PortalID = @PortalID
+--GO
 
-DECLARE @GeneralModDefID uniqueidentifier
-DECLARE @FriendlyName nvarchar(128)
-DECLARE @DesktopSrc nvarchar(256)
-DECLARE @MobileSrc nvarchar(256)
-DECLARE @AssemblyName varchar(50)
-DECLARE @ClassName nvarchar(128)
-DECLARE @Admin bit
-DECLARE @Searchable bit
+--DECLARE @GeneralModDefID uniqueidentifier
+--DECLARE @FriendlyName nvarchar(128)
+--DECLARE @DesktopSrc nvarchar(256)
+--DECLARE @MobileSrc nvarchar(256)
+--DECLARE @AssemblyName varchar(50)
+--DECLARE @ClassName nvarchar(128)
+--DECLARE @Admin bit
+--DECLARE @Searchable bit
 
-SET @GeneralModDefID = '{52AD3A51-121D-48bc-9782-02076E0D6A69}'
-SET @FriendlyName = 'Whos Logged On'
-SET @DesktopSrc = 'DesktopModules/WhosLoggedOn/WhosLoggedOn.ascx'
-SET @MobileSrc = ''
-SET @AssemblyName = 'Appleseed.DLL'
-SET @ClassName = 'Appleseed.Content.Web.ModulesWhosLoggedOn'
-SET @Admin = 0
-SET @Searchable = 0
+--SET @GeneralModDefID = '{52AD3A51-121D-48bc-9782-02076E0D6A69}'
+--SET @FriendlyName = 'Whos Logged On'
+--SET @DesktopSrc = 'DesktopModules/WhosLoggedOn/WhosLoggedOn.ascx'
+--SET @MobileSrc = ''
+--SET @AssemblyName = 'Appleseed.DLL'
+--SET @ClassName = 'Appleseed.Content.Web.ModulesWhosLoggedOn'
+--SET @Admin = 0
+--SET @Searchable = 0
 
-IF NOT EXISTS (SELECT GeneralModDefID FROM rb_GeneralModuleDefinitions
-WHERE GeneralModDefID = @GeneralModDefID)
-BEGIN
-	-- Installs module
-	EXEC [rb_AddGeneralModuleDefinitions] @GeneralModDefID, @FriendlyName, @DesktopSrc, @MobileSrc, @AssemblyName, @ClassName, @Admin, @Searchable
+--IF NOT EXISTS (SELECT GeneralModDefID FROM rb_GeneralModuleDefinitions
+--WHERE GeneralModDefID = @GeneralModDefID)
+--BEGIN
+--	-- Installs module
+--	EXEC [rb_AddGeneralModuleDefinitions] @GeneralModDefID, @FriendlyName, @DesktopSrc, @MobileSrc, @AssemblyName, @ClassName, @Admin, @Searchable
 
-	-- Install it for default portal
-	EXEC [rb_UpdateModuleDefinitions] @GeneralModDefID, 0, 1
-END
-GO
+--	-- Install it for default portal
+--	EXEC [rb_UpdateModuleDefinitions] @GeneralModDefID, 0, 1
+--END
+--GO
 
-INSERT INTO [rb_Versions] ([Release],[Version],[ReleaseDate]) VALUES('1732','1.2.8.1732', CONVERT(datetime, '07/31/2003', 101))
-GO
+--INSERT INTO [rb_Versions] ([Release],[Version],[ReleaseDate]) VALUES('1732','1.2.8.1732', CONVERT(datetime, '07/31/2003', 101))
+--GO

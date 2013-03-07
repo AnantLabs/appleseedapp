@@ -1,13 +1,13 @@
 
 /****** Object:  Table [Announcements]    Script Date: 18/03/2003 14:18:51 ******/
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[Announcements]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
-EXEC sp_rename 'Announcements', 'rb_Announcements'
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[Announcements]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+--EXEC sp_rename 'Announcements', 'rb_Announcements'
+--GO
 
 /****** Object:  Table [Articles]    Script Date: 18/03/2003 14:18:51 ******/
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[Articles]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
-EXEC sp_rename 'Articles', 'rb_Articles'
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[Articles]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+--EXEC sp_rename 'Articles', 'rb_Articles'
+--GO
 
 /****** Object:  Table [Blacklist]    Script Date: 18/03/2003 14:18:51 ******/
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[Blacklist]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
@@ -15,9 +15,9 @@ EXEC sp_rename 'Blacklist', 'rb_Blacklist'
 GO
 
 /****** Object:  Table [Contacts]    Script Date: 18/03/2003 14:18:51 ******/
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[Contacts]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
-EXEC sp_rename 'Contacts', 'rb_Contacts'
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[Contacts]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+--EXEC sp_rename 'Contacts', 'rb_Contacts'
+--GO
 
 /****** Object:  Table [Countries]    Script Date: 18/03/2003 14:18:51 ******/
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[Countries]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
@@ -30,14 +30,14 @@ EXEC sp_rename 'Cultures', 'rb_Cultures'
 GO
 
 /****** Object:  Table [Discussion]    Script Date: 18/03/2003 14:18:51 ******/
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[Discussion]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
-EXEC sp_rename 'Discussion', 'rb_Discussion'
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[Discussion]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+--EXEC sp_rename 'Discussion', 'rb_Discussion'
+--GO
 
 /****** Object:  Table [Documents]    Script Date: 18/03/2003 14:18:51 ******/
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[Documents]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
-EXEC sp_rename 'Documents', 'rb_Documents'
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[Documents]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+--EXEC sp_rename 'Documents', 'rb_Documents'
+--GO
 
 /****** Object:  Table [Events]    Script Date: 18/03/2003 14:18:51 ******/
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[Events]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
@@ -145,19 +145,19 @@ EXEC sp_rename 'Users', 'rb_Users'
 GO
 
 /****** Object:  Table [st_Announcements]    Script Date: 18/03/2003 14:18:51 ******/
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_Announcements]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
-EXEC sp_rename 'st_Announcements', 'rb_st_Announcements'
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_Announcements]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+--EXEC sp_rename 'st_Announcements', 'rb_st_Announcements'
+--GO
 
 /****** Object:  Table [st_Contacts]    Script Date: 18/03/2003 14:18:51 ******/
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_Contacts]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
-EXEC sp_rename 'st_Contacts', 'rb_st_Contacts'
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_Contacts]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+--EXEC sp_rename 'st_Contacts', 'rb_st_Contacts'
+--GO
 
 /****** Object:  Table [st_Documents]    Script Date: 18/03/2003 14:18:51 ******/
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_Documents]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
-EXEC sp_rename 'st_Documents', 'rb_st_Documents'
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_Documents]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+--EXEC sp_rename 'st_Documents', 'rb_st_Documents'
+--GO
 
 /****** Object:  Table [st_Events]    Script Date: 18/03/2003 14:18:51 ******/
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_Events]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)

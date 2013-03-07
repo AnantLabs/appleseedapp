@@ -6,19 +6,19 @@ INSERT INTO [rb_Versions] ([Release],[Version],[ReleaseDate]) VALUES('1608','1.2
 GO
 
 /****** Object:  Table [st_rb_Announcements]    Script Date: 4/4/2003 14:18:51 ******/
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_rb_Announcements]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
-EXEC sp_rename 'st_rb_Announcements', 'rb_Announcements_st'
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_rb_Announcements]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+--EXEC sp_rename 'st_rb_Announcements', 'rb_Announcements_st'
+--GO
 
 /****** Object:  Table [st_rb_Contacts]    Script Date: 4/4/2003 14:18:51 ******/
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_rb_Contacts]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
-EXEC sp_rename 'st_rb_Contacts', 'rb_Contacts_st'
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_rb_Contacts]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+--EXEC sp_rename 'st_rb_Contacts', 'rb_Contacts_st'
+--GO
 
 /****** Object:  Table [st_rb_Documents]    Script Date: 4/4/2003 14:18:51 ******/
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_rb_Documents]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
-EXEC sp_rename 'st_rb_Documents', 'rb_Documents_st'
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_rb_Documents]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+--EXEC sp_rename 'st_rb_Documents', 'rb_Documents_st'
+--GO
 
 /****** Object:  Table [st_rb_Events]    Script Date: 4/4/2003 14:18:51 ******/
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_rb_Events]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
@@ -326,313 +326,313 @@ END
 
 GO
 
-ALTER   PROCEDURE rb_AddAnnouncement
-(
-    @ModuleID       int,
-    @UserName       nvarchar(100),
-    @Title          nvarchar(150),
-    @MoreLink       nvarchar(150),
-    @MobileMoreLink nvarchar(150),
-    @ExpireDate     DateTime,
-    @Description    nvarchar(2000),
-    @ItemID         int OUTPUT
-)
-AS
+--ALTER   PROCEDURE rb_AddAnnouncement
+--(
+--    @ModuleID       int,
+--    @UserName       nvarchar(100),
+--    @Title          nvarchar(150),
+--    @MoreLink       nvarchar(150),
+--    @MobileMoreLink nvarchar(150),
+--    @ExpireDate     DateTime,
+--    @Description    nvarchar(2000),
+--    @ItemID         int OUTPUT
+--)
+--AS
 
-INSERT INTO rb_Announcements_st
-(
-    ModuleID,
-    CreatedByUser,
-    CreatedDate,
-    Title,
-    MoreLink,
-    MobileMoreLink,
-    ExpireDate,
-    Description
-)
+--INSERT INTO rb_Announcements_st
+--(
+--    ModuleID,
+--    CreatedByUser,
+--    CreatedDate,
+--    Title,
+--    MoreLink,
+--    MobileMoreLink,
+--    ExpireDate,
+--    Description
+--)
 
-VALUES
-(
-    @ModuleID,
-    @UserName,
-    GetDate(),
-    @Title,
-    @MoreLink,
-    @MobileMoreLink,
-    @ExpireDate,
-    @Description
-)
+--VALUES
+--(
+--    @ModuleID,
+--    @UserName,
+--    GetDate(),
+--    @Title,
+--    @MoreLink,
+--    @MobileMoreLink,
+--    @ExpireDate,
+--    @Description
+--)
 
-SELECT
-    @ItemID = @@IDENTITY
-GO
+--SELECT
+--    @ItemID = @@IDENTITY
+--GO
 
-ALTER   PROCEDURE rb_DeleteAnnouncement
-(
-    @ItemID int
-)
-AS
+--ALTER   PROCEDURE rb_DeleteAnnouncement
+--(
+--    @ItemID int
+--)
+--AS
 
-DELETE FROM
-    rb_Announcements_st
+--DELETE FROM
+--    rb_Announcements_st
 
-WHERE
-    ItemID = @ItemID
-GO
+--WHERE
+--    ItemID = @ItemID
+--GO
 
 
-ALTER   PROCEDURE rb_UpdateAnnouncement
-(
-    @ItemID         int,
-    @UserName       nvarchar(100),
-    @Title          nvarchar(150),
-    @MoreLink       nvarchar(150),
-    @MobileMoreLink nvarchar(150),
-    @ExpireDate     datetime,
-    @Description    nvarchar(2000)
-)
-AS
+--ALTER   PROCEDURE rb_UpdateAnnouncement
+--(
+--    @ItemID         int,
+--    @UserName       nvarchar(100),
+--    @Title          nvarchar(150),
+--    @MoreLink       nvarchar(150),
+--    @MobileMoreLink nvarchar(150),
+--    @ExpireDate     datetime,
+--    @Description    nvarchar(2000)
+--)
+--AS
 
-UPDATE
-    rb_Announcements_st
+--UPDATE
+--    rb_Announcements_st
 
-SET
-    CreatedByUser   = @UserName,
-    CreatedDate     = GetDate(),
-    Title           = @Title,
-    MoreLink        = @MoreLink,
-    MobileMoreLink  = @MobileMoreLink,
-    ExpireDate      = @ExpireDate,
-    Description     = @Description
+--SET
+--    CreatedByUser   = @UserName,
+--    CreatedDate     = GetDate(),
+--    Title           = @Title,
+--    MoreLink        = @MoreLink,
+--    MobileMoreLink  = @MobileMoreLink,
+--    ExpireDate      = @ExpireDate,
+--    Description     = @Description
 
-WHERE
-    ItemID = @ItemID
-GO
+--WHERE
+--    ItemID = @ItemID
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_rb_AnnouncementsModified]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
-drop trigger [st_rb_AnnouncementsModified]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_rb_AnnouncementsModified]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
+--drop trigger [st_rb_AnnouncementsModified]
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_Announcements_stModified]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
-drop trigger [rb_Announcements_stModified]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_Announcements_stModified]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
+--drop trigger [rb_Announcements_stModified]
+--GO
 
-CREATE TRIGGER [rb_Announcements_stModified]
-ON [rb_Announcements_st]
-FOR DELETE, INSERT, UPDATE 
-AS 
-BEGIN
-	DECLARE ChangedModules CURSOR FOR
-		SELECT ModuleID
-		FROM inserted
-		UNION
-		SELECT ModuleID
-		FROM deleted
+--CREATE TRIGGER [rb_Announcements_stModified]
+--ON [rb_Announcements_st]
+--FOR DELETE, INSERT, UPDATE 
+--AS 
+--BEGIN
+--	DECLARE ChangedModules CURSOR FOR
+--		SELECT ModuleID
+--		FROM inserted
+--		UNION
+--		SELECT ModuleID
+--		FROM deleted
 
-	DECLARE @ModID	int
+--	DECLARE @ModID	int
 
-	OPEN ChangedModules	
+--	OPEN ChangedModules	
 
-	FETCH NEXT FROM ChangedModules
-	INTO @ModID
+--	FETCH NEXT FROM ChangedModules
+--	INTO @ModID
 
-	WHILE @@FETCH_STATUS = 0
-	BEGIN
-		EXEC rb_ModuleEdited @ModID
+--	WHILE @@FETCH_STATUS = 0
+--	BEGIN
+--		EXEC rb_ModuleEdited @ModID
 
-		FETCH NEXT FROM ChangedModules
-		INTO @ModID
-	END
+--		FETCH NEXT FROM ChangedModules
+--		INTO @ModID
+--	END
 
-	CLOSE ChangedModules
-	DEALLOCATE ChangedModules
+--	CLOSE ChangedModules
+--	DEALLOCATE ChangedModules
 
-END
-GO
+--END
+--GO
 
-ALTER   PROCEDURE rb_GetAnnouncements
-(
-    @ModuleID int,
-    @WorkflowVersion int
-)
-AS
+--ALTER   PROCEDURE rb_GetAnnouncements
+--(
+--    @ModuleID int,
+--    @WorkflowVersion int
+--)
+--AS
 
-IF ( @WorkflowVersion = 1 )
-	SELECT
-	    ItemID,
-	    CreatedByUser,
-	    CreatedDate,
-	    Title,
-	    MoreLink,
-	    MobileMoreLink,
-	    ExpireDate,
-	    Description
-	FROM 
-	    rb_Announcements
-	WHERE
-	    ModuleID = @ModuleID
-	  AND
-	    ExpireDate > GetDate()
-ELSE
-	SELECT
-	    ItemID,
-	    CreatedByUser,
-	    CreatedDate,
-	    Title,
-	    MoreLink,
-	    MobileMoreLink,
-	    ExpireDate,
-	    Description
-	FROM 
-	    rb_Announcements_st
-	WHERE
-	    ModuleID = @ModuleID
-	  AND
-	    ExpireDate > GetDate()
-GO
+--IF ( @WorkflowVersion = 1 )
+--	SELECT
+--	    ItemID,
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Title,
+--	    MoreLink,
+--	    MobileMoreLink,
+--	    ExpireDate,
+--	    Description
+--	FROM 
+--	    rb_Announcements
+--	WHERE
+--	    ModuleID = @ModuleID
+--	  AND
+--	    ExpireDate > GetDate()
+--ELSE
+--	SELECT
+--	    ItemID,
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Title,
+--	    MoreLink,
+--	    MobileMoreLink,
+--	    ExpireDate,
+--	    Description
+--	FROM 
+--	    rb_Announcements_st
+--	WHERE
+--	    ModuleID = @ModuleID
+--	  AND
+--	    ExpireDate > GetDate()
+--GO
 
-ALTER   PROCEDURE rb_AddContact
-(
-    @ModuleID int,
-    @UserName nvarchar(100),
-    @Name     nvarchar(50),
-    @Role     nvarchar(100),
-    @Email    nvarchar(100),
-    @Contact1 nvarchar(250),
-    @Contact2 nvarchar(250),
-    @ItemID   int OUTPUT
-)
-AS
+--ALTER   PROCEDURE rb_AddContact
+--(
+--    @ModuleID int,
+--    @UserName nvarchar(100),
+--    @Name     nvarchar(50),
+--    @Role     nvarchar(100),
+--    @Email    nvarchar(100),
+--    @Contact1 nvarchar(250),
+--    @Contact2 nvarchar(250),
+--    @ItemID   int OUTPUT
+--)
+--AS
 
-INSERT INTO rb_Contacts_st
-(
-    CreatedByUser,
-    CreatedDate,
-    ModuleID,
-    Name,
-    Role,
-    Email,
-    Contact1,
-    Contact2
-)
+--INSERT INTO rb_Contacts_st
+--(
+--    CreatedByUser,
+--    CreatedDate,
+--    ModuleID,
+--    Name,
+--    Role,
+--    Email,
+--    Contact1,
+--    Contact2
+--)
 
-VALUES
-(
-    @UserName,
-    GetDate(),
-    @ModuleID,
-    @Name,
-    @Role,
-    @Email,
-    @Contact1,
-    @Contact2
-)
+--VALUES
+--(
+--    @UserName,
+--    GetDate(),
+--    @ModuleID,
+--    @Name,
+--    @Role,
+--    @Email,
+--    @Contact1,
+--    @Contact2
+--)
 
-SELECT
-    @ItemID = @@IDENTITY
-GO
+--SELECT
+--    @ItemID = @@IDENTITY
+--GO
 
-ALTER   PROCEDURE rb_DeleteContact
-(
-    @ItemID int
-)
-AS
+--ALTER   PROCEDURE rb_DeleteContact
+--(
+--    @ItemID int
+--)
+--AS
 
-DELETE FROM
-    rb_Contacts_st
+--DELETE FROM
+--    rb_Contacts_st
 
-WHERE
-    ItemID = @ItemID
-GO
-SET QUOTED_IDENTIFIER OFF 
-GO
-SET ANSI_NULLS ON 
-GO
+--WHERE
+--    ItemID = @ItemID
+--GO
+--SET QUOTED_IDENTIFIER OFF 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
-SET QUOTED_IDENTIFIER ON 
-GO
-SET ANSI_NULLS ON 
-GO
+--SET QUOTED_IDENTIFIER ON 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
 /****** Oggetto: stored procedure GetContacts    Data dello script: 07/11/2002 22.28.13 ******/
 
 
-ALTER   PROCEDURE rb_GetContacts
-(
-    @ModuleID int,
-    @WorkflowVersion int
-)
-AS
+--ALTER   PROCEDURE rb_GetContacts
+--(
+--    @ModuleID int,
+--    @WorkflowVersion int
+--)
+--AS
 
-IF (@WorkflowVersion = 1)
-	SELECT
-	    ItemID,
-	    CreatedDate,
-	    CreatedByUser,
-	    Name,
-	    Role,
-	    Email,
-	    Contact1,
-	    Contact2
-	FROM
-	    rb_Contacts
-	WHERE
-	    ModuleID = @ModuleID
-ELSE
-	SELECT
-	    ItemID,
-	    CreatedDate,
-	    CreatedByUser,
-	    Name,
-	    Role,
-	    Email,
-	    Contact1,
-	    Contact2
-	FROM
-	    rb_Contacts_st
-	WHERE
-	    ModuleID = @ModuleID
-GO
-SET QUOTED_IDENTIFIER OFF 
-GO
-SET ANSI_NULLS ON 
-GO
+--IF (@WorkflowVersion = 1)
+--	SELECT
+--	    ItemID,
+--	    CreatedDate,
+--	    CreatedByUser,
+--	    Name,
+--	    Role,
+--	    Email,
+--	    Contact1,
+--	    Contact2
+--	FROM
+--	    rb_Contacts
+--	WHERE
+--	    ModuleID = @ModuleID
+--ELSE
+--	SELECT
+--	    ItemID,
+--	    CreatedDate,
+--	    CreatedByUser,
+--	    Name,
+--	    Role,
+--	    Email,
+--	    Contact1,
+--	    Contact2
+--	FROM
+--	    rb_Contacts_st
+--	WHERE
+--	    ModuleID = @ModuleID
+--GO
+--SET QUOTED_IDENTIFIER OFF 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
-SET QUOTED_IDENTIFIER ON 
-GO
-SET ANSI_NULLS ON 
-GO
+--SET QUOTED_IDENTIFIER ON 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
 /****** Oggetto: stored procedure rb_UpdateContact    Data dello script: 07/11/2002 22.28.14 ******/
 
 
-ALTER   PROCEDURE rb_UpdateContact
-(
-    @ItemID   int,
-    @UserName nvarchar(100),
-    @Name     nvarchar(50),
-    @Role     nvarchar(100),
-    @Email    nvarchar(100),
-    @Contact1 nvarchar(250),
-    @Contact2 nvarchar(250)
-)
-AS
+--ALTER   PROCEDURE rb_UpdateContact
+--(
+--    @ItemID   int,
+--    @UserName nvarchar(100),
+--    @Name     nvarchar(50),
+--    @Role     nvarchar(100),
+--    @Email    nvarchar(100),
+--    @Contact1 nvarchar(250),
+--    @Contact2 nvarchar(250)
+--)
+--AS
 
-UPDATE
-    rb_Contacts_st
+--UPDATE
+--    rb_Contacts_st
 
-SET
-    CreatedByUser = @UserName,
-    CreatedDate   = GetDate(),
-    Name          = @Name,
-    Role          = @Role,
-    Email         = @Email,
-    Contact1      = @Contact1,
-    Contact2      = @Contact2
+--SET
+--    CreatedByUser = @UserName,
+--    CreatedDate   = GetDate(),
+--    Name          = @Name,
+--    Role          = @Role,
+--    Email         = @Email,
+--    Contact1      = @Contact1,
+--    Contact2      = @Contact2
 
-WHERE
-    ItemID = @ItemID
-GO
+--WHERE
+--    ItemID = @ItemID
+--GO
 
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_Revert]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
 DROP PROCEDURE [rb_Revert]
@@ -821,321 +821,321 @@ AS
 	RETURN
 GO
 
-ALTER   PROCEDURE rb_UpdateContact
-(
-    @ItemID   int,
-    @UserName nvarchar(100),
-    @Name     nvarchar(50),
-    @Role     nvarchar(100),
-    @Email    nvarchar(100),
-    @Contact1 nvarchar(250),
-    @Contact2 nvarchar(250)
-)
-AS
+--ALTER   PROCEDURE rb_UpdateContact
+--(
+--    @ItemID   int,
+--    @UserName nvarchar(100),
+--    @Name     nvarchar(50),
+--    @Role     nvarchar(100),
+--    @Email    nvarchar(100),
+--    @Contact1 nvarchar(250),
+--    @Contact2 nvarchar(250)
+--)
+--AS
 
-UPDATE
-    rb_Contacts_st
+--UPDATE
+--    rb_Contacts_st
 
-SET
-    CreatedByUser = @UserName,
-    CreatedDate   = GetDate(),
-    Name          = @Name,
-    Role          = @Role,
-    Email         = @Email,
-    Contact1      = @Contact1,
-    Contact2      = @Contact2
+--SET
+--    CreatedByUser = @UserName,
+--    CreatedDate   = GetDate(),
+--    Name          = @Name,
+--    Role          = @Role,
+--    Email         = @Email,
+--    Contact1      = @Contact1,
+--    Contact2      = @Contact2
 
-WHERE
-    ItemID = @ItemID
-GO
-SET QUOTED_IDENTIFIER OFF 
-GO
-SET ANSI_NULLS ON 
-GO
+--WHERE
+--    ItemID = @ItemID
+--GO
+--SET QUOTED_IDENTIFIER OFF 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_rb_DocumentsModified]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
-drop trigger [st_rb_DocumentsModified]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_rb_DocumentsModified]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
+--drop trigger [st_rb_DocumentsModified]
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_Documents_stModified]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
-drop trigger [rb_Documents_stModified]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_Documents_stModified]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
+--drop trigger [rb_Documents_stModified]
+--GO
 
-SET QUOTED_IDENTIFIER ON 
-GO
-SET ANSI_NULLS ON 
-GO
+--SET QUOTED_IDENTIFIER ON 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
-CREATE  TRIGGER [rb_Documents_stModified]
-ON [rb_Documents_st]
-FOR DELETE, INSERT, UPDATE 
-AS 
-BEGIN
-	DECLARE ChangedModules CURSOR FOR
-		SELECT ModuleID
-		FROM inserted
-		UNION
-		SELECT ModuleID
-		FROM deleted
+--CREATE  TRIGGER [rb_Documents_stModified]
+--ON [rb_Documents_st]
+--FOR DELETE, INSERT, UPDATE 
+--AS 
+--BEGIN
+--	DECLARE ChangedModules CURSOR FOR
+--		SELECT ModuleID
+--		FROM inserted
+--		UNION
+--		SELECT ModuleID
+--		FROM deleted
 
-	DECLARE @ModID	int
+--	DECLARE @ModID	int
 
-	OPEN ChangedModules	
+--	OPEN ChangedModules	
 
-	FETCH NEXT FROM ChangedModules
-	INTO @ModID
+--	FETCH NEXT FROM ChangedModules
+--	INTO @ModID
 
-	WHILE @@FETCH_STATUS = 0
-	BEGIN
-		EXEC rb_ModuleEdited @ModID
+--	WHILE @@FETCH_STATUS = 0
+--	BEGIN
+--		EXEC rb_ModuleEdited @ModID
 
-		FETCH NEXT FROM ChangedModules
-		INTO @ModID
-	END
+--		FETCH NEXT FROM ChangedModules
+--		INTO @ModID
+--	END
 
-	CLOSE ChangedModules
-	DEALLOCATE ChangedModules
-END
-GO
+--	CLOSE ChangedModules
+--	DEALLOCATE ChangedModules
+--END
+--GO
 
-ALTER   PROCEDURE rb_DeleteDocument
-(
-    @ItemID int
-)
-AS
+--ALTER   PROCEDURE rb_DeleteDocument
+--(
+--    @ItemID int
+--)
+--AS
 
-DELETE FROM
-    rb_Documents_st
+--DELETE FROM
+--    rb_Documents_st
 
-WHERE
-    ItemID = @ItemID
-GO
+--WHERE
+--    ItemID = @ItemID
+--GO
 
-ALTER   PROCEDURE rb_GetDocumentContent
-(
-    @ItemID int,
-    @WorkflowVersion int
-)
-AS
+--ALTER   PROCEDURE rb_GetDocumentContent
+--(
+--    @ItemID int,
+--    @WorkflowVersion int
+--)
+--AS
 
-IF ( @WorkflowVersion = 1 )
-	SELECT
-	    Content,
-	    ContentType,
-	    ContentSize,
-	    FileFriendlyName
-	FROM
-	    rb_Documents
-	WHERE
-	    ItemID = @ItemID
-ELSE
-	SELECT
-	    Content,
-	    ContentType,
-	    ContentSize,
-	    FileFriendlyName
-	FROM
-	    rb_Documents_st
-	WHERE
-	    ItemID = @ItemID
-GO
-SET QUOTED_IDENTIFIER OFF 
-GO
-SET ANSI_NULLS ON 
-GO
+--IF ( @WorkflowVersion = 1 )
+--	SELECT
+--	    Content,
+--	    ContentType,
+--	    ContentSize,
+--	    FileFriendlyName
+--	FROM
+--	    rb_Documents
+--	WHERE
+--	    ItemID = @ItemID
+--ELSE
+--	SELECT
+--	    Content,
+--	    ContentType,
+--	    ContentSize,
+--	    FileFriendlyName
+--	FROM
+--	    rb_Documents_st
+--	WHERE
+--	    ItemID = @ItemID
+--GO
+--SET QUOTED_IDENTIFIER OFF 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
-SET QUOTED_IDENTIFIER ON 
-GO
-SET ANSI_NULLS ON 
-GO
+--SET QUOTED_IDENTIFIER ON 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
 /****** Oggetto: stored procedure GetDocuments    Data dello script: 07/11/2002 22.28.13 ******/
 
 
-ALTER   PROCEDURE rb_GetDocuments
-(
-    @ModuleID int,
-    @WorkflowVersion int
-)
-AS
+--ALTER   PROCEDURE rb_GetDocuments
+--(
+--    @ModuleID int,
+--    @WorkflowVersion int
+--)
+--AS
 
-IF ( @WorkflowVersion = 1 )
-	SELECT
-	    ItemID,
-	    FileFriendlyName,
-	    FileNameUrl,
-	    CreatedByUser,
-	    CreatedDate,
-	    Category,
-	    ContentSize
-	FROM
-	    rb_Documents
-	WHERE
-	    ModuleID = @ModuleID
-ELSE
-	SELECT
-	    ItemID,
-	    FileFriendlyName,
-	    FileNameUrl,
-	    CreatedByUser,
-	    CreatedDate,
-	    Category,
-	    ContentSize
-	FROM
-	    rb_Documents_st
-	WHERE
-	    ModuleID = @ModuleID
-GO
-SET QUOTED_IDENTIFIER OFF 
-GO
-SET ANSI_NULLS ON 
-GO
+--IF ( @WorkflowVersion = 1 )
+--	SELECT
+--	    ItemID,
+--	    FileFriendlyName,
+--	    FileNameUrl,
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Category,
+--	    ContentSize
+--	FROM
+--	    rb_Documents
+--	WHERE
+--	    ModuleID = @ModuleID
+--ELSE
+--	SELECT
+--	    ItemID,
+--	    FileFriendlyName,
+--	    FileNameUrl,
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Category,
+--	    ContentSize
+--	FROM
+--	    rb_Documents_st
+--	WHERE
+--	    ModuleID = @ModuleID
+--GO
+--SET QUOTED_IDENTIFIER OFF 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
-SET QUOTED_IDENTIFIER ON 
-GO
-SET ANSI_NULLS ON 
-GO
+--SET QUOTED_IDENTIFIER ON 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
 /****** Oggetto: stored procedure rb_GetSingleContact    Data dello script: 07/11/2002 22.28.14 ******/
 
 
 
-ALTER   PROCEDURE rb_GetSingleContact
-(
-    @ItemID int,
-    @WorkflowVersion int
-)
-AS
+--ALTER   PROCEDURE rb_GetSingleContact
+--(
+--    @ItemID int,
+--    @WorkflowVersion int
+--)
+--AS
 
-IF (@WorkflowVersion = 1)
-	SELECT
-	    CreatedByUser,
-	    CreatedDate,
-	    Name,
-	    Role,
-	    Email,
-	    Contact1,
-	    Contact2
-	FROM
-	    rb_Contacts
-	WHERE
-	    ItemID = @ItemID
-ELSE
-	SELECT
-	    CreatedByUser,
-	    CreatedDate,
-	    Name,
-	    Role,
-	    Email,
-	    Contact1,
-	    Contact2
-	FROM
-	    rb_Contacts_st
-	WHERE
-	    ItemID = @ItemID
-GO
-SET QUOTED_IDENTIFIER OFF 
-GO
-SET ANSI_NULLS ON 
-GO
+--IF (@WorkflowVersion = 1)
+--	SELECT
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Name,
+--	    Role,
+--	    Email,
+--	    Contact1,
+--	    Contact2
+--	FROM
+--	    rb_Contacts
+--	WHERE
+--	    ItemID = @ItemID
+--ELSE
+--	SELECT
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Name,
+--	    Role,
+--	    Email,
+--	    Contact1,
+--	    Contact2
+--	FROM
+--	    rb_Contacts_st
+--	WHERE
+--	    ItemID = @ItemID
+--GO
+--SET QUOTED_IDENTIFIER OFF 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
-SET QUOTED_IDENTIFIER ON 
-GO
-SET ANSI_NULLS ON 
-GO
+--SET QUOTED_IDENTIFIER ON 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
 /****** Oggetto: stored procedure rb_GetSingleDocument    Data dello script: 07/11/2002 22.28.14 ******/
 
 
-ALTER   PROCEDURE rb_GetSingleDocument
-(
-    @ItemID int,
-    @WorkflowVersion int
-)
-AS
+--ALTER   PROCEDURE rb_GetSingleDocument
+--(
+--    @ItemID int,
+--    @WorkflowVersion int
+--)
+--AS
 
-IF ( @WorkflowVersion = 1 )
-	SELECT
-	    FileFriendlyName,
-	    FileNameUrl,
-	    CreatedByUser,
-	    CreatedDate,
-	    Category,
-	    ContentSize
-	FROM
-	    rb_Documents
-	WHERE
-	    ItemID = @ItemID
-ELSE
-	SELECT
-	    FileFriendlyName,
-	    FileNameUrl,
-	    CreatedByUser,
-	    CreatedDate,
-	    Category,
-	    ContentSize
-	FROM
-	    rb_Documents_st
-	WHERE
-	    ItemID = @ItemID
-GO
-SET QUOTED_IDENTIFIER OFF 
-GO
-SET ANSI_NULLS ON 
-GO
+--IF ( @WorkflowVersion = 1 )
+--	SELECT
+--	    FileFriendlyName,
+--	    FileNameUrl,
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Category,
+--	    ContentSize
+--	FROM
+--	    rb_Documents
+--	WHERE
+--	    ItemID = @ItemID
+--ELSE
+--	SELECT
+--	    FileFriendlyName,
+--	    FileNameUrl,
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Category,
+--	    ContentSize
+--	FROM
+--	    rb_Documents_st
+--	WHERE
+--	    ItemID = @ItemID
+--GO
+--SET QUOTED_IDENTIFIER OFF 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
-SET QUOTED_IDENTIFIER ON 
-GO
-SET ANSI_NULLS ON 
-GO
+--SET QUOTED_IDENTIFIER ON 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
 /****** Oggetto: stored procedure rb_GetSingleAnnouncement    Data dello script: 07/11/2002 22.28.09 ******/
 
 
 
-ALTER   PROCEDURE rb_GetSingleAnnouncement
-(
-    @ItemID int,
-    @WorkflowVersion int
-)
-AS
+--ALTER   PROCEDURE rb_GetSingleAnnouncement
+--(
+--    @ItemID int,
+--    @WorkflowVersion int
+--)
+--AS
 
-IF ( @WorkflowVersion = 1 )
-	SELECT
-	    CreatedByUser,
-	    CreatedDate,
-	    Title,
-	    MoreLink,
-	    MobileMoreLink,
-	    ExpireDate,
-	    Description
-	FROM
-	    rb_Announcements
-	WHERE
-	    ItemID = @ItemID
-ELSE
-	SELECT
-	    CreatedByUser,
-	    CreatedDate,
-	    Title,
-	    MoreLink,
-	    MobileMoreLink,
-	    ExpireDate,
-	    Description
-	FROM
-	    rb_Announcements_st
-	WHERE
-	    ItemID = @ItemID
-GO
-SET QUOTED_IDENTIFIER OFF 
-GO
-SET ANSI_NULLS ON 
-GO
+--IF ( @WorkflowVersion = 1 )
+--	SELECT
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Title,
+--	    MoreLink,
+--	    MobileMoreLink,
+--	    ExpireDate,
+--	    Description
+--	FROM
+--	    rb_Announcements
+--	WHERE
+--	    ItemID = @ItemID
+--ELSE
+--	SELECT
+--	    CreatedByUser,
+--	    CreatedDate,
+--	    Title,
+--	    MoreLink,
+--	    MobileMoreLink,
+--	    ExpireDate,
+--	    Description
+--	FROM
+--	    rb_Announcements_st
+--	WHERE
+--	    ItemID = @ItemID
+--GO
+--SET QUOTED_IDENTIFIER OFF 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
-SET QUOTED_IDENTIFIER ON 
-GO
-SET ANSI_NULLS ON 
-GO
+--SET QUOTED_IDENTIFIER ON 
+--GO
+--SET ANSI_NULLS ON 
+--GO
 
 /****** Oggetto: stored procedure AddEvent    Data dello script: 07/11/2002 22.28.12 ******/
 
@@ -1699,241 +1699,241 @@ AS
 		[InnerResults].[KeyTable] = @Name
 GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_st_ContactsModified]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
-drop trigger [rb_st_ContactsModified]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_st_ContactsModified]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
+--drop trigger [rb_st_ContactsModified]
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_rb_ContactsModified]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
-drop trigger [st_rb_ContactsModified]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_rb_ContactsModified]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
+--drop trigger [st_rb_ContactsModified]
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_ContactsModified_st]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
-drop trigger [rb_ContactsModified_st]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_ContactsModified_st]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
+--drop trigger [rb_ContactsModified_st]
+--GO
 
-CREATE  TRIGGER [rb_ContactsModified_st]
-ON [rb_Contacts_st]
-FOR DELETE, INSERT, UPDATE 
-AS 
-BEGIN
-	DECLARE ChangedModules CURSOR FOR
-		SELECT ModuleID
-		FROM inserted
-		UNION
-		SELECT ModuleID
-		FROM deleted
+--CREATE  TRIGGER [rb_ContactsModified_st]
+--ON [rb_Contacts_st]
+--FOR DELETE, INSERT, UPDATE 
+--AS 
+--BEGIN
+--	DECLARE ChangedModules CURSOR FOR
+--		SELECT ModuleID
+--		FROM inserted
+--		UNION
+--		SELECT ModuleID
+--		FROM deleted
 
-	DECLARE @ModID	int
+--	DECLARE @ModID	int
 
-	OPEN ChangedModules	
+--	OPEN ChangedModules	
 
-	FETCH NEXT FROM ChangedModules
-	INTO @ModID
+--	FETCH NEXT FROM ChangedModules
+--	INTO @ModID
 
-	WHILE @@FETCH_STATUS = 0
-	BEGIN
-		EXEC rb_ModuleEdited @ModID
+--	WHILE @@FETCH_STATUS = 0
+--	BEGIN
+--		EXEC rb_ModuleEdited @ModID
 
-		FETCH NEXT FROM ChangedModules
-		INTO @ModID
-	END
+--		FETCH NEXT FROM ChangedModules
+--		INTO @ModID
+--	END
 
-	CLOSE ChangedModules
-	DEALLOCATE ChangedModules
+--	CLOSE ChangedModules
+--	DEALLOCATE ChangedModules
 
-END
-GO
+--END
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_UpdateDocument]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [rb_UpdateDocument]
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_UpdateDocument]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--DROP PROCEDURE [rb_UpdateDocument]
+--GO
 
-CREATE PROCEDURE rb_UpdateDocument
-(
-    @ItemID           int,
-    @ModuleID         int,
-    @FileFriendlyName nvarchar(150),
-    @FileNameUrl      nvarchar(250),
-    @UserName         nvarchar(100),
-    @Category         nvarchar(50),
-    @Content          image,
-    @ContentType      nvarchar(50),
-    @ContentSize      int
-)
-AS
-IF (@ItemID=0) OR NOT EXISTS (
-    SELECT 
-        * 
-    FROM 
-        rb_Documents_st 
-    WHERE 
-        ItemID = @ItemID
-)
-INSERT INTO rb_Documents_st
-(
-    ModuleID,
-    FileFriendlyName,
-    FileNameUrl,
-    CreatedByUser,
-    CreatedDate,
-    Category,
-    Content,
-    ContentType,
-    ContentSize
-)
+--CREATE PROCEDURE rb_UpdateDocument
+--(
+--    @ItemID           int,
+--    @ModuleID         int,
+--    @FileFriendlyName nvarchar(150),
+--    @FileNameUrl      nvarchar(250),
+--    @UserName         nvarchar(100),
+--    @Category         nvarchar(50),
+--    @Content          image,
+--    @ContentType      nvarchar(50),
+--    @ContentSize      int
+--)
+--AS
+--IF (@ItemID=0) OR NOT EXISTS (
+--    SELECT 
+--        * 
+--    FROM 
+--        rb_Documents_st 
+--    WHERE 
+--        ItemID = @ItemID
+--)
+--INSERT INTO rb_Documents_st
+--(
+--    ModuleID,
+--    FileFriendlyName,
+--    FileNameUrl,
+--    CreatedByUser,
+--    CreatedDate,
+--    Category,
+--    Content,
+--    ContentType,
+--    ContentSize
+--)
 
-VALUES
-(
-    @ModuleID,
-    @FileFriendlyName,
-    @FileNameUrl,
-    @UserName,
-    GetDate(),
-    @Category,
-    @Content,
-    @ContentType,
-    @ContentSize
-)
-ELSE
+--VALUES
+--(
+--    @ModuleID,
+--    @FileFriendlyName,
+--    @FileNameUrl,
+--    @UserName,
+--    GetDate(),
+--    @Category,
+--    @Content,
+--    @ContentType,
+--    @ContentSize
+--)
+--ELSE
 
-BEGIN
+--BEGIN
 
-IF (@ContentSize=0)
+--IF (@ContentSize=0)
 
-UPDATE 
-    rb_Documents_st
+--UPDATE 
+--    rb_Documents_st
 
-SET 
-    CreatedByUser    = @UserName,
-    CreatedDate      = GetDate(),
-    Category         = @Category,
-    FileFriendlyName = @FileFriendlyName,
-    FileNameUrl      = @FileNameUrl
+--SET 
+--    CreatedByUser    = @UserName,
+--    CreatedDate      = GetDate(),
+--    Category         = @Category,
+--    FileFriendlyName = @FileFriendlyName,
+--    FileNameUrl      = @FileNameUrl
 
-WHERE
-    ItemID = @ItemID
-ELSE
+--WHERE
+--    ItemID = @ItemID
+--ELSE
 
-UPDATE
-    rb_Documents_st
+--UPDATE
+--    rb_Documents_st
 
-SET
-    CreatedByUser     = @UserName,
-    CreatedDate       = GetDate(),
-    Category          = @Category,
-    FileFriendlyName  = @FileFriendlyName,
-    FileNameUrl       = @FileNameUrl,
-    Content           = @Content,
-    ContentType       = @ContentType,
-    ContentSize       = @ContentSize
-WHERE
-    ItemID = @ItemID
-END
-GO
+--SET
+--    CreatedByUser     = @UserName,
+--    CreatedDate       = GetDate(),
+--    Category          = @Category,
+--    FileFriendlyName  = @FileFriendlyName,
+--    FileNameUrl       = @FileNameUrl,
+--    Content           = @Content,
+--    ContentType       = @ContentType,
+--    ContentSize       = @ContentSize
+--WHERE
+--    ItemID = @ItemID
+--END
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_st_rb_Announcements_rb_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
-ALTER TABLE [rb_Announcements_st] DROP CONSTRAINT FK_st_rb_Announcements_rb_Modules
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_st_rb_Announcements_rb_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
+--ALTER TABLE [rb_Announcements_st] DROP CONSTRAINT FK_st_rb_Announcements_rb_Modules
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_rb_Announcements_st_rb_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
-ALTER TABLE [rb_Announcements_st] DROP CONSTRAINT FK_rb_Announcements_st_rb_Modules
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_rb_Announcements_st_rb_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
+--ALTER TABLE [rb_Announcements_st] DROP CONSTRAINT FK_rb_Announcements_st_rb_Modules
+--GO
 
-ALTER TABLE [rb_Announcements_st] ADD 
-	CONSTRAINT [FK_rb_Announcements_st_rb_Modules] FOREIGN KEY 
-	(
-		[ModuleID]
-	) REFERENCES [rb_Modules] (
-		[ModuleID]
-	) ON DELETE CASCADE  NOT FOR REPLICATION 
-GO
+--ALTER TABLE [rb_Announcements_st] ADD 
+--	CONSTRAINT [FK_rb_Announcements_st_rb_Modules] FOREIGN KEY 
+--	(
+--		[ModuleID]
+--	) REFERENCES [rb_Modules] (
+--		[ModuleID]
+--	) ON DELETE CASCADE  NOT FOR REPLICATION 
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_st_rb_Announcements]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
-ALTER TABLE [rb_Announcements_st] DROP CONSTRAINT PK_st_rb_Announcements
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_st_rb_Announcements]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
+--ALTER TABLE [rb_Announcements_st] DROP CONSTRAINT PK_st_rb_Announcements
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_rb_Announcements_st]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
-ALTER TABLE [rb_Announcements_st] DROP CONSTRAINT PK_rb_Announcements_st
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_rb_Announcements_st]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
+--ALTER TABLE [rb_Announcements_st] DROP CONSTRAINT PK_rb_Announcements_st
+--GO
 
-ALTER TABLE [rb_Announcements_st] ADD 
-	CONSTRAINT [PK_rb_Announcements_st] PRIMARY KEY  NONCLUSTERED 
-	(
-		[ItemID]
-	)  ON [PRIMARY] 
-GO
+--ALTER TABLE [rb_Announcements_st] ADD 
+--	CONSTRAINT [PK_rb_Announcements_st] PRIMARY KEY  NONCLUSTERED 
+--	(
+--		[ItemID]
+--	)  ON [PRIMARY] 
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_st_rb_Contacts_rb_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
-ALTER TABLE [rb_Contacts_st] DROP CONSTRAINT FK_st_rb_Contacts_rb_Modules
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_st_rb_Contacts_rb_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
+--ALTER TABLE [rb_Contacts_st] DROP CONSTRAINT FK_st_rb_Contacts_rb_Modules
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_rb_Contacts_st_rb_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
-ALTER TABLE [rb_Contacts_st] DROP CONSTRAINT FK_rb_Contacts_st_rb_Modules
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_rb_Contacts_st_rb_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
+--ALTER TABLE [rb_Contacts_st] DROP CONSTRAINT FK_rb_Contacts_st_rb_Modules
+--GO
 
-ALTER TABLE [rb_Contacts_st] ADD 
-	CONSTRAINT [FK_rb_Contacts_st_rb_Modules] FOREIGN KEY 
-	(
-		[ModuleID]
-	) REFERENCES [rb_Modules] (
-		[ModuleID]
-	) ON DELETE CASCADE  NOT FOR REPLICATION 
-GO
+--ALTER TABLE [rb_Contacts_st] ADD 
+--	CONSTRAINT [FK_rb_Contacts_st_rb_Modules] FOREIGN KEY 
+--	(
+--		[ModuleID]
+--	) REFERENCES [rb_Modules] (
+--		[ModuleID]
+--	) ON DELETE CASCADE  NOT FOR REPLICATION 
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_st_rb_Contacts]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
-ALTER TABLE [rb_Contacts_st] DROP CONSTRAINT PK_st_rb_Contacts
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_st_rb_Contacts]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
+--ALTER TABLE [rb_Contacts_st] DROP CONSTRAINT PK_st_rb_Contacts
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_rb_Contacts_st]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
-ALTER TABLE [rb_Contacts_st] DROP CONSTRAINT PK_rb_Contacts_st
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_rb_Contacts_st]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
+--ALTER TABLE [rb_Contacts_st] DROP CONSTRAINT PK_rb_Contacts_st
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_st_Contacts]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
-ALTER TABLE [rb_Contacts_st] DROP CONSTRAINT PK_st_Contacts
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_st_Contacts]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
+--ALTER TABLE [rb_Contacts_st] DROP CONSTRAINT PK_st_Contacts
+--GO
 
-ALTER TABLE [rb_Contacts_st] ADD 
-	CONSTRAINT [PK_rb_Contacts_st] PRIMARY KEY  NONCLUSTERED 
-	(
-		[ItemID]
-	)  ON [PRIMARY] 
-GO
+--ALTER TABLE [rb_Contacts_st] ADD 
+--	CONSTRAINT [PK_rb_Contacts_st] PRIMARY KEY  NONCLUSTERED 
+--	(
+--		[ItemID]
+--	)  ON [PRIMARY] 
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_st_rb_Documents_rb_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
-ALTER TABLE [rb_Documents_st] DROP CONSTRAINT FK_st_rb_Documents_rb_Modules
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_st_rb_Documents_rb_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
+--ALTER TABLE [rb_Documents_st] DROP CONSTRAINT FK_st_rb_Documents_rb_Modules
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_rb_Documents_st_rb_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
-ALTER TABLE [rb_Documents_st] DROP CONSTRAINT FK_rb_Documents_st_rb_Modules
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_rb_Documents_st_rb_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
+--ALTER TABLE [rb_Documents_st] DROP CONSTRAINT FK_rb_Documents_st_rb_Modules
+--GO
 
-ALTER TABLE [rb_Documents_st] ADD 
-	CONSTRAINT [FK_rb_Documents_st_rb_Modules] FOREIGN KEY 
-	(
-		[ModuleID]
-	) REFERENCES [rb_Modules] (
-		[ModuleID]
-	) ON DELETE CASCADE  NOT FOR REPLICATION 
-GO
+--ALTER TABLE [rb_Documents_st] ADD 
+--	CONSTRAINT [FK_rb_Documents_st_rb_Modules] FOREIGN KEY 
+--	(
+--		[ModuleID]
+--	) REFERENCES [rb_Modules] (
+--		[ModuleID]
+--	) ON DELETE CASCADE  NOT FOR REPLICATION 
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_st_rb_Documents]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
-ALTER TABLE [rb_Documents_st] DROP CONSTRAINT PK_st_rb_Documents
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_st_rb_Documents]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
+--ALTER TABLE [rb_Documents_st] DROP CONSTRAINT PK_st_rb_Documents
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_rb_Documents_st]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
-ALTER TABLE [rb_Documents_st] DROP CONSTRAINT PK_rb_Documents_st
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_rb_Documents_st]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
+--ALTER TABLE [rb_Documents_st] DROP CONSTRAINT PK_rb_Documents_st
+--GO
 
-IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_st_Documents]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
-ALTER TABLE [rb_Documents_st] DROP CONSTRAINT PK_st_Documents
-GO
+--IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_st_Documents]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
+--ALTER TABLE [rb_Documents_st] DROP CONSTRAINT PK_st_Documents
+--GO
 
-ALTER TABLE [rb_Documents_st] ADD 
-	CONSTRAINT [PK_rb_Documents_st] PRIMARY KEY  NONCLUSTERED 
-	(
-		[ItemID]
-	)  ON [PRIMARY] 
-GO
+--ALTER TABLE [rb_Documents_st] ADD 
+--	CONSTRAINT [PK_rb_Documents_st] PRIMARY KEY  NONCLUSTERED 
+--	(
+--		[ItemID]
+--	)  ON [PRIMARY] 
+--GO
 
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_st_rb_Events_rb_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
 ALTER TABLE [rb_Events_st] DROP CONSTRAINT FK_st_rb_Events_rb_Modules
