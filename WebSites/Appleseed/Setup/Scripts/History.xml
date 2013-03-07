@@ -56,7 +56,7 @@
       <Installer>DesktopModules/CommunityModules/EnhancedLinks/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/Events/install.xml</Installer>
       <!--<Installer>DesktopModules/CommunityModules/FAQs/install.xml</Installer>-->
-      <Installer>DesktopModules/CommunityModules/FileDirectoryTree/install.xml</Installer>
+      <!--<Installer>DesktopModules/CommunityModules/FileDirectoryTree/install.xml</Installer>-->
       <Installer>DesktopModules/CommunityModules/FlashModule/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/HTMLDocument/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/IframeModule/install.xml</Installer>

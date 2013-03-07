@@ -292,12 +292,12 @@ GO
 EXEC rb_Modules_IU 	1711,171, '{3B8E3585-58B7-4F56-8AB6-C04A2BFA6589}', 2, N'ContentPane', N'Monitoring', N'Admins', N'Admins;', N'Admins;', N'Admins;', N'Admins;', 0, 0, NULL, 0, 0, NULL, NULL, '', NULL, '', NULL, 0, 0, N'Admins;', N'Admins;'
 GO
 
-EXEC rb_Tabs_IU 	172	,	170	,	1072	,	0	,	N'Error Logs'	,	N''	,	N'Admins;'	,	0	,	NULL
-GO
-EXEC rb_Modules_IU 	172, 172, '{2502DB18-B580-4F90-8CB4-C15E6E53100B}', 1, N'ContentPane', N'Error Logs', N'Admins', N'Admins;', N'Admins;', N'Admins;', N'Admins;', 0, 0, NULL, 0, 0, NULL, NULL, '', NULL, '', NULL, 0, 0, N'Admins;', N'Admins;'
-GO
-EXEC rb_ModuleSettings_IU 	172	,	N'Directory'	,	N'~/rb_logs' --TODO
-GO
+--EXEC rb_Tabs_IU 	172	,	170	,	1072	,	0	,	N'Error Logs'	,	N''	,	N'Admins;'	,	0	,	NULL
+--GO
+--EXEC rb_Modules_IU 	172, 172, '{2502DB18-B580-4F90-8CB4-C15E6E53100B}', 1, N'ContentPane', N'Error Logs', N'Admins', N'Admins;', N'Admins;', N'Admins;', N'Admins;', 0, 0, NULL, 0, 0, NULL, NULL, '', NULL, '', NULL, 0, 0, N'Admins;', N'Admins;'
+--GO
+--EXEC rb_ModuleSettings_IU 	172	,	N'Directory'	,	N'~/rb_logs' --TODO
+--GO
 
 EXEC rb_Tabs_IU 	173	,	170	,	1073	,	0	,	N'EventLogs'	,	N''	,	N'Admins;'	,	0	,	NULL
 GO
