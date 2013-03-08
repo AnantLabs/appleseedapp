@@ -617,20 +617,6 @@
     <Compile Include="DesktopDefault.aspx.designer.cs">
       <DependentUpon>DesktopDefault.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DesktopModules\CommunityModules\AmazonFull\Books.ascx.cs">
-      <DependentUpon>Books.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\AmazonFull\Books.ascx.designer.cs">
-      <DependentUpon>Books.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\AmazonFull\BooksEdit.aspx.cs">
-      <DependentUpon>BooksEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\AmazonFull\BooksEdit.aspx.designer.cs">
-      <DependentUpon>BooksEdit.aspx</DependentUpon>
-    </Compile>
     <Compile Include="DesktopModules\CommunityModules\Announcements\Announcements.ascx.cs">
       <DependentUpon>Announcements.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5836,12 +5822,6 @@
     <Content Include="Design\Themes\Module-No-Style\icon\view.gif" />
     <Content Include="Design\Themes\Module-No-Style\Theme.xml" />
     <Content Include="DesktopDefault.aspx" />
-    <Content Include="DesktopModules\CommunityModules\AmazonFull\AmazonFull.xml" />
-    <Content Include="DesktopModules\CommunityModules\AmazonFull\Books.ascx" />
-    <Content Include="DesktopModules\CommunityModules\AmazonFull\BooksEdit.aspx" />
-    <Content Include="DesktopModules\CommunityModules\AmazonFull\install.sql" />
-    <Content Include="DesktopModules\CommunityModules\AmazonFull\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\AmazonFull\uninstall.sql" />
     <Content Include="DesktopModules\CommunityModules\Announcements\Announcements.ascx" />
     <Content Include="DesktopModules\CommunityModules\Announcements\Announcements.xml" />
     <Content Include="DesktopModules\CommunityModules\Announcements\AnnouncementsEdit.aspx" />
@@ -6381,9 +6361,6 @@
     <Content Include="DesktopModules\CommunityModules\XmlModule\sales.xml" />
     <Content Include="DesktopModules\CommunityModules\XmlModule\sales.xsl" />
     <Content Include="DesktopModules\CommunityModules\XmlModule\XmlModule.ascx" />
-    <Content Include="DesktopModules\CommunityModules\YahooGroups\DBPatch.sql" />
-    <Content Include="DesktopModules\CommunityModules\YahooGroups\readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\YahooGroups\YahooGroups.ascx" />
     <Content Include="DesktopModules\CoreModules\AddModule\err.txt" />
     <Content Include="DesktopModules\CoreModules\AddModule\example.gif" />
     <Content Include="DesktopModules\CoreModules\AddModule\install.xml" />
