@@ -47,44 +47,44 @@
       <!--<Installer>DesktopModules/CommunityModules/Articles/install.xml</Installer>-->
       <!--<Installer>DesktopModules/CommunityModules/Blog/install.xml</Installer>-->
       <!--<Installer>DesktopModules/CommunityModules/BreadCrumbs/install.xml</Installer>-->
-      <Installer>DesktopModules/CommunityModules/ComponentModule/install.xml</Installer>
+      <!--<Installer>DesktopModules/CommunityModules/ComponentModule/install.xml</Installer>-->
       <!--<Installer>DesktopModules/CommunityModules/Contacts/install.xml</Installer>-->
       <!--<Installer>DesktopModules/CommunityModules/DailyDilbert/install.xml</Installer>-->
       <!--<Installer>DesktopModules/CommunityModules/Discussion/install.xml</Installer>-->
       <!--<Installer>DesktopModules/CommunityModules/Documents/install.xml</Installer>-->
       <Installer>DesktopModules/CommunityModules/EnhancedHTML/install.xml</Installer>
-      <Installer>DesktopModules/CommunityModules/EnhancedLinks/install.xml</Installer>
-      <Installer>DesktopModules/CommunityModules/Events/install.xml</Installer>
+      <!--<Installer>DesktopModules/CommunityModules/EnhancedLinks/install.xml</Installer>-->
+      <!--<Installer>DesktopModules/CommunityModules/Events/install.xml</Installer>-->
       <!--<Installer>DesktopModules/CommunityModules/FAQs/install.xml</Installer>-->
       <!--<Installer>DesktopModules/CommunityModules/FileDirectoryTree/install.xml</Installer>-->
-      <Installer>DesktopModules/CommunityModules/FlashModule/install.xml</Installer>
+      <!--<Installer>DesktopModules/CommunityModules/FlashModule/install.xml</Installer>-->
       <Installer>DesktopModules/CommunityModules/HTMLDocument/install.xml</Installer>
       <Installer>DesktopModules/CommunityModules/IframeModule/install.xml</Installer>
-      <Installer>DesktopModules/CommunityModules/Image/install.xml</Installer>
+      <!--<Installer>DesktopModules/CommunityModules/Image/install.xml</Installer>-->
       <Installer>DesktopModules/CommunityModules/LanguageSwitcher/install.xml</Installer>
-      <Installer>DesktopModules/CommunityModules/MapQuest/install.xml</Installer>
+      <!--<Installer>DesktopModules/CommunityModules/MapQuest/install.xml</Installer>-->
       <!--<Installer>DesktopModules/CommunityModules/MileStones/install.xml</Installer>-->
       <!--<Installer>DesktopModules/CommunityModules/PageKeyPhrase/install.xml</Installer>-->
       <Installer>DesktopModules/CommunityModules/Pictures/install.xml</Installer>
       <!--<Installer>DesktopModules/CommunityModules/PortalSearch/install.xml</Installer>-->
-      <Installer>DesktopModules/CommunityModules/Quiz/install.xml</Installer>
-      <Installer>DesktopModules/CommunityModules/Quote/install.xml</Installer>
+      <!--<Installer>DesktopModules/CommunityModules/Quiz/install.xml</Installer>-->
+      <!--<Installer>DesktopModules/CommunityModules/Quote/install.xml</Installer>-->
       <Installer>DesktopModules/CommunityModules/SendThoughts/install.xml</Installer>
       <!--<Installer>DesktopModules/CommunityModules/ServiceItemList/install.xml</Installer>-->
       <Installer>DesktopModules/CommunityModules/Shortcut/install.xml</Installer>
-      <Installer>DesktopModules/CommunityModules/SimpleMenu/install.xml</Installer>
+      <!--<Installer>DesktopModules/CommunityModules/SimpleMenu/install.xml</Installer>-->
       <!--<Installer>DesktopModules/CommunityModules/SiteMap/install.xml</Installer>-->
-      <Installer>DesktopModules/CommunityModules/Survey/install.xml</Installer>
+      <!--<Installer>DesktopModules/CommunityModules/Survey/install.xml</Installer>-->
       <!--<Installer>DesktopModules/CommunityModules/Tasks/install.xml</Installer>-->
-      <Installer>DesktopModules/CommunityModules/UserDefinedTable/install.xml</Installer>
+      <!--<Installer>DesktopModules/CommunityModules/UserDefinedTable/install.xml</Installer>-->
       <Installer>DesktopModules/CommunityModules/Version/install.xml</Installer>
-      <Installer>DesktopModules/CommunityModules/WeatherDE/install.xml</Installer>
-      <Installer>DesktopModules/CommunityModules/WeatherUS/install.xml</Installer>
+      <!--<Installer>DesktopModules/CommunityModules/WeatherDE/install.xml</Installer>-->
+      <!--<Installer>DesktopModules/CommunityModules/WeatherUS/install.xml</Installer>-->
       <Installer>DesktopModules/CommunityModules/WebPartModule/install.xml</Installer>
       
       <Installer>DesktopModules/CommunityModules/XmlFeed/install.xml</Installer>
-      <Installer>DesktopModules/CommunityModules/XmlLang/install.xml</Installer>
-      <Installer>DesktopModules/CommunityModules/XmlModule/install.xml</Installer>
+      <!--<Installer>DesktopModules/CommunityModules/XmlLang/install.xml</Installer>-->
+      <!--<Installer>DesktopModules/CommunityModules/XmlModule/install.xml</Installer>-->
 
       <!-- must be the last one -->
       <Installer>DesktopModules/CoreModules/ContentManager/install.xml</Installer>
