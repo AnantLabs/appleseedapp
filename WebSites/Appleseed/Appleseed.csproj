@@ -617,20 +617,6 @@
     <Compile Include="DesktopDefault.aspx.designer.cs">
       <DependentUpon>DesktopDefault.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Announcements\Announcements.ascx.cs">
-      <DependentUpon>Announcements.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Announcements\Announcements.ascx.designer.cs">
-      <DependentUpon>Announcements.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Announcements\AnnouncementsEdit.aspx.cs">
-      <DependentUpon>AnnouncementsEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Announcements\AnnouncementsEdit.aspx.designer.cs">
-      <DependentUpon>AnnouncementsEdit.aspx</DependentUpon>
-    </Compile>
     <Compile Include="DesktopModules\CommunityModules\Articles\ArticlesEdit.aspx.cs">
       <DependentUpon>ArticlesEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5822,13 +5808,6 @@
     <Content Include="Design\Themes\Module-No-Style\icon\view.gif" />
     <Content Include="Design\Themes\Module-No-Style\Theme.xml" />
     <Content Include="DesktopDefault.aspx" />
-    <Content Include="DesktopModules\CommunityModules\Announcements\Announcements.ascx" />
-    <Content Include="DesktopModules\CommunityModules\Announcements\Announcements.xml" />
-    <Content Include="DesktopModules\CommunityModules\Announcements\AnnouncementsEdit.aspx" />
-    <Content Include="DesktopModules\CommunityModules\Announcements\install.sql" />
-    <Content Include="DesktopModules\CommunityModules\Announcements\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\Announcements\readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\Announcements\uninstall.sql" />
     <Content Include="DesktopModules\CommunityModules\Articles\Articles.ascx" />
     <Content Include="DesktopModules\CommunityModules\Articles\ArticlesEdit.aspx" />
     <Content Include="DesktopModules\CommunityModules\Articles\ArticlesInline.ascx" />
@@ -6392,8 +6371,6 @@
     <Content Include="DesktopModules\CoreModules\ContentManager\images\MoveRight.gif" />
     <Content Include="DesktopModules\CoreModules\ContentManager\install.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\install.xml" />
-    <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Announcements_Install.sql" />
-    <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Announcements_Uninstall.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Articles_Install.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Articles_UnInstall.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Blogs_Install.sql" />
