@@ -631,27 +631,6 @@
     <Compile Include="DesktopModules\CommunityModules\EnhancedHTML\EnhancedHtmlEdit.aspx.designer.cs">
       <DependentUpon>EnhancedHtmlEdit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DesktopModules\CommunityModules\EnhancedLinks\EnhancedLinks.ascx.cs">
-      <DependentUpon>EnhancedLinks.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\EnhancedLinks\EnhancedLinks.ascx.designer.cs">
-      <DependentUpon>EnhancedLinks.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\EnhancedLinks\EnhancedLinksEdit.aspx.cs">
-      <DependentUpon>EnhancedLinksEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\EnhancedLinks\EnhancedLinksEdit.aspx.designer.cs">
-      <DependentUpon>EnhancedLinksEdit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\FileDirectoryTree\FileDirectoryTree.ascx.cs">
-      <DependentUpon>FileDirectoryTree.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\FileDirectoryTree\FileDirectoryTree.ascx.designer.cs">
-      <DependentUpon>FileDirectoryTree.ascx</DependentUpon>
-    </Compile>
     <Compile Include="DesktopModules\CommunityModules\HTMLDocument\HtmlEdit.aspx.cs">
       <DependentUpon>HtmlEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5358,17 +5337,6 @@
     <Content Include="DesktopModules\CommunityModules\EnhancedHTML\readme.txt" />
     <Content Include="DesktopModules\CommunityModules\EnhancedHTML\singlepage.gif" />
     <Content Include="DesktopModules\CommunityModules\EnhancedHTML\uninstall.sql" />
-    <Content Include="DesktopModules\CommunityModules\EnhancedLinks\EnhancedLinks.ascx" />
-    <Content Include="DesktopModules\CommunityModules\EnhancedLinks\EnhancedLinksEdit.aspx" />
-    <Content Include="DesktopModules\CommunityModules\EnhancedLinks\install.sql" />
-    <Content Include="DesktopModules\CommunityModules\EnhancedLinks\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\EnhancedLinks\mod_EnhancedLinks.css" />
-    <Content Include="DesktopModules\CommunityModules\EnhancedLinks\uninstall.sql" />
-    <Content Include="DesktopModules\CommunityModules\FileDirectoryTree\example.jpg" />
-    <Content Include="DesktopModules\CommunityModules\FileDirectoryTree\FileDirectoryTree.ascx" />
-    <Content Include="DesktopModules\CommunityModules\FileDirectoryTree\FileDirectoryTree.xml" />
-    <Content Include="DesktopModules\CommunityModules\FileDirectoryTree\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\FileDirectoryTree\readme.txt" />
     <Content Include="DesktopModules\CommunityModules\HTMLDocument\HtmlDocument.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -5389,7 +5357,9 @@
     <Content Include="DesktopModules\CommunityModules\Pictures\example3.jpg" />
     <Content Include="DesktopModules\CommunityModules\Pictures\example4.jpg" />
     <Content Include="DesktopModules\CommunityModules\Pictures\install.sql" />
-    <Content Include="DesktopModules\CommunityModules\Pictures\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\Pictures\install.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="DesktopModules\CommunityModules\Pictures\Pictures.ascx" />
     <Content Include="DesktopModules\CommunityModules\Pictures\Pictures.xml" />
     <Content Include="DesktopModules\CommunityModules\Pictures\PicturesEdit.aspx" />
@@ -5456,8 +5426,6 @@
     <Content Include="DesktopModules\CoreModules\ContentManager\images\MoveRight.gif" />
     <Content Include="DesktopModules\CoreModules\ContentManager\install.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\install.xml" />
-    <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Events_Install.sql" />
-    <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Events_UnInstall.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\Install_INSTRUCTIONS.txt" />
     <Content Include="DesktopModules\CoreModules\ContentManager\README%28Please,Please,Please!!%29.txt" />
     <Content Include="DesktopModules\CoreModules\ContentManager\readme.txt" />
@@ -5668,10 +5636,6 @@
     <Content Include="LocalizationAdmin\LocalizeForm.css" />
     <Content Include="LocalizationAdmin\StronglyTypedGlobalResources.aspx" />
     <Content Include="LocalizationAdmin\Web.config" />
-    <None Include="DesktopModules\CommunityModules\EnhancedLinks\EnhancedLinks.doc" />
-    <None Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_EnhancedLinks_Install.sql.old" />
-    <None Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_EnhancedLinks_UnInstall.sql.old" />
-    <None Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Links_EnhancedLinks_Install.sql.old" />
     <None Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Links_Install.sql.old" />
     <None Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Links_UnInstall.sql.old" />
     <Content Include="DesktopModules\CoreModules\DatabaseTableEdit\TableEditor.zip" />
