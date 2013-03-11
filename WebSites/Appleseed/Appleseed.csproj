@@ -729,44 +729,6 @@
     <Compile Include="DesktopModules\CommunityModules\Shortcut\ShortcutAll.ascx.designer.cs">
       <DependentUpon>ShortcutAll.ascx</DependentUpon>
     </Compile>
-    <Compile Include="DesktopModules\CommunityModules\SimpleMenu\SimpleMenu.ascx.cs">
-      <DependentUpon>SimpleMenu.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\SimpleMenu\SimpleMenu.ascx.designer.cs">
-      <DependentUpon>SimpleMenu.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\SiteMap\Sitemap.ascx.cs">
-      <DependentUpon>Sitemap.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\SiteMap\Sitemap.ascx.designer.cs">
-      <DependentUpon>Sitemap.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Survey\SiteSettings.ascx.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Survey\Survey.ascx.cs">
-      <DependentUpon>Survey.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Survey\Survey.ascx.designer.cs">
-      <DependentUpon>Survey.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Survey\SurveyEdit.aspx.cs">
-      <DependentUpon>SurveyEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Survey\SurveyEdit.aspx.designer.cs">
-      <DependentUpon>SurveyEdit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Survey\SurveyOptionEdit.aspx.cs">
-      <DependentUpon>SurveyOptionEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Survey\SurveyOptionEdit.aspx.designer.cs">
-      <DependentUpon>SurveyOptionEdit.aspx</DependentUpon>
-    </Compile>
     <Compile Include="DesktopModules\CommunityModules\Tasks\Tasks.ascx.cs">
       <DependentUpon>Tasks.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5645,38 +5607,6 @@
     <Content Include="DesktopModules\CommunityModules\Shortcut\ShortcutAll.ascx" />
     <Content Include="DesktopModules\CommunityModules\Shortcut\ShortcutAll_readme.txt" />
     <Content Include="DesktopModules\CommunityModules\Shortcut\Shortcut_readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\SimpleMenu\example.jpg" />
-    <Content Include="DesktopModules\CommunityModules\SimpleMenu\install.sql" />
-    <Content Include="DesktopModules\CommunityModules\SimpleMenu\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\SimpleMenu\readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\SimpleMenu\SimpleMenu.ascx" />
-    <Content Include="DesktopModules\CommunityModules\SimpleMenu\SimpleMenuTypes\EmptyMenu.ascx" />
-    <Content Include="DesktopModules\CommunityModules\SimpleMenu\SimpleMenuTypes\MenuHWLeftStyle.ascx" />
-    <Content Include="DesktopModules\CommunityModules\SimpleMenu\SimpleMenuTypes\MenuHWTopStyle.ascx" />
-    <Content Include="DesktopModules\CommunityModules\SimpleMenu\SimpleMenuTypes\SolpartMenu.ascx" />
-    <Content Include="DesktopModules\CommunityModules\SimpleMenu\SimpleMenuTypes\StaticItemMenu.ascx" />
-    <Content Include="DesktopModules\CommunityModules\SimpleMenu\SimpleMenuTypes\StaticItemMenuWithHead.ascx" />
-    <Content Include="DesktopModules\CommunityModules\SimpleMenu\SimpleMenuTypes\StaticMenu.ascx" />
-    <Content Include="DesktopModules\CommunityModules\SimpleMenu\uninstall.sql" />
-    <Content Include="DesktopModules\CommunityModules\SiteMap\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\SiteMap\readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\SiteMap\Sitemap.ascx" />
-    <Content Include="DesktopModules\CommunityModules\SiteMap\SiteMap.xml" />
-    <Content Include="DesktopModules\CommunityModules\SiteMap\sm_line_i.gif" />
-    <Content Include="DesktopModules\CommunityModules\SiteMap\sm_line_l.gif" />
-    <Content Include="DesktopModules\CommunityModules\SiteMap\sm_line_t.gif" />
-    <Content Include="DesktopModules\CommunityModules\SiteMap\sm_node.gif" />
-    <Content Include="DesktopModules\CommunityModules\SiteMap\sm_rootnode.gif" />
-    <Content Include="DesktopModules\CommunityModules\SiteMap\sm_spacer.gif" />
-    <Content Include="DesktopModules\CommunityModules\Survey\example1.jpg" />
-    <Content Include="DesktopModules\CommunityModules\Survey\example2.jpg" />
-    <Content Include="DesktopModules\CommunityModules\Survey\install.sql" />
-    <Content Include="DesktopModules\CommunityModules\Survey\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\Survey\readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\Survey\Survey.ascx" />
-    <Content Include="DesktopModules\CommunityModules\Survey\SurveyEdit.aspx" />
-    <Content Include="DesktopModules\CommunityModules\Survey\SurveyOptionEdit.aspx" />
-    <Content Include="DesktopModules\CommunityModules\Survey\uninstall.sql" />
     <Content Include="DesktopModules\CommunityModules\Tasks\example1.jpg" />
     <Content Include="DesktopModules\CommunityModules\Tasks\example2.jpg" />
     <Content Include="DesktopModules\CommunityModules\Tasks\install.sql" />
