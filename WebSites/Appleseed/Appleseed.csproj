@@ -666,27 +666,6 @@
     <Compile Include="DesktopModules\CommunityModules\FileDirectoryTree\FileDirectoryTree.ascx.designer.cs">
       <DependentUpon>FileDirectoryTree.ascx</DependentUpon>
     </Compile>
-    <Compile Include="DesktopModules\CommunityModules\FlashModule\FlashEdit.aspx.cs">
-      <DependentUpon>FlashEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\FlashModule\FlashEdit.aspx.designer.cs">
-      <DependentUpon>FlashEdit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\FlashModule\FlashModule.ascx.cs">
-      <DependentUpon>FlashModule.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\FlashModule\FlashModule.ascx.designer.cs">
-      <DependentUpon>FlashModule.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\FlashModule\UploadFlash.aspx.cs">
-      <DependentUpon>UploadFlash.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\FlashModule\UploadFlash.aspx.designer.cs">
-      <DependentUpon>UploadFlash.aspx</DependentUpon>
-    </Compile>
     <Compile Include="DesktopModules\CommunityModules\HTMLDocument\HtmlEdit.aspx.cs">
       <DependentUpon>HtmlEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5652,10 +5631,6 @@
     <Content Include="DesktopModules\CommunityModules\FileDirectoryTree\FileDirectoryTree.xml" />
     <Content Include="DesktopModules\CommunityModules\FileDirectoryTree\install.xml" />
     <Content Include="DesktopModules\CommunityModules\FileDirectoryTree\readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\FlashModule\FlashEdit.aspx" />
-    <Content Include="DesktopModules\CommunityModules\FlashModule\FlashModule.ascx" />
-    <Content Include="DesktopModules\CommunityModules\FlashModule\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\FlashModule\UploadFlash.aspx" />
     <Content Include="DesktopModules\CommunityModules\HTMLDocument\HtmlDocument.xml">
       <SubType>Designer</SubType>
     </Content>
