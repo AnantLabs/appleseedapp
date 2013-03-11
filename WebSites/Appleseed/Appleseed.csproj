@@ -645,13 +645,6 @@
     <Compile Include="DesktopModules\CommunityModules\Events\EventsEdit.aspx.designer.cs">
       <DependentUpon>EventsEdit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DesktopModules\CommunityModules\FileDirectoryTree\FileDirectoryTree.ascx.cs">
-      <DependentUpon>FileDirectoryTree.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\FileDirectoryTree\FileDirectoryTree.ascx.designer.cs">
-      <DependentUpon>FileDirectoryTree.ascx</DependentUpon>
-    </Compile>
     <Compile Include="DesktopModules\CommunityModules\HTMLDocument\HtmlEdit.aspx.cs">
       <DependentUpon>HtmlEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5386,11 +5379,6 @@
     <Content Include="DesktopModules\CommunityModules\Events\install.xml" />
     <Content Include="DesktopModules\CommunityModules\Events\readme.txt" />
     <Content Include="DesktopModules\CommunityModules\Events\uninstall.sql" />
-    <Content Include="DesktopModules\CommunityModules\FileDirectoryTree\example.jpg" />
-    <Content Include="DesktopModules\CommunityModules\FileDirectoryTree\FileDirectoryTree.ascx" />
-    <Content Include="DesktopModules\CommunityModules\FileDirectoryTree\FileDirectoryTree.xml" />
-    <Content Include="DesktopModules\CommunityModules\FileDirectoryTree\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\FileDirectoryTree\readme.txt" />
     <Content Include="DesktopModules\CommunityModules\HTMLDocument\HtmlDocument.xml">
       <SubType>Designer</SubType>
     </Content>
