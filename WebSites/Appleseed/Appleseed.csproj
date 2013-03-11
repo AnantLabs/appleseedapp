@@ -764,40 +764,12 @@
     <Compile Include="DesktopModules\CommunityModules\Version\AsVersion.aspx.designer.cs">
       <DependentUpon>AsVersion.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DesktopModules\CommunityModules\WebPartModule\WebPartModule.ascx.cs">
-      <DependentUpon>WebPartModule.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\WebPartModule\WebPartModule.ascx.designer.cs">
-      <DependentUpon>WebPartModule.ascx</DependentUpon>
-    </Compile>
     <Compile Include="DesktopModules\CommunityModules\WhosLoggedOn\WhosLoggedOn.ascx.cs">
       <DependentUpon>WhosLoggedOn.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="DesktopModules\CommunityModules\WhosLoggedOn\WhosLoggedOn.ascx.designer.cs">
       <DependentUpon>WhosLoggedOn.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Workflow\ApproveModuleContent.aspx.cs">
-      <DependentUpon>ApproveModuleContent.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Workflow\ApproveModuleContent.aspx.designer.cs">
-      <DependentUpon>ApproveModuleContent.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Workflow\RejectModuleContent.aspx.cs">
-      <DependentUpon>RejectModuleContent.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Workflow\RejectModuleContent.aspx.designer.cs">
-      <DependentUpon>RejectModuleContent.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Workflow\RequestModuleContentApproval.aspx.cs">
-      <DependentUpon>RequestModuleContentApproval.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Workflow\RequestModuleContentApproval.aspx.designer.cs">
-      <DependentUpon>RequestModuleContentApproval.aspx</DependentUpon>
     </Compile>
     <Compile Include="DesktopModules\CommunityModules\XmlFeed\XmlFeed.ascx.cs">
       <DependentUpon>XmlFeed.ascx</DependentUpon>
@@ -5567,18 +5539,10 @@
     <Content Include="DesktopModules\CommunityModules\Version\AppleseedVersion.ascx" />
     <Content Include="DesktopModules\CommunityModules\Version\AppleseedVersion.xml" />
     <Content Include="DesktopModules\CommunityModules\Version\readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\WebPartModule\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\WebPartModule\readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\WebPartModule\WebPartModule.ascx" />
     <Content Include="DesktopModules\CommunityModules\WhosLoggedOn\install.sql" />
     <Content Include="DesktopModules\CommunityModules\WhosLoggedOn\install.xml" />
     <Content Include="DesktopModules\CommunityModules\WhosLoggedOn\uninstall.sql" />
     <Content Include="DesktopModules\CommunityModules\WhosLoggedOn\WhosLoggedOn.ascx" />
-    <Content Include="DesktopModules\CommunityModules\Workflow\ApproveModuleContent.aspx" />
-    <Content Include="DesktopModules\CommunityModules\Workflow\EmailForm.ascx" />
-    <Content Include="DesktopModules\CommunityModules\Workflow\readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\Workflow\RejectModuleContent.aspx" />
-    <Content Include="DesktopModules\CommunityModules\Workflow\RequestModuleContentApproval.aspx" />
     <Content Include="DesktopModules\CommunityModules\XmlFeed\del.icio.us.xslt" />
     <Content Include="DesktopModules\CommunityModules\XmlFeed\example.jpg" />
     <Content Include="DesktopModules\CommunityModules\XmlFeed\install.xml" />
