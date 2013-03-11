@@ -144,8 +144,8 @@ WHERE GeneralModDefID = @OldModuleGuid
 GO
 
 --Upgrades old search to new
---exec rb_ModulesUpgradeOldToNew '{2502DB18-B580-4F90-8CB4-C15E6E531010}', '{2502DB18-B580-4F90-8CB4-C15E6E531030}'
---GO
+exec rb_ModulesUpgradeOldToNew '{2502DB18-B580-4F90-8CB4-C15E6E531010}', '{2502DB18-B580-4F90-8CB4-C15E6E531030}'
+GO
 
 --Upgrades old html to new
 exec rb_ModulesUpgradeOldToNew '{2B113F51-FEA3-499A-98E7-7B83C192FDBB}', '{0B113F51-FEA3-499A-98E7-7B83C192FDBB}'

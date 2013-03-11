@@ -29,25 +29,25 @@ IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_Modules_ModuleDef
 ALTER TABLE [rb_Modules] DROP CONSTRAINT FK_Modules_ModuleDefinitions1
 GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_Announcements_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
---ALTER TABLE [rb_Announcements] DROP CONSTRAINT FK_Announcements_Modules
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_Announcements_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
+ALTER TABLE [rb_Announcements] DROP CONSTRAINT FK_Announcements_Modules
+GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_Articles_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
---ALTER TABLE [rb_Articles] DROP CONSTRAINT FK_Articles_Modules
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_Articles_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
+ALTER TABLE [rb_Articles] DROP CONSTRAINT FK_Articles_Modules
+GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_Contacts_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
---ALTER TABLE [rb_Contacts] DROP CONSTRAINT FK_Contacts_Modules
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_Contacts_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
+ALTER TABLE [rb_Contacts] DROP CONSTRAINT FK_Contacts_Modules
+GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_Discussion_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
---ALTER TABLE [rb_Discussion] DROP CONSTRAINT FK_Discussion_Modules
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_Discussion_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
+ALTER TABLE [rb_Discussion] DROP CONSTRAINT FK_Discussion_Modules
+GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_Documents_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
---ALTER TABLE [rb_Documents] DROP CONSTRAINT FK_Documents_Modules
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_Documents_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
+ALTER TABLE [rb_Documents] DROP CONSTRAINT FK_Documents_Modules
+GO
 
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_Events_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
 ALTER TABLE [rb_Events] DROP CONSTRAINT FK_Events_Modules
@@ -73,17 +73,17 @@ IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_Pictures_Modules]
 ALTER TABLE [rb_Pictures] DROP CONSTRAINT FK_Pictures_Modules
 GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_st_Announcements_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
---ALTER TABLE [rb_st_Announcements] DROP CONSTRAINT FK_st_Announcements_Modules
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_st_Announcements_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
+ALTER TABLE [rb_st_Announcements] DROP CONSTRAINT FK_st_Announcements_Modules
+GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_st_Contacts_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
---ALTER TABLE [rb_st_Contacts] DROP CONSTRAINT FK_st_Contacts_Modules
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_st_Contacts_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
+ALTER TABLE [rb_st_Contacts] DROP CONSTRAINT FK_st_Contacts_Modules
+GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_st_Documents_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
---ALTER TABLE [rb_st_Documents] DROP CONSTRAINT FK_st_Documents_Modules
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_st_Documents_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
+ALTER TABLE [rb_st_Documents] DROP CONSTRAINT FK_st_Documents_Modules
+GO
 
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_st_Events_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
 ALTER TABLE [rb_st_Events] DROP CONSTRAINT FK_st_Events_Modules
@@ -137,17 +137,17 @@ IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_UserRoles_Users]'
 ALTER TABLE [rb_UserRoles] DROP CONSTRAINT FK_UserRoles_Users
 GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_AnnouncementsModified]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
---drop trigger [st_AnnouncementsModified]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_AnnouncementsModified]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
+drop trigger [st_AnnouncementsModified]
+GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_ContactsModified]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
---drop trigger [st_ContactsModified]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_ContactsModified]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
+drop trigger [st_ContactsModified]
+GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_DocumentsModified]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
---drop trigger [st_DocumentsModified]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_DocumentsModified]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
+drop trigger [st_DocumentsModified]
+GO
 
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_EventsModified]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
 drop trigger [st_EventsModified]
@@ -161,9 +161,9 @@ IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[st_LinksModified]') 
 drop trigger [st_LinksModified]
 GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_Articles]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
---ALTER TABLE  [rb_Articles] DROP CONSTRAINT PK_Articles
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_Articles]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
+ALTER TABLE  [rb_Articles] DROP CONSTRAINT PK_Articles
+GO
 
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_Blacklist]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
 ALTER TABLE  [rb_Blacklist] DROP CONSTRAINT PK_Blacklist
@@ -211,23 +211,23 @@ ALTER TABLE  [rb_TabSettings] DROP CONSTRAINT PK_TabSettings
 GO
 
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_Announcements]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
---ALTER TABLE  [rb_Announcements] DROP CONSTRAINT PK_Announcements
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_Announcements]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
+ALTER TABLE  [rb_Announcements] DROP CONSTRAINT PK_Announcements
+GO
 
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_Contacts]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
---ALTER TABLE  [rb_Contacts] DROP CONSTRAINT PK_Contacts
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_Contacts]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
+ALTER TABLE  [rb_Contacts] DROP CONSTRAINT PK_Contacts
+GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_Discussion]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
---ALTER TABLE  [rb_Discussion] DROP CONSTRAINT PK_Discussion
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_Discussion]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
+ALTER TABLE  [rb_Discussion] DROP CONSTRAINT PK_Discussion
+GO
 
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_Documents]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
---ALTER TABLE  [rb_Documents] DROP CONSTRAINT PK_Documents
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_Documents]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
+ALTER TABLE  [rb_Documents] DROP CONSTRAINT PK_Documents
+GO
 
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_Events]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
 ALTER TABLE  [rb_Events] DROP CONSTRAINT PK_Events
@@ -331,17 +331,17 @@ IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[IX_Users]') AND OBJE
 ALTER TABLE  [rb_Users] DROP CONSTRAINT IX_Users
 GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_st_Announcements]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
---ALTER TABLE  [rb_st_Announcements] DROP CONSTRAINT PK_st_Announcements
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_st_Announcements]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
+ALTER TABLE  [rb_st_Announcements] DROP CONSTRAINT PK_st_Announcements
+GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_st_Contacts]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
---ALTER TABLE  [rb_st_Contacts] DROP CONSTRAINT PK_st_Contacts
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_st_Contacts]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
+ALTER TABLE  [rb_st_Contacts] DROP CONSTRAINT PK_st_Contacts
+GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_st_Documents]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
---ALTER TABLE  [rb_st_Documents] DROP CONSTRAINT PK_st_Documents
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_st_Documents]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
+ALTER TABLE  [rb_st_Documents] DROP CONSTRAINT PK_st_Documents
+GO
 
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_st_Events]') AND OBJECTPROPERTY(id, N'IsPrimaryKey') = 1)
 ALTER TABLE  [rb_st_Events] DROP CONSTRAINT PK_st_Events
@@ -355,12 +355,12 @@ IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[PK_st_Links]') AND O
 ALTER TABLE  [rb_st_Links] DROP CONSTRAINT PK_st_Links
 GO
 
---ALTER TABLE [rb_Articles] WITH NOCHECK ADD 
---	CONSTRAINT [PK_rb_Articles] PRIMARY KEY  CLUSTERED 
---	(
---		[ItemID]
---	)  ON [PRIMARY] 
---GO
+ALTER TABLE [rb_Articles] WITH NOCHECK ADD 
+	CONSTRAINT [PK_rb_Articles] PRIMARY KEY  CLUSTERED 
+	(
+		[ItemID]
+	)  ON [PRIMARY] 
+GO
 
 ALTER TABLE [rb_Blacklist] WITH NOCHECK ADD 
 	CONSTRAINT [PK_rb_Blacklist] PRIMARY KEY  CLUSTERED 
@@ -443,33 +443,33 @@ ALTER TABLE [rb_TabSettings] WITH NOCHECK ADD
 	)  ON [PRIMARY] 
 GO
 
---ALTER TABLE [rb_Announcements] ADD 
---	CONSTRAINT [PK_rb_Announcements] PRIMARY KEY  NONCLUSTERED 
---	(
---		[ItemID]
---	)  ON [PRIMARY] 
---GO
+ALTER TABLE [rb_Announcements] ADD 
+	CONSTRAINT [PK_rb_Announcements] PRIMARY KEY  NONCLUSTERED 
+	(
+		[ItemID]
+	)  ON [PRIMARY] 
+GO
 
---ALTER TABLE [rb_Contacts] ADD 
---	CONSTRAINT [PK_rb_Contacts] PRIMARY KEY  NONCLUSTERED 
---	(
---		[ItemID]
---	)  ON [PRIMARY] 
---GO
+ALTER TABLE [rb_Contacts] ADD 
+	CONSTRAINT [PK_rb_Contacts] PRIMARY KEY  NONCLUSTERED 
+	(
+		[ItemID]
+	)  ON [PRIMARY] 
+GO
 
---ALTER TABLE [rb_Discussion] ADD 
---	CONSTRAINT [PK_rb_Discussion] PRIMARY KEY  NONCLUSTERED 
---	(
---		[ItemID]
---	)  ON [PRIMARY] 
---GO
+ALTER TABLE [rb_Discussion] ADD 
+	CONSTRAINT [PK_rb_Discussion] PRIMARY KEY  NONCLUSTERED 
+	(
+		[ItemID]
+	)  ON [PRIMARY] 
+GO
 
---ALTER TABLE [rb_Documents] ADD 
---	CONSTRAINT [PK_rb_Documents] PRIMARY KEY  NONCLUSTERED 
---	(
---		[ItemID]
---	)  ON [PRIMARY] 
---GO
+ALTER TABLE [rb_Documents] ADD 
+	CONSTRAINT [PK_rb_Documents] PRIMARY KEY  NONCLUSTERED 
+	(
+		[ItemID]
+	)  ON [PRIMARY] 
+GO
 
 ALTER TABLE [rb_Events] ADD 
 	CONSTRAINT [PK_rb_Events] PRIMARY KEY  NONCLUSTERED 
@@ -578,26 +578,26 @@ ALTER TABLE [rb_Users] ADD
 	)  ON [PRIMARY] 
 GO
 
---ALTER TABLE [rb_st_Announcements] ADD 
---	CONSTRAINT [PK_rb_st_Announcements] PRIMARY KEY  NONCLUSTERED 
---	(
---		[ItemID]
---	)  ON [PRIMARY] 
---GO
+ALTER TABLE [rb_st_Announcements] ADD 
+	CONSTRAINT [PK_rb_st_Announcements] PRIMARY KEY  NONCLUSTERED 
+	(
+		[ItemID]
+	)  ON [PRIMARY] 
+GO
 
---ALTER TABLE [rb_st_Contacts] ADD 
---	CONSTRAINT [PK_rb_st_Contacts] PRIMARY KEY  NONCLUSTERED 
---	(
---		[ItemID]
---	)  ON [PRIMARY] 
---GO
+ALTER TABLE [rb_st_Contacts] ADD 
+	CONSTRAINT [PK_rb_st_Contacts] PRIMARY KEY  NONCLUSTERED 
+	(
+		[ItemID]
+	)  ON [PRIMARY] 
+GO
 
---ALTER TABLE [rb_st_Documents] ADD 
---	CONSTRAINT [PK_rb_st_Documents] PRIMARY KEY  NONCLUSTERED 
---	(
---		[ItemID]
---	)  ON [PRIMARY] 
---GO
+ALTER TABLE [rb_st_Documents] ADD 
+	CONSTRAINT [PK_rb_st_Documents] PRIMARY KEY  NONCLUSTERED 
+	(
+		[ItemID]
+	)  ON [PRIMARY] 
+GO
 
 ALTER TABLE [rb_st_Events] ADD 
 	CONSTRAINT [PK_rb_st_Events] PRIMARY KEY  NONCLUSTERED 
@@ -620,32 +620,32 @@ ALTER TABLE [rb_st_Links] ADD
 	)  ON [PRIMARY] 
 GO
 
---ALTER TABLE [rb_Announcements] ADD 
---	CONSTRAINT [FK_rb_Announcements_rb_Modules] FOREIGN KEY 
---	(
---		[ModuleID]
---	) REFERENCES [rb_Modules] (
---		[ModuleID]
---	) ON DELETE CASCADE  NOT FOR REPLICATION 
---GO
+ALTER TABLE [rb_Announcements] ADD 
+	CONSTRAINT [FK_rb_Announcements_rb_Modules] FOREIGN KEY 
+	(
+		[ModuleID]
+	) REFERENCES [rb_Modules] (
+		[ModuleID]
+	) ON DELETE CASCADE  NOT FOR REPLICATION 
+GO
 
---ALTER TABLE [rb_Articles] ADD 
---	CONSTRAINT [FK_rb_Articles_rb_Modules] FOREIGN KEY 
---	(
---		[ModuleID]
---	) REFERENCES [rb_Modules] (
---		[ModuleID]
---	) ON DELETE CASCADE 
---GO
+ALTER TABLE [rb_Articles] ADD 
+	CONSTRAINT [FK_rb_Articles_rb_Modules] FOREIGN KEY 
+	(
+		[ModuleID]
+	) REFERENCES [rb_Modules] (
+		[ModuleID]
+	) ON DELETE CASCADE 
+GO
 
---ALTER TABLE [rb_Contacts] ADD 
---	CONSTRAINT [FK_rb_Contacts_rb_Modules] FOREIGN KEY 
---	(
---		[ModuleID]
---	) REFERENCES [rb_Modules] (
---		[ModuleID]
---	) ON DELETE CASCADE  NOT FOR REPLICATION 
---GO
+ALTER TABLE [rb_Contacts] ADD 
+	CONSTRAINT [FK_rb_Contacts_rb_Modules] FOREIGN KEY 
+	(
+		[ModuleID]
+	) REFERENCES [rb_Modules] (
+		[ModuleID]
+	) ON DELETE CASCADE  NOT FOR REPLICATION 
+GO
 
 ALTER TABLE [rb_Cultures] ADD 
 	CONSTRAINT [FK_rb_Cultures_rb_Countries] FOREIGN KEY 
@@ -656,23 +656,23 @@ ALTER TABLE [rb_Cultures] ADD
 	)
 GO
 
---ALTER TABLE [rb_Discussion] ADD 
---	CONSTRAINT [FK_rb_Discussion_rb_Modules] FOREIGN KEY 
---	(
---		[ModuleID]
---	) REFERENCES [rb_Modules] (
---		[ModuleID]
---	) ON DELETE CASCADE  NOT FOR REPLICATION 
---GO
+ALTER TABLE [rb_Discussion] ADD 
+	CONSTRAINT [FK_rb_Discussion_rb_Modules] FOREIGN KEY 
+	(
+		[ModuleID]
+	) REFERENCES [rb_Modules] (
+		[ModuleID]
+	) ON DELETE CASCADE  NOT FOR REPLICATION 
+GO
 
---ALTER TABLE [rb_Documents] ADD 
---	CONSTRAINT [FK_rb_Documents_rb_Modules] FOREIGN KEY 
---	(
---		[ModuleID]
---	) REFERENCES [rb_Modules] (
---		[ModuleID]
---	) ON DELETE CASCADE  NOT FOR REPLICATION 
---GO
+ALTER TABLE [rb_Documents] ADD 
+	CONSTRAINT [FK_rb_Documents_rb_Modules] FOREIGN KEY 
+	(
+		[ModuleID]
+	) REFERENCES [rb_Modules] (
+		[ModuleID]
+	) ON DELETE CASCADE  NOT FOR REPLICATION 
+GO
 
 ALTER TABLE [rb_Events] ADD 
 	CONSTRAINT [FK_rb_Events_rb_Modules] FOREIGN KEY 
@@ -858,32 +858,32 @@ ALTER TABLE [rb_Users] ADD
 	) ON UPDATE CASCADE 
 GO
 
---ALTER TABLE [rb_st_Announcements] ADD 
---	CONSTRAINT [FK_rb_st_Announcements_rb_Modules] FOREIGN KEY 
---	(
---		[ModuleID]
---	) REFERENCES [rb_Modules] (
---		[ModuleID]
---	) ON DELETE CASCADE  NOT FOR REPLICATION 
---GO
+ALTER TABLE [rb_st_Announcements] ADD 
+	CONSTRAINT [FK_rb_st_Announcements_rb_Modules] FOREIGN KEY 
+	(
+		[ModuleID]
+	) REFERENCES [rb_Modules] (
+		[ModuleID]
+	) ON DELETE CASCADE  NOT FOR REPLICATION 
+GO
 
---ALTER TABLE [rb_st_Contacts] ADD 
---	CONSTRAINT [FK_rb_st_Contacts_rb_Modules] FOREIGN KEY 
---	(
---		[ModuleID]
---	) REFERENCES [rb_Modules] (
---		[ModuleID]
---	) ON DELETE CASCADE  NOT FOR REPLICATION 
---GO
+ALTER TABLE [rb_st_Contacts] ADD 
+	CONSTRAINT [FK_rb_st_Contacts_rb_Modules] FOREIGN KEY 
+	(
+		[ModuleID]
+	) REFERENCES [rb_Modules] (
+		[ModuleID]
+	) ON DELETE CASCADE  NOT FOR REPLICATION 
+GO
 
---ALTER TABLE [rb_st_Documents] ADD 
---	CONSTRAINT [FK_rb_st_Documents_rb_Modules] FOREIGN KEY 
---	(
---		[ModuleID]
---	) REFERENCES [rb_Modules] (
---		[ModuleID]
---	) ON DELETE CASCADE  NOT FOR REPLICATION 
---GO
+ALTER TABLE [rb_st_Documents] ADD 
+	CONSTRAINT [FK_rb_st_Documents_rb_Modules] FOREIGN KEY 
+	(
+		[ModuleID]
+	) REFERENCES [rb_Modules] (
+		[ModuleID]
+	) ON DELETE CASCADE  NOT FOR REPLICATION 
+GO
 
 ALTER TABLE [rb_st_Events] ADD 
 	CONSTRAINT [FK_rb_st_Events_rb_Modules] FOREIGN KEY 
@@ -919,137 +919,137 @@ GO
 
 
 
---CREATE  TRIGGER [rb_st_AnnouncementsModified]
---ON [rb_st_Announcements]
---FOR DELETE, INSERT, UPDATE 
---AS 
---BEGIN
---	DECLARE ChangedModules CURSOR FOR
---		SELECT ModuleID
---		FROM inserted
---		UNION
---		SELECT ModuleID
---		FROM deleted
+CREATE  TRIGGER [rb_st_AnnouncementsModified]
+ON [rb_st_Announcements]
+FOR DELETE, INSERT, UPDATE 
+AS 
+BEGIN
+	DECLARE ChangedModules CURSOR FOR
+		SELECT ModuleID
+		FROM inserted
+		UNION
+		SELECT ModuleID
+		FROM deleted
 
---	DECLARE @ModID	int
+	DECLARE @ModID	int
 
---	OPEN ChangedModules	
+	OPEN ChangedModules	
 
---	FETCH NEXT FROM ChangedModules
---	INTO @ModID
+	FETCH NEXT FROM ChangedModules
+	INTO @ModID
 
---	WHILE @@FETCH_STATUS = 0
---	BEGIN
---		EXEC rb_ModuleEdited @ModID
+	WHILE @@FETCH_STATUS = 0
+	BEGIN
+		EXEC rb_ModuleEdited @ModID
 
---		FETCH NEXT FROM ChangedModules
---		INTO @ModID
---	END
+		FETCH NEXT FROM ChangedModules
+		INTO @ModID
+	END
 
---	CLOSE ChangedModules
---	DEALLOCATE ChangedModules
+	CLOSE ChangedModules
+	DEALLOCATE ChangedModules
 
---END
+END
 
---GO
---SET QUOTED_IDENTIFIER OFF 
---GO
---SET ANSI_NULLS ON 
---GO
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
 
---SET QUOTED_IDENTIFIER ON 
---GO
---SET ANSI_NULLS ON 
---GO
-
-
-
---CREATE  TRIGGER [rb_st_ContactsModified]
---ON [rb_st_Contacts]
---FOR DELETE, INSERT, UPDATE 
---AS 
---BEGIN
---	DECLARE ChangedModules CURSOR FOR
---		SELECT ModuleID
---		FROM inserted
---		UNION
---		SELECT ModuleID
---		FROM deleted
-
---	DECLARE @ModID	int
-
---	OPEN ChangedModules	
-
---	FETCH NEXT FROM ChangedModules
---	INTO @ModID
-
---	WHILE @@FETCH_STATUS = 0
---	BEGIN
---		EXEC rb_ModuleEdited @ModID
-
---		FETCH NEXT FROM ChangedModules
---		INTO @ModID
---	END
-
---	CLOSE ChangedModules
---	DEALLOCATE ChangedModules
-
---END
-
---GO
---SET QUOTED_IDENTIFIER OFF 
---GO
---SET ANSI_NULLS ON 
---GO
-
---SET QUOTED_IDENTIFIER ON 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
 
 
 
---CREATE  TRIGGER [rb_st_DocumentsModified]
---ON [rb_st_Documents]
---FOR DELETE, INSERT, UPDATE 
---AS 
---BEGIN
---	DECLARE ChangedModules CURSOR FOR
---		SELECT ModuleID
---		FROM inserted
---		UNION
---		SELECT ModuleID
---		FROM deleted
+CREATE  TRIGGER [rb_st_ContactsModified]
+ON [rb_st_Contacts]
+FOR DELETE, INSERT, UPDATE 
+AS 
+BEGIN
+	DECLARE ChangedModules CURSOR FOR
+		SELECT ModuleID
+		FROM inserted
+		UNION
+		SELECT ModuleID
+		FROM deleted
 
---	DECLARE @ModID	int
+	DECLARE @ModID	int
 
---	OPEN ChangedModules	
+	OPEN ChangedModules	
 
---	FETCH NEXT FROM ChangedModules
---	INTO @ModID
+	FETCH NEXT FROM ChangedModules
+	INTO @ModID
 
---	WHILE @@FETCH_STATUS = 0
---	BEGIN
---		EXEC rb_ModuleEdited @ModID
+	WHILE @@FETCH_STATUS = 0
+	BEGIN
+		EXEC rb_ModuleEdited @ModID
 
---		FETCH NEXT FROM ChangedModules
---		INTO @ModID
---	END
+		FETCH NEXT FROM ChangedModules
+		INTO @ModID
+	END
 
---	CLOSE ChangedModules
---	DEALLOCATE ChangedModules
---END
+	CLOSE ChangedModules
+	DEALLOCATE ChangedModules
 
---GO
---SET QUOTED_IDENTIFIER OFF 
---GO
---SET ANSI_NULLS ON 
---GO
+END
 
---SET QUOTED_IDENTIFIER ON 
---GO
---SET ANSI_NULLS ON 
---GO
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+
+CREATE  TRIGGER [rb_st_DocumentsModified]
+ON [rb_st_Documents]
+FOR DELETE, INSERT, UPDATE 
+AS 
+BEGIN
+	DECLARE ChangedModules CURSOR FOR
+		SELECT ModuleID
+		FROM inserted
+		UNION
+		SELECT ModuleID
+		FROM deleted
+
+	DECLARE @ModID	int
+
+	OPEN ChangedModules	
+
+	FETCH NEXT FROM ChangedModules
+	INTO @ModID
+
+	WHILE @@FETCH_STATUS = 0
+	BEGIN
+		EXEC rb_ModuleEdited @ModID
+
+		FETCH NEXT FROM ChangedModules
+		INTO @ModID
+	END
+
+	CLOSE ChangedModules
+	DEALLOCATE ChangedModules
+END
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
 
 
 

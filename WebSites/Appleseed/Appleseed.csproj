@@ -694,13 +694,6 @@
     <Compile Include="DesktopModules\CommunityModules\IframeModule\IframeModule.ascx.designer.cs">
       <DependentUpon>IframeModule.ascx</DependentUpon>
     </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Image\ImageModule.ascx.cs">
-      <DependentUpon>ImageModule.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Image\ImageModule.ascx.designer.cs">
-      <DependentUpon>ImageModule.ascx</DependentUpon>
-    </Compile>
     <Compile Include="DesktopModules\CommunityModules\LanguageSwitcher\LanguageSwitcher.ascx.cs">
       <DependentUpon>LanguageSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5644,9 +5637,6 @@
     <Content Include="DesktopModules\CommunityModules\IframeModule\Iframe.xml" />
     <Content Include="DesktopModules\CommunityModules\IframeModule\IframeModule.ascx" />
     <Content Include="DesktopModules\CommunityModules\IframeModule\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\Image\Image.xml" />
-    <Content Include="DesktopModules\CommunityModules\Image\ImageModule.ascx" />
-    <Content Include="DesktopModules\CommunityModules\Image\install.xml" />
     <Content Include="DesktopModules\CommunityModules\LanguageSwitcher\install.xml" />
     <Content Include="DesktopModules\CommunityModules\LanguageSwitcher\LanguageSwitcher.ascx" />
     <Content Include="DesktopModules\CommunityModules\MapQuest\example.jpg" />
