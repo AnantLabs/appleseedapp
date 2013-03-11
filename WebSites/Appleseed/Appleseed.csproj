@@ -701,13 +701,6 @@
     <Compile Include="DesktopModules\CommunityModules\LanguageSwitcher\LanguageSwitcher.ascx.designer.cs">
       <DependentUpon>LanguageSwitcher.ascx</DependentUpon>
     </Compile>
-    <Compile Include="DesktopModules\CommunityModules\PageKeyPhrase\PageKeyPhrase.ascx.cs">
-      <DependentUpon>PageKeyPhrase.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\PageKeyPhrase\PageKeyPhrase.ascx.designer.cs">
-      <DependentUpon>PageKeyPhrase.ascx</DependentUpon>
-    </Compile>
     <Compile Include="DesktopModules\CommunityModules\Pictures\PicturesEdit.aspx.cs">
       <DependentUpon>PicturesEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -728,27 +721,6 @@
     </Compile>
     <Compile Include="DesktopModules\CommunityModules\PortalSearch\PortalSearch.ascx.designer.cs">
       <DependentUpon>PortalSearch.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Quiz\Quiz.ascx.cs">
-      <DependentUpon>Quiz.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Quiz\Quiz.ascx.designer.cs">
-      <DependentUpon>Quiz.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Quiz\QuizPage.aspx.cs">
-      <DependentUpon>QuizPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Quiz\QuizPage.aspx.designer.cs">
-      <DependentUpon>QuizPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Quote\Quote.ascx.cs">
-      <DependentUpon>Quote.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Quote\Quote.ascx.designer.cs">
-      <DependentUpon>Quote.ascx</DependentUpon>
     </Compile>
     <Compile Include="DesktopModules\CommunityModules\SendThoughts\SendThoughts.ascx.cs">
       <DependentUpon>SendThoughts.ascx</DependentUpon>
@@ -5644,9 +5616,6 @@
     <Content Include="DesktopModules\CommunityModules\OneFileModule\VB.NET Examples\Simple\readme.txt" />
     <Content Include="DesktopModules\CommunityModules\OneFileModule\VB.NET Examples\Simple\SettingsSimpleVB.xml" />
     <Content Include="DesktopModules\CommunityModules\OneFileModule\VB.NET Examples\Simple\SimpleVB.ascx" />
-    <Content Include="DesktopModules\CommunityModules\PageKeyPhrase\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\PageKeyPhrase\PageKeyPhrase.ascx" />
-    <Content Include="DesktopModules\CommunityModules\PageKeyPhrase\readme.txt" />
     <Content Include="DesktopModules\CommunityModules\Pictures\example1.jpg" />
     <Content Include="DesktopModules\CommunityModules\Pictures\example2.jpg" />
     <Content Include="DesktopModules\CommunityModules\Pictures\example3.jpg" />
@@ -5665,14 +5634,6 @@
     <Content Include="DesktopModules\CommunityModules\PortalSearch\install.xml" />
     <Content Include="DesktopModules\CommunityModules\PortalSearch\PortalSearch.ascx" />
     <Content Include="DesktopModules\CommunityModules\PortalSearch\readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\Quiz\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\Quiz\Pie.gif" />
-    <Content Include="DesktopModules\CommunityModules\Quiz\Quiz.ascx" />
-    <Content Include="DesktopModules\CommunityModules\Quiz\QuizPage.aspx" />
-    <Content Include="DesktopModules\CommunityModules\Quiz\readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\Quote\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\Quote\Quote.ascx" />
-    <Content Include="DesktopModules\CommunityModules\Quote\readme.txt" />
     <Content Include="DesktopModules\CommunityModules\SecureDocuments\install.sql" />
     <Content Include="DesktopModules\CommunityModules\SecureDocuments\install.xml" />
     <Content Include="DesktopModules\CommunityModules\SecureDocuments\readme.Documents.txt" />
@@ -6230,10 +6191,6 @@
     <None Include="DesktopModules\CommunityModules\OneFileModule\CSharp Examples\Simple\ApplyDBPatch.bat" />
     <None Include="DesktopModules\CommunityModules\OneFileModule\VB.NET Examples\HelloWorld\ApplyDBPatch.bat" />
     <None Include="DesktopModules\CommunityModules\OneFileModule\VB.NET Examples\Simple\ApplyDBPatch.bat" />
-    <None Include="DesktopModules\CommunityModules\Quiz\Quiz.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DesktopModules\CommunityModules\Quote\demo.quote" />
     <None Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_EnhancedLinks_Install.sql.old" />
     <None Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_EnhancedLinks_UnInstall.sql.old" />
     <None Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Links_EnhancedLinks_Install.sql.old" />
