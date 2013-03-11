@@ -631,20 +631,6 @@
     <Compile Include="DesktopModules\CommunityModules\EnhancedHTML\EnhancedHtmlEdit.aspx.designer.cs">
       <DependentUpon>EnhancedHtmlEdit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DesktopModules\CommunityModules\EnhancedLinks\EnhancedLinks.ascx.cs">
-      <DependentUpon>EnhancedLinks.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\EnhancedLinks\EnhancedLinks.ascx.designer.cs">
-      <DependentUpon>EnhancedLinks.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\EnhancedLinks\EnhancedLinksEdit.aspx.cs">
-      <DependentUpon>EnhancedLinksEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\EnhancedLinks\EnhancedLinksEdit.aspx.designer.cs">
-      <DependentUpon>EnhancedLinksEdit.aspx</DependentUpon>
-    </Compile>
     <Compile Include="DesktopModules\CommunityModules\Events\Events.ascx.cs">
       <DependentUpon>Events.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5393,12 +5379,6 @@
     <Content Include="DesktopModules\CommunityModules\EnhancedHTML\readme.txt" />
     <Content Include="DesktopModules\CommunityModules\EnhancedHTML\singlepage.gif" />
     <Content Include="DesktopModules\CommunityModules\EnhancedHTML\uninstall.sql" />
-    <Content Include="DesktopModules\CommunityModules\EnhancedLinks\EnhancedLinks.ascx" />
-    <Content Include="DesktopModules\CommunityModules\EnhancedLinks\EnhancedLinksEdit.aspx" />
-    <Content Include="DesktopModules\CommunityModules\EnhancedLinks\install.sql" />
-    <Content Include="DesktopModules\CommunityModules\EnhancedLinks\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\EnhancedLinks\mod_EnhancedLinks.css" />
-    <Content Include="DesktopModules\CommunityModules\EnhancedLinks\uninstall.sql" />
     <Content Include="DesktopModules\CommunityModules\Events\Events.ascx" />
     <Content Include="DesktopModules\CommunityModules\Events\Events.xml" />
     <Content Include="DesktopModules\CommunityModules\Events\EventsEdit.aspx" />
@@ -5722,12 +5702,6 @@
     <Content Include="LocalizationAdmin\LocalizeForm.css" />
     <Content Include="LocalizationAdmin\StronglyTypedGlobalResources.aspx" />
     <Content Include="LocalizationAdmin\Web.config" />
-    <None Include="DesktopModules\CommunityModules\EnhancedLinks\EnhancedLinks.doc" />
-    <None Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_EnhancedLinks_Install.sql.old" />
-    <None Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_EnhancedLinks_UnInstall.sql.old" />
-    <None Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Links_EnhancedLinks_Install.sql.old" />
-    <None Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Links_Install.sql.old" />
-    <None Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Links_UnInstall.sql.old" />
     <Content Include="DesktopModules\CoreModules\DatabaseTableEdit\TableEditor.zip" />
     <Content Include="Appleseed.config" />
     <None Include="Portals\_Appleseed\WebParts\sales.dwp" />
