@@ -617,41 +617,6 @@
     <Compile Include="DesktopDefault.aspx.designer.cs">
       <DependentUpon>DesktopDefault.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Blog\ArchiveView.aspx.cs">
-      <DependentUpon>ArchiveView.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Blog\ArchiveView.aspx.designer.cs">
-      <DependentUpon>ArchiveView.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Blog\Blog.ascx.cs">
-      <DependentUpon>Blog.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Blog\Blog.ascx.designer.cs">
-      <DependentUpon>Blog.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Blog\BlogEdit.aspx.cs">
-      <DependentUpon>BlogEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Blog\BlogEdit.aspx.designer.cs">
-      <DependentUpon>BlogEdit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Blog\BlogView.aspx.cs">
-      <DependentUpon>BlogView.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Blog\BlogView.aspx.designer.cs">
-      <DependentUpon>BlogView.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Blog\RSS.aspx.cs">
-      <DependentUpon>RSS.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Blog\RSS.aspx.designer.cs">
-      <DependentUpon>RSS.aspx</DependentUpon>
-    </Compile>
     <Compile Include="DesktopModules\CommunityModules\Breadcrumbs\BreadCrumbs.ascx.cs">
       <DependentUpon>BreadCrumbs.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5787,18 +5752,6 @@
     <Content Include="Design\Themes\Module-No-Style\icon\view.gif" />
     <Content Include="Design\Themes\Module-No-Style\Theme.xml" />
     <Content Include="DesktopDefault.aspx" />
-    <Content Include="DesktopModules\CommunityModules\Blog\ArchiveView.aspx" />
-    <Content Include="DesktopModules\CommunityModules\Blog\atom.gif" />
-    <Content Include="DesktopModules\CommunityModules\Blog\Blog.ascx" />
-    <Content Include="DesktopModules\CommunityModules\Blog\BlogEdit.aspx" />
-    <Content Include="DesktopModules\CommunityModules\Blog\BlogView.aspx" />
-    <Content Include="DesktopModules\CommunityModules\Blog\example.jpg" />
-    <Content Include="DesktopModules\CommunityModules\Blog\install.sql" />
-    <Content Include="DesktopModules\CommunityModules\Blog\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\Blog\readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\Blog\RSS.aspx" />
-    <Content Include="DesktopModules\CommunityModules\Blog\uninstall.sql" />
-    <Content Include="DesktopModules\CommunityModules\Blog\xml.gif" />
     <Content Include="DesktopModules\CommunityModules\Breadcrumbs\BreadCrumbs.ascx" />
     <Content Include="DesktopModules\CommunityModules\Breadcrumbs\install.sql" />
     <Content Include="DesktopModules\CommunityModules\Breadcrumbs\install.xml" />
@@ -6342,8 +6295,6 @@
     <Content Include="DesktopModules\CoreModules\ContentManager\images\MoveRight.gif" />
     <Content Include="DesktopModules\CoreModules\ContentManager\install.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\install.xml" />
-    <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Blogs_Install.sql" />
-    <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Blogs_UnInstall.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Contacts_Install.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Contacts_UnInstall.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Documents_Install.sql" />
