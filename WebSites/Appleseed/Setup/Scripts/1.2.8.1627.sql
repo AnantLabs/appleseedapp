@@ -1,9 +1,9 @@
----------------------
---1.2.8.1627.sql
----------------------
+-----------------------
+----1.2.8.1627.sql
+-----------------------
 
 
--- Add new module: FAQs
+---- Add new module: FAQs
 --DECLARE @GeneralModDefID uniqueidentifier
 --DECLARE @FriendlyName nvarchar(128)
 --DECLARE @DesktopSrc nvarchar(256)

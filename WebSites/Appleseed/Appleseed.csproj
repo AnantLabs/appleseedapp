@@ -631,6 +631,41 @@
     <Compile Include="DesktopModules\CommunityModules\EnhancedHTML\EnhancedHtmlEdit.aspx.designer.cs">
       <DependentUpon>EnhancedHtmlEdit.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DesktopModules\CommunityModules\EnhancedLinks\EnhancedLinks.ascx.cs">
+      <DependentUpon>EnhancedLinks.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\EnhancedLinks\EnhancedLinks.ascx.designer.cs">
+      <DependentUpon>EnhancedLinks.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\EnhancedLinks\EnhancedLinksEdit.aspx.cs">
+      <DependentUpon>EnhancedLinksEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\EnhancedLinks\EnhancedLinksEdit.aspx.designer.cs">
+      <DependentUpon>EnhancedLinksEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Events\Events.ascx.cs">
+      <DependentUpon>Events.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Events\Events.ascx.designer.cs">
+      <DependentUpon>Events.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Events\EventsEdit.aspx.cs">
+      <DependentUpon>EventsEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Events\EventsEdit.aspx.designer.cs">
+      <DependentUpon>EventsEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\FileDirectoryTree\FileDirectoryTree.ascx.cs">
+      <DependentUpon>FileDirectoryTree.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\FileDirectoryTree\FileDirectoryTree.ascx.designer.cs">
+      <DependentUpon>FileDirectoryTree.ascx</DependentUpon>
+    </Compile>
     <Compile Include="DesktopModules\CommunityModules\HTMLDocument\HtmlEdit.aspx.cs">
       <DependentUpon>HtmlEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -659,12 +694,47 @@
     <Compile Include="DesktopModules\CommunityModules\IframeModule\IframeModule.ascx.designer.cs">
       <DependentUpon>IframeModule.ascx</DependentUpon>
     </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Image\ImageModule.ascx.cs">
+      <DependentUpon>ImageModule.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Image\ImageModule.ascx.designer.cs">
+      <DependentUpon>ImageModule.ascx</DependentUpon>
+    </Compile>
     <Compile Include="DesktopModules\CommunityModules\LanguageSwitcher\LanguageSwitcher.ascx.cs">
       <DependentUpon>LanguageSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="DesktopModules\CommunityModules\LanguageSwitcher\LanguageSwitcher.ascx.designer.cs">
       <DependentUpon>LanguageSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\MapQuest\MapQuest.ascx.cs">
+      <DependentUpon>MapQuest.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\MapQuest\MapQuest.ascx.designer.cs">
+      <DependentUpon>MapQuest.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\MileStones\Milestones.ascx.cs">
+      <DependentUpon>Milestones.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\MileStones\Milestones.ascx.designer.cs">
+      <DependentUpon>Milestones.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\MileStones\MilestonesEdit.aspx.cs">
+      <DependentUpon>MilestonesEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\MileStones\MilestonesEdit.aspx.designer.cs">
+      <DependentUpon>MilestonesEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\PageKeyPhrase\PageKeyPhrase.ascx.cs">
+      <DependentUpon>PageKeyPhrase.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\PageKeyPhrase\PageKeyPhrase.ascx.designer.cs">
+      <DependentUpon>PageKeyPhrase.ascx</DependentUpon>
     </Compile>
     <Compile Include="DesktopModules\CommunityModules\Pictures\PicturesEdit.aspx.cs">
       <DependentUpon>PicturesEdit.aspx</DependentUpon>
@@ -680,12 +750,134 @@
     <Compile Include="DesktopModules\CommunityModules\Pictures\PictureView.aspx.designer.cs">
       <DependentUpon>PictureView.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DesktopModules\CommunityModules\PortalSearch\PortalSearch.ascx.cs">
+      <DependentUpon>PortalSearch.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\PortalSearch\PortalSearch.ascx.designer.cs">
+      <DependentUpon>PortalSearch.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Quiz\Quiz.ascx.cs">
+      <DependentUpon>Quiz.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Quiz\Quiz.ascx.designer.cs">
+      <DependentUpon>Quiz.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Quiz\QuizPage.aspx.cs">
+      <DependentUpon>QuizPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Quiz\QuizPage.aspx.designer.cs">
+      <DependentUpon>QuizPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Quote\Quote.ascx.cs">
+      <DependentUpon>Quote.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Quote\Quote.ascx.designer.cs">
+      <DependentUpon>Quote.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\SendThoughts\SendThoughts.ascx.cs">
+      <DependentUpon>SendThoughts.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\SendThoughts\SendThoughts.ascx.designer.cs">
+      <DependentUpon>SendThoughts.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\ServiceItemList\ServiceItemList.ascx.cs">
+      <DependentUpon>ServiceItemList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\ServiceItemList\ServiceItemList.ascx.designer.cs">
+      <DependentUpon>ServiceItemList.ascx</DependentUpon>
+    </Compile>
     <Compile Include="DesktopModules\CommunityModules\Shortcut\ShortcutAll.ascx.cs">
       <DependentUpon>ShortcutAll.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="DesktopModules\CommunityModules\Shortcut\ShortcutAll.ascx.designer.cs">
       <DependentUpon>ShortcutAll.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\SimpleMenu\SimpleMenu.ascx.cs">
+      <DependentUpon>SimpleMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\SimpleMenu\SimpleMenu.ascx.designer.cs">
+      <DependentUpon>SimpleMenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\SiteMap\Sitemap.ascx.cs">
+      <DependentUpon>Sitemap.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\SiteMap\Sitemap.ascx.designer.cs">
+      <DependentUpon>Sitemap.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Survey\SiteSettings.ascx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Survey\Survey.ascx.cs">
+      <DependentUpon>Survey.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Survey\Survey.ascx.designer.cs">
+      <DependentUpon>Survey.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Survey\SurveyEdit.aspx.cs">
+      <DependentUpon>SurveyEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Survey\SurveyEdit.aspx.designer.cs">
+      <DependentUpon>SurveyEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Survey\SurveyOptionEdit.aspx.cs">
+      <DependentUpon>SurveyOptionEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Survey\SurveyOptionEdit.aspx.designer.cs">
+      <DependentUpon>SurveyOptionEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Tasks\Tasks.ascx.cs">
+      <DependentUpon>Tasks.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Tasks\Tasks.ascx.designer.cs">
+      <DependentUpon>Tasks.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Tasks\TasksEdit.aspx.cs">
+      <DependentUpon>TasksEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Tasks\TasksEdit.aspx.designer.cs">
+      <DependentUpon>TasksEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Tasks\TasksView.aspx.cs">
+      <DependentUpon>TasksView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Tasks\TasksView.aspx.designer.cs">
+      <DependentUpon>TasksView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\UserDefinedTable\UserDefinedTable.ascx.cs">
+      <DependentUpon>UserDefinedTable.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\UserDefinedTable\UserDefinedTable.ascx.designer.cs">
+      <DependentUpon>UserDefinedTable.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\UserDefinedTable\UserDefinedTableEdit.aspx.cs">
+      <DependentUpon>UserDefinedTableEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\UserDefinedTable\UserDefinedTableEdit.aspx.designer.cs">
+      <DependentUpon>UserDefinedTableEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\UserDefinedTable\UserDefinedTableManage.aspx.cs">
+      <DependentUpon>UserDefinedTableManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\UserDefinedTable\UserDefinedTableManage.aspx.designer.cs">
+      <DependentUpon>UserDefinedTableManage.aspx</DependentUpon>
     </Compile>
     <Compile Include="DesktopModules\CommunityModules\Version\AppleseedVersion.ascx.cs">
       <DependentUpon>AppleseedVersion.ascx</DependentUpon>
@@ -701,12 +893,96 @@
     <Compile Include="DesktopModules\CommunityModules\Version\AsVersion.aspx.designer.cs">
       <DependentUpon>AsVersion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DesktopModules\CommunityModules\WeatherCom\WeatherCom.ascx.cs">
+      <DependentUpon>WeatherCom.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\WeatherCom\WeatherCom.ascx.designer.cs">
+      <DependentUpon>WeatherCom.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\WeatherDE\WeatherDE.ascx.cs">
+      <DependentUpon>WeatherDE.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\WeatherDE\WeatherDE.ascx.designer.cs">
+      <DependentUpon>WeatherDE.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\WeatherDE\WeatherDEEdit.aspx.cs">
+      <DependentUpon>WeatherDEEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\WeatherDE\WeatherDEEdit.aspx.designer.cs">
+      <DependentUpon>WeatherDEEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\WeatherUS\WeatherUS.ascx.cs">
+      <DependentUpon>WeatherUS.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\WeatherUS\WeatherUS.ascx.designer.cs">
+      <DependentUpon>WeatherUS.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\WeatherUS\WeatherUSEdit.aspx.cs">
+      <DependentUpon>WeatherUSEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\WeatherUS\WeatherUSEdit.aspx.designer.cs">
+      <DependentUpon>WeatherUSEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\WebPartModule\WebPartModule.ascx.cs">
+      <DependentUpon>WebPartModule.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\WebPartModule\WebPartModule.ascx.designer.cs">
+      <DependentUpon>WebPartModule.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\WhosLoggedOn\WhosLoggedOn.ascx.cs">
+      <DependentUpon>WhosLoggedOn.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\WhosLoggedOn\WhosLoggedOn.ascx.designer.cs">
+      <DependentUpon>WhosLoggedOn.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Workflow\ApproveModuleContent.aspx.cs">
+      <DependentUpon>ApproveModuleContent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Workflow\ApproveModuleContent.aspx.designer.cs">
+      <DependentUpon>ApproveModuleContent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Workflow\RejectModuleContent.aspx.cs">
+      <DependentUpon>RejectModuleContent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Workflow\RejectModuleContent.aspx.designer.cs">
+      <DependentUpon>RejectModuleContent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Workflow\RequestModuleContentApproval.aspx.cs">
+      <DependentUpon>RequestModuleContentApproval.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Workflow\RequestModuleContentApproval.aspx.designer.cs">
+      <DependentUpon>RequestModuleContentApproval.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DesktopModules\CommunityModules\XmlFeed\XmlFeed.ascx.cs">
       <DependentUpon>XmlFeed.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="DesktopModules\CommunityModules\XmlFeed\XmlFeed.ascx.designer.cs">
       <DependentUpon>XmlFeed.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\XmlLang\XmlLangModule.ascx.cs">
+      <DependentUpon>XmlLangModule.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\XmlLang\XmlLangModule.ascx.designer.cs">
+      <DependentUpon>XmlLangModule.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\XmlModule\XmlModule.ascx.cs">
+      <DependentUpon>XmlModule.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\XmlModule\XmlModule.ascx.designer.cs">
+      <DependentUpon>XmlModule.ascx</DependentUpon>
     </Compile>
     <Compile Include="DesktopModules\CoreModules\AddModule\Viewer.ascx.cs">
       <DependentUpon>Viewer.ascx</DependentUpon>
@@ -5337,6 +5613,24 @@
     <Content Include="DesktopModules\CommunityModules\EnhancedHTML\readme.txt" />
     <Content Include="DesktopModules\CommunityModules\EnhancedHTML\singlepage.gif" />
     <Content Include="DesktopModules\CommunityModules\EnhancedHTML\uninstall.sql" />
+    <Content Include="DesktopModules\CommunityModules\EnhancedLinks\EnhancedLinks.ascx" />
+    <Content Include="DesktopModules\CommunityModules\EnhancedLinks\EnhancedLinksEdit.aspx" />
+    <Content Include="DesktopModules\CommunityModules\EnhancedLinks\install.sql" />
+    <Content Include="DesktopModules\CommunityModules\EnhancedLinks\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\EnhancedLinks\mod_EnhancedLinks.css" />
+    <Content Include="DesktopModules\CommunityModules\EnhancedLinks\uninstall.sql" />
+    <Content Include="DesktopModules\CommunityModules\Events\Events.ascx" />
+    <Content Include="DesktopModules\CommunityModules\Events\Events.xml" />
+    <Content Include="DesktopModules\CommunityModules\Events\EventsEdit.aspx" />
+    <Content Include="DesktopModules\CommunityModules\Events\install.sql" />
+    <Content Include="DesktopModules\CommunityModules\Events\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\Events\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\Events\uninstall.sql" />
+    <Content Include="DesktopModules\CommunityModules\FileDirectoryTree\example.jpg" />
+    <Content Include="DesktopModules\CommunityModules\FileDirectoryTree\FileDirectoryTree.ascx" />
+    <Content Include="DesktopModules\CommunityModules\FileDirectoryTree\FileDirectoryTree.xml" />
+    <Content Include="DesktopModules\CommunityModules\FileDirectoryTree\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\FileDirectoryTree\readme.txt" />
     <Content Include="DesktopModules\CommunityModules\HTMLDocument\HtmlDocument.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -5350,33 +5644,349 @@
     <Content Include="DesktopModules\CommunityModules\IframeModule\Iframe.xml" />
     <Content Include="DesktopModules\CommunityModules\IframeModule\IframeModule.ascx" />
     <Content Include="DesktopModules\CommunityModules\IframeModule\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\Image\Image.xml" />
+    <Content Include="DesktopModules\CommunityModules\Image\ImageModule.ascx" />
+    <Content Include="DesktopModules\CommunityModules\Image\install.xml" />
     <Content Include="DesktopModules\CommunityModules\LanguageSwitcher\install.xml" />
     <Content Include="DesktopModules\CommunityModules\LanguageSwitcher\LanguageSwitcher.ascx" />
+    <Content Include="DesktopModules\CommunityModules\MapQuest\example.jpg" />
+    <Content Include="DesktopModules\CommunityModules\MapQuest\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\MapQuest\MapQuest.ascx" />
+    <Content Include="DesktopModules\CommunityModules\MapQuest\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\MileStones\install.sql" />
+    <Content Include="DesktopModules\CommunityModules\MileStones\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\MileStones\Milestones.ascx" />
+    <Content Include="DesktopModules\CommunityModules\MileStones\MilestonesEdit.aspx" />
+    <Content Include="DesktopModules\CommunityModules\MileStones\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\MileStones\uninstall.sql" />
+    <Content Include="DesktopModules\CommunityModules\OneFileModule\CSharp Examples\ExcelReader\DBPatch.sql" />
+    <Content Include="DesktopModules\CommunityModules\OneFileModule\CSharp Examples\ExcelReader\ExcelReader.ascx" />
+    <Content Include="DesktopModules\CommunityModules\OneFileModule\CSharp Examples\ExcelReader\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\OneFileModule\CSharp Examples\Lyris 1\DBPatch.sql" />
+    <Content Include="DesktopModules\CommunityModules\OneFileModule\CSharp Examples\Lyris 1\LyrisExample1.ascx" />
+    <Content Include="DesktopModules\CommunityModules\OneFileModule\CSharp Examples\Lyris 1\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\OneFileModule\CSharp Examples\Lyris 1\SettingsLyris.xml" />
+    <Content Include="DesktopModules\CommunityModules\OneFileModule\CSharp Examples\Lyris 2\DBPatch.sql" />
+    <Content Include="DesktopModules\CommunityModules\OneFileModule\CSharp Examples\Lyris 2\LyrisExample2.ascx" />
+    <Content Include="DesktopModules\CommunityModules\OneFileModule\CSharp Examples\Lyris 2\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\OneFileModule\CSharp Examples\No Settings\DBPatch.sql" />
+    <Content Include="DesktopModules\CommunityModules\OneFileModule\CSharp Examples\No Settings\NoSettings.ascx" />
+    <Content Include="DesktopModules\CommunityModules\OneFileModule\CSharp Examples\No Settings\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\OneFileModule\CSharp Examples\Simple\DBPatch.sql" />
+    <Content Include="DesktopModules\CommunityModules\OneFileModule\CSharp Examples\Simple\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\OneFileModule\CSharp Examples\Simple\SettingsSimple.xml" />
+    <Content Include="DesktopModules\CommunityModules\OneFileModule\CSharp Examples\Simple\Simple.ascx" />
+    <Content Include="DesktopModules\CommunityModules\OneFileModule\OneFileModule_readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\OneFileModule\VB.NET Examples\HelloWorld\DBPatch.sql" />
+    <Content Include="DesktopModules\CommunityModules\OneFileModule\VB.NET Examples\HelloWorld\HelloWorld.ascx" />
+    <Content Include="DesktopModules\CommunityModules\OneFileModule\VB.NET Examples\HelloWorld\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\OneFileModule\VB.NET Examples\HelloWorld\SettingsHelloWorld.xml" />
+    <Content Include="DesktopModules\CommunityModules\OneFileModule\VB.NET Examples\Simple\DBPatch.sql" />
+    <Content Include="DesktopModules\CommunityModules\OneFileModule\VB.NET Examples\Simple\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\OneFileModule\VB.NET Examples\Simple\SettingsSimpleVB.xml" />
+    <Content Include="DesktopModules\CommunityModules\OneFileModule\VB.NET Examples\Simple\SimpleVB.ascx" />
+    <Content Include="DesktopModules\CommunityModules\PageKeyPhrase\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\PageKeyPhrase\PageKeyPhrase.ascx" />
+    <Content Include="DesktopModules\CommunityModules\PageKeyPhrase\readme.txt" />
     <Content Include="DesktopModules\CommunityModules\Pictures\example1.jpg" />
     <Content Include="DesktopModules\CommunityModules\Pictures\example2.jpg" />
     <Content Include="DesktopModules\CommunityModules\Pictures\example3.jpg" />
     <Content Include="DesktopModules\CommunityModules\Pictures\example4.jpg" />
     <Content Include="DesktopModules\CommunityModules\Pictures\install.sql" />
-    <Content Include="DesktopModules\CommunityModules\Pictures\install.xml">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="DesktopModules\CommunityModules\Pictures\install.xml" />
     <Content Include="DesktopModules\CommunityModules\Pictures\Pictures.ascx" />
     <Content Include="DesktopModules\CommunityModules\Pictures\Pictures.xml" />
     <Content Include="DesktopModules\CommunityModules\Pictures\PicturesEdit.aspx" />
     <Content Include="DesktopModules\CommunityModules\Pictures\PictureView.aspx" />
     <Content Include="DesktopModules\CommunityModules\Pictures\readme.txt" />
     <Content Include="DesktopModules\CommunityModules\Pictures\uninstall.sql" />
+    <Content Include="DesktopModules\CommunityModules\PortalSearch\example1.jpg" />
+    <Content Include="DesktopModules\CommunityModules\PortalSearch\example2.jpg" />
+    <Content Include="DesktopModules\CommunityModules\PortalSearch\example3.jpg" />
+    <Content Include="DesktopModules\CommunityModules\PortalSearch\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\PortalSearch\PortalSearch.ascx" />
+    <Content Include="DesktopModules\CommunityModules\PortalSearch\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\Quiz\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\Quiz\Pie.gif" />
+    <Content Include="DesktopModules\CommunityModules\Quiz\Quiz.ascx" />
+    <Content Include="DesktopModules\CommunityModules\Quiz\QuizPage.aspx" />
+    <Content Include="DesktopModules\CommunityModules\Quiz\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\Quote\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\Quote\Quote.ascx" />
+    <Content Include="DesktopModules\CommunityModules\Quote\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\SecureDocuments\install.sql" />
+    <Content Include="DesktopModules\CommunityModules\SecureDocuments\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\SecureDocuments\readme.Documents.txt" />
+    <Content Include="DesktopModules\CommunityModules\SecureDocuments\readme.SecureDocuments.txt" />
+    <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\conf.gif" />
+    <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\css.gif" />
+    <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\doc.gif" />
+    <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\exe.gif" />
+    <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\img.gif" />
+    <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\mdb.gif" />
+    <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\mp3.gif" />
+    <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\other.gif" />
+    <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\pdf.gif" />
+    <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\ppt.gif" />
+    <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\source.gif" />
+    <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\swf.gif" />
+    <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\txt.gif" />
+    <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\xls.gif" />
+    <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\zip.gif" />
+    <Content Include="DesktopModules\CommunityModules\SecureDocuments\uninstall.sql" />
+    <Content Include="DesktopModules\CommunityModules\SendThoughts\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\SendThoughts\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\SendThoughts\SendThoughts.ascx" />
+    <Content Include="DesktopModules\CommunityModules\ServiceItemList\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\ServiceItemList\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\ServiceItemList\ServiceItemList.ascx" />
     <Content Include="DesktopModules\CommunityModules\Shortcut\install.xml" />
     <Content Include="DesktopModules\CommunityModules\Shortcut\Shortcut.ascx" />
     <Content Include="DesktopModules\CommunityModules\Shortcut\ShortcutAll.ascx" />
     <Content Include="DesktopModules\CommunityModules\Shortcut\ShortcutAll_readme.txt" />
     <Content Include="DesktopModules\CommunityModules\Shortcut\Shortcut_readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\SimpleMenu\example.jpg" />
+    <Content Include="DesktopModules\CommunityModules\SimpleMenu\install.sql" />
+    <Content Include="DesktopModules\CommunityModules\SimpleMenu\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\SimpleMenu\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\SimpleMenu\SimpleMenu.ascx" />
+    <Content Include="DesktopModules\CommunityModules\SimpleMenu\SimpleMenuTypes\EmptyMenu.ascx" />
+    <Content Include="DesktopModules\CommunityModules\SimpleMenu\SimpleMenuTypes\MenuHWLeftStyle.ascx" />
+    <Content Include="DesktopModules\CommunityModules\SimpleMenu\SimpleMenuTypes\MenuHWTopStyle.ascx" />
+    <Content Include="DesktopModules\CommunityModules\SimpleMenu\SimpleMenuTypes\SolpartMenu.ascx" />
+    <Content Include="DesktopModules\CommunityModules\SimpleMenu\SimpleMenuTypes\StaticItemMenu.ascx" />
+    <Content Include="DesktopModules\CommunityModules\SimpleMenu\SimpleMenuTypes\StaticItemMenuWithHead.ascx" />
+    <Content Include="DesktopModules\CommunityModules\SimpleMenu\SimpleMenuTypes\StaticMenu.ascx" />
+    <Content Include="DesktopModules\CommunityModules\SimpleMenu\uninstall.sql" />
+    <Content Include="DesktopModules\CommunityModules\SiteMap\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\SiteMap\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\SiteMap\Sitemap.ascx" />
+    <Content Include="DesktopModules\CommunityModules\SiteMap\SiteMap.xml" />
+    <Content Include="DesktopModules\CommunityModules\SiteMap\sm_line_i.gif" />
+    <Content Include="DesktopModules\CommunityModules\SiteMap\sm_line_l.gif" />
+    <Content Include="DesktopModules\CommunityModules\SiteMap\sm_line_t.gif" />
+    <Content Include="DesktopModules\CommunityModules\SiteMap\sm_node.gif" />
+    <Content Include="DesktopModules\CommunityModules\SiteMap\sm_rootnode.gif" />
+    <Content Include="DesktopModules\CommunityModules\SiteMap\sm_spacer.gif" />
+    <Content Include="DesktopModules\CommunityModules\Survey\example1.jpg" />
+    <Content Include="DesktopModules\CommunityModules\Survey\example2.jpg" />
+    <Content Include="DesktopModules\CommunityModules\Survey\install.sql" />
+    <Content Include="DesktopModules\CommunityModules\Survey\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\Survey\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\Survey\Survey.ascx" />
+    <Content Include="DesktopModules\CommunityModules\Survey\SurveyEdit.aspx" />
+    <Content Include="DesktopModules\CommunityModules\Survey\SurveyOptionEdit.aspx" />
+    <Content Include="DesktopModules\CommunityModules\Survey\uninstall.sql" />
+    <Content Include="DesktopModules\CommunityModules\Tasks\example1.jpg" />
+    <Content Include="DesktopModules\CommunityModules\Tasks\example2.jpg" />
+    <Content Include="DesktopModules\CommunityModules\Tasks\install.sql" />
+    <Content Include="DesktopModules\CommunityModules\Tasks\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\Tasks\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\Tasks\Tasks.ascx" />
+    <Content Include="DesktopModules\CommunityModules\Tasks\Tasks.xml" />
+    <Content Include="DesktopModules\CommunityModules\Tasks\TasksEdit.aspx" />
+    <Content Include="DesktopModules\CommunityModules\Tasks\TasksView.aspx" />
+    <Content Include="DesktopModules\CommunityModules\Tasks\uninstall.sql" />
+    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\default.xslt" />
+    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\example.jpg" />
+    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\example.txt" />
+    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\example1.xslt" />
+    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\example2.xslt" />
+    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\example3.xslt" />
+    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\example4.xslt" />
+    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\example5.xslt" />
+    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\Globals from IbuySpy Workshop.vb.txt" />
+    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\install.sql" />
+    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\sortascending.gif" />
+    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\sortdescending.gif" />
+    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\uninstall.sql" />
+    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\UserDefinedTable.ascx" />
+    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\UserDefinedTableEdit.aspx" />
+    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\UserDefinedTableManage.aspx" />
     <Content Include="DesktopModules\CommunityModules\Version\AsVersion.aspx" />
     <Content Include="DesktopModules\CommunityModules\Version\example.jpg" />
     <Content Include="DesktopModules\CommunityModules\Version\install.xml" />
     <Content Include="DesktopModules\CommunityModules\Version\AppleseedVersion.ascx" />
     <Content Include="DesktopModules\CommunityModules\Version\AppleseedVersion.xml" />
     <Content Include="DesktopModules\CommunityModules\Version\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\0.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\1.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\10.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\11.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\12.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\13.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\14.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\15.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\16.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\17.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\18.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\19.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\2.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\20.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\21.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\22.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\23.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\24.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\25.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\26.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\27.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\28.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\29.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\3.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\30.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\31.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\32.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\33.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\34.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\35.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\36.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\37.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\38.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\39.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\4.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\40.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\41.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\42.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\43.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\44.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\45.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\46.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\47.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\5.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\6.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\7.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\8.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\9.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\na.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\0.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\1.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\10.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\11.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\12.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\13.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\14.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\15.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\16.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\17.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\18.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\19.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\2.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\20.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\21.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\22.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\23.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\24.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\25.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\26.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\27.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\28.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\29.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\3.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\30.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\31.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\32.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\33.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\34.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\35.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\36.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\37.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\38.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\39.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\4.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\40.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\41.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\42.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\43.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\44.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\45.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\46.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\47.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\5.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\6.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\7.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\8.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\9.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\na.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\0.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\1.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\10.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\11.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\12.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\13.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\14.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\15.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\16.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\17.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\18.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\19.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\2.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\20.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\21.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\22.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\23.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\24.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\25.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\26.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\27.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\28.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\29.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\3.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\30.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\31.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\32.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\33.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\34.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\35.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\36.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\37.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\38.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\39.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\4.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\40.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\41.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\42.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\43.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\44.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\45.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\46.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\47.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\5.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\6.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\7.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\8.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\9.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\na.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\logos\TWClogo_32px.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\logos\TWClogo_64px.png" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\WeatherCom.ascx" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\WeatherCom.xslt" />
+    <Content Include="DesktopModules\CommunityModules\WeatherCom\WeatherComM.xslt" />
+    <Content Include="DesktopModules\CommunityModules\WeatherDE\example.jpg" />
+    <Content Include="DesktopModules\CommunityModules\WeatherDE\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\WeatherDE\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\WeatherDE\WeatherDE.ascx" />
+    <Content Include="DesktopModules\CommunityModules\WeatherDE\WeatherDEEdit.aspx" />
+    <Content Include="DesktopModules\CommunityModules\WeatherUS\example.jpg" />
+    <Content Include="DesktopModules\CommunityModules\WeatherUS\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\WeatherUS\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\WeatherUS\WeatherUS.ascx" />
+    <Content Include="DesktopModules\CommunityModules\WeatherUS\WeatherUSEdit.aspx" />
+    <Content Include="DesktopModules\CommunityModules\WebPartModule\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\WebPartModule\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\WebPartModule\WebPartModule.ascx" />
+    <Content Include="DesktopModules\CommunityModules\WhosLoggedOn\install.sql" />
+    <Content Include="DesktopModules\CommunityModules\WhosLoggedOn\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\WhosLoggedOn\uninstall.sql" />
+    <Content Include="DesktopModules\CommunityModules\WhosLoggedOn\WhosLoggedOn.ascx" />
+    <Content Include="DesktopModules\CommunityModules\Workflow\ApproveModuleContent.aspx" />
+    <Content Include="DesktopModules\CommunityModules\Workflow\EmailForm.ascx" />
+    <Content Include="DesktopModules\CommunityModules\Workflow\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\Workflow\RejectModuleContent.aspx" />
+    <Content Include="DesktopModules\CommunityModules\Workflow\RequestModuleContentApproval.aspx" />
     <Content Include="DesktopModules\CommunityModules\XmlFeed\del.icio.us.xslt" />
     <Content Include="DesktopModules\CommunityModules\XmlFeed\example.jpg" />
     <Content Include="DesktopModules\CommunityModules\XmlFeed\install.xml" />
@@ -5395,6 +6005,18 @@
     <Content Include="DesktopModules\CommunityModules\XmlFeed\RSSTabListWithHead.xslt" />
     <Content Include="DesktopModules\CommunityModules\XmlFeed\XmlFeed.ascx" />
     <Content Include="DesktopModules\CommunityModules\XmlFeed\XmlFeed.xml" />
+    <Content Include="DesktopModules\CommunityModules\XmlLang\example.jpg" />
+    <Content Include="DesktopModules\CommunityModules\XmlLang\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\XmlLang\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\XmlLang\sales2.xml" />
+    <Content Include="DesktopModules\CommunityModules\XmlLang\sales2.xsl" />
+    <Content Include="DesktopModules\CommunityModules\XmlLang\XmlLangModule.ascx" />
+    <Content Include="DesktopModules\CommunityModules\XmlModule\example.jpg" />
+    <Content Include="DesktopModules\CommunityModules\XmlModule\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\XmlModule\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\XmlModule\sales.xml" />
+    <Content Include="DesktopModules\CommunityModules\XmlModule\sales.xsl" />
+    <Content Include="DesktopModules\CommunityModules\XmlModule\XmlModule.ascx" />
     <Content Include="DesktopModules\CoreModules\AddModule\err.txt" />
     <Content Include="DesktopModules\CoreModules\AddModule\example.gif" />
     <Content Include="DesktopModules\CoreModules\AddModule\install.xml" />
@@ -5426,6 +6048,10 @@
     <Content Include="DesktopModules\CoreModules\ContentManager\images\MoveRight.gif" />
     <Content Include="DesktopModules\CoreModules\ContentManager\install.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\install.xml" />
+    <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Events_Install.sql" />
+    <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Events_UnInstall.sql" />
+    <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Tasks_install.sql" />
+    <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Tasks_Uninstall.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\Install_INSTRUCTIONS.txt" />
     <Content Include="DesktopModules\CoreModules\ContentManager\README%28Please,Please,Please!!%29.txt" />
     <Content Include="DesktopModules\CoreModules\ContentManager\readme.txt" />
@@ -5636,6 +6262,22 @@
     <Content Include="LocalizationAdmin\LocalizeForm.css" />
     <Content Include="LocalizationAdmin\StronglyTypedGlobalResources.aspx" />
     <Content Include="LocalizationAdmin\Web.config" />
+    <None Include="DesktopModules\CommunityModules\EnhancedLinks\EnhancedLinks.doc" />
+    <None Include="DesktopModules\CommunityModules\OneFileModule\CSharp Examples\ExcelReader\ApplyDBPatch.bat" />
+    <None Include="DesktopModules\CommunityModules\OneFileModule\CSharp Examples\ExcelReader\ExcelDemoData.xls" />
+    <None Include="DesktopModules\CommunityModules\OneFileModule\CSharp Examples\Lyris 1\ApplyDBPatch.bat" />
+    <None Include="DesktopModules\CommunityModules\OneFileModule\CSharp Examples\Lyris 2\ApplyDBPatch.bat" />
+    <None Include="DesktopModules\CommunityModules\OneFileModule\CSharp Examples\No Settings\ApplyDBPatch.bat" />
+    <None Include="DesktopModules\CommunityModules\OneFileModule\CSharp Examples\Simple\ApplyDBPatch.bat" />
+    <None Include="DesktopModules\CommunityModules\OneFileModule\VB.NET Examples\HelloWorld\ApplyDBPatch.bat" />
+    <None Include="DesktopModules\CommunityModules\OneFileModule\VB.NET Examples\Simple\ApplyDBPatch.bat" />
+    <None Include="DesktopModules\CommunityModules\Quiz\Quiz.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DesktopModules\CommunityModules\Quote\demo.quote" />
+    <None Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_EnhancedLinks_Install.sql.old" />
+    <None Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_EnhancedLinks_UnInstall.sql.old" />
+    <None Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Links_EnhancedLinks_Install.sql.old" />
     <None Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Links_Install.sql.old" />
     <None Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Links_UnInstall.sql.old" />
     <Content Include="DesktopModules\CoreModules\DatabaseTableEdit\TableEditor.zip" />
@@ -5818,6 +6460,9 @@
       <LastGenOutput>Appleseed.vi.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <EmbeddedResource Include="DesktopModules\CommunityModules\WeatherCom\WeatherCom.ascx.resx">
+      <DependentUpon>WeatherCom.ascx.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DesktopModules\CoreModules\ModuleDefinitions_OFM\ModuleDefinitions.aspx.resx">
       <DependentUpon>ModuleDefinitions.aspx.cs</DependentUpon>
     </EmbeddedResource>

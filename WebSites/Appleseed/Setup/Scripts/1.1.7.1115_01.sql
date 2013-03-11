@@ -42,13 +42,13 @@ INSERT INTO GeneralModuleDefinitions (GeneralModDefID,ClassName,FriendlyName,Des
 --INSERT INTO GeneralModuleDefinitions (GeneralModDefID,ClassName,FriendlyName,DesktopSrc,MobileSrc,Admin) VALUES('{F9645B82-CB45-4C4C-BB2D-72FA42FE2B75}',NULL,'Documents','DesktopModules/Document.ascx','',0)
 INSERT INTO GeneralModuleDefinitions (GeneralModDefID,ClassName,FriendlyName,DesktopSrc,MobileSrc,Admin) VALUES('{0B113F51-FEA3-499A-98E7-7B83C192FDBB}',NULL,'Html Document','DesktopModules/HtmlModule.ascx','MobileModules/Text.ascx',0)
 INSERT INTO GeneralModuleDefinitions (GeneralModDefID,ClassName,FriendlyName,DesktopSrc,MobileSrc,Admin) VALUES('{D04BB5EA-A792-4E87-BFC7-7D0ED3ADD582}',NULL,'Module Types (AdminAll)','AdminAll/ModuleDefsAll.ascx','',1)
---INSERT INTO GeneralModuleDefinitions (GeneralModDefID,ClassName,FriendlyName,DesktopSrc,MobileSrc,Admin) VALUES('{EF9B29C5-E481-49A6-9383-8ED3AB42DDA0}',NULL,'Events','DesktopModules/Events.ascx','MobileModules/Events.ascx',0)
+INSERT INTO GeneralModuleDefinitions (GeneralModDefID,ClassName,FriendlyName,DesktopSrc,MobileSrc,Admin) VALUES('{EF9B29C5-E481-49A6-9383-8ED3AB42DDA0}',NULL,'Events','DesktopModules/Events.ascx','MobileModules/Events.ascx',0)
 INSERT INTO GeneralModuleDefinitions (GeneralModDefID,ClassName,FriendlyName,DesktopSrc,MobileSrc,Admin) VALUES('{F9F9C3A4-6E16-43B4-B540-984DDB5F1CD0}',NULL,'ShortcutAll','DesktopModules/ShortcutAll.ascx','',0)
 INSERT INTO GeneralModuleDefinitions (GeneralModDefID,ClassName,FriendlyName,DesktopSrc,MobileSrc,Admin) VALUES('{F9F9C3A4-6E16-43B4-B540-984DDB5F1CD2}',NULL,'Shortcut','DesktopModules/Shortcut.ascx','',0)
---INSERT INTO GeneralModuleDefinitions (GeneralModDefID,ClassName,FriendlyName,DesktopSrc,MobileSrc,Admin) VALUES('{BE224332-03DE-42B7-B127-AE1F1BD0FADC}',NULL,'XML/XSL','DesktopModules/XmlModule.ascx','',0)
+INSERT INTO GeneralModuleDefinitions (GeneralModDefID,ClassName,FriendlyName,DesktopSrc,MobileSrc,Admin) VALUES('{BE224332-03DE-42B7-B127-AE1F1BD0FADC}',NULL,'XML/XSL','DesktopModules/XmlModule.ascx','',0)
 --INSERT INTO GeneralModuleDefinitions (GeneralModDefID,ClassName,FriendlyName,DesktopSrc,MobileSrc,Admin) VALUES('{2502DB18-B580-4F90-8CB4-C15E6E5339EF}',NULL,'Contacts','DesktopModules/Contacts.ascx','MobileModules/Contacts.ascx',0)
---INSERT INTO GeneralModuleDefinitions (GeneralModDefID,ClassName,FriendlyName,DesktopSrc,MobileSrc,Admin) VALUES('{2D86166C-4BDC-4A6F-A028-D17C2BB177C8}',NULL,'Discussion','DesktopModules/Discussion/Discussion.ascx','',0)
---INSERT INTO GeneralModuleDefinitions (GeneralModDefID,ClassName,FriendlyName,DesktopSrc,MobileSrc,Admin) VALUES('{CE55A821-2449-4903-BA1A-EC16DB93F8DB}',NULL,'Announcements','DesktopModules/Announcements.ascx','MobileModules/Announcements.ascx',0)
+INSERT INTO GeneralModuleDefinitions (GeneralModDefID,ClassName,FriendlyName,DesktopSrc,MobileSrc,Admin) VALUES('{2D86166C-4BDC-4A6F-A028-D17C2BB177C8}',NULL,'Discussion','DesktopModules/Discussion/Discussion.ascx','',0)
+INSERT INTO GeneralModuleDefinitions (GeneralModDefID,ClassName,FriendlyName,DesktopSrc,MobileSrc,Admin) VALUES('{CE55A821-2449-4903-BA1A-EC16DB93F8DB}',NULL,'Announcements','DesktopModules/Announcements.ascx','MobileModules/Announcements.ascx',0)
 IF(	IDENT_INCR( 'GeneralModuleDefinitions' ) IS NOT NULL OR IDENT_SEED('GeneralModuleDefinitions') IS NOT NULL ) SET IDENTITY_INSERT GeneralModuleDefinitions OFF
 GO
 
@@ -56,15 +56,15 @@ GO
 --Insert data into ModuleDefinitions
 -----------------------------------------------------------
 IF(	IDENT_INCR( 'ModuleDefinitions' ) IS NOT NULL OR IDENT_SEED('ModuleDefinitions') IS NOT NULL ) SET IDENTITY_INSERT ModuleDefinitions ON
---INSERT INTO ModuleDefinitions (ModuleDefID,PortalID,GeneralModDefID) VALUES('1','0','{CE55A821-2449-4903-BA1A-EC16DB93F8DB}')
+INSERT INTO ModuleDefinitions (ModuleDefID,PortalID,GeneralModDefID) VALUES('1','0','{CE55A821-2449-4903-BA1A-EC16DB93F8DB}')
 --INSERT INTO ModuleDefinitions (ModuleDefID,PortalID,GeneralModDefID) VALUES('2','0','{2502DB18-B580-4F90-8CB4-C15E6E5339EF}')
---INSERT INTO ModuleDefinitions (ModuleDefID,PortalID,GeneralModDefID) VALUES('3','0','{2D86166C-4BDC-4A6F-A028-D17C2BB177C8}')
---INSERT INTO ModuleDefinitions (ModuleDefID,PortalID,GeneralModDefID) VALUES('4','0','{EF9B29C5-E481-49A6-9383-8ED3AB42DDA0}')
+INSERT INTO ModuleDefinitions (ModuleDefID,PortalID,GeneralModDefID) VALUES('3','0','{2D86166C-4BDC-4A6F-A028-D17C2BB177C8}')
+INSERT INTO ModuleDefinitions (ModuleDefID,PortalID,GeneralModDefID) VALUES('4','0','{EF9B29C5-E481-49A6-9383-8ED3AB42DDA0}')
 INSERT INTO ModuleDefinitions (ModuleDefID,PortalID,GeneralModDefID) VALUES('5','0','{0B113F51-FEA3-499A-98E7-7B83C192FDBB}')
 INSERT INTO ModuleDefinitions (ModuleDefID,PortalID,GeneralModDefID) VALUES('847','0','{F9F9C3A4-6E16-43B4-B540-984DDB5F1CD2}')
 INSERT INTO ModuleDefinitions (ModuleDefID,PortalID,GeneralModDefID) VALUES('7','0','{476CF1CC-8364-479D-9764-4B3ABD7FFABD}')
 INSERT INTO ModuleDefinitions (ModuleDefID,PortalID,GeneralModDefID) VALUES('861','0','{F9F9C3A4-6E16-43B4-B540-984DDB5F1CD0}')
---INSERT INTO ModuleDefinitions (ModuleDefID,PortalID,GeneralModDefID) VALUES('9','0','{BE224332-03DE-42B7-B127-AE1F1BD0FADC}')
+INSERT INTO ModuleDefinitions (ModuleDefID,PortalID,GeneralModDefID) VALUES('9','0','{BE224332-03DE-42B7-B127-AE1F1BD0FADC}')
 --INSERT INTO ModuleDefinitions (ModuleDefID,PortalID,GeneralModDefID) VALUES('10','0','{F9645B82-CB45-4C4C-BB2D-72FA42FE2B75}')
 INSERT INTO ModuleDefinitions (ModuleDefID,PortalID,GeneralModDefID) VALUES('11','0','{D04BB5EA-A792-4E87-BFC7-7D0ED3ADD582}')
 INSERT INTO ModuleDefinitions (ModuleDefID,PortalID,GeneralModDefID) VALUES('12','0','{A406A674-76EB-4BC1-BB35-50CD2C251F9C}')
@@ -102,7 +102,7 @@ GO
 IF(	IDENT_INCR( 'Tabs' ) IS NOT NULL OR IDENT_SEED('Tabs') IS NOT NULL ) SET IDENTITY_INSERT Tabs ON
 INSERT INTO Tabs (TabID,ParentTabID,TabOrder,PortalID,TabName,MobileTabName,AuthorizedRoles,ShowMobile,TabLayout) VALUES('0',NULL,'0','-1','Unused Tab','Unused Tab','All Users;',0,NULL)
 INSERT INTO Tabs (TabID,ParentTabID,TabOrder,PortalID,TabName,MobileTabName,AuthorizedRoles,ShowMobile,TabLayout) VALUES('1',NULL,'1','0','Home','Home','All Users;',1,NULL)
---INSERT INTO Tabs (TabID,ParentTabID,TabOrder,PortalID,TabName,MobileTabName,AuthorizedRoles,ShowMobile,TabLayout) VALUES('3039','1','3','0','Documents','','All Users;',0,NULL)
+INSERT INTO Tabs (TabID,ParentTabID,TabOrder,PortalID,TabName,MobileTabName,AuthorizedRoles,ShowMobile,TabLayout) VALUES('3039','1','3','0','Documents','','All Users;',0,NULL)
 INSERT INTO Tabs (TabID,ParentTabID,TabOrder,PortalID,TabName,MobileTabName,AuthorizedRoles,ShowMobile,TabLayout) VALUES('6',NULL,'9','0','Admin this','Admin','Admins;',0,NULL)
 INSERT INTO Tabs (TabID,ParentTabID,TabOrder,PortalID,TabName,MobileTabName,AuthorizedRoles,ShowMobile,TabLayout) VALUES('11','6','11','0','Admin all','','Admins;',0,NULL)
 INSERT INTO Tabs (TabID,ParentTabID,TabOrder,PortalID,TabName,MobileTabName,AuthorizedRoles,ShowMobile,TabLayout) VALUES('3325','1','5','0','Documents2','','All Users;',0,NULL)
@@ -151,18 +151,18 @@ GO
 -----------------------------------------------------------
 --Insert data into Discussion
 -----------------------------------------------------------
---IF(	IDENT_INCR( 'Discussion' ) IS NOT NULL OR IDENT_SEED('Discussion') IS NOT NULL ) SET IDENTITY_INSERT Discussion ON
---INSERT INTO Discussion (ItemID,ModuleID,Title,CreatedDate,Body,DisplayOrder,CreatedByUser) VALUES('0','0','',NULL,'','','')
---IF(	IDENT_INCR( 'Discussion' ) IS NOT NULL OR IDENT_SEED('Discussion') IS NOT NULL ) SET IDENTITY_INSERT Discussion OFF
---GO
+IF(	IDENT_INCR( 'Discussion' ) IS NOT NULL OR IDENT_SEED('Discussion') IS NOT NULL ) SET IDENTITY_INSERT Discussion ON
+INSERT INTO Discussion (ItemID,ModuleID,Title,CreatedDate,Body,DisplayOrder,CreatedByUser) VALUES('0','0','',NULL,'','','')
+IF(	IDENT_INCR( 'Discussion' ) IS NOT NULL OR IDENT_SEED('Discussion') IS NOT NULL ) SET IDENTITY_INSERT Discussion OFF
+GO
 
 -----------------------------------------------------------
 --Insert data into Documents
--------------------------------------------------------------
---IF(	IDENT_INCR( 'Documents' ) IS NOT NULL OR IDENT_SEED('Documents') IS NOT NULL ) SET IDENTITY_INSERT Documents ON
---INSERT INTO Documents (ItemID,ModuleID,CreatedByUser,CreatedDate,FileNameUrl,FileFriendlyName,Category,Content,ContentType,ContentSize) VALUES('0','0',NULL,NULL,NULL,NULL,NULL,'',NULL,NULL)
---IF(	IDENT_INCR( 'Documents' ) IS NOT NULL OR IDENT_SEED('Documents') IS NOT NULL ) SET IDENTITY_INSERT Documents OFF
---GO
+-----------------------------------------------------------
+IF(	IDENT_INCR( 'Documents' ) IS NOT NULL OR IDENT_SEED('Documents') IS NOT NULL ) SET IDENTITY_INSERT Documents ON
+INSERT INTO Documents (ItemID,ModuleID,CreatedByUser,CreatedDate,FileNameUrl,FileFriendlyName,Category,Content,ContentType,ContentSize) VALUES('0','0',NULL,NULL,NULL,NULL,NULL,'',NULL,NULL)
+IF(	IDENT_INCR( 'Documents' ) IS NOT NULL OR IDENT_SEED('Documents') IS NOT NULL ) SET IDENTITY_INSERT Documents OFF
+GO
 
 -----------------------------------------------------------
 --Insert data into Events
@@ -182,18 +182,18 @@ GO
 -----------------------------------------------------------
 --Insert data into Announcements
 -----------------------------------------------------------
---IF(	IDENT_INCR( 'Announcements' ) IS NOT NULL OR IDENT_SEED('Announcements') IS NOT NULL ) SET IDENTITY_INSERT Announcements ON
---INSERT INTO Announcements (ItemID,ModuleID,CreatedByUser,CreatedDate,Title,MoreLink,MobileMoreLink,ExpireDate,Description) VALUES('0','0',NULL,NULL,NULL,NULL,NULL,NULL,NULL)
---IF(	IDENT_INCR( 'Announcements' ) IS NOT NULL OR IDENT_SEED('Announcements') IS NOT NULL ) SET IDENTITY_INSERT Announcements OFF
---GO
+IF(	IDENT_INCR( 'Announcements' ) IS NOT NULL OR IDENT_SEED('Announcements') IS NOT NULL ) SET IDENTITY_INSERT Announcements ON
+INSERT INTO Announcements (ItemID,ModuleID,CreatedByUser,CreatedDate,Title,MoreLink,MobileMoreLink,ExpireDate,Description) VALUES('0','0',NULL,NULL,NULL,NULL,NULL,NULL,NULL)
+IF(	IDENT_INCR( 'Announcements' ) IS NOT NULL OR IDENT_SEED('Announcements') IS NOT NULL ) SET IDENTITY_INSERT Announcements OFF
+GO
 
 -----------------------------------------------------------
 --Insert data into Contacts
 -----------------------------------------------------------
---IF(	IDENT_INCR( 'Contacts' ) IS NOT NULL OR IDENT_SEED('Contacts') IS NOT NULL ) SET IDENTITY_INSERT Contacts ON
---INSERT INTO Contacts (ItemID,ModuleID,CreatedByUser,CreatedDate,Name,Role,Email,Contact1,Contact2) VALUES('0','0',NULL,NULL,NULL,NULL,NULL,NULL,NULL)
---IF(	IDENT_INCR( 'Contacts' ) IS NOT NULL OR IDENT_SEED('Contacts') IS NOT NULL ) SET IDENTITY_INSERT Contacts OFF
---GO
+IF(	IDENT_INCR( 'Contacts' ) IS NOT NULL OR IDENT_SEED('Contacts') IS NOT NULL ) SET IDENTITY_INSERT Contacts ON
+INSERT INTO Contacts (ItemID,ModuleID,CreatedByUser,CreatedDate,Name,Role,Email,Contact1,Contact2) VALUES('0','0',NULL,NULL,NULL,NULL,NULL,NULL,NULL)
+IF(	IDENT_INCR( 'Contacts' ) IS NOT NULL OR IDENT_SEED('Contacts') IS NOT NULL ) SET IDENTITY_INSERT Contacts OFF
+GO
 
 -----------------------------------------------------------
 --Insert data into Layouts

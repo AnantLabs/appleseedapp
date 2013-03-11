@@ -17,52 +17,52 @@ IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[AddMessage]') AND OB
 DROP PROCEDURE [AddMessage]
 GO
 
---CREATE PROCEDURE AddMessage
---(
---    @ItemID int OUTPUT,
---    @Title nvarchar(100),
---    @Body nvarchar(3000),
---    @ParentID int,
---    @UserName nvarchar(100),
---    @ModuleID int
---)   
+CREATE PROCEDURE AddMessage
+(
+    @ItemID int OUTPUT,
+    @Title nvarchar(100),
+    @Body nvarchar(3000),
+    @ParentID int,
+    @UserName nvarchar(100),
+    @ModuleID int
+)   
 
---AS 
+AS 
 
---/* Find DisplayOrder of parent item */
---DECLARE @ParentDisplayOrder as nvarchar(750)
+/* Find DisplayOrder of parent item */
+DECLARE @ParentDisplayOrder as nvarchar(750)
 
---SET @ParentDisplayOrder = ''
+SET @ParentDisplayOrder = ''
 
---SELECT 
---    @ParentDisplayOrder = DisplayOrder
---FROM 
---    Discussion 
---WHERE 
---    ItemID = @ParentID
+SELECT 
+    @ParentDisplayOrder = DisplayOrder
+FROM 
+    Discussion 
+WHERE 
+    ItemID = @ParentID
 
---INSERT INTO Discussion
---(
---    Title,
---    Body,
---    DisplayOrder,
---    CreatedDate, 
---    CreatedByUser,
---    ModuleID
---)
---VALUES
---(
---    @Title,
---    @Body,
---    @ParentDisplayOrder + CONVERT( nvarchar(24), GetDate(), 21 ),
---    GetDate(),
---    @UserName,
---    @ModuleID
---)
+INSERT INTO Discussion
+(
+    Title,
+    Body,
+    DisplayOrder,
+    CreatedDate, 
+    CreatedByUser,
+    ModuleID
+)
+VALUES
+(
+    @Title,
+    @Body,
+    @ParentDisplayOrder + CONVERT( nvarchar(24), GetDate(), 21 ),
+    GetDate(),
+    @UserName,
+    @ModuleID
+)
 
---SELECT 
---    @ItemID = @@IDENTITY
---GO
+SELECT 
+    @ItemID = @@IDENTITY
+GO
 
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetTabsParent]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
 DROP PROCEDURE [GetTabsParent]
@@ -1159,17 +1159,17 @@ IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[AddUserRole]') AND O
 DROP PROCEDURE [AddUserRole]
 GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[DeleteAnnouncement]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [DeleteAnnouncement]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[DeleteAnnouncement]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [DeleteAnnouncement]
+GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[DeleteContact]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [DeleteContact]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[DeleteContact]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [DeleteContact]
+GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[DeleteDocument]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [DeleteDocument]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[DeleteDocument]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [DeleteDocument]
+GO
 
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[DeleteEvent]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
 DROP PROCEDURE [DeleteEvent]
@@ -1207,9 +1207,9 @@ IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[DeleteUserRole]') AN
 DROP PROCEDURE [DeleteUserRole]
 GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetAnnouncements]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [GetAnnouncements]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetAnnouncements]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [GetAnnouncements]
+GO
 
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetAuthAddRoles]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
 DROP PROCEDURE [GetAuthAddRoles]
@@ -1235,9 +1235,9 @@ IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetAuthViewRoles]') 
 DROP PROCEDURE [GetAuthViewRoles]
 GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetContacts]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [GetContacts]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetContacts]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [GetContacts]
+GO
 
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetCountries]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
 DROP PROCEDURE [GetCountries]
@@ -1255,9 +1255,9 @@ IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetDocumentContent]'
 DROP PROCEDURE [GetDocumentContent]
 GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetDocuments]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [GetDocuments]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetDocuments]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [GetDocuments]
+GO
 
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetEvents]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
 DROP PROCEDURE [GetEvents]
@@ -1343,17 +1343,17 @@ IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetRolesByUser]') AN
 DROP PROCEDURE [GetRolesByUser]
 GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleAnnouncement]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [GetSingleAnnouncement]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleAnnouncement]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [GetSingleAnnouncement]
+GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleContact]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [GetSingleContact]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleContact]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [GetSingleContact]
+GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleDocument]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [GetSingleDocument]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleDocument]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [GetSingleDocument]
+GO
 
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleEvent]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
 DROP PROCEDURE [GetSingleEvent]
@@ -1427,17 +1427,17 @@ IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[Publish]') AND OBJEC
 DROP PROCEDURE [Publish]
 GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[UpdateAnnouncement]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [UpdateAnnouncement]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[UpdateAnnouncement]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [UpdateAnnouncement]
+GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[UpdateContact]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [UpdateContact]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[UpdateContact]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [UpdateContact]
+GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[UpdateDocument]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [UpdateDocument]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[UpdateDocument]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [UpdateDocument]
+GO
 
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[UpdateEvent]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
 DROP PROCEDURE [UpdateEvent]
@@ -1502,87 +1502,87 @@ GO
 -- =============================================================
 -- ALTER  the stored procs
 -- =============================================================
---CREATE  PROCEDURE AddAnnouncement
---(
---    @ModuleID       int,
---    @UserName       nvarchar(100),
---    @Title          nvarchar(150),
---    @MoreLink       nvarchar(150),
---    @MobileMoreLink nvarchar(150),
---    @ExpireDate     DateTime,
---    @Description    nvarchar(2000),
---    @ItemID         int OUTPUT
---)
---AS
+CREATE  PROCEDURE AddAnnouncement
+(
+    @ModuleID       int,
+    @UserName       nvarchar(100),
+    @Title          nvarchar(150),
+    @MoreLink       nvarchar(150),
+    @MobileMoreLink nvarchar(150),
+    @ExpireDate     DateTime,
+    @Description    nvarchar(2000),
+    @ItemID         int OUTPUT
+)
+AS
 
---INSERT INTO Staging.Announcements
---(
---    ModuleID,
---    CreatedByUser,
---    CreatedDate,
---    Title,
---    MoreLink,
---    MobileMoreLink,
---    ExpireDate,
---    Description
---)
+INSERT INTO Staging.Announcements
+(
+    ModuleID,
+    CreatedByUser,
+    CreatedDate,
+    Title,
+    MoreLink,
+    MobileMoreLink,
+    ExpireDate,
+    Description
+)
 
---VALUES
---(
---    @ModuleID,
---    @UserName,
---    GetDate(),
---    @Title,
---    @MoreLink,
---    @MobileMoreLink,
---    @ExpireDate,
---    @Description
---)
+VALUES
+(
+    @ModuleID,
+    @UserName,
+    GetDate(),
+    @Title,
+    @MoreLink,
+    @MobileMoreLink,
+    @ExpireDate,
+    @Description
+)
 
---SELECT
---    @ItemID = @@IDENTITY
---GO
+SELECT
+    @ItemID = @@IDENTITY
+GO
 
---CREATE  PROCEDURE AddContact
---(
---    @ModuleID int,
---    @UserName nvarchar(100),
---    @Name     nvarchar(50),
---    @Role     nvarchar(100),
---    @Email    nvarchar(100),
---    @Contact1 nvarchar(250),
---    @Contact2 nvarchar(250),
---    @ItemID   int OUTPUT
---)
---AS
+CREATE  PROCEDURE AddContact
+(
+    @ModuleID int,
+    @UserName nvarchar(100),
+    @Name     nvarchar(50),
+    @Role     nvarchar(100),
+    @Email    nvarchar(100),
+    @Contact1 nvarchar(250),
+    @Contact2 nvarchar(250),
+    @ItemID   int OUTPUT
+)
+AS
 
---INSERT INTO Staging.Contacts
---(
---    CreatedByUser,
---    CreatedDate,
---    ModuleID,
---    Name,
---    Role,
---    Email,
---    Contact1,
---    Contact2
---)
+INSERT INTO Staging.Contacts
+(
+    CreatedByUser,
+    CreatedDate,
+    ModuleID,
+    Name,
+    Role,
+    Email,
+    Contact1,
+    Contact2
+)
 
---VALUES
---(
---    @UserName,
---    GetDate(),
---    @ModuleID,
---    @Name,
---    @Role,
---    @Email,
---    @Contact1,
---    @Contact2
---)
+VALUES
+(
+    @UserName,
+    GetDate(),
+    @ModuleID,
+    @Name,
+    @Role,
+    @Email,
+    @Contact1,
+    @Contact2
+)
 
---SELECT
---    @ItemID = @@IDENTITY
---GO
+SELECT
+    @ItemID = @@IDENTITY
+GO
 
 CREATE  PROCEDURE AddEvent
 (
@@ -1662,53 +1662,53 @@ SELECT
     @ItemID = @@IDENTITY
 GO
 
---CREATE     PROCEDURE AddMessage
---(
---    @ItemID int OUTPUT,
---    @Title nvarchar(100),
---    @Body nvarchar(3000),
---    @ParentID int,
---    @UserName nvarchar(100),
---    @ModuleID int
---)   
+CREATE     PROCEDURE AddMessage
+(
+    @ItemID int OUTPUT,
+    @Title nvarchar(100),
+    @Body nvarchar(3000),
+    @ParentID int,
+    @UserName nvarchar(100),
+    @ModuleID int
+)   
 
---AS 
+AS 
 
---/* Find DisplayOrder of parent item */
---DECLARE @ParentDisplayOrder as nvarchar(750)
+/* Find DisplayOrder of parent item */
+DECLARE @ParentDisplayOrder as nvarchar(750)
 
---SET @ParentDisplayOrder = ''
+SET @ParentDisplayOrder = ''
 
---SELECT 
---    @ParentDisplayOrder = DisplayOrder
---FROM 
---    Discussion 
---WHERE 
---    ItemID = @ParentID
+SELECT 
+    @ParentDisplayOrder = DisplayOrder
+FROM 
+    Discussion 
+WHERE 
+    ItemID = @ParentID
 
---INSERT INTO Discussion
---(
---    Title,
---    Body,
---    DisplayOrder,
---    CreatedDate, 
---    CreatedByUser,
---    ModuleID
---)
+INSERT INTO Discussion
+(
+    Title,
+    Body,
+    DisplayOrder,
+    CreatedDate, 
+    CreatedByUser,
+    ModuleID
+)
 
---VALUES
---(
---    @Title,
---    @Body,
---    @ParentDisplayOrder + CONVERT( nvarchar(24), GetDate(), 21 ),
---    GetDate(),
---    @UserName,
---    @ModuleID
---)
+VALUES
+(
+    @Title,
+    @Body,
+    @ParentDisplayOrder + CONVERT( nvarchar(24), GetDate(), 21 ),
+    GetDate(),
+    @UserName,
+    @ModuleID
+)
 
---SELECT 
---    @ItemID = @@IDENTITY
---GO
+SELECT 
+    @ItemID = @@IDENTITY
+GO
 
 CREATE    PROCEDURE AddModule
 (
@@ -2012,44 +2012,44 @@ IF @@Rowcount < 1
     )
 GO
 
---CREATE  PROCEDURE DeleteAnnouncement
---(
---    @ItemID int
---)
---AS
+CREATE  PROCEDURE DeleteAnnouncement
+(
+    @ItemID int
+)
+AS
 
---DELETE FROM
---    Staging.Announcements
+DELETE FROM
+    Staging.Announcements
 
---WHERE
---    ItemID = @ItemID
---GO
+WHERE
+    ItemID = @ItemID
+GO
 
---CREATE  PROCEDURE DeleteContact
---(
---    @ItemID int
---)
---AS
+CREATE  PROCEDURE DeleteContact
+(
+    @ItemID int
+)
+AS
 
---DELETE FROM
---    Staging.Contacts
+DELETE FROM
+    Staging.Contacts
 
---WHERE
---    ItemID = @ItemID
---GO
+WHERE
+    ItemID = @ItemID
+GO
 
---CREATE  PROCEDURE DeleteDocument
---(
---    @ItemID int
---)
---AS
+CREATE  PROCEDURE DeleteDocument
+(
+    @ItemID int
+)
+AS
 
---DELETE FROM
---    Staging.Documents
+DELETE FROM
+    Staging.Documents
 
---WHERE
---    ItemID = @ItemID
---GO
+WHERE
+    ItemID = @ItemID
+GO
 
 CREATE  PROCEDURE DeleteEvent
 (
@@ -2165,46 +2165,46 @@ WHERE
     RoleID=@RoleID
 GO
 
---CREATE  PROCEDURE GetAnnouncements
---(
---    @ModuleID int,
---    @WorkflowVersion int
---)
---AS
+CREATE  PROCEDURE GetAnnouncements
+(
+    @ModuleID int,
+    @WorkflowVersion int
+)
+AS
 
---IF ( @WorkflowVersion = 1 )
---	SELECT
---	    ItemID,
---	    CreatedByUser,
---	    CreatedDate,
---	    Title,
---	    MoreLink,
---	    MobileMoreLink,
---	    ExpireDate,
---	    Description
---	FROM 
---	    Announcements
---	WHERE
---	    ModuleID = @ModuleID
---	  AND
---	    ExpireDate > GetDate()
---ELSE
---	SELECT
---	    ItemID,
---	    CreatedByUser,
---	    CreatedDate,
---	    Title,
---	    MoreLink,
---	    MobileMoreLink,
---	    ExpireDate,
---	    Description
---	FROM 
---	    staging.Announcements
---	WHERE
---	    ModuleID = @ModuleID
---	  AND
---	    ExpireDate > GetDate()
---GO
+IF ( @WorkflowVersion = 1 )
+	SELECT
+	    ItemID,
+	    CreatedByUser,
+	    CreatedDate,
+	    Title,
+	    MoreLink,
+	    MobileMoreLink,
+	    ExpireDate,
+	    Description
+	FROM 
+	    Announcements
+	WHERE
+	    ModuleID = @ModuleID
+	  AND
+	    ExpireDate > GetDate()
+ELSE
+	SELECT
+	    ItemID,
+	    CreatedByUser,
+	    CreatedDate,
+	    Title,
+	    MoreLink,
+	    MobileMoreLink,
+	    ExpireDate,
+	    Description
+	FROM 
+	    staging.Announcements
+	WHERE
+	    ModuleID = @ModuleID
+	  AND
+	    ExpireDate > GetDate()
+GO
 
 CREATE PROCEDURE GetAuthAddRoles
 (
@@ -2350,42 +2350,42 @@ WHERE
     Tabs.PortalID = @PortalID
 GO
 
---CREATE  PROCEDURE GetContacts
---(
---    @ModuleID int,
---    @WorkflowVersion int
---)
---AS
+CREATE  PROCEDURE GetContacts
+(
+    @ModuleID int,
+    @WorkflowVersion int
+)
+AS
 
---IF (@WorkflowVersion = 1)
---	SELECT
---	    ItemID,
---	    CreatedDate,
---	    CreatedByUser,
---	    Name,
---	    Role,
---	    Email,
---	    Contact1,
---	    Contact2
---	FROM
---	    Contacts
---	WHERE
---	    ModuleID = @ModuleID
---ELSE
---	SELECT
---	    ItemID,
---	    CreatedDate,
---	    CreatedByUser,
---	    Name,
---	    Role,
---	    Email,
---	    Contact1,
---	    Contact2
---	FROM
---	    staging.Contacts
---	WHERE
---	    ModuleID = @ModuleID
---GO
+IF (@WorkflowVersion = 1)
+	SELECT
+	    ItemID,
+	    CreatedDate,
+	    CreatedByUser,
+	    Name,
+	    Role,
+	    Email,
+	    Contact1,
+	    Contact2
+	FROM
+	    Contacts
+	WHERE
+	    ModuleID = @ModuleID
+ELSE
+	SELECT
+	    ItemID,
+	    CreatedDate,
+	    CreatedByUser,
+	    Name,
+	    Role,
+	    Email,
+	    Contact1,
+	    Contact2
+	FROM
+	    staging.Contacts
+	WHERE
+	    ModuleID = @ModuleID
+GO
 
 CREATE PROCEDURE GetCountries
 (
@@ -2487,69 +2487,69 @@ ORDER BY
 GeneralModuleDefinitions.Admin, GeneralModuleDefinitions.FriendlyName
 GO
 
---CREATE  PROCEDURE GetDocumentContent
---(
---    @ItemID int,
---    @WorkflowVersion int
---)
---AS
+CREATE  PROCEDURE GetDocumentContent
+(
+    @ItemID int,
+    @WorkflowVersion int
+)
+AS
 
---IF ( @WorkflowVersion = 1 )
---	SELECT
---	    Content,
---	    ContentType,
---	    ContentSize,
---	    FileFriendlyName
---	FROM
---	    Documents
---	WHERE
---	    ItemID = @ItemID
---ELSE
---	SELECT
---	    Content,
---	    ContentType,
---	    ContentSize,
---	    FileFriendlyName
---	FROM
---	    staging.Documents
---	WHERE
---	    ItemID = @ItemID
---GO
+IF ( @WorkflowVersion = 1 )
+	SELECT
+	    Content,
+	    ContentType,
+	    ContentSize,
+	    FileFriendlyName
+	FROM
+	    Documents
+	WHERE
+	    ItemID = @ItemID
+ELSE
+	SELECT
+	    Content,
+	    ContentType,
+	    ContentSize,
+	    FileFriendlyName
+	FROM
+	    staging.Documents
+	WHERE
+	    ItemID = @ItemID
+GO
 
---CREATE  PROCEDURE GetDocuments
---(
---    @ModuleID int,
---    @WorkflowVersion int
---)
---AS
+CREATE  PROCEDURE GetDocuments
+(
+    @ModuleID int,
+    @WorkflowVersion int
+)
+AS
 
---IF ( @WorkflowVersion = 1 )
---	SELECT
---	    ItemID,
---	    FileFriendlyName,
---	    FileNameUrl,
---	    CreatedByUser,
---	    CreatedDate,
---	    Category,
---	    ContentSize
---	FROM
---	    Documents
---	WHERE
---	    ModuleID = @ModuleID
---ELSE
---	SELECT
---	    ItemID,
---	    FileFriendlyName,
---	    FileNameUrl,
---	    CreatedByUser,
---	    CreatedDate,
---	    Category,
---	    ContentSize
---	FROM
---	    staging.Documents
---	WHERE
---	    ModuleID = @ModuleID
---GO
+IF ( @WorkflowVersion = 1 )
+	SELECT
+	    ItemID,
+	    FileFriendlyName,
+	    FileNameUrl,
+	    CreatedByUser,
+	    CreatedDate,
+	    Category,
+	    ContentSize
+	FROM
+	    Documents
+	WHERE
+	    ModuleID = @ModuleID
+ELSE
+	SELECT
+	    ItemID,
+	    FileFriendlyName,
+	    FileNameUrl,
+	    CreatedByUser,
+	    CreatedDate,
+	    Category,
+	    ContentSize
+	FROM
+	    staging.Documents
+	WHERE
+	    ModuleID = @ModuleID
+GO
 
 CREATE  PROCEDURE GetEvents
 (
@@ -2770,44 +2770,44 @@ UNION
 	ORDER BY TabOrder, Modules.ModuleTitle
 GO
 
---CREATE PROCEDURE GetNextMessageID
---(
---    @ItemID int,
---    @NextID int OUTPUT
---)
---AS
+CREATE PROCEDURE GetNextMessageID
+(
+    @ItemID int,
+    @NextID int OUTPUT
+)
+AS
 
---DECLARE @CurrentDisplayOrder as nvarchar(750)
---DECLARE @CurrentModule as int
+DECLARE @CurrentDisplayOrder as nvarchar(750)
+DECLARE @CurrentModule as int
 
---/* Find DisplayOrder of current item */
---SELECT
---    @CurrentDisplayOrder = DisplayOrder,
---    @CurrentModule = ModuleID
---FROM
---    Discussion
---WHERE
---    ItemID = @ItemID
+/* Find DisplayOrder of current item */
+SELECT
+    @CurrentDisplayOrder = DisplayOrder,
+    @CurrentModule = ModuleID
+FROM
+    Discussion
+WHERE
+    ItemID = @ItemID
 
---/* Get the next message in the same module */
---SELECT Top 1
---    @NextID = ItemID
+/* Get the next message in the same module */
+SELECT Top 1
+    @NextID = ItemID
 
---FROM
---    Discussion
+FROM
+    Discussion
 
---WHERE
---    DisplayOrder > @CurrentDisplayOrder
---    AND
---    ModuleID = @CurrentModule
+WHERE
+    DisplayOrder > @CurrentDisplayOrder
+    AND
+    ModuleID = @CurrentModule
 
---ORDER BY
---    DisplayOrder ASC
+ORDER BY
+    DisplayOrder ASC
 
---/* end of this thread? */
---IF @@Rowcount < 1
---    SET @NextID = null
---GO
+/* end of this thread? */
+IF @@Rowcount < 1
+    SET @NextID = null
+GO
 
 CREATE PROCEDURE GetPortalCustomSettings
 (
@@ -2975,44 +2975,44 @@ AS
 
 GO
 
---CREATE PROCEDURE GetPrevMessageID
---(
---    @ItemID int,
---    @PrevID int OUTPUT
---)
---AS
+CREATE PROCEDURE GetPrevMessageID
+(
+    @ItemID int,
+    @PrevID int OUTPUT
+)
+AS
 
---DECLARE @CurrentDisplayOrder as nvarchar(750)
---DECLARE @CurrentModule as int
+DECLARE @CurrentDisplayOrder as nvarchar(750)
+DECLARE @CurrentModule as int
 
---/* Find DisplayOrder of current item */
---SELECT
---    @CurrentDisplayOrder = DisplayOrder,
---    @CurrentModule = ModuleID
---FROM
---    Discussion
---WHERE
---    ItemID = @ItemID
+/* Find DisplayOrder of current item */
+SELECT
+    @CurrentDisplayOrder = DisplayOrder,
+    @CurrentModule = ModuleID
+FROM
+    Discussion
+WHERE
+    ItemID = @ItemID
 
---/* Get the previous message in the same module */
---SELECT Top 1
---    @PrevID = ItemID
+/* Get the previous message in the same module */
+SELECT Top 1
+    @PrevID = ItemID
 
---FROM
---    Discussion
+FROM
+    Discussion
 
---WHERE
---    DisplayOrder < @CurrentDisplayOrder
---    AND
---    ModuleID = @CurrentModule
+WHERE
+    DisplayOrder < @CurrentDisplayOrder
+    AND
+    ModuleID = @CurrentModule
 
---ORDER BY
---    DisplayOrder DESC
+ORDER BY
+    DisplayOrder DESC
 
---/* already at the beginning of this module? */
---IF @@Rowcount < 1
---    SET @PrevID = null
---GO
+/* already at the beginning of this module? */
+IF @@Rowcount < 1
+    SET @PrevID = null
+GO
 
 
 CREATE   PROCEDURE GetRelatedTables
@@ -3114,75 +3114,75 @@ WHERE
     Users.Email = @Email AND Users.PortalID = @PortalID
 GO
 
---CREATE  PROCEDURE GetSingleAnnouncement
---(
---    @ItemID int,
---    @WorkflowVersion int
---)
---AS
+CREATE  PROCEDURE GetSingleAnnouncement
+(
+    @ItemID int,
+    @WorkflowVersion int
+)
+AS
 
---IF ( @WorkflowVersion = 1 )
---	SELECT
---	    CreatedByUser,
---	    CreatedDate,
---	    Title,
---	    MoreLink,
---	    MobileMoreLink,
---	    ExpireDate,
---	    Description
---	FROM
---	    Announcements
---	WHERE
---	    ItemID = @ItemID
---ELSE
---	SELECT
---	    CreatedByUser,
---	    CreatedDate,
---	    Title,
---	    MoreLink,
---	    MobileMoreLink,
---	    ExpireDate,
---	    Description
---	FROM
---	    staging.Announcements
---	WHERE
---	    ItemID = @ItemID
---GO
+IF ( @WorkflowVersion = 1 )
+	SELECT
+	    CreatedByUser,
+	    CreatedDate,
+	    Title,
+	    MoreLink,
+	    MobileMoreLink,
+	    ExpireDate,
+	    Description
+	FROM
+	    Announcements
+	WHERE
+	    ItemID = @ItemID
+ELSE
+	SELECT
+	    CreatedByUser,
+	    CreatedDate,
+	    Title,
+	    MoreLink,
+	    MobileMoreLink,
+	    ExpireDate,
+	    Description
+	FROM
+	    staging.Announcements
+	WHERE
+	    ItemID = @ItemID
+GO
 
---CREATE  PROCEDURE GetSingleContact
---(
---    @ItemID int,
---    @WorkflowVersion int
---)
---AS
+CREATE  PROCEDURE GetSingleContact
+(
+    @ItemID int,
+    @WorkflowVersion int
+)
+AS
 
---IF (@WorkflowVersion = 1)
---	SELECT
---	    CreatedByUser,
---	    CreatedDate,
---	    Name,
---	    Role,
---	    Email,
---	    Contact1,
---	    Contact2
---	FROM
---	    Contacts
---	WHERE
---	    ItemID = @ItemID
---ELSE
---	SELECT
---	    CreatedByUser,
---	    CreatedDate,
---	    Name,
---	    Role,
---	    Email,
---	    Contact1,
---	    Contact2
---	FROM
---	    staging.Contacts
---	WHERE
---	    ItemID = @ItemID
---GO
+IF (@WorkflowVersion = 1)
+	SELECT
+	    CreatedByUser,
+	    CreatedDate,
+	    Name,
+	    Role,
+	    Email,
+	    Contact1,
+	    Contact2
+	FROM
+	    Contacts
+	WHERE
+	    ItemID = @ItemID
+ELSE
+	SELECT
+	    CreatedByUser,
+	    CreatedDate,
+	    Name,
+	    Role,
+	    Email,
+	    Contact1,
+	    Contact2
+	FROM
+	    staging.Contacts
+	WHERE
+	    ItemID = @ItemID
+GO
 
 CREATE  PROCEDURE GetSingleDocument
 (
@@ -3285,33 +3285,33 @@ ELSE
 	    ItemID = @ItemID
 GO
 
---CREATE PROCEDURE GetSingleMessage
---(
---    @ItemID int
---)
---AS
+CREATE PROCEDURE GetSingleMessage
+(
+    @ItemID int
+)
+AS
 
---DECLARE @nextMessageID int
---EXECUTE GetNextMessageID @ItemID, @nextMessageID OUTPUT
---DECLARE @prevMessageID int
---EXECUTE GetPrevMessageID @ItemID, @prevMessageID OUTPUT
+DECLARE @nextMessageID int
+EXECUTE GetNextMessageID @ItemID, @nextMessageID OUTPUT
+DECLARE @prevMessageID int
+EXECUTE GetPrevMessageID @ItemID, @prevMessageID OUTPUT
 
---SELECT
---    ItemID,
---    Title,
---    CreatedByUser,
---    CreatedDate,
---    Body,
---    DisplayOrder,
---    NextMessageID = @nextMessageID,
---    PrevMessageID = @prevMessageID
+SELECT
+    ItemID,
+    Title,
+    CreatedByUser,
+    CreatedDate,
+    Body,
+    DisplayOrder,
+    NextMessageID = @nextMessageID,
+    PrevMessageID = @prevMessageID
 
---FROM
---    Discussion
+FROM
+    Discussion
 
---WHERE
---    ItemID = @ItemID
---GO
+WHERE
+    ItemID = @ItemID
+GO
 
 CREATE PROCEDURE GetSingleModuleDefinition
 (
@@ -3480,59 +3480,59 @@ WHERE     (ParentTabID = @TabID) AND (PortalID = @PortalID)
 ORDER BY TabOrder
 GO
 
---CREATE PROCEDURE GetThreadMessages
---(
---    @Parent nvarchar(750)
---)
---AS
+CREATE PROCEDURE GetThreadMessages
+(
+    @Parent nvarchar(750)
+)
+AS
 
---SELECT
---    ItemID,
---    DisplayOrder,
---    REPLICATE( '&#160;', ( ( LEN( DisplayOrder ) / 23 ) - 1 ) * 5 ) AS Indent,
---    Title,  
---    CreatedByUser,
---    CreatedDate,
---    Body
+SELECT
+    ItemID,
+    DisplayOrder,
+    REPLICATE( '&#160;', ( ( LEN( DisplayOrder ) / 23 ) - 1 ) * 5 ) AS Indent,
+    Title,  
+    CreatedByUser,
+    CreatedDate,
+    Body
 
---FROM 
---    Discussion
+FROM 
+    Discussion
 
---WHERE
---    LEFT(DisplayOrder, 23) = @Parent
---  AND
---    (LEN( DisplayOrder ) / 23 ) > 1
+WHERE
+    LEFT(DisplayOrder, 23) = @Parent
+  AND
+    (LEN( DisplayOrder ) / 23 ) > 1
 
---ORDER BY
---    DisplayOrder
---GO
+ORDER BY
+    DisplayOrder
+GO
 
---CREATE PROCEDURE GetTopLevelMessages
---(
---    @ModuleID int
---)
---AS
+CREATE PROCEDURE GetTopLevelMessages
+(
+    @ModuleID int
+)
+AS
 
---SELECT
---    ItemID,
---    DisplayOrder,
---    LEFT(DisplayOrder, 23) AS Parent,    
---    (SELECT COUNT(*) -1  FROM Discussion Disc2 WHERE LEFT(Disc2.DisplayOrder,LEN(RTRIM(Disc.DisplayOrder))) = Disc.DisplayOrder) AS ChildCount,
---    Title,  
---    CreatedByUser,
---    CreatedDate
+SELECT
+    ItemID,
+    DisplayOrder,
+    LEFT(DisplayOrder, 23) AS Parent,    
+    (SELECT COUNT(*) -1  FROM Discussion Disc2 WHERE LEFT(Disc2.DisplayOrder,LEN(RTRIM(Disc.DisplayOrder))) = Disc.DisplayOrder) AS ChildCount,
+    Title,  
+    CreatedByUser,
+    CreatedDate
 
---FROM 
---    Discussion Disc
+FROM 
+    Discussion Disc
 
---WHERE 
---    ModuleID=@ModuleID
---  AND
---    (LEN( DisplayOrder ) / 23 ) = 1
+WHERE 
+    ModuleID=@ModuleID
+  AND
+    (LEN( DisplayOrder ) / 23 ) = 1
 
---ORDER BY
---    DisplayOrder
---GO
+ORDER BY
+    DisplayOrder
+GO
 
 CREATE PROCEDURE GetUsers
 (
@@ -3752,146 +3752,146 @@ AS
 	RETURN 
 GO
 
---CREATE  PROCEDURE UpdateAnnouncement
---(
---    @ItemID         int,
---    @UserName       nvarchar(100),
---    @Title          nvarchar(150),
---    @MoreLink       nvarchar(150),
---    @MobileMoreLink nvarchar(150),
---    @ExpireDate     datetime,
---    @Description    nvarchar(2000)
---)
---AS
+CREATE  PROCEDURE UpdateAnnouncement
+(
+    @ItemID         int,
+    @UserName       nvarchar(100),
+    @Title          nvarchar(150),
+    @MoreLink       nvarchar(150),
+    @MobileMoreLink nvarchar(150),
+    @ExpireDate     datetime,
+    @Description    nvarchar(2000)
+)
+AS
 
---UPDATE
---    Staging.Announcements
+UPDATE
+    Staging.Announcements
 
---SET
---    CreatedByUser   = @UserName,
---    CreatedDate     = GetDate(),
---    Title           = @Title,
---    MoreLink        = @MoreLink,
---    MobileMoreLink  = @MobileMoreLink,
---    ExpireDate      = @ExpireDate,
---    Description     = @Description
+SET
+    CreatedByUser   = @UserName,
+    CreatedDate     = GetDate(),
+    Title           = @Title,
+    MoreLink        = @MoreLink,
+    MobileMoreLink  = @MobileMoreLink,
+    ExpireDate      = @ExpireDate,
+    Description     = @Description
 
---WHERE
---    ItemID = @ItemID
---GO
+WHERE
+    ItemID = @ItemID
+GO
 
---CREATE  PROCEDURE UpdateContact
---(
---    @ItemID   int,
---    @UserName nvarchar(100),
---    @Name     nvarchar(50),
---    @Role     nvarchar(100),
---    @Email    nvarchar(100),
---    @Contact1 nvarchar(250),
---    @Contact2 nvarchar(250)
---)
---AS
+CREATE  PROCEDURE UpdateContact
+(
+    @ItemID   int,
+    @UserName nvarchar(100),
+    @Name     nvarchar(50),
+    @Role     nvarchar(100),
+    @Email    nvarchar(100),
+    @Contact1 nvarchar(250),
+    @Contact2 nvarchar(250)
+)
+AS
 
---UPDATE
---    Staging.Contacts
+UPDATE
+    Staging.Contacts
 
---SET
---    CreatedByUser = @UserName,
---    CreatedDate   = GetDate(),
---    Name          = @Name,
---    Role          = @Role,
---    Email         = @Email,
---    Contact1      = @Contact1,
---    Contact2      = @Contact2
+SET
+    CreatedByUser = @UserName,
+    CreatedDate   = GetDate(),
+    Name          = @Name,
+    Role          = @Role,
+    Email         = @Email,
+    Contact1      = @Contact1,
+    Contact2      = @Contact2
 
---WHERE
---    ItemID = @ItemID
---GO
+WHERE
+    ItemID = @ItemID
+GO
 
---CREATE   PROCEDURE UpdateDocument
---(
---    @ItemID           int,
---    @ModuleID         int,
---    @FileFriendlyName nvarchar(150),
---    @FileNameUrl      nvarchar(250),
---    @UserName         nvarchar(100),
---    @Category         nvarchar(50),
---    @Content          image,
---    @ContentType      nvarchar(50),
---    @ContentSize      int
---)
---AS
---IF (@ItemID=0) OR NOT EXISTS (
---    SELECT 
---        * 
---    FROM 
---        staging.Documents 
---    WHERE 
---        ItemID = @ItemID
---)
---INSERT INTO Staging.Documents
---(
---    ModuleID,
---    FileFriendlyName,
---    FileNameUrl,
---    CreatedByUser,
---    CreatedDate,
---    Category,
---    Content,
---    ContentType,
---    ContentSize
---)
+CREATE   PROCEDURE UpdateDocument
+(
+    @ItemID           int,
+    @ModuleID         int,
+    @FileFriendlyName nvarchar(150),
+    @FileNameUrl      nvarchar(250),
+    @UserName         nvarchar(100),
+    @Category         nvarchar(50),
+    @Content          image,
+    @ContentType      nvarchar(50),
+    @ContentSize      int
+)
+AS
+IF (@ItemID=0) OR NOT EXISTS (
+    SELECT 
+        * 
+    FROM 
+        staging.Documents 
+    WHERE 
+        ItemID = @ItemID
+)
+INSERT INTO Staging.Documents
+(
+    ModuleID,
+    FileFriendlyName,
+    FileNameUrl,
+    CreatedByUser,
+    CreatedDate,
+    Category,
+    Content,
+    ContentType,
+    ContentSize
+)
 
---VALUES
---(
---    @ModuleID,
---    @FileFriendlyName,
---    @FileNameUrl,
---    @UserName,
---    GetDate(),
---    @Category,
---    @Content,
---    @ContentType,
---    @ContentSize
---)
---ELSE
+VALUES
+(
+    @ModuleID,
+    @FileFriendlyName,
+    @FileNameUrl,
+    @UserName,
+    GetDate(),
+    @Category,
+    @Content,
+    @ContentType,
+    @ContentSize
+)
+ELSE
 
---BEGIN
+BEGIN
 
---IF (@ContentSize=0)
+IF (@ContentSize=0)
 
---UPDATE 
---    Staging.Documents
+UPDATE 
+    Staging.Documents
 
---SET 
---    CreatedByUser    = @UserName,
---    CreatedDate      = GetDate(),
---    Category         = @Category,
---    FileFriendlyName = @FileFriendlyName,
---    FileNameUrl      = @FileNameUrl
+SET 
+    CreatedByUser    = @UserName,
+    CreatedDate      = GetDate(),
+    Category         = @Category,
+    FileFriendlyName = @FileFriendlyName,
+    FileNameUrl      = @FileNameUrl
 
---WHERE
---    ItemID = @ItemID
---ELSE
+WHERE
+    ItemID = @ItemID
+ELSE
 
---UPDATE
---    Staging.Documents
+UPDATE
+    Staging.Documents
 
---SET
---    CreatedByUser     = @UserName,
---    CreatedDate       = GetDate(),
---    Category          = @Category,
---    FileFriendlyName  = @FileFriendlyName,
---    FileNameUrl       = @FileNameUrl,
---    Content           = @Content,
---    ContentType       = @ContentType,
---    ContentSize       = @ContentSize
+SET
+    CreatedByUser     = @UserName,
+    CreatedDate       = GetDate(),
+    Category          = @Category,
+    FileFriendlyName  = @FileFriendlyName,
+    FileNameUrl       = @FileNameUrl,
+    Content           = @Content,
+    ContentType       = @ContentType,
+    ContentSize       = @ContentSize
 
---WHERE
---    ItemID = @ItemID
+WHERE
+    ItemID = @ItemID
 
---END
---GO
+END
+GO
 
 CREATE  PROCEDURE UpdateEvent
 (
@@ -4920,246 +4920,246 @@ GO
 
 --This patch add entries on db for Articles module
 --by manu
-IF NOT EXISTS (SELECT GeneralModDefID FROM GeneralModuleDefinitions WHERE GeneralModDefID = '{87303CF7-76D0-49B1-A7E7-A5C8E26415BA}')
-BEGIN
---Insert data into GeneralModuleDefinitions
-INSERT INTO GeneralModuleDefinitions (GeneralModDefID,ClassName,FriendlyName,DesktopSrc,MobileSrc,Admin) VALUES('{87303CF7-76D0-49B1-A7E7-A5C8E26415BA}',NULL,'Articles','DesktopModules/Articles.ascx','',0)
---Insert data into ModuleDefinitions
-INSERT INTO ModuleDefinitions (PortalID, GeneralModDefID) VALUES ('0','{87303CF7-76D0-49B1-A7E7-A5C8E26415BA}')
+--IF NOT EXISTS (SELECT GeneralModDefID FROM GeneralModuleDefinitions WHERE GeneralModDefID = '{87303CF7-76D0-49B1-A7E7-A5C8E26415BA}')
+--BEGIN
+----Insert data into GeneralModuleDefinitions
+--INSERT INTO GeneralModuleDefinitions (GeneralModDefID,ClassName,FriendlyName,DesktopSrc,MobileSrc,Admin) VALUES('{87303CF7-76D0-49B1-A7E7-A5C8E26415BA}',NULL,'Articles','DesktopModules/Articles.ascx','',0)
+----Insert data into ModuleDefinitions
+--INSERT INTO ModuleDefinitions (PortalID, GeneralModDefID) VALUES ('0','{87303CF7-76D0-49B1-A7E7-A5C8E26415BA}')
+--END
+--GO
+
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[Articles]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+ BEGIN
+CREATE TABLE [Articles] (
+	[ItemID] [int] IDENTITY (1, 1) NOT NULL ,
+	[ModuleID] [int] NOT NULL ,
+	[CreatedByUser] [nvarchar] (100) NULL ,
+	[CreatedDate] [datetime] NULL ,
+	[Title] [nvarchar] (100) NULL ,
+	[Subtitle] [nvarchar] (200) NULL ,
+	[Abstract] [nvarchar] (512) NULL ,
+	[Description] [text] NULL ,
+	[StartDate] [datetime] NULL ,
+	[ExpireDate] [datetime] NULL ,
+	[IsInNewsletter] [bit] NULL ,
+	[MoreLink] [nvarchar] (150) NULL ,
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
+ALTER TABLE [Articles] WITH NOCHECK ADD 
+	CONSTRAINT [PK_Articles] PRIMARY KEY  CLUSTERED 
+	(
+		[ItemID]
+	)  ON [PRIMARY] 
+
+
+ALTER TABLE [Articles] ADD 
+	CONSTRAINT [FK_Articles_Modules] FOREIGN KEY 
+	(
+		[ModuleID]
+	) REFERENCES [Modules] (
+		[ModuleID]
+	) ON DELETE CASCADE 
 END
+
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[AddArticle]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [AddArticle]
 GO
 
---IF NOT EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[Articles]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
--- BEGIN
---CREATE TABLE [Articles] (
---	[ItemID] [int] IDENTITY (1, 1) NOT NULL ,
---	[ModuleID] [int] NOT NULL ,
---	[CreatedByUser] [nvarchar] (100) NULL ,
---	[CreatedDate] [datetime] NULL ,
---	[Title] [nvarchar] (100) NULL ,
---	[Subtitle] [nvarchar] (200) NULL ,
---	[Abstract] [nvarchar] (512) NULL ,
---	[Description] [text] NULL ,
---	[StartDate] [datetime] NULL ,
---	[ExpireDate] [datetime] NULL ,
---	[IsInNewsletter] [bit] NULL ,
---	[MoreLink] [nvarchar] (150) NULL ,
---) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[DeleteArticle]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [DeleteArticle]
+GO
 
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetArticles]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [GetArticles]
+GO
 
---ALTER TABLE [Articles] WITH NOCHECK ADD 
---	CONSTRAINT [PK_Articles] PRIMARY KEY  CLUSTERED 
---	(
---		[ItemID]
---	)  ON [PRIMARY] 
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleArticle]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [GetSingleArticle]
+GO
 
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleArticleWithImages]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [GetSingleArticleWithImages]
+GO
 
---ALTER TABLE [Articles] ADD 
---	CONSTRAINT [FK_Articles_Modules] FOREIGN KEY 
---	(
---		[ModuleID]
---	) REFERENCES [Modules] (
---		[ModuleID]
---	) ON DELETE CASCADE 
---END
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[UpdateArticle]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [UpdateArticle]
+GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[AddArticle]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [AddArticle]
---GO
+CREATE PROCEDURE AddArticle
+(
+    @ModuleID       int,
+    @UserName       nvarchar(100),
+    @Title          nvarchar(100),
+    @Subtitle       nvarchar(200),
+    @Abstract		nvarchar(512),
+    @Description    text,
+    @StartDate      datetime,
+    @ExpireDate     datetime,
+    @IsInNewsletter bit,
+    @MoreLink       nvarchar(150),
+    @ItemID         int OUTPUT
+)
+AS
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[DeleteArticle]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [DeleteArticle]
---GO
+INSERT INTO Articles
+(
+    ModuleID,
+    CreatedByUser,
+    CreatedDate,
+    Title,
+	Subtitle,
+    Abstract,
+	Description,
+	StartDate,
+	ExpireDate,
+	IsInNewsletter,
+	MoreLink
+)
+VALUES
+(
+    @ModuleID,
+    @UserName,
+    GetDate(),
+    @Title,
+    @Subtitle,
+    @Abstract,
+    @Description,
+    @StartDate,
+    @ExpireDate,
+    @IsInNewsletter,
+    @MoreLink
+)
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetArticles]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [GetArticles]
---GO
+SELECT
+    @ItemID = @@IDENTITY
+GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleArticle]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [GetSingleArticle]
---GO
+CREATE PROCEDURE DeleteArticle
+(
+    @ItemID int
+)
+AS
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleArticleWithImages]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [GetSingleArticleWithImages]
---GO
+DELETE FROM
+    Articles
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[UpdateArticle]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [UpdateArticle]
---GO
+WHERE
+    ItemID = @ItemID
+GO
 
---CREATE PROCEDURE AddArticle
---(
---    @ModuleID       int,
---    @UserName       nvarchar(100),
---    @Title          nvarchar(100),
---    @Subtitle       nvarchar(200),
---    @Abstract		nvarchar(512),
---    @Description    text,
---    @StartDate      datetime,
---    @ExpireDate     datetime,
---    @IsInNewsletter bit,
---    @MoreLink       nvarchar(150),
---    @ItemID         int OUTPUT
---)
---AS
+CREATE PROCEDURE GetArticles
+(
+    @ModuleID int
+)
+AS
 
---INSERT INTO Articles
---(
---    ModuleID,
---    CreatedByUser,
---    CreatedDate,
---    Title,
---	Subtitle,
---    Abstract,
---	Description,
---	StartDate,
---	ExpireDate,
---	IsInNewsletter,
---	MoreLink
---)
---VALUES
---(
---    @ModuleID,
---    @UserName,
---    GetDate(),
---    @Title,
---    @Subtitle,
---    @Abstract,
---    @Description,
---    @StartDate,
---    @ExpireDate,
---    @IsInNewsletter,
---    @MoreLink
---)
-
---SELECT
---    @ItemID = @@IDENTITY
---GO
-
---CREATE PROCEDURE DeleteArticle
---(
---    @ItemID int
---)
---AS
-
---DELETE FROM
---    Articles
-
---WHERE
---    ItemID = @ItemID
---GO
-
---CREATE PROCEDURE GetArticles
---(
---    @ModuleID int
---)
---AS
-
---SELECT		ItemID, 
---			ModuleID, 
---			CreatedByUser, 
---			CreatedDate, 
---			Title, 
---			Subtitle, 
---			Abstract, 
---			Description, 
---			StartDate, 
---			ExpireDate, 
---			IsInNewsletter, 
---			MoreLink
+SELECT		ItemID, 
+			ModuleID, 
+			CreatedByUser, 
+			CreatedDate, 
+			Title, 
+			Subtitle, 
+			Abstract, 
+			Description, 
+			StartDate, 
+			ExpireDate, 
+			IsInNewsletter, 
+			MoreLink
             
---FROM        Articles
+FROM        Articles
 
---WHERE
---    (ModuleID = @ModuleID) AND (GetDate() <= ExpireDate)
+WHERE
+    (ModuleID = @ModuleID) AND (GetDate() <= ExpireDate)
 
---ORDER BY
---    StartDate DESC
---GO
+ORDER BY
+    StartDate DESC
+GO
 
---CREATE PROCEDURE GetSingleArticle
---(
---    @ItemID int
---)
---AS
+CREATE PROCEDURE GetSingleArticle
+(
+    @ItemID int
+)
+AS
 
---SELECT		ItemID,
---			ModuleID,
---			CreatedByUser,
---			CreatedDate,
---			Title, 
---			Subtitle, 
---			Abstract, 
---			Description, 
---			StartDate, 
---			ExpireDate, 
---			IsInNewsletter, 
---			MoreLink
---FROM	Articles
---WHERE   (ItemID = @ItemID)
---GO
+SELECT		ItemID,
+			ModuleID,
+			CreatedByUser,
+			CreatedDate,
+			Title, 
+			Subtitle, 
+			Abstract, 
+			Description, 
+			StartDate, 
+			ExpireDate, 
+			IsInNewsletter, 
+			MoreLink
+FROM	Articles
+WHERE   (ItemID = @ItemID)
+GO
 
---CREATE PROCEDURE GetSingleArticleWithImages
---(
---    @ItemID int,
---    @Variation varchar(50)
---)
---AS
+CREATE PROCEDURE GetSingleArticleWithImages
+(
+    @ItemID int,
+    @Variation varchar(50)
+)
+AS
 
---SELECT		Articles.ItemID, 
---			Articles.ModuleID, 
---			Articles.CreatedByUser, 
---			Articles.CreatedDate, 
---			Articles.Title, 
---			Articles.Subtitle, 
---			Articles.Abstract, 
---			Articles.Description, 
---            Articles.StartDate, 
---            Articles.ExpireDate, 
---            Articles.IsInNewsletter, 
---            Articles.MoreLink
+SELECT		Articles.ItemID, 
+			Articles.ModuleID, 
+			Articles.CreatedByUser, 
+			Articles.CreatedDate, 
+			Articles.Title, 
+			Articles.Subtitle, 
+			Articles.Abstract, 
+			Articles.Description, 
+            Articles.StartDate, 
+            Articles.ExpireDate, 
+            Articles.IsInNewsletter, 
+            Articles.MoreLink
             
---FROM        Articles
---WHERE     (ItemID = @ItemID)
---GO
+FROM        Articles
+WHERE     (ItemID = @ItemID)
+GO
 
---CREATE PROCEDURE UpdateArticle
---(
---    @ItemID         int,
---    @ModuleID       int,
---    @UserName       nvarchar(100),
---    @Title          nvarchar(100),
---    @Subtitle       nvarchar(200),
---    @Abstract       nvarchar(512),
---    @Description    text,
---    @StartDate      datetime,
---    @ExpireDate     datetime,
---    @IsInNewsletter bit,
---    @MoreLink       nvarchar(150)
---)
---AS
+CREATE PROCEDURE UpdateArticle
+(
+    @ItemID         int,
+    @ModuleID       int,
+    @UserName       nvarchar(100),
+    @Title          nvarchar(100),
+    @Subtitle       nvarchar(200),
+    @Abstract       nvarchar(512),
+    @Description    text,
+    @StartDate      datetime,
+    @ExpireDate     datetime,
+    @IsInNewsletter bit,
+    @MoreLink       nvarchar(150)
+)
+AS
 
---UPDATE Articles
+UPDATE Articles
 
---SET 
---ModuleID = @ModuleID,
---CreatedByUser = @UserName,
---CreatedDate = GetDate(),
---Title =@Title ,
---Subtitle =  @Subtitle,
---Abstract =@Abstract,
---Description =@Description,
---StartDate = @StartDate,
---ExpireDate =@ExpireDate,
---IsInNewsletter = @IsInNewsletter,
---MoreLink =@MoreLink
---WHERE 
---ItemID = @ItemID
---GO
---SET QUOTED_IDENTIFIER OFF 
---GO
---SET ANSI_NULLS ON 
---GO
+SET 
+ModuleID = @ModuleID,
+CreatedByUser = @UserName,
+CreatedDate = GetDate(),
+Title =@Title ,
+Subtitle =  @Subtitle,
+Abstract =@Abstract,
+Description =@Description,
+StartDate = @StartDate,
+ExpireDate =@ExpireDate,
+IsInNewsletter = @IsInNewsletter,
+MoreLink =@MoreLink
+WHERE 
+ItemID = @ItemID
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
 --end 
 --end Articles patch 
 
@@ -5171,78 +5171,78 @@ This patch introduces the following changes to the db:
 - Inserts entry in table ModuleDefinitions
 */
 
---DECLARE @FriendlyName AS nvarchar(128)
---DECLARE @DesktopSrc AS nvarchar(128)
---DECLARE @GeneralModDefID as uniqueidentifier
+DECLARE @FriendlyName AS nvarchar(128)
+DECLARE @DesktopSrc AS nvarchar(128)
+DECLARE @GeneralModDefID as uniqueidentifier
 
---SET @FriendlyName = 'Portal Search'                     -- You enter the module UI name here
---SET @DesktopSrc = 'DesktopModules/PortalSearch.ascx'    -- You enter actual filename here
---SET @GeneralModDefID = '{2502DB18-B580-4F90-8CB4-C15E6E531030}'
+SET @FriendlyName = 'Portal Search'                     -- You enter the module UI name here
+SET @DesktopSrc = 'DesktopModules/PortalSearch.ascx'    -- You enter actual filename here
+SET @GeneralModDefID = '{2502DB18-B580-4F90-8CB4-C15E6E531030}'
 
---IF NOT EXISTS (SELECT GeneralModDefID FROM GeneralModuleDefinitions
---WHERE GeneralModDefID = @GeneralModDefID)
---BEGIN
+IF NOT EXISTS (SELECT GeneralModDefID FROM GeneralModuleDefinitions
+WHERE GeneralModDefID = @GeneralModDefID)
+BEGIN
 
----- Insert data into GeneralModuleDefinitions
---IF(	IDENT_INCR( 'GeneralModuleDefinitions' ) IS NOT NULL OR IDENT_SEED('GeneralModuleDefinitions') IS NOT NULL ) SET IDENTITY_INSERT GeneralModuleDefinitions ON
---INSERT INTO GeneralModuleDefinitions (GeneralModDefID,ClassName,FriendlyName,DesktopSrc,MobileSrc,Admin) VALUES(@GeneralModDefID,NULL,@FriendlyName,@DesktopSrc,'',0)
---IF(	IDENT_INCR( 'GeneralModuleDefinitions' ) IS NOT NULL OR IDENT_SEED('GeneralModuleDefinitions') IS NOT NULL ) SET IDENTITY_INSERT GeneralModuleDefinitions OFF
+-- Insert data into GeneralModuleDefinitions
+IF(	IDENT_INCR( 'GeneralModuleDefinitions' ) IS NOT NULL OR IDENT_SEED('GeneralModuleDefinitions') IS NOT NULL ) SET IDENTITY_INSERT GeneralModuleDefinitions ON
+INSERT INTO GeneralModuleDefinitions (GeneralModDefID,ClassName,FriendlyName,DesktopSrc,MobileSrc,Admin) VALUES(@GeneralModDefID,NULL,@FriendlyName,@DesktopSrc,'',0)
+IF(	IDENT_INCR( 'GeneralModuleDefinitions' ) IS NOT NULL OR IDENT_SEED('GeneralModuleDefinitions') IS NOT NULL ) SET IDENTITY_INSERT GeneralModuleDefinitions OFF
 
----- Insert data into ModuleDefinitions
---INSERT INTO ModuleDefinitions (PortalID, GeneralModDefID) VALUES ('0',@GeneralModDefID)
+-- Insert data into ModuleDefinitions
+INSERT INTO ModuleDefinitions (PortalID, GeneralModDefID) VALUES ('0',@GeneralModDefID)
 
---END
---GO
+END
+GO
 
----- Update module table
---IF NOT EXISTS 
---(SELECT * FROM sysobjects O INNER JOIN SysColumns C ON O.ID=C.ID
---WHERE ObjectProperty(O.ID,'IsUserTable')=1 
---AND O.Name='GeneralModuleDefinitions' AND C.Name='Searchable')
---BEGIN
---	ALTER TABLE [GeneralModuleDefinitions]
---		ADD Searchable bit NULL DEFAULT (0)
---END
---GO
+-- Update module table
+IF NOT EXISTS 
+(SELECT * FROM sysobjects O INNER JOIN SysColumns C ON O.ID=C.ID
+WHERE ObjectProperty(O.ID,'IsUserTable')=1 
+AND O.Name='GeneralModuleDefinitions' AND C.Name='Searchable')
+BEGIN
+	ALTER TABLE [GeneralModuleDefinitions]
+		ADD Searchable bit NULL DEFAULT (0)
+END
+GO
 
---IF NOT EXISTS 
---(SELECT * FROM sysobjects O INNER JOIN SysColumns C ON O.ID=C.ID
---WHERE ObjectProperty(O.ID,'IsUserTable')=1 
---AND O.Name='GeneralModuleDefinitions' AND C.Name='AssemblyName')
---	ALTER TABLE [GeneralModuleDefinitions]
---		ADD AssemblyName varchar(50) NOT NULL DEFAULT 'Appleseed'
+IF NOT EXISTS 
+(SELECT * FROM sysobjects O INNER JOIN SysColumns C ON O.ID=C.ID
+WHERE ObjectProperty(O.ID,'IsUserTable')=1 
+AND O.Name='GeneralModuleDefinitions' AND C.Name='AssemblyName')
+	ALTER TABLE [GeneralModuleDefinitions]
+		ADD AssemblyName varchar(50) NOT NULL DEFAULT 'Appleseed'
 
---GO
+GO
 
-----Get searchable modules procedure
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSearchableModules]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [GetSearchableModules]
---GO
+--Get searchable modules procedure
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSearchableModules]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [GetSearchableModules]
+GO
 
---CREATE PROCEDURE GetSearchableModules
---(
---	@PortalID int
---)
---AS
---SELECT     GeneralModuleDefinitions.GeneralModDefID, GeneralModuleDefinitions.ClassName, GeneralModuleDefinitions.FriendlyName, 
---                      GeneralModuleDefinitions.DesktopSrc, GeneralModuleDefinitions.MobileSrc, GeneralModuleDefinitions.Admin, GeneralModuleDefinitions.Searchable, 
---                      GeneralModuleDefinitions.AssemblyName, ModuleDefinitions.ModuleDefID
---FROM         GeneralModuleDefinitions INNER JOIN
---                      ModuleDefinitions ON GeneralModuleDefinitions.GeneralModDefID = ModuleDefinitions.GeneralModDefID
---WHERE     (GeneralModuleDefinitions.Searchable = 1) AND (ModuleDefinitions.PortalID = @PortalID)
---GO
+CREATE PROCEDURE GetSearchableModules
+(
+	@PortalID int
+)
+AS
+SELECT     GeneralModuleDefinitions.GeneralModDefID, GeneralModuleDefinitions.ClassName, GeneralModuleDefinitions.FriendlyName, 
+                      GeneralModuleDefinitions.DesktopSrc, GeneralModuleDefinitions.MobileSrc, GeneralModuleDefinitions.Admin, GeneralModuleDefinitions.Searchable, 
+                      GeneralModuleDefinitions.AssemblyName, ModuleDefinitions.ModuleDefID
+FROM         GeneralModuleDefinitions INNER JOIN
+                      ModuleDefinitions ON GeneralModuleDefinitions.GeneralModDefID = ModuleDefinitions.GeneralModDefID
+WHERE     (GeneralModuleDefinitions.Searchable = 1) AND (ModuleDefinitions.PortalID = @PortalID)
+GO
 
---SET nocount ON
+SET nocount ON
 -- Update serchable modules
---UPDATE GeneralModuleDefinitions
---SET Searchable = 1, ClassName = 'Appleseed.Content.Web.ModulesDiscussion'
---WHERE GeneralModDefid = '{2D86166C-4BDC-4A6F-A028-D17C2BB177C8}'
---GO
+UPDATE GeneralModuleDefinitions
+SET Searchable = 1, ClassName = 'Appleseed.Content.Web.ModulesDiscussion'
+WHERE GeneralModDefid = '{2D86166C-4BDC-4A6F-A028-D17C2BB177C8}'
+GO
 
---UPDATE GeneralModuleDefinitions
---SET Searchable = 1, ClassName = 'Appleseed.Content.Web.ModulesAnnouncements'
---WHERE GeneralModDefid = '{CE55A821-2449-4903-BA1A-EC16DB93F8DB}'
---GO
+UPDATE GeneralModuleDefinitions
+SET Searchable = 1, ClassName = 'Appleseed.Content.Web.ModulesAnnouncements'
+WHERE GeneralModDefid = '{CE55A821-2449-4903-BA1A-EC16DB93F8DB}'
+GO
 
 --UPDATE GeneralModuleDefinitions
 --SET Searchable = 1, ClassName = 'Appleseed.Content.Web.ModulesArticles'
@@ -5254,10 +5254,10 @@ This patch introduces the following changes to the db:
 --WHERE GeneralModDefid = '{2502DB18-B580-4F90-8CB4-C15E6E5339EF}'
 --GO
 
-UPDATE GeneralModuleDefinitions
-SET Searchable = 1, ClassName = 'Appleseed.Content.Web.ModulesDocuments'
-WHERE GeneralModDefid = '{F9645B82-CB45-4C4C-BB2D-72FA42FE2B75}'
-GO
+--UPDATE GeneralModuleDefinitions
+--SET Searchable = 1, ClassName = 'Appleseed.Content.Web.ModulesDocuments'
+--WHERE GeneralModDefid = '{F9645B82-CB45-4C4C-BB2D-72FA42FE2B75}'
+--GO
 
 SET nocount OFF
 

@@ -3,7 +3,7 @@
 ---------------------
 
 
--- Add new module: Daily Dilbert
+---- Add new module: Daily Dilbert
 --DECLARE @GeneralModDefID uniqueidentifier
 --DECLARE @FriendlyName nvarchar(128)
 --DECLARE @DesktopSrc nvarchar(256)
@@ -30,6 +30,6 @@
 --GO
 
 
-/* add version info */
-INSERT INTO [rb_Versions] ([Release],[Version],[ReleaseDate]) VALUES('1624','1.2.8.1624', CONVERT(datetime, '04/23/2003', 101))
-GO
+--/* add version info */
+--INSERT INTO [rb_Versions] ([Release],[Version],[ReleaseDate]) VALUES('1624','1.2.8.1624', CONVERT(datetime, '04/23/2003', 101))
+--GO

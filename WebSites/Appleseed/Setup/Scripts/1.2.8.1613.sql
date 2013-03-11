@@ -294,31 +294,31 @@ VALUES
 GO
 
 
--- Installs Flash module
--- this is the recommended way for install new modules
-DECLARE @GeneralModDefID uniqueidentifier
-DECLARE @FriendlyName nvarchar(128)
-DECLARE @DesktopSrc nvarchar(256)
-DECLARE @MobileSrc nvarchar(256)
-DECLARE @AssemblyName varchar(50)
-DECLARE @ClassName nvarchar(128)
-DECLARE @Admin bit
-DECLARE @Searchable bit
+---- Installs Flash module
+---- this is the recommended way for install new modules
+--DECLARE @GeneralModDefID uniqueidentifier
+--DECLARE @FriendlyName nvarchar(128)
+--DECLARE @DesktopSrc nvarchar(256)
+--DECLARE @MobileSrc nvarchar(256)
+--DECLARE @AssemblyName varchar(50)
+--DECLARE @ClassName nvarchar(128)
+--DECLARE @Admin bit
+--DECLARE @Searchable bit
 
-SET @GeneralModDefID = '{623EC4DD-BA40-421c-887D-D774ED8EBF02}'
-SET @FriendlyName = 'Flash Module'
-SET @DesktopSrc = 'DesktopModules/FlashModule/FlashModule.ascx'
-SET @MobileSrc = ''
-SET @AssemblyName = 'Appleseed.DLL'
-SET @ClassName = ''
-SET @Admin = 0
-SET @Searchable = 0
--- Installs module
-EXEC [rb_AddGeneralModuleDefinitions] @GeneralModDefID, @FriendlyName, @DesktopSrc, @MobileSrc, @AssemblyName, @ClassName, @Admin, @Searchable
+--SET @GeneralModDefID = '{623EC4DD-BA40-421c-887D-D774ED8EBF02}'
+--SET @FriendlyName = 'Flash Module'
+--SET @DesktopSrc = 'DesktopModules/FlashModule/FlashModule.ascx'
+--SET @MobileSrc = ''
+--SET @AssemblyName = 'Appleseed.DLL'
+--SET @ClassName = ''
+--SET @Admin = 0
+--SET @Searchable = 0
+---- Installs module
+--EXEC [rb_AddGeneralModuleDefinitions] @GeneralModDefID, @FriendlyName, @DesktopSrc, @MobileSrc, @AssemblyName, @ClassName, @Admin, @Searchable
 
--- Install it for default portal
-EXEC [rb_UpdateModuleDefinitions] @GeneralModDefID, 0, 1
-GO
+---- Install it for default portal
+--EXEC [rb_UpdateModuleDefinitions] @GeneralModDefID, 0, 1
+--GO
 
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[rb_PicturesModified_st]') AND OBJECTPROPERTY(id, N'IsTrigger') = 1)
 drop trigger [rb_PicturesModified_st]
