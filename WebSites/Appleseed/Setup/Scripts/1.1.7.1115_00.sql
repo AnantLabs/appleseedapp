@@ -62,21 +62,21 @@ IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_Tabs_Tabs]') AND 
 ALTER TABLE [Tabs] DROP CONSTRAINT FK_Tabs_Tabs
 GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_Announcements_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
---ALTER TABLE [Announcements] DROP CONSTRAINT FK_Announcements_Modules
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_Announcements_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
+ALTER TABLE [Announcements] DROP CONSTRAINT FK_Announcements_Modules
+GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_Contacts_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
---ALTER TABLE [Contacts] DROP CONSTRAINT FK_Contacts_Modules
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_Contacts_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
+ALTER TABLE [Contacts] DROP CONSTRAINT FK_Contacts_Modules
+GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_Discussion_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
---ALTER TABLE [Discussion] DROP CONSTRAINT FK_Discussion_Modules
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_Discussion_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
+ALTER TABLE [Discussion] DROP CONSTRAINT FK_Discussion_Modules
+GO
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_Documents_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
---ALTER TABLE [Documents] DROP CONSTRAINT FK_Documents_Modules
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_Documents_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
+ALTER TABLE [Documents] DROP CONSTRAINT FK_Documents_Modules
+GO
 
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[FK_Events_Modules]') AND OBJECTPROPERTY(id, N'IsForeignKey') = 1)
 ALTER TABLE [Events] DROP CONSTRAINT FK_Events_Modules
@@ -124,14 +124,14 @@ DROP PROCEDURE [AddUserRole]
 GO
 
 /****** Oggetto: stored procedure DeleteContact    Data dello script: 07/11/2002 22.27.51 ******/
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[DeleteContact]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [DeleteContact]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[DeleteContact]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [DeleteContact]
+GO
 
 /****** Oggetto: stored procedure DeleteDocument    Data dello script: 07/11/2002 22.27.51 ******/
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[DeleteDocument]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [DeleteDocument]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[DeleteDocument]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [DeleteDocument]
+GO
 
 /****** Oggetto: stored procedure DeleteEvent    Data dello script: 07/11/2002 22.27.51 ******/
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[DeleteEvent]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
@@ -149,19 +149,19 @@ DROP PROCEDURE [DeleteUserRole]
 GO
 
 /****** Oggetto: stored procedure GetContacts    Data dello script: 07/11/2002 22.27.51 ******/
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetContacts]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [GetContacts]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetContacts]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [GetContacts]
+GO
 
 /****** Oggetto: stored procedure GetDocumentContent    Data dello script: 07/11/2002 22.27.51 ******/
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetDocumentContent]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [GetDocumentContent]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetDocumentContent]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [GetDocumentContent]
+GO
 
 /****** Oggetto: stored procedure GetDocuments    Data dello script: 07/11/2002 22.27.51 ******/
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetDocuments]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [GetDocuments]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetDocuments]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [GetDocuments]
+GO
 
 /****** Oggetto: stored procedure GetEvents    Data dello script: 07/11/2002 22.27.51 ******/
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetEvents]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
@@ -204,14 +204,14 @@ DROP PROCEDURE [GetRolesByUser]
 GO
 
 /****** Oggetto: stored procedure GetSingleContact    Data dello script: 07/11/2002 22.27.51 ******/
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleContact]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [GetSingleContact]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleContact]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [GetSingleContact]
+GO
 
 /****** Oggetto: stored procedure GetSingleDocument    Data dello script: 07/11/2002 22.27.51 ******/
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleDocument]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [GetSingleDocument]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleDocument]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [GetSingleDocument]
+GO
 
 /****** Oggetto: stored procedure GetSingleEvent    Data dello script: 07/11/2002 22.27.51 ******/
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleEvent]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
@@ -234,14 +234,14 @@ DROP PROCEDURE [GetTopLevelMessages]
 GO
 
 /****** Oggetto: stored procedure UpdateContact    Data dello script: 07/11/2002 22.27.51 ******/
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[UpdateContact]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [UpdateContact]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[UpdateContact]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [UpdateContact]
+GO
 
 /****** Oggetto: stored procedure UpdateDocument    Data dello script: 07/11/2002 22.27.51 ******/
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[UpdateDocument]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [UpdateDocument]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[UpdateDocument]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [UpdateDocument]
+GO
 
 /****** Oggetto: stored procedure UpdateEvent    Data dello script: 07/11/2002 22.27.51 ******/
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[UpdateEvent]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
@@ -419,9 +419,9 @@ DROP PROCEDURE [GetSolutions]
 GO
 
 /****** Oggetto: stored procedure AddAnnouncement    Data dello script: 07/11/2002 22.27.51 ******/
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[AddAnnouncement]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [AddAnnouncement]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[AddAnnouncement]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [AddAnnouncement]
+GO
 
 /****** Oggetto: stored procedure AddModule    Data dello script: 07/11/2002 22.27.51 ******/
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[AddModule]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
@@ -449,9 +449,9 @@ DROP PROCEDURE [AddUserFull]
 GO
 
 /****** Oggetto: stored procedure DeleteAnnouncement    Data dello script: 07/11/2002 22.27.51 ******/
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[DeleteAnnouncement]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [DeleteAnnouncement]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[DeleteAnnouncement]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [DeleteAnnouncement]
+GO
 
 /****** Oggetto: stored procedure DeleteModule    Data dello script: 07/11/2002 22.27.51 ******/
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[DeleteModule]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
@@ -474,9 +474,9 @@ DROP PROCEDURE [DeleteUser]
 GO
 
 /****** Oggetto: stored procedure GetAnnouncements    Data dello script: 07/11/2002 22.27.51 ******/
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetAnnouncements]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [GetAnnouncements]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetAnnouncements]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [GetAnnouncements]
+GO
 
 /****** Oggetto: stored procedure GetAuthAddRoles    Data dello script: 07/11/2002 22.27.51 ******/
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetAuthAddRoles]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
@@ -524,9 +524,9 @@ DROP PROCEDURE [GetPortals]
 GO
 
 /****** Oggetto: stored procedure GetSingleAnnouncement    Data dello script: 07/11/2002 22.27.51 ******/
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleAnnouncement]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [GetSingleAnnouncement]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleAnnouncement]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [GetSingleAnnouncement]
+GO
 
 /****** Oggetto: stored procedure GetSingleArticle    Data dello script: 07/11/2002 22.27.51 ******/
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[GetSingleArticle]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
@@ -564,9 +564,9 @@ DROP PROCEDURE [GetUsers]
 GO
 
 /****** Oggetto: stored procedure UpdateAnnouncement    Data dello script: 07/11/2002 22.27.51 ******/
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[UpdateAnnouncement]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---DROP PROCEDURE [UpdateAnnouncement]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[UpdateAnnouncement]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [UpdateAnnouncement]
+GO
 
 /****** Oggetto: stored procedure UpdateModuleDefinition    Data dello script: 07/11/2002 22.27.51 ******/
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[UpdateModuleDefinition]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
@@ -604,24 +604,24 @@ DROP PROCEDURE [UserLogin]
 GO
 
 /****** Oggetto: tabella [Announcements]    Data dello script: 07/11/2002 22.27.51 ******/
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[Announcements]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
---DROP TABLE [Announcements]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[Announcements]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+DROP TABLE [Announcements]
+GO
 
 /****** Oggetto: tabella [Contacts]    Data dello script: 07/11/2002 22.27.51 ******/
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[Contacts]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
---DROP TABLE [Contacts]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[Contacts]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+DROP TABLE [Contacts]
+GO
 
 /****** Oggetto: tabella [Discussion]    Data dello script: 07/11/2002 22.27.51 ******/
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[Discussion]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
---DROP TABLE [Discussion]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[Discussion]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+DROP TABLE [Discussion]
+GO
 
 /****** Oggetto: tabella [Documents]    Data dello script: 07/11/2002 22.27.51 ******/
---IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[Documents]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
---DROP TABLE [Documents]
---GO
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[Documents]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+DROP TABLE [Documents]
+GO
 
 /****** Oggetto: tabella [Events]    Data dello script: 07/11/2002 22.27.51 ******/
 IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[Events]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
@@ -860,59 +860,59 @@ CREATE TABLE [Users] (
 GO
 
 /****** Oggetto: tabella [Announcements]    Data dello script: 07/11/2002 22.28.04 ******/
---CREATE TABLE [Announcements] (
---    [ItemID] [int] IDENTITY (1,1) NOT NULL ,
---    [ModuleID] [int] NOT NULL ,
---    [CreatedByUser] [varchar] (100) NULL ,
---    [CreatedDate] [datetime] NULL ,
---    [Title] [varchar] (150) NULL ,
---    [MoreLink] [varchar] (150) NULL ,
---    [MobileMoreLink] [varchar] (150) NULL ,
---    [ExpireDate] [datetime] NULL ,
---    [Description] [varchar] (2000) NULL 
---) ON [PRIMARY]
---GO
+CREATE TABLE [Announcements] (
+    [ItemID] [int] IDENTITY (1,1) NOT NULL ,
+    [ModuleID] [int] NOT NULL ,
+    [CreatedByUser] [varchar] (100) NULL ,
+    [CreatedDate] [datetime] NULL ,
+    [Title] [varchar] (150) NULL ,
+    [MoreLink] [varchar] (150) NULL ,
+    [MobileMoreLink] [varchar] (150) NULL ,
+    [ExpireDate] [datetime] NULL ,
+    [Description] [varchar] (2000) NULL 
+) ON [PRIMARY]
+GO
 
 /****** Oggetto: tabella [Contacts]    Data dello script: 07/11/2002 22.28.04 ******/
---CREATE TABLE [Contacts] (
---    [ItemID] [int] IDENTITY (1,1) NOT NULL ,
---    [ModuleID] [int] NOT NULL ,
---    [CreatedByUser] [nvarchar] (100) NULL ,
---    [CreatedDate] [datetime] NULL ,
---    [Name] [nvarchar] (50) NULL ,
---    [Role] [nvarchar] (100) NULL ,
---    [Email] [nvarchar] (100) NULL ,
---    [Contact1] [nvarchar] (250) NULL ,
---    [Contact2] [nvarchar] (250) NULL 
---) ON [PRIMARY]
---GO
+CREATE TABLE [Contacts] (
+    [ItemID] [int] IDENTITY (1,1) NOT NULL ,
+    [ModuleID] [int] NOT NULL ,
+    [CreatedByUser] [nvarchar] (100) NULL ,
+    [CreatedDate] [datetime] NULL ,
+    [Name] [nvarchar] (50) NULL ,
+    [Role] [nvarchar] (100) NULL ,
+    [Email] [nvarchar] (100) NULL ,
+    [Contact1] [nvarchar] (250) NULL ,
+    [Contact2] [nvarchar] (250) NULL 
+) ON [PRIMARY]
+GO
 
 /****** Oggetto: tabella [Discussion]    Data dello script: 07/11/2002 22.28.05 ******/
---CREATE TABLE [Discussion] (
---    [ItemID] [int] IDENTITY (1,1) NOT NULL ,
---    [ModuleID] [int] NOT NULL ,
---    [Title] [nvarchar] (100) NULL ,
---    [CreatedDate] [datetime] NULL ,
---    [Body] [nvarchar] (3000) NULL ,
---    [DisplayOrder] [nvarchar] (750) NULL ,
---    [CreatedByUser] [nvarchar] (100) NULL 
---) ON [PRIMARY]
---GO
+CREATE TABLE [Discussion] (
+    [ItemID] [int] IDENTITY (1,1) NOT NULL ,
+    [ModuleID] [int] NOT NULL ,
+    [Title] [nvarchar] (100) NULL ,
+    [CreatedDate] [datetime] NULL ,
+    [Body] [nvarchar] (3000) NULL ,
+    [DisplayOrder] [nvarchar] (750) NULL ,
+    [CreatedByUser] [nvarchar] (100) NULL 
+) ON [PRIMARY]
+GO
 
 /****** Oggetto: tabella [Documents]    Data dello script: 07/11/2002 22.28.05 ******/
---CREATE TABLE [Documents] (
---    [ItemID] [int] IDENTITY (1,1) NOT NULL ,
---    [ModuleID] [int] NOT NULL ,
---    [CreatedByUser] [nvarchar] (100) NULL ,
---    [CreatedDate] [datetime] NULL ,
---    [FileNameUrl] [nvarchar] (250) NULL ,
---    [FileFriendlyName] [nvarchar] (150) NULL ,
---    [Category] [nvarchar] (50) NULL ,
---    [Content] [image] NULL ,
---    [ContentType] [nvarchar] (50) NULL ,
---    [ContentSize] [int] NULL 
---) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
---GO
+CREATE TABLE [Documents] (
+    [ItemID] [int] IDENTITY (1,1) NOT NULL ,
+    [ModuleID] [int] NOT NULL ,
+    [CreatedByUser] [nvarchar] (100) NULL ,
+    [CreatedDate] [datetime] NULL ,
+    [FileNameUrl] [nvarchar] (250) NULL ,
+    [FileFriendlyName] [nvarchar] (150) NULL ,
+    [Category] [nvarchar] (50) NULL ,
+    [Content] [image] NULL ,
+    [ContentType] [nvarchar] (50) NULL ,
+    [ContentSize] [int] NULL 
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
 
 /****** Oggetto: tabella [Events]    Data dello script: 07/11/2002 22.28.06 ******/
 CREATE TABLE [Events] (
@@ -1081,33 +1081,33 @@ ALTER TABLE [Users] WITH NOCHECK ADD
     )  ON [PRIMARY] 
 GO
 
---ALTER TABLE [Announcements] WITH NOCHECK ADD 
---    CONSTRAINT [PK_Announcements] PRIMARY KEY  NONCLUSTERED 
---    (
---        [ItemID]
---    )  ON [PRIMARY] 
---GO
+ALTER TABLE [Announcements] WITH NOCHECK ADD 
+    CONSTRAINT [PK_Announcements] PRIMARY KEY  NONCLUSTERED 
+    (
+        [ItemID]
+    )  ON [PRIMARY] 
+GO
 
---ALTER TABLE [Contacts] WITH NOCHECK ADD 
---    CONSTRAINT [PK_Contacts] PRIMARY KEY  NONCLUSTERED 
---    (
---        [ItemID]
---    )  ON [PRIMARY] 
---GO
+ALTER TABLE [Contacts] WITH NOCHECK ADD 
+    CONSTRAINT [PK_Contacts] PRIMARY KEY  NONCLUSTERED 
+    (
+        [ItemID]
+    )  ON [PRIMARY] 
+GO
 
---ALTER TABLE [Discussion] WITH NOCHECK ADD 
---    CONSTRAINT [PK_Discussion] PRIMARY KEY  NONCLUSTERED 
---    (
---        [ItemID]
---    )  ON [PRIMARY] 
---GO
+ALTER TABLE [Discussion] WITH NOCHECK ADD 
+    CONSTRAINT [PK_Discussion] PRIMARY KEY  NONCLUSTERED 
+    (
+        [ItemID]
+    )  ON [PRIMARY] 
+GO
 
---ALTER TABLE [Documents] WITH NOCHECK ADD 
---    CONSTRAINT [PK_Documents] PRIMARY KEY  NONCLUSTERED 
---    (
---        [ItemID]
---    )  ON [PRIMARY] 
---GO
+ALTER TABLE [Documents] WITH NOCHECK ADD 
+    CONSTRAINT [PK_Documents] PRIMARY KEY  NONCLUSTERED 
+    (
+        [ItemID]
+    )  ON [PRIMARY] 
+GO
 
 ALTER TABLE [Events] WITH NOCHECK ADD 
     CONSTRAINT [PK_Events] PRIMARY KEY  NONCLUSTERED 
@@ -1244,41 +1244,41 @@ ALTER TABLE [Users] ADD
     )
 GO
 
---ALTER TABLE [Announcements] ADD 
---    CONSTRAINT [FK_Announcements_Modules] FOREIGN KEY 
---    (
---        [ModuleID]
---    ) REFERENCES [Modules] (
---        [ModuleID]
---    ) ON DELETE CASCADE  NOT FOR REPLICATION 
---GO
+ALTER TABLE [Announcements] ADD 
+    CONSTRAINT [FK_Announcements_Modules] FOREIGN KEY 
+    (
+        [ModuleID]
+    ) REFERENCES [Modules] (
+        [ModuleID]
+    ) ON DELETE CASCADE  NOT FOR REPLICATION 
+GO
 
---ALTER TABLE [Contacts] ADD 
---    CONSTRAINT [FK_Contacts_Modules] FOREIGN KEY 
---    (
---        [ModuleID]
---    ) REFERENCES [Modules] (
---        [ModuleID]
---    ) ON DELETE CASCADE  NOT FOR REPLICATION 
---GO
+ALTER TABLE [Contacts] ADD 
+    CONSTRAINT [FK_Contacts_Modules] FOREIGN KEY 
+    (
+        [ModuleID]
+    ) REFERENCES [Modules] (
+        [ModuleID]
+    ) ON DELETE CASCADE  NOT FOR REPLICATION 
+GO
 
---ALTER TABLE [Discussion] ADD 
---    CONSTRAINT [FK_Discussion_Modules] FOREIGN KEY 
---    (
---        [ModuleID]
---    ) REFERENCES [Modules] (
---        [ModuleID]
---    ) ON DELETE CASCADE  NOT FOR REPLICATION 
---GO
+ALTER TABLE [Discussion] ADD 
+    CONSTRAINT [FK_Discussion_Modules] FOREIGN KEY 
+    (
+        [ModuleID]
+    ) REFERENCES [Modules] (
+        [ModuleID]
+    ) ON DELETE CASCADE  NOT FOR REPLICATION 
+GO
 
---ALTER TABLE [Documents] ADD 
---    CONSTRAINT [FK_Documents_Modules] FOREIGN KEY 
---    (
---        [ModuleID]
---    ) REFERENCES [Modules] (
---        [ModuleID]
---    ) ON DELETE CASCADE  NOT FOR REPLICATION 
---GO
+ALTER TABLE [Documents] ADD 
+    CONSTRAINT [FK_Documents_Modules] FOREIGN KEY 
+    (
+        [ModuleID]
+    ) REFERENCES [Modules] (
+        [ModuleID]
+    ) ON DELETE CASCADE  NOT FOR REPLICATION 
+GO
 
 ALTER TABLE [Events] ADD 
     CONSTRAINT [FK_Events_Modules] FOREIGN KEY 
@@ -1342,59 +1342,59 @@ GO
 -- =============================================================
 -- create the stored procs
 -- =============================================================
---CREATE PROCEDURE AddAnnouncement
---(
---    @ModuleID       int,
---    @UserName       nvarchar(100),
---    @Title          nvarchar(150),
---    @MoreLink       nvarchar(150),
---    @MobileMoreLink nvarchar(150),
---    @ExpireDate     DateTime,
---    @Description    nvarchar(2000),
---    @ItemID         int OUTPUT
---)
---AS
+CREATE PROCEDURE AddAnnouncement
+(
+    @ModuleID       int,
+    @UserName       nvarchar(100),
+    @Title          nvarchar(150),
+    @MoreLink       nvarchar(150),
+    @MobileMoreLink nvarchar(150),
+    @ExpireDate     DateTime,
+    @Description    nvarchar(2000),
+    @ItemID         int OUTPUT
+)
+AS
 
---INSERT INTO Announcements
---(
---    ModuleID,
---    CreatedByUser,
---    CreatedDate,
---    Title,
---    MoreLink,
---    MobileMoreLink,
---    ExpireDate,
---    Description
---)
+INSERT INTO Announcements
+(
+    ModuleID,
+    CreatedByUser,
+    CreatedDate,
+    Title,
+    MoreLink,
+    MobileMoreLink,
+    ExpireDate,
+    Description
+)
 
---VALUES
---(
---    @ModuleID,
---    @UserName,
---    GetDate(),
---    @Title,
---    @MoreLink,
---    @MobileMoreLink,
---    @ExpireDate,
---    @Description
---)
+VALUES
+(
+    @ModuleID,
+    @UserName,
+    GetDate(),
+    @Title,
+    @MoreLink,
+    @MobileMoreLink,
+    @ExpireDate,
+    @Description
+)
 
---SELECT
---    @ItemID = @@IDENTITY
+SELECT
+    @ItemID = @@IDENTITY
 
 
 
---GO
+GO
 
---SET QUOTED_IDENTIFIER OFF 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
 
---SET QUOTED_IDENTIFIER ON 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
 
 /****** Oggetto: stored procedure AddModule    Data dello script: 07/11/2002 22.28.08 ******/
 CREATE PROCEDURE AddModule
@@ -1677,31 +1677,31 @@ GO
 
 
 
---CREATE PROCEDURE DeleteAnnouncement
---(
---    @ItemID int
---)
---AS
+CREATE PROCEDURE DeleteAnnouncement
+(
+    @ItemID int
+)
+AS
 
---DELETE FROM
---    Announcements
+DELETE FROM
+    Announcements
 
---WHERE
---    ItemID = @ItemID
+WHERE
+    ItemID = @ItemID
 
 
 
---GO
+GO
 
---SET QUOTED_IDENTIFIER OFF 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
 
---SET QUOTED_IDENTIFIER ON 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
 
 /****** Oggetto: stored procedure DeleteModule    Data dello script: 07/11/2002 22.28.08 ******/
 CREATE PROCEDURE DeleteModule
@@ -1811,43 +1811,43 @@ GO
 /****** Oggetto: stored procedure GetAnnouncements    Data dello script: 07/11/2002 22.28.08 ******/
 
 
---CREATE PROCEDURE GetAnnouncements
---(
---    @ModuleID int
---)
---AS
+CREATE PROCEDURE GetAnnouncements
+(
+    @ModuleID int
+)
+AS
 
---SELECT
---    ItemID,
---    CreatedByUser,
---    CreatedDate,
---    Title,
---    MoreLink,
---    MobileMoreLink,
---    ExpireDate,
---    Description
+SELECT
+    ItemID,
+    CreatedByUser,
+    CreatedDate,
+    Title,
+    MoreLink,
+    MobileMoreLink,
+    ExpireDate,
+    Description
 
---FROM 
---    Announcements
+FROM 
+    Announcements
 
---WHERE
---    ModuleID = @ModuleID
---  AND
---    ExpireDate > GetDate()
+WHERE
+    ModuleID = @ModuleID
+  AND
+    ExpireDate > GetDate()
 
 
 
---GO
+GO
 
---SET QUOTED_IDENTIFIER OFF 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
 
---SET QUOTED_IDENTIFIER ON 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
 
 /****** Oggetto: stored procedure GetAuthAddRoles    Data dello script: 07/11/2002 22.28.09 ******/
 
@@ -2150,142 +2150,142 @@ GO
 
 
 
---CREATE PROCEDURE GetSingleAnnouncement
---(
---    @ItemID int
---)
---AS
+CREATE PROCEDURE GetSingleAnnouncement
+(
+    @ItemID int
+)
+AS
 
---SELECT
---    CreatedByUser,
---    CreatedDate,
---    Title,
---    MoreLink,
---    MobileMoreLink,
---    ExpireDate,
---    Description
+SELECT
+    CreatedByUser,
+    CreatedDate,
+    Title,
+    MoreLink,
+    MobileMoreLink,
+    ExpireDate,
+    Description
 
---FROM
---    Announcements
+FROM
+    Announcements
 
---WHERE
---    ItemID = @ItemID
+WHERE
+    ItemID = @ItemID
 
 
 
---GO
+GO
 
---SET QUOTED_IDENTIFIER OFF 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
 
---SET QUOTED_IDENTIFIER ON 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
 
 /****** Oggetto: stored procedure GetSingleArticle    Data dello script: 07/11/2002 22.28.09 ******/
 
---CREATE PROCEDURE GetSingleArticle
---(
---    @ItemID int
---)
---AS
+CREATE PROCEDURE GetSingleArticle
+(
+    @ItemID int
+)
+AS
 
---SELECT		ItemID,
---            ModuleID,
---            CreatedByUser,
---            CreatedDate,
---            Title, 
---            Subtitle, 
---            Abstract, 
---            Description, 
---            StartDate, 
---            ExpireDate, 
---            IsInNewsletter, 
---            MoreLink, 
---            TemplateXSLT, 
---            PhotoId1, 
---            PhotoId2, 
---            PhotoId3
---FROM	Articles
---WHERE   (ItemID = @ItemID)
-
-
+SELECT		ItemID,
+            ModuleID,
+            CreatedByUser,
+            CreatedDate,
+            Title, 
+            Subtitle, 
+            Abstract, 
+            Description, 
+            StartDate, 
+            ExpireDate, 
+            IsInNewsletter, 
+            MoreLink, 
+            TemplateXSLT, 
+            PhotoId1, 
+            PhotoId2, 
+            PhotoId3
+FROM	Articles
+WHERE   (ItemID = @ItemID)
 
 
---GO
 
---SET QUOTED_IDENTIFIER OFF 
---GO
---SET ANSI_NULLS ON 
---GO
 
---SET QUOTED_IDENTIFIER ON 
---GO
---SET ANSI_NULLS ON 
---GO
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
 
 /****** Oggetto: stored procedure GetSingleArticleWithImages    Data dello script: 07/11/2002 22.28.09 ******/
 
---CREATE PROCEDURE GetSingleArticleWithImages
---(
---    @ItemID int,
---    @Variation varchar(50)
---)
---AS
+CREATE PROCEDURE GetSingleArticleWithImages
+(
+    @ItemID int,
+    @Variation varchar(50)
+)
+AS
 
 
---SELECT *
---FROM
---(
+SELECT *
+FROM
+(
 
---SELECT		Articles.ItemID, 
---            Articles.ModuleID, 
---            Articles.CreatedByUser, 
---            Articles.CreatedDate, 
---            Articles.Title, 
---            Articles.Subtitle, 
---            Articles.Abstract, 
---            Articles.Description, 
---            Articles.StartDate, 
---            Articles.ExpireDate, 
---            Articles.IsInNewsletter, 
---            Articles.MoreLink, 
---            Articles.TemplateXSLT, 
---            ImageVariations.ImageURL AS Image1, 
---            ImageVariations_1.ImageURL AS Image2, 
---            ImageVariations_2.ImageURL AS Image3, 
---            ImageVariations.Variation AS Variation1, 
---            ImageVariations_1.Variation AS Variation2, 
---            ImageVariations_2.Variation AS Variation3
+SELECT		Articles.ItemID, 
+            Articles.ModuleID, 
+            Articles.CreatedByUser, 
+            Articles.CreatedDate, 
+            Articles.Title, 
+            Articles.Subtitle, 
+            Articles.Abstract, 
+            Articles.Description, 
+            Articles.StartDate, 
+            Articles.ExpireDate, 
+            Articles.IsInNewsletter, 
+            Articles.MoreLink, 
+            Articles.TemplateXSLT, 
+            ImageVariations.ImageURL AS Image1, 
+            ImageVariations_1.ImageURL AS Image2, 
+            ImageVariations_2.ImageURL AS Image3, 
+            ImageVariations.Variation AS Variation1, 
+            ImageVariations_1.Variation AS Variation2, 
+            ImageVariations_2.Variation AS Variation3
             
---FROM        Images Images_2 
---            INNER JOIN
---            ImageVariations ImageVariations_2 ON Images_2.ItemID = ImageVariations_2.ImageID RIGHT OUTER JOIN
---            Articles ON Images_2.ItemID = Articles.PhotoId3 LEFT OUTER JOIN
---            ImageVariations INNER JOIN
---            Images ON ImageVariations.ImageID = Images.ItemID ON Articles.PhotoId1 = Images.ItemID LEFT OUTER JOIN
---            ImageVariations ImageVariations_1 INNER JOIN
---            Images Images_1 ON ImageVariations_1.ImageID = Images_1.ItemID ON Articles.PhotoId2 = Images_1.ItemID
---WHERE     (Articles.ItemID = @ItemID)
+FROM        Images Images_2 
+            INNER JOIN
+            ImageVariations ImageVariations_2 ON Images_2.ItemID = ImageVariations_2.ImageID RIGHT OUTER JOIN
+            Articles ON Images_2.ItemID = Articles.PhotoId3 LEFT OUTER JOIN
+            ImageVariations INNER JOIN
+            Images ON ImageVariations.ImageID = Images.ItemID ON Articles.PhotoId1 = Images.ItemID LEFT OUTER JOIN
+            ImageVariations ImageVariations_1 INNER JOIN
+            Images Images_1 ON ImageVariations_1.ImageID = Images_1.ItemID ON Articles.PhotoId2 = Images_1.ItemID
+WHERE     (Articles.ItemID = @ItemID)
 
---) Articles
+) Articles
 
---WHERE (Variation1 IS null or Variation1 = @Variation) AND (Variation2 IS null or Variation2 = @Variation) AND (Variation3 IS null or Variation3 = @Variation)
+WHERE (Variation1 IS null or Variation1 = @Variation) AND (Variation2 IS null or Variation2 = @Variation) AND (Variation3 IS null or Variation3 = @Variation)
 
---GO
+GO
 
---SET QUOTED_IDENTIFIER OFF 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
 
---SET QUOTED_IDENTIFIER ON 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
 
 /****** Oggetto: stored procedure GetSingleModuleDefinition    Data dello script: 07/11/2002 22.28.09 ******/
 CREATE PROCEDURE GetSingleModuleDefinition
@@ -2425,46 +2425,46 @@ GO
 
 
 
---CREATE PROCEDURE UpdateAnnouncement
---(
---    @ItemID         int,
---    @UserName       nvarchar(100),
---    @Title          nvarchar(150),
---    @MoreLink       nvarchar(150),
---    @MobileMoreLink nvarchar(150),
---    @ExpireDate     datetime,
---    @Description    nvarchar(2000)
---)
---AS
+CREATE PROCEDURE UpdateAnnouncement
+(
+    @ItemID         int,
+    @UserName       nvarchar(100),
+    @Title          nvarchar(150),
+    @MoreLink       nvarchar(150),
+    @MobileMoreLink nvarchar(150),
+    @ExpireDate     datetime,
+    @Description    nvarchar(2000)
+)
+AS
 
---UPDATE
---    Announcements
+UPDATE
+    Announcements
 
---SET
---    CreatedByUser   = @UserName,
---    CreatedDate     = GetDate(),
---    Title           = @Title,
---    MoreLink        = @MoreLink,
---    MobileMoreLink  = @MobileMoreLink,
---    ExpireDate      = @ExpireDate,
---    Description     = @Description
+SET
+    CreatedByUser   = @UserName,
+    CreatedDate     = GetDate(),
+    Title           = @Title,
+    MoreLink        = @MoreLink,
+    MobileMoreLink  = @MobileMoreLink,
+    ExpireDate      = @ExpireDate,
+    Description     = @Description
 
---WHERE
---    ItemID = @ItemID
+WHERE
+    ItemID = @ItemID
 
 
 
---GO
+GO
 
---SET QUOTED_IDENTIFIER OFF 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
 
---SET QUOTED_IDENTIFIER ON 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
 
 /****** Oggetto: stored procedure UpdateModuleDefinition    Data dello script: 07/11/2002 22.28.10 ******/
 CREATE PROCEDURE UpdateModuleDefinition
@@ -3950,59 +3950,59 @@ GO
 /****** Oggetto: stored procedure AddContact    Data dello script: 07/11/2002 22.28.12 ******/
 
 
---CREATE PROCEDURE AddContact
---(
---    @ModuleID int,
---    @UserName nvarchar(100),
---    @Name     nvarchar(50),
---    @Role     nvarchar(100),
---    @Email    nvarchar(100),
---    @Contact1 nvarchar(250),
---    @Contact2 nvarchar(250),
---    @ItemID   int OUTPUT
---)
---AS
+CREATE PROCEDURE AddContact
+(
+    @ModuleID int,
+    @UserName nvarchar(100),
+    @Name     nvarchar(50),
+    @Role     nvarchar(100),
+    @Email    nvarchar(100),
+    @Contact1 nvarchar(250),
+    @Contact2 nvarchar(250),
+    @ItemID   int OUTPUT
+)
+AS
 
---INSERT INTO Contacts
---(
---    CreatedByUser,
---    CreatedDate,
---    ModuleID,
---    Name,
---    Role,
---    Email,
---    Contact1,
---    Contact2
---)
+INSERT INTO Contacts
+(
+    CreatedByUser,
+    CreatedDate,
+    ModuleID,
+    Name,
+    Role,
+    Email,
+    Contact1,
+    Contact2
+)
 
---VALUES
---(
---    @UserName,
---    GetDate(),
---    @ModuleID,
---    @Name,
---    @Role,
---    @Email,
---    @Contact1,
---    @Contact2
---)
+VALUES
+(
+    @UserName,
+    GetDate(),
+    @ModuleID,
+    @Name,
+    @Role,
+    @Email,
+    @Contact1,
+    @Contact2
+)
 
---SELECT
---    @ItemID = @@IDENTITY
+SELECT
+    @ItemID = @@IDENTITY
 
 
 
---GO
+GO
 
---SET QUOTED_IDENTIFIER OFF 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
 
---SET QUOTED_IDENTIFIER ON 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
 
 /****** Oggetto: stored procedure AddEvent    Data dello script: 07/11/2002 22.28.12 ******/
 
@@ -4166,60 +4166,60 @@ GO
 /****** Oggetto: stored procedure DeleteContact    Data dello script: 07/11/2002 22.28.12 ******/
 
 
---CREATE PROCEDURE DeleteContact
---(
---    @ItemID int
---)
---AS
+CREATE PROCEDURE DeleteContact
+(
+    @ItemID int
+)
+AS
 
---DELETE FROM
---    Contacts
+DELETE FROM
+    Contacts
 
---WHERE
---    ItemID = @ItemID
+WHERE
+    ItemID = @ItemID
 
 
 
---GO
+GO
 
---SET QUOTED_IDENTIFIER OFF 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
 
---SET QUOTED_IDENTIFIER ON 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
 
 /****** Oggetto: stored procedure DeleteDocument    Data dello script: 07/11/2002 22.28.13 ******/
 
 
---CREATE PROCEDURE DeleteDocument
---(
---    @ItemID int
---)
---AS
+CREATE PROCEDURE DeleteDocument
+(
+    @ItemID int
+)
+AS
 
---DELETE FROM
---    Documents
+DELETE FROM
+    Documents
 
---WHERE
---    ItemID = @ItemID
+WHERE
+    ItemID = @ItemID
 
 
 
---GO
+GO
 
---SET QUOTED_IDENTIFIER OFF 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
 
---SET QUOTED_IDENTIFIER ON 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
 
 /****** Oggetto: stored procedure DeleteEvent    Data dello script: 07/11/2002 22.28.13 ******/
 
@@ -4314,114 +4314,114 @@ GO
 /****** Oggetto: stored procedure GetContacts    Data dello script: 07/11/2002 22.28.13 ******/
 
 
---CREATE PROCEDURE GetContacts
---(
---    @ModuleID int
---)
---AS
+CREATE PROCEDURE GetContacts
+(
+    @ModuleID int
+)
+AS
 
---SELECT
---    ItemID,
---    CreatedDate,
---    CreatedByUser,
---    Name,
---    Role,
---    Email,
---    Contact1,
---    Contact2
+SELECT
+    ItemID,
+    CreatedDate,
+    CreatedByUser,
+    Name,
+    Role,
+    Email,
+    Contact1,
+    Contact2
 
---FROM
---    Contacts
+FROM
+    Contacts
 
---WHERE
---    ModuleID = @ModuleID
+WHERE
+    ModuleID = @ModuleID
 
 
 
---GO
+GO
 
---SET QUOTED_IDENTIFIER OFF 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
 
---SET QUOTED_IDENTIFIER ON 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
 
 /****** Oggetto: stored procedure GetDocumentContent    Data dello script: 07/11/2002 22.28.13 ******/
 
 
---CREATE PROCEDURE GetDocumentContent
---(
---    @ItemID int
---)
---AS
+CREATE PROCEDURE GetDocumentContent
+(
+    @ItemID int
+)
+AS
 
---SELECT
---    Content,
---    ContentType,
---    ContentSize,
---    FileFriendlyName
+SELECT
+    Content,
+    ContentType,
+    ContentSize,
+    FileFriendlyName
 
---FROM
---    Documents
+FROM
+    Documents
 
---WHERE
---    ItemID = @ItemID
+WHERE
+    ItemID = @ItemID
 
 
 
---GO
+GO
 
---SET QUOTED_IDENTIFIER OFF 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
 
---SET QUOTED_IDENTIFIER ON 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
 
 /****** Oggetto: stored procedure GetDocuments    Data dello script: 07/11/2002 22.28.13 ******/
 
 
---CREATE PROCEDURE GetDocuments
---(
---    @ModuleID int
---)
---AS
+CREATE PROCEDURE GetDocuments
+(
+    @ModuleID int
+)
+AS
 
---SELECT
---    ItemID,
---    FileFriendlyName,
---    FileNameUrl,
---    CreatedByUser,
---    CreatedDate,
---    Category,
---    ContentSize
+SELECT
+    ItemID,
+    FileFriendlyName,
+    FileNameUrl,
+    CreatedByUser,
+    CreatedDate,
+    Category,
+    ContentSize
     
---FROM
---    Documents
+FROM
+    Documents
 
---WHERE
---    ModuleID = @ModuleID
+WHERE
+    ModuleID = @ModuleID
 
 
 
---GO
+GO
 
---SET QUOTED_IDENTIFIER OFF 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
 
---SET QUOTED_IDENTIFIER ON 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
 
 /****** Oggetto: stored procedure GetEvents    Data dello script: 07/11/2002 22.28.13 ******/
 
@@ -4561,112 +4561,112 @@ GO
 /****** Oggetto: stored procedure GetNextMessageID    Data dello script: 07/11/2002 22.28.13 ******/
 
 
---CREATE PROCEDURE GetNextMessageID
---(
---    @ItemID int,
---    @NextID int OUTPUT
---)
---AS
+CREATE PROCEDURE GetNextMessageID
+(
+    @ItemID int,
+    @NextID int OUTPUT
+)
+AS
 
---DECLARE @CurrentDisplayOrder as nvarchar(750)
---DECLARE @CurrentModule as int
+DECLARE @CurrentDisplayOrder as nvarchar(750)
+DECLARE @CurrentModule as int
 
---/* Find DisplayOrder of current item */
---SELECT
---    @CurrentDisplayOrder = DisplayOrder,
---    @CurrentModule = ModuleID
---FROM
---    Discussion
---WHERE
---    ItemID = @ItemID
+/* Find DisplayOrder of current item */
+SELECT
+    @CurrentDisplayOrder = DisplayOrder,
+    @CurrentModule = ModuleID
+FROM
+    Discussion
+WHERE
+    ItemID = @ItemID
 
---/* Get the next message in the same module */
---SELECT Top 1
---    @NextID = ItemID
+/* Get the next message in the same module */
+SELECT Top 1
+    @NextID = ItemID
 
---FROM
---    Discussion
+FROM
+    Discussion
 
---WHERE
---    DisplayOrder > @CurrentDisplayOrder
---    AND
---    ModuleID = @CurrentModule
+WHERE
+    DisplayOrder > @CurrentDisplayOrder
+    AND
+    ModuleID = @CurrentModule
 
---ORDER BY
---    DisplayOrder ASC
+ORDER BY
+    DisplayOrder ASC
 
---/* end of this thread? */
---IF @@Rowcount < 1
---    SET @NextID = null
+/* end of this thread? */
+IF @@Rowcount < 1
+    SET @NextID = null
 
 
 
---GO
+GO
 
---SET QUOTED_IDENTIFIER OFF 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
 
---SET QUOTED_IDENTIFIER ON 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
 
 /****** Oggetto: stored procedure GetPrevMessageID    Data dello script: 07/11/2002 22.28.13 ******/
 
 
---CREATE PROCEDURE GetPrevMessageID
---(
---    @ItemID int,
---    @PrevID int OUTPUT
---)
---AS
+CREATE PROCEDURE GetPrevMessageID
+(
+    @ItemID int,
+    @PrevID int OUTPUT
+)
+AS
 
---DECLARE @CurrentDisplayOrder as nvarchar(750)
---DECLARE @CurrentModule as int
+DECLARE @CurrentDisplayOrder as nvarchar(750)
+DECLARE @CurrentModule as int
 
---/* Find DisplayOrder of current item */
---SELECT
---    @CurrentDisplayOrder = DisplayOrder,
---    @CurrentModule = ModuleID
---FROM
---    Discussion
---WHERE
---    ItemID = @ItemID
+/* Find DisplayOrder of current item */
+SELECT
+    @CurrentDisplayOrder = DisplayOrder,
+    @CurrentModule = ModuleID
+FROM
+    Discussion
+WHERE
+    ItemID = @ItemID
 
---/* Get the previous message in the same module */
---SELECT Top 1
---    @PrevID = ItemID
+/* Get the previous message in the same module */
+SELECT Top 1
+    @PrevID = ItemID
 
---FROM
---    Discussion
+FROM
+    Discussion
 
---WHERE
---    DisplayOrder < @CurrentDisplayOrder
---    AND
---    ModuleID = @CurrentModule
+WHERE
+    DisplayOrder < @CurrentDisplayOrder
+    AND
+    ModuleID = @CurrentModule
 
---ORDER BY
---    DisplayOrder DESC
+ORDER BY
+    DisplayOrder DESC
 
---/* already at the beginning of this module? */
---IF @@Rowcount < 1
---    SET @PrevID = null
+/* already at the beginning of this module? */
+IF @@Rowcount < 1
+    SET @PrevID = null
 
 
 
---GO
+GO
 
---SET QUOTED_IDENTIFIER OFF 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
 
---SET QUOTED_IDENTIFIER ON 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
 
 /****** Oggetto: stored procedure GetRoleMembership    Data dello script: 07/11/2002 22.28.13 ******/
 
@@ -4786,39 +4786,39 @@ GO
 /****** Oggetto: stored procedure GetSingleDocument    Data dello script: 07/11/2002 22.28.14 ******/
 
 
---CREATE PROCEDURE GetSingleDocument
---(
---    @ItemID int
---)
---AS
+CREATE PROCEDURE GetSingleDocument
+(
+    @ItemID int
+)
+AS
 
---SELECT
---    FileFriendlyName,
---    FileNameUrl,
---    CreatedByUser,
---    CreatedDate,
---    Category,
---    ContentSize
+SELECT
+    FileFriendlyName,
+    FileNameUrl,
+    CreatedByUser,
+    CreatedDate,
+    Category,
+    ContentSize
 
---FROM
---    Documents
+FROM
+    Documents
 
---WHERE
---    ItemID = @ItemID
+WHERE
+    ItemID = @ItemID
 
 
 
---GO
+GO
 
---SET QUOTED_IDENTIFIER OFF 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
 
---SET QUOTED_IDENTIFIER ON 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
 
 /****** Oggetto: stored procedure GetSingleEvent    Data dello script: 07/11/2002 22.28.14 ******/
 
@@ -4899,232 +4899,232 @@ GO
 
 
 
---CREATE PROCEDURE GetThreadMessages
---(
---    @Parent nvarchar(750)
---)
---AS
+CREATE PROCEDURE GetThreadMessages
+(
+    @Parent nvarchar(750)
+)
+AS
 
---SELECT
---    ItemID,
---    DisplayOrder,
---    REPLICATE( '&#160;', ( ( LEN( DisplayOrder ) / 23 ) - 1 ) * 5 ) AS Indent,
---    Title,  
---    CreatedByUser,
---    CreatedDate,
---    Body
+SELECT
+    ItemID,
+    DisplayOrder,
+    REPLICATE( '&#160;', ( ( LEN( DisplayOrder ) / 23 ) - 1 ) * 5 ) AS Indent,
+    Title,  
+    CreatedByUser,
+    CreatedDate,
+    Body
 
---FROM 
---    Discussion
+FROM 
+    Discussion
 
---WHERE
---    LEFT(DisplayOrder, 23) = @Parent
---  AND
---    (LEN( DisplayOrder ) / 23 ) > 1
+WHERE
+    LEFT(DisplayOrder, 23) = @Parent
+  AND
+    (LEN( DisplayOrder ) / 23 ) > 1
 
---ORDER BY
---    DisplayOrder
+ORDER BY
+    DisplayOrder
 
 
 
---GO
+GO
 
---SET QUOTED_IDENTIFIER OFF 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
 
---SET QUOTED_IDENTIFIER ON 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
 
 /****** Oggetto: stored procedure GetTopLevelMessages    Data dello script: 07/11/2002 22.28.14 ******/
 
 
---CREATE PROCEDURE GetTopLevelMessages
---(
---    @ModuleID int
---)
---AS
+CREATE PROCEDURE GetTopLevelMessages
+(
+    @ModuleID int
+)
+AS
 
---SELECT
---    ItemID,
---    DisplayOrder,
---    LEFT(DisplayOrder, 23) AS Parent,    
---    (SELECT COUNT(*) -1  FROM Discussion Disc2 WHERE LEFT(Disc2.DisplayOrder,LEN(RTRIM(Disc.DisplayOrder))) = Disc.DisplayOrder) AS ChildCount,
---    Title,  
---    CreatedByUser,
---    CreatedDate
+SELECT
+    ItemID,
+    DisplayOrder,
+    LEFT(DisplayOrder, 23) AS Parent,    
+    (SELECT COUNT(*) -1  FROM Discussion Disc2 WHERE LEFT(Disc2.DisplayOrder,LEN(RTRIM(Disc.DisplayOrder))) = Disc.DisplayOrder) AS ChildCount,
+    Title,  
+    CreatedByUser,
+    CreatedDate
 
---FROM 
---    Discussion Disc
+FROM 
+    Discussion Disc
 
---WHERE 
---    ModuleID=@ModuleID
---  AND
---    (LEN( DisplayOrder ) / 23 ) = 1
+WHERE 
+    ModuleID=@ModuleID
+  AND
+    (LEN( DisplayOrder ) / 23 ) = 1
 
---ORDER BY
---    DisplayOrder
+ORDER BY
+    DisplayOrder
 
 
 
---GO
+GO
 
---SET QUOTED_IDENTIFIER OFF 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
 
---SET QUOTED_IDENTIFIER ON 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
 
 /****** Oggetto: stored procedure UpdateContact    Data dello script: 07/11/2002 22.28.14 ******/
 
 
---CREATE PROCEDURE UpdateContact
---(
---    @ItemID   int,
---    @UserName nvarchar(100),
---    @Name     nvarchar(50),
---    @Role     nvarchar(100),
---    @Email    nvarchar(100),
---    @Contact1 nvarchar(250),
---    @Contact2 nvarchar(250)
---)
---AS
+CREATE PROCEDURE UpdateContact
+(
+    @ItemID   int,
+    @UserName nvarchar(100),
+    @Name     nvarchar(50),
+    @Role     nvarchar(100),
+    @Email    nvarchar(100),
+    @Contact1 nvarchar(250),
+    @Contact2 nvarchar(250)
+)
+AS
 
---UPDATE
---    Contacts
+UPDATE
+    Contacts
 
---SET
---    CreatedByUser = @UserName,
---    CreatedDate   = GetDate(),
---    Name          = @Name,
---    Role          = @Role,
---    Email         = @Email,
---    Contact1      = @Contact1,
---    Contact2      = @Contact2
+SET
+    CreatedByUser = @UserName,
+    CreatedDate   = GetDate(),
+    Name          = @Name,
+    Role          = @Role,
+    Email         = @Email,
+    Contact1      = @Contact1,
+    Contact2      = @Contact2
 
---WHERE
---    ItemID = @ItemID
+WHERE
+    ItemID = @ItemID
 
 
 
---GO
+GO
 
---SET QUOTED_IDENTIFIER OFF 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
 
---SET QUOTED_IDENTIFIER ON 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
 
 /****** Oggetto: stored procedure UpdateDocument    Data dello script: 07/11/2002 22.28.14 ******/
 
 
---CREATE PROCEDURE UpdateDocument
---(
---    @ItemID           int,
---    @ModuleID         int,
---    @FileFriendlyName nvarchar(150),
---    @FileNameUrl      nvarchar(250),
---    @UserName         nvarchar(100),
---    @Category         nvarchar(50),
---    @Content          image,
---    @ContentType      nvarchar(50),
---    @ContentSize      int
---)
---AS
---IF (@ItemID=0) OR NOT EXISTS (
---    SELECT 
---        * 
---    FROM 
---        Documents 
---    WHERE 
---        ItemID = @ItemID
---)
---INSERT INTO Documents
---(
---    ModuleID,
---    FileFriendlyName,
---    FileNameUrl,
---    CreatedByUser,
---    CreatedDate,
---    Category,
---    Content,
---    ContentType,
---    ContentSize
---)
+CREATE PROCEDURE UpdateDocument
+(
+    @ItemID           int,
+    @ModuleID         int,
+    @FileFriendlyName nvarchar(150),
+    @FileNameUrl      nvarchar(250),
+    @UserName         nvarchar(100),
+    @Category         nvarchar(50),
+    @Content          image,
+    @ContentType      nvarchar(50),
+    @ContentSize      int
+)
+AS
+IF (@ItemID=0) OR NOT EXISTS (
+    SELECT 
+        * 
+    FROM 
+        Documents 
+    WHERE 
+        ItemID = @ItemID
+)
+INSERT INTO Documents
+(
+    ModuleID,
+    FileFriendlyName,
+    FileNameUrl,
+    CreatedByUser,
+    CreatedDate,
+    Category,
+    Content,
+    ContentType,
+    ContentSize
+)
 
---VALUES
---(
---    @ModuleID,
---    @FileFriendlyName,
---    @FileNameUrl,
---    @UserName,
---    GetDate(),
---    @Category,
---    @Content,
---    @ContentType,
---    @ContentSize
---)
---ELSE
+VALUES
+(
+    @ModuleID,
+    @FileFriendlyName,
+    @FileNameUrl,
+    @UserName,
+    GetDate(),
+    @Category,
+    @Content,
+    @ContentType,
+    @ContentSize
+)
+ELSE
 
---BEGIN
+BEGIN
 
---IF (@ContentSize=0)
+IF (@ContentSize=0)
 
---UPDATE 
---    Documents
+UPDATE 
+    Documents
 
---SET 
---    CreatedByUser    = @UserName,
---    CreatedDate      = GetDate(),
---    Category         = @Category,
---    FileFriendlyName = @FileFriendlyName,
---    FileNameUrl      = @FileNameUrl
+SET 
+    CreatedByUser    = @UserName,
+    CreatedDate      = GetDate(),
+    Category         = @Category,
+    FileFriendlyName = @FileFriendlyName,
+    FileNameUrl      = @FileNameUrl
 
---WHERE
---    ItemID = @ItemID
---ELSE
+WHERE
+    ItemID = @ItemID
+ELSE
 
---UPDATE
---    Documents
+UPDATE
+    Documents
 
---SET
---    CreatedByUser     = @UserName,
---    CreatedDate       = GetDate(),
---    Category          = @Category,
---    FileFriendlyName  = @FileFriendlyName,
---    FileNameUrl       = @FileNameUrl,
---    Content           = @Content,
---    ContentType       = @ContentType,
---    ContentSize       = @ContentSize
+SET
+    CreatedByUser     = @UserName,
+    CreatedDate       = GetDate(),
+    Category          = @Category,
+    FileFriendlyName  = @FileFriendlyName,
+    FileNameUrl       = @FileNameUrl,
+    Content           = @Content,
+    ContentType       = @ContentType,
+    ContentSize       = @ContentSize
 
---WHERE
---    ItemID = @ItemID
+WHERE
+    ItemID = @ItemID
 
---END
+END
 
 
---GO
+GO
 
---SET QUOTED_IDENTIFIER OFF 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
 
---SET QUOTED_IDENTIFIER ON 
---GO
---SET ANSI_NULLS ON 
---GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
 
 /****** Oggetto: stored procedure UpdateEvent    Data dello script: 07/11/2002 22.28.14 ******/
 
@@ -5277,30 +5277,30 @@ GO
 /****** Oggetto: stored procedure GetSingleMessage    Data dello script: 07/11/2002 22.28.14 ******/
 
 
---CREATE PROCEDURE GetSingleMessage
---(
---    @ItemID int
---)
---AS
+CREATE PROCEDURE GetSingleMessage
+(
+    @ItemID int
+)
+AS
 
---DECLARE @nextMessageID int
---EXECUTE GetNextMessageID @ItemID, @nextMessageID OUTPUT
---DECLARE @prevMessageID int
---EXECUTE GetPrevMessageID @ItemID, @prevMessageID OUTPUT
+DECLARE @nextMessageID int
+EXECUTE GetNextMessageID @ItemID, @nextMessageID OUTPUT
+DECLARE @prevMessageID int
+EXECUTE GetPrevMessageID @ItemID, @prevMessageID OUTPUT
 
---SELECT
---    ItemID,
---    Title,
---    CreatedByUser,
---    CreatedDate,
---    Body,
---    DisplayOrder,
---    NextMessageID = @nextMessageID,
---    PrevMessageID = @prevMessageID
+SELECT
+    ItemID,
+    Title,
+    CreatedByUser,
+    CreatedDate,
+    Body,
+    DisplayOrder,
+    NextMessageID = @nextMessageID,
+    PrevMessageID = @prevMessageID
 
---FROM
---    Discussion
+FROM
+    Discussion
 
---WHERE
---    ItemID = @ItemID
---GO
+WHERE
+    ItemID = @ItemID
+GO

@@ -143,11 +143,13 @@
   <ItemGroup>
     <Content Include="Content\SelfUpdater.css" />
     <Content Include="DBScripts\20110905\01.CreateSelfUpdatingTable.sql" />
+    <Content Include="DBScripts\20111223\01.AddPackagesPage.sql" />
+    <Content Include="DBScripts\20111223\02.InsertInstallationModule.sql" />
+    <Content Include="DBScripts\20111223\03.InsertUpdateModule.sql" />
     <Content Include="Scripts\SelfUpdater.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="DBScripts\20111223\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Installation\InstallModule.ascx" />

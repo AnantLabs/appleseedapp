@@ -81,30 +81,30 @@ VALUES
 go
 
 
---IF EXISTS (SELECT * FROM sysobjects WHERE id = OBJECT_ID(N'[rb_GetLoggedOnUsers]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
---drop procedure rb_GetLoggedOnUsers
---go
+IF EXISTS (SELECT * FROM sysobjects WHERE id = OBJECT_ID(N'[rb_GetLoggedOnUsers]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure rb_GetLoggedOnUsers
+go
 
---EXEC dbo.sp_executesql @statement = N'create PROCEDURE rb_GetLoggedOnUsers
---(
---    @PortalID    int,
---    @MinutesToCheck int
---)
---AS
---		SELECT DISTINCT rbm.UserHostAddress, rbm.UserID,
---                          (
---                          SELECT TOP 1 ActivityType
---                          FROM rb_Monitoring
---                          WHERE ActivityTime >= DATEADD(n, - @MinutesToCheck, GETDATE()) 
---                          AND UserHostAddress = rbm.UserHostAddress 
---                          AND UserID = rbm.UserID 
---                          AND rbm.PortalID = @PortalID
---                          ORDER BY ActivityTime DESC) 
---                          AS LastAction
---                          FROM  rb_Monitoring rbm
---                          WHERE (rbm.ActivityTime >= DATEADD(n, - @MinutesToCheck, GETDATE())) 
---                          AND (rbm.PortalID = @PortalID)'
---go
+EXEC dbo.sp_executesql @statement = N'create PROCEDURE rb_GetLoggedOnUsers
+(
+    @PortalID    int,
+    @MinutesToCheck int
+)
+AS
+		SELECT DISTINCT rbm.UserHostAddress, rbm.UserID,
+                          (
+                          SELECT TOP 1 ActivityType
+                          FROM rb_Monitoring
+                          WHERE ActivityTime >= DATEADD(n, - @MinutesToCheck, GETDATE()) 
+                          AND UserHostAddress = rbm.UserHostAddress 
+                          AND UserID = rbm.UserID 
+                          AND rbm.PortalID = @PortalID
+                          ORDER BY ActivityTime DESC) 
+                          AS LastAction
+                          FROM  rb_Monitoring rbm
+                          WHERE (rbm.ActivityTime >= DATEADD(n, - @MinutesToCheck, GETDATE())) 
+                          AND (rbm.PortalID = @PortalID)'
+go
 
 
 
