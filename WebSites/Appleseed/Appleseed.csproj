@@ -638,20 +638,6 @@
     <Compile Include="DesktopModules\CommunityModules\ComponentModule\ComponentModuleEdit.aspx.designer.cs">
       <DependentUpon>ComponentModuleEdit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Contacts\Contacts.ascx.cs">
-      <DependentUpon>Contacts.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Contacts\Contacts.ascx.designer.cs">
-      <DependentUpon>Contacts.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Contacts\ContactsEdit.aspx.cs">
-      <DependentUpon>ContactsEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Contacts\ContactsEdit.aspx.designer.cs">
-      <DependentUpon>ContactsEdit.aspx</DependentUpon>
-    </Compile>
     <Compile Include="DesktopModules\CommunityModules\DailyDilbert\DailyDilbert.ascx.cs">
       <DependentUpon>DailyDilbert.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5763,13 +5749,6 @@
     <Content Include="DesktopModules\CommunityModules\ComponentModule\install.xml" />
     <Content Include="DesktopModules\CommunityModules\ComponentModule\readme.txt" />
     <Content Include="DesktopModules\CommunityModules\ComponentModule\uninstall.sql" />
-    <Content Include="DesktopModules\CommunityModules\Contacts\Contacts.ascx" />
-    <Content Include="DesktopModules\CommunityModules\Contacts\Contacts.xml" />
-    <Content Include="DesktopModules\CommunityModules\Contacts\ContactsEdit.aspx" />
-    <Content Include="DesktopModules\CommunityModules\Contacts\install.sql" />
-    <Content Include="DesktopModules\CommunityModules\Contacts\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\Contacts\readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\Contacts\uninstall.sql" />
     <Content Include="DesktopModules\CommunityModules\DailyDilbert\DailyDilbert.ascx" />
     <Content Include="DesktopModules\CommunityModules\DailyDilbert\DailyDilbert.xml" />
     <Content Include="DesktopModules\CommunityModules\DailyDilbert\DailyDilbertImage.aspx" />
@@ -6295,8 +6274,6 @@
     <Content Include="DesktopModules\CoreModules\ContentManager\images\MoveRight.gif" />
     <Content Include="DesktopModules\CoreModules\ContentManager\install.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\install.xml" />
-    <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Contacts_Install.sql" />
-    <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Contacts_UnInstall.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Documents_Install.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Documents_UnInstall.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Events_Install.sql" />
