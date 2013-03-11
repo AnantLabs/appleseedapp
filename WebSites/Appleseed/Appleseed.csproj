@@ -750,27 +750,6 @@
     <Compile Include="DesktopModules\CommunityModules\Tasks\TasksView.aspx.designer.cs">
       <DependentUpon>TasksView.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DesktopModules\CommunityModules\UserDefinedTable\UserDefinedTable.ascx.cs">
-      <DependentUpon>UserDefinedTable.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\UserDefinedTable\UserDefinedTable.ascx.designer.cs">
-      <DependentUpon>UserDefinedTable.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\UserDefinedTable\UserDefinedTableEdit.aspx.cs">
-      <DependentUpon>UserDefinedTableEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\UserDefinedTable\UserDefinedTableEdit.aspx.designer.cs">
-      <DependentUpon>UserDefinedTableEdit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\UserDefinedTable\UserDefinedTableManage.aspx.cs">
-      <DependentUpon>UserDefinedTableManage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\UserDefinedTable\UserDefinedTableManage.aspx.designer.cs">
-      <DependentUpon>UserDefinedTableManage.aspx</DependentUpon>
-    </Compile>
     <Compile Include="DesktopModules\CommunityModules\Version\AppleseedVersion.ascx.cs">
       <DependentUpon>AppleseedVersion.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -784,41 +763,6 @@
     </Compile>
     <Compile Include="DesktopModules\CommunityModules\Version\AsVersion.aspx.designer.cs">
       <DependentUpon>AsVersion.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\WeatherCom\WeatherCom.ascx.cs">
-      <DependentUpon>WeatherCom.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\WeatherCom\WeatherCom.ascx.designer.cs">
-      <DependentUpon>WeatherCom.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\WeatherDE\WeatherDE.ascx.cs">
-      <DependentUpon>WeatherDE.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\WeatherDE\WeatherDE.ascx.designer.cs">
-      <DependentUpon>WeatherDE.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\WeatherDE\WeatherDEEdit.aspx.cs">
-      <DependentUpon>WeatherDEEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\WeatherDE\WeatherDEEdit.aspx.designer.cs">
-      <DependentUpon>WeatherDEEdit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\WeatherUS\WeatherUS.ascx.cs">
-      <DependentUpon>WeatherUS.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\WeatherUS\WeatherUS.ascx.designer.cs">
-      <DependentUpon>WeatherUS.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\WeatherUS\WeatherUSEdit.aspx.cs">
-      <DependentUpon>WeatherUSEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\WeatherUS\WeatherUSEdit.aspx.designer.cs">
-      <DependentUpon>WeatherUSEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="DesktopModules\CommunityModules\WebPartModule\WebPartModule.ascx.cs">
       <DependentUpon>WebPartModule.ascx</DependentUpon>
@@ -5617,194 +5561,12 @@
     <Content Include="DesktopModules\CommunityModules\Tasks\TasksEdit.aspx" />
     <Content Include="DesktopModules\CommunityModules\Tasks\TasksView.aspx" />
     <Content Include="DesktopModules\CommunityModules\Tasks\uninstall.sql" />
-    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\default.xslt" />
-    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\example.jpg" />
-    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\example.txt" />
-    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\example1.xslt" />
-    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\example2.xslt" />
-    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\example3.xslt" />
-    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\example4.xslt" />
-    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\example5.xslt" />
-    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\Globals from IbuySpy Workshop.vb.txt" />
-    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\install.sql" />
-    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\sortascending.gif" />
-    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\sortdescending.gif" />
-    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\uninstall.sql" />
-    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\UserDefinedTable.ascx" />
-    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\UserDefinedTableEdit.aspx" />
-    <Content Include="DesktopModules\CommunityModules\UserDefinedTable\UserDefinedTableManage.aspx" />
     <Content Include="DesktopModules\CommunityModules\Version\AsVersion.aspx" />
     <Content Include="DesktopModules\CommunityModules\Version\example.jpg" />
     <Content Include="DesktopModules\CommunityModules\Version\install.xml" />
     <Content Include="DesktopModules\CommunityModules\Version\AppleseedVersion.ascx" />
     <Content Include="DesktopModules\CommunityModules\Version\AppleseedVersion.xml" />
     <Content Include="DesktopModules\CommunityModules\Version\readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\0.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\1.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\10.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\11.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\12.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\13.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\14.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\15.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\16.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\17.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\18.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\19.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\2.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\20.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\21.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\22.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\23.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\24.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\25.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\26.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\27.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\28.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\29.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\3.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\30.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\31.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\32.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\33.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\34.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\35.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\36.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\37.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\38.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\39.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\4.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\40.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\41.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\42.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\43.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\44.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\45.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\46.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\47.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\5.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\6.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\7.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\8.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\9.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\128x128\na.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\0.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\1.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\10.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\11.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\12.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\13.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\14.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\15.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\16.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\17.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\18.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\19.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\2.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\20.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\21.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\22.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\23.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\24.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\25.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\26.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\27.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\28.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\29.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\3.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\30.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\31.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\32.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\33.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\34.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\35.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\36.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\37.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\38.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\39.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\4.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\40.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\41.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\42.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\43.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\44.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\45.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\46.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\47.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\5.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\6.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\7.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\8.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\9.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\32x32\na.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\0.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\1.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\10.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\11.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\12.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\13.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\14.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\15.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\16.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\17.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\18.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\19.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\2.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\20.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\21.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\22.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\23.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\24.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\25.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\26.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\27.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\28.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\29.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\3.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\30.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\31.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\32.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\33.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\34.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\35.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\36.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\37.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\38.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\39.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\4.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\40.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\41.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\42.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\43.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\44.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\45.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\46.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\47.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\5.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\6.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\7.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\8.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\9.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\64x64\na.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\logos\TWClogo_32px.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\images\logos\TWClogo_64px.png" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\WeatherCom.ascx" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\WeatherCom.xslt" />
-    <Content Include="DesktopModules\CommunityModules\WeatherCom\WeatherComM.xslt" />
-    <Content Include="DesktopModules\CommunityModules\WeatherDE\example.jpg" />
-    <Content Include="DesktopModules\CommunityModules\WeatherDE\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\WeatherDE\readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\WeatherDE\WeatherDE.ascx" />
-    <Content Include="DesktopModules\CommunityModules\WeatherDE\WeatherDEEdit.aspx" />
-    <Content Include="DesktopModules\CommunityModules\WeatherUS\example.jpg" />
-    <Content Include="DesktopModules\CommunityModules\WeatherUS\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\WeatherUS\readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\WeatherUS\WeatherUS.ascx" />
-    <Content Include="DesktopModules\CommunityModules\WeatherUS\WeatherUSEdit.aspx" />
     <Content Include="DesktopModules\CommunityModules\WebPartModule\install.xml" />
     <Content Include="DesktopModules\CommunityModules\WebPartModule\readme.txt" />
     <Content Include="DesktopModules\CommunityModules\WebPartModule\WebPartModule.ascx" />
@@ -6286,9 +6048,6 @@
       <LastGenOutput>Appleseed.vi.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
-    <EmbeddedResource Include="DesktopModules\CommunityModules\WeatherCom\WeatherCom.ascx.resx">
-      <DependentUpon>WeatherCom.ascx.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="DesktopModules\CoreModules\ModuleDefinitions_OFM\ModuleDefinitions.aspx.resx">
       <DependentUpon>ModuleDefinitions.aspx.cs</DependentUpon>
     </EmbeddedResource>
