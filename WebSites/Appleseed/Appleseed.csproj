@@ -694,27 +694,6 @@
     <Compile Include="DesktopModules\CommunityModules\Discussion\DiscussionViewThread.aspx.designer.cs">
       <DependentUpon>DiscussionViewThread.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Documents\Documents.ascx.cs">
-      <DependentUpon>Documents.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Documents\Documents.ascx.designer.cs">
-      <DependentUpon>Documents.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Documents\DocumentsEdit.aspx.cs">
-      <DependentUpon>DocumentsEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Documents\DocumentsEdit.aspx.designer.cs">
-      <DependentUpon>DocumentsEdit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Documents\DocumentsView.aspx.cs">
-      <DependentUpon>DocumentsView.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Documents\DocumentsView.aspx.designer.cs">
-      <DependentUpon>DocumentsView.aspx</DependentUpon>
-    </Compile>
     <Compile Include="DesktopModules\CommunityModules\EnhancedHTML\EnhancedHtml.ascx.cs">
       <DependentUpon>EnhancedHtml.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5794,31 +5773,6 @@
     <Content Include="DesktopModules\CommunityModules\Discussion\install.xml" />
     <Content Include="DesktopModules\CommunityModules\Discussion\Mod_Discussion.css" />
     <Content Include="DesktopModules\CommunityModules\Discussion\uninstall.sql" />
-    <Content Include="DesktopModules\CommunityModules\Documents\Documents.ascx" />
-    <Content Include="DesktopModules\CommunityModules\Documents\Documents.xml" />
-    <Content Include="DesktopModules\CommunityModules\Documents\DocumentsEdit.aspx" />
-    <Content Include="DesktopModules\CommunityModules\Documents\DocumentsView.aspx" />
-    <Content Include="DesktopModules\CommunityModules\Documents\example1.jpg" />
-    <Content Include="DesktopModules\CommunityModules\Documents\example2.jpg" />
-    <Content Include="DesktopModules\CommunityModules\Documents\install.sql" />
-    <Content Include="DesktopModules\CommunityModules\Documents\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\Documents\readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\Documents\types\conf.gif" />
-    <Content Include="DesktopModules\CommunityModules\Documents\types\css.gif" />
-    <Content Include="DesktopModules\CommunityModules\Documents\types\doc.gif" />
-    <Content Include="DesktopModules\CommunityModules\Documents\types\exe.gif" />
-    <Content Include="DesktopModules\CommunityModules\Documents\types\img.gif" />
-    <Content Include="DesktopModules\CommunityModules\Documents\types\mdb.gif" />
-    <Content Include="DesktopModules\CommunityModules\Documents\types\mp3.gif" />
-    <Content Include="DesktopModules\CommunityModules\Documents\types\other.gif" />
-    <Content Include="DesktopModules\CommunityModules\Documents\types\pdf.gif" />
-    <Content Include="DesktopModules\CommunityModules\Documents\types\ppt.gif" />
-    <Content Include="DesktopModules\CommunityModules\Documents\types\source.gif" />
-    <Content Include="DesktopModules\CommunityModules\Documents\types\swf.gif" />
-    <Content Include="DesktopModules\CommunityModules\Documents\types\txt.gif" />
-    <Content Include="DesktopModules\CommunityModules\Documents\types\xls.gif" />
-    <Content Include="DesktopModules\CommunityModules\Documents\types\zip.gif" />
-    <Content Include="DesktopModules\CommunityModules\Documents\uninstall.sql" />
     <Content Include="DesktopModules\CommunityModules\EnhancedHTML\EnhancedHtml.ascx" />
     <Content Include="DesktopModules\CommunityModules\EnhancedHTML\EnhancedHtmlEdit.aspx" />
     <Content Include="DesktopModules\CommunityModules\EnhancedHTML\install.sql" />
@@ -6274,8 +6228,6 @@
     <Content Include="DesktopModules\CoreModules\ContentManager\images\MoveRight.gif" />
     <Content Include="DesktopModules\CoreModules\ContentManager\install.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\install.xml" />
-    <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Documents_Install.sql" />
-    <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Documents_UnInstall.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Events_Install.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Events_UnInstall.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_FAQs_Install.sql" />

@@ -5254,10 +5254,10 @@ GO
 --WHERE GeneralModDefid = '{2502DB18-B580-4F90-8CB4-C15E6E5339EF}'
 --GO
 
-UPDATE GeneralModuleDefinitions
-SET Searchable = 1, ClassName = 'Appleseed.Content.Web.ModulesDocuments'
-WHERE GeneralModDefid = '{F9645B82-CB45-4C4C-BB2D-72FA42FE2B75}'
-GO
+--UPDATE GeneralModuleDefinitions
+--SET Searchable = 1, ClassName = 'Appleseed.Content.Web.ModulesDocuments'
+--WHERE GeneralModDefid = '{F9645B82-CB45-4C4C-BB2D-72FA42FE2B75}'
+--GO
 
 SET nocount OFF
 
