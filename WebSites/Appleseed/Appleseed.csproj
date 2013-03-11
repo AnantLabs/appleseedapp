@@ -645,6 +645,18 @@
     <Compile Include="DesktopModules\CommunityModules\EnhancedLinks\EnhancedLinksEdit.aspx.designer.cs">
       <DependentUpon>EnhancedLinksEdit.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Events\Events.ascx.cs">
+      <DependentUpon>Events.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Events\Events.ascx.designer.cs">
+      <DependentUpon>Events.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Events\EventsEdit.aspx.cs">
+      <DependentUpon>EventsEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Events\EventsEdit.aspx.designer.cs">
+      <DependentUpon>EventsEdit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DesktopModules\CommunityModules\FileDirectoryTree\FileDirectoryTree.ascx.cs">
       <DependentUpon>FileDirectoryTree.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5364,6 +5376,13 @@
     <Content Include="DesktopModules\CommunityModules\EnhancedLinks\install.xml" />
     <Content Include="DesktopModules\CommunityModules\EnhancedLinks\mod_EnhancedLinks.css" />
     <Content Include="DesktopModules\CommunityModules\EnhancedLinks\uninstall.sql" />
+    <Content Include="DesktopModules\CommunityModules\Events\Events.ascx" />
+    <Content Include="DesktopModules\CommunityModules\Events\Events.xml" />
+    <Content Include="DesktopModules\CommunityModules\Events\EventsEdit.aspx" />
+    <Content Include="DesktopModules\CommunityModules\Events\install.sql" />
+    <Content Include="DesktopModules\CommunityModules\Events\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\Events\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\Events\uninstall.sql" />
     <Content Include="DesktopModules\CommunityModules\FileDirectoryTree\example.jpg" />
     <Content Include="DesktopModules\CommunityModules\FileDirectoryTree\FileDirectoryTree.ascx" />
     <Content Include="DesktopModules\CommunityModules\FileDirectoryTree\FileDirectoryTree.xml" />
