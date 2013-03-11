@@ -360,10 +360,10 @@ GO
 EXEC rb_Modules_IU 	220, 220, '{2502DB18-B580-4F90-8CB4-C15E6E531030}', 1, N'ContentPane', N'Search Portal', N'Admins', N'Admins;', N'Admins;', N'Admins;', N'Admins;', 0, 0, NULL, 0, 0, NULL, NULL, '', NULL, '', NULL, 0, 0, N'Admins;', N'Admins;'
 GO
 
-EXEC rb_Tabs_IU 	230	,	100	,	1230	,	0	,	N'ServiceItemList'	,	N''	,	N'Admins;'	,	0	,	NULL
-GO
-EXEC rb_Modules_IU 	230, 230, '{2502DB18-B580-4F90-8CB4-C15E6E531052}', 1, N'ContentPane', N'ServiceItemList', N'Admins', N'Admins;', N'Admins;', N'Admins;', N'Admins;', 0, 0, NULL, 0, 0, NULL, NULL, '', NULL, '', NULL, 0, 0, N'Admins;', N'Admins;'
-GO
+--EXEC rb_Tabs_IU 	230	,	100	,	1230	,	0	,	N'ServiceItemList'	,	N''	,	N'Admins;'	,	0	,	NULL
+--GO
+--EXEC rb_Modules_IU 	230, 230, '{2502DB18-B580-4F90-8CB4-C15E6E531052}', 1, N'ContentPane', N'ServiceItemList', N'Admins', N'Admins;', N'Admins;', N'Admins;', N'Admins;', 0, 0, NULL, 0, 0, NULL, NULL, '', NULL, '', NULL, 0, 0, N'Admins;', N'Admins;'
+--GO
 
 EXEC rb_Tabs_IU 	240	,	100	,	1240	,	0	,	N'Site Settings'	,	N''	,	N'Admins;'	,	0	,	NULL
 GO
