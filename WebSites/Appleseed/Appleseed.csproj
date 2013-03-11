@@ -708,27 +708,6 @@
     <Compile Include="DesktopModules\CommunityModules\Shortcut\ShortcutAll.ascx.designer.cs">
       <DependentUpon>ShortcutAll.ascx</DependentUpon>
     </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Tasks\Tasks.ascx.cs">
-      <DependentUpon>Tasks.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Tasks\Tasks.ascx.designer.cs">
-      <DependentUpon>Tasks.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Tasks\TasksEdit.aspx.cs">
-      <DependentUpon>TasksEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Tasks\TasksEdit.aspx.designer.cs">
-      <DependentUpon>TasksEdit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Tasks\TasksView.aspx.cs">
-      <DependentUpon>TasksView.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Tasks\TasksView.aspx.designer.cs">
-      <DependentUpon>TasksView.aspx</DependentUpon>
-    </Compile>
     <Compile Include="DesktopModules\CommunityModules\Version\AppleseedVersion.ascx.cs">
       <DependentUpon>AppleseedVersion.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5422,16 +5401,6 @@
     <Content Include="DesktopModules\CommunityModules\Shortcut\ShortcutAll.ascx" />
     <Content Include="DesktopModules\CommunityModules\Shortcut\ShortcutAll_readme.txt" />
     <Content Include="DesktopModules\CommunityModules\Shortcut\Shortcut_readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\Tasks\example1.jpg" />
-    <Content Include="DesktopModules\CommunityModules\Tasks\example2.jpg" />
-    <Content Include="DesktopModules\CommunityModules\Tasks\install.sql" />
-    <Content Include="DesktopModules\CommunityModules\Tasks\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\Tasks\readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\Tasks\Tasks.ascx" />
-    <Content Include="DesktopModules\CommunityModules\Tasks\Tasks.xml" />
-    <Content Include="DesktopModules\CommunityModules\Tasks\TasksEdit.aspx" />
-    <Content Include="DesktopModules\CommunityModules\Tasks\TasksView.aspx" />
-    <Content Include="DesktopModules\CommunityModules\Tasks\uninstall.sql" />
     <Content Include="DesktopModules\CommunityModules\Version\AsVersion.aspx" />
     <Content Include="DesktopModules\CommunityModules\Version\example.jpg" />
     <Content Include="DesktopModules\CommunityModules\Version\install.xml" />
@@ -5487,8 +5456,6 @@
     <Content Include="DesktopModules\CoreModules\ContentManager\images\MoveRight.gif" />
     <Content Include="DesktopModules\CoreModules\ContentManager\install.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\install.xml" />
-    <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Tasks_install.sql" />
-    <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Tasks_Uninstall.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\Install_INSTRUCTIONS.txt" />
     <Content Include="DesktopModules\CoreModules\ContentManager\README%28Please,Please,Please!!%29.txt" />
     <Content Include="DesktopModules\CoreModules\ContentManager\readme.txt" />
