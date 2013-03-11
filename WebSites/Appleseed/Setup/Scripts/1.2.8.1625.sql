@@ -3,7 +3,7 @@
 ---------------------
 
 
--- Fix path for module Daily Dilbert (was moved into own folder)
+---- Fix path for module Daily Dilbert (was moved into own folder)
 --UPDATE rb_GeneralModuleDefinitions SET DesktopSrc = 'DesktopModules/DailyDilbert/DailyDilbert.ascx' 
 --WHERE GeneralModDefID = '{2502DB18-B580-4F90-8CB4-C15E6E531031}'
 --GO
