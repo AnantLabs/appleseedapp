@@ -355,10 +355,10 @@ GO
 EXEC rb_Modules_IU 	215, 215, '{E928F47B-A131-4a33-88D5-D5D6E7A94B36}', 1, N'ContentPane', N'Recycler', N'Admins', N'Admins;', N'Admins;', N'Admins;', N'Admins;', 0, 0, NULL, 0, 0, NULL, NULL, '', NULL, '', NULL, 0, 0, N'Admins;', N'Admins;'
 GO
 
-EXEC rb_Tabs_IU 	220	,	100	,	1220	,	0	,	N'Search Portal'	,	N''	,	N'Admins;'	,	0	,	NULL
-GO
-EXEC rb_Modules_IU 	220, 220, '{2502DB18-B580-4F90-8CB4-C15E6E531030}', 1, N'ContentPane', N'Search Portal', N'Admins', N'Admins;', N'Admins;', N'Admins;', N'Admins;', 0, 0, NULL, 0, 0, NULL, NULL, '', NULL, '', NULL, 0, 0, N'Admins;', N'Admins;'
-GO
+--EXEC rb_Tabs_IU 	220	,	100	,	1220	,	0	,	N'Search Portal'	,	N''	,	N'Admins;'	,	0	,	NULL
+--GO
+--EXEC rb_Modules_IU 	220, 220, '{2502DB18-B580-4F90-8CB4-C15E6E531030}', 1, N'ContentPane', N'Search Portal', N'Admins', N'Admins;', N'Admins;', N'Admins;', N'Admins;', 0, 0, NULL, 0, 0, NULL, NULL, '', NULL, '', NULL, 0, 0, N'Admins;', N'Admins;'
+--GO
 
 --EXEC rb_Tabs_IU 	230	,	100	,	1230	,	0	,	N'ServiceItemList'	,	N''	,	N'Admins;'	,	0	,	NULL
 --GO
