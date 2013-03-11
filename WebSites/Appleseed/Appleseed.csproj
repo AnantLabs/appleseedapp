@@ -757,13 +757,6 @@
     <Compile Include="DesktopModules\CommunityModules\Version\AsVersion.aspx.designer.cs">
       <DependentUpon>AsVersion.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DesktopModules\CommunityModules\WhosLoggedOn\WhosLoggedOn.ascx.cs">
-      <DependentUpon>WhosLoggedOn.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\WhosLoggedOn\WhosLoggedOn.ascx.designer.cs">
-      <DependentUpon>WhosLoggedOn.ascx</DependentUpon>
-    </Compile>
     <Compile Include="DesktopModules\CommunityModules\XmlFeed\XmlFeed.ascx.cs">
       <DependentUpon>XmlFeed.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5445,26 +5438,6 @@
     <Content Include="DesktopModules\CommunityModules\Pictures\PictureView.aspx" />
     <Content Include="DesktopModules\CommunityModules\Pictures\readme.txt" />
     <Content Include="DesktopModules\CommunityModules\Pictures\uninstall.sql" />
-    <Content Include="DesktopModules\CommunityModules\SecureDocuments\install.sql" />
-    <Content Include="DesktopModules\CommunityModules\SecureDocuments\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\SecureDocuments\readme.Documents.txt" />
-    <Content Include="DesktopModules\CommunityModules\SecureDocuments\readme.SecureDocuments.txt" />
-    <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\conf.gif" />
-    <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\css.gif" />
-    <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\doc.gif" />
-    <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\exe.gif" />
-    <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\img.gif" />
-    <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\mdb.gif" />
-    <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\mp3.gif" />
-    <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\other.gif" />
-    <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\pdf.gif" />
-    <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\ppt.gif" />
-    <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\source.gif" />
-    <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\swf.gif" />
-    <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\txt.gif" />
-    <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\xls.gif" />
-    <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\zip.gif" />
-    <Content Include="DesktopModules\CommunityModules\SecureDocuments\uninstall.sql" />
     <Content Include="DesktopModules\CommunityModules\Shortcut\install.xml" />
     <Content Include="DesktopModules\CommunityModules\Shortcut\Shortcut.ascx" />
     <Content Include="DesktopModules\CommunityModules\Shortcut\ShortcutAll.ascx" />
@@ -5486,10 +5459,6 @@
     <Content Include="DesktopModules\CommunityModules\Version\AppleseedVersion.ascx" />
     <Content Include="DesktopModules\CommunityModules\Version\AppleseedVersion.xml" />
     <Content Include="DesktopModules\CommunityModules\Version\readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\WhosLoggedOn\install.sql" />
-    <Content Include="DesktopModules\CommunityModules\WhosLoggedOn\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\WhosLoggedOn\uninstall.sql" />
-    <Content Include="DesktopModules\CommunityModules\WhosLoggedOn\WhosLoggedOn.ascx" />
     <Content Include="DesktopModules\CommunityModules\XmlFeed\del.icio.us.xslt" />
     <Content Include="DesktopModules\CommunityModules\XmlFeed\example.jpg" />
     <Content Include="DesktopModules\CommunityModules\XmlFeed\install.xml" />
