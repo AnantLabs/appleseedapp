@@ -701,13 +701,6 @@
     <Compile Include="DesktopModules\CommunityModules\LanguageSwitcher\LanguageSwitcher.ascx.designer.cs">
       <DependentUpon>LanguageSwitcher.ascx</DependentUpon>
     </Compile>
-    <Compile Include="DesktopModules\CommunityModules\MapQuest\MapQuest.ascx.cs">
-      <DependentUpon>MapQuest.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\MapQuest\MapQuest.ascx.designer.cs">
-      <DependentUpon>MapQuest.ascx</DependentUpon>
-    </Compile>
     <Compile Include="DesktopModules\CommunityModules\MileStones\Milestones.ascx.cs">
       <DependentUpon>Milestones.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5639,10 +5632,6 @@
     <Content Include="DesktopModules\CommunityModules\IframeModule\install.xml" />
     <Content Include="DesktopModules\CommunityModules\LanguageSwitcher\install.xml" />
     <Content Include="DesktopModules\CommunityModules\LanguageSwitcher\LanguageSwitcher.ascx" />
-    <Content Include="DesktopModules\CommunityModules\MapQuest\example.jpg" />
-    <Content Include="DesktopModules\CommunityModules\MapQuest\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\MapQuest\MapQuest.ascx" />
-    <Content Include="DesktopModules\CommunityModules\MapQuest\readme.txt" />
     <Content Include="DesktopModules\CommunityModules\MileStones\install.sql" />
     <Content Include="DesktopModules\CommunityModules\MileStones\install.xml" />
     <Content Include="DesktopModules\CommunityModules\MileStones\Milestones.ascx" />
