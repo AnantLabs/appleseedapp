@@ -370,10 +370,10 @@ GO
 EXEC rb_Modules_IU 	240, 240, '{EBBB01B1-FBB5-4E79-8FC4-59BCA1D0554E}', 1, N'ContentPane', N'Site Settings', N'Admins', N'Admins;', N'Admins;', N'Admins;', N'Admins;', 0, 0, NULL, 0, 0, NULL, NULL, '', NULL, '', NULL, 0, 0, N'Admins;', N'Admins;'
 GO
 
-EXEC rb_Tabs_IU 	250	,	100	,	1250	,	0	,	N'SiteMap'	,	N''	,	N'Admins;'	,	0	,	NULL
-GO
-EXEC rb_Modules_IU 	250, 250, '{429A98E3-7A07-4D9A-A578-3ED8DD158306}', 1, N'ContentPane', N'SiteMap', N'Admins', N'Admins;', N'Admins;', N'Admins;', N'Admins;', 0, 0, NULL, 0, 0, NULL, NULL, '', NULL, '', NULL, 0, 0, N'Admins;', N'Admins;'
-GO
+--EXEC rb_Tabs_IU 	250	,	100	,	1250	,	0	,	N'SiteMap'	,	N''	,	N'Admins;'	,	0	,	NULL
+--GO
+--EXEC rb_Modules_IU 	250, 250, '{429A98E3-7A07-4D9A-A578-3ED8DD158306}', 1, N'ContentPane', N'SiteMap', N'Admins', N'Admins;', N'Admins;', N'Admins;', N'Admins;', 0, 0, NULL, 0, 0, NULL, NULL, '', NULL, '', NULL, 0, 0, N'Admins;', N'Admins;'
+--GO
 
 EXEC rb_Tabs_IU 	260	,	100	,	1260	,	0	,	N'Tasks'	,	N''	,	N'Admins;'	,	0	,	NULL
 GO
