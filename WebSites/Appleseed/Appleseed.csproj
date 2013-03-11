@@ -722,20 +722,6 @@
     <Compile Include="DesktopModules\CommunityModules\PortalSearch\PortalSearch.ascx.designer.cs">
       <DependentUpon>PortalSearch.ascx</DependentUpon>
     </Compile>
-    <Compile Include="DesktopModules\CommunityModules\SendThoughts\SendThoughts.ascx.cs">
-      <DependentUpon>SendThoughts.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\SendThoughts\SendThoughts.ascx.designer.cs">
-      <DependentUpon>SendThoughts.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\ServiceItemList\ServiceItemList.ascx.cs">
-      <DependentUpon>ServiceItemList.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\ServiceItemList\ServiceItemList.ascx.designer.cs">
-      <DependentUpon>ServiceItemList.ascx</DependentUpon>
-    </Compile>
     <Compile Include="DesktopModules\CommunityModules\Shortcut\ShortcutAll.ascx.cs">
       <DependentUpon>ShortcutAll.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5654,12 +5640,6 @@
     <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\xls.gif" />
     <Content Include="DesktopModules\CommunityModules\SecureDocuments\types\zip.gif" />
     <Content Include="DesktopModules\CommunityModules\SecureDocuments\uninstall.sql" />
-    <Content Include="DesktopModules\CommunityModules\SendThoughts\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\SendThoughts\readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\SendThoughts\SendThoughts.ascx" />
-    <Content Include="DesktopModules\CommunityModules\ServiceItemList\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\ServiceItemList\readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\ServiceItemList\ServiceItemList.ascx" />
     <Content Include="DesktopModules\CommunityModules\Shortcut\install.xml" />
     <Content Include="DesktopModules\CommunityModules\Shortcut\Shortcut.ascx" />
     <Content Include="DesktopModules\CommunityModules\Shortcut\ShortcutAll.ascx" />
