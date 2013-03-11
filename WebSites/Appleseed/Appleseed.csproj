@@ -617,41 +617,6 @@
     <Compile Include="DesktopDefault.aspx.designer.cs">
       <DependentUpon>DesktopDefault.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DesktopModules\CommunityModules\ComponentModule\ComponentModule.ascx.cs">
-      <DependentUpon>ComponentModule.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\ComponentModule\ComponentModule.ascx.designer.cs">
-      <DependentUpon>ComponentModule.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\ComponentModule\ComponentModuleEdit.aspx.cs">
-      <DependentUpon>ComponentModuleEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\ComponentModule\ComponentModuleEdit.aspx.designer.cs">
-      <DependentUpon>ComponentModuleEdit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\DiscussionEnhanced\Discussion.ascx.cs">
-      <DependentUpon>Discussion.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\DiscussionEnhanced\Discussion.ascx.designer.cs">
-      <DependentUpon>Discussion.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\DiscussionEnhanced\DiscussionEdit.aspx.cs">
-      <DependentUpon>DiscussionEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\DiscussionEnhanced\DiscussionEdit.aspx.designer.cs">
-      <DependentUpon>DiscussionEdit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\DiscussionEnhanced\DiscussionViewThread.aspx.cs">
-      <DependentUpon>DiscussionViewThread.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\DiscussionEnhanced\DiscussionViewThread.aspx.designer.cs">
-      <DependentUpon>DiscussionViewThread.aspx</DependentUpon>
-    </Compile>
     <Compile Include="DesktopModules\CommunityModules\EnhancedHTML\EnhancedHtml.ascx.cs">
       <DependentUpon>EnhancedHtml.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1575,7 +1540,6 @@
     <Folder Include="App_Themes\Default\" />
     <Folder Include="App_Themes\Theme1\" />
     <Folder Include="Bin\" />
-    <Folder Include="DesktopModules\CommunityModules\DiscussionEnhanced\images\" />
     <Folder Include="images\default\" />
     <Folder Include="packages\" />
     <Folder Include="Portals\_Appleseed\Album\" />
@@ -5661,25 +5625,6 @@
     <Content Include="Design\Themes\Module-No-Style\icon\view.gif" />
     <Content Include="Design\Themes\Module-No-Style\Theme.xml" />
     <Content Include="DesktopDefault.aspx" />
-    <Content Include="DesktopModules\CommunityModules\ComponentModule\ComponentModule.ascx" />
-    <Content Include="DesktopModules\CommunityModules\ComponentModule\ComponentModuleEdit.aspx" />
-    <Content Include="DesktopModules\CommunityModules\ComponentModule\install.sql" />
-    <Content Include="DesktopModules\CommunityModules\ComponentModule\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\ComponentModule\readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\ComponentModule\uninstall.sql" />
-    <Content Include="DesktopModules\CommunityModules\DiscussionEnhanced\Discussion.ascx" />
-    <Content Include="DesktopModules\CommunityModules\DiscussionEnhanced\DiscussionEdit.aspx" />
-    <Content Include="DesktopModules\CommunityModules\DiscussionEnhanced\DiscussionViewThread.aspx" />
-    <Content Include="DesktopModules\CommunityModules\DiscussionEnhanced\img\1x1.gif" />
-    <Content Include="DesktopModules\CommunityModules\DiscussionEnhanced\img\delete.gif" />
-    <Content Include="DesktopModules\CommunityModules\DiscussionEnhanced\img\edit.gif" />
-    <Content Include="DesktopModules\CommunityModules\DiscussionEnhanced\img\minus.gif" />
-    <Content Include="DesktopModules\CommunityModules\DiscussionEnhanced\img\new_window.gif" />
-    <Content Include="DesktopModules\CommunityModules\DiscussionEnhanced\img\plus.gif" />
-    <Content Include="DesktopModules\CommunityModules\DiscussionEnhanced\img\reply.gif" />
-    <Content Include="DesktopModules\CommunityModules\DiscussionEnhanced\install.sql" />
-    <Content Include="DesktopModules\CommunityModules\DiscussionEnhanced\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\DiscussionEnhanced\uninstall.sql" />
     <Content Include="DesktopModules\CommunityModules\EnhancedHTML\EnhancedHtml.ascx" />
     <Content Include="DesktopModules\CommunityModules\EnhancedHTML\EnhancedHtmlEdit.aspx" />
     <Content Include="DesktopModules\CommunityModules\EnhancedHTML\install.sql" />
