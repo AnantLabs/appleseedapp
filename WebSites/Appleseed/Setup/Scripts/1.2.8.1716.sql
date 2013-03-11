@@ -4,31 +4,31 @@
 
 --
 -- Add new module: BreadCrumbs as a module
-DECLARE @GeneralModDefID uniqueidentifier
-DECLARE @FriendlyName nvarchar(128)
-DECLARE @DesktopSrc nvarchar(256)
-DECLARE @MobileSrc nvarchar(256)
-DECLARE @AssemblyName varchar(50)
-DECLARE @ClassName nvarchar(128)
-DECLARE @Admin bit
-DECLARE @Searchable bit
+--DECLARE @GeneralModDefID uniqueidentifier
+--DECLARE @FriendlyName nvarchar(128)
+--DECLARE @DesktopSrc nvarchar(256)
+--DECLARE @MobileSrc nvarchar(256)
+--DECLARE @AssemblyName varchar(50)
+--DECLARE @ClassName nvarchar(128)
+--DECLARE @Admin bit
+--DECLARE @Searchable bit
 
-SET @GeneralModDefID = '{D3182CD6-DAFF-4E72-AD9E-0B28CB44F007}'
-SET @FriendlyName = 'BreadCrumbs'
-SET @DesktopSrc = 'DesktopModules/BreadCrumbs/BreadCrumbs.ascx'
-SET @MobileSrc = ''
-SET @AssemblyName = 'Appleseed.DLL'
-SET @ClassName = 'Appleseed.Content.Web.ModulesBreadCrumbs'
-SET @Admin = 0
-SET @Searchable = 0
+--SET @GeneralModDefID = '{D3182CD6-DAFF-4E72-AD9E-0B28CB44F007}'
+--SET @FriendlyName = 'BreadCrumbs'
+--SET @DesktopSrc = 'DesktopModules/BreadCrumbs/BreadCrumbs.ascx'
+--SET @MobileSrc = ''
+--SET @AssemblyName = 'Appleseed.DLL'
+--SET @ClassName = 'Appleseed.Content.Web.ModulesBreadCrumbs'
+--SET @Admin = 0
+--SET @Searchable = 0
 
--- Installs module
-EXEC [rb_AddGeneralModuleDefinitions] @GeneralModDefID, @FriendlyName, @DesktopSrc, @MobileSrc, @AssemblyName, @ClassName, @Admin, @Searchable
+---- Installs module
+--EXEC [rb_AddGeneralModuleDefinitions] @GeneralModDefID, @FriendlyName, @DesktopSrc, @MobileSrc, @AssemblyName, @ClassName, @Admin, @Searchable
 
--- Install it for default portal
-EXEC [rb_UpdateModuleDefinitions] @GeneralModDefID, 0, 1
+---- Install it for default portal
+--EXEC [rb_UpdateModuleDefinitions] @GeneralModDefID, 0, 1
 
-GO
+--GO
 --
 -- Add new module: SimpleMenu as a module
 DECLARE @GeneralModDefID uniqueidentifier
