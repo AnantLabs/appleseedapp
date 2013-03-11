@@ -5249,10 +5249,10 @@ GO
 --WHERE GeneralModDefid = '{87303CF7-76D0-49B1-A7E7-A5C8E26415BA}'
 --GO
 
-UPDATE GeneralModuleDefinitions
-SET Searchable = 1, ClassName = 'Appleseed.Content.Web.ModulesContacts'
-WHERE GeneralModDefid = '{2502DB18-B580-4F90-8CB4-C15E6E5339EF}'
-GO
+--UPDATE GeneralModuleDefinitions
+--SET Searchable = 1, ClassName = 'Appleseed.Content.Web.ModulesContacts'
+--WHERE GeneralModDefid = '{2502DB18-B580-4F90-8CB4-C15E6E5339EF}'
+--GO
 
 UPDATE GeneralModuleDefinitions
 SET Searchable = 1, ClassName = 'Appleseed.Content.Web.ModulesDocuments'

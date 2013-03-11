@@ -46,7 +46,7 @@ INSERT INTO GeneralModuleDefinitions (GeneralModDefID,ClassName,FriendlyName,Des
 INSERT INTO GeneralModuleDefinitions (GeneralModDefID,ClassName,FriendlyName,DesktopSrc,MobileSrc,Admin) VALUES('{F9F9C3A4-6E16-43B4-B540-984DDB5F1CD0}',NULL,'ShortcutAll','DesktopModules/ShortcutAll.ascx','',0)
 INSERT INTO GeneralModuleDefinitions (GeneralModDefID,ClassName,FriendlyName,DesktopSrc,MobileSrc,Admin) VALUES('{F9F9C3A4-6E16-43B4-B540-984DDB5F1CD2}',NULL,'Shortcut','DesktopModules/Shortcut.ascx','',0)
 INSERT INTO GeneralModuleDefinitions (GeneralModDefID,ClassName,FriendlyName,DesktopSrc,MobileSrc,Admin) VALUES('{BE224332-03DE-42B7-B127-AE1F1BD0FADC}',NULL,'XML/XSL','DesktopModules/XmlModule.ascx','',0)
-INSERT INTO GeneralModuleDefinitions (GeneralModDefID,ClassName,FriendlyName,DesktopSrc,MobileSrc,Admin) VALUES('{2502DB18-B580-4F90-8CB4-C15E6E5339EF}',NULL,'Contacts','DesktopModules/Contacts.ascx','MobileModules/Contacts.ascx',0)
+--INSERT INTO GeneralModuleDefinitions (GeneralModDefID,ClassName,FriendlyName,DesktopSrc,MobileSrc,Admin) VALUES('{2502DB18-B580-4F90-8CB4-C15E6E5339EF}',NULL,'Contacts','DesktopModules/Contacts.ascx','MobileModules/Contacts.ascx',0)
 INSERT INTO GeneralModuleDefinitions (GeneralModDefID,ClassName,FriendlyName,DesktopSrc,MobileSrc,Admin) VALUES('{2D86166C-4BDC-4A6F-A028-D17C2BB177C8}',NULL,'Discussion','DesktopModules/Discussion/Discussion.ascx','',0)
 INSERT INTO GeneralModuleDefinitions (GeneralModDefID,ClassName,FriendlyName,DesktopSrc,MobileSrc,Admin) VALUES('{CE55A821-2449-4903-BA1A-EC16DB93F8DB}',NULL,'Announcements','DesktopModules/Announcements.ascx','MobileModules/Announcements.ascx',0)
 IF(	IDENT_INCR( 'GeneralModuleDefinitions' ) IS NOT NULL OR IDENT_SEED('GeneralModuleDefinitions') IS NOT NULL ) SET IDENTITY_INSERT GeneralModuleDefinitions OFF
@@ -57,7 +57,7 @@ GO
 -----------------------------------------------------------
 IF(	IDENT_INCR( 'ModuleDefinitions' ) IS NOT NULL OR IDENT_SEED('ModuleDefinitions') IS NOT NULL ) SET IDENTITY_INSERT ModuleDefinitions ON
 INSERT INTO ModuleDefinitions (ModuleDefID,PortalID,GeneralModDefID) VALUES('1','0','{CE55A821-2449-4903-BA1A-EC16DB93F8DB}')
-INSERT INTO ModuleDefinitions (ModuleDefID,PortalID,GeneralModDefID) VALUES('2','0','{2502DB18-B580-4F90-8CB4-C15E6E5339EF}')
+--INSERT INTO ModuleDefinitions (ModuleDefID,PortalID,GeneralModDefID) VALUES('2','0','{2502DB18-B580-4F90-8CB4-C15E6E5339EF}')
 INSERT INTO ModuleDefinitions (ModuleDefID,PortalID,GeneralModDefID) VALUES('3','0','{2D86166C-4BDC-4A6F-A028-D17C2BB177C8}')
 INSERT INTO ModuleDefinitions (ModuleDefID,PortalID,GeneralModDefID) VALUES('4','0','{EF9B29C5-E481-49A6-9383-8ED3AB42DDA0}')
 INSERT INTO ModuleDefinitions (ModuleDefID,PortalID,GeneralModDefID) VALUES('5','0','{0B113F51-FEA3-499A-98E7-7B83C192FDBB}')
