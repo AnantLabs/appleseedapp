@@ -631,20 +631,6 @@
     <Compile Include="DesktopModules\CommunityModules\ComponentModule\ComponentModuleEdit.aspx.designer.cs">
       <DependentUpon>ComponentModuleEdit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DesktopModules\CommunityModules\DailyDilbert\DailyDilbert.ascx.cs">
-      <DependentUpon>DailyDilbert.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\DailyDilbert\DailyDilbert.ascx.designer.cs">
-      <DependentUpon>DailyDilbert.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\DailyDilbert\DailyDilbertImage.aspx.cs">
-      <DependentUpon>DailyDilbertImage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\DailyDilbert\DailyDilbertImage.aspx.designer.cs">
-      <DependentUpon>DailyDilbertImage.aspx</DependentUpon>
-    </Compile>
     <Compile Include="DesktopModules\CommunityModules\DiscussionEnhanced\Discussion.ascx.cs">
       <DependentUpon>Discussion.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5702,12 +5688,6 @@
     <Content Include="DesktopModules\CommunityModules\ComponentModule\install.xml" />
     <Content Include="DesktopModules\CommunityModules\ComponentModule\readme.txt" />
     <Content Include="DesktopModules\CommunityModules\ComponentModule\uninstall.sql" />
-    <Content Include="DesktopModules\CommunityModules\DailyDilbert\DailyDilbert.ascx" />
-    <Content Include="DesktopModules\CommunityModules\DailyDilbert\DailyDilbert.xml" />
-    <Content Include="DesktopModules\CommunityModules\DailyDilbert\DailyDilbertImage.aspx" />
-    <Content Include="DesktopModules\CommunityModules\DailyDilbert\example.jpg" />
-    <Content Include="DesktopModules\CommunityModules\DailyDilbert\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\DailyDilbert\readme.txt" />
     <Content Include="DesktopModules\CommunityModules\DateTextBox\Calendar.jpg" />
     <Content Include="DesktopModules\CommunityModules\DateTextBox\PopupCalendar.aspx" />
     <Content Include="DesktopModules\CommunityModules\DiscussionEnhanced\Discussion.ascx" />
