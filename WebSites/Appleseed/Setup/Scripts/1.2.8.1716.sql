@@ -57,10 +57,10 @@ EXEC [rb_UpdateModuleDefinitions] @GeneralModDefID, 0, 1
 
 
 
--- Fix path for module MileStones (was moved into own folder)
-UPDATE rb_GeneralModuleDefinitions SET DesktopSrc = 'DesktopModules/MileStones/MileStones.ascx' 
-WHERE GeneralModDefID = '{B8784E32-688A-4b8a-87C4-DF108BF12DBE}'
-GO
+---- Fix path for module MileStones (was moved into own folder)
+--UPDATE rb_GeneralModuleDefinitions SET DesktopSrc = 'DesktopModules/MileStones/MileStones.ascx' 
+--WHERE GeneralModDefID = '{B8784E32-688A-4b8a-87C4-DF108BF12DBE}'
+--GO
 
 
 /* add version info */

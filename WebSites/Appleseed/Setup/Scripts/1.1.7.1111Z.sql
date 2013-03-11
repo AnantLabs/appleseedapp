@@ -378,10 +378,10 @@ GO
 EXEC rb_Tabs_IU 	260	,	100	,	1260	,	0	,	N'Tasks'	,	N''	,	N'Admins;'	,	0	,	NULL
 GO
 
-EXEC rb_Tabs_IU 	261	,	260	,	1261	,	0	,	N'Milestones'	,	N''	,	N'Admins;'	,	0	,	NULL
-GO
-EXEC rb_Modules_IU 	261, 261, '{B8784E32-688A-4B8A-87C4-DF108BF12DBE}', 1, N'ContentPane', N'Milestones', N'Admins', N'Admins;', N'Admins;', N'Admins;', N'Admins;', 0, 0, NULL, 0, 0, NULL, NULL, '', NULL, '', NULL, 0, 0, N'Admins;', N'Admins;'
-GO
+--EXEC rb_Tabs_IU 	261	,	260	,	1261	,	0	,	N'Milestones'	,	N''	,	N'Admins;'	,	0	,	NULL
+--GO
+--EXEC rb_Modules_IU 	261, 261, '{B8784E32-688A-4B8A-87C4-DF108BF12DBE}', 1, N'ContentPane', N'Milestones', N'Admins', N'Admins;', N'Admins;', N'Admins;', N'Admins;', 0, 0, NULL, 0, 0, NULL, NULL, '', NULL, '', NULL, 0, 0, N'Admins;', N'Admins;'
+--GO
 
 EXEC rb_Tabs_IU 	262	,	260	,	1262	,	0	,	N'Tasks Add/Edit/Delete'	,	N''	,	N'Admins;'	,	0	,	NULL
 GO

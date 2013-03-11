@@ -701,20 +701,6 @@
     <Compile Include="DesktopModules\CommunityModules\LanguageSwitcher\LanguageSwitcher.ascx.designer.cs">
       <DependentUpon>LanguageSwitcher.ascx</DependentUpon>
     </Compile>
-    <Compile Include="DesktopModules\CommunityModules\MileStones\Milestones.ascx.cs">
-      <DependentUpon>Milestones.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\MileStones\Milestones.ascx.designer.cs">
-      <DependentUpon>Milestones.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\MileStones\MilestonesEdit.aspx.cs">
-      <DependentUpon>MilestonesEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\MileStones\MilestonesEdit.aspx.designer.cs">
-      <DependentUpon>MilestonesEdit.aspx</DependentUpon>
-    </Compile>
     <Compile Include="DesktopModules\CommunityModules\PageKeyPhrase\PageKeyPhrase.ascx.cs">
       <DependentUpon>PageKeyPhrase.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5632,12 +5618,6 @@
     <Content Include="DesktopModules\CommunityModules\IframeModule\install.xml" />
     <Content Include="DesktopModules\CommunityModules\LanguageSwitcher\install.xml" />
     <Content Include="DesktopModules\CommunityModules\LanguageSwitcher\LanguageSwitcher.ascx" />
-    <Content Include="DesktopModules\CommunityModules\MileStones\install.sql" />
-    <Content Include="DesktopModules\CommunityModules\MileStones\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\MileStones\Milestones.ascx" />
-    <Content Include="DesktopModules\CommunityModules\MileStones\MilestonesEdit.aspx" />
-    <Content Include="DesktopModules\CommunityModules\MileStones\readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\MileStones\uninstall.sql" />
     <Content Include="DesktopModules\CommunityModules\OneFileModule\CSharp Examples\ExcelReader\DBPatch.sql" />
     <Content Include="DesktopModules\CommunityModules\OneFileModule\CSharp Examples\ExcelReader\ExcelReader.ascx" />
     <Content Include="DesktopModules\CommunityModules\OneFileModule\CSharp Examples\ExcelReader\readme.txt" />
