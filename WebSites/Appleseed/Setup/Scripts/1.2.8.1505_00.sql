@@ -4920,14 +4920,14 @@ GO
 
 --This patch add entries on db for Articles module
 --by manu
-IF NOT EXISTS (SELECT GeneralModDefID FROM GeneralModuleDefinitions WHERE GeneralModDefID = '{87303CF7-76D0-49B1-A7E7-A5C8E26415BA}')
-BEGIN
---Insert data into GeneralModuleDefinitions
-INSERT INTO GeneralModuleDefinitions (GeneralModDefID,ClassName,FriendlyName,DesktopSrc,MobileSrc,Admin) VALUES('{87303CF7-76D0-49B1-A7E7-A5C8E26415BA}',NULL,'Articles','DesktopModules/Articles.ascx','',0)
---Insert data into ModuleDefinitions
-INSERT INTO ModuleDefinitions (PortalID, GeneralModDefID) VALUES ('0','{87303CF7-76D0-49B1-A7E7-A5C8E26415BA}')
-END
-GO
+--IF NOT EXISTS (SELECT GeneralModDefID FROM GeneralModuleDefinitions WHERE GeneralModDefID = '{87303CF7-76D0-49B1-A7E7-A5C8E26415BA}')
+--BEGIN
+----Insert data into GeneralModuleDefinitions
+--INSERT INTO GeneralModuleDefinitions (GeneralModDefID,ClassName,FriendlyName,DesktopSrc,MobileSrc,Admin) VALUES('{87303CF7-76D0-49B1-A7E7-A5C8E26415BA}',NULL,'Articles','DesktopModules/Articles.ascx','',0)
+----Insert data into ModuleDefinitions
+--INSERT INTO ModuleDefinitions (PortalID, GeneralModDefID) VALUES ('0','{87303CF7-76D0-49B1-A7E7-A5C8E26415BA}')
+--END
+--GO
 
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[Articles]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
  BEGIN
@@ -5244,10 +5244,10 @@ SET Searchable = 1, ClassName = 'Appleseed.Content.Web.ModulesAnnouncements'
 WHERE GeneralModDefid = '{CE55A821-2449-4903-BA1A-EC16DB93F8DB}'
 GO
 
-UPDATE GeneralModuleDefinitions
-SET Searchable = 1, ClassName = 'Appleseed.Content.Web.ModulesArticles'
-WHERE GeneralModDefid = '{87303CF7-76D0-49B1-A7E7-A5C8E26415BA}'
-GO
+--UPDATE GeneralModuleDefinitions
+--SET Searchable = 1, ClassName = 'Appleseed.Content.Web.ModulesArticles'
+--WHERE GeneralModDefid = '{87303CF7-76D0-49B1-A7E7-A5C8E26415BA}'
+--GO
 
 UPDATE GeneralModuleDefinitions
 SET Searchable = 1, ClassName = 'Appleseed.Content.Web.ModulesContacts'

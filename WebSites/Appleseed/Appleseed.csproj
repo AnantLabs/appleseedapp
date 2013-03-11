@@ -617,27 +617,6 @@
     <Compile Include="DesktopDefault.aspx.designer.cs">
       <DependentUpon>DesktopDefault.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Articles\ArticlesEdit.aspx.cs">
-      <DependentUpon>ArticlesEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Articles\ArticlesEdit.aspx.designer.cs">
-      <DependentUpon>ArticlesEdit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Articles\ArticlesInline.ascx.cs">
-      <DependentUpon>ArticlesInline.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Articles\ArticlesInline.ascx.designer.cs">
-      <DependentUpon>ArticlesInline.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Articles\ArticlesView.aspx.cs">
-      <DependentUpon>ArticlesView.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Articles\ArticlesView.aspx.designer.cs">
-      <DependentUpon>ArticlesView.aspx</DependentUpon>
-    </Compile>
     <Compile Include="DesktopModules\CommunityModules\Blog\ArchiveView.aspx.cs">
       <DependentUpon>ArchiveView.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5808,14 +5787,6 @@
     <Content Include="Design\Themes\Module-No-Style\icon\view.gif" />
     <Content Include="Design\Themes\Module-No-Style\Theme.xml" />
     <Content Include="DesktopDefault.aspx" />
-    <Content Include="DesktopModules\CommunityModules\Articles\Articles.ascx" />
-    <Content Include="DesktopModules\CommunityModules\Articles\ArticlesEdit.aspx" />
-    <Content Include="DesktopModules\CommunityModules\Articles\ArticlesInline.ascx" />
-    <Content Include="DesktopModules\CommunityModules\Articles\ArticlesView.aspx" />
-    <Content Include="DesktopModules\CommunityModules\Articles\install.sql" />
-    <Content Include="DesktopModules\CommunityModules\Articles\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\Articles\readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\Articles\uninstall.sql" />
     <Content Include="DesktopModules\CommunityModules\Blog\ArchiveView.aspx" />
     <Content Include="DesktopModules\CommunityModules\Blog\atom.gif" />
     <Content Include="DesktopModules\CommunityModules\Blog\Blog.ascx" />
@@ -6371,8 +6342,6 @@
     <Content Include="DesktopModules\CoreModules\ContentManager\images\MoveRight.gif" />
     <Content Include="DesktopModules\CoreModules\ContentManager\install.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\install.xml" />
-    <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Articles_Install.sql" />
-    <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Articles_UnInstall.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Blogs_Install.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Blogs_UnInstall.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Contacts_Install.sql" />
