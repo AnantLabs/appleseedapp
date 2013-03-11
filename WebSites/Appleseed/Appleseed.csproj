@@ -736,20 +736,6 @@
     <Compile Include="DesktopModules\CommunityModules\Events\EventsEdit.aspx.designer.cs">
       <DependentUpon>EventsEdit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DesktopModules\CommunityModules\FAQs\FAQs.ascx.cs">
-      <DependentUpon>FAQs.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\FAQs\FAQs.ascx.designer.cs">
-      <DependentUpon>FAQs.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\FAQs\FAQsEdit.aspx.cs">
-      <DependentUpon>FAQsEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\FAQs\FAQsEdit.aspx.designer.cs">
-      <DependentUpon>FAQsEdit.aspx</DependentUpon>
-    </Compile>
     <Compile Include="DesktopModules\CommunityModules\FileDirectoryTree\FileDirectoryTree.ascx.cs">
       <DependentUpon>FileDirectoryTree.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5795,13 +5781,6 @@
     <Content Include="DesktopModules\CommunityModules\Events\install.xml" />
     <Content Include="DesktopModules\CommunityModules\Events\readme.txt" />
     <Content Include="DesktopModules\CommunityModules\Events\uninstall.sql" />
-    <Content Include="DesktopModules\CommunityModules\FAQs\FAQ.xml" />
-    <Content Include="DesktopModules\CommunityModules\FAQs\FAQs.ascx" />
-    <Content Include="DesktopModules\CommunityModules\FAQs\FAQsEdit.aspx" />
-    <Content Include="DesktopModules\CommunityModules\FAQs\install.sql" />
-    <Content Include="DesktopModules\CommunityModules\FAQs\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\FAQs\readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\FAQs\uninstall.sql" />
     <Content Include="DesktopModules\CommunityModules\FileDirectoryTree\example.jpg" />
     <Content Include="DesktopModules\CommunityModules\FileDirectoryTree\FileDirectoryTree.ascx" />
     <Content Include="DesktopModules\CommunityModules\FileDirectoryTree\FileDirectoryTree.xml" />
@@ -6230,8 +6209,6 @@
     <Content Include="DesktopModules\CoreModules\ContentManager\install.xml" />
     <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Events_Install.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Events_UnInstall.sql" />
-    <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_FAQs_Install.sql" />
-    <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_FAQs_UnInstall.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Tasks_install.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Tasks_Uninstall.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\Install_INSTRUCTIONS.txt" />
