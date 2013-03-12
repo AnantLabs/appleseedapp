@@ -631,20 +631,6 @@
     <Compile Include="DesktopModules\CommunityModules\EnhancedHTML\EnhancedHtmlEdit.aspx.designer.cs">
       <DependentUpon>EnhancedHtmlEdit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Events\Events.ascx.cs">
-      <DependentUpon>Events.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Events\Events.ascx.designer.cs">
-      <DependentUpon>Events.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Events\EventsEdit.aspx.cs">
-      <DependentUpon>EventsEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DesktopModules\CommunityModules\Events\EventsEdit.aspx.designer.cs">
-      <DependentUpon>EventsEdit.aspx</DependentUpon>
-    </Compile>
     <Compile Include="DesktopModules\CommunityModules\HTMLDocument\HtmlEdit.aspx.cs">
       <DependentUpon>HtmlEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1257,6 +1243,7 @@
     <Folder Include="App_Themes\Default\" />
     <Folder Include="App_Themes\Theme1\" />
     <Folder Include="Bin\" />
+    <Folder Include="DesktopModules\CoreModules\ContentManager\InstallScripts\" />
     <Folder Include="images\default\" />
     <Folder Include="packages\" />
     <Folder Include="Portals\_Appleseed\Album\" />
@@ -5351,13 +5338,6 @@
     <Content Include="DesktopModules\CommunityModules\EnhancedHTML\readme.txt" />
     <Content Include="DesktopModules\CommunityModules\EnhancedHTML\singlepage.gif" />
     <Content Include="DesktopModules\CommunityModules\EnhancedHTML\uninstall.sql" />
-    <Content Include="DesktopModules\CommunityModules\Events\Events.ascx" />
-    <Content Include="DesktopModules\CommunityModules\Events\Events.xml" />
-    <Content Include="DesktopModules\CommunityModules\Events\EventsEdit.aspx" />
-    <Content Include="DesktopModules\CommunityModules\Events\install.sql" />
-    <Content Include="DesktopModules\CommunityModules\Events\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\Events\readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\Events\uninstall.sql" />
     <Content Include="DesktopModules\CommunityModules\HTMLDocument\HtmlDocument.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -5445,8 +5425,6 @@
     <Content Include="DesktopModules\CoreModules\ContentManager\images\MoveRight.gif" />
     <Content Include="DesktopModules\CoreModules\ContentManager\install.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\install.xml" />
-    <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Events_Install.sql" />
-    <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Events_UnInstall.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\Install_INSTRUCTIONS.txt" />
     <Content Include="DesktopModules\CoreModules\ContentManager\README%28Please,Please,Please!!%29.txt" />
     <Content Include="DesktopModules\CoreModules\ContentManager\readme.txt" />
