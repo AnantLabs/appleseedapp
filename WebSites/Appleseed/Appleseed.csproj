@@ -633,12 +633,14 @@
     </Compile>
     <Compile Include="DesktopModules\CommunityModules\Events\Events.ascx.cs">
       <DependentUpon>Events.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="DesktopModules\CommunityModules\Events\Events.ascx.designer.cs">
       <DependentUpon>Events.ascx</DependentUpon>
     </Compile>
     <Compile Include="DesktopModules\CommunityModules\Events\EventsEdit.aspx.cs">
       <DependentUpon>EventsEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="DesktopModules\CommunityModules\Events\EventsEdit.aspx.designer.cs">
       <DependentUpon>EventsEdit.aspx</DependentUpon>
