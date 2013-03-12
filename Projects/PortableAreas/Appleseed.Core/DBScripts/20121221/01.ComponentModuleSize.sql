@@ -1,1 +1,1 @@
-﻿ALTER TABLE rb_ComponentModule ALTER COLUMN Component nvarchar(MAX)
+﻿--ALTER TABLE rb_ComponentModule ALTER COLUMN Component nvarchar(MAX)
