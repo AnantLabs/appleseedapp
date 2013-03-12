@@ -446,18 +446,18 @@ namespace Appleseed.Content.Web.Modules
         /// <param name="stateSaver"></param>
         public override void Install(IDictionary stateSaver)
         {
-            //string currentScriptName = Path.Combine(Server.MapPath(TemplateSourceDirectory), "install.sql");
+            string currentScriptName = Path.Combine(Server.MapPath(TemplateSourceDirectory), "install.sql");
 
-            //List<string> errors = DBHelper.ExecuteScript(currentScriptName, true);
-            //if (errors.Count > 0)
-            //{
-            //    // Call rollback
-            //    throw new Exception("Error occurred:" + errors[0].ToString());
-            //}
+            List<string> errors = DBHelper.ExecuteScript(currentScriptName, true);
+            if (errors.Count > 0)
+            {
+                // Call rollback
+                throw new Exception("Error occurred:" + errors[0].ToString());
+            }
 
-            //DirectoryInfo installDir =
-            //    new DirectoryInfo(Path.Combine(Server.MapPath(TemplateSourceDirectory), "InstallScripts"));
-            //FileInfo[] installFiles = installDir.GetFiles("*_Install.sql");
+            DirectoryInfo installDir =
+                new DirectoryInfo(Path.Combine(Server.MapPath(TemplateSourceDirectory), "InstallScripts"));
+            FileInfo[] installFiles = installDir.GetFiles("*_Install.sql");
             //foreach (FileInfo scriptToInstall in installFiles)
             //{
             //    currentScriptName = scriptToInstall.FullName;

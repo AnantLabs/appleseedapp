@@ -1243,7 +1243,6 @@
     <Folder Include="App_Themes\Default\" />
     <Folder Include="App_Themes\Theme1\" />
     <Folder Include="Bin\" />
-    <Folder Include="DesktopModules\CoreModules\ContentManager\InstallScripts\" />
     <Folder Include="images\default\" />
     <Folder Include="packages\" />
     <Folder Include="Portals\_Appleseed\Album\" />
@@ -5425,6 +5424,8 @@
     <Content Include="DesktopModules\CoreModules\ContentManager\images\MoveRight.gif" />
     <Content Include="DesktopModules\CoreModules\ContentManager\install.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\install.xml" />
+    <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Events_Install.sql" />
+    <Content Include="DesktopModules\CoreModules\ContentManager\InstallScripts\CM_Events_UnInstall.sql" />
     <Content Include="DesktopModules\CoreModules\ContentManager\Install_INSTRUCTIONS.txt" />
     <Content Include="DesktopModules\CoreModules\ContentManager\README%28Please,Please,Please!!%29.txt" />
     <Content Include="DesktopModules\CoreModules\ContentManager\readme.txt" />
