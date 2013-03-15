@@ -1,6 +1,4 @@
 ﻿using NuGet;
-using System;
-using System.Runtime.CompilerServices;
 
 
 namespace SelfUpdater.Models
