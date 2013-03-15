@@ -1,4 +1,6 @@
-﻿using NuGet;
+﻿using System.Runtime.Versioning;
+using System.Web;
+using NuGet;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -52,7 +54,7 @@ namespace SelfUpdater.Controllers
             IPackageRepository repository2 = sourceRepository;
             ILogger instance = NullLogger.Instance;
             bool ignoreDependencies = false;
-            InstallWalker walker = new InstallWalker(repository, repository2, instance, ignoreDependencies,true);
+            var  walker = new InstallWalker(repository, repository2, new FrameworkName(".NETFramework", new Version("4.0")),  instance, ignoreDependencies,true);
             return walker.ResolveOperations(package).Where<PackageOperation>(delegate(PackageOperation operation)
             {
                 return (operation.Action == PackageAction.Install);
@@ -116,7 +118,9 @@ namespace SelfUpdater.Controllers
 
         public void InstallPackage(IPackage package)
         {
-           
+            var source = new WebProjectManager("https://nuget.org/api/v2/", HttpContext.Current.Server.MapPath("~/")).SourceRepository;
+
+            var dependencies = GetPackageDependencies(package, LocalRepository, source);
             bool ignoreDependencies = false;
             this._projectManager.AddPackageReference(package.Id, package.Version, ignoreDependencies,true);
             
