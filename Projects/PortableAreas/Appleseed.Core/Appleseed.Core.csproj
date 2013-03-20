@@ -156,6 +156,7 @@
     <Compile Include="ApplicationBus\JSRegisterHandler.cs" />
     <Compile Include="Authorization\AppleseedAuthorize.cs" />
     <Compile Include="Controllers\PageLayoutController.cs" />
+    <Content Include="DBScripts\20110829\02.UpdateHTMLContent.sql" />
     <Content Include="DBScripts\20121221\01.ComponentModuleSize.sql" />
     <Content Include="DBScripts\20121220\01.AddingFileManagerGeneralModuleDefinition.sql" />
     <Content Include="DBScripts\20121221\02.ChangeComponentModuleSProc.sql" />
@@ -177,7 +178,6 @@
     <Content Include="DBScripts\20110804\02.SelfUpdatingPackages_Table.sql" />
     <Content Include="DBScripts\20110804\03.GetModulesAllPortals.sql" />
     <Content Include="DBScripts\20110829\01.GetModulesSettingsInPage.sql" />
-    <Content Include="DBScripts\20110829\02.UpdateHTMLContent.sql" />
     <Content Include="DBScripts\20110907\01.ChageUserPageName.sql" />
     <Content Include="DBScripts\20120125\01.InstalingNewPageManager.sql" />
     <Content Include="DBScripts\20120903\01.Changing Store Procedure rb_FindModulesByGuid.sql" />
