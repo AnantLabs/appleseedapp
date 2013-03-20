@@ -1140,7 +1140,11 @@ namespace Appleseed.Framework.Providers.AppleseedMembershipProvider
                     {
                         var u = this.GetUserFromReader(reader);
                         this.LoadUserProfile(u);
-                        users.Add(u);
+                        if (users[u.UserName] == null)
+                        {
+                            users.Add(u);
+                        }
+
                     }
 
                     reader.Close();
