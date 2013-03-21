@@ -102,8 +102,9 @@ namespace SelfUpdater.Controllers
 
         public IPackage GetUpdate(IPackage package)
         {
-            return PackageRepositoryExtensions.GetUpdates(this.SourceRepository, this.LocalRepository.GetPackages(),true,true).FirstOrDefault<IPackage>(
-                p => (package.Id == p.Id));
+            var packages = PackageRepositoryExtensions.GetUpdates(this.SourceRepository,
+                                                                  this.LocalRepository.GetPackages(), true, false);
+            return packages.FirstOrDefault(x => x.Id == package.Id);
         }
 
         internal static string GetWebRepositoryDirectory(string siteRoot)
