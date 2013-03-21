@@ -15,7 +15,7 @@
             <%: package.author%>
         </td>
         <td>
-            <a href="javascript:void(0);" onclick="installPackage('<%: package.name %>', '<%: package.source %>');">
+            <a href="javascript:void(0);" onclick="installPackage('<%: package.name %>', '<%: package.source %>', '<%: package.version %>' );">
                 install</a>
         </td>
     </tr>
@@ -30,7 +30,7 @@
 </div>
 
 <script type="text/javascript">
-function installPackage(packageId, source) {
+function installPackage(packageId, source, version) {
 
     $('#installingDiv').dialog({
         modal: true,
@@ -49,7 +49,7 @@ function installPackage(packageId, source) {
     $.ajax({
         url: '<%= Url.Action("InstallPackage","Installation")%>',
         type: "POST",
-        data: { packageId: packageId, source: source },
+        data: { packageId: packageId, source: source, version: version },
         timeout: 3600000,
         success: function (data) {
             //        var xhr;
@@ -127,10 +127,10 @@ function installPackage(packageId, source) {
                 });
             }, 2000);
         },
-        error: function () {
-            trace(data);
+        error: function (data, error) {
+            console.log(data.responseText);
             $('#installingDiv').dialog("close");
-            alert("Communication error");
+            alert("There has been an error installing the package. Please check the log.");
             clearInterval(myinterval);
         }
     });
