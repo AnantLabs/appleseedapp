@@ -26,7 +26,7 @@ namespace SelfUpdater.Controllers
 
                 var projectManagers = GetProjectManagers();
                 var list = new List<dynamic>();
-                var installed = projectManagers.SelectMany(d => d.GetInstalledPackages(string.Empty).ToList());
+                var installed = projectManagers.SelectMany(d => d.GetInstalledPackages().ToList());
 
                 foreach (var pM in projectManagers.Where(x => x.SourceRepository.Source != "https://nuget.org/api/v2/"))
                 {
@@ -55,25 +55,34 @@ namespace SelfUpdater.Controllers
         
         }
 
-        public ActionResult InstallPackage(string packageId, string source)
+        public ActionResult InstallPackage(string packageId, string source, string version)
         {
             //System.Web.HttpContext.Current.Session["NugetLogger"] = "Installing packages...";
-            
-            var projectManager = GetProjectManagers().Where(p => p.SourceRepository.Source == source).First();
+            try
+            {
+                var projectManager = GetProjectManagers().Where(p => p.SourceRepository.Source == source).First();
 
-            projectManager.addLog("Starting installation...");            
+                projectManager.addLog("Starting installation...");
 
-            projectManager.InstallPackage(projectManager.GetRemotePackages(string.Empty).Where(d => d.Id == packageId).First());
+               projectManager.InstallPackage(packageId, new SemanticVersion(version));
 
-            projectManager.addLog("Waiting to Reload Site");
+                projectManager.addLog("Waiting to Reload Site");
 
-            var logger = (string)System.Web.HttpContext.Current.Application["NugetLogger"];
+                var logger = (string) System.Web.HttpContext.Current.Application["NugetLogger"];
 
-            return Json(new {
-                msg = "Package " + packageId + " scheduled to install!",
-                res = true,
-                NugetLog = logger
-            }, JsonRequestBehavior.AllowGet);
+                return Json(new
+                                {
+                                    msg = "Package " + packageId + " scheduled to install!",
+                                    res = true,
+                                    NugetLog = logger
+                                }, JsonRequestBehavior.AllowGet);
+            }
+            catch(Exception e)
+            {
+                ErrorHandler.Publish(LogLevel.Error, e);
+                Response.StatusCode = 500;
+                return Json(e.Message);
+            }
         }        
 
     }

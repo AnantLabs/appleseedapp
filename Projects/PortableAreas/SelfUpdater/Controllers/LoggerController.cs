@@ -67,7 +67,15 @@ namespace SelfUpdater.Controllers
                 }
             }
             if (message.Contains("Successfully added")) {
-                list.Add("Successful", message);
+                if (list.ContainsKey("Successful"))
+                {
+                    list["Successful"] = message;
+                }
+                else
+                {
+                    list.Add("Successful", message);
+                }
+                
             }
             if (message.Contains("Waiting to Reload Site")) {
                 list.Add("Waiting", message);

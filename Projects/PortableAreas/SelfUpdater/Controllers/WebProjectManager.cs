@@ -43,9 +43,9 @@ namespace SelfUpdater.Controllers
             this.addLog("Registro sending request " + e.Request.ToString() );
         }
 
-        public IQueryable<IPackage> GetInstalledPackages(string searchTerms)
+        public IQueryable<IPackage> GetInstalledPackages()
         {
-            return GetPackages(this.LocalRepository, searchTerms);
+            return GetPackages(this.LocalRepository, false);
         }
 
         private static IEnumerable<IPackage> GetPackageDependencies(IPackage package, IPackageRepository localRepository, IPackageRepository sourceRepository)
@@ -64,18 +64,15 @@ namespace SelfUpdater.Controllers
             });
         }
 
-        internal static IQueryable<IPackage> GetPackages(IQueryable<IPackage> packages, string searchTerm)
+        internal static IQueryable<IPackage> GetPackages(IQueryable<IPackage> packages, bool filterTags)
         {
-            if (!string.IsNullOrEmpty(searchTerm)) {
-                packages = packages.Find(searchTerm);
-            }
-            return packages;
+            return filterTags ? packages.Where(x => x.Tags.Contains("Appleseed") && x.IsAbsoluteLatestVersion) : packages.Where(x => x.IsAbsoluteLatestVersion);
         }
 
-        internal static IQueryable<IPackage> GetPackages(IPackageRepository repository, string searchTerm)
+        internal static IQueryable<IPackage> GetPackages(IPackageRepository repository, bool filterTags)
         {
             var packages = repository.GetPackages();
-            return GetPackages(packages, searchTerm);
+            return GetPackages(packages, filterTags);
         }
 
         internal IEnumerable<IPackage> GetPackagesRequiringLicenseAcceptance(IPackage package)
@@ -93,22 +90,20 @@ namespace SelfUpdater.Controllers
             });
         }
 
-        public IQueryable<IPackage> GetPackagesWithUpdates(string searchTerms)
+        public IQueryable<IPackage> GetPackagesWithUpdates()
         {
-            return GetPackages(PackageRepositoryExtensions.GetUpdates(this.LocalRepository, this.SourceRepository.GetPackages(), true,true).AsQueryable<IPackage>(), searchTerms);
+            return GetPackages(PackageRepositoryExtensions.GetUpdates(this.LocalRepository, this.SourceRepository.GetPackages(), true,true).AsQueryable<IPackage>(),false);
         }
 
-        public IQueryable<IPackage> GetRemotePackages(string searchTerms)
+        public IQueryable<IPackage> GetRemotePackages()
         {
-            return GetPackages(this.SourceRepository, searchTerms);
+            return GetPackages(this.SourceRepository, true);
         }
 
         public IPackage GetUpdate(IPackage package)
         {
-            return PackageRepositoryExtensions.GetUpdates(this.SourceRepository, this.LocalRepository.GetPackages(),true,true).FirstOrDefault<IPackage>(delegate(IPackage p)
-            {
-                return (package.Id == p.Id);
-            });
+            return PackageRepositoryExtensions.GetUpdates(this.SourceRepository, this.LocalRepository.GetPackages(),true,true).FirstOrDefault<IPackage>(
+                p => (package.Id == p.Id));
         }
 
         internal static string GetWebRepositoryDirectory(string siteRoot)
@@ -116,13 +111,10 @@ namespace SelfUpdater.Controllers
             return Path.Combine(siteRoot, "packages");
         }
 
-        public void InstallPackage(IPackage package)
+        public void InstallPackage(String id, SemanticVersion version)
         {
-            var source = new WebProjectManager("https://nuget.org/api/v2/", HttpContext.Current.Server.MapPath("~/")).SourceRepository;
-
-            var dependencies = GetPackageDependencies(package, LocalRepository, source);
-            bool ignoreDependencies = false;
-            this._projectManager.AddPackageReference(package.Id, package.Version, ignoreDependencies,true);
+            
+            _projectManager.AddPackageReference(id, version, false, true);
             
         }
 
