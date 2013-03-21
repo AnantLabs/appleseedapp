@@ -193,7 +193,7 @@ namespace SelfUpdater.Controllers
 
         private IPackage GetInstalledPackage(WebProjectManager projectManager, string packageId)
         {
-            IPackage package = projectManager.GetInstalledPackages(string.Empty).Where(d => d.Id == packageId).FirstOrDefault();
+            IPackage package = projectManager.GetInstalledPackages().Where(d => d.Id == packageId).FirstOrDefault();
 
             if (package == null) {
                 throw new InvalidOperationException(string.Format("The package for package ID '{0}' is not installed in this website. Copy the package into the App_Data/packages folder.", packageId));
