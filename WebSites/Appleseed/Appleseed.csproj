@@ -5453,12 +5453,6 @@
     <Content Include="DesktopModules\CommunityModules\XmlFeed\RSSTabListWithHead.xslt" />
     <Content Include="DesktopModules\CommunityModules\XmlFeed\XmlFeed.ascx" />
     <Content Include="DesktopModules\CommunityModules\XmlFeed\XmlFeed.xml" />
-    <Content Include="DesktopModules\CommunityModules\XmlLang\example.jpg" />
-    <Content Include="DesktopModules\CommunityModules\XmlLang\install.xml" />
-    <Content Include="DesktopModules\CommunityModules\XmlLang\readme.txt" />
-    <Content Include="DesktopModules\CommunityModules\XmlLang\sales2.xml" />
-    <Content Include="DesktopModules\CommunityModules\XmlLang\sales2.xsl" />
-    <Content Include="DesktopModules\CommunityModules\XmlLang\XmlLangModule.ascx" />
     <Content Include="DesktopModules\CommunityModules\XmlModule\example.jpg" />
     <Content Include="DesktopModules\CommunityModules\XmlModule\install.xml" />
     <Content Include="DesktopModules\CommunityModules\XmlModule\readme.txt" />
