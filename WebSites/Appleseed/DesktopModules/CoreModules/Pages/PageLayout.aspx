@@ -7,7 +7,7 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
             <td>
             <div id="accordion">
                     <h3><a href="#">Page Information</a></h3>
-                    <div id="Page_Information">
+                    <div id="Page_Information" style="height: 331px;">
                         <% if (Request.QueryString.GetValues("ModalChangeMaster") == null) { %>
                         <table border="0" cellpadding="2" cellspacing="1" class="ModuleWrap">
                             <tr>
@@ -28,7 +28,7 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
                             </tr>
                         </table>
                         <% } %>
-                        <table border="0" cellpadding="2" cellspacing="1" class="ModuleWrap">
+                        <table border="0" cellpadding="2" cellspacing="1" class="ModuleWrap" style="height: 100%">
                             <tr>
                             <td class="Normal" width="100">
                                 <rbfwebui:Localize ID="tab_name1" runat="server" Text="Page Name" TextKey="AM_TABNAME1">
@@ -473,7 +473,9 @@ MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.c
             $(function () {
                 $("#accordion").accordion({
                     autoHeight: false,
-                    navigation: true
+                    navigation: true,
+                    collapsible: true,
+                    heightStyle: "fill"
                 });
             });
 
