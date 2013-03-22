@@ -5328,6 +5328,11 @@
     <Content Include="Design\Themes\Module-No-Style\icon\view.gif" />
     <Content Include="Design\Themes\Module-No-Style\Theme.xml" />
     <Content Include="DesktopDefault.aspx" />
+    <Content Include="DesktopModules\CommunityModules\Breadcrumbs\BreadCrumbs.ascx" />
+    <Content Include="DesktopModules\CommunityModules\Breadcrumbs\install.sql" />
+    <Content Include="DesktopModules\CommunityModules\Breadcrumbs\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\Breadcrumbs\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\Breadcrumbs\uninstall.sql" />
     <Content Include="DesktopModules\CommunityModules\EnhancedHTML\EnhancedHtml.ascx" />
     <Content Include="DesktopModules\CommunityModules\EnhancedHTML\EnhancedHtmlEdit.aspx" />
     <Content Include="DesktopModules\CommunityModules\EnhancedHTML\install.sql" />
