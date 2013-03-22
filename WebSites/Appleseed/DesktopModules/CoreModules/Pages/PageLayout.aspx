@@ -2,7 +2,7 @@
 MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="PageLayout.aspx.cs" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="Server">
-    <table border="0" cellpadding="2" cellspacing="1" class="ModuleWrap">
+    <table border="0" cellpadding="2" cellspacing="1" class="ModuleWrap" style="height:100%">
         <tr>
             <td>
             <div id="accordion">
