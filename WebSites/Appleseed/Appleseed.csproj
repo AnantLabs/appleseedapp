@@ -631,6 +631,13 @@
     <Compile Include="DesktopModules\CommunityModules\EnhancedHTML\EnhancedHtmlEdit.aspx.designer.cs">
       <DependentUpon>EnhancedHtmlEdit.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DesktopModules\CommunityModules\FileDirectoryTree\FileDirectoryTree.ascx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>FileDirectoryTree.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\FileDirectoryTree\FileDirectoryTree.ascx.designer.cs">
+      <DependentUpon>FileDirectoryTree.ascx</DependentUpon>
+    </Compile>
     <Compile Include="DesktopModules\CommunityModules\HTMLDocument\HtmlEdit.aspx.cs">
       <DependentUpon>HtmlEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -700,6 +707,13 @@
     </Compile>
     <Compile Include="DesktopModules\CommunityModules\Version\AsVersion.aspx.designer.cs">
       <DependentUpon>AsVersion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\WhosLoggedOn\WhosLoggedOn.ascx.cs">
+      <DependentUpon>WhosLoggedOn.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\WhosLoggedOn\WhosLoggedOn.ascx.designer.cs">
+      <DependentUpon>WhosLoggedOn.ascx</DependentUpon>
     </Compile>
     <Compile Include="DesktopModules\CommunityModules\XmlFeed\XmlFeed.ascx.cs">
       <DependentUpon>XmlFeed.ascx</DependentUpon>
@@ -5348,6 +5362,11 @@
     <Content Include="DesktopModules\CommunityModules\EnhancedHTML\readme.txt" />
     <Content Include="DesktopModules\CommunityModules\EnhancedHTML\singlepage.gif" />
     <Content Include="DesktopModules\CommunityModules\EnhancedHTML\uninstall.sql" />
+    <Content Include="DesktopModules\CommunityModules\FileDirectoryTree\example.jpg" />
+    <Content Include="DesktopModules\CommunityModules\FileDirectoryTree\FileDirectoryTree.ascx" />
+    <Content Include="DesktopModules\CommunityModules\FileDirectoryTree\FileDirectoryTree.xml" />
+    <Content Include="DesktopModules\CommunityModules\FileDirectoryTree\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\FileDirectoryTree\readme.txt" />
     <Content Include="DesktopModules\CommunityModules\HTMLDocument\HtmlDocument.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -5412,6 +5431,10 @@
     <Content Include="DesktopModules\CommunityModules\Version\AppleseedVersion.ascx" />
     <Content Include="DesktopModules\CommunityModules\Version\AppleseedVersion.xml" />
     <Content Include="DesktopModules\CommunityModules\Version\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\WhosLoggedOn\install.sql" />
+    <Content Include="DesktopModules\CommunityModules\WhosLoggedOn\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\WhosLoggedOn\uninstall.sql" />
+    <Content Include="DesktopModules\CommunityModules\WhosLoggedOn\WhosLoggedOn.ascx" />
     <Content Include="DesktopModules\CommunityModules\XmlFeed\del.icio.us.xslt" />
     <Content Include="DesktopModules\CommunityModules\XmlFeed\example.jpg" />
     <Content Include="DesktopModules\CommunityModules\XmlFeed\install.xml" />
