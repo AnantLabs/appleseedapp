@@ -5333,6 +5333,12 @@
     <Content Include="DesktopModules\CommunityModules\Breadcrumbs\install.xml" />
     <Content Include="DesktopModules\CommunityModules\Breadcrumbs\readme.txt" />
     <Content Include="DesktopModules\CommunityModules\Breadcrumbs\uninstall.sql" />
+    <Content Include="DesktopModules\CommunityModules\ComponentModule\ComponentModule.ascx" />
+    <Content Include="DesktopModules\CommunityModules\ComponentModule\ComponentModuleEdit.aspx" />
+    <Content Include="DesktopModules\CommunityModules\ComponentModule\install.sql" />
+    <Content Include="DesktopModules\CommunityModules\ComponentModule\install.xml" />
+    <Content Include="DesktopModules\CommunityModules\ComponentModule\readme.txt" />
+    <Content Include="DesktopModules\CommunityModules\ComponentModule\uninstall.sql" />
     <Content Include="DesktopModules\CommunityModules\EnhancedHTML\EnhancedHtml.ascx" />
     <Content Include="DesktopModules\CommunityModules\EnhancedHTML\EnhancedHtmlEdit.aspx" />
     <Content Include="DesktopModules\CommunityModules\EnhancedHTML\install.sql" />
