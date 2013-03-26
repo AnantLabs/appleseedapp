@@ -14,147 +14,155 @@
         <td>
             <%: package.author%>
         </td>
-        <td>
+        <%--<td>
             <a href="javascript:void(0);" onclick="installPackage('<%: package.name %>', '<%: package.source %>', '<%: package.version %>' );">
                 install</a>
+        </td>--%>
+        <td>
+            <input type="checkbox" />
         </td>
     </tr>
     <%} %>
 </table>
+
+<input type="button" value="Install" />
 <div id="installingDiv" style="display: none">
     <div class="ui-state-highlight ui-corner-all"><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span> This may take a few minutes, please wait until this dialog closes.</div>
     <br />
     <ul id="installingUl">
         <li>Starting installation...</li>
     </ul>
+    <div id="TestingSignalR"></div>
 </div>
 
 <script type="text/javascript">
-function installPackage(packageId, source, version) {
 
-    $('#installingDiv').dialog({
-        modal: true,
-        closeOnEscape: false,
-        closeText: '',
-        resizable: false,
-        title: 'Install package',
-        width: 550,
-        height: 200,
-        open: function (event, ui) {
-            $(this).closest('.ui-dialog').find('.ui-dialog-titlebar-close').hide();
-        }
+    $(function () {
+        
+        var chat = $.connection.selfUpdaterHub;
 
+        chat.client.nuevoProcentaje = function (message) {
+            $('#TestingSignalR').append('<span>' + message + '</span><br/>');
+        };
+
+        $.connection.hub.start().done(function () {
+            console.log('SignalR loaded');
+        });
     });
-    var status = false;
-    $.ajax({
-        url: '<%= Url.Action("InstallPackage","Installation")%>',
-        type: "POST",
-        data: { packageId: packageId, source: source, version: version },
-        timeout: 3600000,
-        success: function (data) {
-            //        var xhr;
-            //        var reloading = false;
-            //        var fn = function () {
-            //            if (!reloading) {
-            //                if (xhr && xhr.readystate != 4) {
-            //                    xhr.abort();
-            //                }
-            //                xhr = $.post('/SelfUpdater/Updates/Status').success(function (data) {
-            //                    if (data.online) {
-            //                        $('<li>Reloading site...</li>').appendTo('#installingUl');
-            //                        reloading = true;
-            //                        window.location.reload();
-            //                    }
-            //                });
-            //            }
-            //        };
+       
+       
 
-            //        var interval = setInterval(fn, 10000);     
+ 
 
-            if (data.NugetLog != null && data.NugetLog != '') {
-                $('#installingUl').html(data.NugetLog);
+
+    function installPackage(packageId, source, version) {
+
+        $('#installingDiv').dialog({
+            modal: true,
+            closeOnEscape: false,
+            closeText: '',
+            resizable: false,
+            title: 'Install package',
+            width: 550,
+            height: 200,
+            open: function (event, ui) {
+                $(this).closest('.ui-dialog').find('.ui-dialog-titlebar-close').hide();
             }
 
-            $.ajax({
-                url: '<%= Url.Action("RestartSite","Updates")%>',
-                type: "POST",
-                success: function (data) {
-                    clearInterval(myinterval);
-                },
-                error: function () {
+        });
+        var status = false;
+        $.ajax({
+            url: '<%= Url.Action("InstallPackage","Installation")%>',
+            type: "POST",
+            data: { packageId: packageId, source: source, version: version },
+            timeout: 3600000,
+            success: function (data) {
+               
 
-                }
-            });
-
-            var timeOutStatus = false;
-            var cant = 0;
-            var interval = setInterval(function () {
+                //if (data.NugetLog != null && data.NugetLog != '') {
+                //    $('#installingUl').html(data.NugetLog);
+                //}
 
                 $.ajax({
-                    url: '<%= Url.Action("Status","Updates")%>',
+                    url: '<%= Url.Action("RestartSite","Updates")%>',
                     type: "POST",
-                    timeout: 1000,
                     success: function (data) {
-
-                        if (data) {
-
-
-                            window.location = window.location.href;
-                            clearInterval(interval);
-                        }
+                        //clearInterval(myinterval);
                     },
                     error: function () {
-                        if (!timeOutStatus) {
-                            timeOutStatus = true;
-                            $('#installingUl').append('<li>Reloading site<span id="TimeOutPointsInstall">...</span></li>')
-                        }
-                        cant = cant + 1;
-                        if (cant == 4) {
-                            cant = 1;
-                        }
-                        var puntos = "";
-                        if (cant == 1) {
-                            puntos = '.';
-                        }
-                        if (cant == 2) {
-                            puntos = '..';
-                        }
-                        if (cant == 3) {
-                            puntos = '...';
-                        }
-                        $('#TimeOutPointsInstall').html(puntos);
+
                     }
                 });
-            }, 2000);
-        },
-        error: function (data, error) {
-            console.log(data.responseText);
-            $('#installingDiv').dialog("close");
-            alert("There has been an error installing the package. Please check the log.");
-            clearInterval(myinterval);
-        }
-    });
 
-    var myinterval = setInterval(function () {
+                var timeOutStatus = false;
+                var cant = 0;
+                var interval = setInterval(function () {
 
-        $.ajax({
-            url: '<%= Url.Action("NugetStatus","Updates")%>',
-            type: "POST",
-            async: false,
-            success: function (data) {
-                if (data != null && data != '') {
-                    $('#installingUl').html(data);
-                }
+                    $.ajax({
+                        url: '<%= Url.Action("Status","Updates")%>',
+                        type: "POST",
+                        timeout: 1000,
+                        success: function (data) {
+
+                            if (data) {
+
+
+                                window.location = window.location.href;
+                                clearInterval(interval);
+                            }
+                        },
+                        error: function () {
+                            if (!timeOutStatus) {
+                                timeOutStatus = true;
+                                $('#installingUl').append('<li>Reloading site<span id="TimeOutPointsInstall">...</span></li>')
+                            }
+                            cant = cant + 1;
+                            if (cant == 4) {
+                                cant = 1;
+                            }
+                            var puntos = "";
+                            if (cant == 1) {
+                                puntos = '.';
+                            }
+                            if (cant == 2) {
+                                puntos = '..';
+                            }
+                            if (cant == 3) {
+                                puntos = '...';
+                            }
+                            $('#TimeOutPointsInstall').html(puntos);
+                        }
+                    });
+                }, 2000);
+            },
+            error: function (data, error) {
+                console.log(data.responseText);
+                $('#installingDiv').dialog("close");
+                alert("There has been an error installing the package. Please check the log.");
+                //clearInterval(myinterval);
             }
         });
-        if (status) {
-            clearInterval(myinterval);
-        }
-    }, 2000);
+
+        //var myinterval = setInterval(function () {
+
+        //    $.ajax({
+        //        url: '<%= Url.Action("NugetStatus","Updates")%>',
+        //        type: "POST",
+        //        async: false,
+        //        success: function (data) {
+        //            if (data != null && data != '') {
+        //                $('#installingUl').html(data);
+        //            }
+        //        }
+        //    });
+        //    if (status) {
+        //        //clearInterval(myinterval);
+        //    }
+        //}, 2000);
 
 
-    return false;
+        return false;
 
-}
+    }
 
 </script>
