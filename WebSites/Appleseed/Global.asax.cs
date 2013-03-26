@@ -518,67 +518,67 @@ namespace Appleseed
 
         }
 
-        private bool CheckForSelfUpdates()
-        {
-            bool updateNeeded = false;
+        //private bool CheckForSelfUpdates()
+        //{
+        //    bool updateNeeded = false;
 
-            try {
+        //    try {
 
-                SelfUpdaterEntities context = new SelfUpdaterEntities();
+        //        SelfUpdaterEntities context = new SelfUpdaterEntities();
 
-                var packagesToUpdate = context.SelfUpdatingPackages.AsQueryable();
+        //        var packagesToUpdate = context.SelfUpdatingPackages.AsQueryable();
 
-                //updateNeeded = (packagesToUpdate.Count() > 0);
+        //        //updateNeeded = (packagesToUpdate.Count() > 0);
 
-                if (packagesToUpdate.Count() > 0) {
-                    updateNeeded = true;
+        //        if (packagesToUpdate.Count() > 0) {
+        //            updateNeeded = true;
 
-                    /*This forces a site restart for each update scheduled */
-                    /*Must be improved trying to updated all at once */
+        //            /*This forces a site restart for each update scheduled */
+        //            /*Must be improved trying to updated all at once */
 
-                    var packageToUpdate = packagesToUpdate.First();
-                    var projectManager = this.GetProjectManagers().Where(d => d.SourceRepository.Source.ToLower().Trim() == packageToUpdate.Source.ToLower().Trim()).First();
-                    var packageName = packageToUpdate.PackageId;
-                    IPackage installedPackage = projectManager.GetInstalledPackages().Where(d => d.Id == packageName).First();
-                    IPackage update = projectManager.GetUpdate(installedPackage);
+        //            var packageToUpdate = packagesToUpdate.First();
+        //            var projectManager = this.GetProjectManagers().Where(d => d.SourceRepository.Source.ToLower().Trim() == packageToUpdate.Source.ToLower().Trim()).First();
+        //            var packageName = packageToUpdate.PackageId;
+        //            IPackage installedPackage = projectManager.GetInstalledPackages().Where(d => d.Id == packageName).First();
+        //            IPackage update = projectManager.GetUpdate(installedPackage);
 
-                    if (update != null) {
-                        ErrorHandler.Publish(LogLevel.Info, String.Format("SelfUpdater: Updating {0} from {1} to {2}", packageName, installedPackage.Version, update.Version));
-                        try {
-                            projectManager.UpdatePackage(update);
-                        } catch (Exception exc) {
-                            ErrorHandler.Publish(LogLevel.Info, String.Format("SelfUpdater: Error updating {0} from {1} to {2}", packageName, installedPackage.Version, update.Version), exc);
-                            context.SelfUpdatingPackages.DeleteObject(packageToUpdate);
-                        }
-                    } else {
-                        ErrorHandler.Publish(LogLevel.Info, "SelfUpdater: " + packageName + " update applied !");
-                        context.SelfUpdatingPackages.DeleteObject(packageToUpdate);
-                    }
+        //            if (update != null) {
+        //                ErrorHandler.Publish(LogLevel.Info, String.Format("SelfUpdater: Updating {0} from {1} to {2}", packageName, installedPackage.Version, update.Version));
+        //                try {
+        //                    projectManager.UpdatePackage(update);
+        //                } catch (Exception exc) {
+        //                    ErrorHandler.Publish(LogLevel.Info, String.Format("SelfUpdater: Error updating {0} from {1} to {2}", packageName, installedPackage.Version, update.Version), exc);
+        //                    context.SelfUpdatingPackages.DeleteObject(packageToUpdate);
+        //                }
+        //            } else {
+        //                ErrorHandler.Publish(LogLevel.Info, "SelfUpdater: " + packageName + " update applied !");
+        //                context.SelfUpdatingPackages.DeleteObject(packageToUpdate);
+        //            }
 
-                    context.SaveChanges();
+        //            context.SaveChanges();
 
-                } else {
-                    ErrorHandler.Publish(LogLevel.Info, "SelfUpdater: Nothing to update");
-                }
+        //        } else {
+        //            ErrorHandler.Publish(LogLevel.Info, "SelfUpdater: Nothing to update");
+        //        }
 
-                return updateNeeded;
-            } catch (Exception exc) {
+        //        return updateNeeded;
+        //    } catch (Exception exc) {
 
-                ErrorHandler.Publish(LogLevel.Error, exc);
-                return updateNeeded;
-            }
-        }
+        //        ErrorHandler.Publish(LogLevel.Error, exc);
+        //        return updateNeeded;
+        //    }
+        //}
 
-        private WebProjectManager[] GetProjectManagers()
-        {
-            string remoteSources = ConfigurationManager.AppSettings["PackageSource"] ?? @"D:\";
-            List<WebProjectManager> managers = new List<WebProjectManager>();
-            foreach (var remoteSource in remoteSources.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries)) {
-                managers.Add(new WebProjectManager(remoteSource, HttpContext.Current.Server.MapPath("~/")));
-            }
+        //private WebProjectManager[] GetProjectManagers()
+        //{
+        //    string remoteSources = ConfigurationManager.AppSettings["PackageSource"] ?? @"D:\";
+        //    List<WebProjectManager> managers = new List<WebProjectManager>();
+        //    foreach (var remoteSource in remoteSources.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries)) {
+        //        managers.Add(new WebProjectManager(remoteSource, HttpContext.Current.Server.MapPath("~/")));
+        //    }
 
-            return managers.ToArray();
-        }
+        //    return managers.ToArray();
+        //}
 
         #endregion
     }

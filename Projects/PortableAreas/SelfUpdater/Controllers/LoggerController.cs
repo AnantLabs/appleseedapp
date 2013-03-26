@@ -106,5 +106,21 @@ namespace SelfUpdater.Controllers
             var msgs = String.Empty;            
             return msgs;
         }
+
+        public FileConflictResolution ResolveFileConflict(string message)
+        {
+            try
+            {
+                var dir = HttpContext.Current.Request.MapPath("~/rb_logs") + "\\Nuget.txt";
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(dir, true))
+                {
+                    file.WriteLine("ResolveFileConflict: " + DateTime.Now.ToString());
+                    file.WriteLine(message);
+                }
+            }
+            catch (Exception) { }
+
+            return FileConflictResolution.OverwriteAll;
+        }
     }
 }

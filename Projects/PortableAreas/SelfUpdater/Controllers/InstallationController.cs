@@ -28,7 +28,7 @@ namespace SelfUpdater.Controllers
                 var list = new List<dynamic>();
                 var installed = projectManagers.SelectMany(d => d.GetInstalledPackages().ToList());
 
-                foreach (var pM in projectManagers.Where(x => x.SourceRepository.Source != "https://nuget.org/api/v2/"))
+                foreach (var pM in projectManagers)
                 {
                     var packages = GetAvailablePackages(pM);
                     foreach (var package in packages) {

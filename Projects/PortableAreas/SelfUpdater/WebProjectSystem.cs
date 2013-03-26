@@ -72,7 +72,16 @@ namespace System.Web.WebPages.Administration.PackageManager
 
         public bool IsBindingRedirectSupported { get; private set; }
 
-       
+
+        public void RemoveImport(string targetPath)
+        {
+           
+        }
+
+        public bool FileExistsInProject(string path)
+        {
+            return false;
+        }
 
         public FrameworkName TargetFramework
         {
@@ -89,7 +98,10 @@ namespace System.Web.WebPages.Administration.PackageManager
             return path;
         }
 
-        
+        public void AddImport(string targetPath, ProjectImportLocation location)
+        {
+            
+        }
     }
 }
 
