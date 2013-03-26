@@ -25,9 +25,10 @@ namespace SelfUpdater.Controllers
         public WebProjectManager(string remoteSource, string siteRoot)
         {
             string webRepositoryDirectory = GetWebRepositoryDirectory(siteRoot);
-            IPackageRepository repository = PackageRepositoryFactory.Default.CreateRepository(remoteSource);
+            Uri uri = new Uri(remoteSource);
+            IPackageRepository repository = new DataServicePackageRepository(uri);//PackageRepositoryFactory.Default.CreateRepository(remoteSource);
             IPackagePathResolver resolver = new DefaultPackagePathResolver(webRepositoryDirectory);
-            IPackageRepository repository2 = PackageRepositoryFactory.Default.CreateRepository(webRepositoryDirectory);
+            IPackageRepository repository2 = new LocalPackageRepository(webRepositoryDirectory, false); //PackageRepositoryFactory.Default.CreateRepository(webRepositoryDirectory);
             IProjectSystem system = new WebProjectSystem(siteRoot);
             ((DataServicePackageRepository)repository).ProgressAvailable += new EventHandler<ProgressEventArgs>(repository_ProgressAvailable);
             //((DataServicePackageRepository)repository).SendingRequest += new EventHandler<WebRequestEventArgs>(repository_sendingRequest);
