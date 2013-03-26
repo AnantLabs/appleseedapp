@@ -423,7 +423,7 @@ namespace Appleseed
         /// </remarks>
         protected void Application_Start(object sender, EventArgs e)
         {
-
+            RouteTable.Routes.MapHubs();
             var context = HttpContext.Current;
 
             // moved from PortalSettings
