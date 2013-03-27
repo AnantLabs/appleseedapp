@@ -617,6 +617,18 @@
     <Compile Include="DesktopDefault.aspx.designer.cs">
       <DependentUpon>DesktopDefault.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Breadcrumbs\BreadCrumbs.ascx.cs">
+      <DependentUpon>BreadCrumbs.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\Breadcrumbs\BreadCrumbs.ascx.designer.cs">
+      <DependentUpon>BreadCrumbs.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\ComponentModule\ComponentModule.ascx.cs">
+      <DependentUpon>ComponentModule.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\ComponentModule\ComponentModule.ascx.designer.cs">
+      <DependentUpon>ComponentModule.ascx</DependentUpon>
+    </Compile>
     <Compile Include="DesktopModules\CommunityModules\EnhancedHTML\EnhancedHtml.ascx.cs">
       <DependentUpon>EnhancedHtml.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -721,6 +733,12 @@
     </Compile>
     <Compile Include="DesktopModules\CommunityModules\XmlFeed\XmlFeed.ascx.designer.cs">
       <DependentUpon>XmlFeed.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\XmlModule\XmlModule.ascx.cs">
+      <DependentUpon>XmlModule.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\XmlModule\XmlModule.ascx.designer.cs">
+      <DependentUpon>XmlModule.ascx</DependentUpon>
     </Compile>
     <Compile Include="DesktopModules\CoreModules\AddModule\Viewer.ascx.cs">
       <DependentUpon>Viewer.ascx</DependentUpon>
@@ -1160,6 +1178,13 @@
     </Compile>
     <Compile Include="Shared\SiteMasterDefault.master.designer.cs">
       <DependentUpon>SiteMasterDefault.master</DependentUpon>
+    </Compile>
+    <Compile Include="TestDefault.aspx.cs">
+      <DependentUpon>TestDefault.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestDefault.aspx.designer.cs">
+      <DependentUpon>TestDefault.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\Design\PagingDesigner.cs" />
     <Compile Include="CSSFriendly\Adapters\ChangePasswordAdapter.cs" />
@@ -5871,6 +5896,7 @@
     </Content>
     <Content Include="Shared\PanesMasterDefault.master" />
     <Content Include="Shared\SiteMasterDefault.master" />
+    <Content Include="TestDefault.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
