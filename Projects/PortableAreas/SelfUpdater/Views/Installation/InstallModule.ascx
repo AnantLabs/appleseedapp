@@ -1,6 +1,7 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<dynamic>" %>
 <table id="available_packages">
-    <%foreach (var package in Model) { %>
+    <%foreach (var package in Model)
+      { %>
     <tr>
         <td>
             <img src="<%: package.icon %>" alt="" />
@@ -19,13 +20,16 @@
                 install</a>
         </td>--%>
         <td>
-            <input type="checkbox" />
+            <input class="InstallChecker" type="checkbox" />
+            <input type="hidden" class="PackageName" value="<%: package.name %>"/>
+            <input type="hidden" class="PackageSource" value="<%: package.source %>"/>
+            <input type="hidden" class="PackageVersion" value="<%: package.version %>"/>
         </td>
     </tr>
     <%} %>
 </table>
 
-<input type="button" value="Install" />
+
 <div id="installingDiv" style="display: none">
     <div class="ui-state-highlight ui-corner-all"><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span> This may take a few minutes, please wait until this dialog closes.</div>
     <br />
@@ -36,26 +40,44 @@
 </div>
 
 <script type="text/javascript">
+    
+    
+    
+    function getCurrentPage() {
+        $.ajax({
+            type: "GET",
+            url: window.location.href,
+            success: function () {}
+        });
+    }
+
 
     $(function () {
         
-        var chat = $.connection.selfUpdaterHub;
+        var updaterHub = $.connection.selfUpdaterHub;
 
-        chat.client.nuevoProcentaje = function (message) {
+        updaterHub.client.nuevoProcentaje = function (message) {
             $('#TestingSignalR').append('<span>' + message + '</span><br/>');
+        };
+
+        updaterHub.client.reloadPage = function(data) {
+            getCurrentPage();
+            setTimeout(window.location = window.location.href, 5000)
+        };
+
+        updaterHub.client.openPopUp = function (data) {
+            $('#installingDiv').dialog("open");
+            console.log('SingalR opening pop up');
+        };
+        
+        updaterHub.client.console = function (data) {
+            console.log(data);
         };
 
         $.connection.hub.start().done(function () {
             console.log('SignalR loaded');
         });
-    });
-       
-       
-
- 
-
-
-    function installPackage(packageId, source, version) {
+        
 
         $('#installingDiv').dialog({
             modal: true,
@@ -64,105 +86,17 @@
             resizable: false,
             title: 'Install package',
             width: 550,
-            height: 200,
+            height: 800,
             open: function (event, ui) {
                 $(this).closest('.ui-dialog').find('.ui-dialog-titlebar-close').hide();
-            }
-
-        });
-        var status = false;
-        $.ajax({
-            url: '<%= Url.Action("InstallPackage","Installation")%>',
-            type: "POST",
-            data: { packageId: packageId, source: source, version: version },
-            timeout: 3600000,
-            success: function (data) {
-               
-
-                //if (data.NugetLog != null && data.NugetLog != '') {
-                //    $('#installingUl').html(data.NugetLog);
-                //}
-
-                $.ajax({
-                    url: '<%= Url.Action("RestartSite","Updates")%>',
-                    type: "POST",
-                    success: function (data) {
-                        //clearInterval(myinterval);
-                    },
-                    error: function () {
-
-                    }
-                });
-
-                var timeOutStatus = false;
-                var cant = 0;
-                var interval = setInterval(function () {
-
-                    $.ajax({
-                        url: '<%= Url.Action("Status","Updates")%>',
-                        type: "POST",
-                        timeout: 1000,
-                        success: function (data) {
-
-                            if (data) {
-
-
-                                window.location = window.location.href;
-                                clearInterval(interval);
-                            }
-                        },
-                        error: function () {
-                            if (!timeOutStatus) {
-                                timeOutStatus = true;
-                                $('#installingUl').append('<li>Reloading site<span id="TimeOutPointsInstall">...</span></li>')
-                            }
-                            cant = cant + 1;
-                            if (cant == 4) {
-                                cant = 1;
-                            }
-                            var puntos = "";
-                            if (cant == 1) {
-                                puntos = '.';
-                            }
-                            if (cant == 2) {
-                                puntos = '..';
-                            }
-                            if (cant == 3) {
-                                puntos = '...';
-                            }
-                            $('#TimeOutPointsInstall').html(puntos);
-                        }
-                    });
-                }, 2000);
             },
-            error: function (data, error) {
-                console.log(data.responseText);
-                $('#installingDiv').dialog("close");
-                alert("There has been an error installing the package. Please check the log.");
-                //clearInterval(myinterval);
-            }
+            autoOpen: false
+
         });
 
-        //var myinterval = setInterval(function () {
-
-        //    $.ajax({
-        //        url: '<%= Url.Action("NugetStatus","Updates")%>',
-        //        type: "POST",
-        //        async: false,
-        //        success: function (data) {
-        //            if (data != null && data != '') {
-        //                $('#installingUl').html(data);
-        //            }
-        //        }
-        //    });
-        //    if (status) {
-        //        //clearInterval(myinterval);
-        //    }
-        //}, 2000);
+    });
 
 
-        return false;
-
-    }
+    
 
 </script>

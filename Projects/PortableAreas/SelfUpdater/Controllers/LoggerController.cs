@@ -97,7 +97,7 @@ namespace SelfUpdater.Controllers
                 mensaje += "<li>" + list["Waiting"] + "</li>";
             }
 
-            HttpContext.Current.Application["NugetLogger"] = mensaje;
+            //HttpContext.Current.Application["NugetLogger"] = mensaje;
             
             
             

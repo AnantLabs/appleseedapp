@@ -610,6 +610,7 @@
       <DependentUpon>SmartError.aspx</DependentUpon>
     </Compile>
     <Compile Include="Code\AreaViewEngine.cs" />
+    <Compile Include="Code\SelfUpdateThread.cs" />
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>

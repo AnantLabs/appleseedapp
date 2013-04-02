@@ -154,6 +154,7 @@
     <Compile Include="Initializer.cs" />
     <Compile Include="Models\InstallationState.cs" />
     <Compile Include="Models\PackageIdFilter.cs" />
+    <Compile Include="Models\PackageModel.cs" />
     <Compile Include="Models\SelfUpdater.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -165,11 +166,14 @@
     <Compile Include="WebProjectSystem.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\checked.jpg" />
     <Content Include="Content\SelfUpdater.css" />
+    <Content Include="Content\unchecked.jpg" />
     <Content Include="DBScripts\20110905\01.CreateSelfUpdatingTable.sql" />
     <Content Include="DBScripts\20111223\01.AddPackagesPage.sql" />
     <Content Include="DBScripts\20111223\02.InsertInstallationModule.sql" />
     <Content Include="DBScripts\20111223\03.InsertUpdateModule.sql" />
+    <Content Include="DBScripts\20130401\01.AddingNewColumn.sql" />
     <Content Include="Scripts\jquery.signalR-1.0.1.js" />
     <Content Include="Scripts\jquery.signalR-1.0.1.min.js" />
     <Content Include="Scripts\SelfUpdater.js" />
@@ -183,7 +187,7 @@
     <Content Include="Views\Shared\ConfigError.ascx" />
     <Content Include="Views\Shared\ExceptionError.ascx" />
     <Content Include="Views\Updates\Module.ascx" />
-    <Content Include="Views\Updates\UpdateModule.ascx" />
+    <Content Include="Views\Updates\UpdateModule2.ascx" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -204,6 +208,9 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>SelfUpdater.Designer.cs</LastGenOutput>
     </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Updates\UpdateModule.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

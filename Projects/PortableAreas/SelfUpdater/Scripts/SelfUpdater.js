@@ -92,4 +92,54 @@ function applyUpdates() {
 
 
 
+function InstallPackages() {
 
+    var packages = getPackagesToInstall();
+    if (packages.length == 0) {
+
+        alert('No packages were selected');
+
+
+    } else {
+        $('#installingDiv').dialog("open");
+        $.ajax({
+            type: "POST",
+            url: instalationPackages,
+            data: { packages: JSON.stringify(packages) },
+            success: function (data) {
+                getCurrentPage();
+                console.log('Success');
+            },
+            error: function (data) {
+                console.log(data);
+                $('#installingDiv').dialog("close");
+            }
+        });
+
+    }
+}
+
+function getPackagesToInstall() {
+
+    var packages = [];
+
+    $('.InstallChecker').each(function () {
+
+        if (this.checked) {
+
+            var name = $(this).siblings('.PackageName').val();
+            var source = $(this).siblings('.PackageSource').val();
+            var version = $(this).siblings('.PackageVersion').val();
+
+            var pack = { Name: name, Source: source, Version: version, Install: true };
+            packages.push(pack);
+
+        }
+
+
+    });
+
+    return packages;
+
+
+}

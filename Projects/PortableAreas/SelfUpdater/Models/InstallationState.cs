@@ -1,4 +1,5 @@
-﻿using NuGet;
+﻿using System.Collections.Generic;
+using NuGet;
 
 
 namespace SelfUpdater.Models
@@ -10,6 +11,11 @@ namespace SelfUpdater.Models
         public IPackage Update { get; set; }
         public string Source { get; set; }
         public bool Scheduled { get; set; }
+    }
+
+    public class UpdatesModel
+    {
+        public List<InstallationState> Updates { get; set; }
     }
 }
 

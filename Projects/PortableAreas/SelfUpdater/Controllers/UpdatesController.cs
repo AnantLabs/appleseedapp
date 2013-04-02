@@ -20,10 +20,6 @@ namespace SelfUpdater.Controllers
     [Authorize]
     public class UpdatesController : BaseController
     {
-        public UpdatesController()
-        {
-        }
-
         public ActionResult Module()
         {
             return View();
@@ -33,16 +29,7 @@ namespace SelfUpdater.Controllers
 
             try {
 
-                var section = HttpContext.GetSection("system.web/httpRuntime") as System.Web.Configuration.HttpRuntimeSection;
-                if (section.WaitChangeNotification < 5) {
-                    return View("ConfigError");
-                }
-
-                SelfUpdaterEntities context = new SelfUpdaterEntities();
-
-                var scheduledUpdates = context.SelfUpdatingPackages.ToList();
-
-                WebProjectManager[] projectManagers = this.GetProjectManagers();
+                WebProjectManager[] projectManagers = GetProjectManagers();
                 List<InstallationState> installed = new List<InstallationState>();
                 foreach (var projectManager in projectManagers) {
                     var installedPackages = this.GetInstalledPackages(projectManager);
@@ -53,11 +40,6 @@ namespace SelfUpdater.Controllers
                         package.Installed = installedPackage;
                         package.Update = update;
                         package.Source = projectManager.SourceRepository.Source;
-
-                        if (scheduledUpdates.Any(d => d.PackageId == installedPackage.Id)) {
-                            package.Scheduled = true;
-                        }
-
 
                         if (installed.Any(d => d.Installed.Id == package.Installed.Id)) {
                             var addedPackage = installed.Where(d => d.Installed.Id == package.Installed.Id).First();
@@ -74,7 +56,11 @@ namespace SelfUpdater.Controllers
                     }
                 }
 
-                return base.View(installed);
+                var model = new UpdatesModel();
+                model.Updates = installed;
+
+
+                return View(model);
             }
             catch (Exception e) {
                 ErrorHandler.Publish(LogLevel.Error, "Nuget Get packages from feed", e);
