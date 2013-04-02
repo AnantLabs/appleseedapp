@@ -70,7 +70,7 @@ namespace SelfUpdater.Controllers
 
                 var context = new SelfUpdaterEntities();
 
-                foreach (var self in packagesToInstall.Select(pack => new SelfUpdatingPackages { PackageId = pack.Name, PackageVersion = pack.Version, Source = pack.Source, Install = true}))
+                foreach (var self in packagesToInstall.Select(pack => new SelfUpdatingPackages { PackageId = pack.Name, PackageVersion = pack.Version, Source = pack.Source, Install = pack.Install}))
                 {
                     context.AddToSelfUpdatingPackages(self);
                 }
@@ -79,8 +79,8 @@ namespace SelfUpdater.Controllers
 
                 var config = WebConfigurationManager.OpenWebConfiguration("~/");
                 var section = config.GetSection("system.web/httpRuntime");
-                ((HttpRuntimeSection) section).WaitChangeNotification = 123456789;
-                ((HttpRuntimeSection) section).MaxWaitChangeNotification = 123456789;
+                ((HttpRuntimeSection)section).WaitChangeNotification = 123456789;
+                ((HttpRuntimeSection)section).MaxWaitChangeNotification = 123456789;
                 config.Save();
                 
 

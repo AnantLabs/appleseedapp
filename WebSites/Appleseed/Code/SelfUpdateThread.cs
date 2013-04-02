@@ -47,8 +47,21 @@ namespace Appleseed.Code
                         context.SelfUpdatingPackages.DeleteObject(package);
                     }
 
-                    
+                    var packagesToUpgrade = packagesToUpdate.Where(packages => packages.Install == false);
+                    foreach (var package in packagesToUpgrade)
+                    {
+                        var projectManager = GetProjectManagers().Where(p => p.SourceRepository.Source == package.Source).First();
 
+                        projectManager.addLog("Updating " + package.PackageId);
+
+                        IPackage installedPackage = GetInstalledPackage(projectManager, package.PackageId);
+
+                        IPackage update = projectManager.GetUpdate(installedPackage);
+
+                        projectManager.UpdatePackage(update);
+
+                        context.SelfUpdatingPackages.DeleteObject(package);
+                    }
 
 
                     /*This forces a site restart for each update scheduled */
@@ -116,6 +129,17 @@ namespace Appleseed.Code
             }
 
             return managers.ToArray();
+        }
+
+        private IPackage GetInstalledPackage(WebProjectManager projectManager, string packageId)
+        {
+            IPackage package = projectManager.GetInstalledPackages().Where(d => d.Id == packageId).FirstOrDefault();
+
+            if (package == null)
+            {
+                throw new InvalidOperationException(string.Format("The package for package ID '{0}' is not installed in this website. Copy the package into the App_Data/packages folder.", packageId));
+            }
+            return package;
         }
 
     }

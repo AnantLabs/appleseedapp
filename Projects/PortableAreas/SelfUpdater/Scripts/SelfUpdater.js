@@ -138,6 +138,18 @@ function getPackagesToInstall() {
 
 
     });
+    
+    $('.AppleseedUpdateisCheked').each(function () {
+
+        if ($(this).val() == 'true') {
+            var name = $(this).siblings('.PackageName').val();
+            var source = $(this).siblings('.PackageSource').val();
+            var version = $(this).siblings('.PackageVersion').val();
+
+            var pack = { Name: name, Source: source, Version: version, Install: false };
+            packages.push(pack);
+        }
+    });
 
     return packages;
 

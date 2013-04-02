@@ -187,7 +187,6 @@
     <Content Include="Views\Shared\ConfigError.ascx" />
     <Content Include="Views\Shared\ExceptionError.ascx" />
     <Content Include="Views\Updates\Module.ascx" />
-    <Content Include="Views\Updates\UpdateModule2.ascx" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
