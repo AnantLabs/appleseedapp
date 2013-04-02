@@ -4,24 +4,25 @@
 <script src="<%: Url.Resource("Scripts.jquery.signalR-1.0.1.min.js") %>" type="text/javascript"></script>
 <link type="text/css" rel="stylesheet" href="<%: Url.Resource("Content.SelfUpdater.css") %>" />
 <script src="/signalr/hubs" type="text/javascript"></script>
-<div id="InstalationDiv">
-    Getting the packages from the repository...
+<div id="InstalationDiv" style="margin-bottom: 25px;">
+    <% Html.RenderAction("InstallModule"); %>
 </div>
 
+<div style="display:inline">
+    <span class="ModuleTitle">
+        <span class="editTitle">Installed Packages </span>
+    </span>
+    <hr>
+</div>
+
+<div id="UpdateDiv">
+    <% Html.RenderAction("UpdateModule","Updates"); %>
+</div>
+
+<input type="button" value="Install" onclick="InstallPackages()" />
+
 <script type="text/javascript">
-    $(document).ready(function () {           
 
-        $.ajax({
-            url: '<%= Url.Action("InstallModule","Installation")%>',
-            timeout: 90000,
-            type: "POST",
-            success: function (data) {
-                $('#InstalationDiv').html(data);
-            },
-            error: function () {
-                $('#InstalationDiv').html('Unable to get packages to Install. Please try again Later.');
-            }
-        });
-
-    });
+    var instalationPackages = '<%= Url.Action("InstallPackages")%>';
+    
 </script>

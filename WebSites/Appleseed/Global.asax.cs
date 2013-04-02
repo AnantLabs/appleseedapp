@@ -7,6 +7,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Threading;
+
 namespace Appleseed
 {
     using System;
@@ -476,6 +478,9 @@ namespace Appleseed
 
                 //while (CheckForSelfUpdates());
 
+                var selfUpdatesThread = new SelfUpdateThread();
+                var workerThread = new Thread(selfUpdatesThread.CheckForSelfUpdates);
+                workerThread.Start();
                 /* MVCContrib PortableAreas*/
 
                 //Handlers for bus messages

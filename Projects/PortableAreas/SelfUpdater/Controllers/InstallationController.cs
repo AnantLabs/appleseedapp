@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using NuGet;
 using System.Dynamic;
 using System.Configuration;
 using Appleseed.Framework;
+using SelfUpdater.Models;
 
 namespace SelfUpdater.Controllers
 {
@@ -17,8 +20,10 @@ namespace SelfUpdater.Controllers
             return View();
         }
 
-        public ActionResult InstallModule() {
+        public ActionResult InstallModule()
+        {
             try {
+
                 var section = HttpContext.GetSection("system.web/httpRuntime") as System.Web.Configuration.HttpRuntimeSection;
                 if (section.WaitChangeNotification < 5) {
                     return View("ConfigError");
@@ -46,6 +51,8 @@ namespace SelfUpdater.Controllers
                     }
                 }
 
+                
+
                 return View(list);
             }
             catch (Exception e) {
@@ -53,6 +60,40 @@ namespace SelfUpdater.Controllers
                 return View("ExceptionError");
             }
         
+        }
+
+        public JsonResult InstallPackages(string packages)
+        {
+            try
+            {
+                var packagesToInstall = new JavaScriptSerializer().Deserialize<IEnumerable<PackageModel>>(packages);
+
+                var context = new SelfUpdaterEntities();
+
+                foreach (var self in packagesToInstall.Select(pack => new SelfUpdatingPackages { PackageId = pack.Name, PackageVersion = pack.Version, Source = pack.Source, Install = true}))
+                {
+                    context.AddToSelfUpdatingPackages(self);
+                }
+
+                context.SaveChanges();
+
+                var config = WebConfigurationManager.OpenWebConfiguration("~/");
+                var section = config.GetSection("system.web/httpRuntime");
+                ((HttpRuntimeSection) section).WaitChangeNotification = 123456789;
+                ((HttpRuntimeSection) section).MaxWaitChangeNotification = 123456789;
+                config.Save();
+                
+
+                return Json("Ok");
+            }
+            catch(Exception e)
+            {
+                ErrorHandler.Publish(LogLevel.Error, e);
+                Response.StatusCode = 500;
+                return Json(e.Message);
+            }
+
+
         }
 
         public ActionResult InstallPackage(string packageId, string source, string version)
