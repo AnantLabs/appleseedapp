@@ -58,11 +58,12 @@
 
         updaterHub.client.nuevoProcentaje = function (message) {
             $('#TestingSignalR').append('<span>' + message + '</span><br/>');
+            $("#installingDiv").scrollTop($("#installingDiv")[0].scrollHeight);
         };
 
         updaterHub.client.reloadPage = function(data) {
             getCurrentPage();
-            setTimeout(window.location = window.location.href, 5000)
+            setTimeout(window.location = window.location.href, 5000);
         };
 
         updaterHub.client.openPopUp = function (data) {
@@ -86,7 +87,7 @@
             resizable: false,
             title: 'Install package',
             width: 550,
-            height: 800,
+            height: 600,
             open: function (event, ui) {
                 $(this).closest('.ui-dialog').find('.ui-dialog-titlebar-close').hide();
             },

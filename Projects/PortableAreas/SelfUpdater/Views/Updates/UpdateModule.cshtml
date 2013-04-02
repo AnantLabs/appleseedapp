@@ -44,7 +44,7 @@
                         {
                             <span class="chekedSpan" style="display: none"><img src="@Url.Resource("Content.checked.jpg")"/></span>
 
-                            <input type="hidden" class="isCheked" value="false"/>
+                            <input type="hidden" class="AppleseedUpdateisCheked" value="false"/>
 
                             <input type="hidden" class="PackageName" value="@m.Update.Id"/>
                     
@@ -65,16 +65,18 @@
     function checkUpdate(object) {
 
         var selectedTd = $(object).parent().siblings(".package_update_checks");
-        var val = $(selectedTd).children(".isCheked").val();
+        var val = $(selectedTd).children(".AppleseedUpdateisCheked").val();
         if (val == "false") {
-            $(selectedTd).children(".isCheked").val("true");
+            $(selectedTd).children(".AppleseedUpdateisCheked").val("true");
             $(selectedTd).children(".unchekedSpan").hide();
             $(selectedTd).children(".chekedSpan").show();
+            $(object).text('remove');
 
         } else {
-            $(selectedTd).children(".isCheked").val("false");
+            $(selectedTd).children(".AppleseedUpdateisCheked").val("false");
             $(selectedTd).children(".unchekedSpan").show();
             $(selectedTd).children(".chekedSpan").hide();
+            $(object).text('update');
         }
 
 
