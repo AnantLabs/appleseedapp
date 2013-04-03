@@ -33,64 +33,60 @@ namespace Appleseed.Code
 
                     foreach (var package in packagesToInstall)
                     {
-                        var projectManager = GetProjectManagers().Where(p => p.SourceRepository.Source == package.Source).First();
+                        try
+                        {
+                            var projectManager =
+                                GetProjectManagers().Where(p => p.SourceRepository.Source == package.Source).First();
 
-                        
-                        hub.Clients.All.openPopUp();
 
-                        projectManager.addLog("Installing "+ package.PackageId);
+                            hub.Clients.All.openPopUp();
 
-                        ErrorHandler.Publish(LogLevel.Info, String.Format("SelfUpdater: Installing {0} to version {1}", package.PackageId, package.PackageVersion));
+                            projectManager.addLog("Installing " + package.PackageId);
 
-                        projectManager.InstallPackage(package.PackageId, new SemanticVersion(package.PackageVersion));
+                            ErrorHandler.Publish(LogLevel.Info,
+                                                 String.Format("SelfUpdater: Installing {0} to version {1}",
+                                                               package.PackageId, package.PackageVersion));
 
-                        context.SelfUpdatingPackages.DeleteObject(package);
+                            projectManager.InstallPackage(package.PackageId, new SemanticVersion(package.PackageVersion));
+
+                            context.SelfUpdatingPackages.DeleteObject(package);
+                        }
+                        catch(Exception e)
+                        {
+                            ErrorHandler.Publish(LogLevel.Error, e);
+                        }
                     }
 
                     var packagesToUpgrade = packagesToUpdate.Where(packages => packages.Install == false);
                     foreach (var package in packagesToUpgrade)
                     {
-                        var projectManager = GetProjectManagers().Where(p => p.SourceRepository.Source == package.Source).First();
+                        try
+                        {
 
-                        projectManager.addLog("Updating " + package.PackageId);
 
-                        IPackage installedPackage = GetInstalledPackage(projectManager, package.PackageId);
+                            var projectManager =
+                                GetProjectManagers().Where(p => p.SourceRepository.Source == package.Source).First();
 
-                        IPackage update = projectManager.GetUpdate(installedPackage);
+                            projectManager.addLog("Updating " + package.PackageId);
 
-                        projectManager.UpdatePackage(update);
+                            IPackage installedPackage = GetInstalledPackage(projectManager, package.PackageId);
 
-                        context.SelfUpdatingPackages.DeleteObject(package);
+                            IPackage update = projectManager.GetUpdatedPackage(installedPackage);
+
+                            projectManager.UpdatePackage(update);
+
+                            context.SelfUpdatingPackages.DeleteObject(package);
+                        }
+                        catch(Exception e)
+                        {
+                            ErrorHandler.Publish(LogLevel.Error, e);
+                        }
                     }
 
 
-                    /*This forces a site restart for each update scheduled */
-                    /*Must be improved trying to updated all at once */
 
-                    //var packageToUpdate = packagesToUpdate.First();
-                    //var projectManager = this.GetProjectManagers().Where(d => d.SourceRepository.Source.ToLower().Trim() == packageToUpdate.Source.ToLower().Trim()).First();
-                    //var packageName = packageToUpdate.PackageId;
-                    //IPackage installedPackage = projectManager.GetInstalledPackages().Where(d => d.Id == packageName).First();
-                    //IPackage update = projectManager.GetUpdate(installedPackage);
 
-                    //if (update != null)
-                    //{
-                    //    ErrorHandler.Publish(LogLevel.Info, String.Format("SelfUpdater: Updating {0} from {1} to {2}", packageName, installedPackage.Version, update.Version));
-                    //    try
-                    //    {
-                    //        projectManager.UpdatePackage(update);
-                    //    }
-                    //    catch (Exception exc)
-                    //    {
-                    //        ErrorHandler.Publish(LogLevel.Info, String.Format("SelfUpdater: Error updating {0} from {1} to {2}", packageName, installedPackage.Version, update.Version), exc);
-                    //        context.SelfUpdatingPackages.DeleteObject(packageToUpdate);
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    ErrorHandler.Publish(LogLevel.Info, "SelfUpdater: " + packageName + " update applied !");
-                    //    context.SelfUpdatingPackages.DeleteObject(packageToUpdate);
-                    //}
+
 
                     context.SaveChanges();
 

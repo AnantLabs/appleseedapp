@@ -107,6 +107,9 @@ function InstallPackages() {
             url: instalationPackages,
             data: { packages: JSON.stringify(packages) },
             success: function (data) {
+                for (var k = 0; k < 3; k++) {
+                    getCurrentPage();
+                }
                 getCurrentPage();
                 console.log('Success');
             },
