@@ -631,6 +631,12 @@
     <Compile Include="DesktopModules\CommunityModules\ComponentModule\ComponentModule.ascx.designer.cs">
       <DependentUpon>ComponentModule.ascx</DependentUpon>
     </Compile>
+    <Compile Include="DesktopModules\CommunityModules\ComponentModule\ComponentModuleEdit.aspx.cs">
+      <DependentUpon>ComponentModuleEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\ComponentModule\ComponentModuleEdit.aspx.designer.cs">
+      <DependentUpon>ComponentModuleEdit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DesktopModules\CommunityModules\EnhancedHTML\EnhancedHtml.ascx.cs">
       <DependentUpon>EnhancedHtml.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
