@@ -1,4 +1,5 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<dynamic>" %>
+<%@ Import Namespace="Appleseed.Framework" %>
 <%@ Import Namespace="PageManagerTree" %>
 
 <div id="jqtreePageManagement">
@@ -69,6 +70,18 @@
 					    //"remove": false,
                         "rename": false,
                     },
+                    "folder2": {
+                        "valid_children": ["file"],
+                        "icon": {
+                            "image": "/images/folder2.png",
+                        },
+                        //"start_drag" : false,
+                        //"move_node" : false,
+
+                        //"delete_node": false,
+                        //"remove": false,
+                        "rename": false,
+                    },
                     "root": {
                         "valid_children": "Default",
                         "icon": {
@@ -82,148 +95,8 @@
                 },
             },
             "contextmenu": {
-                "items": {
-                    ViewItem: {
-                        label: '<%: Appleseed.Framework.General.GetString("View","View") %>',
-                        action: function (obj) {
-                            var currentId = this._get_node(obj).attr("id");
-                            $.ajax({
-                                url: '<%= Url.Action("ViewPage")%>',
-                                type: 'POST',
-                                timeout: "100000",
-                                data: {
-                                    "pageId": currentId.replace("pjson_", "")
-                                },
-                                success: function (data) {
-                                    window.location.href = data;
-                                }
-                                
-                            });
-
-                        },
-                    },
-                    renameItem: {
-                        "label": '<%: Appleseed.Framework.General.GetString("RENAME") %>',
-                        "action": function (obj) {
-                            this.rename(obj);
-
-                        },
-                    },
-                    "edit": {
-                        "label": '<%: Appleseed.Framework.General.GetString("EDIT") %>',
-                            "action":
-                                function (obj) {
-                                    $.ajax({
-                                        url: '<%= Url.Action("edit","PageManagerTree")%>',
-                                        type: 'POST',
-                                        timeout: "100000",
-                                        data: {
-                                            "id": obj.attr("id").replace("pjson_", ""),
-                                        },
-                                        success: function (data) {
-                                            window.location.href = data.url;
-
-                                        }
-                                    });
-                                }
-                        
-                    },
-                    "ccp": false,
-                    "remove": false,
-                    "rename": false,
-                    
-
-                    
-                    cloneItem: {
-                        label: '<%: Appleseed.Framework.General.GetString("Clone","Clone") %>',
-                        action: function (obj) {
-                            var currentId = this._get_node(obj).attr("id");
-                            var parentId = this._get_node(obj)[0].firstChild.parentElement.parentNode.parentElement.id;
-                            $.ajax({
-                                url: '<%= Url.Action("Clone")%>',
-                                type: 'POST',
-                                timeout: "100000",
-                                data: {
-                                    "id": currentId.replace("pjson_", ""),
-                                    "parentId": parentId.replace("pjson_", "")
-                                },
-                                success: function (data) {
-                                    var name = $("#jsTree").jstree("get_text", '#' + currentId) + ' - Clone';
-                                    $("#jsTree").jstree("create", "#" + parentId, "last", { 'attr': { 'id': 'pjson_' + data.pageId }, 'title': name }, false, true);
-                                    $("#jsTree").jstree("set_text", '#pjson_' + data.pageId, name);
-                                    $("#jsTree").jstree("rename", "#pjson_" + data.pageId);
-                                },
-                                error: function (data) {
-                                    $.jstree.rollback(obj.rlbk);
-                                }                                    
-                            });
-                            
-                        },
-                    },
-                    copyItem: {
-                        label: '<%: Appleseed.Framework.General.GetString("COPY", "Copy") %>',
-                        action: function (obj) {
-                            var currentId = this._get_node(obj).attr("id");
-                            var currentName = this._get_node(obj).text().replace(/\s{2}/, "");
-                            var children = this._get_node(obj).children().children().text().replace(/\s/, "");
-                            var folder = currentName.replace(children, "");
-                            var parentId = this._get_node(obj)[0].firstChild.parentElement.parentNode.parentElement.id;
-                            $.ajax({
-                                url: '<%= Url.Action("CopyPage")%>',
-                                type: 'POST',
-                                timeout: "100000",
-                                data: {
-                                    "pageId": currentId.replace("pjson_", ""),
-                                    "name": folder,
-                                },
-                                success: function (data) {
-                                    var name = $("#jsTree").jstree("get_text", '#' + currentId) + ' - Copy';
-                                    $("#jsTree").jstree("create", "#" + parentId, "last", { 'attr': { 'id': 'pjson_' + data.pageId }, 'title': name }, false, true);
-                                    $("#jsTree").jstree("set_text", '#pjson_' + data.pageId, name);
-                                    $("#jsTree").jstree("rename", "#pjson_" + data.pageId);
-                                },
-                                error: function (data) {
-                                    $.jstree.rollback(obj.rlbk);
-                                }
-                            });
-
-                        },
-                    },
-                    "delete": {
-                        "label": '<%: Appleseed.Framework.General.GetString("DELETE") %>',
-                        "action":
-                            function (obj) {
-                                
-                                var agree=confirm('<%: Appleseed.Framework.General.GetString("CONFIRM_DELETE") %>');
-                                if (agree)
-                                    deletePage(obj.attr("id").replace("pjson_", ""));
-                                else
-                                    return false ; 
-
-                                
-                                
-                            },
-                        "separator_before": true
-                    },
-                    "create": {
-                            "label": '<%: Appleseed.Framework.General.GetString("CREATE") %>',
-                            "action":
-                                function (obj) {
-                                    $.ajax({
-                                        url: '<%= Url.Action("create","PageManagerTree")%>',
-                                        type: 'POST',
-                                        timeout: "100000",
-                                        data: {
-                                            "id": obj.attr("id").replace("pjson_", "")
-                                        },
-                                        success: function (data) {
-                                            $("#jsTree").jstree("refresh", -1);
-                                        }
-                                    });
-                                }
-                    }
-                    
-                }
+                "items": contextMenu
+            
             },
             "crrm": {
                 "move": {
@@ -338,6 +211,169 @@
 
     });
 
+    function contextMenu(node) {
+        var items = {
+            "create": {
+                "label": '<%: Appleseed.Framework.General.GetString("CREATE") %>',
+                            "action":
+                                function(obj) {
+                                    $.ajax({
+                                        url: '<%= Url.Action("create","PageManagerTree")%>',
+                            type: 'POST',
+                            timeout: "100000",
+                            data: {
+                                "id": obj.attr("id").replace("pjson_", "")
+                            },
+                            success: function(data) {
+                                $("#jsTree").jstree("refresh", -1);
+                            }
+                        });
+                    }
+            },
+            
+            ViewItem: {
+                label: '<%: Appleseed.Framework.General.GetString("View","View") %>',
+                action: function(obj) {
+                    var currentId = this._get_node(obj).attr("id");
+                    $.ajax({
+                        url: '<%= Url.Action("ViewPage")%>',
+                        type: 'POST',
+                        timeout: "100000",
+                        data: {
+                            "pageId": currentId.replace("pjson_", "")
+                        },
+                        success: function(data) {
+                            window.location.href = data;
+                        }
+                    });
+
+                },
+                "separator_before": true,
+            },
+            renameItem: {
+                "label": '<%: Appleseed.Framework.General.GetString("RENAME") %>',
+                "action": function(obj) {
+                    this.rename(obj);
+
+                },
+            },
+            "edit": {
+                "label": '<%: Appleseed.Framework.General.GetString("EDIT") %>',
+                "action":
+                    function(obj) {
+                        $.ajax({
+                            url: '<%= Url.Action("edit","PageManagerTree")%>',
+                            type: 'POST',
+                            timeout: "100000",
+                            data: {
+                                "id": obj.attr("id").replace("pjson_", ""),
+                            },
+                            success: function(data) {
+                                window.location.href = data.url;
+
+                            }
+                        });
+                    }
+            },
+            "ccp": false,
+            "remove": false,
+            "rename": false,
+
+            cloneItem: {
+                label: '<%: Appleseed.Framework.General.GetString("Clone","Clone") %>',
+                action: function(obj) {
+                    var currentId = this._get_node(obj).attr("id");
+                    var parentId = this._get_node(obj)[0].firstChild.parentElement.parentNode.parentElement.id;
+                    $.ajax({
+                        url: '<%= Url.Action("Clone")%>',
+                        type: 'POST',
+                        timeout: "100000",
+                        data: {
+                            "id": currentId.replace("pjson_", ""),
+                            "parentId": parentId.replace("pjson_", "")
+                        },
+                        success: function(data) {
+                            var name = $("#jsTree").jstree("get_text", '#' + currentId) + ' - Clone';
+                            $("#jsTree").jstree("create", "#" + parentId, "last", { 'attr': { 'id': 'pjson_' + data.pageId }, 'title': name }, false, true);
+                            $("#jsTree").jstree("set_text", '#pjson_' + data.pageId, name);
+                            $("#jsTree").jstree("rename", "#pjson_" + data.pageId);
+                        },
+                        error: function(data) {
+                            $.jstree.rollback(obj.rlbk);
+                        }
+                    });
+
+                },
+            },
+            copyItem: {
+                label: '<%: Appleseed.Framework.General.GetString("COPY", "Copy") %>',
+                action: function(obj) {
+                    var currentId = this._get_node(obj).attr("id");
+                    var currentName = this._get_node(obj).text().replace(/\s{2}/, "");
+                    var children = this._get_node(obj).children().children().text().replace(/\s/, "");
+                    var folder = currentName.replace(children, "");
+                    var parentId = this._get_node(obj)[0].firstChild.parentElement.parentNode.parentElement.id;
+                    $.ajax({
+                        url: '<%= Url.Action("CopyPage")%>',
+                        type: 'POST',
+                        timeout: "100000",
+                        data: {
+                            "pageId": currentId.replace("pjson_", ""),
+                            "name": folder,
+                        },
+                        success: function(data) {
+                            var name = $("#jsTree").jstree("get_text", '#' + currentId) + ' - Copy';
+                            $("#jsTree").jstree("create", "#" + parentId, "last", { 'attr': { 'id': 'pjson_' + data.pageId }, 'title': name }, false, true);
+                            $("#jsTree").jstree("set_text", '#pjson_' + data.pageId, name);
+                            $("#jsTree").jstree("rename", "#pjson_" + data.pageId);
+                        },
+                        error: function(data) {
+                            $.jstree.rollback(obj.rlbk);
+                        }
+                    });
+
+                },
+            },
+            "delete": {
+                "label": '<%: Appleseed.Framework.General.GetString("DELETE") %>',
+                "action":
+                    function(obj) {
+
+                        var agree = confirm('<%: Appleseed.Framework.General.GetString("CONFIRM_DELETE") %>');
+                        if (agree)
+                            deletePage(obj.attr("id").replace("pjson_", ""));
+                        else
+                            return false;
+
+
+                    },
+                "separator_before": true
+            },
+        };
+        
+        if ($(node).attr("rel") == "folder") {
+            // Delete the "delete" menu item
+            delete items.delete;
+            delete items.create;
+            delete items.copyItem;
+            delete items.cloneItem;
+            delete items.renameItem;
+            delete items.ViewItem;
+            delete items.edit;
+        }
+        
+        if ($(node).attr("rel") == "file") {
+            delete items.create;
+            delete items.copyItem;
+            delete items.cloneItem;
+            delete items.ViewItem;
+        }
+
+        return items;
+    }
+    
+
+
     function seeChanges(){
         window.location.href = window.location.href;
     }
@@ -358,8 +394,10 @@
 
     function deletePage(id){
         if(id != 0) {           
-       
-            $.ajax({
+            if ((id.indexOf('_') != -1)) {
+                $("#jsTree").jstree("refresh", -1);
+            } else {
+                $.ajax({
                     url: '<%= Url.Action("remove","PageManagerTree")%>',
                     type: 'POST',
                     timeout: "100000",
@@ -374,7 +412,41 @@
                         }
                     }
                 });
+            }          
+       }
+    }
+    
+    function deleteModule(paneLocation, page, id) {
+        var modulelist = document.getElementById(paneLocation).getElementsByTagName("li");
+        var cantmodule = modulelist.length;
+        var i = 0;
+        var found = false;
+        var index = -1;
+        while ((i < cantmodule)&&(!found)) {
+            var moduleId = modulelist[i].id;
+            if (moduleId == id) {
+                found = true;
+                index = i;
             }
+                
+            i++;
+        }
+        var page = page;
+
+        $.ajax({
+            url: '<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/DeleteBtn_Click") %>',
+            type: "POST",
+            timeout: 180000,
+            data: {
+                pane: paneLocation,
+                pageId: page,
+                selectedIndex: index,
+            },
+            success: function (data) {
+                if (data.error == false)
+                    $("#jsTree").jstree("refresh", -1);
+            }
+        });
     }
 
     $(function() {

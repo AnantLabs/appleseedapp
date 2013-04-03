@@ -631,6 +631,13 @@
     <Compile Include="DesktopModules\CommunityModules\ComponentModule\ComponentModule.ascx.designer.cs">
       <DependentUpon>ComponentModule.ascx</DependentUpon>
     </Compile>
+    <Compile Include="DesktopModules\CommunityModules\ComponentModule\ComponentModuleEdit.aspx.cs">
+      <DependentUpon>ComponentModuleEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CommunityModules\ComponentModule\ComponentModuleEdit.aspx.designer.cs">
+      <DependentUpon>ComponentModuleEdit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DesktopModules\CommunityModules\EnhancedHTML\EnhancedHtml.ascx.cs">
       <DependentUpon>EnhancedHtml.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5665,6 +5672,8 @@
     <Content Include="get_aspx_ver.aspx" />
     <Content Include="Global.asax" />
     <Content Include="images\1x1black.gif" />
+    <Content Include="images\file.png" />
+    <Content Include="images\folder.png" />
     <Content Include="images\img\1x1.gif" />
     <Content Include="images\img\arrow.gif" />
     <Content Include="images\img\arrow_down.gif" />
@@ -5736,6 +5745,7 @@
     <Content Include="images\img\tridown.gif" />
     <Content Include="images\img\trileft.gif" />
     <Content Include="images\img\_reply.gif" />
+    <Content Include="images\root.png" />
     <Content Include="images\sign-in-google.png" />
     <Content Include="images\sign-in-with-linkedin.jpg" />
     <Content Include="images\sign-in-with-twitter-l.png" />
