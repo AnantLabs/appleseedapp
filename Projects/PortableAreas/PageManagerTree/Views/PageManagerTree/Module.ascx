@@ -29,11 +29,57 @@
             "json_data": {
                 "ajax": {
                     "type": "POST",
-                    "url": '<%= Url.Action("GetTreeData","PageManagerTree")%>',
+                    "url":
+                        function (node) {
+                            //var nodeId = node.attr('id'); 
+                            if (node == -1) {
+                                return '<%= Url.Action("GetTreeData", "PageManagerTree") %>';
+                            }else
+                                return '<%= Url.Action("AddModule", "PageManagerTree") %>' + '?id=' + node.attr('id');
+                        },
+                    
                     "data": function (n) {
                         return { ID: n.attr ? n.attr("ID") : 0 };
+                    },
+                    "success": function (new_data) {
+                        return new_data;
                     }
                 }
+            },
+            "types": {
+                "max_depth" : -2,
+                "max_children" : -2,
+                "valid_children": "none",
+                "types": {
+                    "file": {
+                        "valid_children": "none",
+                        "icon": {
+                            "image": "/images/file.png",
+                        }
+                    },
+                    "folder": {
+                        "valid_children": ["file"],
+                        "icon": {
+                            "image": "/images/folder.png",
+                        },
+                        //"start_drag" : false,
+					    //"move_node" : false,
+
+                        //"delete_node": false,
+					    //"remove": false,
+                        "rename": false,
+                    },
+                    "root": {
+                        "valid_children": "Default",
+                        "icon": {
+                            "image": "/images/root.png",
+                        },
+                        "start_drag" : false,
+                        "move_node" : false,
+                        "delete_node" : false,
+                        "remove" : false
+                    }
+                },
             },
             "contextmenu": {
                 "items": {
@@ -193,50 +239,102 @@
             },
             "core": { "initially_open" : ["pjson_0"]} ,
 
-            "plugins": ["themes", "contextmenu", "json_data", "ui", "crrm", "dnd","core"]
+            "plugins": ["themes", "contextmenu", "json_data", "ui", "crrm", "dnd", "core", "types"]
         })
         .bind("move_node.jstree", function (e, data) {
-            var result;
-            if ((typeof (data.rslt.or.attr("id"))) == 'undefined') {
-                result = -1;
+            var selectedId = data.rslt.o.attr("id");
+            
+            if (selectedId.contains("module")) {
+                var selected = data.rslt.np.text().replace(/\s{2}/, "");
+                var children = data.rslt.o.children().text().replace(/\s/, "");
+                var folder = selected.replace(children, "");
+                $.ajax({
+                    url: '<%= Url.Action("MoveModuleNode","PageManagerTree")%>',
+                    type: 'POST',
+                    timeout: "100000",
+                    data: {
+                        "pageId": data.rslt.cp,
+                        "paneName": folder,
+                        "moduleId": data.rslt.o.attr("id").replace("pjson_module_", "")
+                    },
+                    success: function (data) {
+                    }
+                });
             } else {
-                result = data.rslt.or.attr("id").replace("pjson_", "");
-            }
-            $.ajax({
-                url: '<%= Url.Action("moveNode","PageManagerTree")%>',
-                type: 'POST',
-                timeout: "100000",
-                data: {
-                    "pageId": data.rslt.o.attr("id").replace("pjson_", ""),
-                    "newParent": data.rslt.np.attr("id").replace("pjson_", ""),
-                    "idOldNode": result
-                },
-                success: function (data) {
+                if ((typeof(data.rslt.or.attr("id"))) == 'undefined') {
+                    result = -1;
+                } else {
+                    result = data.rslt.or.attr("id").replace("pjson_", "");
                 }
-            });
+                $.ajax({
+                    url: '<%= Url.Action("moveNode","PageManagerTree")%>',
+                    type: 'POST',
+                    timeout: "100000",
+                    data: {
+                        "pageId": data.rslt.o.attr("id").replace("pjson_", ""),
+                        "newParent": data.rslt.np.attr("id").replace("pjson_", ""),
+                        "idOldNode": result
+                    },
+                    success: function(data) {
+                    }
+                });
+            }
         })
-        .bind("rename.jstree",function(event,data){
-                     
-                     $.ajax({
-                            url: '<%= Url.Action("Rename","PageManagerTree")%>',
-                            type: 'POST',
-                            timeout: "100000",
-                            data: {
-                                "id": data.rslt.obj.attr("id").replace("pjson_", ""),
-                                "name": data.rslt.new_name
-                            },
-                            success: function (data) {
-                                if (data.error == true) {
+        .bind("rename.jstree",function(event,data) {
+            var selectedId = data.rslt.obj.attr("id");
+            if (selectedId.contains("module")) {
+                $.ajax({
+                    url: '<%= Url.Action("RenameModule","PageManagerTree")%>',
+                    type: 'POST',
+                    timeout: "100000",
+                    data: {
+                        "id": data.rslt.obj.attr("id").replace("pjson_module_", ""),
+                        "name": data.rslt.new_name
+                    },
+                    success: function (data) {
+                        if (data.error == true) {
 
-                                } else {
-                                    $("#jsTree").jstree("refresh", -1);
-                                }
-                            }
-                        });
+                        } else {
+                            $("#jsTree").jstree("refresh", -1);
+                        }
+                    }
+                });
+            } else {
 
+                $.ajax({
+                    url: '<%= Url.Action("Rename","PageManagerTree")%>',
+                    type: 'POST',
+                    timeout: "100000",
+                    data: {
+                        "id": data.rslt.obj.attr("id").replace("pjson_", ""),
+                        "name": data.rslt.new_name
+                    },
+                    success: function(data) {
+                        if (data.error == true) {
 
+                        } else {
+                            $("#jsTree").jstree("refresh", -1);
+                        }
+                    }
+                });
+            }
+        })
+        .bind("open_node.jstree", function (event, data) {
+            var pageid = data.rslt.obj.attr("id").replace("pjson_", "");
+            if (pageid != 0) {
+                $.ajax({
+                    url: '<%= Url.Action("AddModule","PageManagerTree")%>',
+                    type: 'POST',
+                    data: {
+                        "id": pageid.replace("pjson_", ""),
+                    },
+                    success: function (data) {
+                        return data;
+                    }
+                });
+            }
 
-                  }); 
+        });
 
     });
 

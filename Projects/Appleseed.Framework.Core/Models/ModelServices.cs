@@ -78,7 +78,7 @@ namespace Appleseed.Framework.Core.Model
         /// <param name="modules"></param>
         /// <returns>A dictionary</returns>
         /// <exception cref="Exception"></exception>
-        public static Dictionary<string, List<Control>> ConvertModuleListToDictionary(List<IModuleSettings> modules)
+        private static Dictionary<string, List<Control>> ConvertModuleListToDictionary(List<IModuleSettings> modules)
         {
             var settings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
             var dictionary = new Dictionary<string, List<Control>>();
@@ -251,42 +251,47 @@ namespace Appleseed.Framework.Core.Model
         /// <returns>A dictionary</returns>
         public static Dictionary<string, List<Control>> GetPageModules(int pageId)
         {
-            var settings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
-            var modules = GetModulesToPage(pageId, settings.PortalID);
+            var modules = GetModulesToPage(pageId);
             return ConvertModuleListToDictionary(modules);
         }
             
-        private static List<IModuleSettings> GetModulesToPage(int pageId, int portalId)
+        public static List<IModuleSettings> GetModulesToPage(int pageId)
         {
             var result = new List<IModuleSettings>();
             var context = new AppleseedDBContext();
-            var modules = context.rb_Modules.Where(d => d.TabID == pageId || d.ShowEveryWhere == true);
+            var modules = context.rb_Modules.Where(d => d.TabID == pageId);
             foreach (var rbModulese in modules)
             {
-                var guidid = new ModulesDB().GetModuleGuid(rbModulese.ModuleID);
-                var newmodule = new ModuleSettings
-                {
-                    PageID = rbModulese.TabID,
-                    ModuleID = rbModulese.ModuleID,
-                    PaneName = rbModulese.PaneName,
-                    ModuleTitle = rbModulese.ModuleTitle,
-                    AuthorizedEditRoles = rbModulese.AuthorizedEditRoles, 
-                    AuthorizedViewRoles = rbModulese.AuthorizedViewRoles,  
-                    AuthorizedAddRoles = rbModulese.AuthorizedAddRoles,   
-                    AuthorizedDeleteRoles = rbModulese.AuthorizedDeleteModuleRoles,
-                    AuthorizedPropertiesRoles = rbModulese.AuthorizedPropertiesRoles,
-                    CacheTime = rbModulese.CacheTime,
-                    ModuleOrder = rbModulese.ModuleOrder,
-                    ShowMobile = rbModulese.ShowMobile != null && ((rbModulese.ShowMobile == null) && (bool)rbModulese.ShowMobile),
-                    DesktopSrc = context.rb_GeneralModuleDefinitions.First(d => d.GeneralModDefID == guidid).DesktopSrc,
-                    //MobileSrc =  // not supported yet
-                    SupportCollapsable = rbModulese.SupportCollapsable != null && (bool)rbModulese.SupportCollapsable,
-                    ShowEveryWhere = rbModulese.ShowEveryWhere != null && (bool)rbModulese.ShowEveryWhere,
-                    GuidID = guidid,
-                };
+                var newmodule = ConvertRb_ModuleToModuleSettings(rbModulese, context);
                 result.Add(newmodule);
             }
             return result;
+        }
+
+        private static IModuleSettings ConvertRb_ModuleToModuleSettings(rb_Modules rbModules, AppleseedDBContext context)
+        {
+            var guidid = new ModulesDB().GetModuleGuid(rbModules.ModuleID);
+            var newmodule = new ModuleSettings
+            {
+                PageID = rbModules.TabID,
+                ModuleID = rbModules.ModuleID,
+                PaneName = rbModules.PaneName,
+                ModuleTitle = rbModules.ModuleTitle,
+                AuthorizedEditRoles = rbModules.AuthorizedEditRoles,
+                AuthorizedViewRoles = rbModules.AuthorizedViewRoles,
+                AuthorizedAddRoles = rbModules.AuthorizedAddRoles,
+                AuthorizedDeleteRoles = rbModules.AuthorizedDeleteModuleRoles,
+                AuthorizedPropertiesRoles = rbModules.AuthorizedPropertiesRoles,
+                CacheTime = rbModules.CacheTime,
+                ModuleOrder = rbModules.ModuleOrder,
+                ShowMobile = rbModules.ShowMobile != null && ((rbModules.ShowMobile == null) && (bool)rbModules.ShowMobile),
+                DesktopSrc = context.rb_GeneralModuleDefinitions.First(d => d.GeneralModDefID == guidid).DesktopSrc,
+                //MobileSrc =  // not supported yet
+                SupportCollapsable = rbModules.SupportCollapsable != null && (bool)rbModules.SupportCollapsable,
+                ShowEveryWhere = rbModules.ShowEveryWhere != null && (bool)rbModules.ShowEveryWhere,
+                GuidID = guidid,
+            };
+            return newmodule;
         }
 
         /// <summary>
@@ -442,6 +447,13 @@ namespace Appleseed.Framework.Core.Model
             }
         }
 
-        
+
+
+        public static Object GetPage(int pageId)
+        {
+            var context = new AppleseedDBContext();
+            var page = context.rb_Pages.First(p => p.PageID == pageId);
+            return page;
+        }
     }
 }

@@ -10,11 +10,13 @@ namespace PageManagerTree.Models
         public string data;
         public JsTreeAttribute attr;
         public JsTreeModel[] children;
+        public string state;
     }
 
     public class JsTreeAttribute
     {
         public string id;
         public bool selected;
+        public string rel;
     }
 }

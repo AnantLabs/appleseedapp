@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -18,6 +19,7 @@ using PageManagerTree.Massive;
 using rb_ModuleSettings = PageManagerTree.Massive.rb_ModuleSettings;
 using rb_Modules = PageManagerTree.Massive.rb_Modules;
 using rb_Pages = PageManagerTree.Massive.rb_Pages;
+using Appleseed.Framework.Core.Model;
 
 namespace PageManagerTree.Controllers
 {
@@ -98,7 +100,8 @@ namespace PageManagerTree.Controllers
                 {
                     data = aux.Name,
                     attr = new JsTreeAttribute { id = "pjson_" + aux.ID.ToString()},
-                    children = childs
+                    children = childs,
+                    state = "closed"
                 };
 
                 lstTree.Add(node);
@@ -111,9 +114,14 @@ namespace PageManagerTree.Controllers
 
         public JsonResult GetTreeData()
         {
+            string URL = ConvertRelativeUrlToAbsoluteUrl(HttpUrlBuilder.BuildUrl("~/?pageid=" + 100 + "&panelist=y"));
+            System.Net.WebRequest webRequest = System.Net.WebRequest.Create(URL);
+            webRequest.Method = "GET";
+            StreamReader sr = new StreamReader(webRequest.GetResponse().GetResponseStream());
+            string result = sr.ReadToEnd();
+            var panelist = result.Split('+');
             List<PageItem> pages = new PagesDB().GetPagesFlat(this.PortalSettings.PortalID);
             List<JsTreeModel> lstTree = new List<JsTreeModel>();
-
             foreach (PageItem page in pages)
             {
                 if (page.NestLevel == 0)
@@ -122,17 +130,18 @@ namespace PageManagerTree.Controllers
                     JsTreeModel node = new JsTreeModel {
                                                     data = page.Name,
                                                     attr = new JsTreeAttribute { id = "pjson_" + page.ID.ToString()},
-                                                    children = child };
+                                                    //children = child, 
+                                                    state = "closed"};
                     lstTree.Add(node);
                 }
             }
-
             int root = 0;
             JsTreeModel rootNode = new JsTreeModel
             {
                 data = "Root",
-                attr = new JsTreeAttribute { id = "pjson_" + root.ToString() },
-                children = lstTree.ToArray<JsTreeModel>()
+                attr = new JsTreeAttribute { id = "pjson_" + root.ToString(), rel = "root"},
+                children = lstTree.ToArray<JsTreeModel>(),
+                state = "closed"
             };
 
             return Json(rootNode);
@@ -361,6 +370,15 @@ namespace PageManagerTree.Controllers
 
         }
 
+        public void MoveModuleNode(int pageId, int moduleId, string paneName)
+        {
+            rb_Modules db = new rb_Modules();
+            var module = db.Single(moduleId);
+            //module.TabId = pageId;
+            module.PaneName = paneName.TrimEnd();
+            db.Update(module, moduleId);
+        }
+
         public JsonResult Rename(int id, string name) {
 
             try {
@@ -382,7 +400,25 @@ namespace PageManagerTree.Controllers
 
             return Json(new { error = false }); 
         }
-    
+
+        public JsonResult RenameModule(int id, string name)
+        {
+
+            try
+            {
+                var db = new rb_Modules();
+                var module = db.Single(id);
+                module.ModuleTitle = name;
+                db.Update(module, module.ModuleID);
+            }
+            catch (Exception)
+            {
+                return Json(new { error = true });
+            }
+
+            return Json(new { error = false });
+        }
+
         public JsonResult ViewPage(int pageId)
         {
             var url = HttpUrlBuilder.BuildUrl(pageId);
@@ -394,6 +430,85 @@ namespace PageManagerTree.Controllers
             IPortalTemplateServices services = PortalTemplateFactory.GetPortalTemplateServices(new PortalTemplateRepository());
             int newpageid = services.CopyPage(pageId, name + "- Copy");
             return Json(new { pageId = newpageid });
+        }
+
+        public JsTreeModel[] getModuleToPane(string paneName, int pageId)
+        {
+            var pageModulesByPlaceHolder = ModelServices.GetModulesToPage(pageId);
+            var result = new List<JsTreeModel>();
+            var modulelist = pageModulesByPlaceHolder.Where(m => m.PaneName.ToLower() == paneName.ToLower());
+            int i = 0;
+            foreach (var module in modulelist)
+            {
+                JsTreeModel node = new JsTreeModel
+                {
+                    data = module.ModuleTitle,
+                    attr = new JsTreeAttribute { id = "pjson_module_" + module.ModuleID, rel = "file" },
+                };
+                i++;
+                result.Add(node);
+            }
+
+            return result.ToArray<JsTreeModel>();
+        }
+
+        public JsonResult GetTreeModule(string result, int pageId)
+        {
+            List<PageItem> pages = new PagesDB().GetPagesFlat(this.PortalSettings.PortalID);
+            List<JsTreeModel> lstTree = new List<JsTreeModel>();
+            var page = pages.First(p => p.ID == pageId);
+
+            JsTreeModel[] child = getChildrenTree(page);
+            List<JsTreeModel> child2 = new List<JsTreeModel>();
+            var panelist = result.Split('+').ToList();
+            var panetopage = ModelServices.GetPageModules(pageId);
+            var lowerpane = panelist.ConvertAll(d => d.ToLower());
+            foreach (var pane in panetopage)
+            {
+                if(!lowerpane.Contains(pane.Key))
+                    panelist.Add(pane.Key);
+            }
+            var i = 0;
+            foreach (var pane in panelist)
+            {
+                JsTreeModel[] childm = getModuleToPane(pane, pageId);
+                JsTreeModel nodem = new JsTreeModel
+                    {
+                        data = pane,
+                        attr = new JsTreeAttribute {id = "pjson_" + (100000 + i), rel= "folder"},
+                        children = childm
+                    };
+                child2.Add(nodem);
+                i++;
+            }
+            var childlist = child.ToList();
+            foreach (var childmod in child2)
+            {
+                childlist.Add(childmod);
+            }
+            child = childlist.ToArray<JsTreeModel>();
+            return Json(child);
+        }
+
+        public JsonResult AddModule(string id)
+        {
+            var pageId = Convert.ToInt32(id.Replace("pjson_", ""));
+            string URL = ConvertRelativeUrlToAbsoluteUrl(HttpUrlBuilder.BuildUrl("~/?pageid=" + pageId + "&panelist=y"));
+            System.Net.WebRequest webRequest = System.Net.WebRequest.Create(URL);
+            webRequest.Method = "GET";
+            StreamReader sr = new StreamReader(webRequest.GetResponse().GetResponseStream());
+            string result = sr.ReadToEnd();
+            
+            return GetTreeModule(result, pageId);
+        }
+
+        public string ConvertRelativeUrlToAbsoluteUrl(string relativeUrl)
+        {
+            if (Request.IsSecureConnection)
+                return string.Format("https://{0}{1}", Request.Url.Host, relativeUrl);
+            else
+                return string.Format("http://{0}{1}", Request.Url.Host, relativeUrl);
+
         }
 
     }
