@@ -244,16 +244,16 @@
         .bind("move_node.jstree", function (e, data) {
             var selectedId = data.rslt.o.attr("id");
             
-            if (selectedId.contains("module")) {
+            if (selectedId.indexOf("module") != -1) {
                 var selected = data.rslt.np.text().replace(/\s{2}/, "");
-                var children = data.rslt.o.children().text().replace(/\s/, "");
+                var children = data.rslt.np.children().children().text().replace(/\s/, "");
                 var folder = selected.replace(children, "");
                 $.ajax({
                     url: '<%= Url.Action("MoveModuleNode","PageManagerTree")%>',
                     type: 'POST',
                     timeout: "100000",
                     data: {
-                        "pageId": data.rslt.cp,
+                        "pageId": $.jstree._focused()._get_parent(data.rslt.np).attr("id").replace("pjson_", ""),
                         "paneName": folder,
                         "moduleId": data.rslt.o.attr("id").replace("pjson_module_", "")
                     },
@@ -282,7 +282,7 @@
         })
         .bind("rename.jstree",function(event,data) {
             var selectedId = data.rslt.obj.attr("id");
-            if (selectedId.contains("module")) {
+            if (selectedId.indexOf("module") != -1) {
                 $.ajax({
                     url: '<%= Url.Action("RenameModule","PageManagerTree")%>',
                     type: 'POST',
@@ -320,8 +320,8 @@
             }
         })
         .bind("open_node.jstree", function (event, data) {
-            var pageid = data.rslt.obj.attr("id").replace("pjson_", "");
-            if (pageid != 0) {
+            var  pageid = data.rslt.obj.attr("id").replace("pjson_", "");
+            if ((pageid != 0) && (pageid.indexOf('_') == -1)) {
                 $.ajax({
                     url: '<%= Url.Action("AddModule","PageManagerTree")%>',
                     type: 'POST',

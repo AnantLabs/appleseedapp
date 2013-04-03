@@ -114,12 +114,6 @@ namespace PageManagerTree.Controllers
 
         public JsonResult GetTreeData()
         {
-            string URL = ConvertRelativeUrlToAbsoluteUrl(HttpUrlBuilder.BuildUrl("~/?pageid=" + 100 + "&panelist=y"));
-            System.Net.WebRequest webRequest = System.Net.WebRequest.Create(URL);
-            webRequest.Method = "GET";
-            StreamReader sr = new StreamReader(webRequest.GetResponse().GetResponseStream());
-            string result = sr.ReadToEnd();
-            var panelist = result.Split('+');
             List<PageItem> pages = new PagesDB().GetPagesFlat(this.PortalSettings.PortalID);
             List<JsTreeModel> lstTree = new List<JsTreeModel>();
             foreach (PageItem page in pages)
@@ -374,7 +368,7 @@ namespace PageManagerTree.Controllers
         {
             rb_Modules db = new rb_Modules();
             var module = db.Single(moduleId);
-            //module.TabId = pageId;
+            module.TabID = pageId;
             module.PaneName = paneName.TrimEnd();
             db.Update(module, moduleId);
         }
@@ -475,7 +469,7 @@ namespace PageManagerTree.Controllers
                 JsTreeModel nodem = new JsTreeModel
                     {
                         data = pane,
-                        attr = new JsTreeAttribute {id = "pjson_" + (100000 + i), rel= "folder"},
+                        attr = new JsTreeAttribute {id = "pjson_pane_" + i, rel= "folder"},
                         children = childm
                     };
                 child2.Add(nodem);
@@ -493,6 +487,7 @@ namespace PageManagerTree.Controllers
         public JsonResult AddModule(string id)
         {
             var pageId = Convert.ToInt32(id.Replace("pjson_", ""));
+
             string URL = ConvertRelativeUrlToAbsoluteUrl(HttpUrlBuilder.BuildUrl("~/?pageid=" + pageId + "&panelist=y"));
             System.Net.WebRequest webRequest = System.Net.WebRequest.Create(URL);
             webRequest.Method = "GET";
