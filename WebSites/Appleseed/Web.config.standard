@@ -1,10 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-
-
-
-
-
-
 <configuration xmlns="http://schemas.microsoft.com/.NetConfiguration/v2.0">
 	<configSections>
 		<section name="dataConfiguration" type="Microsoft.Practices.EnterpriseLibrary.Data.Configuration.DatabaseSettings, Microsoft.Practices.EnterpriseLibrary.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -165,10 +159,9 @@
 		<add key="LANGUAGE_ES" value="ES"></add>
 		<add key="ImagesRepository" value="/Content/Uploads" />
 		<add key="ImagesRepositoryRelative" value="/Content/Uploads" />
-		<add key="PackageSource" value="http://example.com" />
 		<add key="RouteTesting" value="false" />
 		<add key="ScriptsModeDebug" value="false" />
-		<add key="PackageSource" value="http://updates.appleseedapp.com/nuget/" />
+		<add key="PackageSource" value="http://www.myget.org/F/appleseed/" />
 		<add key="AddWwwToRequest" value="false" />
 		<add key="MaxTokenDays" value="7" /> <!-- In days -->
 		<add key="ViewEngineCacheTime" value="10" />
