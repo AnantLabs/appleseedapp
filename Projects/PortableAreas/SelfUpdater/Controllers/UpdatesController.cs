@@ -34,8 +34,9 @@ namespace SelfUpdater.Controllers
                 foreach (var projectManager in projectManagers) {
                     var installedPackages = this.GetInstalledPackages(projectManager);
 
-                    foreach (var installedPackage in installedPackages) {
-                        IPackage update = projectManager.GetUpdate(installedPackage);
+                    foreach (var installedPackage in installedPackages)
+                    {
+                        IPackage update = projectManager.GetUpdatedPackage(installedPackage);
                         InstallationState package = new InstallationState();
                         package.Installed = installedPackage;
                         package.Update = update;

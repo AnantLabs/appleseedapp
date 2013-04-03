@@ -103,9 +103,27 @@ namespace SelfUpdater.Controllers
 
         public IPackage GetUpdate(IPackage package)
         {
+            //var algo =
+            //    ((DataServicePackageRepository) _projectManager.SourceRepository).GetUpdates(
+            //        LocalRepository.GetPackages(), true, true, new List<FrameworkName>(), new List<IVersionSpec>());
+
+
             var packages = PackageRepositoryExtensions.GetUpdates(this.SourceRepository,
-                                                                  this.LocalRepository.GetPackages(), true, false);
+                                                                  this.LocalRepository.GetPackages(), true, true);
             return packages.FirstOrDefault(x => x.Id == package.Id);
+        }
+
+        public IPackage GetUpdatedPackage(IPackage package)
+        {
+            var packages = GetRemotePackages().Where(x => x.Id == package.Id );
+            if(packages.Count() == 0 || packages.Count() > 1)
+            {
+                return null;
+            }
+            var p = packages.Single();
+            return p.Version > package.Version ? p : null;
+
+
         }
 
         internal static string GetWebRepositoryDirectory(string siteRoot)
