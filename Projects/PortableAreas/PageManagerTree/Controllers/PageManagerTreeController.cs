@@ -159,6 +159,23 @@ namespace PageManagerTree.Controllers
             }
         }
 
+        public JsonResult removeModule(int id)
+        {
+            try
+            {
+
+                
+                
+
+                return Json(new { error = false });
+            }
+            catch (SqlException)
+            {
+                string errorMessage = General.GetString("TAB_DELETE_FAILED", "Failed to delete Page", this);
+                return Json(new { error = true, errorMess = errorMessage });
+            }
+        }
+
         public JsonResult Clone(int id, int parentId)
         {
             try
@@ -457,11 +474,6 @@ namespace PageManagerTree.Controllers
             var panelist = result.Split('+').ToList();
             var panetopage = ModelServices.GetPageModules(pageId);
             var lowerpane = panelist.ConvertAll(d => d.ToLower());
-            foreach (var pane in panetopage)
-            {
-                if(!lowerpane.Contains(pane.Key))
-                    panelist.Add(pane.Key);
-            }
             var i = 0;
             foreach (var pane in panelist)
             {
@@ -474,6 +486,22 @@ namespace PageManagerTree.Controllers
                     };
                 child2.Add(nodem);
                 i++;
+            }
+            foreach (var pane in panetopage)
+            {
+                if (!lowerpane.Contains(pane.Key))
+                {
+                    JsTreeModel[] childm = getModuleToPane(pane.Key, pageId);
+                    JsTreeModel nodem = new JsTreeModel
+                    {
+                        data = pane.Key,
+                        attr = new JsTreeAttribute { id = "pjson_pane_" + i, rel = "folder2" },
+                        children = childm
+                    };
+                    child2.Add(nodem);
+                    i++;
+                }
+                    panelist.Add(pane.Key);
             }
             var childlist = child.ToList();
             foreach (var childmod in child2)
