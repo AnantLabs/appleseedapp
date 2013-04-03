@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Appleseed.DesktopModules.CommunityModules.HTMLDocument
+namespace Appleseed.DesktopModules.CoreModules.HTMLDocument
 {
     using System;
     using System.Collections.Generic;

@@ -12,7 +12,7 @@ using Appleseed.Framework;
 using Appleseed.Framework.Web.UI.WebControls;
 using LinkButton = Appleseed.Framework.Web.UI.WebControls.LinkButton;
 
-namespace Appleseed.DesktopModules.CommunityModules.HTMLDocument
+namespace Appleseed.DesktopModules.CoreModules.HTMLDocument
 {
     public partial class HtmlEditModal : EditItemPage
     {

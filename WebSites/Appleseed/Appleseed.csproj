@@ -619,12 +619,14 @@
     </Compile>
     <Compile Include="DesktopModules\CommunityModules\Breadcrumbs\BreadCrumbs.ascx.cs">
       <DependentUpon>BreadCrumbs.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="DesktopModules\CommunityModules\Breadcrumbs\BreadCrumbs.ascx.designer.cs">
       <DependentUpon>BreadCrumbs.ascx</DependentUpon>
     </Compile>
     <Compile Include="DesktopModules\CommunityModules\ComponentModule\ComponentModule.ascx.cs">
       <DependentUpon>ComponentModule.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="DesktopModules\CommunityModules\ComponentModule\ComponentModule.ascx.designer.cs">
       <DependentUpon>ComponentModule.ascx</DependentUpon>
@@ -736,6 +738,7 @@
     </Compile>
     <Compile Include="DesktopModules\CommunityModules\XmlModule\XmlModule.ascx.cs">
       <DependentUpon>XmlModule.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="DesktopModules\CommunityModules\XmlModule\XmlModule.ascx.designer.cs">
       <DependentUpon>XmlModule.ascx</DependentUpon>
@@ -854,6 +857,27 @@
     </Compile>
     <Compile Include="DesktopModules\CoreModules\FileManager\FileManager.ascx.designer.cs">
       <DependentUpon>FileManager.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CoreModules\HTMLDocument\HtmlEdit.aspx.cs">
+      <DependentUpon>HtmlEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CoreModules\HTMLDocument\HtmlEdit.aspx.designer.cs">
+      <DependentUpon>HtmlEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CoreModules\HTMLDocument\HtmlEditModal.aspx.cs">
+      <DependentUpon>HtmlEditModal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CoreModules\HTMLDocument\HtmlEditModal.aspx.designer.cs">
+      <DependentUpon>HtmlEditModal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopModules\CoreModules\HTMLDocument\HtmlModule.ascx.cs">
+      <DependentUpon>HtmlModule.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CoreModules\HTMLDocument\HtmlModule.ascx.designer.cs">
+      <DependentUpon>HtmlModule.ascx</DependentUpon>
     </Compile>
     <Compile Include="DesktopModules\CoreModules\MagicUrls\MagicUrls.ascx.cs">
       <DependentUpon>MagicUrls.ascx</DependentUpon>
@@ -1178,13 +1202,6 @@
     </Compile>
     <Compile Include="Shared\SiteMasterDefault.master.designer.cs">
       <DependentUpon>SiteMasterDefault.master</DependentUpon>
-    </Compile>
-    <Compile Include="TestDefault.aspx.cs">
-      <DependentUpon>TestDefault.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TestDefault.aspx.designer.cs">
-      <DependentUpon>TestDefault.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\Design\PagingDesigner.cs" />
     <Compile Include="CSSFriendly\Adapters\ChangePasswordAdapter.cs" />
@@ -5549,6 +5566,14 @@
     <Content Include="DesktopModules\CoreModules\FileManager\images\fileedit.jpg" />
     <Content Include="DesktopModules\CoreModules\FileManager\install.xml" />
     <Content Include="DesktopModules\CoreModules\FileManager\readme.txt" />
+    <Content Include="DesktopModules\CoreModules\HTMLDocument\HtmlDocument.xml" />
+    <Content Include="DesktopModules\CoreModules\HTMLDocument\HtmlEdit.aspx" />
+    <Content Include="DesktopModules\CoreModules\HTMLDocument\HtmlEditModal.aspx" />
+    <Content Include="DesktopModules\CoreModules\HTMLDocument\HtmlModule.ascx" />
+    <Content Include="DesktopModules\CoreModules\HTMLDocument\install.sql" />
+    <Content Include="DesktopModules\CoreModules\HTMLDocument\install.xml" />
+    <Content Include="DesktopModules\CoreModules\HTMLDocument\readme.txt" />
+    <Content Include="DesktopModules\CoreModules\HTMLDocument\uninstall.sql" />
     <Content Include="DesktopModules\CoreModules\MagicUrls\cancel.gif" />
     <Content Include="DesktopModules\CoreModules\MagicUrls\delete.gif" />
     <Content Include="DesktopModules\CoreModules\MagicUrls\edit.gif" />
@@ -5896,7 +5921,6 @@
     </Content>
     <Content Include="Shared\PanesMasterDefault.master" />
     <Content Include="Shared\SiteMasterDefault.master" />
-    <Content Include="TestDefault.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
