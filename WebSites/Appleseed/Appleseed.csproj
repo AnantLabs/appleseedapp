@@ -112,10 +112,10 @@
     </PublishDatabaseSettings>
     <!--<ExcludeFoldersFromDeployment>Portals</ExcludeFoldersFromDeployment>-->
     <!--<ExcludeFilesFromDeployment>Web.config</ExcludeFilesFromDeployment>-->
-    <CopyAllFilesToSingleFolderForPackageDependsOn>
+    <CopyAllFilesToSingleFolderForMsdeployDependsOn>
       CustomCollectFiles;
-      $(CopyAllFilesToSingleFolderForPackageDependsOn);
-    </CopyAllFilesToSingleFolderForPackageDependsOn>
+      $(CopyAllFilesToSingleFolderForMsdeployDependsOn);
+    </CopyAllFilesToSingleFolderForMsdeployDependsOn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -132,10 +132,10 @@
     <PublishDatabases>false</PublishDatabases>
     <!--<ExcludeFoldersFromDeployment>Portals</ExcludeFoldersFromDeployment>-->
     <!--<ExcludeFilesFromDeployment>Web.config</ExcludeFilesFromDeployment>-->
-	<CopyAllFilesToSingleFolderForPackageDependsOn>
+	<CopyAllFilesToSingleFolderForMsdeployDependsOn>
       CustomCollectFiles;
-      $(CopyAllFilesToSingleFolderForPackageDependsOn);
-    </CopyAllFilesToSingleFolderForPackageDependsOn>
+      $(CopyAllFilesToSingleFolderForMsdeployDependsOn);
+    </CopyAllFilesToSingleFolderForMsdeployDependsOn>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Ajax">
@@ -6027,10 +6027,10 @@
   <Target Name="AfterBuild">
   </Target>
   <PropertyGroup>
-    <CopyAllFilesToSingleFolderForPackageDependsOn>
+    <CopyAllFilesToSingleFolderForMsdeployDependsOn>
       CustomCollectFiles;
-      $(CopyAllFilesToSingleFolderForPackageDependsOn);
-    </CopyAllFilesToSingleFolderForPackageDependsOn>
+      $(CopyAllFilesToSingleFolderForMsdeployDependsOn);
+    </CopyAllFilesToSingleFolderForMsdeployDependsOn>
   </PropertyGroup>-->
   <Target Name="CustomCollectFiles">
     <ItemGroup>
