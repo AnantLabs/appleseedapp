@@ -20,10 +20,6 @@ namespace SelfUpdater.Controllers
     [Authorize]
     public class UpdatesController : BaseController
     {
-        public UpdatesController()
-        {
-        }
-
         public ActionResult Module()
         {
             return View();
@@ -33,31 +29,20 @@ namespace SelfUpdater.Controllers
 
             try {
 
-                var section = HttpContext.GetSection("system.web/httpRuntime") as System.Web.Configuration.HttpRuntimeSection;
-                if (section.WaitChangeNotification < 5) {
-                    return View("ConfigError");
-                }
-
-                SelfUpdaterEntities context = new SelfUpdaterEntities();
-
-                var scheduledUpdates = context.SelfUpdatingPackages.ToList();
-
-                WebProjectManager[] projectManagers = this.GetProjectManagers();
-                List<InstallationState> installed = new List<InstallationState>();
+                WebProjectManager[] projectManagers = GetProjectManagers();
+                var installed = new List<InstallationState>();
                 foreach (var projectManager in projectManagers) {
                     var installedPackages = this.GetInstalledPackages(projectManager);
+                    var packagesList = installedPackages.GroupBy(x => x.Id);
+                    var installedPackagesList = packagesList.Select(pack => pack.Single(y => y.Version == pack.Max(x => x.Version))).ToList();
 
-                    foreach (var installedPackage in installedPackages) {
-                        IPackage update = projectManager.GetUpdate(installedPackage);
-                        InstallationState package = new InstallationState();
+                    foreach (var installedPackage in installedPackagesList)
+                    {
+                        IPackage update = projectManager.GetUpdatedPackage(installedPackage);
+                        var package = new InstallationState();
                         package.Installed = installedPackage;
                         package.Update = update;
                         package.Source = projectManager.SourceRepository.Source;
-
-                        if (scheduledUpdates.Any(d => d.PackageId == installedPackage.Id)) {
-                            package.Scheduled = true;
-                        }
-
 
                         if (installed.Any(d => d.Installed.Id == package.Installed.Id)) {
                             var addedPackage = installed.Where(d => d.Installed.Id == package.Installed.Id).First();
@@ -74,7 +59,11 @@ namespace SelfUpdater.Controllers
                     }
                 }
 
-                return base.View(installed);
+                var model = new UpdatesModel();
+                model.Updates = installed;
+
+
+                return View(model);
             }
             catch (Exception e) {
                 ErrorHandler.Publish(LogLevel.Error, "Nuget Get packages from feed", e);
@@ -83,117 +72,117 @@ namespace SelfUpdater.Controllers
         
         }
 
-        public ActionResult Upgrade(string packageId, string source)
-        {
-            try {
+        //public ActionResult Upgrade(string packageId, string source)
+        //{
+        //    try {
 
-                var projectManager = GetProjectManagers().Where(p => p.SourceRepository.Source == source).First();
+        //        var projectManager = GetProjectManagers().Where(p => p.SourceRepository.Source == source).First();
 
-                projectManager.addLog("Starting update...");
+        //        projectManager.addLog("Starting update...");
 
-                IPackage installedPackage = GetInstalledPackage(projectManager, packageId);
+        //        IPackage installedPackage = GetInstalledPackage(projectManager, packageId);
 
-                IPackage update = projectManager.GetUpdate(installedPackage);
+        //        IPackage update = projectManager.GetUpdate(installedPackage);
 
-                projectManager.UpdatePackage(update);
+        //        projectManager.UpdatePackage(update);
 
-                projectManager.addLog("Waiting to Reload Site");
+        //        projectManager.addLog("Waiting to Reload Site");
 
-                var logger = (string)System.Web.HttpContext.Current.Application["NugetLogger"];
+        //        var logger = (string)System.Web.HttpContext.Current.Application["NugetLogger"];
 
-                return Json(new {
-                    msg = "Updated " + packageId + " to " + update.Version.ToString() + "!",
-                    updated = true, NugetLog = logger
-                }, JsonRequestBehavior.AllowGet);
-            } catch (Exception exc) {
-                ErrorHandler.Publish(LogLevel.Error, exc);
+        //        return Json(new {
+        //            msg = "Updated " + packageId + " to " + update.Version.ToString() + "!",
+        //            updated = true, NugetLog = logger
+        //        }, JsonRequestBehavior.AllowGet);
+        //    } catch (Exception exc) {
+        //        ErrorHandler.Publish(LogLevel.Error, exc);
 
-                return Json(new {
-                    msg = "Error updating " + packageId,
-                    updated = false
-                }, JsonRequestBehavior.AllowGet);
-            }
-        }
-
-
-        public ActionResult DelayedUpgrade(string packageId, string source, string version)
-        {
-            SelfUpdaterEntities context = new SelfUpdaterEntities();
-
-            var entity = context.SelfUpdatingPackages.Where(d => d.PackageId == packageId).FirstOrDefault();
-            if (entity == default(SelfUpdatingPackages)) {
-
-                entity = new SelfUpdatingPackages() {
-                    PackageId = packageId,
-                    Source = source,
-                    PackageVersion = version                    
-                };
-
-                context.SelfUpdatingPackages.AddObject(entity);
-                context.SaveChanges();
-            }
-
-            return Json(new {
-                msg = "Package " + packageId + " scheduled to update!",
-                res = true
-            }, JsonRequestBehavior.AllowGet);
-
-        }
-
-        public ActionResult RemoveDelayedUpgrade(string packageId)
-        {
-            SelfUpdaterEntities context = new SelfUpdaterEntities();
-
-            var entity = context.SelfUpdatingPackages.Where(d => d.PackageId == packageId).FirstOrDefault();
-            if (entity != default(SelfUpdatingPackages)) {
-                context.SelfUpdatingPackages.DeleteObject(entity);
-                context.SaveChanges();
+        //        return Json(new {
+        //            msg = "Error updating " + packageId,
+        //            updated = false
+        //        }, JsonRequestBehavior.AllowGet);
+        //    }
+        //}
 
 
-                return Json(new {
-                    msg = "Package " + packageId + " unscheduled!",
-                    res = true
-                }, JsonRequestBehavior.AllowGet);
-            } else {
-                return Json(new {
-                    msg = "Package " + packageId + " unscheduled!",
-                    res = false
-                }, JsonRequestBehavior.AllowGet);
-            }
-        }
+        //public ActionResult DelayedUpgrade(string packageId, string source, string version)
+        //{
+        //    SelfUpdaterEntities context = new SelfUpdaterEntities();
 
-        [AcceptVerbs(HttpVerbs.Post)]
-        public void RestartSite()
-        {
-            if (PortalSecurity.IsInRole("Admins")) {
-                /*Forcing site restart*/
-                var doc = new XmlDocument();
-                doc.PreserveWhitespace = true;
-                var configFile = Server.MapPath("~/web.config");
-                doc.Load(configFile);
+        //    var entity = context.SelfUpdatingPackages.Where(d => d.PackageId == packageId).FirstOrDefault();
+        //    if (entity == default(SelfUpdatingPackages)) {
 
-                var writer = new XmlTextWriter(configFile, Encoding.UTF8) { Formatting = Formatting.Indented };
-                doc.Save(writer);
-                writer.Flush();
-                writer.Close();
-                /*....................*/
-            }
-        }
+        //        entity = new SelfUpdatingPackages() {
+        //            PackageId = packageId,
+        //            Source = source,
+        //            PackageVersion = version                    
+        //        };
 
-        public ActionResult Status()
-        {
-            var logger = (string)System.Web.HttpContext.Current.Application["NugetLogger"];
-            if (logger == null || logger.Equals(string.Empty)) {
-                return Json(true);
-            }
-            else {
-                return Json(false);
-            }
-        }
+        //        context.SelfUpdatingPackages.AddObject(entity);
+        //        context.SaveChanges();
+        //    }
+
+        //    return Json(new {
+        //        msg = "Package " + packageId + " scheduled to update!",
+        //        res = true
+        //    }, JsonRequestBehavior.AllowGet);
+
+        //}
+
+        //public ActionResult RemoveDelayedUpgrade(string packageId)
+        //{
+        //    SelfUpdaterEntities context = new SelfUpdaterEntities();
+
+        //    var entity = context.SelfUpdatingPackages.Where(d => d.PackageId == packageId).FirstOrDefault();
+        //    if (entity != default(SelfUpdatingPackages)) {
+        //        context.SelfUpdatingPackages.DeleteObject(entity);
+        //        context.SaveChanges();
+
+
+        //        return Json(new {
+        //            msg = "Package " + packageId + " unscheduled!",
+        //            res = true
+        //        }, JsonRequestBehavior.AllowGet);
+        //    } else {
+        //        return Json(new {
+        //            msg = "Package " + packageId + " unscheduled!",
+        //            res = false
+        //        }, JsonRequestBehavior.AllowGet);
+        //    }
+        //}
+
+        //[AcceptVerbs(HttpVerbs.Post)]
+        //public void RestartSite()
+        //{
+        //    if (PortalSecurity.IsInRole("Admins")) {
+        //        /*Forcing site restart*/
+        //        var doc = new XmlDocument();
+        //        doc.PreserveWhitespace = true;
+        //        var configFile = Server.MapPath("~/web.config");
+        //        doc.Load(configFile);
+
+        //        var writer = new XmlTextWriter(configFile, Encoding.UTF8) { Formatting = Formatting.Indented };
+        //        doc.Save(writer);
+        //        writer.Flush();
+        //        writer.Close();
+        //        /*....................*/
+        //    }
+        //}
+
+        //public ActionResult Status()
+        //{
+        //    var logger = (string)System.Web.HttpContext.Current.Application["NugetLogger"];
+        //    if (logger == null || logger.Equals(string.Empty)) {
+        //        return Json(true);
+        //    }
+        //    else {
+        //        return Json(false);
+        //    }
+        //}
 
         private IPackage GetInstalledPackage(WebProjectManager projectManager, string packageId)
         {
-            IPackage package = projectManager.GetInstalledPackages(string.Empty).Where(d => d.Id == packageId).FirstOrDefault();
+            IPackage package = projectManager.GetInstalledPackages().Where(d => d.Id == packageId).FirstOrDefault();
 
             if (package == null) {
                 throw new InvalidOperationException(string.Format("The package for package ID '{0}' is not installed in this website. Copy the package into the App_Data/packages folder.", packageId));
@@ -201,16 +190,16 @@ namespace SelfUpdater.Controllers
             return package;
         }
 
-        public JsonResult NugetStatus() {
+        //public JsonResult NugetStatus() {
 
-            //var projectManager = GetProjectManagers().Where(p => p.SourceRepository.Source == source).First();
+        //    //var projectManager = GetProjectManagers().Where(p => p.SourceRepository.Source == source).First();
 
-            var logger = (string)System.Web.HttpContext.Current.Application["NugetLogger"];
+        //    //var logger = (string)System.Web.HttpContext.Current.Application["NugetLogger"];
             
 
-            //var logger = projectManager.getLogs();
-            return Json(logger, JsonRequestBehavior.AllowGet);
+        //    //var logger = projectManager.getLogs();
+        //    return Json(logger, JsonRequestBehavior.AllowGet);
 
-        }
+        //}
     }
 }

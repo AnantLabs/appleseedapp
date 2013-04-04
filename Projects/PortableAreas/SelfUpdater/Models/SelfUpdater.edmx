@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SelfUpdaterModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="SelfUpdaterModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="SelfUpdaterModelStoreContainer">
           <EntitySet Name="SelfUpdatingPackages" EntityType="SelfUpdaterModel.Store.SelfUpdatingPackages" store:Type="Tables" Schema="dbo" />
         </EntityContainer>
@@ -16,9 +16,9 @@
           <Property Name="PackageId" Type="nvarchar(max)" Nullable="false" />
           <Property Name="PackageVersion" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Source" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Install" Type="bit" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SelfUpdaterModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -33,6 +33,7 @@
           <Property Name="PackageId" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="PackageVersion" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Source" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="Boolean" Name="Install" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -41,7 +42,8 @@
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="SelfUpdaterModelStoreContainer" CdmEntityContainer="SelfUpdaterEntities">
           <EntitySetMapping Name="SelfUpdatingPackages"><EntityTypeMapping TypeName="SelfUpdaterModel.SelfUpdatingPackages"><MappingFragment StoreEntitySet="SelfUpdatingPackages">
-            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Install" ColumnName="Install" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
             <ScalarProperty Name="PackageId" ColumnName="PackageId" />
             <ScalarProperty Name="PackageVersion" ColumnName="PackageVersion" />
             <ScalarProperty Name="Source" ColumnName="Source" />

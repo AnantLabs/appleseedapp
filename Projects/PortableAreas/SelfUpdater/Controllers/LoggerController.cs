@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Microsoft.AspNet.SignalR;
 using NuGet;
 
 namespace SelfUpdater.Controllers
@@ -28,7 +29,8 @@ namespace SelfUpdater.Controllers
             }
             msg += message;
 
-
+            IHubContext hub = GlobalHost.ConnectionManager.GetHubContext<SignalR.SelfUpdaterHub>();
+            hub.Clients.All.nuevoProcentaje(msg);
 
 
             // Lo escribo en un archivo para ver que anda
@@ -67,7 +69,15 @@ namespace SelfUpdater.Controllers
                 }
             }
             if (message.Contains("Successfully added")) {
-                list.Add("Successful", message);
+                if (list.ContainsKey("Successful"))
+                {
+                    list["Successful"] = message;
+                }
+                else
+                {
+                    list.Add("Successful", message);
+                }
+                
             }
             if (message.Contains("Waiting to Reload Site")) {
                 list.Add("Waiting", message);
@@ -87,7 +97,7 @@ namespace SelfUpdater.Controllers
                 mensaje += "<li>" + list["Waiting"] + "</li>";
             }
 
-            HttpContext.Current.Application["NugetLogger"] = mensaje;
+            //HttpContext.Current.Application["NugetLogger"] = mensaje;
             
             
             
@@ -97,6 +107,22 @@ namespace SelfUpdater.Controllers
 
             var msgs = String.Empty;            
             return msgs;
+        }
+
+        public FileConflictResolution ResolveFileConflict(string message)
+        {
+            try
+            {
+                var dir = HttpContext.Current.Request.MapPath("~/rb_logs") + "\\Nuget.txt";
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(dir, true))
+                {
+                    file.WriteLine("ResolveFileConflict: " + DateTime.Now.ToString());
+                    file.WriteLine(message);
+                }
+            }
+            catch (Exception) { }
+
+            return FileConflictResolution.OverwriteAll;
         }
     }
 }
