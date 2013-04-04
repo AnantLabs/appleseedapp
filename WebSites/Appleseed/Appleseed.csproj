@@ -5674,6 +5674,7 @@
     <Content Include="images\1x1black.gif" />
     <Content Include="images\file.png" />
     <Content Include="images\folder.png" />
+    <Content Include="images\folder2.png" />
     <Content Include="images\img\1x1.gif" />
     <Content Include="images\img\arrow.gif" />
     <Content Include="images\img\arrow_down.gif" />
