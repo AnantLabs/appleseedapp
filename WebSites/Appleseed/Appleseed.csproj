@@ -633,6 +633,7 @@
     </Compile>
     <Compile Include="DesktopModules\CommunityModules\ComponentModule\ComponentModuleEdit.aspx.cs">
       <DependentUpon>ComponentModuleEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="DesktopModules\CommunityModules\ComponentModule\ComponentModuleEdit.aspx.designer.cs">
       <DependentUpon>ComponentModuleEdit.aspx</DependentUpon>
