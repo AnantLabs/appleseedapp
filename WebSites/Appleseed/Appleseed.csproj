@@ -132,6 +132,10 @@
     <PublishDatabases>false</PublishDatabases>
     <!--<ExcludeFoldersFromDeployment>Portals</ExcludeFoldersFromDeployment>-->
     <!--<ExcludeFilesFromDeployment>Web.config</ExcludeFilesFromDeployment>-->
+	<CopyAllFilesToSingleFolderForPackageDependsOn>
+      CustomCollectFiles;
+      $(CopyAllFilesToSingleFolderForPackageDependsOn);
+    </CopyAllFilesToSingleFolderForPackageDependsOn>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Ajax">
@@ -5988,6 +5992,9 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
@@ -6018,13 +6025,13 @@
   <Target Name="BeforeBuild">
   </Target>
   <Target Name="AfterBuild">
-  </Target>-->
+  </Target>
   <PropertyGroup>
     <CopyAllFilesToSingleFolderForPackageDependsOn>
       CustomCollectFiles;
       $(CopyAllFilesToSingleFolderForPackageDependsOn);
     </CopyAllFilesToSingleFolderForPackageDependsOn>
-  </PropertyGroup>
+  </PropertyGroup>-->
   <Target Name="CustomCollectFiles">
     <ItemGroup>
       <_CustomFiles Include="packages\**\*.*" />
