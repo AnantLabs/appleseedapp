@@ -100,7 +100,7 @@ namespace PageManagerTree.Controllers
                 {
                     data = aux.Name,
                     attr = new JsTreeAttribute { id = "pjson_" + aux.ID.ToString()},
-                    children = childs,
+                    //children = childs,
                     state = "closed"
                 };
 
@@ -159,13 +159,18 @@ namespace PageManagerTree.Controllers
             }
         }
 
-        public JsonResult removeModule(int id)
+        public JsonResult RemoveModule(int id)
         {
             try
             {
+                if (PortalSecurity.IsInRoles(PortalSecurity.GetDeleteModulePermissions(id)))
+                {
+                    // must delete from database too
+                    var moddb = new ModulesDB();
 
-                
-                
+                    // TODO add userEmail and useRecycler
+                    moddb.DeleteModule(id);
+                }
 
                 return Json(new { error = false });
             }
@@ -466,7 +471,6 @@ namespace PageManagerTree.Controllers
         public JsonResult GetTreeModule(string result, int pageId)
         {
             List<PageItem> pages = new PagesDB().GetPagesFlat(this.PortalSettings.PortalID);
-            List<JsTreeModel> lstTree = new List<JsTreeModel>();
             var page = pages.First(p => p.ID == pageId);
 
             JsTreeModel[] child = getChildrenTree(page);
@@ -532,6 +536,16 @@ namespace PageManagerTree.Controllers
             else
                 return string.Format("http://{0}{1}", Request.Url.Host, relativeUrl);
 
+        }
+
+        public string GetUrlToEdit(string pageId, string moduleId)
+        {
+            var url = HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/Admin/ModuleSettings.aspx", Int32.Parse(pageId));
+            //if (Request.QueryString.GetValues("ModalChangeMaster") != null)
+
+            url += "&mID=" + moduleId;
+            
+            return url;
         }
 
     }
