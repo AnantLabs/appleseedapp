@@ -276,6 +276,13 @@
                         });
                     }
             },
+            "editModule": {
+                "label": '<%: General.GetString("EDIT") %>',
+                "action":
+                    function(obj) {
+                        editModule(obj.parents()[3].id.replace("pjson_", ""), obj.attr("id").replace("pjson_module_", ""));
+                    },
+                },
             "ccp": false,
             "remove": false,
             "rename": false,
@@ -351,16 +358,20 @@
                 "separator_before": true
             },
             "deletemodule": {
-                "label": '<%: Appleseed.Framework.General.GetString("DELETE") %>',
+                "label": '<%: General.GetString("DELETE") %>',
                 "action":
                     function (obj) {
+                        var agree = confirm('<%: General.GetString("CONFIRM_DELETE") %>');
+                        if (agree)
+                            deleteModule(obj.attr("id").replace("pjson_module_", ""));
+                        else
+                            return false;
                     },
                 "separator_before": true
             },
         };
         
-        if ($(node).attr("rel") == "folder") {
-            // Delete the "delete" menu item
+        if (($(node).attr("rel") == "folder")||($(node).attr("rel") == "root")) {
             delete items.delete;
             delete items.create;
             delete items.copyItem;
@@ -368,6 +379,8 @@
             delete items.renameItem;
             delete items.ViewItem;
             delete items.edit;
+            delete items.deletemodule;
+            delete items.editModule;
         }
         
         if ($(node).attr("rel") == "file") {
@@ -375,6 +388,13 @@
             delete items.copyItem;
             delete items.cloneItem;
             delete items.ViewItem;
+            delete items.delete;
+            delete items.edit;
+        }
+        
+        if ($(node).attr("rel") == undefined) {
+            delete items.deletemodule;
+            delete items.editModule;
         }
 
         return items;
@@ -402,59 +422,60 @@
 
     function deletePage(id){
         if(id != 0) {           
-            if ((id.indexOf('_') != -1)) {
-                $("#jsTree").jstree("refresh", -1);
-            } else {
-                $.ajax({
-                    url: '<%= Url.Action("remove","PageManagerTree")%>',
-                    type: 'POST',
-                    timeout: "100000",
-                    data: {
-                        "id": id
-                    },
-                    success: function (data) {
-                        if (data.error == true) {
-                            alert(data.errorMess.toString());
-                        } else {
-                            $("#jsTree").jstree("refresh", -1);
-                        }
+           
+            $.ajax({
+                url: '<%= Url.Action("remove","PageManagerTree")%>',
+                type: 'POST',
+                timeout: "100000",
+                data: {
+                    "id": id
+                },
+                success: function (data) {
+                    if (data.error == true) {
+                        alert(data.errorMess.toString());
+                    } else {
+                        $("#jsTree").jstree("refresh", -1);
                     }
-                });
-            }          
+                }
+            });
+                     
        }
     }
     
-    function deleteModule(paneLocation, page, id) {
-        var modulelist = document.getElementById(paneLocation).getElementsByTagName("li");
-        var cantmodule = modulelist.length;
-        var i = 0;
-        var found = false;
-        var index = -1;
-        while ((i < cantmodule)&&(!found)) {
-            var moduleId = modulelist[i].id;
-            if (moduleId == id) {
-                found = true;
-                index = i;
-            }
-                
-            i++;
-        }
-        var page = page;
+    function deleteModule(moduleId) {
 
         $.ajax({
-            url: '<%= HttpUrlBuilder.BuildUrl("~/Appleseed.Core/PageLayout/DeleteBtn_Click") %>',
+            url: '<%= Url.Action("RemoveModule","PageManagerTree")%>',
             type: "POST",
             timeout: 180000,
             data: {
-                pane: paneLocation,
-                pageId: page,
-                selectedIndex: index,
+                id: moduleId,
             },
             success: function (data) {
-                if (data.error == false)
+                if (data.error == true) {
+                    alert(data.errorMess.toString());
+                } else {
                     $("#jsTree").jstree("refresh", -1);
+                }
             }
         });
+    }
+    
+    function editModule(idPage, moduleId) {
+       
+         $.ajax({
+             url: '<%= Url.Action("GetUrlToEdit","PageManagerTree")%>',
+             type: "POST",
+             timeout: 180000,
+             data: {
+                 pageId: idPage, 
+                 moduleId: moduleId,
+             },
+             success: function (data) {
+                 window.location.href = data;
+                 
+             }
+         });
     }
 
     $(function() {
