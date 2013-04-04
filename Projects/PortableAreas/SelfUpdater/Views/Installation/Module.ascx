@@ -16,7 +16,8 @@
 </div>
 
 <div id="UpdateDiv">
-    <% Html.RenderAction("UpdateModule","Updates"); %>
+    <% Html.RenderPartial("UpdateModule", Model.Updates); %>
+    <%--<% Html.RenderAction("UpdateModule","Updates"); %>--%>
 </div>
 
 <input type="button" value="Apply Changes" onclick="InstallPackages()" />
