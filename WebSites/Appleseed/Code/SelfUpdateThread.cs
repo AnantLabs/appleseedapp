@@ -83,10 +83,20 @@ namespace Appleseed.Code
                         }
                     }
 
+                    var pManager = GetProjectManagers().First();
+                    var installedPackages = GetInstalledPackages(pManager);
+                    var packagesList = installedPackages.GroupBy(x => x.Id);
+                    var installednotLatest = new List<IPackage>();
+                    foreach (var package in packagesList)
+                    {
+                        var version = package.Max(x => x.Version);
+                        installednotLatest.AddRange(package.Where(pack => pack.Version != version));
+                    }
 
-
-
-
+                    foreach (var package in installednotLatest)
+                    {
+                        pManager.RemovePackageFromLocalRepository(package);
+                    }
 
                     context.SaveChanges();
 
@@ -136,6 +146,13 @@ namespace Appleseed.Code
                 throw new InvalidOperationException(string.Format("The package for package ID '{0}' is not installed in this website. Copy the package into the App_Data/packages folder.", packageId));
             }
             return package;
+        }
+
+        private IEnumerable<IPackage> GetInstalledPackages(WebProjectManager projectManager)
+        {
+            var packages = projectManager.GetInstalledPackages();
+
+            return packages;
         }
 
     }

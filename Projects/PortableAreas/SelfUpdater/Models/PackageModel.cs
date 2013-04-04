@@ -5,6 +5,17 @@ using System.Web;
 
 namespace SelfUpdater.Models
 {
+    public class InstallPackagesModel
+    {
+        public string icon { get; set; }
+        public string name { get; set; }
+        public string version { get; set; }
+        public string author { get; set; }
+        public string source { get; set; }
+        
+    }
+
+
     public class PackageModel
     {
 
