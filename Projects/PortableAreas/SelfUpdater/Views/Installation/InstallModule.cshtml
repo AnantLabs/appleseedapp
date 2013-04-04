@@ -1,35 +1,31 @@
-﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<dynamic>" %>
+﻿@model List<SelfUpdater.Models.InstallPackagesModel>
+    
 <table id="available_packages">
-    <%foreach (var package in Model)
-      { %>
+    @foreach (var package in Model){ 
     <tr>
         <td>
-            <img src="<%: package.icon %>" alt="" />
+            <img src="@package.icon" alt="" />
         </td>
         <td>
-            <%: package.name %>
+            @package.name
         </td>
         <td>
-            <%: package.version%>
+            @package.version
         </td>
         <td>
-            <%: package.author%>
+            @package.author
         </td>
-        <%--<td>
-            <a href="javascript:void(0);" onclick="installPackage('<%: package.name %>', '<%: package.source %>', '<%: package.version %>' );">
-                install</a>
-        </td>--%>
         <td>
             <input class="InstallChecker" type="checkbox" />
-            <input type="hidden" class="PackageName" value="<%: package.name %>"/>
-            <input type="hidden" class="PackageSource" value="<%: package.source %>"/>
-            <input type="hidden" class="PackageVersion" value="<%: package.version %>"/>
+            <input type="hidden" class="PackageName" value="@package.name"/>
+            <input type="hidden" class="PackageSource" value="@package.source"/>
+            <input type="hidden" class="PackageVersion" value="@package.version"/>
         </td>
     </tr>
-    <%} %>
+    }
 </table>
-
-
+    
+    
 <div id="installingDiv" style="display: none">
     <div class="ui-state-highlight ui-corner-all"><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span> This may take a few minutes, please wait until this dialog closes.</div>
     <br />

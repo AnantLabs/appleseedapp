@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
-using NuGet;
 using System.Dynamic;
-using System.Configuration;
 using Appleseed.Framework;
 using SelfUpdater.Models;
 
@@ -52,7 +49,7 @@ namespace SelfUpdater.Controllers
 
                 foreach (var installedPackage in installedPackagesList)
                 {
-                    IPackage update = projectManager.GetUpdatedPackage(availablePackages, installedPackage);
+                    var update = projectManager.GetUpdatedPackage(availablePackages, installedPackage);
                     var package = new InstallationState();
                     package.Installed = installedPackage;
                     package.Update = update;
@@ -75,15 +72,11 @@ namespace SelfUpdater.Controllers
                         installed.Add(package);
                     }
                 }
-
-
-
             }
 
+            var model = new NugetPackagesModel {Install = packagesToInstall, Updates = installed};
 
-
-
-            return View();
+            return View(model);
         }
 
         public ActionResult InstallModule()

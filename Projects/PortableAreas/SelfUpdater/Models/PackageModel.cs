@@ -15,6 +15,12 @@ namespace SelfUpdater.Models
         
     }
 
+    public class NugetPackagesModel
+    {
+        public List<InstallPackagesModel> Install { get; set; }
+        public List<InstallationState> Updates { get; set; }
+    }
+
 
     public class PackageModel
     {

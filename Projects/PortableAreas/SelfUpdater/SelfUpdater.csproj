@@ -183,7 +183,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Installation\InstallModule.ascx" />
+    <Content Include="Views\Installation\InstallModule2.ascx" />
     <Content Include="Views\Installation\Module.ascx" />
     <Content Include="Views\Shared\ConfigError.ascx" />
     <Content Include="Views\Shared\ExceptionError.ascx" />
@@ -211,6 +211,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Updates\UpdateModule.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Installation\InstallModule.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
