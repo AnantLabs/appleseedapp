@@ -67,7 +67,7 @@ namespace SelfUpdater.Controllers
 
         internal static IQueryable<IPackage> GetPackages(IQueryable<IPackage> packages, bool filterTags)
         {
-            return filterTags ? packages.Where(x => x.Tags.Contains("Appleseed") && x.IsAbsoluteLatestVersion) : packages.Where(x => x.IsAbsoluteLatestVersion);
+            return filterTags ? packages.Where(x => x.Tags.Contains("Appleseed") && x.IsAbsoluteLatestVersion) : packages.Where(x => x.IsLatestVersion);
         }
 
         internal static IQueryable<IPackage> GetPackages(IPackageRepository repository, bool filterTags)
@@ -117,6 +117,19 @@ namespace SelfUpdater.Controllers
         {
             var packages = GetRemotePackages().Where(x => x.Id == package.Id );
             if(packages.Count() == 0 || packages.Count() > 1)
+            {
+                return null;
+            }
+            var p = packages.Single();
+            return p.Version > package.Version ? p : null;
+
+
+        }
+
+        public IPackage GetUpdatedPackage(IEnumerable<IPackage> packagesList, IPackage package)
+        {
+            var packages = packagesList.Where(x => x.Id == package.Id);
+            if (!packages.Any() || packages.Count() > 1)
             {
                 return null;
             }
@@ -183,9 +196,13 @@ namespace SelfUpdater.Controllers
         public string getLogs() {
 
             return ((LoggerController)_projectManager.Logger).getLogs();
-        
+            
         }
 
+        public void RemovePackageFromLocalRepository(IPackage package)
+        {
+            _projectManager.LocalRepository.RemovePackage(package);
+        }
 
 
     }

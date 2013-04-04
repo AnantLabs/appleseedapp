@@ -19,7 +19,8 @@
     <% Html.RenderAction("UpdateModule","Updates"); %>
 </div>
 
-<input type="button" value="Install" onclick="InstallPackages()" />
+<input type="button" value="Apply Changes" onclick="InstallPackages()" />
+
 
 <script type="text/javascript">
 
