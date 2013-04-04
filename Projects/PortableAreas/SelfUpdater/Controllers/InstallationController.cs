@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Web.Configuration;
 using System.Web.Mvc;
-using NuGet;
+using System.Web.Script.Serialization;
 using System.Dynamic;
-using System.Configuration;
 using Appleseed.Framework;
+using SelfUpdater.Models;
 
 namespace SelfUpdater.Controllers
 {
@@ -14,21 +14,81 @@ namespace SelfUpdater.Controllers
     {
         public ActionResult Module()
         {
-            return View();
+
+            var projectManagers = GetProjectManagers();
+            var packagesToInstall = new List<InstallPackagesModel>();
+            var installed = new List<InstallationState>();
+            foreach (var projectManager in projectManagers)
+            {
+                var availablePackages = GetAvailablePackages(projectManager);
+
+
+                var installedPackages = this.GetInstalledPackages(projectManager);
+                var packagesList = installedPackages.GroupBy(x => x.Id);
+                var installedPackagesList =
+                    packagesList.Select(pack => pack.Single(y => y.Version == pack.Max(x => x.Version))).ToList();
+                foreach (var package in availablePackages)
+                {
+                    if (installedPackagesList.All(d => d.Id != package.Id))
+                    {
+                        var pack = new InstallPackagesModel
+                                       {
+                                           icon =
+                                               string.IsNullOrEmpty(package.IconUrl.ToString())
+                                                   ? package.IconUrl.ToString()
+                                                   : string.Empty,
+                                           name = package.Id,
+                                           version = package.Version.ToString(),
+                                           author = package.Authors.FirstOrDefault(),
+                                           source = projectManager.SourceRepository.Source
+                                       };
+
+                        packagesToInstall.Add(pack);
+                    }
+                }
+
+                foreach (var installedPackage in installedPackagesList)
+                {
+                    var update = projectManager.GetUpdatedPackage(availablePackages, installedPackage);
+                    var package = new InstallationState();
+                    package.Installed = installedPackage;
+                    package.Update = update;
+                    package.Source = projectManager.SourceRepository.Source;
+
+                    if (installed.Any(d => d.Installed.Id == package.Installed.Id))
+                    {
+                        var addedPackage = installed.First(d => d.Installed.Id == package.Installed.Id);
+                        if (package.Update != null)
+                        {
+                            if (addedPackage.Update == null || addedPackage.Update.Version < package.Update.Version)
+                            {
+                                installed.Remove(addedPackage);
+                                installed.Add(package);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        installed.Add(package);
+                    }
+                }
+            }
+
+            var model = new NugetPackagesModel {Install = packagesToInstall, Updates = installed};
+
+            return View(model);
         }
 
-        public ActionResult InstallModule() {
+        public ActionResult InstallModule()
+        {
             try {
-                var section = HttpContext.GetSection("system.web/httpRuntime") as System.Web.Configuration.HttpRuntimeSection;
-                if (section.WaitChangeNotification < 5) {
-                    return View("ConfigError");
-                }
 
                 var projectManagers = GetProjectManagers();
                 var list = new List<dynamic>();
-                var installed = projectManagers.SelectMany(d => d.GetInstalledPackages(string.Empty).ToList());
+                var installed = projectManagers.SelectMany(d => d.GetInstalledPackages().ToList());
 
-                foreach (var pM in projectManagers) {
+                foreach (var pM in projectManagers)
+                {
                     var packages = GetAvailablePackages(pM);
                     foreach (var package in packages) {
                         if (!installed.Any(d => d.Id == package.Id)) {
@@ -45,6 +105,8 @@ namespace SelfUpdater.Controllers
                     }
                 }
 
+                
+
                 return View(list);
             }
             catch (Exception e) {
@@ -54,26 +116,71 @@ namespace SelfUpdater.Controllers
         
         }
 
-        public ActionResult InstallPackage(string packageId, string source)
+        public JsonResult InstallPackages(string packages)
         {
-            //System.Web.HttpContext.Current.Session["NugetLogger"] = "Installing packages...";
-            
-            var projectManager = GetProjectManagers().Where(p => p.SourceRepository.Source == source).First();
+            try
+            {
+                var packagesToInstall = new JavaScriptSerializer().Deserialize<IEnumerable<PackageModel>>(packages);
 
-            projectManager.addLog("Starting installation...");            
+                var context = new SelfUpdaterEntities();
 
-            projectManager.InstallPackage(projectManager.GetRemotePackages(string.Empty).Where(d => d.Id == packageId).First());
+                foreach (var self in packagesToInstall.Select(pack => new SelfUpdatingPackages { PackageId = pack.Name, PackageVersion = pack.Version, Source = pack.Source, Install = pack.Install}))
+                {
+                    context.AddToSelfUpdatingPackages(self);
+                }
 
-            projectManager.addLog("Waiting to Reload Site");
+                context.SaveChanges();
 
-            var logger = (string)System.Web.HttpContext.Current.Application["NugetLogger"];
+                var config = WebConfigurationManager.OpenWebConfiguration("~/");
+                var section = config.GetSection("system.web/httpRuntime");
+                ((HttpRuntimeSection)section).WaitChangeNotification = 123456789;
+                ((HttpRuntimeSection)section).MaxWaitChangeNotification = 123456789;
+                config.Save();
+                
 
-            return Json(new {
-                msg = "Package " + packageId + " scheduled to install!",
-                res = true,
-                NugetLog = logger
-            }, JsonRequestBehavior.AllowGet);
-        }        
+                return Json("Ok");
+            }
+            catch(Exception e)
+            {
+                ErrorHandler.Publish(LogLevel.Error, e);
+                Response.StatusCode = 500;
+                return Json(e.Message);
+            }
+
+
+        }
+
+        //public ActionResult InstallPackage(string packageId, string source, string version)
+        //{
+        //    //System.Web.HttpContext.Current.Session["NugetLogger"] = "Installing packages...";
+        //    try
+        //    {
+        //        var projectManager = GetProjectManagers().Where(p => p.SourceRepository.Source == source).First();
+
+        //        projectManager.addLog("Starting installation...");
+
+        //       projectManager.InstallPackage(packageId, new SemanticVersion(version));
+
+        //        projectManager.addLog("Waiting to Reload Site");
+
+        //        var logger = (string) System.Web.HttpContext.Current.Application["NugetLogger"];
+
+        //        return Json(new
+        //                        {
+        //                            msg = "Package " + packageId + " scheduled to install!",
+        //                            res = true,
+        //                            NugetLog = logger
+        //                        }, JsonRequestBehavior.AllowGet);
+        //    }
+        //    catch(Exception e)
+        //    {
+        //        ErrorHandler.Publish(LogLevel.Error, e);
+        //        Response.StatusCode = 500;
+        //        return Json(e.Message);
+        //    }
+        //}    
+    
+        
 
     }
 }

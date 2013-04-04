@@ -36,7 +36,7 @@ namespace SelfUpdater
                     var packageToUpdate = packagesToUpdate.First();
                     var projectManager = GetProjectManagers().Where(d => d.SourceRepository.Source.ToLower().Trim() == packageToUpdate.Source.ToLower().Trim()).First();
                     var packageName = packageToUpdate.PackageId;
-                    IPackage installedPackage = projectManager.GetInstalledPackages(string.Empty).Where(d => d.Id == packageName).First();
+                    IPackage installedPackage = projectManager.GetInstalledPackages().Where(d => d.Id == packageName).First();
                     IPackage update = projectManager.GetUpdate(installedPackage);
 
                     if (update != null) {
