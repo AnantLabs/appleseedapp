@@ -1,11 +1,11 @@
-﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<dynamic>" %>
+﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<SelfUpdater.Models.NugetPackagesModel>" %>
 <%@ Import Namespace="MvcContrib" %>
 <script src="<%: Url.Resource("Scripts.SelfUpdater.js") %>" type="text/javascript"></script>
 <script src="<%: Url.Resource("Scripts.jquery.signalR-1.0.1.min.js") %>" type="text/javascript"></script>
 <link type="text/css" rel="stylesheet" href="<%: Url.Resource("Content.SelfUpdater.css") %>" />
 <script src="/signalr/hubs" type="text/javascript"></script>
 <div id="InstalationDiv" style="margin-bottom: 25px;">
-    <% Html.RenderAction("InstallModule"); %>
+    <% Html.RenderPartial("InstallModule", Model.Install); %>
 </div>
 
 <div style="display:inline">
