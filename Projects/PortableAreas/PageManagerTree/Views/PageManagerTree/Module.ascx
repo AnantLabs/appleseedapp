@@ -52,40 +52,41 @@
                 "max_children" : -2,
                 "valid_children": "none",
                 "types": {
+                    "default": {
+                        "valid_children": ["folder", "folder2"],
+                    },
                     "file": {
                         "valid_children": "none",
                         "icon": {
-                            "image": "/images/file.png",
+                            "image": '<%= HttpUrlBuilder.BuildUrl("~/images/file.png") %>',
                         }
                     },
                     "folder": {
                         "valid_children": ["file"],
                         "icon": {
-                            "image": "/images/folder.png",
+                            "image": '<%= HttpUrlBuilder.BuildUrl("~/images/folder.png") %>',
                         },
-                        //"start_drag" : false,
-					    //"move_node" : false,
-
-                        //"delete_node": false,
-					    //"remove": false,
+                        "start_drag" : false,
+					    "move_node" : false,
+                        "delete_node": false,
+					    "remove": false,
                         "rename": false,
                     },
                     "folder2": {
                         "valid_children": ["file"],
                         "icon": {
-                            "image": "/images/folder2.png",
+                            "image": '<%= HttpUrlBuilder.BuildUrl("~/images/folder2.png") %>',
                         },
-                        //"start_drag" : false,
-                        //"move_node" : false,
-
-                        //"delete_node": false,
-                        //"remove": false,
+                        "start_drag" : false,
+                        "move_node" : false,
+                        "delete_node": false,
+                        "remove": false,
                         "rename": false,
                     },
                     "root": {
-                        "valid_children": "Default",
+                        "valid_children": ["default"],
                         "icon": {
-                            "image": "/images/root.png",
+                            "image": '<%= HttpUrlBuilder.BuildUrl("~/images/root.png") %>',
                         },
                         "start_drag" : false,
                         "move_node" : false,
@@ -346,6 +347,13 @@
                             return false;
 
 
+                    },
+                "separator_before": true
+            },
+            "deletemodule": {
+                "label": '<%: Appleseed.Framework.General.GetString("DELETE") %>',
+                "action":
+                    function (obj) {
                     },
                 "separator_before": true
             },
