@@ -3552,4 +3552,7 @@
   <data name="COPY" xml:space="preserve">
     <value>Copy</value>
   </data>
+  <data name="MODULE_DELETE_FAILED" xml:space="preserve">
+    <value>You don't have permission to delete this module.</value>
+  </data>
 </root>

@@ -13,6 +13,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Text;
+
 namespace Appleseed
 {
     using System;
@@ -166,7 +168,12 @@ namespace Appleseed
         /// </param>
         private void DesktopDefault_Load(object sender, EventArgs e)
         {
-                // intento obtener el id de la pagina desde el query
+
+            if (!string.IsNullOrEmpty(Request.Params["panelist"]))
+            {
+                this.RenderContentAreaList();
+            }
+            // intento obtener el id de la pagina desde el query
             string query = Request.Url.Query;
             int pageId = 0;
             if (query.Contains("?") && query.ToLower().Contains("pageid"))
@@ -208,7 +215,6 @@ namespace Appleseed
                 {
                     this.Response.Redirect(urlToRedirect);
                 }
-            
 
             if (!PortalSecurity.IsInRoles(this.PortalSettings.ActivePage.AuthorizedRoles) &&
                 !this.User.IsInRole("Admins"))
@@ -232,8 +238,52 @@ namespace Appleseed
                     this.Response.Redirect("~/DesktopDefault.aspx");
                 }
 
-                this.LoadPage();
+                
+                if (string.IsNullOrEmpty(Request.Params["panelist"]))
+                {
+                    this.LoadPage();
+                }
             }
+        }
+
+        private void RenderContentAreaList()
+        {
+            Response.Clear();
+            // Obtain top master page
+            var controllist = GetPlaceholderControllist();
+            var sb = new StringBuilder();
+            //Response.Write("<ul>");
+            // for each top placeholder
+            foreach (ContentPlaceHolder placeHolder in controllist)
+            {
+                foreach (var contentPlaceHolder in AllPlaceHoldersInControl(placeHolder))
+                {
+                    sb.AppendFormat(contentPlaceHolder.ID + "+");
+                    //Response.Write("<li>" + contentPlaceHolder.ID + "</li>");
+                }
+            }
+            //Response.Write("</ul>");
+            var json = sb.ToString();
+            json = json.Substring(0, json.Length - 1);
+            Response.ContentType = "application/json";
+            Response.StatusCode = 200;
+            Response.Write(json);
+            Response.Flush();
+            Response.End();
+        }
+
+        private List<Control> GetPlaceholderControllist()
+        {
+            var mp = this.GetTopMasterPage();
+
+            var controllist = new List<Control>();
+
+            // Obtain top master page placeholders
+            foreach (var control in mp.Controls.OfType<HtmlForm>())
+            {
+                controllist.AddRange(control.Controls.OfType<ContentPlaceHolder>());
+            }
+            return controllist;
         }
 
         /// <summary>
@@ -269,15 +319,7 @@ namespace Appleseed
                 var pageModulesByPlaceHolder = ModelServices.GetCurrentPageModules();
 
                 // Obtain top master page
-                var mp = this.GetTopMasterPage();
-
-                var controllist = new List<Control>();
-
-                // Obtain top master page placeholders
-                foreach (var control in mp.Controls.OfType<HtmlForm>())
-                {
-                    controllist.AddRange(control.Controls.OfType<ContentPlaceHolder>());
-                }
+                var controllist = GetPlaceholderControllist();
 
                 // for each top placeholder
                 foreach (ContentPlaceHolder placeHolder in controllist)
@@ -366,6 +408,7 @@ namespace Appleseed
                 }
             }
         }
+
 
         #endregion
     }
