@@ -120,7 +120,7 @@ namespace Appleseed.Framework.UrlRewriting
             }
             if (url.Contains("alias" + this.defaultSplitter))
             {
-                pageId = "0";
+                pageId = 0.ToString();
             }
             else if (indexNumber != -1) {
                 pageId = parts[indexNumber];
