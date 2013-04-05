@@ -157,6 +157,8 @@
         .bind("rename.jstree",function(event,data) {
             var selectedId = data.rslt.obj.attr("id");
             if (selectedId.indexOf("module") != -1) {
+                $('#jsTree').jstree("deselect_all");
+                $("#jsTree").jstree("select_node", data.rslt.obj.parents()[3]).trigger("select_node.jstree");
                 $.ajax({
                     url: '<%= Url.Action("RenameModule","PageManagerTree")%>',
                     type: 'POST',
@@ -167,9 +169,8 @@
                     },
                     success: function (data) {
                         if (data.error == true) {
-
                         } else {
-                            $("#jsTree").jstree("refresh", -1);
+                            //$("#jsTree").jstree("refresh", -1);
                         }
                     }
                 });
@@ -279,7 +280,7 @@
             "editModule": {
                 "label": '<%: General.GetString("EDIT") %>',
                 "action":
-                    function(obj) {
+                    function (obj) {
                         editModule(obj.parents()[3].id.replace("pjson_", ""), obj.attr("id").replace("pjson_module_", ""));
                     },
                 },
@@ -479,7 +480,6 @@
              },
              success: function (data) {
                  window.location.href = data;
-                 
              }
          });
     }
