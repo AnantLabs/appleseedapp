@@ -39,4 +39,10 @@ namespace SelfUpdater.Models
 
         public List<dynamic> Packages { get; set; }
     }
+
+    public class PercentajeModel
+    {
+        public string Msg { get; set; }
+        public string Pct { get; set; }
+    }
 }

@@ -52,9 +52,36 @@
         
         var updaterHub = $.connection.selfUpdaterHub;
 
-        updaterHub.client.nuevoProcentaje = function (message) {
+        var lastMessange = { msg: "", pct: "", firstNegative: "" };
+
+        updaterHub.client.newMessage = function (message) {
             $('#TestingSignalR').append('<span>' + message + '</span><br/>');
             $("#installingDiv").scrollTop($("#installingDiv")[0].scrollHeight);
+        };
+        
+        updaterHub.client.newPercentaje = function (message) {
+            var menos = '-';
+            var space = ' ';
+            // removing space
+            if (message.Pct.substring(0, space.length) === space) {
+                message.Pct = message.Pct.substring(1, message.Pct.length);
+            }
+            if (message.Pct.substring(0, menos.length) === menos) {
+                var absoluteNumber = Math.abs(message.Pct);
+                if (lastMessange.firstNegative == "") {
+                    lastMessange.firstNegative = absoluteNumber;
+                }
+                var realPercentaje = (lastMessange.firstNegative - absoluteNumber) * 2 + 1 + absoluteNumber;
+                message.Pct = realPercentaje;
+            }
+            if (lastMessange.msg == "" ||  lastMessange.msg == message.Msg && lastMessange.pct != message.Pct) {
+                $('#TestingSignalR').append('<span>' + message.Msg + ' ' + message.Pct + '</span><br/>');
+                $("#installingDiv").scrollTop($("#installingDiv")[0].scrollHeight);
+                console.log("NuevoPorcentaje: " + message.Msg + ' ' + message.Pct);
+                lastMessange.msg = message.Msg;
+                lastMessange.pct = message.Pct;
+            }
+
         };
 
         updaterHub.client.reloadPage = function(data) {
