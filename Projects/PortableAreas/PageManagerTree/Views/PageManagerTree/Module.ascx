@@ -194,7 +194,7 @@
             }
         })
         .bind("open_node.jstree", function (event, data) {
-            var  pageid = data.rslt.obj.attr("id").replace("pjson_", "");
+            var pageid = data.rslt.obj.attr("id").replace("pjson_", "");
             if ((pageid != 0) && (pageid.indexOf('_') == -1)) {
                 $.ajax({
                     url: '<%= Url.Action("AddModule","PageManagerTree")%>',
@@ -215,7 +215,7 @@
     function contextMenu(node) {
         var items = {
             "create": {
-                "label": '<%: Appleseed.Framework.General.GetString("CREATE") %>',
+                "label": '<%: General.GetString("CREATE") %>',
                             "action":
                                 function(obj) {
                                     $.ajax({
@@ -233,7 +233,7 @@
             },
             
             ViewItem: {
-                label: '<%: Appleseed.Framework.General.GetString("View","View") %>',
+                label: '<%: General.GetString("View","View") %>',
                 action: function(obj) {
                     var currentId = this._get_node(obj).attr("id");
                     $.ajax({
@@ -252,14 +252,14 @@
                 "separator_before": true,
             },
             renameItem: {
-                "label": '<%: Appleseed.Framework.General.GetString("RENAME") %>',
+                "label": '<%: General.GetString("RENAME") %>',
                 "action": function(obj) {
                     this.rename(obj);
 
                 },
             },
             "edit": {
-                "label": '<%: Appleseed.Framework.General.GetString("EDIT") %>',
+                "label": '<%: General.GetString("EDIT") %>',
                 "action":
                     function(obj) {
                         $.ajax({
@@ -288,7 +288,7 @@
             "rename": false,
 
             cloneItem: {
-                label: '<%: Appleseed.Framework.General.GetString("Clone","Clone") %>',
+                label: '<%: General.GetString("Clone","Clone") %>',
                 action: function(obj) {
                     var currentId = this._get_node(obj).attr("id");
                     var parentId = this._get_node(obj)[0].firstChild.parentElement.parentNode.parentElement.id;
@@ -314,7 +314,7 @@
                 },
             },
             copyItem: {
-                label: '<%: Appleseed.Framework.General.GetString("COPY", "Copy") %>',
+                label: '<%: General.GetString("COPY", "Copy") %>',
                 action: function(obj) {
                     var currentId = this._get_node(obj).attr("id");
                     var currentName = this._get_node(obj).text().replace(/\s{2}/, "");
@@ -343,11 +343,11 @@
                 },
             },
             "delete": {
-                "label": '<%: Appleseed.Framework.General.GetString("DELETE") %>',
+                "label": '<%: General.GetString("DELETE") %>',
                 "action":
                     function(obj) {
 
-                        var agree = confirm('<%: Appleseed.Framework.General.GetString("CONFIRM_DELETE") %>');
+                        var agree = confirm('<%: General.GetString("CONFIRM_DELETE") %>');
                         if (agree)
                             deletePage(obj.attr("id").replace("pjson_", ""));
                         else
@@ -362,16 +362,21 @@
                 "action":
                     function (obj) {
                         var agree = confirm('<%: General.GetString("CONFIRM_DELETE") %>');
-                        if (agree)
-                            deleteModule(obj.attr("id").replace("pjson_module_", ""));
-                        else
+                        if (agree) {
+                            var object = obj;
+                            var pageId = obj.parents()[3].id.replace("pjson_", "");
+                            var moduleId = obj.attr("id").replace("pjson_module_", "");
+                            var parent = obj.parents()[3];
+                            deleteModule(pageId, moduleId, object, parent);
+                            
+                        } else
                             return false;
                     },
                 "separator_before": true
             },
         };
         
-        if (($(node).attr("rel") == "folder")||($(node).attr("rel") == "root")) {
+        if (($(node).attr("rel") == "folder") || ($(node).attr("rel") == "root") || ($(node).attr("rel") == "folder2")) {
             delete items.delete;
             delete items.create;
             delete items.copyItem;
@@ -442,8 +447,7 @@
        }
     }
     
-    function deleteModule(moduleId) {
-
+    function deleteModule(pageid, moduleId, obj, parent) {
         $.ajax({
             url: '<%= Url.Action("RemoveModule","PageManagerTree")%>',
             type: "POST",
@@ -453,10 +457,12 @@
             },
             success: function (data) {
                 if (data.error == true) {
-                    alert(data.errorMess.toString());
+                    alert(data.errorMess);
                 } else {
-                    $("#jsTree").jstree("refresh", -1);
+                    $("#jsTree").jstree("remove", obj);
                 }
+                $('#jsTree').jstree("deselect_all");
+                $("#jsTree").jstree("select_node", parent).trigger("select_node.jstree");
             }
         });
     }
