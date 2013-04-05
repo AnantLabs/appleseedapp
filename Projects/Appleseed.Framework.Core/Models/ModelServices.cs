@@ -66,45 +66,70 @@ namespace Appleseed.Framework.Core.Model
         /// <returns>A dictionary.</returns>
         public static Dictionary<string, List<Control>> GetCurrentPageModules()
         {
-            var dictionary = new Dictionary<string, List<Control>>();
+            
             var settings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+            var modules = settings.ActivePage.Modules;
+            return ConvertModuleListToDictionary(modules);
+        }
 
+        /// <summary>
+        /// Convert the module list to dictionary.
+        /// </summary>
+        /// <param name="modules"></param>
+        /// <returns>A dictionary</returns>
+        /// <exception cref="Exception"></exception>
+        public static Dictionary<string, List<Control>> ConvertModuleListToDictionary(List<IModuleSettings> modules)
+        {
+            var settings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+            var dictionary = new Dictionary<string, List<Control>>();
             dynamic faultyModule = null;
             var modErrKey = HttpContext.Current.Request.Params["modErr"];
             //we receive this param if in the Application_Error it was discovered that a module is broken
-            if (!string.IsNullOrEmpty(modErrKey)) {
+            if (!string.IsNullOrEmpty(modErrKey))
+            {
                 faultyModule = HttpContext.Current.Cache.Get(modErrKey);
                 HttpContext.Current.Cache.Remove(modErrKey);
             }
 
-            if (settings.ActivePage.Modules.Count > 0) {
+            if (modules.Count > 0)
+            {
                 var page = new Page();
-                foreach (ModuleSettings settings2 in settings.ActivePage.Modules) {
-                    if (!settings2.Cacheable) {
+                foreach (ModuleSettings settings2 in modules)
+                {
+                    if (!settings2.Cacheable)
+                    {
                         settings2.CacheTime = -1;
                     }
 
-                    if (PortalSecurity.IsInRoles(settings2.AuthorizedViewRoles)) {
+                    if (PortalSecurity.IsInRoles(settings2.AuthorizedViewRoles))
+                    {
                         List<Control> list;
                         Exception exception;
                         var str = settings2.PaneName.ToLower();
-                        if (!string.IsNullOrEmpty(str)) {
-                            if (!dictionary.ContainsKey(str)) {
+                        if (!string.IsNullOrEmpty(str))
+                        {
+                            if (!dictionary.ContainsKey(str))
+                            {
                                 dictionary.Add(str, new List<Control>());
                             }
 
                             list = dictionary[str];
-                        } else {
-                            if (!dictionary.ContainsKey("contentpane")) {
+                        }
+                        else
+                        {
+                            if (!dictionary.ContainsKey("contentpane"))
+                            {
                                 dictionary.Add("contentpane", new List<Control>());
                             }
 
                             list = dictionary["contentpane"];
                         }
 
-                        if (!settings2.Admin && (settings2.CacheTime == 0)) {
+                        if (!settings2.Admin && (settings2.CacheTime == 0))
+                        {
                             var moduleOverrideCache = Config.ModuleOverrideCache;
-                            if (moduleOverrideCache > 0) {
+                            if (moduleOverrideCache > 0)
+                            {
                                 settings2.CacheTime = moduleOverrideCache;
                             }
                         }
@@ -112,20 +137,27 @@ namespace Appleseed.Framework.Core.Model
                         if ((((settings2.CacheTime <= 0) || PortalSecurity.HasEditPermissions(settings2.ModuleID)) ||
                              (PortalSecurity.HasPropertiesPermissions(settings2.ModuleID) ||
                               PortalSecurity.HasAddPermissions(settings2.ModuleID))) ||
-                            PortalSecurity.HasDeletePermissions(settings2.ModuleID)) {
-                            try {
+                            PortalSecurity.HasDeletePermissions(settings2.ModuleID))
+                        {
+                            try
+                            {
                                 PortalModuleControl control;
                                 var virtualPath = Path.ApplicationRoot + "/" + settings2.DesktopSrc;
-                                if (virtualPath.ToLowerInvariant().Trim().EndsWith(".ascx")) {
-                                    if (faultyModule != null && faultyModule.ModuleDefID == settings2.ModuleDefID) {
+                                if (virtualPath.ToLowerInvariant().Trim().EndsWith(".ascx"))
+                                {
+                                    if (faultyModule != null && faultyModule.ModuleDefID == settings2.ModuleDefID)
+                                    {
                                         throw new Exception(faultyModule.Message); //if this was the module that was generating the error, we then show the error.
                                     }
                                     control = (PortalModuleControl)page.LoadControl(virtualPath);
-                                } else {
+                                }
+                                else
+                                {
                                     var strArray = virtualPath.Split(
                                         new[] { '/', '\\' }, StringSplitOptions.RemoveEmptyEntries);
                                     int index = 1;
-                                    if (!Path.ApplicationRoot.Equals(string.Empty)) {
+                                    if (!Path.ApplicationRoot.Equals(string.Empty))
+                                    {
                                         index++;
                                     }
                                     var areaName = (strArray[index].ToLower() == "views") ? string.Empty : strArray[index];
@@ -148,43 +180,58 @@ namespace Appleseed.Framework.Core.Model
                                 control.PortalID = settings.PortalID;
                                 control.ModuleConfiguration = settings2;
                                 if ((control.Cultures == string.Empty) ||
-                                    ((control.Cultures + ";").IndexOf(settings.PortalContentLanguage.Name + ";") >= 0)) {
+                                    ((control.Cultures + ";").IndexOf(settings.PortalContentLanguage.Name + ";") >= 0))
+                                {
                                     list.Add(control);
                                 }
-                            } catch (Exception exception1) {
+                            }
+                            catch (Exception exception1)
+                            {
                                 exception = exception1;
                                 ErrorHandler.Publish(
                                     LogLevel.Error,
                                     string.Format("DesktopPanes: Unable to load control '{0}'!", settings2.DesktopSrc),
                                     exception);
-                                if (PortalSecurity.IsInRoles("Admins")) {
+                                if (PortalSecurity.IsInRoles("Admins"))
+                                {
                                     list.Add(
                                         new LiteralControl(
                                             string.Format("<br><span class=NormalRed>Unable to load control '{0}'! (Full Error Logged)<br />Error Message: {1}", settings2.DesktopSrc, exception.Message)));
-                                } else {
+                                }
+                                else
+                                {
                                     list.Add(
                                         new LiteralControl(
                                             string.Format("<br><span class=NormalRed>Unable to load control '{0}'!", settings2.DesktopSrc)));
                                 }
                             }
-                        } else {
-                            try {
-                                using (var control2 = new CachedPortalModuleControl()) {
+                        }
+                        else
+                        {
+                            try
+                            {
+                                using (var control2 = new CachedPortalModuleControl())
+                                {
                                     control2.PortalID = settings.PortalID;
                                     control2.ModuleConfiguration = settings2;
                                     list.Add(control2);
                                 }
-                            } catch (Exception exception2) {
+                            }
+                            catch (Exception exception2)
+                            {
                                 exception = exception2;
                                 ErrorHandler.Publish(
                                     LogLevel.Error,
                                     string.Format("DesktopPanes: Unable to load cached control '{0}'!", settings2.DesktopSrc),
                                     exception);
-                                if (PortalSecurity.IsInRoles("Admins")) {
+                                if (PortalSecurity.IsInRoles("Admins"))
+                                {
                                     list.Add(
                                         new LiteralControl(
                                             string.Format("<br><span class=NormalRed>Unable to load cached control '{0}'! (Full Error Logged)<br />Error Message: {1}", settings2.DesktopSrc, exception.Message)));
-                                } else {
+                                }
+                                else
+                                {
                                     list.Add(
                                         new LiteralControl(
                                             string.Format("<br><span class=NormalRed>Unable to load cached control '{0}'!", settings2.DesktopSrc)));
@@ -194,8 +241,52 @@ namespace Appleseed.Framework.Core.Model
                     }
                 }
             }
-
             return dictionary;
+        }
+
+        /// <summary>
+        /// Get the page modules
+        /// </summary>
+        /// <param name="pageId"></param>
+        /// <returns>A dictionary</returns>
+        public static Dictionary<string, List<Control>> GetPageModules(int pageId)
+        {
+            var settings = (PortalSettings)HttpContext.Current.Items["PortalSettings"];
+            var modules = GetModulesToPage(pageId, settings.PortalID);
+            return ConvertModuleListToDictionary(modules);
+        }
+            
+        private static List<IModuleSettings> GetModulesToPage(int pageId, int portalId)
+        {
+            var result = new List<IModuleSettings>();
+            var context = new AppleseedDBContext();
+            var modules = context.rb_Modules.Where(d => d.TabID == pageId || d.ShowEveryWhere == true);
+            foreach (var rbModulese in modules)
+            {
+                var guidid = new ModulesDB().GetModuleGuid(rbModulese.ModuleID);
+                var newmodule = new ModuleSettings
+                {
+                    PageID = rbModulese.TabID,
+                    ModuleID = rbModulese.ModuleID,
+                    PaneName = rbModulese.PaneName,
+                    ModuleTitle = rbModulese.ModuleTitle,
+                    AuthorizedEditRoles = rbModulese.AuthorizedEditRoles, 
+                    AuthorizedViewRoles = rbModulese.AuthorizedViewRoles,  
+                    AuthorizedAddRoles = rbModulese.AuthorizedAddRoles,   
+                    AuthorizedDeleteRoles = rbModulese.AuthorizedDeleteModuleRoles,
+                    AuthorizedPropertiesRoles = rbModulese.AuthorizedPropertiesRoles,
+                    CacheTime = rbModulese.CacheTime,
+                    ModuleOrder = rbModulese.ModuleOrder,
+                    ShowMobile = rbModulese.ShowMobile != null && ((rbModulese.ShowMobile == null) && (bool)rbModulese.ShowMobile),
+                    DesktopSrc = context.rb_GeneralModuleDefinitions.First(d => d.GeneralModDefID == guidid).DesktopSrc,
+                    //MobileSrc =  // not supported yet
+                    SupportCollapsable = rbModulese.SupportCollapsable != null && (bool)rbModulese.SupportCollapsable,
+                    ShowEveryWhere = rbModulese.ShowEveryWhere != null && (bool)rbModulese.ShowEveryWhere,
+                    GuidID = guidid,
+                };
+                result.Add(newmodule);
+            }
+            return result;
         }
 
         /// <summary>
@@ -350,5 +441,7 @@ namespace Appleseed.Framework.Core.Model
                 return module.ModuleID;
             }
         }
+
+        
     }
 }

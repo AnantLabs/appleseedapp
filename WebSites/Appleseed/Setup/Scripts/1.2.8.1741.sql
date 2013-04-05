@@ -26,7 +26,7 @@ GO
 
 ---------------------
 -- Install script, updated XmlModule
----------------------
+-----------------------
 
 DECLARE @GeneralModDefID uniqueidentifier
 DECLARE @FriendlyName nvarchar(128)
@@ -54,24 +54,24 @@ GO
 -- Install script, updated XmlLangModule
 ---------------------
 
-DECLARE @GeneralModDefID uniqueidentifier
-DECLARE @FriendlyName nvarchar(128)
-DECLARE @DesktopSrc nvarchar(256)
-DECLARE @MobileSrc nvarchar(256)
-DECLARE @AssemblyName varchar(50)
-DECLARE @ClassName nvarchar(128)
-DECLARE @Admin bit
-DECLARE @Searchable bit
+--DECLARE @GeneralModDefID uniqueidentifier
+--DECLARE @FriendlyName nvarchar(128)
+--DECLARE @DesktopSrc nvarchar(256)
+--DECLARE @MobileSrc nvarchar(256)
+--DECLARE @AssemblyName varchar(50)
+--DECLARE @ClassName nvarchar(128)
+--DECLARE @Admin bit
+--DECLARE @Searchable bit
 
-SET @GeneralModDefID = '{E16DD121-267E-4268-A497-BDA6314E21A5}'
-SET @FriendlyName = 'XML/XSL Lang'
-SET @DesktopSrc = 'DesktopModules/XmlLang/XmlLangModule.ascx'
-SET @MobileSrc = ''
-SET @AssemblyName = 'Appleseed.DLL'
-SET @ClassName = 'Appleseed.Content.Web.ModulesXmlLangModule'
-SET @Admin = 0
-SET @Searchable = 0
+--SET @GeneralModDefID = '{E16DD121-267E-4268-A497-BDA6314E21A5}'
+--SET @FriendlyName = 'XML/XSL Lang'
+--SET @DesktopSrc = 'DesktopModules/XmlLang/XmlLangModule.ascx'
+--SET @MobileSrc = ''
+--SET @AssemblyName = 'Appleseed.DLL'
+--SET @ClassName = 'Appleseed.Content.Web.ModulesXmlLangModule'
+--SET @Admin = 0
+--SET @Searchable = 0
 
--- update module
-EXEC [rb_AddGeneralModuleDefinitions] @GeneralModDefID, @FriendlyName, @DesktopSrc, @MobileSrc, @AssemblyName, @ClassName, @Admin, @Searchable
-GO
+---- update module
+--EXEC [rb_AddGeneralModuleDefinitions] @GeneralModDefID, @FriendlyName, @DesktopSrc, @MobileSrc, @AssemblyName, @ClassName, @Admin, @Searchable
+--GO
