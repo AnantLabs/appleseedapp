@@ -32,7 +32,8 @@
     <ul id="installingUl">
         <li>Starting installation...</li>
     </ul>
-    <div id="TestingSignalR"></div>
+    <div id="TestingSignalR"></div><br/>
+    <div id="PackagesProgressbar"></div>
 </div>
 
 <script type="text/javascript">
@@ -50,11 +51,15 @@
 
     $(function () {
         
+        $("#PackagesProgressbar").progressbar({
+            value: 0
+        });
+        
         var updaterHub = $.connection.selfUpdaterHub;
 
-        var lastMessange = { msg: "", pct: "", firstNegative: "" };
+        var packagesModels = [];
 
-        updaterHub.client.newMessage = function (message) {
+       updaterHub.client.newMessage = function (message) {
             $('#TestingSignalR').append('<span>' + message + '</span><br/>');
             $("#installingDiv").scrollTop($("#installingDiv")[0].scrollHeight);
         };
@@ -66,22 +71,40 @@
             if (message.Pct.substring(0, space.length) === space) {
                 message.Pct = message.Pct.substring(1, message.Pct.length);
             }
-            if (message.Pct.substring(0, menos.length) === menos) {
-                var absoluteNumber = Math.abs(message.Pct);
-                if (lastMessange.firstNegative == "") {
-                    lastMessange.firstNegative = absoluteNumber;
+            
+            if (packagesModels.length == 0) {
+                $('#TestingSignalR').append('<span>' + message.Msg + '</span><br/>');
+                var model = { msg: message.Msg, pct: message.Pct, firstNegative: "" };
+                packagesModels.push(model);
+            }
+            else {
+                var progressModel = getProgressBarModel(packagesModels, message.Msg);
+                if (progressModel != null) {
+                    if (message.Pct.substring(0, menos.length) === menos) {
+                        var absoluteNumber = Math.abs(message.Pct);
+                        if (progressModel.firstNegative == "") {
+                            progressModel.firstNegative = absoluteNumber;
+                        }
+                        var realPercentaje = (progressModel.firstNegative - absoluteNumber) * 2 + 1 + absoluteNumber;
+                        message.Pct = realPercentaje;
+                    }
+                    if (progressModel.msg == message.Msg && progressModel.pct != message.Pct) {
+                        $("#installingDiv").scrollTop($("#installingDiv")[0].scrollHeight);
+                        //console.log("NuevoPorcentaje: " + message.Msg + ' ' + message.Pct);
+                        progressModel.msg = message.Msg;
+                        progressModel.pct = message.Pct;
+                        var number = Math.abs(message.Pct);
+                        $("#PackagesProgressbar").progressbar("option", "value", number);
+                        //console.log("El porcentaje :'" + progressModel.pct + "'");
+                    }
+                   
                 }
-                var realPercentaje = (lastMessange.firstNegative - absoluteNumber) * 2 + 1 + absoluteNumber;
-                message.Pct = realPercentaje;
+                else {
+                    $('#TestingSignalR').append('<span>' + message.Msg + '</span><br/>');
+                    model = { msg: message.Msg, pct: message.Pct, firstNegative: "" };
+                    packagesModels.push(model);
+                }
             }
-            if (lastMessange.msg == "" ||  lastMessange.msg == message.Msg && lastMessange.pct != message.Pct) {
-                $('#TestingSignalR').append('<span>' + message.Msg + ' ' + message.Pct + '</span><br/>');
-                $("#installingDiv").scrollTop($("#installingDiv")[0].scrollHeight);
-                console.log("NuevoPorcentaje: " + message.Msg + ' ' + message.Pct);
-                lastMessange.msg = message.Msg;
-                lastMessange.pct = message.Pct;
-            }
-
         };
 
         updaterHub.client.reloadPage = function(data) {
@@ -117,6 +140,15 @@
             autoOpen: false
 
         });
+        
+        function getProgressBarModel(array, msg) {
+            for (var i = 0; i < array.length; i++) {
+                if (array[i].msg == msg) {
+                    return array[i];
+                }
+            }
+            return null;
+        }
 
     });
 
