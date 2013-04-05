@@ -230,6 +230,30 @@ namespace SelfUpdater.Models
         private global::System.String _Source;
         partial void OnSourceChanging(global::System.String value);
         partial void OnSourceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> Install
+        {
+            get
+            {
+                return _Install;
+            }
+            set
+            {
+                OnInstallChanging(value);
+                ReportPropertyChanging("Install");
+                _Install = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Install");
+                OnInstallChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _Install;
+        partial void OnInstallChanging(Nullable<global::System.Boolean> value);
+        partial void OnInstallChanged();
 
         #endregion
 

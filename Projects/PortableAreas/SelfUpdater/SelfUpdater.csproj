@@ -44,18 +44,41 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Libs\MVC 4\Microsoft.Web.Infrastructure.dll</HintPath>
+      <HintPath>..\..\..\Libs\SignalR\Microsoft.AspNet.SignalR.Core.1.0.1\lib\net40\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libs\SignalR\Microsoft.AspNet.SignalR.Owin.1.0.1\lib\net40\Microsoft.AspNet.SignalR.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libs\SignalR\Microsoft.AspNet.SignalR.SystemWeb.1.0.1\lib\net40\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libs\SignalR\Microsoft.Owin.Host.SystemWeb.1.0.1\lib\net40\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
     </Reference>
     <Reference Include="MvcContrib, Version=2.0.0.99, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Libs\MvcContrib.dll</HintPath>
     </Reference>
-    <Reference Include="NuGet.Core, Version=1.0.11220.104, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libs\SignalR\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Core, Version=1.6.30117.9648, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Libs\NuGet.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libs\SignalR\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -131,6 +154,7 @@
     <Compile Include="Initializer.cs" />
     <Compile Include="Models\InstallationState.cs" />
     <Compile Include="Models\PackageIdFilter.cs" />
+    <Compile Include="Models\PackageModel.cs" />
     <Compile Include="Models\SelfUpdater.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -138,26 +162,31 @@
     </Compile>
     <Compile Include="PortableAreaRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SignalR\SelfUpdaterHub.cs" />
     <Compile Include="WebProjectSystem.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\checked.jpg" />
     <Content Include="Content\SelfUpdater.css" />
+    <Content Include="Content\unchecked.jpg" />
     <Content Include="DBScripts\20110905\01.CreateSelfUpdatingTable.sql" />
     <Content Include="DBScripts\20111223\01.AddPackagesPage.sql" />
     <Content Include="DBScripts\20111223\02.InsertInstallationModule.sql" />
     <Content Include="DBScripts\20111223\03.InsertUpdateModule.sql" />
+    <Content Include="DBScripts\20130401\01.AddingNewColumn.sql" />
+    <Content Include="DBScripts\20130403\01.RemoveUpdateModules.sql" />
+    <Content Include="Scripts\jquery.signalR-1.0.1.js" />
+    <Content Include="Scripts\jquery.signalR-1.0.1.min.js" />
     <Content Include="Scripts\SelfUpdater.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Installation\InstallModule.ascx" />
     <Content Include="Views\Installation\Module.ascx" />
     <Content Include="Views\Shared\ConfigError.ascx" />
     <Content Include="Views\Shared\ExceptionError.ascx" />
     <Content Include="Views\Updates\Module.ascx" />
-    <Content Include="Views\Updates\UpdateModule.ascx" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -178,6 +207,15 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>SelfUpdater.Designer.cs</LastGenOutput>
     </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Updates\UpdateModule.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Installation\InstallModule.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Installation\UpdateModule.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

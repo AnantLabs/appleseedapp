@@ -9,6 +9,7 @@
     <language>en-US</language>    
     <projectUrl>http://appleseedapp.com/</projectUrl>
 	<iconUrl>http://updates.agileworks.com.uy/Content/Appleseed.ico</iconUrl>
+	<tags>Appleseed</tags>
   </metadata>
   <files>
     <file src="Web.config.standard" target="Content" />
