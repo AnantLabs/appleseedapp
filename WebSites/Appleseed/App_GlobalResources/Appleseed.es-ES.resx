@@ -5661,4 +5661,7 @@
   <data name="COPY" xml:space="preserve">
     <value>Copiar</value>
   </data>
+  <data name="MODULE_DELETE_FAILED" xml:space="preserve">
+    <value>No tiene permiso para borrar este modulo.</value>
+  </data>
 </root>

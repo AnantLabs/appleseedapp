@@ -95,7 +95,7 @@ namespace PageManagerTree.Controllers
                 aux.ID = childPage.PageID;
                 aux.Name = childPage.PageName;
                 
-                JsTreeModel[] childs = getChildrenTree(aux);
+                //JsTreeModel[] childs = getChildrenTree(aux);
                 JsTreeModel node = new JsTreeModel
                 {
                     data = aux.Name,
@@ -120,7 +120,7 @@ namespace PageManagerTree.Controllers
             {
                 if (page.NestLevel == 0)
                 {
-                    JsTreeModel[] child = getChildrenTree(page);
+                    //JsTreeModel[] child = getChildrenTree(page);
                     JsTreeModel node = new JsTreeModel {
                                                     data = page.Name,
                                                     attr = new JsTreeAttribute { id = "pjson_" + page.ID.ToString()},
@@ -135,7 +135,6 @@ namespace PageManagerTree.Controllers
                 data = "Root",
                 attr = new JsTreeAttribute { id = "pjson_" + root.ToString(), rel = "root"},
                 children = lstTree.ToArray<JsTreeModel>(),
-                state = "closed"
             };
 
             return Json(rootNode);
@@ -146,7 +145,6 @@ namespace PageManagerTree.Controllers
         {
             try
             {
-                
                 var tabs = new PagesDB();
                 tabs.DeletePage(id);
 
@@ -161,22 +159,23 @@ namespace PageManagerTree.Controllers
 
         public JsonResult RemoveModule(int id)
         {
+            string errorMessage = General.GetString("MODULE_DELETE_FAILED", "You don't have permission to delete this module", this);
             try
             {
                 if (PortalSecurity.IsInRoles(PortalSecurity.GetDeleteModulePermissions(id)))
                 {
                     // must delete from database too
                     var moddb = new ModulesDB();
-
-                    // TODO add userEmail and useRecycler
                     moddb.DeleteModule(id);
+                    return Json(new {error = false});
                 }
-
-                return Json(new { error = false });
+                else
+                {
+                    return Json(new { error = true, errorMess = errorMessage });
+                }
             }
             catch (SqlException)
             {
-                string errorMessage = General.GetString("TAB_DELETE_FAILED", "Failed to delete Page", this);
                 return Json(new { error = true, errorMess = errorMessage });
             }
         }
@@ -382,8 +381,6 @@ namespace PageManagerTree.Controllers
 
             db.UpdatePageOrder(pageID, order);
             this.OrderPages();
-
-
         }
 
         public void MoveModuleNode(int pageId, int moduleId, string paneName)
@@ -419,7 +416,6 @@ namespace PageManagerTree.Controllers
 
         public JsonResult RenameModule(int id, string name)
         {
-
             try
             {
                 var db = new rb_Modules();
@@ -491,6 +487,7 @@ namespace PageManagerTree.Controllers
                 child2.Add(nodem);
                 i++;
             }
+            // add other pane.
             foreach (var pane in panetopage)
             {
                 if (!lowerpane.Contains(pane.Key))
@@ -498,7 +495,7 @@ namespace PageManagerTree.Controllers
                     JsTreeModel[] childm = getModuleToPane(pane.Key, pageId);
                     JsTreeModel nodem = new JsTreeModel
                     {
-                        data = pane.Key,
+                        data = pane.Key + "  [Not present in current layout]",
                         attr = new JsTreeAttribute { id = "pjson_pane_" + i, rel = "folder2" },
                         children = childm
                     };
@@ -541,10 +538,7 @@ namespace PageManagerTree.Controllers
         public string GetUrlToEdit(string pageId, string moduleId)
         {
             var url = HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/Admin/ModuleSettings.aspx", Int32.Parse(pageId));
-            //if (Request.QueryString.GetValues("ModalChangeMaster") != null)
-
             url += "&mID=" + moduleId;
-            
             return url;
         }
 
