@@ -66,7 +66,7 @@
         var packagesModels = [];
 
         updaterHub.client.newMessage = function (message) {
-            $('#TestingSignalR').append('<span>' + message + '</span><br/>');
+            $('#TestingSignalR').append('<span>' + message + '</span><br/><br/>');
             $("#installingDiv").scrollTop($("#installingDiv")[0].scrollHeight);
         };
 
@@ -106,7 +106,7 @@
 
                 }
                 else {
-                    $('#TestingSignalR').append('<span>' + message.Msg + '</span><br/>');
+                    $('#TestingSignalR').append('<span>' + message.Msg + '</span><br/><br/>');
                     model = { msg: message.Msg, pct: message.Pct, firstNegative: "" };
                     packagesModels.push(model);
                 }
