@@ -79,7 +79,7 @@
             }
 
             if (packagesModels.length == 0) {
-                $('#TestingSignalR').append('<span>' + message.Msg + '</span><br/>');
+                $('#TestingSignalR').append('<span>' + message.Msg + '</span><br/><br/>');
                 var model = { msg: message.Msg, pct: message.Pct, firstNegative: "" };
                 packagesModels.push(model);
             }
