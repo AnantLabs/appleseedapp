@@ -10629,6 +10629,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You don&apos;t have permission to delete this module..
+        /// </summary>
+        internal static string MODULE_DELETE_FAILED {
+            get {
+                return ResourceManager.GetString("MODULE_DELETE_FAILED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Default Image Folder.
         /// </summary>
         internal static string MODULE_IMAGE_FOLDER {

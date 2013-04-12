@@ -441,12 +441,14 @@ namespace Appleseed.Framework.Site.Configuration
             try
             {
                 PortalModuleControl control;
-                if (!virtualPath.ToLower().StartsWith("/areas/"))
+                if (!virtualPath.ToLower().Contains("/areas/"))
                 {
                     control = (PortalModuleControl)page.LoadControl(virtualPath);
                 }
                 else
                 {
+                    if (Path.ApplicationRoot != "")
+                        virtualPath = virtualPath.Replace(Path.ApplicationRoot, "");
                     var strArray = virtualPath.Split(new[] { '/', '\\' }, StringSplitOptions.RemoveEmptyEntries);
                     var areaName = (strArray[1].ToLower() == "views") ? string.Empty : strArray[1];
                     var controllerName = strArray[strArray.Length - 2];
@@ -454,7 +456,7 @@ namespace Appleseed.Framework.Site.Configuration
                     var ns = strArray[2];
 
                     // string query = string.Format("?area={0}&controller={1}&action={2}", areaName, controllerName, actionName);
-                    control = (PortalModuleControl)page.LoadControl("/DesktopModules/CoreModules/MVC/MVCModule.ascx");
+                    control = (PortalModuleControl)page.LoadControl(Path.ApplicationRoot + "/DesktopModules/CoreModules/MVC/MVCModule.ascx");
                     ((MVCModuleControl)control).ControllerName = controllerName;
                     ((MVCModuleControl)control).ActionName = actionName;
                     ((MVCModuleControl)control).AreaName = areaName;
