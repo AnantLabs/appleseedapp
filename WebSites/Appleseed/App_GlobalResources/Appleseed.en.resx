@@ -3540,4 +3540,16 @@
   <data name="PAGESETTINGS_SITEDEFAULT" xml:space="preserve">
     <value>(Site Default)</value>
   </data>
+  <data name="EDIT_COMPONENTMODULE" xml:space="preserve">
+    <value>Edit Component</value>
+  </data>
+  <data name="Clone" xml:space="preserve">
+    <value>Clone</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="COPY" xml:space="preserve">
+    <value>Copy</value>
+  </data>
 </root>

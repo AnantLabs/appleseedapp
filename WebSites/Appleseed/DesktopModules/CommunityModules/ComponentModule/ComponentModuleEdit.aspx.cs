@@ -1,10 +1,14 @@
 using System;
 using System.Collections;
 using System.Data.SqlClient;
+using System.Globalization;
+using System.Web.UI.WebControls;
 using Appleseed.Framework;
 using Appleseed.Framework.Content.Data;
+using Appleseed.Framework.DataTypes;
 using Appleseed.Framework.Site.Configuration;
 using Appleseed.Framework.Web.UI;
+using Appleseed.Framework.Web.UI.WebControls;
 using History=Appleseed.Framework.History;
 
 namespace Appleseed.Content.Web.Modules
@@ -17,6 +21,9 @@ namespace Appleseed.Content.Web.Modules
     [History("jminond", "2006/2/23", "Converted to partial class")]
     public partial class ComponentModuleEdit : AddEditItemPage
     {
+
+        protected IHtmlEditor DesktopText;
+
         /// <summary>
         /// The Page_Load event on this Page is used to obtain the ModuleID
         /// and ItemID of the event to edit.
@@ -39,8 +46,9 @@ namespace Appleseed.Content.Web.Modules
                     if (dr.Read())
                     {
                         TitleField.Text = (string) dr["Title"];
-                        ComponentField.Text = (string) dr["Component"];
+                        //ComponentField.Text = (string) dr["Component"];
                         CreatedBy.Text = (string) dr["CreatedByUser"];
+                        DesktopText.Text = (string)dr["Component"];
                         CreatedDate.Text = ((DateTime) dr["CreatedDate"]).ToShortDateString();
                         // 15/7/2004 added localization by Mario Endara mario@softworks.com.uy
                         if (CreatedBy.Text == "unknown" || CreatedBy.Text == string.Empty)
@@ -79,16 +87,18 @@ namespace Appleseed.Content.Web.Modules
             base.OnUpdate(e);
 
             // Only Update if the Entered Data is Valid
-            if (Page.IsValid == true)
+            if (Page.IsValid)
             {
                 // Create an instance of the Event DB component
-                ComponentModuleDB comp = new ComponentModuleDB();
+                var comp = new ComponentModuleDB();
 
                 comp.UpdateComponentModule(ModuleID, PortalSettings.CurrentUser.Identity.UserName, TitleField.Text,
-                                           ComponentField.Text);
+                                           DesktopText.Text);
 
-                // Redirect back to the portal home page
-                RedirectBackToReferringPage();
+                if (Request.QueryString.GetValues("ModalChangeMaster") != null)
+                    Response.Write("<script type=\"text/javascript\">window.parent.location = window.parent.location.href;</script>");
+                else
+                    RedirectBackToReferringPage();
             }
         }
 
@@ -100,11 +110,28 @@ namespace Appleseed.Content.Web.Modules
         /// <param name="e">An <see cref="T:System.EventArgs"></see> that contains the event data.</param>
         protected override void OnInit(EventArgs e)
         {
+
+            var editor = ModuleSettings["Editor"].ToString();
+            var width = this.ModuleSettings["Width"].ToString();
+            var height = this.ModuleSettings["Height"].ToString();
+            var showUpload = this.ModuleSettings["ShowUpload"].ToBoolean(CultureInfo.InvariantCulture);
+
+            var h = new HtmlEditorDataType { Value = editor };
+            this.DesktopText = h.GetEditor(
+                this.PlaceHolderComponentEditor,
+                this.ModuleID,
+                showUpload,
+                this.PortalSettings);
+
+            this.DesktopText.Width = new Unit(width);
+            this.DesktopText.Height = new Unit(height);
+
+
             //Translate
             // Added EsperantusKeys for Localization 
             // Mario Endara mario@softworks.com.uy june-1-2004 
             RequiredTitle.ErrorMessage = General.GetString("ERROR_VALID_TITLE");
-            RequiredComponent.ErrorMessage = General.GetString("ERROR_VALID_DESCRIPTION");
+            //RequiredComponent.ErrorMessage = General.GetString("ERROR_VALID_DESCRIPTION");
 
             this.Load += new EventHandler(this.Page_Load);
             this.UpdateButton.Click += new EventHandler(updateButton_Click);

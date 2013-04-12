@@ -321,27 +321,51 @@ namespace Appleseed.PortalTemplate
         private static void AlterModuleSettings(
             rb_Portals portal, IDictionary<int, int> pageList, IDictionary<Guid, string> desktopSources)
         {
-            var p = new Page();
             var db = new PortalTemplateDataContext(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             var modules = db.rb_Modules.Where(m => m.rb_Pages.PortalID == portal.PortalID).ToList();
-            foreach (var module in modules) {
+            AlterModuleSettingsAux(modules, portal, pageList, desktopSources);
+
+        }
+
+        private static void AlterModuleSettingsPage(rb_Portals portal,
+                        rb_Pages pages, IDictionary<int, int> pageList, IDictionary<Guid, string> desktopSources)
+        {
+
+            var db = new PortalTemplateDataContext(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            var modules = db.rb_Modules.Where(m => m.rb_Pages.PageID == pages.PageID).ToList();
+            AlterModuleSettingsAux(modules, portal, pageList, desktopSources);
+
+        }
+
+        private static void AlterModuleSettingsAux(
+                IEnumerable<rb_Modules> modules, rb_Portals portal, IDictionary<int, int> pageList, IDictionary<Guid, string> desktopSources)
+        {
+            var p = new Page();
+            var db = new PortalTemplateDataContext(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            foreach (var module in modules)
+            {
                 var portalModuleName = string.Concat(
                     Path.ApplicationRoot, "/", desktopSources[module.rb_ModuleDefinition.GeneralModDefID]);
-                if (!portalModuleName.Contains("/Areas/") && !portalModuleName.StartsWith("Areas/")) {
+                if (!portalModuleName.Contains("/Areas/") && !portalModuleName.StartsWith("Areas/"))
+                {
                     var portalModule = (PortalModuleControl)p.LoadControl(portalModuleName);
                     foreach (var key in
                         portalModule.BaseSettings.Keys.Cast<string>().Where(
                             key =>
                             key.Equals("TARGETURL") ||
-                            portalModule.BaseSettings[key] is PageListDataType)) {
-                        try {
+                            portalModule.BaseSettings[key] is PageListDataType))
+                    {
+                        try
+                        {
                             var setting = module.rb_ModuleSettings.First(s => s.SettingName.Equals(key));
                             var oldPageId =
                                 Regex.Match(setting.SettingValue, "(/\\d+/)|(^\\d+$)", RegexOptions.IgnoreCase).Value.
                                     Replace("/", string.Empty);
                             var newPageId = portal.rb_Pages[pageList[Convert.ToInt16(oldPageId)]].PageID;
                             setting.SettingValue = setting.SettingValue.Replace(oldPageId, newPageId.ToString());
-                        } catch (Exception e) {
+                        }
+                        catch (Exception e)
+                        {
                             ErrorHandler.Publish(
                                 LogLevel.Error,
                                 string.Format(
@@ -354,9 +378,12 @@ namespace Appleseed.PortalTemplate
                 }
             }
 
-            try {
+            try
+            {
                 db.SubmitChanges(ConflictMode.FailOnFirstConflict);
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 ErrorHandler.Publish(LogLevel.Error, "There was an error on modifying the module settings", e);
             }
         }
@@ -376,18 +403,38 @@ namespace Appleseed.PortalTemplate
         private void SaveModuleContent(
             rb_Portals portal, IDictionary<Guid, string> desktopSources, IDictionary<int, string> contentModules)
         {
+            var modules = portal.rb_Pages.SelectMany(page => page.rb_Modules);
+            SaveModuleContentAux(modules, desktopSources, contentModules);
+
+        }
+
+        private void SaveModuleContentPage(
+            rb_Pages pages, IDictionary<Guid, string> desktopSources, IDictionary<int, string> contentModules)
+        {
+            var modules = pages.rb_Modules;
+            SaveModuleContentAux(modules, desktopSources, contentModules);
+
+        }
+
+        private void SaveModuleContentAux(IEnumerable<rb_Modules> modules, IDictionary<Guid, string> desktopSources, IDictionary<int, string> contentModules)
+        {
             var p = new Page();
             var moduleIndex = 0;
-            foreach (var module in portal.rb_Pages.SelectMany(page => page.rb_Modules)) {
-                if (contentModules.ContainsKey(moduleIndex)) {
+            foreach (var module in modules)
+            {
+                if (contentModules.ContainsKey(moduleIndex))
+                {
                     var portalModuleName = string.Concat(
                         Path.ApplicationRoot, "/", desktopSources[module.rb_ModuleDefinition.GeneralModDefID]);
-                    if (!portalModuleName.Contains("/Areas/") && !portalModuleName.StartsWith("Areas/")) {
+                    if (!portalModuleName.Contains("/Areas/") && !portalModuleName.StartsWith("Areas/"))
+                    {
                         var portalModule = (PortalModuleControl)p.LoadControl(portalModuleName);
-                        if (portalModule is IModuleExportable) {
+                        if (portalModule is IModuleExportable)
+                        {
                             string content;
                             if (!contentModules.TryGetValue(moduleIndex, out content) ||
-                                !((IModuleExportable)portalModule).SetContentData(module.ModuleID, content)) {
+                                !((IModuleExportable)portalModule).SetContentData(module.ModuleID, content))
+                            {
                                 this.ModulesNotInserted.Add(module.ModuleID, module.ModuleTitle);
                             }
                         }
@@ -446,6 +493,41 @@ namespace Appleseed.PortalTemplate
             FileInfo fInfo = new FileInfo(GetPhysicalPackageTemplatesPath(portalFullPath) + "\\" + templateName);
 
             return fInfo;
+        }
+
+        public int CopyPage(int id, string name)
+        {
+            var ok = -1;
+            var db = new PortalTemplateDataContext(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            var desktopSources = this.iptRepository.GetDesktopSources();
+
+            var translate = new Translate { DesktopSources = desktopSources, PTDataContext = db };
+            IList < rb_Pages > pagelist = (from p in db.rb_Pages where p.PageID == id select p).ToList<rb_Pages>();
+            var page = (pagelist.Count == 0) ? null: translate.TranslateRb_PagesIntoPagesDTO(pagelist[0]);
+            if (page != null)
+            {
+                this.ModulesNotInserted = new Dictionary<int, string>();
+                translate.ContentModules = new Dictionary<int, string>();
+                translate.ModuleDefinitionsDeserialized = new Dictionary<Guid, rb_ModuleDefinition>();
+                
+                page.Modules.RemoveAll(m=> m.ShowEveryWhere == true);
+                var newpage = translate.TranslatePagesDTOIntoRb_Pages(page);
+                newpage.PageName = name;
+
+                db.rb_Pages.InsertOnSubmit(newpage);
+                db.SubmitChanges(ConflictMode.FailOnFirstConflict);
+
+                IList < rb_Portals > portallist = (from p in db.rb_Portals where p.PortalID == newpage.PortalID select p).ToList<rb_Portals>();
+                var portal = portallist[0];
+                translate.PageList = new Dictionary<int, int> { { newpage.PageID, 0 } };
+
+                this.SaveModuleContentPage(newpage, desktopSources, translate.ContentModules);
+                AlterModuleSettingsPage(portal, newpage, translate.PageList, desktopSources);
+                AlterModuleDefinitions(portal.PortalID, translate.ModuleDefinitionsDeserialized);
+                ok = newpage.PageID;
+            }
+
+            return ok;
         }
     }
 }

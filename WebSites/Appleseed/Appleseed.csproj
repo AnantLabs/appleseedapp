@@ -213,6 +213,9 @@
     <Reference Include="FreeTextBox">
       <HintPath>..\..\Libs\FreeTextBox.dll</HintPath>
     </Reference>
+    <Reference Include="Hammock">
+      <HintPath>..\..\Libs\Hammock\Hammock.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\..\Libs\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
@@ -236,13 +239,9 @@
     <Reference Include="Microsoft.Practices.ObjectBuilder">
       <HintPath>..\..\Libs\Microsoft.Practices.ObjectBuilder.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.VisualBasic.Activities.Compiler, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Libs\Microsoft.VisualBasic.Activities.Compiler.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Libs\MVC3\Microsoft.Web.Infrastructure.dll</HintPath>
+      <HintPath>..\..\Libs\MVC 4\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Web.Mvc.Build">
@@ -314,35 +313,35 @@
     <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DataVisualization.Design" />
     <Reference Include="System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" />
-    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Libs\MVC3\System.Web.Helpers.dll</HintPath>
+      <HintPath>..\..\Libs\MVC 4\System.Web.Helpers.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Libs\MVC3\System.Web.Mvc.dll</HintPath>
+      <HintPath>..\..\Libs\MVC 4\System.Web.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Libs\MVC3\System.Web.Razor.dll</HintPath>
+      <HintPath>..\..\Libs\MVC 4\System.Web.Razor.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Routing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" />
-    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Libs\MVC3\System.Web.WebPages.dll</HintPath>
+      <HintPath>..\..\Libs\MVC 4\System.Web.WebPages.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.WebPages.Deployment, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Libs\MVC3\System.Web.WebPages.Deployment.dll</HintPath>
+      <HintPath>..\..\Libs\MVC 4\System.Web.WebPages.Deployment.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.WebPages.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Libs\MVC3\System.Web.WebPages.Razor.dll</HintPath>
+      <HintPath>..\..\Libs\MVC 4\System.Web.WebPages.Razor.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml.Linq" />
@@ -1534,6 +1533,13 @@
     <Compile Include="DesktopModules\CoreModules\SignIn\LoginIn.aspx.designer.cs">
       <DependentUpon>LoginIn.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DesktopModules\CoreModules\SignIn\LogInLinkedIn.aspx.cs">
+      <DependentUpon>LogInLinkedIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesktopModules\CoreModules\SignIn\LogInLinkedIn.aspx.designer.cs">
+      <DependentUpon>LogInLinkedIn.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DesktopModules\CoreModules\SignIn\LogInTweeter.aspx.cs">
       <DependentUpon>LogInTweeter.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1827,7 +1833,9 @@
     </Content>
     <Content Include="App_Browsers\safari.browser" />
     <Content Include="App_Browsers\w3cvalidator.browser" />
-    <Content Include="Areas\Web.config" />
+    <Content Include="Areas\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\Appleseed.ar.resx">
@@ -4224,12 +4232,10 @@
     <Content Include="aspnet_client\ie7\0_9\test-trans.png" />
     <Content Include="aspnet_client\ie7\0_9\test.html" />
     <Content Include="aspnet_client\jQuery\jquery-1.6.1-vsdoc.js" />
-    <Content Include="aspnet_client\jQuery\jquery-1.6.1.js" />
-    <Content Include="aspnet_client\jQuery\jquery-1.6.1.min.js" />
-    <Content Include="aspnet_client\jQuery\jquery-1.7.2.js" />
-    <Content Include="aspnet_client\jQuery\jquery-1.7.2.min.js" />
-    <Content Include="aspnet_client\jQuery\jquery-ui-1.8.11.js" />
-    <Content Include="aspnet_client\jQuery\jquery-ui-1.8.11.min.js" />
+    <Content Include="aspnet_client\jQuery\jquery-1.8.3.js" />
+    <Content Include="aspnet_client\jQuery\jquery-1.8.3.min.js" />
+    <Content Include="aspnet_client\jQuery\jquery-ui-1.9.2.js" />
+    <Content Include="aspnet_client\jQuery\jquery-ui-1.9.2.min.js" />
     <Content Include="aspnet_client\jQuery\jquery-ui-i18n.min.js" />
     <Content Include="aspnet_client\jQuery\jquery.bgiframe.js" />
     <Content Include="aspnet_client\jQuery\jquery.bgiframe.min.js" />
@@ -4254,8 +4260,8 @@
     <Content Include="aspnet_client\jQuery\MicrosoftMvcJQueryValidation.js" />
     <Content Include="aspnet_client\jQuery\MicrosoftMvcValidation.debug.js" />
     <Content Include="aspnet_client\jQuery\MicrosoftMvcValidation.js" />
-    <Content Include="aspnet_client\jQuery\modernizr-1.7.js" />
-    <Content Include="aspnet_client\jQuery\modernizr-1.7.min.js" />
+    <Content Include="aspnet_client\jQuery\modernizr-2.6.2.js" />
+    <Content Include="aspnet_client\jQuery\modernizr-2.6.2.min.js" />
     <Content Include="aspnet_client\jQuery\ui.multiselect.css" />
     <Content Include="aspnet_client\jQuery\ui.multiselect.js" />
     <Content Include="aspnet_client\js\AppleseedScripts.js" />
@@ -5264,7 +5270,7 @@
     <Content Include="Design\Themes\Appleseedcms\images\ui-icons_004276_256x240.png" />
     <Content Include="Design\Themes\Appleseedcms\images\ui-icons_cc0000_256x240.png" />
     <Content Include="Design\Themes\Appleseedcms\images\ui-icons_ffffff_256x240.png" />
-    <Content Include="Design\Themes\Appleseedcms\jquery-ui-1.8.9.custom.css" />
+    <Content Include="Design\Themes\Appleseedcms\jquery-ui-1.9.2.custom.css" />
     <Content Include="Design\Themes\Appleseedcms\menu.css" />
     <Content Include="Design\Themes\Appleseedcms\TabControl.css" />
     <Content Include="Design\Themes\Appleseedcms\TabsSubTabs.css" />
@@ -5368,7 +5374,7 @@
     <Content Include="Design\Themes\Clearly\images\ui-icons_f5e175_256x240.png" />
     <Content Include="Design\Themes\Clearly\images\ui-icons_f7a50d_256x240.png" />
     <Content Include="Design\Themes\Clearly\images\ui-icons_fcd113_256x240.png" />
-    <Content Include="Design\Themes\Clearly\jquery-ui-1.8.8.custom.css" />
+    <Content Include="Design\Themes\Clearly\jquery-ui-1.9.2.custom.css" />
     <Content Include="Design\Themes\Clearly\menu.css" />
     <Content Include="Design\Themes\Clearly\Slyder_Styles.css" />
     <Content Include="Design\Themes\Clearly\TabControl.css" />
@@ -5555,7 +5561,7 @@
     <Content Include="Design\Themes\Corporate-Black\images\ui-icons_f5e175_256x240.png" />
     <Content Include="Design\Themes\Corporate-Black\images\ui-icons_f7a50d_256x240.png" />
     <Content Include="Design\Themes\Corporate-Black\images\ui-icons_fcd113_256x240.png" />
-    <Content Include="Design\Themes\Corporate-Black\jquery-ui-1.8.8.custom.css" />
+    <Content Include="Design\Themes\Corporate-Black\jquery-ui-1.9.2.custom.css" />
     <Content Include="Design\Themes\Corporate-Black\menu.css" />
     <Content Include="Design\Themes\Corporate-Black\Slyder_Styles.css" />
     <Content Include="Design\Themes\Corporate-Black\TabControl.css" />
@@ -5741,7 +5747,7 @@
     <Content Include="Design\Themes\Education\images\ui-icons_f5e175_256x240.png" />
     <Content Include="Design\Themes\Education\images\ui-icons_f7a50d_256x240.png" />
     <Content Include="Design\Themes\Education\images\ui-icons_fcd113_256x240.png" />
-    <Content Include="Design\Themes\Education\jquery-ui-1.8.8.custom.css" />
+    <Content Include="Design\Themes\Education\jquery-ui-1.9.2.custom.css" />
     <Content Include="Design\Themes\Education\menu.css" />
     <Content Include="Design\Themes\Education\Slyder_Styles.css" />
     <Content Include="Design\Themes\Education\TabControl.css" />
@@ -6525,6 +6531,7 @@
     </Content>
     <Content Include="DesktopModules\CoreModules\SignIn\LogInGoogle.aspx" />
     <Content Include="DesktopModules\CoreModules\SignIn\LoginIn.aspx" />
+    <Content Include="DesktopModules\CoreModules\SignIn\LogInLinkedIn.aspx" />
     <Content Include="DesktopModules\CoreModules\SignIn\LogInTweeter.aspx" />
     <Content Include="DesktopModules\CoreModules\SignIn\Signin.ascx" />
     <Content Include="DesktopModules\CoreModules\SignIn\SignInBoth.ascx" />
@@ -6619,6 +6626,7 @@
     <Content Include="images\img\trileft.gif" />
     <Content Include="images\img\_reply.gif" />
     <Content Include="images\sign-in-google.png" />
+    <Content Include="images\sign-in-with-linkedin.jpg" />
     <Content Include="images\sign-in-with-twitter-l.png" />
     <Content Include="Installer\default.aspx" />
     <Content Include="Installer\images\installer_top_bg.png" />

@@ -303,6 +303,7 @@ namespace Appleseed.PortalTemplate
                 foreach (ModuleSettingsDTO m in module.ModuleSettings) {
                     _module.rb_ModuleSettings.Add(TranslateModuleSettingsDTOIntoRb_ModuleSettings(m));
                 }
+
                 if (this.ModuleDefinitionsDeserialized.ContainsKey(module.ModuleDefinitions.GeneralModDefID)) {
                     rb_ModuleDefinition def = this.ModuleDefinitionsDeserialized[module.ModuleDefinitions.GeneralModDefID];
                     _module.rb_ModuleDefinition = def;

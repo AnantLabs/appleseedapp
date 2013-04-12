@@ -32,6 +32,13 @@
                 <%--<asp:Label runat="server" ForeColor="Red" ID="errtwit" Visible="false">Twitter settings are not correct</asp:Label>--%>
             </td>
         </tr>
+         <tr>
+            <td>
+                <div runat="server" id="linkedin_div">
+                    <a id="LinkedInLink" href="#" onclick="PopUp('<%= getLinkedInLink() %>');return false;"><img src="<%= Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/images/sign-in-with-linkedin.jpg") %>" alt="Login with linkedin"/> </a>
+                </div>
+            </td>
+        </tr>
         <tr>
             <td>
                 <asp:Label ID="lblError" runat="server" Visible="false" EnableViewState="false" ForeColor="Red"

@@ -76,8 +76,19 @@ namespace Appleseed.DesktopModules.CoreModules.SocialNetworksButtons {
                     google_div.Visible = false;
                 }
                 else
-                    hide = false;                
-                
+                    hide = false;
+
+                if ((this.PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_LINKEDIN_APP_ID") &&
+                this.PortalSettings.CustomSettings["SITESETTINGS_LINKEDIN_APP_ID"].ToString().Length != 0)&&
+                    (this.PortalSettings.CustomSettings.ContainsKey("SITESETTINGS_LINKEDIN_APP_SECRET") &&
+                this.PortalSettings.CustomSettings["SITESETTINGS_LINKEDIN_APP_SECRET"].ToString().Length != 0))
+                {
+                    hide = false;
+                    Session["LinkedInAppId"] = PortalSettings.CustomSettings["SITESETTINGS_LINKEDIN_APP_ID"].ToString();
+                    Session["LinkedInAppSecret"] = PortalSettings.CustomSettings["SITESETTINGS_LINKEDIN_APP_SECRET"].ToString();
+                }
+                else
+                    linkedin_div.Visible = false;
             }
         }
 
@@ -93,7 +104,11 @@ namespace Appleseed.DesktopModules.CoreModules.SocialNetworksButtons {
         protected string getGoogleLink() {
             return HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/SignIn/LogInGoogle.aspx");
         }
-        
+
+        protected string getLinkedInLink()
+        {
+            return HttpUrlBuilder.BuildUrl("~/DesktopModules/CoreModules/SignIn/LoginLinkedIn.aspx");
+        }
 
         private void UpdateProfile()
         {
