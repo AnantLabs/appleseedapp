@@ -88,7 +88,7 @@ namespace Appleseed.Framework.Content.Data
             var parameterTitle = new SqlParameter("@Title", SqlDbType.NVarChar, 100) { Value = title };
             sqlCommand.Parameters.Add(parameterTitle);
 
-            var parameterComponent = new SqlParameter("@Component", SqlDbType.NVarChar, 2000) { Value = component };
+            var parameterComponent = new SqlParameter("@Component", SqlDbType.NVarChar, -1) { Value = component };
             sqlCommand.Parameters.Add(parameterComponent);
 
             // Execute the command

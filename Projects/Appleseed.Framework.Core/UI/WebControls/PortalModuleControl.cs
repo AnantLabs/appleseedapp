@@ -797,8 +797,8 @@ namespace Appleseed.Framework.Web.UI.WebControls
                             this.AddButton.HRef = HttpUrlBuilder.BuildUrl(
                                 this.AddUrl, this.PageID, string.Format("mID={0}", this.ModuleID));
                         }
-                        if (this.AddButton.HRef.Contains("UsersManage.aspx"))
-                            this.addButton.Attributes.Add("onclick", "openInModal('" + AddButton.HRef + "','" + General.GetString("ADD_NEW_USER", "Add new User") + "');return false;");
+                        if (this.AddButton.HRef.Contains("UsersManage.aspx") || AddButton.HRef.Contains("ComponentModuleEdit.aspx"))
+                            this.addButton.Attributes.Add("onclick", "openInModal('" + AddButton.HRef + "','" + General.GetString("EDIT_COMPONENTMODULE", "Edit Component") + "');return false;");
                         
                         this.addButton.Target = this.AddTarget;
                         this.addButton.Image = this.CurrentTheme.GetImage("Buttons_Add", "Add.gif");

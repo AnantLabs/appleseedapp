@@ -4,8 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <script type="text/javascript" src="../../../aspnet_client/jQuery/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript" src="../../../aspnet_client/jQuery/jquery-ui-1.8.11.js"></script>
+    <script type="text/javascript" src="../../../aspnet_client/jQuery/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="../../../aspnet_client/jQuery/jquery-ui-1.9.2.min.js"></script>
 </head>
 <body style="background-image: none !important">
     <form id="htmleditmodalform" runat="server">

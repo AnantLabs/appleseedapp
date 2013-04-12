@@ -1,3 +1,4 @@
+
 namespace Appleseed.Framework.UrlRewriting
 {
     using System.Configuration;
@@ -117,9 +118,14 @@ namespace Appleseed.Framework.UrlRewriting
                     indexNumber = i;
                 }
             }
-            if (indexNumber != -1) {
+            if (url.Contains("alias" + this.defaultSplitter))
+            {
+                pageId = "0";
+            }
+            else if (indexNumber != -1) {
                 pageId = parts[indexNumber];
-            }           
+            }
+            
             var queryString = string.Format("?pageId={0}", pageId);
 
             if (parts.Length > 2)

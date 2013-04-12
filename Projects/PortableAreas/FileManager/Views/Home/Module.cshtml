@@ -9,6 +9,9 @@
 <div id="FileManagerErrors"></div>
 
 <div id="FileManagerContainter">
+<div id="FileManagerButtonsR" > 
+<input class="ArrowButtons" type="button" onclick="$('#MainTree').jstree('refresh', -1);" value="Refresh"> 
+</div>
     <div id="DirectoryTree" class="FileManagerDirectoryTree">
         @Html.Partial("TreeModule")
     </div>
@@ -207,95 +210,141 @@
 
 <script type= "text/javascript">
 
+    function refresh(){
+        $('#MainTree').jstree('refresh', -1);
+    }
+
     $(function () {
-        Refresh();
-    });
 
-
-
-    function Refresh() {
         $("#MainTree")
-        .jstree({
-            "json_data": {
-                "ajax": {
-                    "type": "POST",
-                    "url":
-                    function (node) {
-                        var url = '';
-                        if (node == -1) {
-                            url = '@Url.Action("GetTreeData",new {mID = Model.ModuleId})';
-                        }
-                        else {
-                            var nodeId = node.attr('id');
-                            url = '@Url.Action("GetChildreenTree")?dir=' + nodeId +'&mID=' + @Model.ModuleId;
-                        }
+            .jstree({
+                "json_data": {
+                    "ajax": {
+                        "type": "POST",
+                        "url":
+                            function(node) {
+                                var url = '';
+                                if (node == -1) {
+                                    url = '@Url.Action("GetTreeData",new {mID = Model.ModuleId})';
+                                } else {
+                                    var nodeId = node.attr('id');
+                                    url = '@Url.Action("GetChildreenTree")?dir=' + nodeId + '&mID=' + @Model.ModuleId;
+                                }
 
-                        return url;
-                    },
-                    "data": function (n) {
-                        return { ID: n.Attr ? n.Attr("ID") : 0 };
+                                return url;
+                            },
+                        "data": function(n) {
+                            return { ID: n.Attr ? n.Attr("ID") : 0 };
+                        }
                     }
-                }
-            },
-            "dnd": {
-                "drop_target": false,
-                "drag_target": false
-            },
-
-            "core": { "initially_open": ["/Portals"] },
-
-            "plugins": ["themes", "contextmenu", "json_data", "ui", "crrm", "dnd", "core"]
-        }).bind("select_node.jstree", function (event, data) {
-
-            var folder = data.rslt.obj.attr("id");
-            var folderReplace = folder.replace(/\//g, "\\/");
-            $("#MainTree").jstree("open_node", $('#' + folderReplace));
-
-            LoadFoldersContent(folder, true);
-
-        });
-
-
-    };
-
-    $('#MainTree').bind("move_node.jstree", function (e, data) {
-        data.rslt.o.each(function () {
-            $.ajax({
-                async: false,
-                type: 'POST',
-                url: '@Url.Action("MoveData")',
-                data: {
-                    "path": $(this).attr("id"),
-                    "destination": data.rslt.np.attr("id"),
-                    "mID": @Model.ModuleId
                 },
-                success: function (r) {
-                    Refresh();
+                "dnd": {
+                    "drop_target": false,
+                    "drag_target": false
                 },
-                error: function (r) {
+
+                "core": { "initially_open": ["/Portals"] },
+
+                "plugins": ["themes", "contextmenu", "json_data", "ui", "crrm", "dnd", "core"]
+            }).bind("select_node.jstree", function(event, data) {
+
+                var folder = data.rslt.obj.attr("id");
+                OpenFolder(folder);
+
+            }).bind("move_node.jstree", function(e, data) {
+                var bool_copy = (data.rslt.cy != undefined) ? true : false ; 
+                var selected = data.rslt.o.text().replace(/\s{2}/,""); 
+                var children = data.rslt.o.children().children().text().replace(/\s/,"");
+                var folder = selected.replace(children, "");
+                data.rslt.o.each(function() {
+                    $.ajax({
+                        async: false,
+                        type: 'POST',
+                        url: '@Url.Action("MoveData")',
+                        data: {
+                            "path": $(this).attr("id"),
+                            "destination": data.rslt.np.attr("id"),
+                            "mID": @Model.ModuleId, 
+                            "isCopy": bool_copy,
+                            "folder": folder,
+                        },
+                        success: function(r) {
+                            //Refresh();
+                            refresh();
+                        },
+                        error: function(r) {
+                            $.jstree.rollback(data.rlbk);
+                        }
+                    });
+                });
+            }).bind("rename.jstree", function(e, data) {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("RenameFolderTree")',
+                    data: {
+                        "name": data.rslt.obj.attr("id"),
+                        "newName": data.rslt.new_name,
+                        "mID": @Model.ModuleId
+                    },
+                    success: function(r) {
+                        //Refresh();
+                        refresh();
+                    },
+                    error: function(r) {
+                        $.jstree.rollback(data.rlbk);
+                    }
+                });
+            }).bind("remove.jstree", function(e, data) {
+                var selected = data.rslt.obj.text().replace(/\s{2}/,""); 
+                var children = data.rslt.obj.children().children().text().replace(/\s/,"");
+                var folder = selected.replace(children, "");
+                var parentfolder = data.rslt.parent.attr("id");
+                if (confirm('Are you sure you want to delete "' + folder + '"?')) {
+                    $.ajax({
+                        async : false,
+                        type: 'POST',
+                        url: '@Url.Action("DeleteFolder")',
+                        data: {
+                            "folder": folder,
+                            "parentfolder": parentfolder,
+                            "mID": @Model.ModuleId
+                        },
+                        success: function (folderView) {
+                            LoadFoldersContent(parentfolder);
+                            //Refresh();
+                            refresh();
+                        },
+                        error: function (result) {
+                            AppendError(result.responseText);
+                            $.jstree.rollback();
+                        }
+                    });
+                }else{
                     $.jstree.rollback(data.rlbk);
+                    $('#MainTree').jstree("deselect_all");
                 }
+
+            }).bind("create.jstree", function (e, data) {
+                var lastNode = data.rslt.parent.attr("id");
+                var name = data.rslt.name;
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("CreateNewFolder")',
+                    data: {
+                        folder: lastNode,
+                        name: name,
+                        "mID": @Model.ModuleId
+                    },
+                    success: function (folderView) {
+                        LoadFoldersContent(lastNode);
+                        //Refresh();
+                        refresh();
+                    },
+                    error: function (result) {
+                        AppendError(result.responseText);
+                    }
+                });
             });
-        });
-    });
-
-
-    $('#MainTree').bind("rename.jstree", function (e, data) {
-        $.ajax({
-            type: 'POST',
-            url: '@Url.Action("RenameFolderTree")',
-            data: {
-                "name": data.rslt.obj.attr("id"),
-                "newName": data.rslt.new_name,
-                "mID": @Model.ModuleId
-            },
-            success: function (r) {
-                Refresh();
-            },
-            error: function (r) {
-                $.jstree.rollback(data.rlbk);
-            }
-        });
     });
 
     function LoadFoldersContent(dir, addToPush) {
@@ -328,8 +377,8 @@
 
     function OpenFolder(folder) {
 
-        var folderReplace = folder.replace(/\//g, "\\/");
-        $("#MainTree").jstree("open_node", $('#' + folderReplace));
+        //var folderReplace = folder.replace(/\//g, "\\/");
+        $("#MainTree").jstree("open_node", document.getElementById(folder));
         LoadFoldersContent(folder, true);
 
     }
@@ -371,6 +420,7 @@
     function CreateFolder(Name) {
         //var folderReplace = LastNode.replace(/\//g, "\\/");
 
+                       
 
         $.ajax({
             type: 'POST',
@@ -384,6 +434,8 @@
                 LoadFoldersContent(LastNode);
                 CloseNewFolderDialog();
                 $('#NewFolderInputId').val('');
+                //Refresh();
+                refresh();
             },
             error: function (result) {
                 AppendError(result.responseText);
@@ -614,7 +666,8 @@
                 },
                 success: function (folderView) {
                     LoadFoldersContent(LastNode);
-                    Refresh();
+                    //Refresh();
+                    refresh();
                 },
                 error: function (result) {
                     AppendError(result.responseText);
@@ -649,12 +702,13 @@
                 success: function (folderView) {
                     LoadFoldersContent(LastNode);
                     CloseRenameFolderDialog();
-                    Refresh();
+                    //Refresh();
+                    refresh();
 
                 }
             });
         } else {
-
+            alert('The name can not be empty.');
         }
 
     }
@@ -726,7 +780,8 @@
                 LoadFoldersContent(LastNode);
                 CopiedFile = '';
                 if(isFolder) {
-                    Refresh();
+                    //Refresh();
+                    refresh();
                 }
             },
             error: function (result) {

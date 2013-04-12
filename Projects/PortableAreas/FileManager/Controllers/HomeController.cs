@@ -5,7 +5,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Appleseed.Framework.Security;
-using Appleseed.Framework.Site.Configuration;
 using FileManager.Models;
 
 namespace FileManager.Controllers {
@@ -22,18 +21,17 @@ namespace FileManager.Controllers {
             SetModuleId();
             if (PortalSecurity.HasViewPermissions(ModuleId))
             {
-                var model = new FileManagerModel();
-                model.PortalName = PortalSettings.PortalFullPath;
-                model.ModuleId = ModuleId;
-                model.ViewPermission = PortalSecurity.HasViewPermissions(ModuleId);
-                model.EditPermission = PortalSecurity.HasEditPermissions(ModuleId);
+                var model = new FileManagerModel
+                                {
+                                    PortalName = PortalSettings.PortalFullPath,
+                                    ModuleId = ModuleId,
+                                    ViewPermission = PortalSecurity.HasViewPermissions(ModuleId),
+                                    EditPermission = PortalSecurity.HasEditPermissions(ModuleId)
+                                };
                 return View(model);
             }
-            else
-            {
-                PortalSecurity.AccessDenied();
-                return null;
-            }
+            PortalSecurity.AccessDenied();
+            return new EmptyResult();
         }
 
         /// <summary>
@@ -94,7 +92,7 @@ namespace FileManager.Controllers {
         
         [HttpPost]
         [FileManagerEditFilter]
-        public ActionResult MoveData(string path, string destination, int mID)
+        public ActionResult MoveData(string path, string destination, int mID, bool isCopy, string folder)
         {
             try
             {
@@ -113,7 +111,16 @@ namespace FileManager.Controllers {
                 {
                     if ((attDestination & FileAttributes.Directory) == FileAttributes.Directory)
                     {
-                        MoveDirectory(path, destination);
+                        if (!isCopy)
+                        {
+                            MoveDirectory(path, destination);
+                        }
+                        else
+                        {
+                            var fullNewName = string.Format(@"{0}\{1}", destination, folder);
+                            CopyDirectories(path, fullNewName);
+                        }
+                            
                     }
                 }
                 else
@@ -230,22 +237,43 @@ namespace FileManager.Controllers {
         [FileManagerViewFilter]
         public ActionResult ViewFilesFromFolder(string folder, int mID)
         {
-            SetModuleId(mID);
-            var directory = new DirectoryInfo(Request.MapPath(folder));
-            var folderContent = new FolderContent();
+            try
+            {
+                SetModuleId(mID);
+                var directory = new DirectoryInfo(Request.MapPath(folder));
+                var folderContent = new FolderContent();
 
-            foreach (var f in directory.GetFiles()) {
+                foreach (var f in directory.GetFiles())
+                {
 
-                folderContent.Files.Add(new Files{ fullName = string.Format("{0}/{1}", folder, f.Name), name = f.Name, folder = folder}); 
+                    folderContent.Files.Add(new Files
+                                                {
+                                                    fullName = string.Format("{0}/{1}", folder, f.Name),
+                                                    name = f.Name,
+                                                    folder = folder
+                                                });
+                }
+
+                foreach (var f in directory.GetDirectories())
+                {
+
+                    folderContent.Folders.Add(new Files
+                                                  {
+                                                      fullName = string.Format("{0}/{1}", folder, f.Name),
+                                                      name = f.Name,
+                                                      folder = folder
+                                                  });
+                }
+
+
+                return View("FilesView", folderContent);
             }
+            catch(Exception)
+            {
 
-            foreach (var f in directory.GetDirectories()) {
+                return View("FolderDoesntExist");
 
-                folderContent.Folders.Add(new Files { fullName = string.Format("{0}/{1}", folder, f.Name), name = f.Name, folder = folder }); 
             }
-
-
-            return View("FilesView", folderContent);
         }
 
         public ActionResult UploadFile(HttpPostedFileBase fileData, string folderName)

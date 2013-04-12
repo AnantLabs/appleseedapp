@@ -1,18 +1,10 @@
 <%@ page autoeventwireup="false" inherits="Appleseed.Content.Web.Modules.ComponentModuleEdit"
-    language="c#" Codebehind="ComponentModuleEdit.aspx.cs" %>
+    language="c#" MasterPageFile="~/Shared/SiteMasterDefault.master" Codebehind="ComponentModuleEdit.aspx.cs" %>
 
-<%@ register src="~/Design/DesktopLayouts/DesktopPortalBanner.ascx" tagname="Banner"
-    tagprefix="portal" %>
-<%@ register src="~/Design/DesktopLayouts/DesktopFooter.ascx" tagname="Footer" tagprefix="foot" %>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head id="Head1" runat="server"><title></title>
-</head>
-<body id="Body1" runat="server">
-    <form id="Form1" runat="server">
-        <div id="zenpanes" class="zen-main">
-            <div class="rb_DefaultPortalHeader">
-                <portal:banner id="SiteHeader" runat="server" />
-            </div>
+<asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="Server">
+
+
+
             <div class="div_ev_Table">
                 <table cellpadding="0" cellspacing="0" width="100%">
                     <tr>
@@ -26,6 +18,7 @@
                         </td>
                     </tr>
                 </table>
+                
                 <table cellpadding="0" cellspacing="0" width="750">
                     <tr valign="top">
                         <td class="SubHead" width="100">
@@ -48,10 +41,15 @@
                             </asp:requiredfieldvalidator>
                         </td>
                     </tr>
-                    <tr valign="top">
-                        <td class="SubHead">
-                            Component
-                        </td>
+                </table>
+                    <%--<tr valign="top">
+                        <td></td>
+                        <td >--%>
+                            <br/>
+                           <div class="normal">
+                                <asp:PlaceHolder ID="PlaceHolderComponentEditor" runat="server"></asp:PlaceHolder>
+                         </div>
+                        <%--</td>
                         <td>
                             <asp:textbox id="ComponentField" runat="server" columns="44" rows="10" textmode="Multiline"
                                 width="490">
@@ -61,9 +59,9 @@
                             <asp:requiredfieldvalidator id="RequiredComponent" runat="server" controltovalidate="ComponentField"
                                 display="Dynamic">
                             </asp:requiredfieldvalidator>
-                        </td>
-                    </tr>
-                </table>
+                        </td>--%>
+                    <%--</tr>
+                </table>--%>
                 <p>
                     <rbfwebui:linkbutton id="UpdateButton" runat="server" class="CommandButton" text="UPDATE">
                     </rbfwebui:linkbutton>
@@ -81,11 +79,7 @@
                     </rbfwebui:localize>&nbsp;
                     <rbfwebui:label id="CreatedDate" runat="server"></rbfwebui:label>
                 </span>
-                <div class="rb_AlternatePortalFooter">
-                    <foot:footer id="Footer" runat="server" />
+                
                 </div>
-            </div>
-        </div>
-    </form>
-</body>
-</html>
+
+</asp:Content>

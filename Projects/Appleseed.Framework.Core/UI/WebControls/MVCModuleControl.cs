@@ -60,7 +60,7 @@ namespace Appleseed.Framework.Web.UI.WebControls
 
             foreach (var t in routes)
             {
-                if (t.GetType().Name != "Route")
+                if (t.GetType().Name != "Route" || ((Route)t).DataTokens == null)
                 {
                     continue;
                 }
