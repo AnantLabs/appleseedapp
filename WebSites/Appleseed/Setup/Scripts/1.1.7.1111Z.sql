@@ -355,38 +355,38 @@ GO
 EXEC rb_Modules_IU 	215, 215, '{E928F47B-A131-4a33-88D5-D5D6E7A94B36}', 1, N'ContentPane', N'Recycler', N'Admins', N'Admins;', N'Admins;', N'Admins;', N'Admins;', 0, 0, NULL, 0, 0, NULL, NULL, '', NULL, '', NULL, 0, 0, N'Admins;', N'Admins;'
 GO
 
-EXEC rb_Tabs_IU 	220	,	100	,	1220	,	0	,	N'Search Portal'	,	N''	,	N'Admins;'	,	0	,	NULL
-GO
-EXEC rb_Modules_IU 	220, 220, '{2502DB18-B580-4F90-8CB4-C15E6E531030}', 1, N'ContentPane', N'Search Portal', N'Admins', N'Admins;', N'Admins;', N'Admins;', N'Admins;', 0, 0, NULL, 0, 0, NULL, NULL, '', NULL, '', NULL, 0, 0, N'Admins;', N'Admins;'
-GO
+--EXEC rb_Tabs_IU 	220	,	100	,	1220	,	0	,	N'Search Portal'	,	N''	,	N'Admins;'	,	0	,	NULL
+--GO
+--EXEC rb_Modules_IU 	220, 220, '{2502DB18-B580-4F90-8CB4-C15E6E531030}', 1, N'ContentPane', N'Search Portal', N'Admins', N'Admins;', N'Admins;', N'Admins;', N'Admins;', 0, 0, NULL, 0, 0, NULL, NULL, '', NULL, '', NULL, 0, 0, N'Admins;', N'Admins;'
+--GO
 
-EXEC rb_Tabs_IU 	230	,	100	,	1230	,	0	,	N'ServiceItemList'	,	N''	,	N'Admins;'	,	0	,	NULL
-GO
-EXEC rb_Modules_IU 	230, 230, '{2502DB18-B580-4F90-8CB4-C15E6E531052}', 1, N'ContentPane', N'ServiceItemList', N'Admins', N'Admins;', N'Admins;', N'Admins;', N'Admins;', 0, 0, NULL, 0, 0, NULL, NULL, '', NULL, '', NULL, 0, 0, N'Admins;', N'Admins;'
-GO
+--EXEC rb_Tabs_IU 	230	,	100	,	1230	,	0	,	N'ServiceItemList'	,	N''	,	N'Admins;'	,	0	,	NULL
+--GO
+--EXEC rb_Modules_IU 	230, 230, '{2502DB18-B580-4F90-8CB4-C15E6E531052}', 1, N'ContentPane', N'ServiceItemList', N'Admins', N'Admins;', N'Admins;', N'Admins;', N'Admins;', 0, 0, NULL, 0, 0, NULL, NULL, '', NULL, '', NULL, 0, 0, N'Admins;', N'Admins;'
+--GO
 
 EXEC rb_Tabs_IU 	240	,	100	,	1240	,	0	,	N'Site Settings'	,	N''	,	N'Admins;'	,	0	,	NULL
 GO
 EXEC rb_Modules_IU 	240, 240, '{EBBB01B1-FBB5-4E79-8FC4-59BCA1D0554E}', 1, N'ContentPane', N'Site Settings', N'Admins', N'Admins;', N'Admins;', N'Admins;', N'Admins;', 0, 0, NULL, 0, 0, NULL, NULL, '', NULL, '', NULL, 0, 0, N'Admins;', N'Admins;'
 GO
 
-EXEC rb_Tabs_IU 	250	,	100	,	1250	,	0	,	N'SiteMap'	,	N''	,	N'Admins;'	,	0	,	NULL
-GO
-EXEC rb_Modules_IU 	250, 250, '{429A98E3-7A07-4D9A-A578-3ED8DD158306}', 1, N'ContentPane', N'SiteMap', N'Admins', N'Admins;', N'Admins;', N'Admins;', N'Admins;', 0, 0, NULL, 0, 0, NULL, NULL, '', NULL, '', NULL, 0, 0, N'Admins;', N'Admins;'
-GO
+--EXEC rb_Tabs_IU 	250	,	100	,	1250	,	0	,	N'SiteMap'	,	N''	,	N'Admins;'	,	0	,	NULL
+--GO
+--EXEC rb_Modules_IU 	250, 250, '{429A98E3-7A07-4D9A-A578-3ED8DD158306}', 1, N'ContentPane', N'SiteMap', N'Admins', N'Admins;', N'Admins;', N'Admins;', N'Admins;', 0, 0, NULL, 0, 0, NULL, NULL, '', NULL, '', NULL, 0, 0, N'Admins;', N'Admins;'
+--GO
 
 EXEC rb_Tabs_IU 	260	,	100	,	1260	,	0	,	N'Tasks'	,	N''	,	N'Admins;'	,	0	,	NULL
 GO
 
-EXEC rb_Tabs_IU 	261	,	260	,	1261	,	0	,	N'Milestones'	,	N''	,	N'Admins;'	,	0	,	NULL
-GO
-EXEC rb_Modules_IU 	261, 261, '{B8784E32-688A-4B8A-87C4-DF108BF12DBE}', 1, N'ContentPane', N'Milestones', N'Admins', N'Admins;', N'Admins;', N'Admins;', N'Admins;', 0, 0, NULL, 0, 0, NULL, NULL, '', NULL, '', NULL, 0, 0, N'Admins;', N'Admins;'
-GO
+--EXEC rb_Tabs_IU 	261	,	260	,	1261	,	0	,	N'Milestones'	,	N''	,	N'Admins;'	,	0	,	NULL
+--GO
+--EXEC rb_Modules_IU 	261, 261, '{B8784E32-688A-4B8A-87C4-DF108BF12DBE}', 1, N'ContentPane', N'Milestones', N'Admins', N'Admins;', N'Admins;', N'Admins;', N'Admins;', 0, 0, NULL, 0, 0, NULL, NULL, '', NULL, '', NULL, 0, 0, N'Admins;', N'Admins;'
+--GO
 
-EXEC rb_Tabs_IU 	262	,	260	,	1262	,	0	,	N'Tasks Add/Edit/Delete'	,	N''	,	N'Admins;'	,	0	,	NULL
-GO
-EXEC rb_Modules_IU 	262, 262, '{2502DB18-B580-4F90-8CB4-C15E6E531012}', 1, N'ContentPane', N'Task', N'Admins', N'Admins;', N'Admins;', N'Admins;', N'Admins;', 0, 0, NULL, 0, 0, NULL, NULL, '', NULL, '', NULL, 0, 0, N'Admins;', N'Admins;'
-GO
+--EXEC rb_Tabs_IU 	262	,	260	,	1262	,	0	,	N'Tasks Add/Edit/Delete'	,	N''	,	N'Admins;'	,	0	,	NULL
+--GO
+--EXEC rb_Modules_IU 	262, 262, '{2502DB18-B580-4F90-8CB4-C15E6E531012}', 1, N'ContentPane', N'Task', N'Admins', N'Admins;', N'Admins;', N'Admins;', N'Admins;', 0, 0, NULL, 0, 0, NULL, NULL, '', NULL, '', NULL, 0, 0, N'Admins;', N'Admins;'
+--GO
 
 EXEC rb_Tabs_IU 	280	,	100	,	1280	,	0	,	N'Users'	,	N''	,	N'Admins;'	,	0	,	NULL
 GO
