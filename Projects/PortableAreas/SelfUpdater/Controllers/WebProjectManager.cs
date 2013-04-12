@@ -1,4 +1,5 @@
-﻿using System.Runtime.Versioning;
+﻿using System.Configuration;
+using System.Runtime.Versioning;
 using System.Web;
 using NuGet;
 using System;
@@ -67,13 +68,35 @@ namespace SelfUpdater.Controllers
 
         internal static IQueryable<IPackage> GetPackages(IQueryable<IPackage> packages, bool filterTags)
         {
-            return filterTags ? packages.Where(x => x.Tags.Contains("Appleseed") && x.IsAbsoluteLatestVersion) : packages.Where(x => x.IsLatestVersion);
+            if(filterTags)
+            {
+                var tags = (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["SelfUpdaterTags"]) ? ConfigurationManager.AppSettings["SelfUpdaterTags"] : "Appleseed").Split(';');
+                var packagesList = new List<IPackage>();
+
+                foreach (var tag in tags)
+                {
+                    var filteredPackages = FilterByTag(packages, tag);
+                    packagesList.AddRange(filteredPackages);
+                }
+                return packagesList.AsQueryable();
+            }
+            else
+            {
+                 return packages.Where(x => x.IsLatestVersion);
+            }
+            
+
         }
 
         internal static IQueryable<IPackage> GetPackages(IPackageRepository repository, bool filterTags)
         {
             var packages = repository.GetPackages();
             return GetPackages(packages, filterTags);
+        }
+
+        internal static IQueryable<IPackage> FilterByTag(IQueryable<IPackage> packages, string tag)
+        {
+            return packages.Where(x => (x.Tags.Contains(tag)) && x.IsLatestVersion);
         }
 
         internal IEnumerable<IPackage> GetPackagesRequiringLicenseAcceptance(IPackage package)
