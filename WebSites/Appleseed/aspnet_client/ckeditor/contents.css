@@ -23,3 +23,14 @@ ol,ul,dl
 	/* preserved spaces for list items with text direction other than the list. (#6249,#8049)*/
     padding:0 40px;
 }
+
+div.accordion-head {
+    background-color: #E8E8E8;
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid;
+}
+
+div.accordion-body {
+    border: 1px solid;
+}

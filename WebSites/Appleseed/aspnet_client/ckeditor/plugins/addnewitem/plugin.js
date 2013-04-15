@@ -15,9 +15,10 @@ CKEDITOR.plugins.add('addnewitem',
 });
 function showMyDialog(e) {
     e.insertHtml(
-        "<h3>New panel</h3>" +
-         "<div>New data<p>" +
-         "</div>"   
+        '<div class="accordion-head" >New panel</div>' +
+         '<div class="accordion-body"> ' +
+            '<p> New data.</p>' +
+         '</div></br>'   
     );
 }
 
