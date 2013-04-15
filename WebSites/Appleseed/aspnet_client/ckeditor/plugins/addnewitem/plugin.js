@@ -14,11 +14,17 @@ CKEDITOR.plugins.add('addnewitem',
     }
 });
 function showMyDialog(e) {
-    e.insertHtml(
-        '<div class="accordion-head" >New panel</div>' +
-         '<div class="accordion-body"> ' +
-            '<p> New data.</p>' +
-         '</div></br>'   
-    );
+    var textarea = CKEDITOR.instances.Content_ctl01.getData();
+    var exist = textarea.toString().indexOf('class="accordion"');
+    if (exist == -1) {
+        alert('Not exists an accordion in this module.');
+    } else {
+        e.insertHtml(
+            '<div class="accordion-head" >New panel</div>' +
+                '<div class="accordion-body"> ' +
+                '<p> New data.</p>' +
+                '</div></br>'
+        );
+    }
 }
 
