@@ -9,8 +9,8 @@ CKEDITOR.editorConfig = function( config )
 	// config.language = 'fr';
     // config.uiColor = '#AADC6E';
    // Referencing the new plugin
-   config.extraPlugins = 'accordion,addnewitem';
-
+   config.extraPlugins = 'accordion';
+   config.contentsCss = '../../../aspnet_client/CSSAccordion/accordion.css';
    config.toolbar_Full = [
    { name: 'document', groups: ['mode', 'document', 'doctools'], items: ['Source', 'Save', 'NewPage', 'DocProps', 'Preview', 'Print', 'Templates', 'document'] },
    { name: 'clipboard',   groups: [ 'clipboard', 'undo' ], items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', 'Undo', 'Redo' ] },
@@ -27,10 +27,13 @@ CKEDITOR.editorConfig = function( config )
    { name: 'colors', items: ['TextColor', 'BGColor'] },
    { name: 'tools', items: ['UIColor', 'Maximize', 'ShowBlocks'] },
    { name: 'about', items: ['About'] },
-   { name: 'accordion', items: ['Accordion', 'Addnewitem'] }
+   { name: 'accordion', items: ['Accordion'] }
    ];
 
    config.toolbar = "Full";
+
+   
+
 
 };
 
