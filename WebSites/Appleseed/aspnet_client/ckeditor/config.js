@@ -10,7 +10,7 @@ CKEDITOR.editorConfig = function( config )
     // config.uiColor = '#AADC6E';
    // Referencing the new plugin
    config.extraPlugins = 'accordion';
-   config.contentsCss = '../../../aspnet_client/CSSAccordion/accordion.css';
+   config.contentsCss = 'CSSAccordion/accordion.css';
    config.toolbar_Full = [
    { name: 'document', groups: ['mode', 'document', 'doctools'], items: ['Source', 'Save', 'NewPage', 'DocProps', 'Preview', 'Print', 'Templates', 'document'] },
    { name: 'clipboard',   groups: [ 'clipboard', 'undo' ], items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', 'Undo', 'Redo' ] },

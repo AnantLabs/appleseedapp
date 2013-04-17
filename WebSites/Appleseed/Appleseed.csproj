@@ -1611,6 +1611,7 @@
     <Content Include="aspnet_client\ckeditor\ckeditor_basic.js" />
     <Content Include="aspnet_client\ckeditor\config.js" />
     <Content Include="aspnet_client\ckeditor\contents.css" />
+    <Content Include="aspnet_client\ckeditor\CSSAccordion\accordion.css" />
     <Content Include="aspnet_client\ckeditor\images\spacer.gif" />
     <Content Include="aspnet_client\ckeditor\INSTALL.html" />
     <Content Include="aspnet_client\ckeditor\lang\af.js" />
@@ -1702,7 +1703,6 @@
     <Content Include="aspnet_client\ckeditor\plugins\about\dialogs\logo_ckeditor.png" />
     <Content Include="aspnet_client\ckeditor\plugins\about\plugin.js" />
     <Content Include="aspnet_client\ckeditor\plugins\accordion\accordion.png" />
-    <Content Include="aspnet_client\CSSAccordion\accordion.css" />
     <Content Include="aspnet_client\ckeditor\plugins\accordion\plugin.js" />
     <Content Include="aspnet_client\ckeditor\plugins\adobeair\plugin.js" />
     <Content Include="aspnet_client\ckeditor\plugins\ajax\plugin.js" />
