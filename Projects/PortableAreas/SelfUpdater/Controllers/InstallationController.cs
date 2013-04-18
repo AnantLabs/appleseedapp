@@ -27,7 +27,10 @@ namespace SelfUpdater.Controllers
                 var packagesList = installedPackages.GroupBy(x => x.Id);
                 var installedPackagesList =
                     packagesList.Select(pack => pack.Single(y => y.Version == pack.Max(x => x.Version))).ToList();
-                foreach (var package in availablePackages)
+
+                var availablePackagesList = availablePackages.GroupBy(x => x.Id).Select(pack => pack.Single(y => y.Version == pack.Max(x => x.Version))).ToList();
+
+                foreach (var package in availablePackagesList)
                 {
                     if (installedPackagesList.All(d => d.Id != package.Id))
                     {
