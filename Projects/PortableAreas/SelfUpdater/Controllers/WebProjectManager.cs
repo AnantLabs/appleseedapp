@@ -139,13 +139,14 @@ namespace SelfUpdater.Controllers
         public IPackage GetUpdatedPackage(IPackage package)
         {
             var packages = GetRemotePackages().Where(x => x.Id == package.Id );
-            if(packages.Count() == 0 || packages.Count() > 1)
+            if(!packages.Any())
             {
                 return null;
             }
-            var p = packages.Single();
-            return p.Version > package.Version ? p : null;
 
+            var p = packages.First(x => x.Version == packages.Max(pack => pack.Version));
+            
+            return p.Version > package.Version ? p : null;
 
         }
 
