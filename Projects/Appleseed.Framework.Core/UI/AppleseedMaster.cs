@@ -88,6 +88,13 @@ namespace Appleseed
                 includedp.InnerHtml = datepickerscript;
                 page.Header.Controls.AddAt(index++, includedp);
 
+                var accordion = "$(function() {$('.accordion').accordion({collapsible: true,active: false,alwaysOpen: false,});});";
+                    //"$(.accordion').accordion({collapsible: true,active: false,alwaysOpen: false,});";
+
+                HtmlGenericControl includeacc = new HtmlGenericControl("script");
+                includeacc.Attributes.Add("type", "text/javascript");
+                includeacc.InnerHtml = accordion;
+                page.Header.Controls.AddAt(index++, includeacc);
 
                 //HtmlGenericControl includeStyleTree = new HtmlGenericControl("link");
                 //includeStyleTree.Attributes.Add("type", "text/css");
