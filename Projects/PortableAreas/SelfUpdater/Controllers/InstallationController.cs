@@ -52,7 +52,7 @@ namespace SelfUpdater.Controllers
 
                 foreach (var installedPackage in installedPackagesList)
                 {
-                    var update = projectManager.GetUpdatedPackage(availablePackages, installedPackage);
+                    var update = projectManager.GetUpdatedPackage(availablePackagesList, installedPackage);
                     var package = new InstallationState();
                     package.Installed = installedPackage;
                     package.Update = update;
