@@ -1708,6 +1708,8 @@
     <Content Include="aspnet_client\ckeditor\plugins\about\plugin.js" />
     <Content Include="aspnet_client\ckeditor\plugins\accordion\accordion.png" />
     <Content Include="aspnet_client\ckeditor\plugins\accordion\plugin.js" />
+    <Content Include="aspnet_client\ckeditor\plugins\additem\accordion.png" />
+    <Content Include="aspnet_client\ckeditor\plugins\additem\plugin.js" />
     <Content Include="aspnet_client\ckeditor\plugins\adobeair\plugin.js" />
     <Content Include="aspnet_client\ckeditor\plugins\ajax\plugin.js" />
     <Content Include="aspnet_client\ckeditor\plugins\autogrow\plugin.js" />
