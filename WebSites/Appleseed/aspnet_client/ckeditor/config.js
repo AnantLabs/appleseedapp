@@ -9,7 +9,7 @@ CKEDITOR.editorConfig = function( config )
 	// config.language = 'fr';
     // config.uiColor = '#AADC6E';
    // Referencing the new plugin
-   config.extraPlugins = 'accordion';
+    config.extraPlugins = 'accordion,additem';
    config.contentsCss = 'CSSAccordion/accordion.css';
    config.toolbar_Full = [
    { name: 'document', groups: ['mode', 'document', 'doctools'], items: ['Source', 'Save', 'NewPage', 'DocProps', 'Preview', 'Print', 'Templates', 'document'] },
