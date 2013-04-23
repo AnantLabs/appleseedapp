@@ -1,0 +1,24 @@
+﻿@model UserManager.Models.UserManagerModel
+@{
+    ViewBag.Title = "UserManager";
+}
+<div>
+   
+</div>
+<table cellspacing="0" cellpadding="4" border="0" style="color:#333333;border-collapse:collapse;" id="Content_ContentPane_ctl01_allUsers">
+    <tr style="color:White;background-color:#5D7B9D;font-weight:bold;">
+        <th scope="col">User Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Commands</th>
+    </tr>
+    <tr style="color:#333333;background-color:#F7F6F3;">
+        <td> @Model.UserName </td>
+        <td> <a id="lnkUser" runat="server" href="mailto:  @Model.UserEmail ">@Model.UserEmail</a> </td>
+        <td style="white-space:nowrap;">
+            <a id="Content_ContentPane_ctl01_allUsers_EditBtn_0" >Editar este usuario</a>
+            <a id="Content_ContentPane_ctl01_allUsers_DeleteBtn_0" >Borrar este usuario</a>
+        </td>
+    </tr>
+</table>
+
+
