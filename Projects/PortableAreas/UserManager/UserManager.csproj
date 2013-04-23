@@ -106,8 +106,9 @@
     <Compile Include="Controllers\UserManagerController.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Massive\aspnet_CustomProfile.cs" />
+    <Compile Include="Massive\aspnet_Roles.cs" />
+    <Compile Include="Massive\aspnet_UsersInRoles.cs" />
     <Compile Include="Massive\Massive.cs" />
-    <Compile Include="Massive\rb_Users.cs" />
     <Compile Include="Models\UserManagerModel.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -115,11 +116,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Scripts\" />
     <Folder Include="Services\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\jquery-1.7.1.js" />
+    <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <Content Include="Scripts\jquery.min.js" />
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -142,11 +145,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Projects\Appleseed.Framework.Core\Appleseed.Framework.Core.csproj">
+    <ProjectReference Include="..\..\Appleseed.Framework.Core\Appleseed.Framework.Core.csproj">
       <Project>{552ccd6f-0a37-4366-9e3e-22b2a0221584}</Project>
       <Name>Appleseed.Framework.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Projects\PortableAreas\Appleseed.Core\Appleseed.Core.csproj">
+    <ProjectReference Include="..\Appleseed.Core\Appleseed.Core.csproj">
       <Project>{22c4ba46-65c9-49e2-8a23-86dd2f44b744}</Project>
       <Name>Appleseed.Core</Name>
     </ProjectReference>

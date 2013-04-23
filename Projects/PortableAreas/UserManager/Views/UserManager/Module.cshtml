@@ -1,0 +1,73 @@
+﻿@using Appleseed.Framework
+@model List<UserManager.Models.UserManagerModel>
+
+
+    <div>
+        @{
+            List<string> ls=new List<string>();
+            ls.Add("UserName");
+            ls.Add("UserEmail");
+            ls.Add("UserRol");
+            IEnumerable<string> columnnames = ls.AsEnumerable<string>();
+            var grid = new WebGrid(@Model,columnnames);
+            @*var grid = new WebGrid(@Model);*@ 
+        }
+        @grid.GetHtml()
+
+    </div>
+<div>
+   
+</div>
+<table cellspacing="0" cellpadding="4" border="0" style="color:#333333;border-collapse:collapse;" id="Content_ContentPane_ctl01_allUsers">
+    <tr style="color:White;background-color:#5D7B9D;font-weight:bold;">
+        <th scope="col">User Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Rol</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+    </tr>
+
+    @foreach (var m in Model)
+    {
+        <tr style="color:#333333;background-color:#F7F6F3;">
+            <td>  @m.UserName </td>
+            <td> <a id="lnkUser" runat="server" href="mailto:  @m.UserEmail "> @m.UserEmail</a> </td>
+            <td>  @m.UserRol </td>
+            <td style="white-space: nowrap;">
+                <a id="Content_ContentPane_ctl01_allUsers_EditBtn_0" href="#" onclick="Edit('@m.Edit');return false;">
+                   @General.GetString("View","View")
+                </a> 
+            </td>
+            <td style="white-space: nowrap;">
+                <a id="Content_ContentPane_ctl01_allUsers_DeleteBtn_0" href="#" onclick="Delete('@m.UserId');return false;">@General.GetString("DELETE","Delete")</a>
+            </td>
+        </tr>
+    }
+</table>
+@*<script type= "text/javascript" src="@Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/Scripts/jquery.min.js")" ></script>*@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type= "text/javascript">
+    
+    function Edit(url) {
+        window.location = url;
+        return true;
+    }
+    function Delete(id) {
+        if (confirm('Are you sure you want to delete?')) {
+            jQuery.ajax({
+                type: "POST",
+                url: '@Url.Action("Delete")',
+                data: {
+                    "userID": id,
+                },
+                success: function (data) {
+                },
+            });
+        }
+        window.location.reload();
+        return true;
+
+    }
+</script>
+
+

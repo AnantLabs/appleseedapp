@@ -51,7 +51,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileManager", "Projects\Por
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileManager.Test", "Projects\PortableAreas\FileManager.Test\FileManager.Test.csproj", "{B1E9FED0-6134-44B0-9380-512FD9EE39ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserManager", "UserManager\UserManager.csproj", "{D6E88AA9-5288-4BAB-8186-1F958EF316EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserManager", "Projects\PortableAreas\UserManager\UserManager.csproj", "{D6E88AA9-5288-4BAB-8186-1F958EF316EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1400,7 +1400,7 @@
       <Project>{DBAED848-FEE6-45D4-9086-E519E0A077A2}</Project>
       <Name>SelfUpdater</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\UserManager\UserManager.csproj">
+    <ProjectReference Include="..\..\Projects\PortableAreas\UserManager\UserManager.csproj">
       <Project>{d6e88aa9-5288-4bab-8186-1f958ef316ee}</Project>
       <Name>UserManager</Name>
     </ProjectReference>
