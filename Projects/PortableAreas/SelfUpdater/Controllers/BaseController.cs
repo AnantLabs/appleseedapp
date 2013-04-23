@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using NuGet;
 using System.Dynamic;
 using System.Configuration;
+using SelfUpdater.Code;
 
 namespace SelfUpdater.Controllers
 {
@@ -14,13 +15,7 @@ namespace SelfUpdater.Controllers
 
         protected WebProjectManager[] GetProjectManagers()
         {
-            string remoteSources = ConfigurationManager.AppSettings["PackageSource"] ?? @"D:\";
-            List<WebProjectManager> managers = new List<WebProjectManager>();
-            foreach (var remoteSource in remoteSources.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries)) {
-                managers.Add(new WebProjectManager(remoteSource, base.Request.MapPath("~/")));
-            }
-
-            return managers.ToArray();
+            return ProjectManagerHelper.GetProjectManagers();
         }
 
         protected List<IPackage> GetInstalledPackages(WebProjectManager projectManager)
