@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using System.Dynamic;
 using Appleseed.Framework;
+using SelfUpdater.Code;
 using SelfUpdater.Models;
 
 namespace SelfUpdater.Controllers
@@ -20,19 +21,13 @@ namespace SelfUpdater.Controllers
             var installed = new List<InstallationState>();
             foreach (var projectManager in projectManagers)
             {
-                var availablePackages = GetAvailablePackages(projectManager);
+                var availablePackages = ProjectManagerHelper.GetAvailablePackagesLatestList(projectManager);
 
+                var installedPackages = ProjectManagerHelper.GetInstalledPackagesLatestList(projectManager);
 
-                var installedPackages = this.GetInstalledPackages(projectManager);
-                var packagesList = installedPackages.GroupBy(x => x.Id);
-                var installedPackagesList =
-                    packagesList.Select(pack => pack.Single(y => y.Version == pack.Max(x => x.Version))).ToList();
-
-                var availablePackagesList = availablePackages.GroupBy(x => x.Id).Select(pack => pack.Single(y => y.Version == pack.Max(x => x.Version))).ToList();
-
-                foreach (var package in availablePackagesList)
+                foreach (var package in availablePackages)
                 {
-                    if (installedPackagesList.All(d => d.Id != package.Id))
+                    if (installedPackages.All(d => d.Id != package.Id))
                     {
                         var pack = new InstallPackagesModel
                                        {
@@ -50,9 +45,9 @@ namespace SelfUpdater.Controllers
                     }
                 }
 
-                foreach (var installedPackage in installedPackagesList)
+                foreach (var installedPackage in installedPackages)
                 {
-                    var update = projectManager.GetUpdatedPackage(availablePackagesList, installedPackage);
+                    var update = projectManager.GetUpdatedPackage(availablePackages, installedPackage);
                     var package = new InstallationState();
                     package.Installed = installedPackage;
                     package.Update = update;
