@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using Quartz;
 using System.Collections.Specialized;
 using Quartz.Impl;
@@ -45,6 +46,10 @@ namespace SelfUpdater.Code
                     try
                     {
                         var jobDetail = new JobDetail("SelfUpdaterChecker", null, typeof(SelfUpdaterCheckJob));
+                        HttpContext.Current.Application.Lock();
+                        var executeJob = !bool.Parse(HttpContext.Current.Application["NugetSelfUpdatesToInstall"].ToString());
+                        HttpContext.Current.Application.UnLock();
+                        jobDetail.JobDataMap.Add("ExcecuteJob", executeJob);
                         var cronExpression = ConfigurationManager.AppSettings["SelfUpdaterCronTrigger"];
                         var trigger = new CronTrigger("TriggerSelfUpdaterChecker", "SelfUpdaterChecker", cronExpression);
                         _sched.ScheduleJob(jobDetail, trigger);

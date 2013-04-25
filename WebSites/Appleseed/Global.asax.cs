@@ -432,6 +432,7 @@ namespace Appleseed
             var f = FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(Portal)).Location);
             HttpContext.Current.Application.Lock();
             HttpContext.Current.Application["CodeVersion"] = 1894; //f.FilePrivatePart;
+            HttpContext.Current.Application["NugetSelfUpdatesToInstall"] = false;
             HttpContext.Current.Application.UnLock();
 
             ErrorHandler.Publish(
@@ -478,9 +479,19 @@ namespace Appleseed
 
                 //while (CheckForSelfUpdates());
 
-                var selfUpdatesThread = new SelfUpdateThread();
-                var workerThread = new Thread(selfUpdatesThread.CheckForSelfUpdates);
-                workerThread.Start();
+                var dbContext = new SelfUpdaterEntities();
+                if(dbContext.SelfUpdatingPackages.Any())
+                {
+                    var selfUpdatesThread = new SelfUpdateThread();
+                    var workerThread = new Thread(selfUpdatesThread.CheckForSelfUpdates);
+                    workerThread.Start();
+                    HttpContext.Current.Application.Lock();
+                    HttpContext.Current.Application["NugetSelfUpdatesToInstall"] = true; //f.FilePrivatePart;
+                    HttpContext.Current.Application.UnLock();
+
+                }
+
+                
                 /* MVCContrib PortableAreas*/
 
                 //Handlers for bus messages
