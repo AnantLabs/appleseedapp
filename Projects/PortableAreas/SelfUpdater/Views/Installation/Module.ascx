@@ -158,8 +158,9 @@
 
     });
 
-
-
+    function openPopUpSelfUpdater() {
+        $('#installingDiv').dialog("open");
+    }
 
 </script>
 
