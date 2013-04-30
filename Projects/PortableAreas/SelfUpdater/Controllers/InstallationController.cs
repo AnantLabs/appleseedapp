@@ -23,7 +23,7 @@ namespace SelfUpdater.Controllers
             {
                 var availablePackages = ProjectManagerHelper.GetAvailablePackagesLatestList(projectManager);
 
-                var installedPackages = ProjectManagerHelper.GetInstalledPackagesLatestList(projectManager);
+                var installedPackages = ProjectManagerHelper.GetInstalledPackagesLatestList(projectManager, false);
 
                 foreach (var package in availablePackages)
                 {
@@ -83,7 +83,7 @@ namespace SelfUpdater.Controllers
 
                 var projectManagers = GetProjectManagers();
                 var list = new List<dynamic>();
-                var installed = projectManagers.SelectMany(d => d.GetInstalledPackages().ToList());
+                var installed = projectManagers.SelectMany(d => d.GetInstalledPackages(false).ToList());
 
                 foreach (var pM in projectManagers)
                 {

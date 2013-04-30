@@ -45,9 +45,9 @@ namespace SelfUpdater.Controllers
             this.addLog("Registro sending request " + e.Request.ToString() );
         }
 
-        public IQueryable<IPackage> GetInstalledPackages()
+        public IQueryable<IPackage> GetInstalledPackages(bool filterTags)
         {
-            return GetPackages(this.LocalRepository, false);
+            return GetPackages(this.LocalRepository, filterTags);
         }
 
         private static IEnumerable<IPackage> GetPackageDependencies(IPackage package, IPackageRepository localRepository, IPackageRepository sourceRepository)

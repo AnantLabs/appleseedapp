@@ -20,7 +20,7 @@ namespace SelfUpdater.Controllers
 
         protected List<IPackage> GetInstalledPackages(WebProjectManager projectManager)
         {
-            var packages = projectManager.GetInstalledPackages().ToList();
+            var packages = projectManager.GetInstalledPackages(false).ToList();
 
             return packages;
         }

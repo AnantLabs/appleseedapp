@@ -28,7 +28,7 @@ namespace SelfUpdater.Code
                 {
                     var availablePackages = ProjectManagerHelper.GetAvailablePackagesLatestList(projectManager);
 
-                    var installedPackages = ProjectManagerHelper.GetInstalledPackagesLatestList(projectManager);
+                    var installedPackages = ProjectManagerHelper.GetInstalledPackagesLatestList(projectManager, true);
 
 
                     foreach (var installedPackage in installedPackages)

@@ -194,7 +194,7 @@ namespace Appleseed.Code
 
         private IPackage GetInstalledPackage(WebProjectManager projectManager, string packageId)
         {
-            IPackage package = projectManager.GetInstalledPackages().Where(d => d.Id == packageId).FirstOrDefault();
+            IPackage package = projectManager.GetInstalledPackages(true).Where(d => d.Id == packageId).FirstOrDefault();
 
             if (package == null)
             {
@@ -205,7 +205,7 @@ namespace Appleseed.Code
 
         private IEnumerable<IPackage> GetInstalledPackages(WebProjectManager projectManager)
         {
-            var packages = projectManager.GetInstalledPackages();
+            var packages = projectManager.GetInstalledPackages(true);
 
             return packages;
         }

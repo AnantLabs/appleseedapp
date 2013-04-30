@@ -22,9 +22,9 @@ namespace SelfUpdater.Code
             return managers.ToArray();
         }
 
-        public static List<IPackage> GetInstalledPackages(WebProjectManager projectManager)
+        public static List<IPackage> GetInstalledPackages(WebProjectManager projectManager, bool filterTags)
         {
-            var packages = projectManager.GetInstalledPackages().ToList();
+            var packages = projectManager.GetInstalledPackages(filterTags).ToList();
 
             return packages;
         }
@@ -42,9 +42,9 @@ namespace SelfUpdater.Code
             return availablePackages.GroupBy(x => x.Id).Select(pack => pack.Single(y => y.Version == pack.Max(x => x.Version))).ToList();
         }
 
-        public static List<IPackage> GetInstalledPackagesLatestList(WebProjectManager projectManager)
+        public static List<IPackage> GetInstalledPackagesLatestList(WebProjectManager projectManager, bool filterTags)
         {
-            var installedPackages = GetInstalledPackages(projectManager);
+            var installedPackages = GetInstalledPackages(projectManager, filterTags);
             var packagesList = installedPackages.GroupBy(x => x.Id);
             return packagesList.Select(pack => pack.Single(y => y.Version == pack.Max(x => x.Version))).ToList();
         }
