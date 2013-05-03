@@ -148,6 +148,9 @@
     <Reference Include="blowery.Web.HttpCompress">
       <HintPath>..\..\Libs\blowery.Web.HttpCompress.dll</HintPath>
     </Reference>
+    <Reference Include="Common.Logging">
+      <HintPath>..\..\Libs\Common.Logging.dll</HintPath>
+    </Reference>
     <Reference Include="DateTextBoxControls, Version=1.0.8.42693, Culture=neutral, PublicKeyToken=e747becda5e0f01b">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libs\DateTextBoxControls.dll</HintPath>
