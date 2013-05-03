@@ -1,4 +1,5 @@
-﻿@using MvcContrib
+﻿@using Appleseed.Framework
+@using MvcContrib
 @model FileManager.Models.FileManagerModel
 
 <link type="text/css" rel="stylesheet" href="@Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/aspnet_client/FileManager/FileManager.css")" /> 
@@ -299,7 +300,7 @@
                 var children = data.rslt.obj.children().children().text().replace(/\s/,"");
                 var folder = selected.replace(children, "");
                 var parentfolder = data.rslt.parent.attr("id");
-                if (confirm('Are you sure you want to delete "' + folder + '"?')) {
+                if (confirm('@General.GetString("CONFIRM_DELETE_MESSAGE")' +'"' + folder + '"?')) {
                     $.ajax({
                         async : false,
                         type: 'POST',
@@ -655,7 +656,7 @@
 
     function DeleteFolder() {
 
-        if (confirm('Are you sure you want to delete "' + SelectedFolder + '"?')) {
+        if (confirm('@General.GetString("CONFIRM_DELETE_MESSAGE")' +'"'+ SelectedFolder + '"?')) {
             $.ajax({
                 type: 'POST',
                 url: '@Url.Action("DeleteFolder")',
@@ -715,7 +716,7 @@
 
 
     function DeleteFile() {
-        if (confirm('Are you sure you want to delete "' + SelectedFile + '"?')) {
+        if (confirm('@General.GetString("CONFIRM_DELETE_MESSAGE")' +'"'+ SelectedFile + '"?')) {
             $.ajax({
                 type: 'POST',
                 url: '@Url.Action("DeleteFile")',

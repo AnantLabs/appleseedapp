@@ -1,73 +1,113 @@
 ﻿@using Appleseed.Framework
-@model List<UserManager.Models.UserManagerModel>
+@model UserManager.Models.UserManagerModel
 
+  
+@*<script type= "text/javascript" src="@HttpUrlBuilder.BuildUrl("~/aspnet_client/js/jquery-ui-1.7.custom.min.js")" ></script>
+<script src="@HttpUrlBuilder.BuildUrl("~/aspnet_client/js/jquery.jqGrid.js")"></script>
+<script src="@HttpUrlBuilder.BuildUrl("~/aspnet_client/UserManager/jquery-ui.min.js")"></script>*@
 
-    <div>
-        @{
-            List<string> ls=new List<string>();
-            ls.Add("UserName");
-            ls.Add("UserEmail");
-            ls.Add("UserRol");
-            IEnumerable<string> columnnames = ls.AsEnumerable<string>();
-            var grid = new WebGrid(@Model,columnnames);
-            @*var grid = new WebGrid(@Model);*@ 
-        }
-        @grid.GetHtml()
+<head id="Head1" runat="server">
+    <meta charset="utf-8">
+    <title>User Manager</title>    
+<link href="@HttpUrlBuilder.BuildUrl("~/aspnet_client/UserManager/jquery-ui.css")" rel="stylesheet" />
+<link href="@HttpUrlBuilder.BuildUrl("~/aspnet_client/js/ui.jqgrid.css")" rel="stylesheet" />
+<script src="@HttpUrlBuilder.BuildUrl("~/aspnet_client/jQuery/jquery-ui-1.9.2.min.js")"></script>
+<script src="@HttpUrlBuilder.BuildUrl("~/aspnet_client/jQuery/grid.locale-en.js")"></script>
+<script src="@HttpUrlBuilder.BuildUrl("~/aspnet_client/UserManager/jquery.jqGrid.min.js")"></script>
+</head>  
 
-    </div>
-<div>
-   
-</div>
-<table cellspacing="0" cellpadding="4" border="0" style="color:#333333;border-collapse:collapse;" id="Content_ContentPane_ctl01_allUsers">
-    <tr style="color:White;background-color:#5D7B9D;font-weight:bold;">
-        <th scope="col">User Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Rol</th>
-        <th scope="col"></th>
-        <th scope="col"></th>
-    </tr>
+<table id="list5">
+</table> 
+<div id="pager5"></div> 
 
-    @foreach (var m in Model)
-    {
-        <tr style="color:#333333;background-color:#F7F6F3;">
-            <td>  @m.UserName </td>
-            <td> <a id="lnkUser" runat="server" href="mailto:  @m.UserEmail "> @m.UserEmail</a> </td>
-            <td>  @m.UserRol </td>
-            <td style="white-space: nowrap;">
-                <a id="Content_ContentPane_ctl01_allUsers_EditBtn_0" href="#" onclick="Edit('@m.Edit');return false;">
-                   @General.GetString("View","View")
-                </a> 
-            </td>
-            <td style="white-space: nowrap;">
-                <a id="Content_ContentPane_ctl01_allUsers_DeleteBtn_0" href="#" onclick="Delete('@m.UserId');return false;">@General.GetString("DELETE","Delete")</a>
-            </td>
-        </tr>
-    }
-</table>
-@*<script type= "text/javascript" src="@Appleseed.Framework.HttpUrlBuilder.BuildUrl("~/Scripts/jquery.min.js")" ></script>*@
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type= "text/javascript">
     
     function Edit(url) {
-        window.location = url;
-        return true;
+        openInModal(url.toString(), '@General.GetString("EDIT_USER")');
+        return false;
     }
-    function Delete(id) {
-        if (confirm('Are you sure you want to delete?')) {
-            jQuery.ajax({
+    function Delete(id, userName) {
+        if (confirm('@General.GetString("CONFIRM_DELETE_MESSAGE")' + userName+ '?')) {
+            $.ajax({
                 type: "POST",
                 url: '@Url.Action("Delete")',
                 data: {
                     "userID": id,
                 },
                 success: function (data) {
+                    $('#list5').trigger('reloadGrid');
                 },
             });
         }
-        window.location.reload();
+        
         return true;
 
     }
+
+    function search() {
+        var textVal = jQuery("#textSearch").val();
+        jQuery("#list5").jqGrid('setGridParam', {url: '@Url.Action("Search")?text=' + textVal, page: 1 });
+        $("#list5").trigger("reloadGrid");
+        
+    }
+
+    function myFunction() {
+        var x = document.getElementById("textSearch");
+        x.value = '@General.GetString("search")';
+    }
+    
+    $(document).ready(function () {
+    $("#list5").jqGrid({
+        scroll: 1,
+            colNames: ["UserName", "Email", "Rol", "", ""],
+            colModel: [
+                { name: 'UserName', index: 'UserName', sortable: false },
+                { name: 'Email',    index: 'Email',    width: 300, sortable: false },
+                { name: 'Rol',      index: 'Rol',      sortable: false },
+                { name: 'Edit',     index: 'Edit',     width: 50, align: "center", formatter: formatterLink },
+                { name: 'Delete',   index: 'Delete',   width: 50, align: "center", formatter: formatterDeleteLink },
+            ],
+            pager: "#pager5",
+            sortname: 'UserName',
+            rowNum: 15,
+            rowList: [15, 30, 45],
+            sortorder: "",
+            url: '@Url.Action("GridUser")',
+            datatype: "json",
+            mtype: "POST",
+            //rownumWidth: 6,
+            gridview: true,
+            width: '100%',
+            height: "350",
+            //jsonReader: { repeatitems: false, },
+      viewrecords: true,
+    }).navGrid("#pager5", { edit: false, add: false, del: false, search: false, })
+        .navButtonAdd("#pager5",
+            {
+                caption: '@General.GetString("ADD_NEW_USER")',
+                buttonicon: "ui-icon ui-icon-plus",
+                onClickButton: function () {
+                    openInModal("@Model.UserEmail", '@General.GetString("USER_REGISTRY")');
+                    return false;
+                },
+                position: "first"
+            }
+        );
+
+    function formatterLink(cellValue, options, rowObject) { 
+        var result = "<a class='ui-icon ui-icon-pencil' href='#' onclick=\"Edit('" + rowObject.EditId + "');return false;\" style= \"color: blue; text-decoration: none;margin-left: 15px; \">" + cellValue + "</a>";
+        return result;
+    }
+    function formatterDeleteLink(cellValue, options, rowObject) {
+        var result = "<a class='ui-icon ui-icon-trash' onclick=\"Delete('" + rowObject.UserId + "', '" + rowObject.UserName + "')\" href=\"#\" style= \"color: blue; text-decoration: none; margin-left: 15px; \">" + cellValue + "</a>";
+        return result;
+    }
+
+    $("#list5").setCaption(
+        '<input type="search" onkeydown="if((13 == event.keyCode) || (13 == event.which)){ event.preventDefault(); search();}" name="item_code" id="textSearch" onfocus="this.value=null " value="' + '@General.GetString("search")' + '" onblur="myFunction()" />' +
+        '<span style="vertical-align:middle; display:inline-block;" class="ui-icon ui-icon-search"></span>');
+    });
+    
+
+
 </script>
-
-
