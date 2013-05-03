@@ -37,8 +37,8 @@ namespace UserManager
 
             var assemblyName = Assembly.GetAssembly(this.GetType()).FullName;
 
-            var generalModuleDefId = ModelServices.RegisterPortableAreaModule(AreaName, assemblyName, "UserManager");
-            var moduleDefId = ModelServices.AddModuleToPortal(generalModuleDefId, 0);
+            //var generalModuleDefId = ModelServices.RegisterPortableAreaModule(AreaName, assemblyName, "UserManager");
+            //var moduleDefId = ModelServices.AddModuleToPortal(generalModuleDefId, 0);
             //ModelServices.AddModuleToPage(moduleDefId, 180, "Available Packages", false);
 
             //generalModuleDefId = ModelServices.RegisterPortableAreaModule(AreaName, assemblyName, "Updates");
@@ -49,8 +49,7 @@ namespace UserManager
             RegisterAreaEmbeddedResources();
             PortableAreaUtils.RegisterScripts(this, context, bus);
 
-            //this.RegisterAreaEmbeddedResources();
-            //PortableAreaUtils.RegisterScripts(this, context, bus);
+         
 
 
         }

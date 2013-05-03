@@ -99,6 +99,10 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Trirand.Web.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=e2819dc449af3295, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libs\Trirand.Web.Mvc.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
@@ -109,6 +113,7 @@
     <Compile Include="Massive\aspnet_Roles.cs" />
     <Compile Include="Massive\aspnet_UsersInRoles.cs" />
     <Compile Include="Massive\Massive.cs" />
+    <Compile Include="Models\JQGridModel.cs" />
     <Compile Include="Models\UserManagerModel.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -120,8 +125,11 @@
     <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DBScripts\20130426\01.UpdatingUserManagerModule.sql" />
+    <Content Include="Scripts\grid.locale-en.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <Content Include="Scripts\jquery.jqGrid.min.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>

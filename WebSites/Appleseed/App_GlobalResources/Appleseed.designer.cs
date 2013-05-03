@@ -3373,6 +3373,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete .
+        /// </summary>
+        internal static string CONFIRM_DELETE_MESSAGE {
+            get {
+                return ResourceManager.GetString("CONFIRM_DELETE_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt;
         ///&lt;!--
         ///function confirmDelete()
