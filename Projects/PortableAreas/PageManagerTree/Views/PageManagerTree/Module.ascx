@@ -53,7 +53,7 @@
                 "valid_children": "none",
                 "types": {
                     "default": {
-                        "valid_children": ["folder", "folder2"],
+                        "valid_children": ["folder", "folder2", "default"],
                     },
                     "file": {
                         "valid_children": "none",

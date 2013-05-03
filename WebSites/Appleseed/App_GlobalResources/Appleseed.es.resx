@@ -4479,4 +4479,7 @@
   <data name="MODULE_DELETE_FAILED" xml:space="preserve">
     <value>No tiene permiso para borrar este modulo.</value>
   </data>
+  <data name="CONFIRM_DELETE_MESSAGE" xml:space="preserve">
+    <value>¿Está seguro que desea eliminar </value>
+  </data>
 </root>
