@@ -29,7 +29,7 @@ namespace PageManagerTree {
             context.MapRoute(
                 "PageManagerTree_default",
                 "PageManagerTree/{controller}/{action}/{id}",
-                new { action = "Index", controller = "Home", id = UrlParameter.Optional }
+                new { action = "Module", controller = "Home", id = UrlParameter.Optional }
             );
 
             //var assemblyName = Assembly.GetAssembly(this.GetType()).FullName;
