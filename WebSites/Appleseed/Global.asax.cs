@@ -479,19 +479,6 @@ namespace Appleseed
 
                 //while (CheckForSelfUpdates());
 
-                var dbContext = new SelfUpdaterEntities();
-                if(dbContext.SelfUpdatingPackages.Any())
-                {
-                    var selfUpdatesThread = new SelfUpdateThread();
-                    var workerThread = new Thread(selfUpdatesThread.CheckForSelfUpdates);
-                    workerThread.Start();
-                    HttpContext.Current.Application.Lock();
-                    HttpContext.Current.Application["NugetSelfUpdatesToInstall"] = true; //f.FilePrivatePart;
-                    HttpContext.Current.Application.UnLock();
-
-                }
-
-                
                 /* MVCContrib PortableAreas*/
 
                 //Handlers for bus messages
@@ -520,8 +507,18 @@ namespace Appleseed
                 ViewEngines.Engines.Clear();
                 ViewEngines.Engines.Add(new AppleseedWebFormViewEngine());
                 ViewEngines.Engines.Add(new AppleseedRazorViewEngine());
-               
 
+                var dbContext = new SelfUpdaterEntities();
+                if (dbContext.SelfUpdatingPackages.Any())
+                {
+                    var selfUpdatesThread = new SelfUpdateThread();
+                    var workerThread = new Thread(selfUpdatesThread.CheckForSelfUpdates);
+                    workerThread.Start();
+                    HttpContext.Current.Application.Lock();
+                    HttpContext.Current.Application["NugetSelfUpdatesToInstall"] = true; //f.FilePrivatePart;
+                    HttpContext.Current.Application.UnLock();
+
+                }
 
             } catch (Exception exc) {
 
