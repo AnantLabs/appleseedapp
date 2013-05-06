@@ -35,7 +35,7 @@ namespace UserManager
                 new { action = "Index", controller = "Home", id = UrlParameter.Optional }
             );
 
-            var assemblyName = Assembly.GetAssembly(this.GetType()).FullName;
+            //var assemblyName = Assembly.GetAssembly(this.GetType()).FullName;
 
             //var generalModuleDefId = ModelServices.RegisterPortableAreaModule(AreaName, assemblyName, "UserManager");
             //var moduleDefId = ModelServices.AddModuleToPortal(generalModuleDefId, 0);
