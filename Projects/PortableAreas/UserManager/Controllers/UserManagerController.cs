@@ -72,18 +72,24 @@ namespace UserManager.Controllers
 
             var data = AllUsers; 
             var result = new List<UserManagerModel>();
+            var words = text.Split(' ');
             int i = 1;
             foreach (var user in data)
             {
                 var name = user.UserName;
                 var mail = user.UserEmail;
                 var rol = user.UserRol;
-                if (name.Contains(text) || (mail.Contains(text)) || (rol.Contains(text)))
+                foreach (var word in words)
                 {
-                    user.id = i;
-                    result.Add(user);
-                    i++;
+                    if (name.Contains(word) || (mail.Contains(word)) || (rol.Contains(word)))
+                    {
+                        user.id = i;
+                        result.Add(user);
+                        i++;
+                        break;
+                    }
                 }
+                
             }
             return GetRowsFromList(result.AsQueryable(), rows, page);
         }
