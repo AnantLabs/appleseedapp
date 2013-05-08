@@ -8,14 +8,16 @@ using System.Web;
 using System.Web.Configuration;
 using Appleseed.Framework;
 using Quartz;
+using Quartz.Impl;
 using SelfUpdater.Models;
 
 namespace SelfUpdater.Code
 {
     public class SelfUpdaterCheckJob : IJob
     {
-        public void Execute(JobExecutionContext context)
+        public void Execute(IJobExecutionContext context_)
         {
+            var context = (JobExecutionContextImpl)context_;
 
             var executeJob = bool.Parse(context.JobDetail.JobDataMap["ExcecuteJob"].ToString());
 
@@ -141,5 +143,7 @@ namespace SelfUpdater.Code
 
            
         }
+
+       
     }
 }
