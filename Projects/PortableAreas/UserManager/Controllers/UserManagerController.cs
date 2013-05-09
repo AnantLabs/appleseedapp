@@ -81,7 +81,8 @@ namespace UserManager.Controllers
                 var rol = user.UserRol;
                 foreach (var word in words)
                 {
-                    if (name.Contains(word) || (mail.Contains(word)) || (rol.Contains(word)))
+                    var userMail = mail.Split('@');
+                    if (name.ToUpper().Contains(word.ToUpper()) || (userMail[0].ToUpper().Contains(word.ToUpper())))
                     {
                         user.id = i;
                         result.Add(user);
@@ -128,8 +129,8 @@ namespace UserManager.Controllers
             }
 
             AllUsers = data;
-            
-            return GetRowsFromList(data.AsQueryable(), rows, page);
+            var result = GetRowsFromList(data.AsQueryable(), rows, page);
+            return result;
         }
 
 
@@ -159,5 +160,6 @@ namespace UserManager.Controllers
             };
             return Json(jsonData, JsonRequestBehavior.AllowGet);
         }
+
     }
 }

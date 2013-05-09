@@ -79,9 +79,20 @@
             gridview: true,
             width: '100%',
             height: "350",
+            toolbar: [true, "top"],
             //jsonReader: { repeatitems: false, },
       viewrecords: true,
-    }).navGrid("#pager5", { edit: false, add: false, del: false, search: false, })
+    }).navGrid("#pager5", { edit: false, add: false, del: false, search: false, refresh: false,  })
+        .navButtonAdd("#pager5",
+            {
+                caption: '',
+                buttonicon: "ui-icon ui-icon-refresh",
+                onClickButton: function () {
+                    jQuery("#list5").jqGrid('setGridParam', { url: '@Url.Action("GridUser")', page: 1 });
+                    $("#list5").trigger("reloadGrid");
+                },
+            }
+        )
         .navButtonAdd("#pager5",
             {
                 caption: '@General.GetString("ADD_NEW_USER")',
@@ -93,6 +104,10 @@
                 position: "first"
             }
         );
+        
+    var toolbarClone = $('#pager5_left').clone(true);
+        // Assuming that your grid's ID is myGrid
+    $('#t_list5').prepend(toolbarClone);
 
     function formatterLink(cellValue, options, rowObject) { 
         var result = "<a class='ui-icon ui-icon-pencil' href='#' onclick=\"Edit('" + rowObject.EditId + "');return false;\" style= \"color: blue; text-decoration: none;margin-left: 15px; \">" + cellValue + "</a>";
