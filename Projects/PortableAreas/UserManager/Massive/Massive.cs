@@ -119,8 +119,8 @@ namespace UserManager.Massive {
             PrimaryKeyField = string.IsNullOrEmpty(primaryKeyField) ? "ID" : primaryKeyField;
             DescriptorField = descriptorField;
             var _providerName = "System.Data.SqlClient";
-            
-            if(ConfigurationManager.ConnectionStrings[connectionStringName].ProviderName != null)
+
+            if (!string.IsNullOrEmpty(ConfigurationManager.ConnectionStrings[connectionStringName].ProviderName))
                 _providerName = ConfigurationManager.ConnectionStrings[connectionStringName].ProviderName;
             
             _factory = DbProviderFactories.GetFactory(_providerName);

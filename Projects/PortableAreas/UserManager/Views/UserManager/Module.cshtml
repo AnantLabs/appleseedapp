@@ -46,7 +46,7 @@
 
     function search() {
         var textVal = jQuery("#textSearch").val();
-        jQuery("#list5").jqGrid('setGridParam', {url: '@Url.Action("Search")?text=' + textVal, page: 1 });
+        jQuery("#list5").jqGrid('setGridParam', { url: '@Url.Action("GridUser")?search=' + textVal, page: 1 });
         $("#list5").trigger("reloadGrid");
         
     }
@@ -75,12 +75,10 @@
             url: '@Url.Action("GridUser")',
             datatype: "json",
             mtype: "POST",
-            //rownumWidth: 6,
-            gridview: true,
+            hiddengrid: true,
             width: '100%',
             height: "350",
             toolbar: [true, "top"],
-            //jsonReader: { repeatitems: false, },
       viewrecords: true,
     }).navGrid("#pager5", { edit: false, add: false, del: false, search: false, refresh: false,  })
         .navButtonAdd("#pager5",
@@ -104,6 +102,20 @@
                 position: "first"
             }
         );
+
+    //$(".ui-icon-circle-triangle-n").hide();
+        
+    $(".ui-jqgrid-titlebar-close").click(function () {
+        if (document.getElementsByClassName("ui-icon-circle-triangle-s").length == 0) {
+            $(".ui-state-default").hide();
+            $(".ui-jqgrid-bdiv").hide();
+            $(".ui-icon-circle-triangle-n").removeClass("ui-icon-circle-triangle-n").addClass("ui-icon-circle-triangle-s");
+        } else {
+            $(".ui-state-default").show();
+            $(".ui-jqgrid-bdiv").show();
+            $(".ui-icon-circle-triangle-s").removeClass("ui-icon-circle-triangle-s").addClass("ui-icon-circle-triangle-n");
+        }
+    });
         
     var toolbarClone = $('#pager5_left').clone(true);
         // Assuming that your grid's ID is myGrid

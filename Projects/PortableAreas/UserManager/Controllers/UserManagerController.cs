@@ -13,16 +13,13 @@ using UserManager.Massive;
 using UserManager.Models;
 using aspnet_CustomProfile = UserManager.Massive.aspnet_CustomProfile;
 using Appleseed.Framework.Web.UI.WebControls;
+using Appleseed.Framework.Site.Configuration;
 
 namespace UserManager.Controllers
 {
 
     public class UserManagerController : Controller
     {
-        //
-        // GET: /UserManager/
-        public static List<UserManagerModel> AllUsers { get; set; }
-
         public ActionResult Module()
         {
             var segment = Request.Url.Segments;
@@ -67,18 +64,17 @@ namespace UserManager.Controllers
             return Json("ok");
         }
 
-        public JsonResult Search(string text, int page, int rows)
+        public JsonResult Search(string text, int page, int rows, List<UserManagerModel> data)
         {
 
-            var data = AllUsers; 
             var result = new List<UserManagerModel>();
             var words = text.Split(' ');
             int i = 1;
             foreach (var user in data)
             {
-                var name = user.UserName;
+                var name = user.UserName ?? "";
                 var mail = user.UserEmail;
-                var rol = user.UserRol;
+
                 foreach (var word in words)
                 {
                     var userMail = mail.Split('@');
@@ -99,7 +95,18 @@ namespace UserManager.Controllers
         {
             var data = new List<UserManagerModel>();
 
-            var iduser = new aspnet_CustomProfile().All(orderBy: "Name").ToArray();
+            var tbl = new DynamicModel("ConnectionString", "aspnet_CustomProfile", "UserId");
+            dynamic iduser = tbl.Query("SELECT m.ApplicationId, m.UserId, m.Email, cp.Name " +
+                                       "FROM aspnet_Membership as m LEFT JOIN aspnet_CustomProfile as cp " +
+                                       "ON m.UserId = cp.UserId " +
+                                       "inner join aspnet_Applications as a " +
+                                       "on a.ApplicationName = @0 and a.ApplicationId = m.ApplicationId " +
+                                       "order by cp.Name", Portal.UniqueID);
+            var table = new DynamicModel("ConnectionString", "aspnet_Roles", "RoleId");
+            dynamic roles = table.Query("SELECT r.RoleName, ur.UserId " +
+                                        "FROM aspnet_Roles r, aspnet_UsersInRoles ur " +
+                                        "WHERE r.RoleId = ur.RoleId");
+            var iRoles = (IEnumerable<dynamic>) roles;
             var i = 1;
             foreach (var user in iduser)
             {
@@ -110,14 +117,12 @@ namespace UserManager.Controllers
                 m.UserEmail = user.Email;
                 var userrolid = Guid.Parse(user.UserId.ToString());
                 object[] queryargs = { userrolid };
-
+                
                 try
                 {
-                    var roleid = new aspnet_UsersInRoles().All(where: "UserId = @0", args: queryargs).Single().RoleId;
-                    var rolid = Guid.Parse(roleid.ToString());
-                    object[] queryargs2 = { rolid };
-                    var roleName = new aspnet_Roles().All(where: "RoleId = @0", args: queryargs2).Single().RoleName;
-                    m.UserRol = roleName;
+                    var roleName = iRoles.Where(r => r.UserId == userrolid);
+                    m.UserRol = roleName.Single().RoleName;
+
                 }
                 catch (Exception e)
                 {
@@ -127,8 +132,10 @@ namespace UserManager.Controllers
                 data.Add(m);
                 i++;
             }
-
-            AllUsers = data;
+            if (!string.IsNullOrEmpty(search))
+            {
+                return Search(search, page, rows, data);
+            }
             var result = GetRowsFromList(data.AsQueryable(), rows, page);
             return result;
         }

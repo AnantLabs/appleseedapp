@@ -110,6 +110,7 @@
     <Compile Include="Controllers\UserManagerController.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Massive\aspnet_CustomProfile.cs" />
+    <Compile Include="Massive\aspnet_Membership.cs" />
     <Compile Include="Massive\aspnet_Roles.cs" />
     <Compile Include="Massive\aspnet_UsersInRoles.cs" />
     <Compile Include="Massive\Massive.cs" />
