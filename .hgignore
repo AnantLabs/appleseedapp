@@ -1,0 +1,53 @@
+# Ignore file for Visual Studio
+
+# use glob syntax
+syntax: glob
+
+# Ignore Visual Studio files
+*.obj
+*.exe
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.scc
+[Bb]in
+[Dd]ebug*/
+obj/
+[Rr]elease*/
+_ReSharper*/
+[Tt]est[Rr]esult*
+[Bb]uild[Ll]og.*
+*.[Pp]ublish.xml
+rb_log.resx*
+builds/
+[Ll]ibs/[Pp]ortable[Aa]reas
+WebSites/Appleseed/[Ww]eb.[Cc]onfig
+*.vs10x
+glob:WebSites/Appleseed/App_Data/appleseed_log.LDF
+glob:WebSites/Appleseed/App_Data/appleseed.mdf
+WebSites/Appleseed/rb_logs/DbScriptsLog.txt
+_UpgradeReport_Files/UpgradeReport_Warning.png
+_UpgradeReport_Files/UpgradeReport_Success.png
+_UpgradeReport_Files/UpgradeReport_Information.png
+_UpgradeReport_Files/UpgradeReport_Error.png
+_UpgradeReport_Files/UpgradeReport.xslt
+_UpgradeReport_Files/UpgradeReport.css
+syntax: regexp
+WebSites/Appleseed/Areas/*
+WebSites/Appleseed/Content/*
+WebSites/Appleseed/Scripts/*
+packages/*
