@@ -18,6 +18,9 @@ var client = {
     isIE:       ua.indexOf('msie') > -1,
     isIE7:      ua.indexOf('msie 7') > -1,
 	isIE8:      ua.indexOf('msie 8') > -1,	
+	isIE9:      ua.indexOf('msie 9') > -1,	
+	isIE10:      ua.indexOf('msie 10') > -1,	
+	isIE11:      ua.indexOf('msie 11') > -1,	
     isSafari:   /webkit|khtml/.test(ua),
     isWindows:  ua.indexOf('windows') != -1 || ua.indexOf('win32') != -1,
     isMac:      ua.indexOf('macintosh') != -1 || ua.indexOf('mac os x') != -1,
@@ -33,7 +36,7 @@ client.isGecko = ua.indexOf('gecko') != -1 && !client.isSafari;
  * @var         Boolean
  * @private
  */
-var ltIE7 = client.isIE && !client.isIE7 && !client.isIE8;
+var ltIE7 = client.isIE && !client.isIE7 && !client.isIE8 && !client.isIE9 && !client.isIE10 && !client.isIE11;
 
 if(ltIE7){
 if ($.cookie('IE6ALERT') != 1 ){
@@ -90,6 +93,6 @@ function display_warning(){
 	
 	
 	$(html).appendTo('#superPrincipalMenu');
-  $('.modal_container').dialog({ autoOpen: true, modal:true} );
+  $('.modal_container').dialog({ autoOpen: true, modal:true, width: 410} );
   
 }
