@@ -51,9 +51,8 @@
         
     }
 
-    function myFunction() {
-        var x = document.getElementById("textSearch");
-        x.value = '@General.GetString("search")';
+    function searchBotton() {
+        if ((13 == event.keyCode) || (13 == event.which)) { event.preventDefault(); search(); }
     }
     
     $(document).ready(function () {
@@ -101,7 +100,9 @@
                 },
                 position: "first"
             }
-        );
+        ).jqGrid('setLabel', 'Email', '', { width: 300 }
+        ).jqGrid('setLabel', 'Edit', '', { width: 45 }
+        ).jqGrid('setLabel', 'Delete', '', { width: 45 });
 
     //$(".ui-icon-circle-triangle-n").hide();
         
@@ -118,7 +119,6 @@
     });
         
     var toolbarClone = $('#pager5_left').clone(true);
-        // Assuming that your grid's ID is myGrid
     $('#t_list5').prepend(toolbarClone);
 
     function formatterLink(cellValue, options, rowObject) { 
@@ -131,9 +131,11 @@
     }
 
     $("#list5").setCaption(
-        '<input type="search" onkeydown="if((13 == event.keyCode) || (13 == event.which)){ event.preventDefault(); search();}" name="item_code" id="textSearch" onfocus="this.value=null " value="' + '@General.GetString("search")' + '" onblur="myFunction()" />' +
-        '<span style="vertical-align:middle; display:inline-block;" class="ui-icon ui-icon-search"></span>');
+        '<input type="search" onkeydown="searchBotton()" name="item_code" id="textSearch" placeholder=\'@General.GetString("search")\' />' +
+        '<span style="vertical-align:middle; display:inline-block;" class="ui-icon ui-icon-search" onclick="search();return false;"></span>');
     });
+    
+   
     
 
 

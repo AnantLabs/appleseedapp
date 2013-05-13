@@ -74,11 +74,11 @@ namespace UserManager.Controllers
             {
                 var name = user.UserName ?? "";
                 var mail = user.UserEmail;
-
+                var role = user.UserRol ?? "";
                 foreach (var word in words)
                 {
                     var userMail = mail.Split('@');
-                    if (name.ToUpper().Contains(word.ToUpper()) || (userMail[0].ToUpper().Contains(word.ToUpper())))
+                    if (name.ToUpper().Contains(word.ToUpper()) || (role.ToUpper().Contains(word.ToUpper())) || (userMail[0].ToUpper().Contains(word.ToUpper())))
                     {
                         user.id = i;
                         result.Add(user);
@@ -116,7 +116,6 @@ namespace UserManager.Controllers
                 m.UserName = user.Name;
                 m.UserEmail = user.Email;
                 var userrolid = Guid.Parse(user.UserId.ToString());
-                object[] queryargs = { userrolid };
                 
                 try
                 {
