@@ -508,6 +508,13 @@ namespace Appleseed
                 ViewEngines.Engines.Add(new AppleseedWebFormViewEngine());
                 ViewEngines.Engines.Add(new AppleseedRazorViewEngine());
 
+            } catch (Exception exc) {
+
+                ErrorHandler.Publish(LogLevel.Error, exc);
+            }
+
+            try
+            {
                 var dbContext = new SelfUpdaterEntities();
                 if (dbContext.SelfUpdatingPackages.Any())
                 {
@@ -518,16 +525,18 @@ namespace Appleseed
                     HttpContext.Current.Application["NugetSelfUpdatesToInstall"] = true; //f.FilePrivatePart;
                     HttpContext.Current.Application.UnLock();
 
+                    // Delete Session logger
+                    //HttpContext.Current.Session["NugetLogger"] = String.Empty;
+                    HttpContext.Current.Application["NugetLogger"] = String.Empty;
+
                 }
 
-            } catch (Exception exc) {
+            }
+            catch (Exception exc)
+            {
 
                 ErrorHandler.Publish(LogLevel.Error, exc);
             }
-
-            // Delete Session logger
-            //HttpContext.Current.Session["NugetLogger"] = String.Empty;
-            HttpContext.Current.Application["NugetLogger"] = String.Empty;
 
         }
 
